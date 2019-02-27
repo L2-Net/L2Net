@@ -702,10 +702,12 @@ namespace L2_login
             string s_var = Get_String(ref line);
             string s_values = line;
 
+            if (!System.IO.File.Exists(s_file))
+            {
+                s_file = Globals.PATH + "\\Scripts\\" + s_file;
+            }
             //check if the file has been loaded yet...
             //if not... load the file into memory
-            s_file = Globals.PATH + "\\Scripts\\" + s_file;
-
             if (!Files.ContainsKey(s_file))
             {
                 System.IO.StreamReader filein = new System.IO.StreamReader(s_file);
