@@ -214,7 +214,7 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_items_data.Items[listView_items_data.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_items_data.Items[listView_items_data.SelectedIndices[0]].SubItems[0].Text;
                 uint id = Util.GetItemID(name);
 
                 Globals.DoNotItemLock.EnterWriteLock();
@@ -239,7 +239,7 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_inventory.Items[listView_inventory.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_inventory.Items[listView_inventory.SelectedIndices[0]].SubItems[0].Text;
                 uint id = Util.GetItemID(name);
 
                 Globals.DoNotItemLock.EnterWriteLock();
@@ -272,9 +272,9 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text;
                 //uint id = Util.GetNPCID(name);
-                uint id = Convert.ToUInt32((listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[3].Text));
+                uint id = Convert.ToUInt32(listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[3].Text);
 
                 if (id < Globals.NPC_OFF)
                 {
@@ -311,8 +311,8 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text);
-                uint objID = Convert.ToUInt32((listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[2].Text));
+                string name = listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text;
+                uint objID = Convert.ToUInt32(listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[2].Text);
                 Util.IgnoreNPC(objID, true);
                 Add_Text("NPC with name: " +name + " and objID: " + objID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
             }

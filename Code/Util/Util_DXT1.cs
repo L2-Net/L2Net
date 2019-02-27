@@ -21,13 +21,13 @@ namespace L2_login
                 ushort c1 = System.BitConverter.ToUInt16(data, offset); offset += 2;
                 ushort c2 = System.BitConverter.ToUInt16(data, offset); offset += 2;
 
-                int r1 = (c1 >> 11);
+                int r1 = c1 >> 11;
                 int g1 = (c1 ^ (c1 >> 11 << 11)) >> 5;
-                int b1 = (c1 ^ (c1 >> 5 << 5));
+                int b1 = c1 ^ (c1 >> 5 << 5);
 
-                int r2 = (c2 >> 11);
+                int r2 = c2 >> 11;
                 int g2 = (c2 ^ (c2 >> 11 << 11)) >> 5;
-                int b2 = (c2 ^ (c2 >> 5 << 5));
+                int b2 = c2 ^ (c2 >> 5 << 5);
 
                 //scale colors to 32 bit
                 float sr1 = (float)r1 / 31;
@@ -45,10 +45,10 @@ namespace L2_login
                 {
                     nv = data[offset]; offset++;
 
-                    index4 = (nv >> 6);
-                    index3 = ((nv ^ (nv >> 6 << 6)) >> 4);
-                    index2 = ((nv ^ (nv >> 4 << 4)) >> 2);
-                    index1 = (nv ^ (nv >> 2 << 2));
+                    index4 = nv >> 6;
+                    index3 = (nv ^ (nv >> 6 << 6)) >> 4;
+                    index2 = (nv ^ (nv >> 4 << 4)) >> 2;
+                    index1 = nv ^ (nv >> 2 << 2);
 
                     bmp.SetPixel(x_off + 0, y_off + iy, GetColor(index1, sr1, sg1, sb1, sr2, sg2, sb2));
                     bmp.SetPixel(x_off + 1, y_off + iy, GetColor(index2, sr1, sg1, sb1, sr2, sg2, sb2));
@@ -117,9 +117,9 @@ namespace L2_login
                         break;
                     case 2:
                     case 3:
-                        red = ((r1 + r2) / 2) * 255;
-                        green = ((g1 + g2) / 2) * 255;
-                        blue = ((b1 + b2) / 2) * 255;
+                        red = (r1 + r2) / 2 * 255;
+                        green = (g1 + g2) / 2 * 255;
+                        blue = (b1 + b2) / 2 * 255;
                         break;
                     /*case 3:
                         red = 255;

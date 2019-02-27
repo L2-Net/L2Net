@@ -109,7 +109,7 @@ namespace L2_login
                 //eh?
                Globals.l2net_home.Add_Debug(e.Message);
             }          
-            return (pathFound && targetFound);
+            return pathFound && targetFound;
 
         }
        

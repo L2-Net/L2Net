@@ -113,7 +113,7 @@ namespace L2_login
                 case Var_Types.ARRAYLIST:
                     sout.Value = new ArrayList(((ArrayList)Value).Capacity);
 
-                    foreach (ScriptVariable nv in ((ArrayList)Value))
+                    foreach (ScriptVariable nv in (ArrayList)Value)
                     {
                         ((ArrayList)sout.Value).Add(nv.Clone());
                     }
@@ -121,7 +121,7 @@ namespace L2_login
                 case Var_Types.SORTEDLIST:
                     sout.Value = new SortedList(((SortedList)Value).Capacity);
 
-                    foreach (DictionaryEntry dic in ((SortedList)Value))
+                    foreach (DictionaryEntry dic in (SortedList)Value)
                     {
                         ((SortedList)sout.Value).Add(dic.Key, ((ScriptVariable)dic.Value).Clone());
                     }
@@ -129,7 +129,7 @@ namespace L2_login
                 case Var_Types.STACK:
                     sout.Value = new Stack(((Stack)Value).Count);
 
-                    foreach (ScriptVariable nv in ((Stack)Value))
+                    foreach (ScriptVariable nv in (Stack)Value)
                     {
                         ((Stack)sout.Value).Push(nv.Clone());
                     }
@@ -137,7 +137,7 @@ namespace L2_login
                 case Var_Types.QUEUE:
                     sout.Value = new Queue(((Queue)Value).Count);
 
-                    foreach (ScriptVariable nv in ((Queue)Value))
+                    foreach (ScriptVariable nv in (Queue)Value)
                     {
                         ((Queue)sout.Value).Enqueue(nv.Clone());
                     } 

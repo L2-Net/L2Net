@@ -1063,7 +1063,7 @@ namespace L2_login
 
                     break;
                 case 0x01://shout
-                    Globals.l2net_home.Add_Text(message, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(253)), ((System.Byte)(100)), ((System.Byte)(0)))), TextType.LOCAL);
+                    Globals.l2net_home.Add_Text(message, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)253, (System.Byte)100, (System.Byte)0)), TextType.LOCAL);
                     break;
                 case 0x02://tell
                     if (Globals.gamedata.alertoptions.beepon_privatemessage)
@@ -2639,7 +2639,7 @@ namespace L2_login
             bool found = false;
 
             //this is our active follow attack crap
-            if (Globals.gamedata.BOTTING && (Globals.gamedata.botoptions.ActiveFollowAttack == 1 && !Globals.picking_up_items) && (Globals.gamedata.botoptions.ActiveFollowID == attacker) && Globals.gamedata.ReadyState())
+            if (Globals.gamedata.BOTTING && Globals.gamedata.botoptions.ActiveFollowAttack == 1 && !Globals.picking_up_items && (Globals.gamedata.botoptions.ActiveFollowID == attacker) && Globals.gamedata.ReadyState())
             {
                 found = false;
                 float x = 0, y = 0, z = 0;
@@ -2718,17 +2718,17 @@ namespace L2_login
                 {
                     //need to attack the target if char is not stunned etc
                     //ServerPackets.Force_Attack(target, Util.Float_Int32(x), Util.Float_Int32(y), Util.Float_Int32(z), false);
-                    if ((Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                        (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR)) ||
-                        (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN)) ||
-                        (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING)))
+                    if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                        Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR) ||
+                        Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN) ||
+                        Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING))
                     {
                         Globals.gamedata.my_char.isAttacking = false;
                     }
@@ -2978,7 +2978,7 @@ namespace L2_login
                 Globals.gamedata.my_char.Resisted = 0;
                 
                 // Globals.gamedata.my_char.ExpiresTime = ((1000 + _hittime) * TimeSpan.TicksPerMillisecond) + System.DateTime.Now.Ticks;
-                Globals.gamedata.my_char.ExpiresTime = ((_hittime) * TimeSpan.TicksPerMillisecond) + DateTime.Now.Ticks;
+                Globals.gamedata.my_char.ExpiresTime = (_hittime * TimeSpan.TicksPerMillisecond) + DateTime.Now.Ticks;
                 
                 if (Globals.gamedata.CurrentScriptState == ScriptState.Running)
                 {

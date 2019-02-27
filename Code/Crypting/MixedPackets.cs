@@ -86,7 +86,7 @@ namespace L2_login
 
         public void Encrypt(byte[] Packet)
         {
-            if ((Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[2] == (byte)PClient.EnterWorld))// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[2] == (byte)PClient.Action))
+            if (Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[2] == (byte)PClient.EnterWorld)// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[2] == (byte)PClient.Action))
             {
 
             }
@@ -111,7 +111,7 @@ namespace L2_login
         {
             try
             {
-                if ((Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[0] == (byte)PClient.EnterWorld))// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[0] == (byte)PClient.Action))
+                if (Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[0] == (byte)PClient.EnterWorld)// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[0] == (byte)PClient.Action))
                 {
 
                 }
@@ -144,7 +144,7 @@ namespace L2_login
         {
             try
             {
-                if ((Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet.GetByte(0) == (byte)PClient.EnterWorld))//|| (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet.GetByte(0) == (byte)PClient.Action))
+                if (Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet.GetByte(0) == (byte)PClient.EnterWorld)//|| (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet.GetByte(0) == (byte)PClient.Action))
                 {
 
                 }
@@ -186,7 +186,7 @@ namespace L2_login
 
         public void Decrypt(byte[] Packet)
         {
-            if ((Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[2] == (byte)PClient.EnterWorld))// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[2] == (byte)PClient.Action))
+            if (Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[2] == (byte)PClient.EnterWorld)// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[2] == (byte)PClient.Action))
             {
 
             }
@@ -211,7 +211,7 @@ namespace L2_login
         {
             try
             {
-                if ((Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[0] == (byte)PClient.EnterWorld))// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[0] == (byte)PClient.Action))
+                if (Globals.gamedata.Chron >= Chronicle.CT2_5 && Packet[0] == (byte)PClient.EnterWorld)// || (Globals.gamedata.Chron >= Chronicle.CT3_0 && Packet[0] == (byte)PClient.Action))
                 {
 
                 }

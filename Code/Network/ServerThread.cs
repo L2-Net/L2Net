@@ -612,7 +612,7 @@ namespace L2_login
                                             else
                                             {
                                                 // Somebody targeting a partymember or me?
-                                                if ((Globals.gamedata.PartyMembers.ContainsKey(dest)) || (dest == Globals.gamedata.my_char.ID))
+                                                if (Globals.gamedata.PartyMembers.ContainsKey(dest) || (dest == Globals.gamedata.my_char.ID))
                                                 {
                                                     forward = true;
                                                 }
@@ -639,8 +639,8 @@ namespace L2_login
                                                     if (player != null)
                                                     {
                                                         // Was this person who broke target originally on a party member/me ?
-                                                        if ((Globals.gamedata.PartyMembers.ContainsKey(player.TargetID)) ||
-                                                           ((player.TargetID == Globals.gamedata.my_char.ID)))
+                                                        if (Globals.gamedata.PartyMembers.ContainsKey(player.TargetID) ||
+                                                           player.TargetID == Globals.gamedata.my_char.ID)
                                                         {
                                                             forward = true;
                                                         }
@@ -680,7 +680,7 @@ namespace L2_login
                                                     else
                                                     {
                                                         // Somebody targeting a partymember or me?
-                                                        if ((Globals.gamedata.PartyMembers.ContainsKey(dest)) || (dest == Globals.gamedata.my_char.ID))
+                                                        if (Globals.gamedata.PartyMembers.ContainsKey(dest) || (dest == Globals.gamedata.my_char.ID))
                                                         {
                                                             forward = true;
                                                         }
@@ -724,7 +724,7 @@ namespace L2_login
                                                     else
                                                     {
                                                         // Somebody targeting a partymember or me?
-                                                        if ((Globals.gamedata.PartyMembers.ContainsKey(dst)) || (dst == Globals.gamedata.my_char.ID))
+                                                        if (Globals.gamedata.PartyMembers.ContainsKey(dst) || (dst == Globals.gamedata.my_char.ID))
                                                         {
                                                             forward = true;
                                                         }
@@ -841,7 +841,7 @@ namespace L2_login
                                                     }
                                                 }
 
-                                                if ((Globals.lagfilter_xf_ci_stripunseen) || (Globals.lagfilter_xf_ci_stripaug))
+                                                if (Globals.lagfilter_xf_ci_stripunseen || Globals.lagfilter_xf_ci_stripaug)
                                                 {
                                                     xf_CI.WriteUInt32(0);
                                                     xf_CI.WriteUInt32(0);
@@ -876,7 +876,7 @@ namespace L2_login
                                                     xf_CI.WriteUInt32(bbtmp.ReadUInt32());	    	    // AID doll face                
                                                 }
 
-                                                if ((Globals.lagfilter_xf_ci_stripunseen) || (Globals.lagfilter_xf_ci_stripaug))
+                                                if (Globals.lagfilter_xf_ci_stripunseen || Globals.lagfilter_xf_ci_stripaug)
                                                 {
                                                     for (int i = 0; i < 8; i++)
                                                     {
@@ -898,7 +898,7 @@ namespace L2_login
 
                                                 if (Globals.gamedata.Chron >= Chronicle.CT2_3)
                                                 {
-                                                    if ((Globals.lagfilter_xf_ci_stripunseen) || (Globals.lagfilter_xf_ci_stripaug))
+                                                    if (Globals.lagfilter_xf_ci_stripunseen || Globals.lagfilter_xf_ci_stripaug)
                                                     {
                                                         xf_CI.WriteUInt32(0);
                                                         bbtmp.ReadUInt32();
@@ -1138,8 +1138,8 @@ namespace L2_login
                                                             if (player != null)
                                                             {
                                                                 // Was this person targeting me or my party ?
-                                                                if ((Globals.gamedata.PartyMembers.ContainsKey(player.TargetID)) ||
-                                                                   ((player.TargetID == Globals.gamedata.my_char.ID)))
+                                                                if (Globals.gamedata.PartyMembers.ContainsKey(player.TargetID) ||
+                                                                   player.TargetID == Globals.gamedata.my_char.ID)
                                                                 {
                                                                     forward = true;
                                                                 }

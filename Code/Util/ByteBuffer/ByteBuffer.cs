@@ -100,7 +100,7 @@ namespace L2_login
 		{
 			for(int i = 0; i < _maxlength; i ++)
 			{
-				_data[i] = (byte)(0);
+				_data[i] = (byte)0;
 			}
 		}
 
@@ -504,7 +504,7 @@ namespace L2_login
 
         public void WriteString1B(string text)
         {
-            if (_length >= _index + (text.Length) + 1)
+            if (_length >= _index + text.Length + 1)
             {
                 byte[] data = System.Text.Encoding.UTF7.GetBytes(text);//each char becomes 2 bytes
 

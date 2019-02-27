@@ -158,7 +158,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_char.Cur_CP * 100) / Globals.gamedata.my_char.Max_CP < bft.Min_Per)
+                        if (Globals.gamedata.my_char.Cur_CP * 100 / Globals.gamedata.my_char.Max_CP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -188,7 +188,7 @@ namespace L2_login
                             {
                                 return BuffState.Has;//prevent divide by zero error
                             }
-                            if ((player.Cur_CP * 100) / player.Max_CP < bft.Min_Per)
+                            if (player.Cur_CP * 100 / player.Max_CP < bft.Min_Per)
                             {
                                 return BuffState.Needs;
                             }
@@ -211,7 +211,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
+                        if (Globals.gamedata.my_char.Cur_HP * 100 / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -227,7 +227,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet.Cur_HP * 100) / Globals.gamedata.my_pet.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet.Cur_HP * 100 / Globals.gamedata.my_pet.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -243,7 +243,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet1.Cur_HP * 100) / Globals.gamedata.my_pet1.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet1.Cur_HP * 100 / Globals.gamedata.my_pet1.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -259,7 +259,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet2.Cur_HP * 100) / Globals.gamedata.my_pet2.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet2.Cur_HP * 100 / Globals.gamedata.my_pet2.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -275,7 +275,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet3.Cur_HP * 100) / Globals.gamedata.my_pet3.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet3.Cur_HP * 100 / Globals.gamedata.my_pet3.Max_HP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_HP * 100) / Globals.gamedata.my_char.Max_HP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -305,7 +305,7 @@ namespace L2_login
                             {
                                 return BuffState.Has;//prevent divide by zero error
                             }
-                            if ((player.Cur_HP * 100) / player.Max_HP < bft.Min_Per)
+                            if (player.Cur_HP * 100 / player.Max_HP < bft.Min_Per)
                             {
                                 return BuffState.Needs;
                             }
@@ -328,7 +328,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
+                        if (Globals.gamedata.my_char.Cur_MP * 100 / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -344,7 +344,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet.Cur_MP * 100) / Globals.gamedata.my_pet.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet.Cur_MP * 100 / Globals.gamedata.my_pet.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -360,7 +360,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet1.Cur_MP * 100) / Globals.gamedata.my_pet1.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet1.Cur_MP * 100 / Globals.gamedata.my_pet1.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -376,7 +376,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet2.Cur_MP * 100) / Globals.gamedata.my_pet2.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet2.Cur_MP * 100 / Globals.gamedata.my_pet2.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -392,7 +392,7 @@ namespace L2_login
                         {
                             return BuffState.Has;//prevent divide by zero error
                         }
-                        if ((Globals.gamedata.my_pet3.Cur_MP * 100) / Globals.gamedata.my_pet3.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
+                        if (Globals.gamedata.my_pet3.Cur_MP * 100 / Globals.gamedata.my_pet3.Max_MP < bft.Min_Per)//((Globals.gamedata.my_char.Cur_MP * 100) / Globals.gamedata.my_char.Max_MP < bft.Min_Per)
                         {
                             return BuffState.Needs;
                         }
@@ -422,7 +422,7 @@ namespace L2_login
                             {
                                 return BuffState.Has;//prevent divide by zero error
                             }
-                            if ((player.Cur_MP * 100) / player.Max_MP < bft.Min_Per)
+                            if (player.Cur_MP * 100 / player.Max_MP < bft.Min_Per)
                             {
                                 return BuffState.Needs;
                             }

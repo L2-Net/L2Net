@@ -93,7 +93,7 @@ namespace L2_login
             {
                 is_skill = false;
 
-                ShortCut sc = ((ShortCut)Globals.gamedata.ShortCuts[id]);
+                ShortCut sc = (ShortCut)Globals.gamedata.ShortCuts[id];
 
                 switch (sc.Type)
                 {
@@ -126,7 +126,7 @@ namespace L2_login
 
         public static void Use_Action_Parse(uint id, bool control, bool shift)
         {
-            Actions act = ((Actions)Globals.actionlist[id]);
+            Actions act = (Actions)Globals.actionlist[id];
 
             switch ((PClientAction)act.ID)
             {
@@ -923,7 +923,7 @@ namespace L2_login
 
                 for (int i = 0; i < ew.Length; i += 2)
                 {
-                    sm = (ew[i].ToString()) + (ew[i + 1].ToString());
+                    sm = ew[i].ToString() + ew[i + 1].ToString();
 
                     bbuff.WriteByte(byte.Parse(sm, System.Globalization.NumberStyles.HexNumber));
                 }
@@ -1014,7 +1014,7 @@ namespace L2_login
                         string smwGD;
                         for (int iz = 0; iz < ewwGD.Length; iz += 2)
                         {
-                            smwGD = (ewwGD[iz].ToString()) + (ewwGD[iz + 1].ToString());
+                            smwGD = ewwGD[iz].ToString() + ewwGD[iz + 1].ToString();
 
                             bbuff.WriteByte(byte.Parse(smwGD, System.Globalization.NumberStyles.HexNumber));
                         }
@@ -1028,7 +1028,7 @@ namespace L2_login
                         string smwT;
                         for (int iz = 0; iz < ewwT.Length; iz += 2)
                         {
-                            smwT = (ewwT[iz].ToString()) + (ewwT[iz + 1].ToString());
+                            smwT = ewwT[iz].ToString() + ewwT[iz + 1].ToString();
 
                             bbuff.WriteByte(byte.Parse(smwT, System.Globalization.NumberStyles.HexNumber));
                         }
@@ -1041,7 +1041,7 @@ namespace L2_login
                         string smw;
                         for (int iz = 0; iz < eww.Length; iz += 2)
                         {
-                            smw = (eww[iz].ToString()) + (eww[iz + 1].ToString());
+                            smw = eww[iz].ToString() + eww[iz + 1].ToString();
 
                             bbuff.WriteByte(byte.Parse(smw, System.Globalization.NumberStyles.HexNumber));
                         }

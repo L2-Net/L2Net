@@ -233,7 +233,7 @@ namespace L2_login
 			// ShortCutBar
 			// 
 			this.AutoScaleBaseSize = new Size(5, 13);
-			this.BackgroundImage = ((Image)(resources.GetObject("$this.BackgroundImage")));
+			this.BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
 			this.ClientSize = new Size(46, 504);
 			this.ControlBox = false;
 			this.Controls.Add(this.label_page);
@@ -405,7 +405,7 @@ namespace L2_login
 			//need to grab all the crap on this page and set the background pics
             for (int i = 0; i < Globals.Skills_PerPage; i++)
 			{
-                sc = ((ShortCut)Globals.gamedata.ShortCuts[i + page * Globals.Skills_PerPage]);
+                sc = (ShortCut)Globals.gamedata.ShortCuts[i + page * Globals.Skills_PerPage];
 
 				try
 				{

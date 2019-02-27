@@ -88,7 +88,7 @@ namespace L2_login
             np.Type = (uint)NetPacketType.ScriptBB;
             np.Sender = Globals.gamedata.my_char.Name;
             np.SenderID = Globals.gamedata.my_char.ID;
-            np.BBuff = ((ByteBuffer)p1.Value);
+            np.BBuff = (ByteBuffer)p1.Value;
 
             NetCode.NetSend(np.GetBytes());
         }
@@ -133,7 +133,7 @@ namespace L2_login
             np.Type = (uint)NetPacketType.ScriptBB;
             np.Sender = Globals.gamedata.my_char.Name;
             np.SenderID = Globals.gamedata.my_char.ID;
-            np.BBuff = ((ByteBuffer)p1.Value);
+            np.BBuff = (ByteBuffer)p1.Value;
 
             NetCode.NetSendIP(np.GetBytes(), ip);
         }
@@ -1442,7 +1442,7 @@ namespace L2_login
                     send.Resize(send.Length() * 2);
                 }
 
-                sm = (hex[i].ToString()) + (hex[i + 1].ToString());
+                sm = hex[i].ToString() + hex[i + 1].ToString();
 
                 send.WriteByte(byte.Parse(sm, System.Globalization.NumberStyles.HexNumber));
             }
@@ -1480,7 +1480,7 @@ namespace L2_login
                     send.Resize(send.Length() * 2);
                 }
 
-                sm = (hex[i].ToString()) + (hex[i + 1].ToString());
+                sm = hex[i].ToString() + hex[i + 1].ToString();
 
                 send.WriteByte(byte.Parse(sm, System.Globalization.NumberStyles.HexNumber));
             }
@@ -2219,7 +2219,7 @@ namespace L2_login
 
                             if (Globals.gamedata.botoptions.AttackOnlyMobsInList == 1)
                             {
-                                if (((BotOptions.DoNotNPCs.Contains(npc.NPCID) || attackingself) && npc.isInvisible == 0) && (!npc.Ignore || attackingself) && (npc.isAttackable == 1 && npc.showName == 1 && npc.isTargetable == 1))
+                                if ((BotOptions.DoNotNPCs.Contains(npc.NPCID) || attackingself) && npc.isInvisible == 0 && (!npc.Ignore || attackingself) && npc.isAttackable == 1 && npc.showName == 1 && npc.isTargetable == 1)
                                 {
                                     if (MeetsConditions(npc)) //npc.TargetID == Globals.gamedata.my_char.ID || 
                                     {
@@ -2396,7 +2396,7 @@ namespace L2_login
                                     }
                                 }*/
 
-                                if ((npc.TargetID == Globals.gamedata.my_char.ID || MeetsConditions(npc) && npc.isInvisible == 0) && (!npc.Ignore) && (npc.showName == 1 && npc.isTargetable == 1))
+                                if ((npc.TargetID == Globals.gamedata.my_char.ID || MeetsConditions(npc) && npc.isInvisible == 0) && (!npc.Ignore) && npc.showName == 1 && npc.isTargetable == 1)
                                 {
                                     ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 

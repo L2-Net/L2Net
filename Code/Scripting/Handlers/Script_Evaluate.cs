@@ -990,7 +990,7 @@ namespace L2_login
                                         {
                                             Globals.PlayerLock.ExitReadLock();
                                         }
-                                        if ((player.Invisible > 0) && (player.HasEffect(AbnormalEffects.STEALTH)))
+                                        if ((player.Invisible > 0) && player.HasEffect(AbnormalEffects.STEALTH))
                                         {
                                             dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                             cast = Var_Types.INT;
@@ -1914,11 +1914,11 @@ namespace L2_login
                                         {
                                             Globals.PlayerLock.ExitReadLock();
                                         }
-                                        if ((player.HasRelation(RelationStates.PARTY1)) ||
-                                            (player.HasRelation(RelationStates.PARTY2)) ||
-                                            (player.HasRelation(RelationStates.PARTY3)) ||
-                                            (player.HasRelation(RelationStates.PARTY4)) ||
-                                            (player.HasRelation(RelationStates.PARTYLEADER)))
+                                        if (player.HasRelation(RelationStates.PARTY1) ||
+                                            player.HasRelation(RelationStates.PARTY2) ||
+                                            player.HasRelation(RelationStates.PARTY3) ||
+                                            player.HasRelation(RelationStates.PARTY4) ||
+                                            player.HasRelation(RelationStates.PARTYLEADER))
                                         {
                                             dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                             cast = Var_Types.INT;
@@ -2115,7 +2115,7 @@ namespace L2_login
                                         cast = Var_Types.INT;
                                         break;
                                     case TargetType.SELF:
-                                        if ((Globals.gamedata.my_char.MyCharRelation(MyRelation.CROWN) || Globals.gamedata.my_char.MyCharRelation(MyRelation.FLAG)))
+                                        if (Globals.gamedata.my_char.MyCharRelation(MyRelation.CROWN) || Globals.gamedata.my_char.MyCharRelation(MyRelation.FLAG))
                                         {
                                             dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                             cast = Var_Types.INT;
@@ -6628,15 +6628,15 @@ namespace L2_login
                                             cast = Var_Types.INT;
                                             break;
                                         case TargetType.MYPET:
-                                                if ((Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FEAR)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.STUN)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.SLEEP)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.HOLD_1)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.PETRIFIED)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FLOATING_ROOT)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.DANCE_STUNNED)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FIREROOT_STUN)) || 
-                                                (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.SKULL_FEAR)))
+                                                if (Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FEAR) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.STUN) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.SLEEP) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.HOLD_1) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.PETRIFIED) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FLOATING_ROOT) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.DANCE_STUNNED) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.FIREROOT_STUN) || 
+                                                Globals.gamedata.my_pet.HasEffect(AbnormalEffects.SKULL_FEAR))
                                             {
                                                 dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                                 cast = Var_Types.INT;
@@ -6648,15 +6648,15 @@ namespace L2_login
                                             }          
                                             break;
                                         case TargetType.MYPET1:
-                                            if ((Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FEAR)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.STUN)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.SLEEP)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.HOLD_1)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                                            (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.SKULL_FEAR)))
+                                            if (Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FEAR) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.STUN) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.SLEEP) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.HOLD_1) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.PETRIFIED) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                                            Globals.gamedata.my_pet1.HasEffect(AbnormalEffects.SKULL_FEAR))
                                             {
                                                 dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                                 cast = Var_Types.INT;
@@ -6668,15 +6668,15 @@ namespace L2_login
                                             }
                                             break;
                                         case TargetType.MYPET2:
-                                            if ((Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FEAR)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.STUN)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.SLEEP)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.HOLD_1)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                                            (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.SKULL_FEAR)))
+                                            if (Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FEAR) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.STUN) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.SLEEP) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.HOLD_1) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.PETRIFIED) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                                            Globals.gamedata.my_pet2.HasEffect(AbnormalEffects.SKULL_FEAR))
                                             {
                                                 dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                                 cast = Var_Types.INT;
@@ -6688,15 +6688,15 @@ namespace L2_login
                                             }
                                             break;
                                         case TargetType.MYPET3:
-                                            if ((Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FEAR)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.STUN)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.SLEEP)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.HOLD_1)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                                            (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.SKULL_FEAR)))
+                                            if (Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FEAR) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.STUN) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.SLEEP) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.HOLD_1) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.PETRIFIED) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                                            Globals.gamedata.my_pet3.HasEffect(AbnormalEffects.SKULL_FEAR))
                                             {
                                                 dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                                 cast = Var_Types.INT;
@@ -6708,17 +6708,17 @@ namespace L2_login
                                             }
                                             break;
                                         case TargetType.SELF:
-                                            if ((Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN)) || 
-                                                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR)) || 
-                                                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN)) || 
-                                                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING)))
+                                            if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN) || 
+                                                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR) || 
+                                                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN) || 
+                                                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING))
                                             {
                                                 dest_i = System.Convert.ToInt64(Get_Value("TRUE").Value);
                                                 cast = Var_Types.INT;

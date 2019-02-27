@@ -209,7 +209,7 @@ namespace L2_login
                     count = new TreeNode("Count : " + ((ArrayList)sv.Value).Count.ToString());
                     value = new TreeNode("Values");
 
-                    foreach (ScriptVariable child_sv in ((ArrayList)sv.Value))
+                    foreach (ScriptVariable child_sv in (ArrayList)sv.Value)
                     {
                         //TreeNode child_node = new TreeNode(child_sv.Name);
                         TreeNode child_node = new TreeNode("[" + ((ArrayList)sv.Value).IndexOf(child_sv).ToString() + "]");
@@ -236,7 +236,7 @@ namespace L2_login
                         {
                             try
                             {
-                                ScriptVariable child_sv = (ScriptVariable)(((SortedList)sv.Value)[key]);
+                                ScriptVariable child_sv = (ScriptVariable)((SortedList)sv.Value)[key];
 
                                 //TreeNode child_node = new TreeNode(child_sv.Name);
                                 TreeNode child_node = new TreeNode("[" + key + "]");

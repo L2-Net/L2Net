@@ -198,7 +198,7 @@ namespace L2_login
 		private void InitializeComponent()
 		{
             this.pictureBox_test = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_test)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pictureBox_test).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_test
@@ -218,7 +218,7 @@ namespace L2_login
             this.Controls.Add(this.pictureBox_test);
             this.Name = "Map";
             this.Text = "Map";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_test)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pictureBox_test).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -1556,11 +1556,11 @@ namespace L2_login
                         {
                             byte[] data = AES.Decrypt(Globals.PATH + "\\Maps\\" + map.FileName, Globals.Map_Key, Globals.Map_Salt);
 
-                            (new Bitmap(new MemoryStream(data))).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
+                            new Bitmap(new MemoryStream(data)).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                         }
                         else
                         {
-                            (new Bitmap(Globals.PATH + "\\Maps\\" + map.FileName)).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
+                            new Bitmap(Globals.PATH + "\\Maps\\" + map.FileName).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                         }
 
                         LoadTextures = true;

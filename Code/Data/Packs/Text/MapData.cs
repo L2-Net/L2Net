@@ -88,10 +88,10 @@ namespace L2_login
 
         public void Setup()
         {
-            UpperX = (X * Globals.UNITS - Globals.ModX);
-            UpperY = (Y * Globals.UNITS - Globals.ModY);
-            LowerX = ((X + 1) * Globals.UNITS - Globals.ModX);
-            LowerY = ((Y + 1) * Globals.UNITS - Globals.ModY);
+            UpperX = X * Globals.UNITS - Globals.ModX;
+            UpperY = Y * Globals.UNITS - Globals.ModY;
+            LowerX = (X + 1) * Globals.UNITS - Globals.ModX;
+            LowerY = (Y + 1) * Globals.UNITS - Globals.ModY;
         }
 
         public void Parse(string inp)

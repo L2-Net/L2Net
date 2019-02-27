@@ -265,7 +265,7 @@ namespace L2_login
 		private void Set_LineLoc()
 		{
 			string old = label_linenum.Text;
-			label_linenum.Text = (richTextBox_script.GetLineFromCharIndex(richTextBox_script.SelectionStart)).ToString();
+			label_linenum.Text = richTextBox_script.GetLineFromCharIndex(richTextBox_script.SelectionStart).ToString();
 
             if (!System.String.Equals(old, label_linenum.Text))
 			{

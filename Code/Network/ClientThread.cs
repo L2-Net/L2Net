@@ -391,7 +391,7 @@ namespace L2_login
 									}
 									break;
                                 case PClient.CharacterSelect:
-                                    if ((!Globals.gamedata.OOG) && (!System.String.IsNullOrEmpty(Globals.SecurityPin)) && (Globals.gamedata.SecurityPinOldClient) && (!Globals.gamedata.SecurityPinSent))
+                                    if ((!Globals.gamedata.OOG) && (!System.String.IsNullOrEmpty(Globals.SecurityPin)) && Globals.gamedata.SecurityPinOldClient && (!Globals.gamedata.SecurityPinSent))
                                     {
                                         ServerPackets.RequestSecurityPinWindow();
 

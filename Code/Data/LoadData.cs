@@ -129,7 +129,7 @@ namespace L2_login
             string sm;
             for (int i = 0; i < login_gg.Length; i += 2)
             {
-                sm = (login_gg[i].ToString()) + (login_gg[i + 1].ToString());
+                sm = login_gg[i].ToString() + login_gg[i + 1].ToString();
 
                 Globals.Login_GG_Reply[i / 2] = byte.Parse(sm, System.Globalization.NumberStyles.HexNumber);
             }
@@ -152,7 +152,7 @@ namespace L2_login
 
                 for (int i = 0; i < gg_r.Length; i += 2)
                 {
-                    sm = (gg_r[i].ToString()) + (gg_r[i + 1].ToString());
+                    sm = gg_r[i].ToString() + gg_r[i + 1].ToString();
 
                     reply_gg[i / 2] = byte.Parse(sm, System.Globalization.NumberStyles.HexNumber);
                 }

@@ -534,7 +534,7 @@ namespace L2_login
            {
                for(int j = 0; j < ((AstarNode)pathNodes[i]).adjacentNodes.Count; j++)
                {
-                   if (isNodeTarget(((AstarNode)((AstarNode)pathNodes[i]).adjacentNodes[j]), targetNode.x, targetNode.y))
+                   if (isNodeTarget((AstarNode)((AstarNode)pathNodes[i]).adjacentNodes[j], targetNode.x, targetNode.y))
                    {
 #if DEBUG
                        Globals.l2net_home.Add_Debug("Found target node as adjacent to path...");
@@ -674,7 +674,7 @@ namespace L2_login
                Globals.debugPath = pathNodes;
                AstarNode xNode;
                openlist.Sort();
-               xNode = ((AstarNode)openlist[0]);
+               xNode = (AstarNode)openlist[0];
                if (xNode == targetNode)
                {
                    pathNodes.Add(xNode);
@@ -743,7 +743,7 @@ namespace L2_login
                int fmin = INFINITY;
                while (nowList.Count != 0)
                {
-                   AstarNode head = ((AstarNode)nowList[0]);
+                   AstarNode head = (AstarNode)nowList[0];
                    head.fvalue = calcFvalue(head);
                    
 
@@ -820,7 +820,7 @@ namespace L2_login
 #if DEBUG
                Globals.l2net_home.Add_Debug("found a path... building...");
 #endif
-               buildPathFromParents(((AstarNode)nowList[0]));
+               buildPathFromParents((AstarNode)nowList[0]);
                return true;
            }
 
@@ -892,7 +892,7 @@ namespace L2_login
        {
            int ftemp;
 
-           ftemp = calcGvalue(node) + (calcHvalue(node));
+           ftemp = calcGvalue(node) + calcHvalue(node);
            return ftemp;
        }
 
@@ -951,7 +951,7 @@ namespace L2_login
                if(node.diagonal)
                    node.gvalue = node.getParent().gvalue + DiagonalCost;
                else
-                   node.gvalue = (node.getParent().gvalue + (HorizontalCost));
+                   node.gvalue = node.getParent().gvalue + HorizontalCost;
                return node.gvalue;
            }
           
@@ -971,8 +971,8 @@ namespace L2_login
             ArrayList newpath = new ArrayList();
            for (int i = 0; i < (pathNodes.Count-1); i++)
            {
-               CurrentNode = ((AstarNode)pathNodes[i]);
-               NextNode = ((AstarNode)pathNodes[i + 1]);
+               CurrentNode = (AstarNode)pathNodes[i];
+               NextNode = (AstarNode)pathNodes[i + 1];
                moveDirection = findMoveDirecton(CurrentNode, NextNode);
                if (LastMoveDirection == -1 || moveDirection == LastMoveDirection)
                {
@@ -1034,7 +1034,7 @@ namespace L2_login
            for (int i = 0; i < _nodelist.Count; i++)
            {
                if (((AstarNode)_nodelist[i]).xpos == xpos && ((AstarNode)_nodelist[i]).ypos == ypos)
-                   return ((AstarNode)_nodelist[i]);
+                   return (AstarNode)_nodelist[i];
            }
 
            return null;

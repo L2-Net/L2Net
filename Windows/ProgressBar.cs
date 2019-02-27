@@ -421,8 +421,8 @@ namespace VistaStyleProgressBar
             private void DrawText(Graphics g)
             {
                 
-                float width = ((float)this.ClientRectangle.Width);
-                float height = ((float)this.ClientRectangle.Width);
+                float width = (float)this.ClientRectangle.Width;
+                float height = (float)this.ClientRectangle.Width;
                 float emSize = height;
                 Font font = new Font(FontFamily.GenericSansSerif, emSize, FontStyle.Regular);
                 font = FindBestFitFont(g, BarTextInt, font, this.ClientRectangle.Size);
@@ -472,7 +472,7 @@ namespace VistaStyleProgressBar
 
 			private bool InDesignMode()
 			{
-				return (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+				return LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 			}
 
 			private Color GetIntermediateColor()
@@ -495,7 +495,7 @@ namespace VistaStyleProgressBar
 				if (g > 255) {g = 255;}
 				if (b > 255) {b = 255;}
 
-				return (Color.FromArgb(a, r, g, b));
+				return Color.FromArgb(a, r, g, b);
 			}
 
 		#endregion

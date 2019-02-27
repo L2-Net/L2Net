@@ -231,7 +231,7 @@ namespace L2_login
             // 
             // button_cancel
             // 
-            this.button_cancel.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.button_cancel.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
             this.button_cancel.FlatStyle = FlatStyle.System;
             this.button_cancel.Location = new System.Drawing.Point(465, 408);
             this.button_cancel.Name = "button_cancel";
@@ -242,7 +242,7 @@ namespace L2_login
             // 
             // button_save
             // 
-            this.button_save.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.button_save.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
             this.button_save.FlatStyle = FlatStyle.System;
             this.button_save.Location = new System.Drawing.Point(8, 408);
             this.button_save.Name = "button_save";

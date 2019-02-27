@@ -83,7 +83,7 @@ namespace L2_login
 
             for (int i = 0; i < pee.Length; i += 2)
             {
-                sm = (pee[i].ToString()) + (pee[i + 1].ToString());
+                sm = pee[i].ToString() + pee[i + 1].ToString();
 
                 buff[off + i / 2] = byte.Parse(sm, System.Globalization.NumberStyles.HexNumber);
             }

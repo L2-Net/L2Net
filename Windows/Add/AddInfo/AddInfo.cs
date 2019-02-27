@@ -323,7 +323,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = (((float)xp) / ((float)nextlvlxp))*100;
+                float per = ((float)xp) / ((float)nextlvlxp)*100;
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return System.Convert.ToInt32(per);

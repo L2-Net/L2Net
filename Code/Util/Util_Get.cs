@@ -184,7 +184,7 @@ namespace L2_login
         {
             try
             {
-                return ((UserSkill)Globals.gamedata.skills[id]);
+                return (UserSkill)Globals.gamedata.skills[id];
             }
             catch
             {
@@ -585,7 +585,7 @@ namespace L2_login
         {
             try
             {
-                return ((PartyMember)Globals.gamedata.PartyMembers[id]);
+                return (PartyMember)Globals.gamedata.PartyMembers[id];
             }
             catch
             {
@@ -613,7 +613,7 @@ namespace L2_login
         {
             try
             {
-                return ((CharInfo)Globals.gamedata.nearby_chars[id]);
+                return (CharInfo)Globals.gamedata.nearby_chars[id];
             }
             catch
             {
@@ -652,7 +652,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCInfo)Globals.gamedata.nearby_npcs[id]);
+                return (NPCInfo)Globals.gamedata.nearby_npcs[id];
             }
             catch
             {
@@ -664,7 +664,7 @@ namespace L2_login
         {
             try
             {
-                return ((CharBuff)Globals.gamedata.mybuffs[id]);
+                return (CharBuff)Globals.gamedata.mybuffs[id];
             }
             catch
             {
@@ -705,7 +705,7 @@ namespace L2_login
         {
             try
             {
-                return ((ItemInfo)Globals.gamedata.nearby_items[id]);
+                return (ItemInfo)Globals.gamedata.nearby_items[id];
             }
             catch
             {
@@ -717,7 +717,7 @@ namespace L2_login
         {
             try
             {
-                return ((InventoryInfo)Globals.gamedata.inventory[id]);
+                return (InventoryInfo)Globals.gamedata.inventory[id];
             }
             catch
             {
@@ -868,7 +868,7 @@ namespace L2_login
         {
             try
             {
-                return ((string)Globals.gamedata.ClassNick[id]);
+                return (string)Globals.gamedata.ClassNick[id];
             }
             catch
             {

@@ -729,7 +729,7 @@ namespace L2_login
 
             for (int i = 0; i < blow_key_s.Length; i += 2)
 			{
-                sm = (blow_key_s[i].ToString() + blow_key_s[i + 1].ToString());
+                sm = blow_key_s[i].ToString() + blow_key_s[i + 1].ToString();
                 blow_key[i/2] = byte.Parse(sm, System.Globalization.NumberStyles.HexNumber);
 			}
 		}

@@ -179,7 +179,7 @@ namespace L2_login
                         (player.isAlikeDead == 0x00 ? "Alive" : "Dead") + Environment.NewLine +
                         "Karma: " + player.Karma.ToString() + Environment.NewLine +
                         "Cast Speed: " + player.MatkSpeed.ToString() + Environment.NewLine +
-                        "Attack Speed: " + (player.PatkSpeed/* * player.AttackSpeedMult*/).ToString() + Environment.NewLine +
+                        "Attack Speed: " + player.PatkSpeed/* * player.AttackSpeedMult*/.ToString() + Environment.NewLine +
                         "Run Speed: " + (player.RunSpeed * player.MoveSpeedMult).ToString() + Environment.NewLine +
                         "Rec: " + player.RecAmount.ToString() + Environment.NewLine +
                         "X: " + player.X.ToString() + Environment.NewLine +

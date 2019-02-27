@@ -46,7 +46,7 @@ namespace L2_login
 
             try
             {
-                progressBar_pet_HP.Value = Convert.ToInt32((Globals.gamedata.my_pet.Cur_HP / Globals.gamedata.my_pet.Max_HP) * 100);
+                progressBar_pet_HP.Value = Convert.ToInt32(Globals.gamedata.my_pet.Cur_HP / Globals.gamedata.my_pet.Max_HP * 100);
                 progressBar_pet_HP.BarText = Globals.gamedata.my_pet.Cur_HP.ToString() + " / " + Globals.gamedata.my_pet.Max_HP.ToString();
             }
             catch
@@ -56,7 +56,7 @@ namespace L2_login
 
             try
             {
-                progressBar_pet_MP.Value = Convert.ToInt32((Globals.gamedata.my_pet.Cur_MP / Globals.gamedata.my_pet.Max_MP) * 100);
+                progressBar_pet_MP.Value = Convert.ToInt32(Globals.gamedata.my_pet.Cur_MP / Globals.gamedata.my_pet.Max_MP * 100);
                 progressBar_pet_MP.BarText = Globals.gamedata.my_pet.Cur_MP.ToString() + " / " + Globals.gamedata.my_pet.Max_MP.ToString();
             }
             catch
@@ -66,7 +66,7 @@ namespace L2_login
 
             try
             {
-                progressBar_pet_Food.Value = Convert.ToInt32((Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Fed) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Fed)) * 100);
+                progressBar_pet_Food.Value = Convert.ToInt32(Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Fed) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Fed) * 100);
                 progressBar_pet_Food.BarText = (Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Fed) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Fed)).ToString("P", System.Globalization.CultureInfo.InvariantCulture);
             }
             catch
@@ -77,7 +77,7 @@ namespace L2_login
 
             try
             {
-                progressBar_pet_Load.Value = Convert.ToInt32((Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Load) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Load)) * 100);
+                progressBar_pet_Load.Value = Convert.ToInt32(Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Load) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Load) * 100);
                 progressBar_pet_Load.BarText = (Convert.ToDecimal(Globals.gamedata.my_pet.Cur_Load) / Convert.ToDecimal(Globals.gamedata.my_pet.Max_Load)).ToString("P", System.Globalization.CultureInfo.InvariantCulture);
             }
             catch
@@ -115,7 +115,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = (((float)xp) / ((float)nextlvlxp)) * 100;
+                float per = ((float)xp) / ((float)nextlvlxp) * 100;
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return Convert.ToInt32(per);

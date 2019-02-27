@@ -44,7 +44,7 @@ namespace L2_login
             // 
             this.AutoScaleBaseSize = new Size(5, 13);
             this.BackColor = Color.White;
-            this.BackgroundImage = ((Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             this.ClientSize = new Size(520, 238);
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

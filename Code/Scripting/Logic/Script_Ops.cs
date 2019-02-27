@@ -117,7 +117,7 @@ namespace L2_login
                     if (Globals.gamedata.botoptions.PickOnlyItemsInList == 1)
                     {
                         //main checks, we dont really care about mesh and stuff since it's a whitelist...
-                        if ((item.Ignore == false && ((item.HasValidZ && !item.Loadedin) || (item.Loadedin && Math.Abs(item.Z - Globals.gamedata.my_char.Z) < Globals.PICKUP_Z_Diff))) && ((Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) != Globals.UnknownItem) || Globals.gamedata.botoptions.IgnoreItems == 0))
+                        if (item.Ignore == false && ((item.HasValidZ && !item.Loadedin) || (item.Loadedin && Math.Abs(item.Z - Globals.gamedata.my_char.Z) < Globals.PICKUP_Z_Diff)) && ((Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) != Globals.UnknownItem) || Globals.gamedata.botoptions.IgnoreItems == 0))
                         {
                             //contains the item? if so, we can pick it up
                             if (BotOptions.DoNotItems.Contains(item.ItemID))
@@ -830,9 +830,9 @@ namespace L2_login
                                     return (long)npc.MatkSpeed;
                                 case "SPOILED":
                                     if (Globals.gamedata.my_char.TargetSpoiled)
-                                        return (long)(1);
+                                        return (long)1;
                                     else
-                                        return (long)(0);
+                                        return (long)0;
                                 case "RUNNING":
                                     return (long)npc.isRunning;
                                 case "SITTING":

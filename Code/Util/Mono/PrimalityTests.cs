@@ -139,7 +139,7 @@ namespace Mono.Math.Prime {
 						break;
 					}
 
-					b = (b * b) % bi;
+					b = b * b % bi;
 				}
 				if (!result)
 					return false;
@@ -171,7 +171,7 @@ namespace Mono.Math.Prime {
 						break;
 					}
 
-					b = (b * b) % bi;
+					b = b * b % bi;
 				}
 
 				if (!result)
@@ -207,7 +207,7 @@ namespace Mono.Math.Prime {
 						break;
 					}
 
-					b = (b * b) % bi;
+					b = b * b % bi;
 				}
 
 				if (result == false)

@@ -46,7 +46,7 @@ namespace L2_login
                 //check if botting is on, and we are in game by having sent the EW packet.
                 if (Globals.gamedata.BOTTING && Globals.enterworld_sent)
                 {
-                    if (!breaktotop && (Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0) && (Globals.gamedata.botoptions.FollowRest == 1) && (Globals.gamedata.botoptions.FollowRestID != 0))
+                    if (!breaktotop && Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0 && (Globals.gamedata.botoptions.FollowRest == 1) && (Globals.gamedata.botoptions.FollowRestID != 0))
                     {
                         FollowRestInternal();
                     }
@@ -66,7 +66,7 @@ namespace L2_login
                 {
                     if (Globals.gamedata.autoreply)
                     {
-                        s = (Globals.gamedata.LocalChatQueue.Dequeue()).ToString();
+                        s = Globals.gamedata.LocalChatQueue.Dequeue().ToString();
                         marker = s.IndexOf(':');
                         try
                         {
@@ -105,7 +105,7 @@ namespace L2_login
                     {
                         if (Globals.gamedata.autoreplyPM)
                         {
-                            s = (Globals.gamedata.PrivateMsgQueue.Dequeue()).ToString();
+                            s = Globals.gamedata.PrivateMsgQueue.Dequeue().ToString();
                             marker = s.IndexOf(':');
                             try
                             {

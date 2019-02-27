@@ -60,7 +60,7 @@ namespace L2_login
                 //moved sleep to the top for when breaking to top
                 Thread.Sleep(Globals.SLEEP_BotAI);
 
-                if ((Globals.gamedata.BOTTING) && (Globals.gamedata.my_char.Cur_HP > 0))
+                if (Globals.gamedata.BOTTING && (Globals.gamedata.my_char.Cur_HP > 0))
                 {
                     /////////////////////////////Do items
                     if (!breaktotop)//we always want to be able to use items, who gives a shit about our target
@@ -166,7 +166,7 @@ namespace L2_login
                     }
 
                     //////////////////////Rest
-                    if (!breaktotop && (Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0) && (Globals.gamedata.my_char.Cur_HP > 0) && (((Globals.gamedata.botoptions.RestBelowHP == 1) && (Globals.gamedata.my_char.Cur_HP < Globals.gamedata.botoptions.RestBelowHealth)) || ((Globals.gamedata.botoptions.RestBelowMP == 1) && (Globals.gamedata.my_char.Cur_MP < Globals.gamedata.botoptions.RestBelowMana))))
+                    if (!breaktotop && Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0 && (Globals.gamedata.my_char.Cur_HP > 0) && (((Globals.gamedata.botoptions.RestBelowHP == 1) && (Globals.gamedata.my_char.Cur_HP < Globals.gamedata.botoptions.RestBelowHealth)) || ((Globals.gamedata.botoptions.RestBelowMP == 1) && (Globals.gamedata.my_char.Cur_MP < Globals.gamedata.botoptions.RestBelowMana))))
                     {
                         //Globals.l2net_home.Add_Text("Resting", Globals.Yellow);
                         RestBelow();
@@ -247,7 +247,7 @@ namespace L2_login
 
                     //////////Stuck Check "Move before targeting"
                     #region Stuck Check "Move Before Targeting"
-                    if ((!breaktotop && ((Globals.gamedata.botoptions.StuckCheck == 1) || (Globals.gamedata.botoptions.AutoBlacklist == 1))) && (Globals.gamedata.botoptions.MoveBeforeTargeting == 1) && (Globals.gamedata.my_char.isSitting == 1) && (Globals.gamedata.my_char.Cur_HP > 0))
+                    if (!breaktotop && ((Globals.gamedata.botoptions.StuckCheck == 1) || (Globals.gamedata.botoptions.AutoBlacklist == 1)) && (Globals.gamedata.botoptions.MoveBeforeTargeting == 1) && (Globals.gamedata.my_char.isSitting == 1) && (Globals.gamedata.my_char.Cur_HP > 0))
                     {
                         if ((Globals.gamedata.BOT_STATE != BotState.Attacking) && (Globals.gamedata.BOT_STATE != BotState.Buffing))
                         {
@@ -415,7 +415,7 @@ namespace L2_login
                                             foreach (CharInfo player in Globals.gamedata.nearby_chars.Values)
                                             {
                                                 //Somebody else has targeted my target
-                                                if ((((player.TargetID == Globals.gamedata.my_char.TargetID) || (player.TargetID == new_id)) && !Globals.gamedata.PartyMembers.ContainsKey(player.ID)) && ((npc.TargetID != Globals.gamedata.my_char.ID) && !Globals.gamedata.PartyMembers.ContainsKey(npc.TargetID) && !target_party_pet && !target_my_pet && !is_my_summon))
+                                                if (((player.TargetID == Globals.gamedata.my_char.TargetID) || (player.TargetID == new_id)) && !Globals.gamedata.PartyMembers.ContainsKey(player.ID) && (npc.TargetID != Globals.gamedata.my_char.ID) && !Globals.gamedata.PartyMembers.ContainsKey(npc.TargetID) && !target_party_pet && !target_my_pet && !is_my_summon)
                                                 {
                                                     anti_ks_changed_target = true;
                                                     ignID = player.TargetID;
@@ -510,7 +510,7 @@ namespace L2_login
 
                                     //Globals.l2net_home.Add_Text("Move to X: " + dx.ToString() + " Y: " + dy.ToString() + " Z: " + dz.ToString(), Globals.Green);
                                     //Globals.l2net_home.Add_Text("Sending moveto packet", Globals.Cyan, TextType.BOT);
-                                    ServerPackets.MoveToPacket((dx + Util.RandomNumber(-100, 100)), (dy + Util.RandomNumber(-100, 100)), dz);
+                                    ServerPackets.MoveToPacket(dx + Util.RandomNumber(-100, 100), dy + Util.RandomNumber(-100, 100), dz);
                                     //ServerPackets.MoveToPacket(Util.Float_Int32(dx), Util.Float_Int32(dy), Util.Float_Int32(dz));
                                     move_before_docombatloops = 0;
                                 }
@@ -729,7 +729,7 @@ namespace L2_login
 
                                     //Globals.l2net_home.Add_Text("Move to X: " + dx.ToString() + " Y: " + dy.ToString() + " Z: " + dz.ToString(), Globals.Green);
                                     //Globals.l2net_home.Add_Text("Sending moveto packet", Globals.Cyan, TextType.BOT);
-                                    ServerPackets.MoveToPacket((dx + Util.RandomNumber(-100, 100)), (dy + Util.RandomNumber(-100, 100)), dz);
+                                    ServerPackets.MoveToPacket(dx + Util.RandomNumber(-100, 100), dy + Util.RandomNumber(-100, 100), dz);
                                     //ServerPackets.MoveToPacket(Util.Float_Int32(dx), Util.Float_Int32(dy), Util.Float_Int32(dz));
                                     move_before_attackloops = 0;
                                 }
@@ -816,7 +816,7 @@ namespace L2_login
 
                                     //Globals.l2net_home.Add_Text("Move to X: " + dx.ToString() + " Y: " + dy.ToString() + " Z: " + dz.ToString(), Globals.Green);
                                     //Globals.l2net_home.Add_Text("Sending moveto packet", Globals.Cyan, TextType.BOT);
-                                    ServerPackets.MoveToPacket((dx + Util.RandomNumber(-100, 100)), (dy + Util.RandomNumber(-100, 100)), dz);
+                                    ServerPackets.MoveToPacket(dx + Util.RandomNumber(-100, 100), dy + Util.RandomNumber(-100, 100), dz);
                                     //ServerPackets.MoveToPacket(Util.Float_Int32(dx), Util.Float_Int32(dy), Util.Float_Int32(dz));
                                     move_before_attackloops = 0;
                                 }
@@ -872,7 +872,7 @@ namespace L2_login
 
                     //logout shit
                 }
-                if ((Globals.gamedata.BOTTING) && (Globals.gamedata.my_char.Cur_HP <= 0))
+                if (Globals.gamedata.BOTTING && (Globals.gamedata.my_char.Cur_HP <= 0))
                 {
 
                     if (Globals.gamedata.botoptions.DeadToggleBotting == 1)
@@ -907,7 +907,7 @@ namespace L2_login
 
                 }
 
-                if (!breaktotop && (Globals.gamedata.BOTTING) && (Globals.gamedata.my_char.Cur_HP > 0) && (Globals.gamedata.botoptions.MoveToLoc == 1))
+                if (!breaktotop && Globals.gamedata.BOTTING && (Globals.gamedata.my_char.Cur_HP > 0) && (Globals.gamedata.botoptions.MoveToLoc == 1))
                 {
                     OOCLoops++;
                     OOCDist = DISTANCE(Util.GetInt32(Globals.gamedata.botoptions.Moveto_X), Util.GetInt32(Globals.gamedata.botoptions.Moveto_Y), Util.GetInt32(Globals.gamedata.botoptions.Moveto_Z), Util.Float_Int32(Globals.gamedata.my_char.X), Util.Float_Int32(Globals.gamedata.my_char.Y), Util.Float_Int32(Globals.gamedata.my_char.Z));
@@ -1123,17 +1123,17 @@ namespace L2_login
         {
 
             //If char is disabled, sleep
-            if ((Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR)) ||
-                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN)) ||
-                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING)))
+            if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR) ||
+                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN) ||
+                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING))
             {
                 Globals.l2net_home.Add_Text("I'm not attacking something (stunned etc)", Globals.Green, TextType.BOT);
                 Globals.gamedata.my_char.isAttacking = false;
@@ -1212,7 +1212,7 @@ namespace L2_login
 
                             foreach (CharBuffTimer cbt in Globals.gamedata.BuffsGiven)
                             {
-                                if (System.String.Equals(cbt.Name, ((string)bft.TargetNames[name_i])))
+                                if (System.String.Equals(cbt.Name, (string)bft.TargetNames[name_i]))
                                 {
                                     found = true;
                                     needs_buff = false;
@@ -1232,7 +1232,7 @@ namespace L2_login
                                     }//end of switch on buffstate
                                     if (needs_buff)
                                     {
-                                        if (ServerPackets.TrySkill(((string)bft.TargetNames[name_i]), cbt, bft))
+                                        if (ServerPackets.TrySkill((string)bft.TargetNames[name_i], cbt, bft))
                                         {
                                             Globals.gamedata.Set_Char_To_Buffing();
                                             breaktotop = true;
@@ -1262,7 +1262,7 @@ namespace L2_login
 
                                 if (cbuff.Has_Buff(bft) != BuffState.Has)
                                 {
-                                    if (ServerPackets.TrySkill(((string)bft.TargetNames[name_i]), cbuff, bft))
+                                    if (ServerPackets.TrySkill((string)bft.TargetNames[name_i], cbuff, bft))
                                     {
                                         Globals.gamedata.Set_Char_To_Buffing();
                                         breaktotop = true;
@@ -1329,17 +1329,17 @@ namespace L2_login
                     //will pickup below
                 }
 
-                if ((Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN)) ||
-                (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR)) ||
-                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN)) ||
-                (Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING)))
+                if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FLOATING_ROOT) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.DANCE_STUNNED) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.FIREROOT_STUN) ||
+                Globals.gamedata.my_char.HasEffect(AbnormalEffects.SKULL_FEAR) ||
+                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.AIR_STUN) ||
+                Globals.gamedata.my_char.HasExtendedEffect(ExtendedEffects.FREEZING))
                 {
                     Globals.l2net_home.Add_Text("I'm not picking up something because... (stunned etc)", Globals.Green, TextType.BOT);
                 }
@@ -1703,11 +1703,11 @@ namespace L2_login
                                 ServerPackets.Use_ShortCut(ct.ShortCutID, Globals.gamedata.Control, Globals.gamedata.Shift);
                             }
 
-                            if ((Globals.gamedata.my_char.CannotSeeTarget) && (Globals.gamedata.botoptions.MoveFirstNormal == 1))
+                            if (Globals.gamedata.my_char.CannotSeeTarget && (Globals.gamedata.botoptions.MoveFirstNormal == 1))
                             {
                                 int dx = 0, dy = 0, dz = 0;
                                 Util.GetLoc(Globals.gamedata.my_char.TargetID, ref dx, ref dy, ref dz);
-                                ServerPackets.MoveToPacket((dx + Util.RandomNumber(-100, 100)), (dy + Util.RandomNumber(-100, 100)), dz);
+                                ServerPackets.MoveToPacket(dx + Util.RandomNumber(-100, 100), dy + Util.RandomNumber(-100, 100), dz);
                                 Globals.gamedata.my_char.CannotSeeTarget = false;
                             }
                             is_summon = false;
@@ -1822,7 +1822,7 @@ namespace L2_login
                     }
                     else
                     {//walker style follow
-                        if ((player.Moving) && ((player.CurrentTargetType == TargetType.NONE) || (Globals.gamedata.botoptions.ActiveFollowAttack == 1)))
+                        if (player.Moving && ((player.CurrentTargetType == TargetType.NONE) || (Globals.gamedata.botoptions.ActiveFollowAttack == 1)))
                         {
                             vx = player.Dest_X - Globals.gamedata.my_char.X;
                             vy = player.Dest_Y - Globals.gamedata.my_char.Y;

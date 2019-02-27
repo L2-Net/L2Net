@@ -1197,7 +1197,7 @@ namespace L2_login
                                         all_sleeping = false;
                                     }
 
-                                    time_passed = (DateTime.Now > finish || BumpThread);
+                                    time_passed = DateTime.Now > finish || BumpThread;
                                 }
                             }
 #if !TESTING
@@ -1439,11 +1439,11 @@ namespace L2_login
                             valid = true;
                             if (pname.Length == 0)
                             {
-                                ovar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                ovar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                             }
                             else
                             {
-                                svar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                svar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                             }
                         }
                         /*foreach (ScriptVariable svc in ((Script_ClassData)svar.Value)._Variables)
@@ -1614,7 +1614,7 @@ namespace L2_login
                                 break;
                             case "GET_DEC":
                                 ovar.Type = Var_Types.INT;
-                                string outg = (int.Parse(svar.Value.ToString(), System.Globalization.NumberStyles.HexNumber)).ToString();
+                                string outg = int.Parse(svar.Value.ToString(), System.Globalization.NumberStyles.HexNumber).ToString();
                                 //Globals.l2net_home.Add_Text(outg, Globals.Green);
                                 ovar.Value = outg;
                                 break;
@@ -1693,7 +1693,7 @@ namespace L2_login
                                 }
                                 else if (svar.Type == Var_Types.STRING)
                                 {
-                                    if (string.IsNullOrEmpty(((string)svar.Value)))
+                                    if (string.IsNullOrEmpty((string)svar.Value))
                                     {
                                         //reverse of nothing is itself
                                     }
@@ -2053,7 +2053,7 @@ namespace L2_login
                                     {
 
                                         //Looks crappy but it works
-                                        long duration = Convert.ToInt64(((ScriptVariable)(((Script_ClassData)(((ScriptVariable)(((SortedList)svar.Value)[sv1])).Value))._Variables["DURATION"])).Value);
+                                        long duration = Convert.ToInt64(((ScriptVariable)((Script_ClassData)((ScriptVariable)((SortedList)svar.Value)[sv1]).Value)._Variables["DURATION"]).Value);
                                         duration = (duration - DateTime.Now.Ticks) / TimeSpan.TicksPerSecond;
                                         ovar.Type = Var_Types.INT;
                                         ovar.Value = duration;
@@ -2063,13 +2063,13 @@ namespace L2_login
                             case "POP":
                                 if (svar.Type == Var_Types.STACK)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((Stack)svar.Value).Pop());
+                                    ScriptVariable v1 = (ScriptVariable)((Stack)svar.Value).Pop();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
                                 if (svar.Type == Var_Types.QUEUE)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((Queue)svar.Value).Dequeue());
+                                    ScriptVariable v1 = (ScriptVariable)((Queue)svar.Value).Dequeue();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
@@ -2078,13 +2078,13 @@ namespace L2_login
                             case "PEEK":
                                 if (svar.Type == Var_Types.STACK)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((Stack)svar.Value).Peek());
+                                    ScriptVariable v1 = (ScriptVariable)((Stack)svar.Value).Peek();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
                                 if (svar.Type == Var_Types.QUEUE)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((Queue)svar.Value).Peek());
+                                    ScriptVariable v1 = (ScriptVariable)((Queue)svar.Value).Peek();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
@@ -2516,11 +2516,11 @@ namespace L2_login
                                             valid = true;
                                             if (pname.Length == 0)
                                             {
-                                                ovar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                                ovar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                                             }
                                             else
                                             {
-                                                svar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                                svar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                                             }
                                         }
                                         /*foreach (ScriptVariable svc in ((Script_ClassData)svar.Value)._Variables)
@@ -2548,11 +2548,11 @@ namespace L2_login
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)]);
+                                                    ovar = (ScriptVariable)((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)];
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)]);
+                                                    svar = (ScriptVariable)((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)];
                                                 }
                                                 break;
                                         }
@@ -2565,22 +2565,22 @@ namespace L2_login
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value)));
+                                                    ovar = (ScriptVariable)((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value));
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value)));
+                                                    svar = (ScriptVariable)((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value));
                                                 }
                                                 break;
                                             case Var_Types.STRING:
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()]);
+                                                    ovar = (ScriptVariable)((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()];
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()]);
+                                                    svar = (ScriptVariable)((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()];
                                                 }
                                                 break;
                                         }
@@ -2666,7 +2666,7 @@ namespace L2_login
 				if(spc > 0)
 				{
 					cmd = inp.Substring(1,spc-1);
-					inp = (inp.Remove(0,spc+1)).TrimStart(' ');
+					inp = inp.Remove(0,spc+1).TrimStart(' ');
 				}
 				else
 				{
@@ -2742,7 +2742,7 @@ namespace L2_login
                 if (spc > 0)
                 {
                     cmd = inp.Substring(0, spc + 1);
-                    inp = (inp.Remove(0, spc + 1)).TrimStart(' ');
+                    inp = inp.Remove(0, spc + 1).TrimStart(' ');
                 }
                 else
                 {
@@ -2856,7 +2856,7 @@ namespace L2_login
         {
             try
             {
-                return ((ScriptLine)((ScriptFile)Files[((ScriptThread)Threads[CurrentThread]).Current_File])._ScriptLines[cnt]);
+                return (ScriptLine)((ScriptFile)Files[((ScriptThread)Threads[CurrentThread]).Current_File])._ScriptLines[cnt];
             }
             catch
             {
@@ -2872,7 +2872,7 @@ namespace L2_login
 		{
 			try
 			{
-                return ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[cnt]);
+                return (ScriptLine)((ScriptFile)Files[file])._ScriptLines[cnt];
 			}
             catch
 			{

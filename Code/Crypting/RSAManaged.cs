@@ -91,8 +91,8 @@ namespace L2_login{
 		private void GenerateKeyPair () 
 		{
 			// p and q values should have a length of half the strength in bits
-			int pbitlength = ((KeySize + 1) >> 1);
-			int qbitlength = (KeySize - pbitlength);
+			int pbitlength = (KeySize + 1) >> 1;
+			int qbitlength = KeySize - pbitlength;
 			const uint uint_e = 17;
 			e = uint_e; // fixed
 	
@@ -123,8 +123,8 @@ namespace L2_login{
 					p = q;
 			}
 	
-			BigInteger pSub1 = (p - 1);
-			BigInteger qSub1 = (q - 1);
+			BigInteger pSub1 = p - 1;
+			BigInteger qSub1 = q - 1;
 			BigInteger phi = pSub1 * qSub1;
 	
 			// calculate the private exponent
@@ -164,7 +164,7 @@ namespace L2_login{
 		// note: this property will exist in RSACryptoServiceProvider in
 		// version 2.0 of the framework
 		public bool PublicOnly {
-			get { return ((d == null) || (n == null)); }
+			get { return (d == null) || (n == null); }
 		}
 
 		public override string SignatureAlgorithm {
@@ -265,7 +265,7 @@ namespace L2_login{
 				// hack for bugzilla #57941 where D wasn't provided
 				if (param.D.Length != param.Modulus.Length) {
 					byte[] normalizedD = new byte [param.Modulus.Length];
-					Buffer.BlockCopy (param.D, 0, normalizedD, (normalizedD.Length - param.D.Length), param.D.Length);
+					Buffer.BlockCopy (param.D, 0, normalizedD, normalizedD.Length - param.D.Length, param.D.Length);
 					param.D = normalizedD;
 				}
 				// but CRT parameters are optionals
@@ -310,7 +310,7 @@ namespace L2_login{
 			
 			// we now have a keypair
 			keypairGenerated = true;
-			isCRTpossible = ((p != null) && (q != null) && (dp != null) && (dq != null) && (qInv != null));
+			isCRTpossible = (p != null) && (q != null) && (dp != null) && (dq != null) && (qInv != null);
 		}
 
 		protected override void Dispose (bool disposing) 
@@ -453,7 +453,7 @@ namespace L2_login{
 			// either the key pair isn't generated (and will be 
 			// generated with CRT parameters) or CRT is (or isn't)
 			// possible (in case the key was imported)
-			get { return (!keypairGenerated || isCRTpossible); }
+			get { return !keypairGenerated || isCRTpossible; }
 		}
 	}
 }

@@ -22,18 +22,18 @@ namespace L2_login
     		
 		    for (i = offset; i<count; i+=4)
 		    {
-			    check = ((ulong)raw[i] &0xff);
-			    check |= ((ulong)raw[i+1] << 8 &0xff00);
-			    check |= ((ulong)raw[i+2] << 0x10 &0xff0000);
-                check |= ((ulong)raw[i + 3] << 0x18 & 0xff000000);
+			    check = (ulong)raw[i] &0xff;
+			    check |= (ulong)raw[i+1] << 8 &0xff00;
+			    check |= (ulong)raw[i+2] << 0x10 &0xff0000;
+                check |= (ulong)raw[i + 3] << 0x18 & 0xff000000;
 
 			    chksum ^= check;
 		    }
 
-            check = ((ulong)raw[i] & 0xff);
-            check |= ((ulong)raw[i + 1] << 8 & 0xff00);
-            check |= ((ulong)raw[i + 2] << 0x10 & 0xff0000);
-            check |= ((ulong)raw[i + 3] << 0x18 & 0xff000000);
+            check = (ulong)raw[i] & 0xff;
+            check |= (ulong)raw[i + 1] << 8 & 0xff00;
+            check |= (ulong)raw[i + 2] << 0x10 & 0xff0000;
+            check |= (ulong)raw[i + 3] << 0x18 & 0xff000000;
     		
 		    return check == chksum;
 	    }
@@ -52,18 +52,18 @@ namespace L2_login
 
 		    for (i = offset; i<count; i+=4)
 		    {
-			    ecx = ((ulong)raw[i] &0xff);
-			    ecx |= ((ulong)raw[i+1] << 8 &0xff00);
-			    ecx |= ((ulong)raw[i+2] << 0x10 &0xff0000);
-			    ecx |= ((ulong)raw[i+3] << 0x18 &0xff000000);
+			    ecx = (ulong)raw[i] &0xff;
+			    ecx |= (ulong)raw[i+1] << 8 &0xff00;
+			    ecx |= (ulong)raw[i+2] << 0x10 &0xff0000;
+			    ecx |= (ulong)raw[i+3] << 0x18 &0xff000000;
 
 			    chksum ^= ecx;
 		    }
 
-		    ecx = ((ulong)raw[i] &0xff);
-		    ecx |= ((ulong)raw[i+1] << 8 &0xff00);
-		    ecx |= ((ulong)raw[i+2] << 0x10 &0xff0000);
-		    ecx |= ((ulong)raw[i+3] << 0x18 &0xff000000);
+		    ecx = (ulong)raw[i] &0xff;
+		    ecx |= (ulong)raw[i+1] << 8 &0xff00;
+		    ecx |= (ulong)raw[i+2] << 0x10 &0xff0000;
+		    ecx |= (ulong)raw[i+3] << 0x18 &0xff000000;
 
 		    raw[i] = (byte) (chksum &0xff);
 		    raw[i+1] = (byte) (chksum >>0x08 &0xff);
@@ -101,7 +101,7 @@ namespace L2_login
     		
 		    while (pos < stop)
 		    {
-			    edx = (raw[pos] & 0xFF);
+			    edx = raw[pos] & 0xFF;
 			    edx |= (raw[pos+1] & 0xFF) << 8;
 			    edx |= (raw[pos+2] & 0xFF) << 16;
 			    edx |=  (raw[pos+3] & 0xFF) << 24;
@@ -132,7 +132,7 @@ namespace L2_login
 
             while (stop <= pos)
             {
-                edx = (raw[pos] & 0xFF);
+                edx = raw[pos] & 0xFF;
                 edx |= (raw[pos + 1] & 0xFF) << 8;
                 edx |= (raw[pos + 2] & 0xFF) << 16;
                 edx |= (raw[pos + 3] & 0xFF) << 24;

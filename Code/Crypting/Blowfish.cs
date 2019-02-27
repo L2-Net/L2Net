@@ -315,7 +315,7 @@ namespace L2_login
 		private uint F(uint x)
 		{
 			//return (((S0[(x >>> 24)] + S1[(x >>> 16) & 0xff]) ^ S2[(x >>> 8) & 0xff]) + S3[x & 0xff]);
-			return (((S0[(x >> 24)] + S1[(x >> 16) & 0xff]) ^ S2[(x >> 8) & 0xff]) + S3[x & 0xff]);
+			return ((S0[x >> 24] + S1[(x >> 16) & 0xff]) ^ S2[(x >> 8) & 0xff]) + S3[x & 0xff];
 		}
 
 		/**
@@ -457,7 +457,7 @@ namespace L2_login
 
 		private uint BytesTo32bits(byte[] b, uint i)
 		{
-			return (uint)( ((b[i + 3] & 0xff) << 24) | ((b[i + 2] & 0xff) << 16) | ((b[i + 1] & 0xff) << 8) | ((b[i] & 0xff)) );
+			return (uint)( ((b[i + 3] & 0xff) << 24) | ((b[i + 2] & 0xff) << 16) | ((b[i + 1] & 0xff) << 8) | (b[i] & 0xff) );
 		}
 
 		private void Bits32ToBytes(uint in_b, byte[] b, uint offset)

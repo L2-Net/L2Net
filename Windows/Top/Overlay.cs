@@ -103,7 +103,7 @@ namespace L2_login
             // Overlay
             // 
             this.AutoScaleBaseSize = new Size(5, 13);
-            this.BackgroundImage = ((Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             this.ClientSize = new Size(170, 64);
             this.ControlBox = false;
             this.Controls.Add(this.label_target_cp);

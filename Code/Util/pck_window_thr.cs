@@ -346,13 +346,13 @@ namespace L2_login
                             test.Write(filtered_pck.Count);
                             for (int i = 0; i < filtered_pck.Count; i++)
                             {
-                                test.Write((Globals.pck_thread.pck_record[filtered_pck[i]]).action);
-                                test.Write((Globals.pck_thread.pck_record[filtered_pck[i]]).type);
-                                test.Write((Globals.pck_thread.pck_record[filtered_pck[i]]).time);
-                                test.Write((Globals.pck_thread.pck_record[filtered_pck[i]]).bytebuffer.Length);
+                                test.Write(Globals.pck_thread.pck_record[filtered_pck[i]].action);
+                                test.Write(Globals.pck_thread.pck_record[filtered_pck[i]].type);
+                                test.Write(Globals.pck_thread.pck_record[filtered_pck[i]].time);
+                                test.Write(Globals.pck_thread.pck_record[filtered_pck[i]].bytebuffer.Length);
                                 //test.Write(Globals.pck_thread.pck_record[i]).bytebuffer);
-                                for (int j = 0; j < (Globals.pck_thread.pck_record[filtered_pck[i]]).bytebuffer.Length; j++)
-                                    test.Write((Globals.pck_thread.pck_record[filtered_pck[i]]).bytebuffer[j]);
+                                for (int j = 0; j < Globals.pck_thread.pck_record[filtered_pck[i]].bytebuffer.Length; j++)
+                                    test.Write(Globals.pck_thread.pck_record[filtered_pck[i]].bytebuffer[j]);
                             }
                             test.Flush();
                         }
@@ -395,13 +395,13 @@ namespace L2_login
                 test.Write(Globals.pck_thread.pck_record.Count);
                 for (int i = 0; i < Globals.pck_thread.pck_record.Count; i++)
                 {
-                    test.Write((Globals.pck_thread.pck_record[i]).action);
-                    test.Write((Globals.pck_thread.pck_record[i]).type);
-                    test.Write((Globals.pck_thread.pck_record[i]).time);
-                    test.Write((Globals.pck_thread.pck_record[i]).bytebuffer.Length);
+                    test.Write(Globals.pck_thread.pck_record[i].action);
+                    test.Write(Globals.pck_thread.pck_record[i].type);
+                    test.Write(Globals.pck_thread.pck_record[i].time);
+                    test.Write(Globals.pck_thread.pck_record[i].bytebuffer.Length);
                     //test.Write(Globals.pck_thread.pck_record[i]).bytebuffer);
-                    for (int j = 0; j < (Globals.pck_thread.pck_record[i]).bytebuffer.Length; j++)
-                        test.Write((Globals.pck_thread.pck_record[i]).bytebuffer[j]);
+                    for (int j = 0; j < Globals.pck_thread.pck_record[i].bytebuffer.Length; j++)
+                        test.Write(Globals.pck_thread.pck_record[i].bytebuffer[j]);
                 }
                 test.Flush();
             }

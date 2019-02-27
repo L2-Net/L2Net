@@ -500,12 +500,12 @@ namespace L2_login
         public static System.Drawing.Brush Green = System.Drawing.Brushes.Lime;
         public static System.Drawing.Brush LightYellow = System.Drawing.Brushes.LightGoldenrodYellow;
 
-        public static System.Drawing.SolidBrush Tell_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(253)), ((System.Byte)(0)), ((System.Byte)(253))));
-        public static System.Drawing.SolidBrush Party_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(0)), ((System.Byte)(251)), ((System.Byte)(0))));
-        public static System.Drawing.SolidBrush Clan_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(125)), ((System.Byte)(117)), ((System.Byte)(253))));
-        public static System.Drawing.SolidBrush Trade_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(234)), ((System.Byte)(162)), ((System.Byte)(245))));
-        public static System.Drawing.SolidBrush Ally_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(119)), ((System.Byte)(251)), ((System.Byte)(153))));
-        public static System.Drawing.SolidBrush Announcement_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(((System.Byte)(127)), ((System.Byte)(249)), ((System.Byte)(253))));
+        public static System.Drawing.SolidBrush Tell_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)253, (System.Byte)0, (System.Byte)253));
+        public static System.Drawing.SolidBrush Party_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)0, (System.Byte)251, (System.Byte)0));
+        public static System.Drawing.SolidBrush Clan_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)125, (System.Byte)117, (System.Byte)253));
+        public static System.Drawing.SolidBrush Trade_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)234, (System.Byte)162, (System.Byte)245));
+        public static System.Drawing.SolidBrush Ally_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)119, (System.Byte)251, (System.Byte)153));
+        public static System.Drawing.SolidBrush Announcement_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)127, (System.Byte)249, (System.Byte)253));
 
         //option stuff
         private static string _ProductKey = "LOVELKQKMGBOGNET";

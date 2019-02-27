@@ -150,7 +150,7 @@ namespace L2_login
                     vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                     if (vxx != 0)
                     {
-                        vxx = Util.Float_Cap((movespeed * time) / vxx);
+                        vxx = Util.Float_Cap(movespeed * time / vxx);
                     }
 
                     vx *= vxx;
@@ -311,7 +311,7 @@ namespace L2_login
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
-                            vxx = Util.Float_Cap((movespeed * time) / vxx);
+                            vxx = Util.Float_Cap(movespeed * time / vxx);
                         }
 
                         vx *= vxx;
@@ -468,7 +468,7 @@ namespace L2_login
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
-                            vxx = Util.Float_Cap((movespeed * time) / vxx);
+                            vxx = Util.Float_Cap(movespeed * time / vxx);
                         }
 
                         vx *= vxx;
@@ -629,7 +629,7 @@ namespace L2_login
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
-                            vxx = Util.Float_Cap((movespeed * time) / vxx);
+                            vxx = Util.Float_Cap(movespeed * time / vxx);
                         }
 
                         vx *= vxx;

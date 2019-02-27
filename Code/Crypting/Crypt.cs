@@ -95,7 +95,7 @@ namespace L2_login
 			for (int i=0; i<raw.Length; i++)
 			{
 				uint temp2 = raw[i] & (uint)0xff;
-				temp = (temp2 ^ _key[i&15] ^ temp);
+				temp = temp2 ^ _key[i&15] ^ temp;
                 raw[i] = (byte)temp;
 			}
 
@@ -121,7 +121,7 @@ namespace L2_login
 			for (uint i=0; i<size; i++)
 			{
 				uint temp2 = raw[i] & (uint)0xff;
-				temp = (temp2 ^ _key[i&15] ^ temp);
+				temp = temp2 ^ _key[i&15] ^ temp;
                 raw[i] = (byte)temp;
 			}
 

@@ -1258,7 +1258,7 @@ namespace L2_login
 
                     ((ScriptThread)new_var.Value).Stop();
 
-                    Threads.Add(((ScriptThread)new_var.Value).ID, ((ScriptThread)new_var.Value));
+                    Threads.Add(((ScriptThread)new_var.Value).ID, (ScriptThread)new_var.Value);
                     break;
                 default:
                     //check if it is a user defined type:
@@ -2204,7 +2204,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._labellist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._labellist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._labellist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._labellist)
             {
@@ -2218,7 +2218,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
 
                 if (tmpcmd.Command == ScriptCommands.LABEL)
                 {
@@ -2245,7 +2245,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._functionlist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._functionlist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._functionlist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._functionlist)
             {
@@ -2262,7 +2262,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
                 tmpline = tmpcmd.UnParsedParams;
 
                 switch (tmpcmd.Command)
@@ -2363,7 +2363,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._sublist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._sublist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._sublist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._sublist)
             {
@@ -2377,7 +2377,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
 
                 if (tmpcmd.Command == ScriptCommands.SUB)
                 {

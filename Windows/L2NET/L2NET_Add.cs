@@ -626,7 +626,7 @@ namespace L2_login
             label_char_hp.Text = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             try
             {
-                progressBar_char_HP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP) * 100);
+                progressBar_char_HP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP * 100);
                 progressBar_char_HP.BarText = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             }
             catch
@@ -636,7 +636,7 @@ namespace L2_login
             label_char_mp.Text = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             try
             {
-                progressBar_char_MP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP) * 100);
+                progressBar_char_MP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP * 100);
                 progressBar_char_MP.BarText = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             }
             catch
@@ -646,7 +646,7 @@ namespace L2_login
             label_char_cp.Text = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             try
             {
-                progressBar_char_CP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP) * 100);
+                progressBar_char_CP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP * 100);
                 progressBar_char_CP.BarText = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             }
             catch
@@ -767,7 +767,7 @@ namespace L2_login
             int seconds = ts.Seconds * -1;
 
 
-            ulong tempXPGained = ((ulong)Globals.gamedata.my_char.XP - (ulong)GameData.initial_XP);
+            ulong tempXPGained = (ulong)Globals.gamedata.my_char.XP - (ulong)GameData.initial_XP;
             if (tempXPGained > 0)
             {
                 //xp stuff
@@ -782,7 +782,7 @@ namespace L2_login
 
 
             //sp stuff
-            ulong tempSPGained = ((ulong)Globals.gamedata.my_char.SP - (ulong)GameData.initial_SP);
+            ulong tempSPGained = (ulong)Globals.gamedata.my_char.SP - (ulong)GameData.initial_SP;
             if(tempSPGained>0)
             {
                 float spsec = 0;
@@ -795,12 +795,12 @@ namespace L2_login
             }
 
             //adena stuff
-            ulong tempAdenaGained = ((ulong)GameData.current_Adena - (ulong)GameData.initial_Adena);
+            ulong tempAdenaGained = (ulong)GameData.current_Adena - (ulong)GameData.initial_Adena;
             if(tempAdenaGained>0)
             {
                 ulong tempTotalAdenaGained = tempAdenaGained;
                 float adenasec = 0;
-                if ((tempAdenaGained > 0 && Globals.gamedata.initial_Adena_Gained_received) && (hours > 0 || minutes > 0 || seconds > 0))
+                if (tempAdenaGained > 0 && Globals.gamedata.initial_Adena_Gained_received && (hours > 0 || minutes > 0 || seconds > 0))
                 {
                     adenasec = ((float)tempAdenaGained) / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
                 }

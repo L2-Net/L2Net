@@ -43,7 +43,7 @@ namespace L2_login
 			for(int i = 0; i < Levels.Count; i++)
 			{
 				if( ((SkillInfo)Levels[i]).Level == lvl)
-					return (SkillInfo)(Levels[i]);
+					return (SkillInfo)Levels[i];
 			}
 
 			return new SkillInfo();

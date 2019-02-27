@@ -910,7 +910,7 @@ namespace L2_login
         {
             get
             {
-                return (_moveSmartInterruptFlag);
+                return _moveSmartInterruptFlag;
             }
             set
             {

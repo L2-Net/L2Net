@@ -295,7 +295,7 @@ namespace L2_login
                         //and the crest shit...
                         for (int i = 0; i < Globals.crestids.Count; i++)
                         {
-                            if ((uint)(Globals.crestids[i]) == _ClanCrestID)
+                            if ((uint)Globals.crestids[i] == _ClanCrestID)
                             {
                                 ClanCrestIndex = i;
                                 return;

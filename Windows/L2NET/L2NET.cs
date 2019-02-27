@@ -745,11 +745,11 @@ namespace L2_login
             this.panel_inven_rhand = new Panel();
             this.panel_inven_head = new Panel();
             this.listView_inventory = new ListView();
-            this.columnHeader169 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader170 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader171 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader172 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader173 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader169 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader170 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader171 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader172 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader173 = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_inventory = new ContextMenuStrip(this.components);
             this.dropStackToolStripMenuItem = new ToolStripMenuItem();
             this.deleteStackToolStripMenuItem = new ToolStripMenuItem();
@@ -760,9 +760,9 @@ namespace L2_login
             this.radiobutton_passive = new RadioButton();
             this.radiobutton_active = new RadioButton();
             this.listView_skills = new ListView();
-            this.columnHeader177 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader178 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader180 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader177 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader178 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader180 = (ColumnHeader)new ColumnHeader();
             this.imageList_skills = new ImageList(this.components);
             this.tabPage_char_clan = new TabPage();
             this.label_clan_castle_text = new Label();
@@ -784,36 +784,36 @@ namespace L2_login
             this.label_clan_leader = new Label();
             this.label_clan_online = new Label();
             this.listView_char_clan = new ListView();
-            this.columnHeader191 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader192 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader193 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader194 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader191 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader192 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader193 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader194 = (ColumnHeader)new ColumnHeader();
             this.imageList_crests = new ImageList(this.components);
             this.tabPage_char_detail = new TabPage();
             this.listView_char_data = new ListView();
-            this.columnHeader103 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader104 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader103 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader104 = (ColumnHeader)new ColumnHeader();
             this.tabPage_players = new TabPage();
             this.listView_players_data = new ListView();
-            this.columnHeader80 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader81 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader82 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader83 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader84 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader85 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader80 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader81 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader82 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader83 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader84 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader85 = (ColumnHeader)new ColumnHeader();
             this.tabPage_items = new TabPage();
             this.listView_items_data = new ListView();
-            this.columnHeader130 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader131 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader132 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader130 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader131 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader132 = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_Items = new ContextMenuStrip(this.components);
             this.addToDoNotListToolStripMenuItem = new ToolStripMenuItem();
             this.tabPage_npc = new TabPage();
             this.listView_npc_data = new ListView();
-            this.columnHeader135 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader136 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader137 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader5 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader135 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader136 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader137 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader5 = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_NPC = new ContextMenuStrip(this.components);
             this.addToDoNotListNPCToolStripMenuItem = new ToolStripMenuItem();
             this.addToBlackListNPCToolStripMenuItem = new ToolStripMenuItem();
@@ -824,10 +824,10 @@ namespace L2_login
             this.button_npc_close = new Button();
             this.tabPage_buffs = new TabPage();
             this.listView_mybuffs_data = new ListView();
-            this.columnHeader1 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader2 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader4 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader3 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader1 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader2 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader4 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader3 = (ColumnHeader)new ColumnHeader();
             this.tabPage_stats = new TabPage();
             this.label_badmobs = new Label();
             this.label7 = new Label();
@@ -837,10 +837,10 @@ namespace L2_login
             this.label5 = new Label();
             this.button_clear_stats = new Button();
             this.listView_stats = new ListView();
-            this.columnHeader8 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader6 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader7 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader10 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader8 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader6 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader7 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader10 = (ColumnHeader)new ColumnHeader();
             this.label_SP = new Label();
             this.label_XP = new Label();
             this.label_Adena = new Label();
@@ -967,7 +967,7 @@ namespace L2_login
             this.contextMenuStrip_inventory.SuspendLayout();
             this.tabPage_char_skills.SuspendLayout();
             this.tabPage_char_clan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_clan_crest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pictureBox_clan_crest).BeginInit();
             this.tabPage_char_detail.SuspendLayout();
             this.tabPage_players.SuspendLayout();
             this.tabPage_items.SuspendLayout();
@@ -978,7 +978,7 @@ namespace L2_login
             this.panel_npc_chat.SuspendLayout();
             this.tabPage_buffs.SuspendLayout();
             this.tabPage_stats.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar_map_zoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.trackBar_map_zoom).BeginInit();
             this.panel_chat.SuspendLayout();
             this.tabControl_ChatSelect.SuspendLayout();
             this.tab_all.SuspendLayout();
@@ -996,7 +996,7 @@ namespace L2_login
             // 
             // panel_party_5
             // 
-            this.panel_party_5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_5.BackgroundImage")));
+            this.panel_party_5.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_5.BackgroundImage");
             this.panel_party_5.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_5.Controls.Add(this.label_5_cp);
             this.panel_party_5.Controls.Add(this.label_5_mp);
@@ -1051,7 +1051,7 @@ namespace L2_login
             // 
             // panel_party_6
             // 
-            this.panel_party_6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_6.BackgroundImage")));
+            this.panel_party_6.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_6.BackgroundImage");
             this.panel_party_6.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_6.Controls.Add(this.label_6_cp);
             this.panel_party_6.Controls.Add(this.label_6_mp);
@@ -1106,7 +1106,7 @@ namespace L2_login
             // 
             // panel_party_7
             // 
-            this.panel_party_7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_7.BackgroundImage")));
+            this.panel_party_7.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_7.BackgroundImage");
             this.panel_party_7.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_7.Controls.Add(this.label_7_cp);
             this.panel_party_7.Controls.Add(this.label_7_mp);
@@ -1161,7 +1161,7 @@ namespace L2_login
             // 
             // panel_party_8
             // 
-            this.panel_party_8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_8.BackgroundImage")));
+            this.panel_party_8.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_8.BackgroundImage");
             this.panel_party_8.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_8.Controls.Add(this.label_8_cp);
             this.panel_party_8.Controls.Add(this.label_8_mp);
@@ -1216,7 +1216,7 @@ namespace L2_login
             // 
             // panel_party_4
             // 
-            this.panel_party_4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_4.BackgroundImage")));
+            this.panel_party_4.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_4.BackgroundImage");
             this.panel_party_4.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_4.Controls.Add(this.label_4_cp);
             this.panel_party_4.Controls.Add(this.label_4_mp);
@@ -1271,7 +1271,7 @@ namespace L2_login
             // 
             // panel_party_3
             // 
-            this.panel_party_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_3.BackgroundImage")));
+            this.panel_party_3.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_3.BackgroundImage");
             this.panel_party_3.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_3.Controls.Add(this.label_3_cp);
             this.panel_party_3.Controls.Add(this.label_3_mp);
@@ -1326,7 +1326,7 @@ namespace L2_login
             // 
             // panel_party_2
             // 
-            this.panel_party_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_2.BackgroundImage")));
+            this.panel_party_2.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_2.BackgroundImage");
             this.panel_party_2.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_2.Controls.Add(this.label_2_cp);
             this.panel_party_2.Controls.Add(this.label_2_mp);
@@ -1381,7 +1381,7 @@ namespace L2_login
             // 
             // panel_party_1
             // 
-            this.panel_party_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_1.BackgroundImage")));
+            this.panel_party_1.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_party_1.BackgroundImage");
             this.panel_party_1.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_1.Controls.Add(this.label_1_cp);
             this.panel_party_1.Controls.Add(this.label_1_mp);
@@ -1460,7 +1460,7 @@ namespace L2_login
             // 
             // panel_target
             // 
-            this.panel_target.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_target.BackgroundImage")));
+            this.panel_target.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_target.BackgroundImage");
             this.panel_target.BackgroundImageLayout = ImageLayout.None;
             this.panel_target.Controls.Add(this.label_target_cp);
             this.panel_target.Controls.Add(this.label_target_mp);
@@ -1517,7 +1517,7 @@ namespace L2_login
             // 
             // panel_charinfo_ul
             // 
-            this.panel_charinfo_ul.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_charinfo_ul.BackgroundImage")));
+            this.panel_charinfo_ul.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel_charinfo_ul.BackgroundImage");
             this.panel_charinfo_ul.BackgroundImageLayout = ImageLayout.None;
             this.panel_charinfo_ul.Controls.Add(this.progressBar_char_XP);
             this.panel_charinfo_ul.Controls.Add(this.progressBar_char_MP);
@@ -1541,12 +1541,12 @@ namespace L2_login
             this.progressBar_char_XP.BackColor = System.Drawing.Color.Transparent;
             this.progressBar_char_XP.BackgroundColor = System.Drawing.Color.Transparent;
             this.progressBar_char_XP.BarText = "XP";
-            this.progressBar_char_XP.BarTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.progressBar_char_XP.BarTextColor = System.Drawing.Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)255);
             this.progressBar_char_XP.EndColor = System.Drawing.Color.DarkGray;
             this.progressBar_char_XP.Location = new System.Drawing.Point(15, 68);
             this.progressBar_char_XP.Name = "progressBar_char_XP";
             this.progressBar_char_XP.Size = new System.Drawing.Size(113, 16);
-            this.progressBar_char_XP.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.progressBar_char_XP.StartColor = System.Drawing.Color.FromArgb((int)(byte)224, (int)(byte)224, (int)(byte)224);
             this.progressBar_char_XP.TabIndex = 31;
             // 
             // progressBar_char_MP
@@ -1554,7 +1554,7 @@ namespace L2_login
             this.progressBar_char_MP.BackColor = System.Drawing.Color.Transparent;
             this.progressBar_char_MP.BackgroundColor = System.Drawing.Color.Transparent;
             this.progressBar_char_MP.BarText = "MP";
-            this.progressBar_char_MP.BarTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.progressBar_char_MP.BarTextColor = System.Drawing.Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)255);
             this.progressBar_char_MP.EndColor = System.Drawing.Color.Blue;
             this.progressBar_char_MP.Location = new System.Drawing.Point(15, 52);
             this.progressBar_char_MP.Name = "progressBar_char_MP";
@@ -1567,7 +1567,7 @@ namespace L2_login
             this.progressBar_char_CP.BackColor = System.Drawing.Color.Transparent;
             this.progressBar_char_CP.BackgroundColor = System.Drawing.Color.Transparent;
             this.progressBar_char_CP.BarText = "CP";
-            this.progressBar_char_CP.BarTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.progressBar_char_CP.BarTextColor = System.Drawing.Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)255);
             this.progressBar_char_CP.EndColor = System.Drawing.Color.Orange;
             this.progressBar_char_CP.ForeColor = System.Drawing.Color.Transparent;
             this.progressBar_char_CP.Location = new System.Drawing.Point(15, 22);
@@ -1643,7 +1643,7 @@ namespace L2_login
             this.progressBar_char_HP.BackColor = System.Drawing.Color.Transparent;
             this.progressBar_char_HP.BackgroundColor = System.Drawing.Color.Transparent;
             this.progressBar_char_HP.BarText = "HP";
-            this.progressBar_char_HP.BarTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.progressBar_char_HP.BarTextColor = System.Drawing.Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)255);
             this.progressBar_char_HP.EndColor = System.Drawing.Color.Red;
             this.progressBar_char_HP.Location = new System.Drawing.Point(15, 38);
             this.progressBar_char_HP.Name = "progressBar_char_HP";
@@ -1680,8 +1680,8 @@ namespace L2_login
             // 
             // tabControl_char
             // 
-            this.tabControl_char.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left)));
+            this.tabControl_char.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left);
             this.tabControl_char.Controls.Add(this.tabPage_char_info);
             this.tabControl_char.Controls.Add(this.tabPage_char_inv);
             this.tabControl_char.Controls.Add(this.tabPage_char_skills);
@@ -1703,7 +1703,7 @@ namespace L2_login
             // 
             // tabPage_char_info
             // 
-            this.tabPage_char_info.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage_char_info.BackgroundImage")));
+            this.tabPage_char_info.BackgroundImage = (System.Drawing.Image)resources.GetObject("tabPage_char_info.BackgroundImage");
             this.tabPage_char_info.BackgroundImageLayout = ImageLayout.None;
             this.tabPage_char_info.Controls.Add(this.label_info_mcritical);
             this.tabPage_char_info.Controls.Add(this.label_info_mevasion);
@@ -1770,7 +1770,7 @@ namespace L2_login
             // label_info_mcritical
             // 
             this.label_info_mcritical.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_mcritical.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_mcritical.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_mcritical.Location = new System.Drawing.Point(192, 227);
             this.label_info_mcritical.Name = "label_info_mcritical";
             this.label_info_mcritical.Size = new System.Drawing.Size(56, 16);
@@ -1781,7 +1781,7 @@ namespace L2_login
             // label_info_mevasion
             // 
             this.label_info_mevasion.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_mevasion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_mevasion.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_mevasion.Location = new System.Drawing.Point(72, 239);
             this.label_info_mevasion.Name = "label_info_mevasion";
             this.label_info_mevasion.Size = new System.Drawing.Size(56, 16);
@@ -1792,7 +1792,7 @@ namespace L2_login
             // label_info_maccuracy
             // 
             this.label_info_maccuracy.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_maccuracy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_maccuracy.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_maccuracy.Location = new System.Drawing.Point(72, 226);
             this.label_info_maccuracy.Name = "label_info_maccuracy";
             this.label_info_maccuracy.Size = new System.Drawing.Size(56, 16);
@@ -1803,7 +1803,7 @@ namespace L2_login
             // label_info_mcrit_descr
             // 
             this.label_info_mcrit_descr.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_mcrit_descr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_mcrit_descr.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_mcrit_descr.Location = new System.Drawing.Point(133, 226);
             this.label_info_mcrit_descr.Name = "label_info_mcrit_descr";
             this.label_info_mcrit_descr.Size = new System.Drawing.Size(70, 16);
@@ -1814,7 +1814,7 @@ namespace L2_login
             // label_info_meva_descr
             // 
             this.label_info_meva_descr.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_meva_descr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_meva_descr.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_meva_descr.Location = new System.Drawing.Point(12, 239);
             this.label_info_meva_descr.Name = "label_info_meva_descr";
             this.label_info_meva_descr.Size = new System.Drawing.Size(70, 16);
@@ -1825,7 +1825,7 @@ namespace L2_login
             // label_info_macc_descr
             // 
             this.label_info_macc_descr.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_macc_descr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_macc_descr.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_macc_descr.Location = new System.Drawing.Point(12, 224);
             this.label_info_macc_descr.Name = "label_info_macc_descr";
             this.label_info_macc_descr.Size = new System.Drawing.Size(70, 16);
@@ -1836,7 +1836,7 @@ namespace L2_login
             // label_info_eval
             // 
             this.label_info_eval.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_eval.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_eval.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_eval.Location = new System.Drawing.Point(195, 406);
             this.label_info_eval.Name = "label_info_eval";
             this.label_info_eval.Size = new System.Drawing.Size(53, 16);
@@ -1847,7 +1847,7 @@ namespace L2_login
             // label_info_fame
             // 
             this.label_info_fame.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_fame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_fame.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_fame.Location = new System.Drawing.Point(192, 390);
             this.label_info_fame.Name = "label_info_fame";
             this.label_info_fame.Size = new System.Drawing.Size(56, 16);
@@ -1858,7 +1858,7 @@ namespace L2_login
             // label_info_darkness
             // 
             this.label_info_darkness.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_darkness.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_darkness.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_darkness.Location = new System.Drawing.Point(192, 364);
             this.label_info_darkness.Name = "label_info_darkness";
             this.label_info_darkness.Size = new System.Drawing.Size(56, 16);
@@ -1869,7 +1869,7 @@ namespace L2_login
             // label_info_earth
             // 
             this.label_info_earth.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_earth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_earth.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_earth.Location = new System.Drawing.Point(192, 348);
             this.label_info_earth.Name = "label_info_earth";
             this.label_info_earth.Size = new System.Drawing.Size(56, 16);
@@ -1880,7 +1880,7 @@ namespace L2_login
             // label_info_water
             // 
             this.label_info_water.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_water.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_water.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_water.Location = new System.Drawing.Point(192, 332);
             this.label_info_water.Name = "label_info_water";
             this.label_info_water.Size = new System.Drawing.Size(56, 16);
@@ -1891,7 +1891,7 @@ namespace L2_login
             // label_info_divinity
             // 
             this.label_info_divinity.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_divinity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_divinity.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_divinity.Location = new System.Drawing.Point(72, 364);
             this.label_info_divinity.Name = "label_info_divinity";
             this.label_info_divinity.Size = new System.Drawing.Size(56, 16);
@@ -1902,7 +1902,7 @@ namespace L2_login
             // label_info_wind
             // 
             this.label_info_wind.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_wind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_wind.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_wind.Location = new System.Drawing.Point(72, 348);
             this.label_info_wind.Name = "label_info_wind";
             this.label_info_wind.Size = new System.Drawing.Size(56, 16);
@@ -1913,7 +1913,7 @@ namespace L2_login
             // label_info_fire
             // 
             this.label_info_fire.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_fire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_fire.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_fire.Location = new System.Drawing.Point(72, 332);
             this.label_info_fire.Name = "label_info_fire";
             this.label_info_fire.Size = new System.Drawing.Size(56, 16);
@@ -1924,7 +1924,7 @@ namespace L2_login
             // label_info_atk_attrib_value
             // 
             this.label_info_atk_attrib_value.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_atk_attrib_value.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_atk_attrib_value.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_atk_attrib_value.Location = new System.Drawing.Point(222, 306);
             this.label_info_atk_attrib_value.Name = "label_info_atk_attrib_value";
             this.label_info_atk_attrib_value.Size = new System.Drawing.Size(26, 16);
@@ -1935,7 +1935,7 @@ namespace L2_login
             // label_info_atk_attrib
             // 
             this.label_info_atk_attrib.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_atk_attrib.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_atk_attrib.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_atk_attrib.Location = new System.Drawing.Point(75, 306);
             this.label_info_atk_attrib.Name = "label_info_atk_attrib";
             this.label_info_atk_attrib.Size = new System.Drawing.Size(48, 16);
@@ -1946,7 +1946,7 @@ namespace L2_login
             // label_info_recommend_desc
             // 
             this.label_info_recommend_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_recommend_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_recommend_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_recommend_desc.Location = new System.Drawing.Point(132, 406);
             this.label_info_recommend_desc.Name = "label_info_recommend_desc";
             this.label_info_recommend_desc.Size = new System.Drawing.Size(70, 16);
@@ -1957,7 +1957,7 @@ namespace L2_login
             // label_info_fame_desc
             // 
             this.label_info_fame_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_fame_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_fame_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_fame_desc.Location = new System.Drawing.Point(132, 390);
             this.label_info_fame_desc.Name = "label_info_fame_desc";
             this.label_info_fame_desc.Size = new System.Drawing.Size(70, 16);
@@ -1968,7 +1968,7 @@ namespace L2_login
             // label_info_darkness_desc
             // 
             this.label_info_darkness_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_darkness_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_darkness_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_darkness_desc.Location = new System.Drawing.Point(132, 364);
             this.label_info_darkness_desc.Name = "label_info_darkness_desc";
             this.label_info_darkness_desc.Size = new System.Drawing.Size(70, 16);
@@ -1979,7 +1979,7 @@ namespace L2_login
             // label_info_earth_desc
             // 
             this.label_info_earth_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_earth_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_earth_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_earth_desc.Location = new System.Drawing.Point(132, 348);
             this.label_info_earth_desc.Name = "label_info_earth_desc";
             this.label_info_earth_desc.Size = new System.Drawing.Size(70, 16);
@@ -1990,7 +1990,7 @@ namespace L2_login
             // label_info_water_desc
             // 
             this.label_info_water_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_water_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_water_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_water_desc.Location = new System.Drawing.Point(132, 332);
             this.label_info_water_desc.Name = "label_info_water_desc";
             this.label_info_water_desc.Size = new System.Drawing.Size(70, 16);
@@ -2001,7 +2001,7 @@ namespace L2_login
             // label_info_divinity_desc
             // 
             this.label_info_divinity_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_divinity_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_divinity_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_divinity_desc.Location = new System.Drawing.Point(10, 364);
             this.label_info_divinity_desc.Name = "label_info_divinity_desc";
             this.label_info_divinity_desc.Size = new System.Drawing.Size(70, 16);
@@ -2012,7 +2012,7 @@ namespace L2_login
             // label_info_wind_desc
             // 
             this.label_info_wind_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_wind_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_wind_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_wind_desc.Location = new System.Drawing.Point(10, 348);
             this.label_info_wind_desc.Name = "label_info_wind_desc";
             this.label_info_wind_desc.Size = new System.Drawing.Size(70, 16);
@@ -2023,7 +2023,7 @@ namespace L2_login
             // label_info_fire_desc
             // 
             this.label_info_fire_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_fire_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_fire_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_fire_desc.Location = new System.Drawing.Point(10, 332);
             this.label_info_fire_desc.Name = "label_info_fire_desc";
             this.label_info_fire_desc.Size = new System.Drawing.Size(70, 16);
@@ -2034,7 +2034,7 @@ namespace L2_login
             // label_info_atk_attrib_val_desc
             // 
             this.label_info_atk_attrib_val_desc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_atk_attrib_val_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_atk_attrib_val_desc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_atk_attrib_val_desc.Location = new System.Drawing.Point(132, 306);
             this.label_info_atk_attrib_val_desc.Name = "label_info_atk_attrib_val_desc";
             this.label_info_atk_attrib_val_desc.Size = new System.Drawing.Size(95, 16);
@@ -2045,7 +2045,7 @@ namespace L2_login
             // label_info_atk_attrib_descr
             // 
             this.label_info_atk_attrib_descr.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_atk_attrib_descr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(161)))), ((int)(((byte)(163)))));
+            this.label_info_atk_attrib_descr.ForeColor = System.Drawing.Color.FromArgb((int)(byte)163, (int)(byte)161, (int)(byte)163);
             this.label_info_atk_attrib_descr.Location = new System.Drawing.Point(10, 306);
             this.label_info_atk_attrib_descr.Name = "label_info_atk_attrib_descr";
             this.label_info_atk_attrib_descr.Size = new System.Drawing.Size(70, 16);
@@ -2056,7 +2056,7 @@ namespace L2_login
             // label_info_pvp
             // 
             this.label_info_pvp.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_pvp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_pvp.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_pvp.Location = new System.Drawing.Point(56, 406);
             this.label_info_pvp.Name = "label_info_pvp";
             this.label_info_pvp.Size = new System.Drawing.Size(72, 16);
@@ -2067,7 +2067,7 @@ namespace L2_login
             // label_info_matkspd
             // 
             this.label_info_matkspd.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_matkspd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_matkspd.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_matkspd.Location = new System.Drawing.Point(192, 213);
             this.label_info_matkspd.Name = "label_info_matkspd";
             this.label_info_matkspd.Size = new System.Drawing.Size(56, 16);
@@ -2078,7 +2078,7 @@ namespace L2_login
             // label_info_spd
             // 
             this.label_info_spd.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_spd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_spd.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_spd.Location = new System.Drawing.Point(192, 197);
             this.label_info_spd.Name = "label_info_spd";
             this.label_info_spd.Size = new System.Drawing.Size(56, 16);
@@ -2089,7 +2089,7 @@ namespace L2_login
             // label_info_eva
             // 
             this.label_info_eva.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_eva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_eva.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_eva.Location = new System.Drawing.Point(192, 181);
             this.label_info_eva.Name = "label_info_eva";
             this.label_info_eva.Size = new System.Drawing.Size(56, 16);
@@ -2100,7 +2100,7 @@ namespace L2_login
             // label_info_mdef
             // 
             this.label_info_mdef.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_mdef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_mdef.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_mdef.Location = new System.Drawing.Point(192, 165);
             this.label_info_mdef.Name = "label_info_mdef";
             this.label_info_mdef.Size = new System.Drawing.Size(56, 16);
@@ -2110,7 +2110,7 @@ namespace L2_login
             // 
             // panel_dead
             // 
-            this.panel_dead.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.panel_dead.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
             this.panel_dead.BackColor = System.Drawing.SystemColors.Control;
             this.panel_dead.BorderStyle = BorderStyle.Fixed3D;
             this.panel_dead.Controls.Add(this.button1_close_dead);
@@ -2147,7 +2147,7 @@ namespace L2_login
             // 
             // label_youdied
             // 
-            this.label_youdied.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_youdied.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.label_youdied.Location = new System.Drawing.Point(5, -2);
             this.label_youdied.Name = "label_youdied";
             this.label_youdied.Size = new System.Drawing.Size(241, 35);
@@ -2249,7 +2249,7 @@ namespace L2_login
             // label_info_matk
             // 
             this.label_info_matk.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_matk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_matk.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_matk.Location = new System.Drawing.Point(192, 149);
             this.label_info_matk.Name = "label_info_matk";
             this.label_info_matk.Size = new System.Drawing.Size(56, 16);
@@ -2260,7 +2260,7 @@ namespace L2_login
             // label_info_atkspd
             // 
             this.label_info_atkspd.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_atkspd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_atkspd.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_atkspd.Location = new System.Drawing.Point(72, 213);
             this.label_info_atkspd.Name = "label_info_atkspd";
             this.label_info_atkspd.Size = new System.Drawing.Size(56, 16);
@@ -2271,7 +2271,7 @@ namespace L2_login
             // label_info_crit
             // 
             this.label_info_crit.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_crit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_crit.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_crit.Location = new System.Drawing.Point(72, 197);
             this.label_info_crit.Name = "label_info_crit";
             this.label_info_crit.Size = new System.Drawing.Size(56, 16);
@@ -2282,7 +2282,7 @@ namespace L2_login
             // label_info_acc
             // 
             this.label_info_acc.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_acc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_acc.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_acc.Location = new System.Drawing.Point(72, 181);
             this.label_info_acc.Name = "label_info_acc";
             this.label_info_acc.Size = new System.Drawing.Size(56, 16);
@@ -2293,7 +2293,7 @@ namespace L2_login
             // label_info_pdef
             // 
             this.label_info_pdef.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_pdef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_pdef.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_pdef.Location = new System.Drawing.Point(72, 165);
             this.label_info_pdef.Name = "label_info_pdef";
             this.label_info_pdef.Size = new System.Drawing.Size(56, 16);
@@ -2304,7 +2304,7 @@ namespace L2_login
             // label_info_patk
             // 
             this.label_info_patk.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_patk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_patk.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_patk.Location = new System.Drawing.Point(72, 149);
             this.label_info_patk.Name = "label_info_patk";
             this.label_info_patk.Size = new System.Drawing.Size(56, 16);
@@ -2326,7 +2326,7 @@ namespace L2_login
             // label_info_karma
             // 
             this.label_info_karma.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_karma.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_karma.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_karma.Location = new System.Drawing.Point(56, 390);
             this.label_info_karma.Name = "label_info_karma";
             this.label_info_karma.Size = new System.Drawing.Size(72, 16);
@@ -2337,7 +2337,7 @@ namespace L2_login
             // label_info_men
             // 
             this.label_info_men.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_men.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_men.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_men.Location = new System.Drawing.Point(208, 282);
             this.label_info_men.Name = "label_info_men";
             this.label_info_men.Size = new System.Drawing.Size(32, 16);
@@ -2348,7 +2348,7 @@ namespace L2_login
             // label_info_wit
             // 
             this.label_info_wit.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_wit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_wit.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_wit.Location = new System.Drawing.Point(128, 282);
             this.label_info_wit.Name = "label_info_wit";
             this.label_info_wit.Size = new System.Drawing.Size(32, 16);
@@ -2359,7 +2359,7 @@ namespace L2_login
             // label_info_int
             // 
             this.label_info_int.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_int.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_int.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_int.Location = new System.Drawing.Point(48, 282);
             this.label_info_int.Name = "label_info_int";
             this.label_info_int.Size = new System.Drawing.Size(32, 16);
@@ -2370,7 +2370,7 @@ namespace L2_login
             // label_info_con
             // 
             this.label_info_con.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_con.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_con.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_con.Location = new System.Drawing.Point(208, 262);
             this.label_info_con.Name = "label_info_con";
             this.label_info_con.Size = new System.Drawing.Size(32, 16);
@@ -2381,7 +2381,7 @@ namespace L2_login
             // label_info_dex
             // 
             this.label_info_dex.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_dex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_dex.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_dex.Location = new System.Drawing.Point(128, 262);
             this.label_info_dex.Name = "label_info_dex";
             this.label_info_dex.Size = new System.Drawing.Size(32, 16);
@@ -2392,7 +2392,7 @@ namespace L2_login
             // label_info_str
             // 
             this.label_info_str.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_str.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_str.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_str.Location = new System.Drawing.Point(48, 262);
             this.label_info_str.Name = "label_info_str";
             this.label_info_str.Size = new System.Drawing.Size(32, 16);
@@ -2403,7 +2403,7 @@ namespace L2_login
             // label_info_level
             // 
             this.label_info_level.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_level.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_level.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_level.Location = new System.Drawing.Point(40, 62);
             this.label_info_level.Name = "label_info_level";
             this.label_info_level.Size = new System.Drawing.Size(24, 16);
@@ -2469,7 +2469,7 @@ namespace L2_login
             // label_info_title
             // 
             this.label_info_title.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_title.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_title.Location = new System.Drawing.Point(152, 48);
             this.label_info_title.Name = "label_info_title";
             this.label_info_title.Size = new System.Drawing.Size(80, 16);
@@ -2480,7 +2480,7 @@ namespace L2_login
             // label_info_name
             // 
             this.label_info_name.BackColor = System.Drawing.Color.Transparent;
-            this.label_info_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
+            this.label_info_name.ForeColor = System.Drawing.Color.FromArgb((int)(byte)174, (int)(byte)151, (int)(byte)121);
             this.label_info_name.Location = new System.Drawing.Point(32, 24);
             this.label_info_name.Name = "label_info_name";
             this.label_info_name.Size = new System.Drawing.Size(176, 16);
@@ -2490,7 +2490,7 @@ namespace L2_login
             // 
             // tabPage_char_inv
             // 
-            this.tabPage_char_inv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage_char_inv.BackgroundImage")));
+            this.tabPage_char_inv.BackgroundImage = (System.Drawing.Image)resources.GetObject("tabPage_char_inv.BackgroundImage");
             this.tabPage_char_inv.BackgroundImageLayout = ImageLayout.None;
             this.tabPage_char_inv.Controls.Add(this.radioButton_inv_quest);
             this.tabPage_char_inv.Controls.Add(this.radioButton_inv_equipped);
@@ -2558,7 +2558,7 @@ namespace L2_login
             // 
             // label_inventory_count
             // 
-            this.label_inventory_count.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.label_inventory_count.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
             this.label_inventory_count.Location = new System.Drawing.Point(78, 519);
             this.label_inventory_count.Name = "label_inventory_count";
             this.label_inventory_count.Size = new System.Drawing.Size(100, 23);
@@ -2721,9 +2721,9 @@ namespace L2_login
             // 
             // listView_inventory
             // 
-            this.listView_inventory.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_inventory.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_inventory.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader169,
             this.columnHeader170,
@@ -2847,9 +2847,9 @@ namespace L2_login
             // 
             // listView_skills
             // 
-            this.listView_skills.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_skills.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_skills.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader177,
             this.columnHeader178,
@@ -3061,9 +3061,9 @@ namespace L2_login
             // 
             // listView_char_clan
             // 
-            this.listView_char_clan.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_char_clan.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_char_clan.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader191,
             this.columnHeader192,
@@ -3117,9 +3117,9 @@ namespace L2_login
             // 
             // listView_char_data
             // 
-            this.listView_char_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_char_data.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_char_data.BorderStyle = BorderStyle.FixedSingle;
             this.listView_char_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader103,
@@ -3156,9 +3156,9 @@ namespace L2_login
             // 
             // listView_players_data
             // 
-            this.listView_players_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_players_data.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_players_data.BorderStyle = BorderStyle.FixedSingle;
             this.listView_players_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader80,
@@ -3216,9 +3216,9 @@ namespace L2_login
             // 
             // listView_items_data
             // 
-            this.listView_items_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_items_data.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_items_data.BorderStyle = BorderStyle.FixedSingle;
             this.listView_items_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader130,
@@ -3276,9 +3276,9 @@ namespace L2_login
             // 
             // listView_npc_data
             // 
-            this.listView_npc_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_npc_data.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_npc_data.BorderStyle = BorderStyle.FixedSingle;
             this.listView_npc_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader135,
@@ -3348,8 +3348,8 @@ namespace L2_login
             // 
             // panel_npc_chat
             // 
-            this.panel_npc_chat.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Right)));
+            this.panel_npc_chat.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Right);
             this.panel_npc_chat.BorderStyle = BorderStyle.FixedSingle;
             this.panel_npc_chat.Controls.Add(this.textBox_rtb_input);
             this.panel_npc_chat.Controls.Add(this.richTextBox_dialog);
@@ -3369,9 +3369,9 @@ namespace L2_login
             // 
             // richTextBox_dialog
             // 
-            this.richTextBox_dialog.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.richTextBox_dialog.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.richTextBox_dialog.BorderStyle = BorderStyle.None;
             this.richTextBox_dialog.Location = new System.Drawing.Point(3, 3);
             this.richTextBox_dialog.Name = "richTextBox_dialog";
@@ -3382,8 +3382,8 @@ namespace L2_login
             // 
             // button_npc_close
             // 
-            this.button_npc_close.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.button_npc_close.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.button_npc_close.FlatStyle = FlatStyle.System;
             this.button_npc_close.Location = new System.Drawing.Point(39, 578);
             this.button_npc_close.Name = "button_npc_close";
@@ -3404,9 +3404,9 @@ namespace L2_login
             // 
             // listView_mybuffs_data
             // 
-            this.listView_mybuffs_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_mybuffs_data.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_mybuffs_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -3548,9 +3548,9 @@ namespace L2_login
             // 
             // listView_stats
             // 
-            this.listView_stats.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.listView_stats.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.listView_stats.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader8,
             this.columnHeader6,
@@ -3714,8 +3714,8 @@ namespace L2_login
             // 
             // panel_chat
             // 
-            this.panel_chat.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.panel_chat.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.panel_chat.Controls.Add(this.checkBox_BoundingPoints);
             this.panel_chat.Controls.Add(this.comboBox_msg_type);
             this.panel_chat.Controls.Add(this.button_sendtext);
@@ -3743,7 +3743,7 @@ namespace L2_login
             // 
             // comboBox_msg_type
             // 
-            this.comboBox_msg_type.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.comboBox_msg_type.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
             this.comboBox_msg_type.DropDownWidth = 150;
             this.comboBox_msg_type.Items.AddRange(new object[] {
             "Local",
@@ -3772,7 +3772,7 @@ namespace L2_login
             // 
             // button_sendtext
             // 
-            this.button_sendtext.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
+            this.button_sendtext.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Right);
             this.button_sendtext.FlatStyle = FlatStyle.System;
             this.button_sendtext.Location = new System.Drawing.Point(552, 32);
             this.button_sendtext.Name = "button_sendtext";
@@ -3783,8 +3783,8 @@ namespace L2_login
             // 
             // textBox_say
             // 
-            this.textBox_say.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.textBox_say.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.textBox_say.Location = new System.Drawing.Point(88, 34);
             this.textBox_say.Name = "textBox_say";
             this.textBox_say.Size = new System.Drawing.Size(465, 20);
@@ -3793,9 +3793,9 @@ namespace L2_login
             // tabControl_ChatSelect
             // 
             this.tabControl_ChatSelect.Alignment = TabAlignment.Bottom;
-            this.tabControl_ChatSelect.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            this.tabControl_ChatSelect.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
             this.tabControl_ChatSelect.Controls.Add(this.tab_all);
             this.tabControl_ChatSelect.Controls.Add(this.tab_system);
             this.tabControl_ChatSelect.Controls.Add(this.tab_bot);
@@ -3826,10 +3826,10 @@ namespace L2_login
             // 
             // colorListBox_all
             // 
-            this.colorListBox_all.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_all.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_all.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_all.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_all.BorderStyle = BorderStyle.None;
             this.colorListBox_all.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_all.Font = new System.Drawing.Font("Arial", 9F);
@@ -3853,10 +3853,10 @@ namespace L2_login
             // 
             // colorListBox_system
             // 
-            this.colorListBox_system.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_system.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_system.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_system.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_system.BorderStyle = BorderStyle.None;
             this.colorListBox_system.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_system.Font = new System.Drawing.Font("Arial", 9F);
@@ -3880,10 +3880,10 @@ namespace L2_login
             // 
             // colorListBox_bot
             // 
-            this.colorListBox_bot.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_bot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_bot.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_bot.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_bot.BorderStyle = BorderStyle.None;
             this.colorListBox_bot.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_bot.Font = new System.Drawing.Font("Arial", 9F);
@@ -3908,10 +3908,10 @@ namespace L2_login
             // 
             // colorListBox_local
             // 
-            this.colorListBox_local.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_local.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_local.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_local.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_local.BorderStyle = BorderStyle.None;
             this.colorListBox_local.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_local.Font = new System.Drawing.Font("Arial", 9F);
@@ -3935,10 +3935,10 @@ namespace L2_login
             // 
             // colorListBox_trade
             // 
-            this.colorListBox_trade.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_trade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_trade.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_trade.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_trade.BorderStyle = BorderStyle.None;
             this.colorListBox_trade.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_trade.Font = new System.Drawing.Font("Arial", 9F);
@@ -3962,10 +3962,10 @@ namespace L2_login
             // 
             // colorListBox_party
             // 
-            this.colorListBox_party.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_party.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_party.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_party.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_party.BorderStyle = BorderStyle.None;
             this.colorListBox_party.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_party.Font = new System.Drawing.Font("Arial", 9F);
@@ -3989,10 +3989,10 @@ namespace L2_login
             // 
             // colorListBox_clan
             // 
-            this.colorListBox_clan.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_clan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_clan.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_clan.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_clan.BorderStyle = BorderStyle.None;
             this.colorListBox_clan.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_clan.Font = new System.Drawing.Font("Arial", 9F);
@@ -4016,10 +4016,10 @@ namespace L2_login
             // 
             // colorListBox_ally
             // 
-            this.colorListBox_ally.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_ally.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_ally.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_ally.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_ally.BorderStyle = BorderStyle.None;
             this.colorListBox_ally.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_ally.Font = new System.Drawing.Font("Arial", 9F);
@@ -4043,10 +4043,10 @@ namespace L2_login
             // 
             // colorListBox_hero
             // 
-            this.colorListBox_hero.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
-            | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
-            this.colorListBox_hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.colorListBox_hero.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom 
+            | AnchorStyles.Left 
+            | AnchorStyles.Right);
+            this.colorListBox_hero.BackColor = System.Drawing.Color.FromArgb((int)(byte)28, (int)(byte)28, (int)(byte)27);
             this.colorListBox_hero.BorderStyle = BorderStyle.None;
             this.colorListBox_hero.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_hero.Font = new System.Drawing.Font("Arial", 9F);
@@ -4066,7 +4066,7 @@ namespace L2_login
             // notifyIcon_us
             // 
             this.notifyIcon_us.ContextMenuStrip = this.contextMenuStrip_notify;
-            this.notifyIcon_us.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_us.Icon")));
+            this.notifyIcon_us.Icon = (System.Drawing.Icon)resources.GetObject("notifyIcon_us.Icon");
             this.notifyIcon_us.Text = "L2.Net";
             // 
             // contextMenuStrip_notify
@@ -4330,7 +4330,7 @@ namespace L2_login
             this.menuItem_toggle_botting.Checked = true;
             this.menuItem_toggle_botting.CheckState = CheckState.Checked;
             this.menuItem_toggle_botting.Name = "menuItem_toggle_botting";
-            this.menuItem_toggle_botting.ShortcutKeys = ((Keys)((Keys.Control | Keys.F3)));
+            this.menuItem_toggle_botting.ShortcutKeys = (Keys)(Keys.Control | Keys.F3);
             this.menuItem_toggle_botting.Size = new System.Drawing.Size(202, 22);
             this.menuItem_toggle_botting.Text = "Toggle Botting";
             this.menuItem_toggle_botting.Click += new EventHandler(this.menuItem_toggle_botting_Click);
@@ -4436,7 +4436,7 @@ namespace L2_login
             // menuItem_startscript
             // 
             this.menuItem_startscript.Name = "menuItem_startscript";
-            this.menuItem_startscript.ShortcutKeys = ((Keys)((Keys.Control | Keys.F1)));
+            this.menuItem_startscript.ShortcutKeys = (Keys)(Keys.Control | Keys.F1);
             this.menuItem_startscript.Size = new System.Drawing.Size(180, 22);
             this.menuItem_startscript.Text = "Start Script";
             this.menuItem_startscript.Click += new EventHandler(this.menuItem_startscript_Click);
@@ -4591,7 +4591,7 @@ namespace L2_login
             this.Controls.Add(this.panel_char);
             this.Controls.Add(this.panel_charinfo);
             this.Controls.Add(this.panel_chat);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 600);
@@ -4622,7 +4622,7 @@ namespace L2_login
             this.tabPage_char_skills.PerformLayout();
             this.tabPage_char_clan.ResumeLayout(false);
             this.tabPage_char_clan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_clan_crest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pictureBox_clan_crest).EndInit();
             this.tabPage_char_detail.ResumeLayout(false);
             this.tabPage_players.ResumeLayout(false);
             this.tabPage_items.ResumeLayout(false);
@@ -4634,7 +4634,7 @@ namespace L2_login
             this.panel_npc_chat.PerformLayout();
             this.tabPage_buffs.ResumeLayout(false);
             this.tabPage_stats.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar_map_zoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.trackBar_map_zoom).EndInit();
             this.panel_chat.ResumeLayout(false);
             this.panel_chat.PerformLayout();
             this.tabControl_ChatSelect.ResumeLayout(false);

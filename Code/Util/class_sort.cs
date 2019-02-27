@@ -61,7 +61,7 @@ public class ListViewColumnSorter : IComparer
             else if (OrderOfSort == System.Windows.Forms.SortOrder.Descending)
             {
                 // Descending sort is selected, return negative result of compare operation
-                return (-compareResult);
+                return -compareResult;
             }
             else
             {

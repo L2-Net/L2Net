@@ -255,18 +255,18 @@ namespace Mono.Math {
 
 		public static implicit operator BigInteger (uint value)
 		{
-			return (new BigInteger (value));
+			return new BigInteger (value);
 		}
 
 		public static implicit operator BigInteger (int value)
 		{
 			if (value < 0) throw new ArgumentOutOfRangeException ("value");
-			return (new BigInteger ((uint)value));
+			return new BigInteger ((uint)value);
 		}
 
 		public static implicit operator BigInteger (ulong value)
 		{
-			return (new BigInteger (value));
+			return new BigInteger (value);
 		}
 
 		/* This is the BigInteger.Parse method I use. This method works
@@ -427,47 +427,47 @@ namespace Mono.Math {
 
 		public static BigInteger Add (BigInteger bi1, BigInteger bi2) 
 		{
-			return (bi1 + bi2);
+			return bi1 + bi2;
 		}
 
 		public static BigInteger Subtract (BigInteger bi1, BigInteger bi2) 
 		{
-			return (bi1 - bi2);
+			return bi1 - bi2;
 		}
 
 		public static int Modulus (BigInteger bi, int i) 
 		{
-			return (bi % i);
+			return bi % i;
 		}
 
 		public static uint Modulus (BigInteger bi, uint ui) 
 		{
-			return (bi % ui);
+			return bi % ui;
 		}
 
 		public static BigInteger Modulus (BigInteger bi1, BigInteger bi2) 
 		{
-			return (bi1 % bi2);
+			return bi1 % bi2;
 		}
 
 		public static BigInteger Divid (BigInteger bi, int i) 
 		{
-			return (bi / i);
+			return bi / i;
 		}
 
 		public static BigInteger Divid (BigInteger bi1, BigInteger bi2) 
 		{
-			return (bi1 / bi2);
+			return bi1 / bi2;
 		}
 
 		public static BigInteger Multiply (BigInteger bi1, BigInteger bi2) 
 		{
-			return (bi1 * bi2);
+			return bi1 * bi2;
 		}
 
 		public static BigInteger Multiply (BigInteger bi, int i) 
 		{
-			return (bi * i);
+			return bi * i;
 		}
 
 		#endregion
@@ -585,7 +585,7 @@ namespace Mono.Math {
 				bits--;
 				mask >>= 1;
 			}
-			bits += ((length - 1) << 5);
+			bits += (length - 1) << 5;
 
 			return (int)bits;
 		}
@@ -601,7 +601,7 @@ namespace Mono.Math {
 			byte bitPos = (byte)(bitNum & 0x1F);    // get the lowest 5 bits
 
 			uint mask = (uint)1 << bitPos;
-			return ((this.data [bytePos] & mask) != 0);
+			return (this.data [bytePos] & mask) != 0;
 		}
 
 		public bool TestBit (int bitNum)
@@ -612,7 +612,7 @@ namespace Mono.Math {
 			byte bitPos = (byte)(bitNum & 0x1F);    // get the lowest 5 bits
 
 			uint mask = (uint)1 << bitPos;
-			return ((this.data [bytePos] | mask) == this.data [bytePos]);
+			return (this.data [bytePos] | mask) == this.data [bytePos];
 		}
 
 		public void SetBit (uint bitNum)
@@ -1191,7 +1191,7 @@ namespace Mono.Math {
 								else {
 									// guess but don't divide by 0
 									divEstimate = (uint) ((((ulong)cc << 32) | (ulong) u [i -1]) /
-										(mod.data [mod.length-1]));
+										mod.data [mod.length-1]);
 								}
 
 								uint t;
@@ -1515,31 +1515,31 @@ namespace Mono.Math {
 						// aDP = destination for bits
 						uint* mP = mm, aSP = a, aDP = a;
 
-						ulong c = (ulong)u_i * ((ulong)*(mP++)) + *(aSP++);
+						ulong c = (ulong)u_i * ((ulong)*mP++) + *aSP++;
 						c >>= 32;
 						uint j = 1;
 
 						// Multiply and add
 						for (; j < m.length; j++) {
-							c += (ulong)u_i * (ulong)*(mP++) + *(aSP++);
-							*(aDP++) = (uint)c;
+							c += (ulong)u_i * (ulong)*mP++ + *aSP++;
+							*aDP++ = (uint)c;
 							c >>= 32;
 						}
 
 						// Account for carry
 						// TODO: use a better loop here, we dont need the ulong stuff
 						for (; j < A.length; j++) {
-							c += *(aSP++);
-							*(aDP++) = (uint)c;
+							c += *aSP++;
+							*aDP++ = (uint)c;
 							c >>= 32;
 							if (c == 0) {j++; break;}
 						}
 						// Copy the rest
 						for (; j < A.length; j++) {
-							*(aDP++) = *(aSP++);
+							*aDP++ = *aSP++;
 						}
 
-						*(aDP++) = (uint)c;
+						*aDP++ = (uint)c;
 					}
 
 					while (A.length > 1 && a [A.length-1] == 0) A.length--;
@@ -1602,13 +1602,13 @@ namespace Mono.Math {
 				} while (++i < yMax);
 
 				// Copy remainder of longer number while carry propagation is required
-				bool carry = (sum != 0);
+				bool carry = sum != 0;
 
 				if (carry) {
 
 					if (i < xMax) {
 						do
-							carry = ((r [i] = x [i] + 1) == 0);
+							carry = (r [i] = x [i] + 1) == 0;
 						while (++i < xMax && carry);
 					}
 
@@ -1731,13 +1731,13 @@ namespace Mono.Math {
 				} while (++i < yMax);
 
 				// Copy remainder of longer number while carry propagation is required
-				bool carry = (sum != 0);
+				bool carry = sum != 0;
 
 				if (carry){
 
 					if (i < xMax) {
 						do
-							carry = ((r [i] = x [i] + 1) == 0);
+							carry = (r [i] = x [i] + 1) == 0;
 						while (++i < xMax && carry);
 					}
 
@@ -1909,7 +1909,7 @@ namespace Mono.Math {
 				}
 
 				BigInteger quot = new BigInteger (Sign.Positive, bi1.length - bi2.length + 1);
-				BigInteger rem = (bi1 << shift);
+				BigInteger rem = bi1 << shift;
 
 				uint [] remainder = rem.data;
 
@@ -2004,7 +2004,7 @@ namespace Mono.Math {
 				if (n == 0) return new BigInteger (bi, bi.length + 1);
 
 				int w = n >> 5;
-				n &= ((1 << 5) - 1);
+				n &= (1 << 5) - 1;
 
 				BigInteger ret = new BigInteger (Sign.Positive, bi.length + 1 + (uint)w);
 
@@ -2212,11 +2212,11 @@ namespace Mono.Math {
 
 					dP = dd;
 					tP = tt;
-					for (uint* dE = dP + dl; (dP < dE); dP++, tP++) {
+					for (uint* dE = dP + dl; dP < dE; dP++, tP++) {
 						ulong val = (ulong)*dP * (ulong)*dP + *tP;
 						*tP = (uint)val;
 						val >>= 32;
-						*(++tP) += (uint)val;
+						*++tP += (uint)val;
 						if (*tP < (uint)val) {
 							uint* tP3 = tP;
 							// Account for the first carry
@@ -2307,7 +2307,7 @@ namespace Mono.Math {
 				while (b != 0) {
 					if (b == 1)
 						return p1;
-					p0 += (a / b) * p1;
+					p0 += a / b * p1;
 					a %= b;
 
 					if (a == 0)
@@ -2315,7 +2315,7 @@ namespace Mono.Math {
 					if (a == 1)
 						return modulus-p0;
 
-					p1 += (b / a) * p0;
+					p1 += b / a * p0;
 					b %= a;
 
 				}
@@ -2356,7 +2356,7 @@ namespace Mono.Math {
 				}
 
 				if (r [0] != 1)
-					throw (new ArithmeticException ("No inverse!"));
+					throw new ArithmeticException ("No inverse!");
 
 				return mr.Difference (p [0], p [1] * q [0]);
 

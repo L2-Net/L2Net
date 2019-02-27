@@ -1499,15 +1499,15 @@ namespace L2_login
             this.textBox_buffheal_delay = new TextBox();
             this.textBox_buffheal_min_per = new TextBox();
             this.listView_buffheal = new ListView();
-            this.columnHeader_skill = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_trait = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_names = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_xx = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_delay = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_mp = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_needtarget = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_traitID = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_scID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_skill = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_trait = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_names = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_xx = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_delay = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_mp = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_needtarget = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_traitID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_scID = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_buff = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem2 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem = new ToolStripMenuItem();
@@ -1525,12 +1525,12 @@ namespace L2_login
             this.comboBox_trait_toggle = new ComboBox();
             this.checkBox_onoff_toggle = new CheckBox();
             this.listView_toggles = new ListView();
-            this.columnHeader_Toggle_Skill = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_Toggle_Trait = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_Toggle_LesserThen = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_Toggle_Biggerthan = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_Toggle_TraitID = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_SkillID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_Toggle_Skill = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_Toggle_Trait = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_Toggle_LesserThen = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_Toggle_Biggerthan = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_Toggle_TraitID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_SkillID = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_toggle = new ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new ToolStripMenuItem();
             this.tabPage_items = new TabPage();
@@ -1541,11 +1541,11 @@ namespace L2_login
             this.button_updateitem = new Button();
             this.button_additem = new Button();
             this.listView_item = new ListView();
-            this.columnHeader_i_item = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_i_trait = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_i_per = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_i_delay = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_i_traitid = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_i_item = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_i_trait = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_i_per = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_i_delay = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_i_traitid = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_item = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem3 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem1 = new ToolStripMenuItem();
@@ -1579,15 +1579,15 @@ namespace L2_login
             this.label_combat_on = new Label();
             this.checkBox_combat_on = new CheckBox();
             this.listView_combat = new ListView();
-            this.columnHeader_combat_trait = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_conditional = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_percent = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_shortcut = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_delay = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_mp = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_traitID = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_conditionalID = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_combat_shortcutID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_trait = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_conditional = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_percent = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_shortcut = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_delay = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_mp = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_traitID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_conditionalID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_shortcutID = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_combat = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem5 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem2 = new ToolStripMenuItem();
@@ -1609,8 +1609,8 @@ namespace L2_login
             this.button_updatepolygon = new Button();
             this.button_addpolygon = new Button();
             this.listView_border = new ListView();
-            this.columnHeader_x = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_y = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_x = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_y = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_polygon = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem4 = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem = new ToolStripMenuItem();
@@ -1625,8 +1625,8 @@ namespace L2_login
             this.textBox_donot_npcs = new TextBox();
             this.button_donot_npcs = new Button();
             this.listView_donot_npcs = new ListView();
-            this.columnHeader_donot_npc_id = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_donot_npc_name = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_donot_npc_id = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_donot_npc_name = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_donot_npcs = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem1 = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem1 = new ToolStripMenuItem();
@@ -1639,8 +1639,8 @@ namespace L2_login
             this.textBox_donot_items = new TextBox();
             this.button_donot_items = new Button();
             this.listView_donot_items = new ListView();
-            this.columnHeader_donot_item_id = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader_donot_item_name = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_donot_item_id = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_donot_item_name = (ColumnHeader)new ColumnHeader();
             this.contextMenuStrip_donot_items = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem2 = new ToolStripMenuItem();
@@ -1710,9 +1710,9 @@ namespace L2_login
             this.label23 = new Label();
             this.ps_label1 = new Label();
             this.lv_player_sort = new ListView();
-            this.player_sort_col_ID = ((ColumnHeader)(new ColumnHeader()));
-            this.player_sort_col_cname = ((ColumnHeader)(new ColumnHeader()));
-            this.player_sort_col_prio = ((ColumnHeader)(new ColumnHeader()));
+            this.player_sort_col_ID = (ColumnHeader)new ColumnHeader();
+            this.player_sort_col_cname = (ColumnHeader)new ColumnHeader();
+            this.player_sort_col_prio = (ColumnHeader)new ColumnHeader();
             this.button_save = new Button();
             this.button_cancel = new Button();
             this.button_saveoptions = new Button();
@@ -1739,19 +1739,19 @@ namespace L2_login
             this.checkBox2 = new CheckBox();
             this.textBox5 = new TextBox();
             this.textBox6 = new TextBox();
-            this.columnHeader7 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader11 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader12 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader13 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader14 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader15 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader16 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader17 = ((ColumnHeader)(new ColumnHeader()));
-            this.columnHeader18 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader7 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader11 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader12 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader13 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader14 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader15 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader16 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader17 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader18 = (ColumnHeader)new ColumnHeader();
             this.button_close = new Button();
             this.button_clearoptions = new Button();
             this.toolTip_Instant_attack = new ToolTip(this.components);
-            columnHeader_i_itemid = ((ColumnHeader)(new ColumnHeader()));
+            columnHeader_i_itemid = (ColumnHeader)new ColumnHeader();
             this.tabControl_botpages.SuspendLayout();
             this.tabPage_party.SuspendLayout();
             this.groupBox_RezSettings.SuspendLayout();
@@ -1770,17 +1770,17 @@ namespace L2_login
             this.tabPage_autofighter_advanced.SuspendLayout();
             this.groupBox_WindowTitle.SuspendLayout();
             this.groupBox_AdvancedS.SuspendLayout();
-            ((ISupportInitialize)(this.numericUpDown_pickuptimeout)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_anti_ks_delay)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_autofollow_delay)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_blacklist_tries)).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_pickuptimeout).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_anti_ks_delay).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_autofollow_delay).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_blacklist_tries).BeginInit();
             this.tabPage_RestOptions.SuspendLayout();
             this.groupBox_Rest_Party.SuspendLayout();
             this.groupBox_Rest_Solo.SuspendLayout();
-            ((ISupportInitialize)(this.numericUpDown_RestUntilMP)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_RestUntilHP)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_RestBelowMP)).BeginInit();
-            ((ISupportInitialize)(this.numericUpDown_RestBelowHP)).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_RestUntilMP).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_RestUntilHP).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_RestBelowMP).BeginInit();
+            ((ISupportInitialize)this.numericUpDown_RestBelowHP).BeginInit();
             this.tabPage_target.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1806,7 +1806,7 @@ namespace L2_login
             this.groupBox_LogOut.SuspendLayout();
             this.groupBox_SoundAlerts.SuspendLayout();
             this.tabPage_content_filter.SuspendLayout();
-            ((ISupportInitialize)(this.splitContainer1)).BeginInit();
+            ((ISupportInitialize)this.splitContainer1).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -2288,7 +2288,7 @@ namespace L2_login
             // 
             // textBox_MoveToLeash
             // 
-            this.textBox_MoveToLeash.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_MoveToLeash.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
             this.textBox_MoveToLeash.Location = new System.Drawing.Point(45, 68);
             this.textBox_MoveToLeash.Name = "textBox_MoveToLeash";
             this.textBox_MoveToLeash.Size = new Size(51, 20);
@@ -2345,7 +2345,7 @@ namespace L2_login
             // 
             // textBox_Moveto_Z
             // 
-            this.textBox_Moveto_Z.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_Z.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
             this.textBox_Moveto_Z.Location = new System.Drawing.Point(169, 43);
             this.textBox_Moveto_Z.Name = "textBox_Moveto_Z";
             this.textBox_Moveto_Z.Size = new Size(40, 18);
@@ -2354,7 +2354,7 @@ namespace L2_login
             // 
             // textBox_Moveto_X
             // 
-            this.textBox_Moveto_X.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_X.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
             this.textBox_Moveto_X.Location = new System.Drawing.Point(22, 43);
             this.textBox_Moveto_X.Name = "textBox_Moveto_X";
             this.textBox_Moveto_X.Size = new Size(51, 18);
@@ -2363,7 +2363,7 @@ namespace L2_login
             // 
             // textBox_Moveto_Y
             // 
-            this.textBox_Moveto_Y.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_Y.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
             this.textBox_Moveto_Y.Location = new System.Drawing.Point(93, 43);
             this.textBox_Moveto_Y.Name = "textBox_Moveto_Y";
             this.textBox_Moveto_Y.Size = new Size(54, 18);
@@ -2372,7 +2372,7 @@ namespace L2_login
             // 
             // Set_CurrentXYZ
             // 
-            this.Set_CurrentXYZ.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.Set_CurrentXYZ.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
             this.Set_CurrentXYZ.Location = new System.Drawing.Point(183, 17);
             this.Set_CurrentXYZ.Name = "Set_CurrentXYZ";
             this.Set_CurrentXYZ.Size = new Size(35, 22);
@@ -5900,19 +5900,19 @@ namespace L2_login
             this.groupBox_WindowTitle.PerformLayout();
             this.groupBox_AdvancedS.ResumeLayout(false);
             this.groupBox_AdvancedS.PerformLayout();
-            ((ISupportInitialize)(this.numericUpDown_pickuptimeout)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_anti_ks_delay)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_autofollow_delay)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_blacklist_tries)).EndInit();
+            ((ISupportInitialize)this.numericUpDown_pickuptimeout).EndInit();
+            ((ISupportInitialize)this.numericUpDown_anti_ks_delay).EndInit();
+            ((ISupportInitialize)this.numericUpDown_autofollow_delay).EndInit();
+            ((ISupportInitialize)this.numericUpDown_blacklist_tries).EndInit();
             this.tabPage_RestOptions.ResumeLayout(false);
             this.groupBox_Rest_Party.ResumeLayout(false);
             this.groupBox_Rest_Party.PerformLayout();
             this.groupBox_Rest_Solo.ResumeLayout(false);
             this.groupBox_Rest_Solo.PerformLayout();
-            ((ISupportInitialize)(this.numericUpDown_RestUntilMP)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_RestUntilHP)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_RestBelowMP)).EndInit();
-            ((ISupportInitialize)(this.numericUpDown_RestBelowHP)).EndInit();
+            ((ISupportInitialize)this.numericUpDown_RestUntilMP).EndInit();
+            ((ISupportInitialize)this.numericUpDown_RestUntilHP).EndInit();
+            ((ISupportInitialize)this.numericUpDown_RestBelowMP).EndInit();
+            ((ISupportInitialize)this.numericUpDown_RestBelowHP).EndInit();
             this.tabPage_target.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -5956,7 +5956,7 @@ namespace L2_login
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-            ((ISupportInitialize)(this.splitContainer1)).EndInit();
+            ((ISupportInitialize)this.splitContainer1).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabPage_player_sorting.ResumeLayout(false);
             this.tabPage_player_sorting.PerformLayout();
@@ -6138,7 +6138,7 @@ namespace L2_login
                 Globals.gamedata.botoptions.RestBelowHP = 1;
                 try
                 {
-                    Globals.gamedata.botoptions.RestBelowHealth = (Globals.gamedata.my_char.Max_HP * (float)numericUpDown_RestBelowHP.Value / 100);
+                    Globals.gamedata.botoptions.RestBelowHealth = Globals.gamedata.my_char.Max_HP * (float)numericUpDown_RestBelowHP.Value / 100;
                 }
                 catch
                 {
@@ -6154,7 +6154,7 @@ namespace L2_login
                 Globals.gamedata.botoptions.RestBelowMP = 1;
                 try
                 {
-                    Globals.gamedata.botoptions.RestBelowMana = (Globals.gamedata.my_char.Max_MP * (float)numericUpDown_RestBelowMP.Value / 100);
+                    Globals.gamedata.botoptions.RestBelowMana = Globals.gamedata.my_char.Max_MP * (float)numericUpDown_RestBelowMP.Value / 100;
                 }
                 catch
                 {
@@ -6173,7 +6173,7 @@ namespace L2_login
                 */
                 try
                 {
-                    Globals.gamedata.botoptions.RestUntilHealth = (Globals.gamedata.my_char.Max_HP * (float)numericUpDown_RestUntilHP.Value / 100);
+                    Globals.gamedata.botoptions.RestUntilHealth = Globals.gamedata.my_char.Max_HP * (float)numericUpDown_RestUntilHP.Value / 100;
                 }
                 catch
                 {
@@ -6196,7 +6196,7 @@ namespace L2_login
                 */
                 try
                 {
-                    Globals.gamedata.botoptions.RestUntilMana = (Globals.gamedata.my_char.Max_MP * (float)numericUpDown_RestUntilMP.Value / 100);
+                    Globals.gamedata.botoptions.RestUntilMana = Globals.gamedata.my_char.Max_MP * (float)numericUpDown_RestUntilMP.Value / 100;
                 }
                 catch
                 {
@@ -7893,7 +7893,7 @@ namespace L2_login
                     checkBox_activefollow_attack_Instant.Checked = false;
 
                 //v392 Pickuptimeout
-                numericUpDown_pickuptimeout.Value = (Util.GetInt32(file.ReadLine()));
+                numericUpDown_pickuptimeout.Value = Util.GetInt32(file.ReadLine());
 
                 //v392B11: Summon stuff
                 if (Util.GetInt32(file.ReadLine()) == 1)
@@ -8907,7 +8907,7 @@ namespace L2_login
 
             try
             {
-                int id = (Util.GetInt32(textBox_combat_sc_item.Text) - 1) + (Util.GetInt32(textBox_combat_sc_page.Text) - 1) * Globals.Skills_PerPage;
+                int id = Util.GetInt32(textBox_combat_sc_item.Text) - 1 + (Util.GetInt32(textBox_combat_sc_page.Text) - 1) * Globals.Skills_PerPage;
 
                 ListViewItem ObjListItem = listView_combat.Items.Add(comboBox_combat_trait.Text);
                 ObjListItem.SubItems.Add(comboBox_combat_conditional.Text);
@@ -8933,7 +8933,7 @@ namespace L2_login
 
             try
             {
-                int id = (Util.GetInt32(textBox_combat_sc_item.Text) - 1) + (Util.GetInt32(textBox_combat_sc_page.Text) - 1) * Globals.Skills_PerPage;
+                int id = Util.GetInt32(textBox_combat_sc_item.Text) - 1 + (Util.GetInt32(textBox_combat_sc_page.Text) - 1) * Globals.Skills_PerPage;
 
                 ListViewItem ObjListItem = new ListViewItem(comboBox_combat_trait.Text);
                 ObjListItem.SubItems.Add(comboBox_combat_conditional.Text);
