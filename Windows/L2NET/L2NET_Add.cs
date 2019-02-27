@@ -626,7 +626,7 @@ namespace L2_login
             label_char_hp.Text = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             try
             {
-                progressBar_char_HP.Value = System.Convert.ToInt32((Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP) * 100);
+                progressBar_char_HP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP) * 100);
                 progressBar_char_HP.BarText = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             }
             catch
@@ -636,7 +636,7 @@ namespace L2_login
             label_char_mp.Text = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             try
             {
-                progressBar_char_MP.Value = System.Convert.ToInt32((Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP) * 100);
+                progressBar_char_MP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP) * 100);
                 progressBar_char_MP.BarText = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             }
             catch
@@ -646,7 +646,7 @@ namespace L2_login
             label_char_cp.Text = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             try
             {
-                progressBar_char_CP.Value = System.Convert.ToInt32((Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP) * 100);
+                progressBar_char_CP.Value = Convert.ToInt32((Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP) * 100);
                 progressBar_char_CP.BarText = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             }
             catch
@@ -664,7 +664,7 @@ namespace L2_login
             {
                 if (Globals.gamedata.Chron >= Chronicle.CT2_6)
                 {
-                    progressBar_char_XP.Value = System.Convert.ToInt32(Globals.gamedata.my_char.XPPercent * 100); //AddInfo.Get_XP_Percent_Int();
+                    progressBar_char_XP.Value = Convert.ToInt32(Globals.gamedata.my_char.XPPercent * 100); //AddInfo.Get_XP_Percent_Int();
                     progressBar_char_XP.BarText = Globals.gamedata.my_char.XPPercent.ToString("P", System.Globalization.CultureInfo.InvariantCulture); //AddInfo.Get_XP_Percent();
                 }
                 else
@@ -705,7 +705,7 @@ namespace L2_login
             //label_info_load.Text = Globals.gamedata.my_char.Cur_Load.ToString() + "/" + Globals.gamedata.my_char.Max_Load.ToString();
             if (Globals.gamedata.my_char.Max_Load > 0)
             {
-                label_info_load.Text = (System.Convert.ToDecimal(Globals.gamedata.my_char.Cur_Load) / System.Convert.ToDecimal(Globals.gamedata.my_char.Max_Load)).ToString("P", System.Globalization.CultureInfo.InvariantCulture);
+                label_info_load.Text = (Convert.ToDecimal(Globals.gamedata.my_char.Cur_Load) / Convert.ToDecimal(Globals.gamedata.my_char.Max_Load)).ToString("P", System.Globalization.CultureInfo.InvariantCulture);
             }
             else
             {

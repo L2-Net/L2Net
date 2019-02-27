@@ -10,72 +10,72 @@ namespace L2_login
     /// <summary>
     /// Summary description for BotOptions.
     /// </summary>
-    public class BotOptionsScreen : System.Windows.Forms.Form
+    public class BotOptionsScreen : Form
     {
         private IContainer components;
-        private System.Windows.Forms.TabControl tabControl_botpages;
-        private System.Windows.Forms.TabPage tabPage_party;
-        private System.Windows.Forms.CheckBox checkBox_activefollow;
-        private System.Windows.Forms.TextBox textBox_activefollow_name;
-        private System.Windows.Forms.RadioButton radioButton_ActiveFollow_style1;
-        private System.Windows.Forms.TextBox textBox_ActiveFollow_Dist;
-        private System.Windows.Forms.RadioButton radioButton_ActiveFollow_style2;
-        private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.CheckBox checkBox_activefollow_attack;
-        private System.Windows.Forms.TabPage tabPage_buffsheals;
-        private System.Windows.Forms.TabPage tabPage_items;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox checkBox_item1;
-        private System.Windows.Forms.TextBox textBox_itemdelay1;
-        private System.Windows.Forms.TextBox textBox_itemper1;
-        private System.Windows.Forms.ComboBox comboBox_item1;
-        private System.Windows.Forms.ComboBox comboBox_trait1;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label_followname;
-        private System.Windows.Forms.Label label_followdistance;
-        private System.Windows.Forms.Label label_delaymsec;
-        private System.Windows.Forms.Label label_on4;
-        private System.Windows.Forms.ListView listView_buffheal;
-        private System.Windows.Forms.ColumnHeader columnHeader_skill;
-        private System.Windows.Forms.ColumnHeader columnHeader_trait;
-        private System.Windows.Forms.ColumnHeader columnHeader_names;
-        private System.Windows.Forms.ColumnHeader columnHeader_xx;
-        private System.Windows.Forms.ColumnHeader columnHeader_delay;
-        private System.Windows.Forms.ColumnHeader columnHeader_traitID;
-        private System.Windows.Forms.ColumnHeader columnHeader_scID;
-        private System.Windows.Forms.ColumnHeader columnHeader_mp;
-        private System.Windows.Forms.Button button_add;
-        private System.Windows.Forms.Button button_update;
-        private System.Windows.Forms.TextBox textBox_buffheal_names;
-        private System.Windows.Forms.ComboBox comboBox_buffheal_trait;
-        private System.Windows.Forms.TextBox textBox_buffheal_min_per;
-        private System.Windows.Forms.TextBox textBox_buffheal_delay;
-        private System.Windows.Forms.TextBox textBox_buffheal_mp;
-        private System.Windows.Forms.CheckBox checkBox_buffheal_on;
-        private System.Windows.Forms.Label label_buffheal_mp;
-        private System.Windows.Forms.Label label_buffheal_names;
-        private System.Windows.Forms.Label label_buffheal_on;
-        private System.Windows.Forms.Label label_buffheal_trait;
-        private System.Windows.Forms.Label label_buffheal_delay;
-        private System.Windows.Forms.Label label_buffheal_minper;
-        private System.Windows.Forms.Label label_buffheal_skill;
-        private System.Windows.Forms.Button button_saveoptions;
-        private System.Windows.Forms.Button button_loadoptions;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Label label_target;
-        private System.Windows.Forms.CheckBox checkBox_target;
-        private System.Windows.Forms.ColumnHeader columnHeader_needtarget;
-        private System.Windows.Forms.Button button_updateitem;
-        private System.Windows.Forms.Button button_additem;
-        private System.Windows.Forms.ListView listView_item;
-        private System.Windows.Forms.ColumnHeader columnHeader_i_item;
-        private System.Windows.Forms.ColumnHeader columnHeader_i_trait;
-        private System.Windows.Forms.ColumnHeader columnHeader_i_per;
-        private System.Windows.Forms.ColumnHeader columnHeader_i_delay;
-        private System.Windows.Forms.ColumnHeader columnHeader_i_traitid;
+        private TabControl tabControl_botpages;
+        private TabPage tabPage_party;
+        private CheckBox checkBox_activefollow;
+        private TextBox textBox_activefollow_name;
+        private RadioButton radioButton_ActiveFollow_style1;
+        private TextBox textBox_ActiveFollow_Dist;
+        private RadioButton radioButton_ActiveFollow_style2;
+        private Button button_save;
+        private Button button_cancel;
+        private CheckBox checkBox_activefollow_attack;
+        private TabPage tabPage_buffsheals;
+        private TabPage tabPage_items;
+        private Label label20;
+        private Label label22;
+        private CheckBox checkBox_item1;
+        private TextBox textBox_itemdelay1;
+        private TextBox textBox_itemper1;
+        private ComboBox comboBox_item1;
+        private ComboBox comboBox_trait1;
+        private Label label21;
+        private Label label_followname;
+        private Label label_followdistance;
+        private Label label_delaymsec;
+        private Label label_on4;
+        private ListView listView_buffheal;
+        private ColumnHeader columnHeader_skill;
+        private ColumnHeader columnHeader_trait;
+        private ColumnHeader columnHeader_names;
+        private ColumnHeader columnHeader_xx;
+        private ColumnHeader columnHeader_delay;
+        private ColumnHeader columnHeader_traitID;
+        private ColumnHeader columnHeader_scID;
+        private ColumnHeader columnHeader_mp;
+        private Button button_add;
+        private Button button_update;
+        private TextBox textBox_buffheal_names;
+        private ComboBox comboBox_buffheal_trait;
+        private TextBox textBox_buffheal_min_per;
+        private TextBox textBox_buffheal_delay;
+        private TextBox textBox_buffheal_mp;
+        private CheckBox checkBox_buffheal_on;
+        private Label label_buffheal_mp;
+        private Label label_buffheal_names;
+        private Label label_buffheal_on;
+        private Label label_buffheal_trait;
+        private Label label_buffheal_delay;
+        private Label label_buffheal_minper;
+        private Label label_buffheal_skill;
+        private Button button_saveoptions;
+        private Button button_loadoptions;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
+        private Label label_target;
+        private CheckBox checkBox_target;
+        private ColumnHeader columnHeader_needtarget;
+        private Button button_updateitem;
+        private Button button_additem;
+        private ListView listView_item;
+        private ColumnHeader columnHeader_i_item;
+        private ColumnHeader columnHeader_i_trait;
+        private ColumnHeader columnHeader_i_per;
+        private ColumnHeader columnHeader_i_delay;
+        private ColumnHeader columnHeader_i_traitid;
         private TabPage tabPage_donot;
         private Panel panel3;
         private Panel panel2;
@@ -1335,423 +1335,423 @@ namespace L2_login
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ColumnHeader columnHeader_i_itemid;
-            this.tabControl_botpages = new System.Windows.Forms.TabControl();
-            this.tabPage_party = new System.Windows.Forms.TabPage();
-            this.groupBox_RezSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_accept_rez_Party = new System.Windows.Forms.CheckBox();
-            this.checkBox_accept_rez_alliance = new System.Windows.Forms.CheckBox();
-            this.checkBox_accept_rez_clan = new System.Windows.Forms.CheckBox();
-            this.checkBox_accept_rez = new System.Windows.Forms.CheckBox();
-            this.textBox_accept_rez = new System.Windows.Forms.TextBox();
-            this.groupBox_PartySettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_accept_party_alliance = new System.Windows.Forms.CheckBox();
-            this.checkBox_accept_party_clan = new System.Windows.Forms.CheckBox();
-            this.checkBox_accept_party = new System.Windows.Forms.CheckBox();
-            this.textBox_accept_party = new System.Windows.Forms.TextBox();
-            this.checkBox_drop_leader = new System.Windows.Forms.CheckBox();
-            this.checkBox_auto_invite = new System.Windows.Forms.CheckBox();
-            this.textBox_oop = new System.Windows.Forms.TextBox();
-            this.comboBox_LootType = new System.Windows.Forms.ComboBox();
-            this.checkBox_oop = new System.Windows.Forms.CheckBox();
-            this.textBox_auto_invite = new System.Windows.Forms.TextBox();
-            this.groupBox_BuffSettings1 = new System.Windows.Forms.GroupBox();
-            this.textBox_buffrange = new System.Windows.Forms.TextBox();
-            this.label_buffrange = new System.Windows.Forms.Label();
-            this.checkBox_buff_control = new System.Windows.Forms.CheckBox();
-            this.checkBox_buff_shift = new System.Windows.Forms.CheckBox();
-            this.groupBox_FollowSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_activefollow_attack_Instant = new System.Windows.Forms.CheckBox();
-            this.checkBox_activefollow = new System.Windows.Forms.CheckBox();
-            this.textBox_activefollow_name = new System.Windows.Forms.TextBox();
-            this.label_followname = new System.Windows.Forms.Label();
-            this.radioButton_ActiveFollow_style1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_ActiveFollow_style2 = new System.Windows.Forms.RadioButton();
-            this.textBox_ActiveFollow_Dist = new System.Windows.Forms.TextBox();
-            this.label_followdistance = new System.Windows.Forms.Label();
-            this.checkBox_activefollow_attack = new System.Windows.Forms.CheckBox();
-            this.checkBox_activefollow_target = new System.Windows.Forms.CheckBox();
-            this.tabPage_autofighter = new System.Windows.Forms.TabPage();
-            this.groupBox_PickupSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_PickupAfterAttack = new System.Windows.Forms.CheckBox();
-            this.checkBox_pickup = new System.Windows.Forms.CheckBox();
-            this.textBox_pickup_range = new System.Windows.Forms.TextBox();
-            this.label_pickup_range = new System.Windows.Forms.Label();
-            this.checkBox_OnlyPickMine = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox_MoveToLeash = new System.Windows.Forms.TextBox();
-            this.checkBox_MoveToLoc = new System.Windows.Forms.CheckBox();
-            this.checkBox_OutOfCombat = new System.Windows.Forms.CheckBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.textBox_Moveto_Z = new System.Windows.Forms.TextBox();
-            this.textBox_Moveto_X = new System.Windows.Forms.TextBox();
-            this.textBox_Moveto_Y = new System.Windows.Forms.TextBox();
-            this.Set_CurrentXYZ = new System.Windows.Forms.Button();
-            this.checkBox_active_move_first = new System.Windows.Forms.CheckBox();
-            this.groupBox_Pet = new System.Windows.Forms.GroupBox();
-            this.checkBox_summon_instantattack = new System.Windows.Forms.CheckBox();
-            this.checkBox_pet_soloattack = new System.Windows.Forms.CheckBox();
-            this.checkBox_Summon_autoassist = new System.Windows.Forms.CheckBox();
-            this.checkBox_pet_autoassist = new System.Windows.Forms.CheckBox();
-            this.groupBox_DeadSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_DeadToggleBotting = new System.Windows.Forms.CheckBox();
-            this.checkBox_DeadReturn = new System.Windows.Forms.CheckBox();
-            this.textBox_DeadReturnDelay = new System.Windows.Forms.TextBox();
-            this.checkBox_DeadLogOut = new System.Windows.Forms.CheckBox();
-            this.textBox_DeadLogOutDelay = new System.Windows.Forms.TextBox();
-            this.comboBox_DeadReturn = new System.Windows.Forms.ComboBox();
-            this.groupBox_StuckSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_StuckCheck = new System.Windows.Forms.CheckBox();
-            this.checkBox_AutoBlacklist = new System.Windows.Forms.CheckBox();
-            this.groupBox_AttackSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_cancel_target = new System.Windows.Forms.CheckBox();
-            this.checkBox_active_move_first_normal = new System.Windows.Forms.CheckBox();
-            this.label_active_move_range = new System.Windows.Forms.Label();
-            this.textBox_active_move_range = new System.Windows.Forms.TextBox();
-            this.checkBox_active_attack = new System.Windows.Forms.CheckBox();
-            this.groupBox_SpoilSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_use_plunder = new System.Windows.Forms.CheckBox();
-            this.label_SpoilMP = new System.Windows.Forms.Label();
-            this.textBox_spoil_mp = new System.Windows.Forms.TextBox();
-            this.checkBox_UntilSuccess = new System.Windows.Forms.CheckBox();
-            this.checkBox_spoilcrush = new System.Windows.Forms.CheckBox();
-            this.checkBox_autospoil = new System.Windows.Forms.CheckBox();
-            this.checkBox_autosweep = new System.Windows.Forms.CheckBox();
-            this.groupBox_TargetSettings = new System.Windows.Forms.GroupBox();
-            this.checkBox_movebeforetargeting = new System.Windows.Forms.CheckBox();
-            this.checkBox_active_target = new System.Windows.Forms.CheckBox();
-            this.tabPage_autofighter_advanced = new System.Windows.Forms.TabPage();
-            this.groupBox_WindowTitle = new System.Windows.Forms.GroupBox();
-            this.label_Custom_WindowTitle = new System.Windows.Forms.Label();
-            this.textBox_Custom_WindowTitle = new System.Windows.Forms.TextBox();
-            this.button_Custom_WindowTitle_Reset = new System.Windows.Forms.Button();
-            this.button_Custom_WindowTitle_Set = new System.Windows.Forms.Button();
-            this.groupBox_AdvancedS = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.numericUpDown_pickuptimeout = new System.Windows.Forms.NumericUpDown();
-            this.label_anti_ks_delay = new System.Windows.Forms.Label();
-            this.numericUpDown_anti_ks_delay = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_autofollow_delay = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_blacklist_tries = new System.Windows.Forms.NumericUpDown();
-            this.label_autofollow_delay = new System.Windows.Forms.Label();
-            this.label_blacklist_tries = new System.Windows.Forms.Label();
-            this.tabPage_RestOptions = new System.Windows.Forms.TabPage();
-            this.groupBox_Rest_Party = new System.Windows.Forms.GroupBox();
-            this.label_followrestname = new System.Windows.Forms.Label();
-            this.textBox_FollowRestName = new System.Windows.Forms.TextBox();
-            this.checkBox_FollowRest = new System.Windows.Forms.CheckBox();
-            this.groupBox_Rest_Solo = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDown_RestUntilMP = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown_RestUntilHP = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_RestUntilMP = new System.Windows.Forms.CheckBox();
-            this.checkBox_RestUntilHP = new System.Windows.Forms.CheckBox();
-            this.label_percent_MP = new System.Windows.Forms.Label();
-            this.numericUpDown_RestBelowMP = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_RestBelowMP = new System.Windows.Forms.CheckBox();
-            this.label_percent_HP = new System.Windows.Forms.Label();
-            this.numericUpDown_RestBelowHP = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_RestBelowHP = new System.Windows.Forms.CheckBox();
-            this.tabPage_target = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.radioButton_combat0 = new System.Windows.Forms.RadioButton();
-            this.radioButton_combat1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_combat2 = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButton_inbox0 = new System.Windows.Forms.RadioButton();
-            this.radioButton_inbox1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_inbox2 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton_alive0 = new System.Windows.Forms.RadioButton();
-            this.radioButton_alive1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_alive2 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton_attackable2 = new System.Windows.Forms.RadioButton();
-            this.radioButton_attackable0 = new System.Windows.Forms.RadioButton();
-            this.radioButton_attackable1 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton_type0 = new System.Windows.Forms.RadioButton();
-            this.radioButton_type1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_type2 = new System.Windows.Forms.RadioButton();
-            this.checkBox_portect_priority = new System.Windows.Forms.CheckBox();
-            this.tabPage_buffsheals = new System.Windows.Forms.TabPage();
-            this.comboBox_buffheal_skill = new System.Windows.Forms.ComboBox();
-            this.label_target = new System.Windows.Forms.Label();
-            this.checkBox_target = new System.Windows.Forms.CheckBox();
-            this.button_update = new System.Windows.Forms.Button();
-            this.button_add = new System.Windows.Forms.Button();
-            this.label_buffheal_mp = new System.Windows.Forms.Label();
-            this.textBox_buffheal_mp = new System.Windows.Forms.TextBox();
-            this.label_buffheal_names = new System.Windows.Forms.Label();
-            this.label_buffheal_on = new System.Windows.Forms.Label();
-            this.label_buffheal_trait = new System.Windows.Forms.Label();
-            this.label_buffheal_delay = new System.Windows.Forms.Label();
-            this.label_buffheal_minper = new System.Windows.Forms.Label();
-            this.label_buffheal_skill = new System.Windows.Forms.Label();
-            this.textBox_buffheal_names = new System.Windows.Forms.TextBox();
-            this.comboBox_buffheal_trait = new System.Windows.Forms.ComboBox();
-            this.checkBox_buffheal_on = new System.Windows.Forms.CheckBox();
-            this.textBox_buffheal_delay = new System.Windows.Forms.TextBox();
-            this.textBox_buffheal_min_per = new System.Windows.Forms.TextBox();
-            this.listView_buffheal = new System.Windows.Forms.ListView();
-            this.columnHeader_skill = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_trait = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_names = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_xx = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_delay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_mp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_needtarget = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_traitID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_scID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_buff = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_toggles = new System.Windows.Forms.TabPage();
-            this.label32 = new System.Windows.Forms.Label();
-            this.textBox_lesserthen_toggle = new System.Windows.Forms.TextBox();
-            this.comboBox_skills_toggle = new System.Windows.Forms.ComboBox();
-            this.button_update_toggle = new System.Windows.Forms.Button();
-            this.button_add_toggle = new System.Windows.Forms.Button();
-            this.textBox_greaterthen_toggle = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.comboBox_trait_toggle = new System.Windows.Forms.ComboBox();
-            this.checkBox_onoff_toggle = new System.Windows.Forms.CheckBox();
-            this.listView_toggles = new System.Windows.Forms.ListView();
-            this.columnHeader_Toggle_Skill = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Toggle_Trait = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Toggle_LesserThen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Toggle_Biggerthan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Toggle_TraitID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_SkillID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_toggle = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_items = new System.Windows.Forms.TabPage();
-            this.button_autoss_deactivate = new System.Windows.Forms.Button();
-            this.button_autoss_activate = new System.Windows.Forms.Button();
-            this.combobox_autoss = new System.Windows.Forms.ComboBox();
-            this.label_autoss = new System.Windows.Forms.Label();
-            this.button_updateitem = new System.Windows.Forms.Button();
-            this.button_additem = new System.Windows.Forms.Button();
-            this.listView_item = new System.Windows.Forms.ListView();
-            this.columnHeader_i_item = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_i_trait = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_i_per = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_i_delay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_i_traitid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_item = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveUpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label21 = new System.Windows.Forms.Label();
-            this.comboBox_trait1 = new System.Windows.Forms.ComboBox();
-            this.label_on4 = new System.Windows.Forms.Label();
-            this.label_delaymsec = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.checkBox_item1 = new System.Windows.Forms.CheckBox();
-            this.textBox_itemdelay1 = new System.Windows.Forms.TextBox();
-            this.textBox_itemper1 = new System.Windows.Forms.TextBox();
-            this.comboBox_item1 = new System.Windows.Forms.ComboBox();
-            this.tabPage_combat = new System.Windows.Forms.TabPage();
-            this.button_combat_update = new System.Windows.Forms.Button();
-            this.button_combat_add = new System.Windows.Forms.Button();
-            this.label_combat_conditional = new System.Windows.Forms.Label();
-            this.comboBox_combat_conditional = new System.Windows.Forms.ComboBox();
-            this.label_combat_page = new System.Windows.Forms.Label();
-            this.textBox_combat_sc_page = new System.Windows.Forms.TextBox();
-            this.textBox_combat_sc_item = new System.Windows.Forms.TextBox();
-            this.label_combat_mp = new System.Windows.Forms.Label();
-            this.textBox_combat_mp = new System.Windows.Forms.TextBox();
-            this.label_combat_trait = new System.Windows.Forms.Label();
-            this.label_combat_delay = new System.Windows.Forms.Label();
-            this.label_combat_percent = new System.Windows.Forms.Label();
-            this.label_combat_shortcut = new System.Windows.Forms.Label();
-            this.comboBox_combat_trait = new System.Windows.Forms.ComboBox();
-            this.textBox_combat_delay = new System.Windows.Forms.TextBox();
-            this.textBox_combat_min_per = new System.Windows.Forms.TextBox();
-            this.label_combat_on = new System.Windows.Forms.Label();
-            this.checkBox_combat_on = new System.Windows.Forms.CheckBox();
-            this.listView_combat = new System.Windows.Forms.ListView();
-            this.columnHeader_combat_trait = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_conditional = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_percent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_shortcut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_delay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_mp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_traitID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_conditionalID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_combat_shortcutID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_combat = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveUpToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_polygon = new System.Windows.Forms.TabPage();
-            this.button_box_generate = new System.Windows.Forms.Button();
-            this.label_box_offset = new System.Windows.Forms.Label();
-            this.textBox_box_offset = new System.Windows.Forms.TextBox();
-            this.label_box_sides = new System.Windows.Forms.Label();
-            this.textBox_box_sides = new System.Windows.Forms.TextBox();
-            this.label_box_radius = new System.Windows.Forms.Label();
-            this.textBox_box_radius = new System.Windows.Forms.TextBox();
-            this.label_zrange = new System.Windows.Forms.Label();
-            this.textBox_zrange = new System.Windows.Forms.TextBox();
-            this.button_addcur_polygon = new System.Windows.Forms.Button();
-            this.label_polgon_y = new System.Windows.Forms.Label();
-            this.textBox_polygon_y = new System.Windows.Forms.TextBox();
-            this.textBox_polygon_x = new System.Windows.Forms.TextBox();
-            this.label_polygon_x = new System.Windows.Forms.Label();
-            this.button_updatepolygon = new System.Windows.Forms.Button();
-            this.button_addpolygon = new System.Windows.Forms.Button();
-            this.listView_border = new System.Windows.Forms.ListView();
-            this.columnHeader_x = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_y = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_polygon = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_donot = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox_AttackOnly = new System.Windows.Forms.CheckBox();
-            this.checkBox_Ign_Summons = new System.Windows.Forms.CheckBox();
-            this.checkBox_Ign_TreasureChests = new System.Windows.Forms.CheckBox();
-            this.checkBox_Ign_Raidbosses = new System.Windows.Forms.CheckBox();
-            this.label_donot_npcID = new System.Windows.Forms.Label();
-            this.label_donot_npcs = new System.Windows.Forms.Label();
-            this.textBox_donot_npcs = new System.Windows.Forms.TextBox();
-            this.button_donot_npcs = new System.Windows.Forms.Button();
-            this.listView_donot_npcs = new System.Windows.Forms.ListView();
-            this.columnHeader_donot_npc_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_donot_npc_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_donot_npcs = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox_PickOnly = new System.Windows.Forms.CheckBox();
-            this.checkBox_ignore_no_mesh = new System.Windows.Forms.CheckBox();
-            this.checkBox_ignoreitems = new System.Windows.Forms.CheckBox();
-            this.label_donot_itemID = new System.Windows.Forms.Label();
-            this.label_donot_items = new System.Windows.Forms.Label();
-            this.textBox_donot_items = new System.Windows.Forms.TextBox();
-            this.button_donot_items = new System.Windows.Forms.Button();
-            this.listView_donot_items = new System.Windows.Forms.ListView();
-            this.columnHeader_donot_item_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_donot_item_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_donot_items = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_soundalerts = new System.Windows.Forms.TabPage();
-            this.groupBox_LogOut = new System.Windows.Forms.GroupBox();
-            this.checkBox_1waywar_logout = new System.Windows.Forms.CheckBox();
-            this.textBox_player_logout = new System.Windows.Forms.TextBox();
-            this.checkBox_2waywar_logout = new System.Windows.Forms.CheckBox();
-            this.textBox_clan_logout = new System.Windows.Forms.TextBox();
-            this.checkBox_player_logout = new System.Windows.Forms.CheckBox();
-            this.textBox_cp_logout = new System.Windows.Forms.TextBox();
-            this.checkBox_clan_logout = new System.Windows.Forms.CheckBox();
-            this.textBox_hp_logout = new System.Windows.Forms.TextBox();
-            this.textBox_mp_logout = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.checkBox_hp_logout = new System.Windows.Forms.CheckBox();
-            this.checkBox_cp_logout = new System.Windows.Forms.CheckBox();
-            this.checkBox_mp_logout = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.checkBox_n1waywar_logout = new System.Windows.Forms.CheckBox();
-            this.groupBox_SoundAlerts = new System.Windows.Forms.GroupBox();
-            this.checkBox_2waywar = new System.Windows.Forms.CheckBox();
-            this.checkBox_player_ignore = new System.Windows.Forms.CheckBox();
-            this.checkBox_friendchat = new System.Windows.Forms.CheckBox();
-            this.checkBox_clan_ignore = new System.Windows.Forms.CheckBox();
-            this.checkBox_1waywar = new System.Windows.Forms.CheckBox();
-            this.textBox_player = new System.Windows.Forms.TextBox();
-            this.checkBox_privatemessage = new System.Windows.Forms.CheckBox();
-            this.textBox_clan = new System.Windows.Forms.TextBox();
-            this.checkBox_player = new System.Windows.Forms.CheckBox();
-            this.checkBox_n1waywar = new System.Windows.Forms.CheckBox();
-            this.checkBox_clan = new System.Windows.Forms.CheckBox();
-            this.textBox_cp = new System.Windows.Forms.TextBox();
-            this.checkBox_whitechat = new System.Windows.Forms.CheckBox();
-            this.textBox_mp = new System.Windows.Forms.TextBox();
-            this.textBox_hp = new System.Windows.Forms.TextBox();
-            this.checkBox_hp = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.checkBox_mp = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.checkBox_cp = new System.Windows.Forms.CheckBox();
-            this.tabPage_content_filter = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cf_ExBrExtraUserInfo = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cf_targetselected = new System.Windows.Forms.CheckBox();
-            this.cf_targetunselected = new System.Windows.Forms.CheckBox();
-            this.cf_filtermagicskill = new System.Windows.Forms.CheckBox();
-            this.cf_dwarfmode = new System.Windows.Forms.CheckBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cf_striptitle = new System.Windows.Forms.CheckBox();
-            this.cf_one_gender = new System.Windows.Forms.CheckBox();
-            this.cf_stripenchant = new System.Windows.Forms.CheckBox();
-            this.cf_norecs = new System.Windows.Forms.CheckBox();
-            this.cf_stripaugment = new System.Windows.Forms.CheckBox();
-            this.cf_simple_appearance = new System.Windows.Forms.CheckBox();
-            this.cf_zerononvisible = new System.Windows.Forms.CheckBox();
-            this.tabPage_player_sorting = new System.Windows.Forms.TabPage();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.ps_label1 = new System.Windows.Forms.Label();
-            this.lv_player_sort = new System.Windows.Forms.ListView();
-            this.player_sort_col_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.player_sort_col_cname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.player_sort_col_prio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button_save = new System.Windows.Forms.Button();
-            this.button_cancel = new System.Windows.Forms.Button();
-            this.button_saveoptions = new System.Windows.Forms.Button();
-            this.button_loadoptions = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button_close = new System.Windows.Forms.Button();
-            this.button_clearoptions = new System.Windows.Forms.Button();
-            this.toolTip_Instant_attack = new System.Windows.Forms.ToolTip(this.components);
-            columnHeader_i_itemid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.components = new Container();
+            ColumnHeader columnHeader_i_itemid;
+            this.tabControl_botpages = new TabControl();
+            this.tabPage_party = new TabPage();
+            this.groupBox_RezSettings = new GroupBox();
+            this.checkBox_accept_rez_Party = new CheckBox();
+            this.checkBox_accept_rez_alliance = new CheckBox();
+            this.checkBox_accept_rez_clan = new CheckBox();
+            this.checkBox_accept_rez = new CheckBox();
+            this.textBox_accept_rez = new TextBox();
+            this.groupBox_PartySettings = new GroupBox();
+            this.checkBox_accept_party_alliance = new CheckBox();
+            this.checkBox_accept_party_clan = new CheckBox();
+            this.checkBox_accept_party = new CheckBox();
+            this.textBox_accept_party = new TextBox();
+            this.checkBox_drop_leader = new CheckBox();
+            this.checkBox_auto_invite = new CheckBox();
+            this.textBox_oop = new TextBox();
+            this.comboBox_LootType = new ComboBox();
+            this.checkBox_oop = new CheckBox();
+            this.textBox_auto_invite = new TextBox();
+            this.groupBox_BuffSettings1 = new GroupBox();
+            this.textBox_buffrange = new TextBox();
+            this.label_buffrange = new Label();
+            this.checkBox_buff_control = new CheckBox();
+            this.checkBox_buff_shift = new CheckBox();
+            this.groupBox_FollowSettings = new GroupBox();
+            this.checkBox_activefollow_attack_Instant = new CheckBox();
+            this.checkBox_activefollow = new CheckBox();
+            this.textBox_activefollow_name = new TextBox();
+            this.label_followname = new Label();
+            this.radioButton_ActiveFollow_style1 = new RadioButton();
+            this.radioButton_ActiveFollow_style2 = new RadioButton();
+            this.textBox_ActiveFollow_Dist = new TextBox();
+            this.label_followdistance = new Label();
+            this.checkBox_activefollow_attack = new CheckBox();
+            this.checkBox_activefollow_target = new CheckBox();
+            this.tabPage_autofighter = new TabPage();
+            this.groupBox_PickupSettings = new GroupBox();
+            this.checkBox_PickupAfterAttack = new CheckBox();
+            this.checkBox_pickup = new CheckBox();
+            this.textBox_pickup_range = new TextBox();
+            this.label_pickup_range = new Label();
+            this.checkBox_OnlyPickMine = new CheckBox();
+            this.groupBox6 = new GroupBox();
+            this.label31 = new Label();
+            this.textBox_MoveToLeash = new TextBox();
+            this.checkBox_MoveToLoc = new CheckBox();
+            this.checkBox_OutOfCombat = new CheckBox();
+            this.label30 = new Label();
+            this.label29 = new Label();
+            this.label28 = new Label();
+            this.textBox_Moveto_Z = new TextBox();
+            this.textBox_Moveto_X = new TextBox();
+            this.textBox_Moveto_Y = new TextBox();
+            this.Set_CurrentXYZ = new Button();
+            this.checkBox_active_move_first = new CheckBox();
+            this.groupBox_Pet = new GroupBox();
+            this.checkBox_summon_instantattack = new CheckBox();
+            this.checkBox_pet_soloattack = new CheckBox();
+            this.checkBox_Summon_autoassist = new CheckBox();
+            this.checkBox_pet_autoassist = new CheckBox();
+            this.groupBox_DeadSettings = new GroupBox();
+            this.checkBox_DeadToggleBotting = new CheckBox();
+            this.checkBox_DeadReturn = new CheckBox();
+            this.textBox_DeadReturnDelay = new TextBox();
+            this.checkBox_DeadLogOut = new CheckBox();
+            this.textBox_DeadLogOutDelay = new TextBox();
+            this.comboBox_DeadReturn = new ComboBox();
+            this.groupBox_StuckSettings = new GroupBox();
+            this.checkBox_StuckCheck = new CheckBox();
+            this.checkBox_AutoBlacklist = new CheckBox();
+            this.groupBox_AttackSettings = new GroupBox();
+            this.checkBox_cancel_target = new CheckBox();
+            this.checkBox_active_move_first_normal = new CheckBox();
+            this.label_active_move_range = new Label();
+            this.textBox_active_move_range = new TextBox();
+            this.checkBox_active_attack = new CheckBox();
+            this.groupBox_SpoilSettings = new GroupBox();
+            this.checkBox_use_plunder = new CheckBox();
+            this.label_SpoilMP = new Label();
+            this.textBox_spoil_mp = new TextBox();
+            this.checkBox_UntilSuccess = new CheckBox();
+            this.checkBox_spoilcrush = new CheckBox();
+            this.checkBox_autospoil = new CheckBox();
+            this.checkBox_autosweep = new CheckBox();
+            this.groupBox_TargetSettings = new GroupBox();
+            this.checkBox_movebeforetargeting = new CheckBox();
+            this.checkBox_active_target = new CheckBox();
+            this.tabPage_autofighter_advanced = new TabPage();
+            this.groupBox_WindowTitle = new GroupBox();
+            this.label_Custom_WindowTitle = new Label();
+            this.textBox_Custom_WindowTitle = new TextBox();
+            this.button_Custom_WindowTitle_Reset = new Button();
+            this.button_Custom_WindowTitle_Set = new Button();
+            this.groupBox_AdvancedS = new GroupBox();
+            this.label27 = new Label();
+            this.numericUpDown_pickuptimeout = new NumericUpDown();
+            this.label_anti_ks_delay = new Label();
+            this.numericUpDown_anti_ks_delay = new NumericUpDown();
+            this.numericUpDown_autofollow_delay = new NumericUpDown();
+            this.numericUpDown_blacklist_tries = new NumericUpDown();
+            this.label_autofollow_delay = new Label();
+            this.label_blacklist_tries = new Label();
+            this.tabPage_RestOptions = new TabPage();
+            this.groupBox_Rest_Party = new GroupBox();
+            this.label_followrestname = new Label();
+            this.textBox_FollowRestName = new TextBox();
+            this.checkBox_FollowRest = new CheckBox();
+            this.groupBox_Rest_Solo = new GroupBox();
+            this.label13 = new Label();
+            this.numericUpDown_RestUntilMP = new NumericUpDown();
+            this.label17 = new Label();
+            this.numericUpDown_RestUntilHP = new NumericUpDown();
+            this.checkBox_RestUntilMP = new CheckBox();
+            this.checkBox_RestUntilHP = new CheckBox();
+            this.label_percent_MP = new Label();
+            this.numericUpDown_RestBelowMP = new NumericUpDown();
+            this.checkBox_RestBelowMP = new CheckBox();
+            this.label_percent_HP = new Label();
+            this.numericUpDown_RestBelowHP = new NumericUpDown();
+            this.checkBox_RestBelowHP = new CheckBox();
+            this.tabPage_target = new TabPage();
+            this.groupBox5 = new GroupBox();
+            this.radioButton_combat0 = new RadioButton();
+            this.radioButton_combat1 = new RadioButton();
+            this.radioButton_combat2 = new RadioButton();
+            this.groupBox4 = new GroupBox();
+            this.radioButton_inbox0 = new RadioButton();
+            this.radioButton_inbox1 = new RadioButton();
+            this.radioButton_inbox2 = new RadioButton();
+            this.groupBox3 = new GroupBox();
+            this.radioButton_alive0 = new RadioButton();
+            this.radioButton_alive1 = new RadioButton();
+            this.radioButton_alive2 = new RadioButton();
+            this.groupBox2 = new GroupBox();
+            this.radioButton_attackable2 = new RadioButton();
+            this.radioButton_attackable0 = new RadioButton();
+            this.radioButton_attackable1 = new RadioButton();
+            this.groupBox1 = new GroupBox();
+            this.radioButton_type0 = new RadioButton();
+            this.radioButton_type1 = new RadioButton();
+            this.radioButton_type2 = new RadioButton();
+            this.checkBox_portect_priority = new CheckBox();
+            this.tabPage_buffsheals = new TabPage();
+            this.comboBox_buffheal_skill = new ComboBox();
+            this.label_target = new Label();
+            this.checkBox_target = new CheckBox();
+            this.button_update = new Button();
+            this.button_add = new Button();
+            this.label_buffheal_mp = new Label();
+            this.textBox_buffheal_mp = new TextBox();
+            this.label_buffheal_names = new Label();
+            this.label_buffheal_on = new Label();
+            this.label_buffheal_trait = new Label();
+            this.label_buffheal_delay = new Label();
+            this.label_buffheal_minper = new Label();
+            this.label_buffheal_skill = new Label();
+            this.textBox_buffheal_names = new TextBox();
+            this.comboBox_buffheal_trait = new ComboBox();
+            this.checkBox_buffheal_on = new CheckBox();
+            this.textBox_buffheal_delay = new TextBox();
+            this.textBox_buffheal_min_per = new TextBox();
+            this.listView_buffheal = new ListView();
+            this.columnHeader_skill = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_trait = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_names = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_xx = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_delay = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_mp = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_needtarget = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_traitID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_scID = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_buff = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem2 = new ToolStripMenuItem();
+            this.moveUpToolStripMenuItem = new ToolStripMenuItem();
+            this.tabPage_toggles = new TabPage();
+            this.label32 = new Label();
+            this.textBox_lesserthen_toggle = new TextBox();
+            this.comboBox_skills_toggle = new ComboBox();
+            this.button_update_toggle = new Button();
+            this.button_add_toggle = new Button();
+            this.textBox_greaterthen_toggle = new TextBox();
+            this.label35 = new Label();
+            this.label36 = new Label();
+            this.label38 = new Label();
+            this.label39 = new Label();
+            this.comboBox_trait_toggle = new ComboBox();
+            this.checkBox_onoff_toggle = new CheckBox();
+            this.listView_toggles = new ListView();
+            this.columnHeader_Toggle_Skill = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_Toggle_Trait = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_Toggle_LesserThen = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_Toggle_Biggerthan = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_Toggle_TraitID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_SkillID = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_toggle = new ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new ToolStripMenuItem();
+            this.tabPage_items = new TabPage();
+            this.button_autoss_deactivate = new Button();
+            this.button_autoss_activate = new Button();
+            this.combobox_autoss = new ComboBox();
+            this.label_autoss = new Label();
+            this.button_updateitem = new Button();
+            this.button_additem = new Button();
+            this.listView_item = new ListView();
+            this.columnHeader_i_item = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_i_trait = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_i_per = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_i_delay = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_i_traitid = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_item = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem3 = new ToolStripMenuItem();
+            this.moveUpToolStripMenuItem1 = new ToolStripMenuItem();
+            this.label21 = new Label();
+            this.comboBox_trait1 = new ComboBox();
+            this.label_on4 = new Label();
+            this.label_delaymsec = new Label();
+            this.label20 = new Label();
+            this.label22 = new Label();
+            this.checkBox_item1 = new CheckBox();
+            this.textBox_itemdelay1 = new TextBox();
+            this.textBox_itemper1 = new TextBox();
+            this.comboBox_item1 = new ComboBox();
+            this.tabPage_combat = new TabPage();
+            this.button_combat_update = new Button();
+            this.button_combat_add = new Button();
+            this.label_combat_conditional = new Label();
+            this.comboBox_combat_conditional = new ComboBox();
+            this.label_combat_page = new Label();
+            this.textBox_combat_sc_page = new TextBox();
+            this.textBox_combat_sc_item = new TextBox();
+            this.label_combat_mp = new Label();
+            this.textBox_combat_mp = new TextBox();
+            this.label_combat_trait = new Label();
+            this.label_combat_delay = new Label();
+            this.label_combat_percent = new Label();
+            this.label_combat_shortcut = new Label();
+            this.comboBox_combat_trait = new ComboBox();
+            this.textBox_combat_delay = new TextBox();
+            this.textBox_combat_min_per = new TextBox();
+            this.label_combat_on = new Label();
+            this.checkBox_combat_on = new CheckBox();
+            this.listView_combat = new ListView();
+            this.columnHeader_combat_trait = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_conditional = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_percent = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_shortcut = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_delay = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_mp = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_traitID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_conditionalID = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_combat_shortcutID = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_combat = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem5 = new ToolStripMenuItem();
+            this.moveUpToolStripMenuItem2 = new ToolStripMenuItem();
+            this.tabPage_polygon = new TabPage();
+            this.button_box_generate = new Button();
+            this.label_box_offset = new Label();
+            this.textBox_box_offset = new TextBox();
+            this.label_box_sides = new Label();
+            this.textBox_box_sides = new TextBox();
+            this.label_box_radius = new Label();
+            this.textBox_box_radius = new TextBox();
+            this.label_zrange = new Label();
+            this.textBox_zrange = new TextBox();
+            this.button_addcur_polygon = new Button();
+            this.label_polgon_y = new Label();
+            this.textBox_polygon_y = new TextBox();
+            this.textBox_polygon_x = new TextBox();
+            this.label_polygon_x = new Label();
+            this.button_updatepolygon = new Button();
+            this.button_addpolygon = new Button();
+            this.listView_border = new ListView();
+            this.columnHeader_x = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_y = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_polygon = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem4 = new ToolStripMenuItem();
+            this.removeAllToolStripMenuItem = new ToolStripMenuItem();
+            this.tabPage_donot = new TabPage();
+            this.panel3 = new Panel();
+            this.checkBox_AttackOnly = new CheckBox();
+            this.checkBox_Ign_Summons = new CheckBox();
+            this.checkBox_Ign_TreasureChests = new CheckBox();
+            this.checkBox_Ign_Raidbosses = new CheckBox();
+            this.label_donot_npcID = new Label();
+            this.label_donot_npcs = new Label();
+            this.textBox_donot_npcs = new TextBox();
+            this.button_donot_npcs = new Button();
+            this.listView_donot_npcs = new ListView();
+            this.columnHeader_donot_npc_id = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_donot_npc_name = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_donot_npcs = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem1 = new ToolStripMenuItem();
+            this.removeAllToolStripMenuItem1 = new ToolStripMenuItem();
+            this.panel2 = new Panel();
+            this.checkBox_PickOnly = new CheckBox();
+            this.checkBox_ignore_no_mesh = new CheckBox();
+            this.checkBox_ignoreitems = new CheckBox();
+            this.label_donot_itemID = new Label();
+            this.label_donot_items = new Label();
+            this.textBox_donot_items = new TextBox();
+            this.button_donot_items = new Button();
+            this.listView_donot_items = new ListView();
+            this.columnHeader_donot_item_id = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader_donot_item_name = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_donot_items = new ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new ToolStripMenuItem();
+            this.removeAllToolStripMenuItem2 = new ToolStripMenuItem();
+            this.tabPage_soundalerts = new TabPage();
+            this.groupBox_LogOut = new GroupBox();
+            this.checkBox_1waywar_logout = new CheckBox();
+            this.textBox_player_logout = new TextBox();
+            this.checkBox_2waywar_logout = new CheckBox();
+            this.textBox_clan_logout = new TextBox();
+            this.checkBox_player_logout = new CheckBox();
+            this.textBox_cp_logout = new TextBox();
+            this.checkBox_clan_logout = new CheckBox();
+            this.textBox_hp_logout = new TextBox();
+            this.textBox_mp_logout = new TextBox();
+            this.label14 = new Label();
+            this.label16 = new Label();
+            this.checkBox_hp_logout = new CheckBox();
+            this.checkBox_cp_logout = new CheckBox();
+            this.checkBox_mp_logout = new CheckBox();
+            this.label15 = new Label();
+            this.checkBox_n1waywar_logout = new CheckBox();
+            this.groupBox_SoundAlerts = new GroupBox();
+            this.checkBox_2waywar = new CheckBox();
+            this.checkBox_player_ignore = new CheckBox();
+            this.checkBox_friendchat = new CheckBox();
+            this.checkBox_clan_ignore = new CheckBox();
+            this.checkBox_1waywar = new CheckBox();
+            this.textBox_player = new TextBox();
+            this.checkBox_privatemessage = new CheckBox();
+            this.textBox_clan = new TextBox();
+            this.checkBox_player = new CheckBox();
+            this.checkBox_n1waywar = new CheckBox();
+            this.checkBox_clan = new CheckBox();
+            this.textBox_cp = new TextBox();
+            this.checkBox_whitechat = new CheckBox();
+            this.textBox_mp = new TextBox();
+            this.textBox_hp = new TextBox();
+            this.checkBox_hp = new CheckBox();
+            this.label12 = new Label();
+            this.checkBox_mp = new CheckBox();
+            this.label10 = new Label();
+            this.label11 = new Label();
+            this.checkBox_cp = new CheckBox();
+            this.tabPage_content_filter = new TabPage();
+            this.splitContainer1 = new SplitContainer();
+            this.cf_ExBrExtraUserInfo = new CheckBox();
+            this.label18 = new Label();
+            this.cf_targetselected = new CheckBox();
+            this.cf_targetunselected = new CheckBox();
+            this.cf_filtermagicskill = new CheckBox();
+            this.cf_dwarfmode = new CheckBox();
+            this.label19 = new Label();
+            this.cf_striptitle = new CheckBox();
+            this.cf_one_gender = new CheckBox();
+            this.cf_stripenchant = new CheckBox();
+            this.cf_norecs = new CheckBox();
+            this.cf_stripaugment = new CheckBox();
+            this.cf_simple_appearance = new CheckBox();
+            this.cf_zerononvisible = new CheckBox();
+            this.tabPage_player_sorting = new TabPage();
+            this.textBox9 = new TextBox();
+            this.label26 = new Label();
+            this.textBox8 = new TextBox();
+            this.label25 = new Label();
+            this.textBox7 = new TextBox();
+            this.label24 = new Label();
+            this.label23 = new Label();
+            this.ps_label1 = new Label();
+            this.lv_player_sort = new ListView();
+            this.player_sort_col_ID = ((ColumnHeader)(new ColumnHeader()));
+            this.player_sort_col_cname = ((ColumnHeader)(new ColumnHeader()));
+            this.player_sort_col_prio = ((ColumnHeader)(new ColumnHeader()));
+            this.button_save = new Button();
+            this.button_cancel = new Button();
+            this.button_saveoptions = new Button();
+            this.button_loadoptions = new Button();
+            this.openFileDialog1 = new OpenFileDialog();
+            this.saveFileDialog1 = new SaveFileDialog();
+            this.label1 = new Label();
+            this.textBox1 = new TextBox();
+            this.textBox2 = new TextBox();
+            this.label2 = new Label();
+            this.textBox3 = new TextBox();
+            this.label3 = new Label();
+            this.checkBox1 = new CheckBox();
+            this.button1 = new Button();
+            this.button2 = new Button();
+            this.label4 = new Label();
+            this.label5 = new Label();
+            this.label6 = new Label();
+            this.label7 = new Label();
+            this.label8 = new Label();
+            this.label9 = new Label();
+            this.textBox4 = new TextBox();
+            this.comboBox1 = new ComboBox();
+            this.checkBox2 = new CheckBox();
+            this.textBox5 = new TextBox();
+            this.textBox6 = new TextBox();
+            this.columnHeader7 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader11 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader12 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader13 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader14 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader15 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader16 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader17 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader18 = ((ColumnHeader)(new ColumnHeader()));
+            this.button_close = new Button();
+            this.button_clearoptions = new Button();
+            this.toolTip_Instant_attack = new ToolTip(this.components);
+            columnHeader_i_itemid = ((ColumnHeader)(new ColumnHeader()));
             this.tabControl_botpages.SuspendLayout();
             this.tabPage_party.SuspendLayout();
             this.groupBox_RezSettings.SuspendLayout();
@@ -1770,17 +1770,17 @@ namespace L2_login
             this.tabPage_autofighter_advanced.SuspendLayout();
             this.groupBox_WindowTitle.SuspendLayout();
             this.groupBox_AdvancedS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pickuptimeout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_anti_ks_delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_autofollow_delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_blacklist_tries)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_pickuptimeout)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_anti_ks_delay)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_autofollow_delay)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_blacklist_tries)).BeginInit();
             this.tabPage_RestOptions.SuspendLayout();
             this.groupBox_Rest_Party.SuspendLayout();
             this.groupBox_Rest_Solo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestUntilMP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestUntilHP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestBelowMP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestBelowHP)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_RestUntilMP)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_RestUntilHP)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_RestBelowMP)).BeginInit();
+            ((ISupportInitialize)(this.numericUpDown_RestBelowHP)).BeginInit();
             this.tabPage_target.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1806,7 +1806,7 @@ namespace L2_login
             this.groupBox_LogOut.SuspendLayout();
             this.groupBox_SoundAlerts.SuspendLayout();
             this.tabPage_content_filter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            ((ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -1820,7 +1820,7 @@ namespace L2_login
             // 
             // tabControl_botpages
             // 
-            this.tabControl_botpages.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControl_botpages.Alignment = TabAlignment.Left;
             this.tabControl_botpages.Controls.Add(this.tabPage_party);
             this.tabControl_botpages.Controls.Add(this.tabPage_autofighter);
             this.tabControl_botpages.Controls.Add(this.tabPage_autofighter_advanced);
@@ -1835,17 +1835,17 @@ namespace L2_login
             this.tabControl_botpages.Controls.Add(this.tabPage_soundalerts);
             this.tabControl_botpages.Controls.Add(this.tabPage_content_filter);
             this.tabControl_botpages.Controls.Add(this.tabPage_player_sorting);
-            this.tabControl_botpages.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl_botpages.DrawMode = TabDrawMode.OwnerDrawFixed;
             this.tabControl_botpages.HotTrack = true;
-            this.tabControl_botpages.ItemSize = new System.Drawing.Size(23, 100);
+            this.tabControl_botpages.ItemSize = new Size(23, 100);
             this.tabControl_botpages.Location = new System.Drawing.Point(-1, 37);
             this.tabControl_botpages.Multiline = true;
             this.tabControl_botpages.Name = "tabControl_botpages";
             this.tabControl_botpages.SelectedIndex = 0;
-            this.tabControl_botpages.Size = new System.Drawing.Size(623, 385);
-            this.tabControl_botpages.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl_botpages.Size = new Size(623, 385);
+            this.tabControl_botpages.SizeMode = TabSizeMode.Fixed;
             this.tabControl_botpages.TabIndex = 2;
-            this.tabControl_botpages.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_botpages_DrawItem);
+            this.tabControl_botpages.DrawItem += new DrawItemEventHandler(this.tabControl_botpages_DrawItem);
             // 
             // tabPage_party
             // 
@@ -1855,7 +1855,7 @@ namespace L2_login
             this.tabPage_party.Controls.Add(this.groupBox_FollowSettings);
             this.tabPage_party.Location = new System.Drawing.Point(104, 4);
             this.tabPage_party.Name = "tabPage_party";
-            this.tabPage_party.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_party.Size = new Size(515, 377);
             this.tabPage_party.TabIndex = 0;
             this.tabPage_party.Text = "Party";
             this.tabPage_party.UseVisualStyleBackColor = true;
@@ -1869,7 +1869,7 @@ namespace L2_login
             this.groupBox_RezSettings.Controls.Add(this.textBox_accept_rez);
             this.groupBox_RezSettings.Location = new System.Drawing.Point(3, 301);
             this.groupBox_RezSettings.Name = "groupBox_RezSettings";
-            this.groupBox_RezSettings.Size = new System.Drawing.Size(507, 73);
+            this.groupBox_RezSettings.Size = new Size(507, 73);
             this.groupBox_RezSettings.TabIndex = 29;
             this.groupBox_RezSettings.TabStop = false;
             this.groupBox_RezSettings.Text = "Rez Settings";
@@ -1878,7 +1878,7 @@ namespace L2_login
             // 
             this.checkBox_accept_rez_Party.Location = new System.Drawing.Point(295, 45);
             this.checkBox_accept_rez_Party.Name = "checkBox_accept_rez_Party";
-            this.checkBox_accept_rez_Party.Size = new System.Drawing.Size(181, 26);
+            this.checkBox_accept_rez_Party.Size = new Size(181, 26);
             this.checkBox_accept_rez_Party.TabIndex = 31;
             this.checkBox_accept_rez_Party.Text = "Accept Rez from Party";
             // 
@@ -1886,7 +1886,7 @@ namespace L2_login
             // 
             this.checkBox_accept_rez_alliance.Location = new System.Drawing.Point(142, 44);
             this.checkBox_accept_rez_alliance.Name = "checkBox_accept_rez_alliance";
-            this.checkBox_accept_rez_alliance.Size = new System.Drawing.Size(181, 26);
+            this.checkBox_accept_rez_alliance.Size = new Size(181, 26);
             this.checkBox_accept_rez_alliance.TabIndex = 30;
             this.checkBox_accept_rez_alliance.Text = "Accept Rez from Alliance";
             // 
@@ -1894,7 +1894,7 @@ namespace L2_login
             // 
             this.checkBox_accept_rez_clan.Location = new System.Drawing.Point(7, 44);
             this.checkBox_accept_rez_clan.Name = "checkBox_accept_rez_clan";
-            this.checkBox_accept_rez_clan.Size = new System.Drawing.Size(173, 26);
+            this.checkBox_accept_rez_clan.Size = new Size(173, 26);
             this.checkBox_accept_rez_clan.TabIndex = 29;
             this.checkBox_accept_rez_clan.Text = "Accept Rez from Clan";
             // 
@@ -1902,7 +1902,7 @@ namespace L2_login
             // 
             this.checkBox_accept_rez.Location = new System.Drawing.Point(7, 19);
             this.checkBox_accept_rez.Name = "checkBox_accept_rez";
-            this.checkBox_accept_rez.Size = new System.Drawing.Size(112, 24);
+            this.checkBox_accept_rez.Size = new Size(112, 24);
             this.checkBox_accept_rez.TabIndex = 19;
             this.checkBox_accept_rez.Text = "Auto Accept Rez";
             // 
@@ -1910,9 +1910,9 @@ namespace L2_login
             // 
             this.textBox_accept_rez.Location = new System.Drawing.Point(125, 19);
             this.textBox_accept_rez.Name = "textBox_accept_rez";
-            this.textBox_accept_rez.Size = new System.Drawing.Size(377, 20);
+            this.textBox_accept_rez.Size = new Size(377, 20);
             this.textBox_accept_rez.TabIndex = 20;
-            this.textBox_accept_rez.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_accept_rez.TextAlign = HorizontalAlignment.Center;
             // 
             // groupBox_PartySettings
             // 
@@ -1928,7 +1928,7 @@ namespace L2_login
             this.groupBox_PartySettings.Controls.Add(this.textBox_auto_invite);
             this.groupBox_PartySettings.Location = new System.Drawing.Point(3, 165);
             this.groupBox_PartySettings.Name = "groupBox_PartySettings";
-            this.groupBox_PartySettings.Size = new System.Drawing.Size(507, 125);
+            this.groupBox_PartySettings.Size = new Size(507, 125);
             this.groupBox_PartySettings.TabIndex = 28;
             this.groupBox_PartySettings.TabStop = false;
             this.groupBox_PartySettings.Text = "Party Settings";
@@ -1937,7 +1937,7 @@ namespace L2_login
             // 
             this.checkBox_accept_party_alliance.Location = new System.Drawing.Point(141, 97);
             this.checkBox_accept_party_alliance.Name = "checkBox_accept_party_alliance";
-            this.checkBox_accept_party_alliance.Size = new System.Drawing.Size(181, 26);
+            this.checkBox_accept_party_alliance.Size = new Size(181, 26);
             this.checkBox_accept_party_alliance.TabIndex = 28;
             this.checkBox_accept_party_alliance.Text = "Accept Party from Alliance";
             // 
@@ -1945,7 +1945,7 @@ namespace L2_login
             // 
             this.checkBox_accept_party_clan.Location = new System.Drawing.Point(6, 97);
             this.checkBox_accept_party_clan.Name = "checkBox_accept_party_clan";
-            this.checkBox_accept_party_clan.Size = new System.Drawing.Size(173, 26);
+            this.checkBox_accept_party_clan.Size = new Size(173, 26);
             this.checkBox_accept_party_clan.TabIndex = 27;
             this.checkBox_accept_party_clan.Text = "Accept Party from Clan";
             // 
@@ -1953,7 +1953,7 @@ namespace L2_login
             // 
             this.checkBox_accept_party.Location = new System.Drawing.Point(6, 72);
             this.checkBox_accept_party.Name = "checkBox_accept_party";
-            this.checkBox_accept_party.Size = new System.Drawing.Size(143, 24);
+            this.checkBox_accept_party.Size = new Size(143, 24);
             this.checkBox_accept_party.TabIndex = 17;
             this.checkBox_accept_party.Text = "Auto Accept Party Invite";
             // 
@@ -1961,15 +1961,15 @@ namespace L2_login
             // 
             this.textBox_accept_party.Location = new System.Drawing.Point(155, 74);
             this.textBox_accept_party.Name = "textBox_accept_party";
-            this.textBox_accept_party.Size = new System.Drawing.Size(214, 20);
+            this.textBox_accept_party.Size = new Size(214, 20);
             this.textBox_accept_party.TabIndex = 18;
-            this.textBox_accept_party.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_accept_party.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_drop_leader
             // 
             this.checkBox_drop_leader.Location = new System.Drawing.Point(379, 73);
             this.checkBox_drop_leader.Name = "checkBox_drop_leader";
-            this.checkBox_drop_leader.Size = new System.Drawing.Size(143, 21);
+            this.checkBox_drop_leader.Size = new Size(143, 21);
             this.checkBox_drop_leader.TabIndex = 26;
             this.checkBox_drop_leader.Text = "Drop Party if Leader";
             // 
@@ -1977,7 +1977,7 @@ namespace L2_login
             // 
             this.checkBox_auto_invite.Location = new System.Drawing.Point(6, 49);
             this.checkBox_auto_invite.Name = "checkBox_auto_invite";
-            this.checkBox_auto_invite.Size = new System.Drawing.Size(143, 24);
+            this.checkBox_auto_invite.Size = new Size(143, 24);
             this.checkBox_auto_invite.TabIndex = 21;
             this.checkBox_auto_invite.Text = "Auto Send Party Invite";
             // 
@@ -1985,13 +1985,13 @@ namespace L2_login
             // 
             this.textBox_oop.Location = new System.Drawing.Point(155, 23);
             this.textBox_oop.Name = "textBox_oop";
-            this.textBox_oop.Size = new System.Drawing.Size(346, 20);
+            this.textBox_oop.Size = new Size(346, 20);
             this.textBox_oop.TabIndex = 24;
-            this.textBox_oop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_oop.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBox_LootType
             // 
-            this.comboBox_LootType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_LootType.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBox_LootType.FormattingEnabled = true;
             this.comboBox_LootType.Items.AddRange(new object[] {
             "Finders Keepers",
@@ -2001,14 +2001,14 @@ namespace L2_login
             "By Turn Including Spoil"});
             this.comboBox_LootType.Location = new System.Drawing.Point(375, 48);
             this.comboBox_LootType.Name = "comboBox_LootType";
-            this.comboBox_LootType.Size = new System.Drawing.Size(126, 21);
+            this.comboBox_LootType.Size = new Size(126, 21);
             this.comboBox_LootType.TabIndex = 25;
             // 
             // checkBox_oop
             // 
             this.checkBox_oop.Location = new System.Drawing.Point(6, 23);
             this.checkBox_oop.Name = "checkBox_oop";
-            this.checkBox_oop.Size = new System.Drawing.Size(143, 24);
+            this.checkBox_oop.Size = new Size(143, 24);
             this.checkBox_oop.TabIndex = 23;
             this.checkBox_oop.Text = "OOP Members";
             // 
@@ -2016,7 +2016,7 @@ namespace L2_login
             // 
             this.textBox_auto_invite.Location = new System.Drawing.Point(155, 49);
             this.textBox_auto_invite.Name = "textBox_auto_invite";
-            this.textBox_auto_invite.Size = new System.Drawing.Size(214, 20);
+            this.textBox_auto_invite.Size = new Size(214, 20);
             this.textBox_auto_invite.TabIndex = 22;
             // 
             // groupBox_BuffSettings1
@@ -2027,7 +2027,7 @@ namespace L2_login
             this.groupBox_BuffSettings1.Controls.Add(this.checkBox_buff_shift);
             this.groupBox_BuffSettings1.Location = new System.Drawing.Point(3, 106);
             this.groupBox_BuffSettings1.Name = "groupBox_BuffSettings1";
-            this.groupBox_BuffSettings1.Size = new System.Drawing.Size(376, 49);
+            this.groupBox_BuffSettings1.Size = new Size(376, 49);
             this.groupBox_BuffSettings1.TabIndex = 27;
             this.groupBox_BuffSettings1.TabStop = false;
             this.groupBox_BuffSettings1.Text = "Buff Settings";
@@ -2036,25 +2036,25 @@ namespace L2_login
             // 
             this.textBox_buffrange.Location = new System.Drawing.Point(6, 19);
             this.textBox_buffrange.Name = "textBox_buffrange";
-            this.textBox_buffrange.Size = new System.Drawing.Size(47, 20);
+            this.textBox_buffrange.Size = new Size(47, 20);
             this.textBox_buffrange.TabIndex = 14;
             this.textBox_buffrange.Text = "550";
-            this.textBox_buffrange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_buffrange.TextAlign = HorizontalAlignment.Center;
             // 
             // label_buffrange
             // 
             this.label_buffrange.Location = new System.Drawing.Point(55, 19);
             this.label_buffrange.Name = "label_buffrange";
-            this.label_buffrange.Size = new System.Drawing.Size(102, 24);
+            this.label_buffrange.Size = new Size(102, 24);
             this.label_buffrange.TabIndex = 10;
             this.label_buffrange.Text = "Buff/Heal Range";
-            this.label_buffrange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_buffrange.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // checkBox_buff_control
             // 
             this.checkBox_buff_control.Location = new System.Drawing.Point(257, 18);
             this.checkBox_buff_control.Name = "checkBox_buff_control";
-            this.checkBox_buff_control.Size = new System.Drawing.Size(103, 24);
+            this.checkBox_buff_control.Size = new Size(103, 24);
             this.checkBox_buff_control.TabIndex = 15;
             this.checkBox_buff_control.Text = "Buff with Control";
             // 
@@ -2062,7 +2062,7 @@ namespace L2_login
             // 
             this.checkBox_buff_shift.Location = new System.Drawing.Point(158, 19);
             this.checkBox_buff_shift.Name = "checkBox_buff_shift";
-            this.checkBox_buff_shift.Size = new System.Drawing.Size(102, 24);
+            this.checkBox_buff_shift.Size = new Size(102, 24);
             this.checkBox_buff_shift.TabIndex = 16;
             this.checkBox_buff_shift.Text = "Buff with Shift";
             // 
@@ -2080,7 +2080,7 @@ namespace L2_login
             this.groupBox_FollowSettings.Controls.Add(this.checkBox_activefollow_target);
             this.groupBox_FollowSettings.Location = new System.Drawing.Point(3, 3);
             this.groupBox_FollowSettings.Name = "groupBox_FollowSettings";
-            this.groupBox_FollowSettings.Size = new System.Drawing.Size(376, 100);
+            this.groupBox_FollowSettings.Size = new Size(376, 100);
             this.groupBox_FollowSettings.TabIndex = 26;
             this.groupBox_FollowSettings.TabStop = false;
             this.groupBox_FollowSettings.Text = "Follow Settings";
@@ -2091,7 +2091,7 @@ namespace L2_login
             this.checkBox_activefollow_attack_Instant.Enabled = false;
             this.checkBox_activefollow_attack_Instant.Location = new System.Drawing.Point(277, 74);
             this.checkBox_activefollow_attack_Instant.Name = "checkBox_activefollow_attack_Instant";
-            this.checkBox_activefollow_attack_Instant.Size = new System.Drawing.Size(92, 17);
+            this.checkBox_activefollow_attack_Instant.Size = new Size(92, 17);
             this.checkBox_activefollow_attack_Instant.TabIndex = 11;
             this.checkBox_activefollow_attack_Instant.Text = "Instant Attack";
             this.toolTip_Instant_attack.SetToolTip(this.checkBox_activefollow_attack_Instant, "Attacks instantly when char got a target. Both active follow attack and active fo" +
@@ -2102,7 +2102,7 @@ namespace L2_login
             // 
             this.checkBox_activefollow.Location = new System.Drawing.Point(6, 19);
             this.checkBox_activefollow.Name = "checkBox_activefollow";
-            this.checkBox_activefollow.Size = new System.Drawing.Size(90, 24);
+            this.checkBox_activefollow.Size = new Size(90, 24);
             this.checkBox_activefollow.TabIndex = 0;
             this.checkBox_activefollow.Text = "Active Follow";
             // 
@@ -2110,25 +2110,25 @@ namespace L2_login
             // 
             this.textBox_activefollow_name.Location = new System.Drawing.Point(96, 19);
             this.textBox_activefollow_name.Name = "textBox_activefollow_name";
-            this.textBox_activefollow_name.Size = new System.Drawing.Size(175, 20);
+            this.textBox_activefollow_name.Size = new Size(175, 20);
             this.textBox_activefollow_name.TabIndex = 3;
-            this.textBox_activefollow_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_activefollow_name.TextAlign = HorizontalAlignment.Center;
             // 
             // label_followname
             // 
             this.label_followname.Location = new System.Drawing.Point(277, 19);
             this.label_followname.Name = "label_followname";
-            this.label_followname.Size = new System.Drawing.Size(58, 24);
+            this.label_followname.Size = new Size(58, 24);
             this.label_followname.TabIndex = 5;
             this.label_followname.Text = "Name";
-            this.label_followname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_followname.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // radioButton_ActiveFollow_style1
             // 
             this.radioButton_ActiveFollow_style1.Checked = true;
             this.radioButton_ActiveFollow_style1.Location = new System.Drawing.Point(6, 44);
             this.radioButton_ActiveFollow_style1.Name = "radioButton_ActiveFollow_style1";
-            this.radioButton_ActiveFollow_style1.Size = new System.Drawing.Size(90, 24);
+            this.radioButton_ActiveFollow_style1.Size = new Size(90, 24);
             this.radioButton_ActiveFollow_style1.TabIndex = 1;
             this.radioButton_ActiveFollow_style1.TabStop = true;
             this.radioButton_ActiveFollow_style1.Text = "Walker Style";
@@ -2137,7 +2137,7 @@ namespace L2_login
             // 
             this.radioButton_ActiveFollow_style2.Location = new System.Drawing.Point(96, 44);
             this.radioButton_ActiveFollow_style2.Name = "radioButton_ActiveFollow_style2";
-            this.radioButton_ActiveFollow_style2.Size = new System.Drawing.Size(83, 24);
+            this.radioButton_ActiveFollow_style2.Size = new Size(83, 24);
             this.radioButton_ActiveFollow_style2.TabIndex = 2;
             this.radioButton_ActiveFollow_style2.Text = "L2.Net Style";
             // 
@@ -2145,41 +2145,41 @@ namespace L2_login
             // 
             this.textBox_ActiveFollow_Dist.Location = new System.Drawing.Point(185, 44);
             this.textBox_ActiveFollow_Dist.Name = "textBox_ActiveFollow_Dist";
-            this.textBox_ActiveFollow_Dist.Size = new System.Drawing.Size(86, 20);
+            this.textBox_ActiveFollow_Dist.Size = new Size(86, 20);
             this.textBox_ActiveFollow_Dist.TabIndex = 4;
             this.textBox_ActiveFollow_Dist.Text = "150";
-            this.textBox_ActiveFollow_Dist.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_ActiveFollow_Dist.TextAlign = HorizontalAlignment.Center;
             // 
             // label_followdistance
             // 
             this.label_followdistance.Location = new System.Drawing.Point(277, 44);
             this.label_followdistance.Name = "label_followdistance";
-            this.label_followdistance.Size = new System.Drawing.Size(49, 24);
+            this.label_followdistance.Size = new Size(49, 24);
             this.label_followdistance.TabIndex = 4;
             this.label_followdistance.Text = "Distance";
-            this.label_followdistance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_followdistance.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // checkBox_activefollow_attack
             // 
             this.checkBox_activefollow_attack.Location = new System.Drawing.Point(6, 70);
             this.checkBox_activefollow_attack.Name = "checkBox_activefollow_attack";
-            this.checkBox_activefollow_attack.Size = new System.Drawing.Size(124, 24);
+            this.checkBox_activefollow_attack.Size = new Size(124, 24);
             this.checkBox_activefollow_attack.TabIndex = 9;
             this.checkBox_activefollow_attack.Text = "Active Follow Attack";
             this.toolTip_Instant_attack.SetToolTip(this.checkBox_activefollow_attack, "Starts attacking when leader is killing a target. To attack instantly you need to" +
                     " enable follow attack and follow target");
-            this.checkBox_activefollow_attack.CheckedChanged += new System.EventHandler(this.checkBox_activefollow_attack_CheckedChanged);
+            this.checkBox_activefollow_attack.CheckedChanged += new EventHandler(this.checkBox_activefollow_attack_CheckedChanged);
             // 
             // checkBox_activefollow_target
             // 
             this.checkBox_activefollow_target.Location = new System.Drawing.Point(136, 70);
             this.checkBox_activefollow_target.Name = "checkBox_activefollow_target";
-            this.checkBox_activefollow_target.Size = new System.Drawing.Size(135, 24);
+            this.checkBox_activefollow_target.Size = new Size(135, 24);
             this.checkBox_activefollow_target.TabIndex = 10;
             this.checkBox_activefollow_target.Text = "Active Follow Target";
             this.toolTip_Instant_attack.SetToolTip(this.checkBox_activefollow_target, "Follow leader targeting. Follow target and follow attack needs to be enabled to e" +
                     "nable instant attack.");
-            this.checkBox_activefollow_target.CheckedChanged += new System.EventHandler(this.checkBox_activefollow_target_CheckedChanged);
+            this.checkBox_activefollow_target.CheckedChanged += new EventHandler(this.checkBox_activefollow_target_CheckedChanged);
             // 
             // tabPage_autofighter
             // 
@@ -2193,7 +2193,7 @@ namespace L2_login
             this.tabPage_autofighter.Controls.Add(this.groupBox_TargetSettings);
             this.tabPage_autofighter.Location = new System.Drawing.Point(104, 4);
             this.tabPage_autofighter.Name = "tabPage_autofighter";
-            this.tabPage_autofighter.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_autofighter.Size = new Size(515, 377);
             this.tabPage_autofighter.TabIndex = 7;
             this.tabPage_autofighter.Text = "Autofighter";
             this.tabPage_autofighter.UseVisualStyleBackColor = true;
@@ -2207,7 +2207,7 @@ namespace L2_login
             this.groupBox_PickupSettings.Controls.Add(this.checkBox_OnlyPickMine);
             this.groupBox_PickupSettings.Location = new System.Drawing.Point(229, 78);
             this.groupBox_PickupSettings.Name = "groupBox_PickupSettings";
-            this.groupBox_PickupSettings.Size = new System.Drawing.Size(284, 70);
+            this.groupBox_PickupSettings.Size = new Size(284, 70);
             this.groupBox_PickupSettings.TabIndex = 45;
             this.groupBox_PickupSettings.TabStop = false;
             this.groupBox_PickupSettings.Text = "Pickup Settings";
@@ -2216,7 +2216,7 @@ namespace L2_login
             // 
             this.checkBox_PickupAfterAttack.Location = new System.Drawing.Point(101, 17);
             this.checkBox_PickupAfterAttack.Name = "checkBox_PickupAfterAttack";
-            this.checkBox_PickupAfterAttack.Size = new System.Drawing.Size(120, 24);
+            this.checkBox_PickupAfterAttack.Size = new Size(120, 24);
             this.checkBox_PickupAfterAttack.TabIndex = 33;
             this.checkBox_PickupAfterAttack.Text = "Pickup After Attack";
             // 
@@ -2224,7 +2224,7 @@ namespace L2_login
             // 
             this.checkBox_pickup.Location = new System.Drawing.Point(6, 17);
             this.checkBox_pickup.Name = "checkBox_pickup";
-            this.checkBox_pickup.Size = new System.Drawing.Size(64, 24);
+            this.checkBox_pickup.Size = new Size(64, 24);
             this.checkBox_pickup.TabIndex = 22;
             this.checkBox_pickup.Text = "Pickup";
             // 
@@ -2232,27 +2232,27 @@ namespace L2_login
             // 
             this.textBox_pickup_range.Location = new System.Drawing.Point(102, 41);
             this.textBox_pickup_range.Name = "textBox_pickup_range";
-            this.textBox_pickup_range.Size = new System.Drawing.Size(60, 20);
+            this.textBox_pickup_range.Size = new Size(60, 20);
             this.textBox_pickup_range.TabIndex = 23;
             this.textBox_pickup_range.Text = "250";
-            this.textBox_pickup_range.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_pickup_range.TextAlign = HorizontalAlignment.Center;
             // 
             // label_pickup_range
             // 
             this.label_pickup_range.Location = new System.Drawing.Point(162, 38);
             this.label_pickup_range.Name = "label_pickup_range";
-            this.label_pickup_range.Size = new System.Drawing.Size(77, 24);
+            this.label_pickup_range.Size = new Size(77, 24);
             this.label_pickup_range.TabIndex = 24;
             this.label_pickup_range.Text = "Pickup Range";
-            this.label_pickup_range.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_pickup_range.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // checkBox_OnlyPickMine
             // 
             this.checkBox_OnlyPickMine.Checked = true;
-            this.checkBox_OnlyPickMine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_OnlyPickMine.CheckState = CheckState.Checked;
             this.checkBox_OnlyPickMine.Location = new System.Drawing.Point(6, 38);
             this.checkBox_OnlyPickMine.Name = "checkBox_OnlyPickMine";
-            this.checkBox_OnlyPickMine.Size = new System.Drawing.Size(108, 24);
+            this.checkBox_OnlyPickMine.Size = new Size(108, 24);
             this.checkBox_OnlyPickMine.TabIndex = 32;
             this.checkBox_OnlyPickMine.Text = "Only Pick Mine";
             // 
@@ -2272,7 +2272,7 @@ namespace L2_login
             this.groupBox6.Controls.Add(this.checkBox_active_move_first);
             this.groupBox6.Location = new System.Drawing.Point(6, 145);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(223, 226);
+            this.groupBox6.Size = new Size(223, 226);
             this.groupBox6.TabIndex = 44;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "When No Mobs";
@@ -2282,16 +2282,16 @@ namespace L2_login
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(1, 70);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(39, 13);
+            this.label31.Size = new Size(39, 13);
             this.label31.TabIndex = 48;
             this.label31.Text = "Leash:";
             // 
             // textBox_MoveToLeash
             // 
-            this.textBox_MoveToLeash.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_MoveToLeash.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             this.textBox_MoveToLeash.Location = new System.Drawing.Point(45, 68);
             this.textBox_MoveToLeash.Name = "textBox_MoveToLeash";
-            this.textBox_MoveToLeash.Size = new System.Drawing.Size(51, 20);
+            this.textBox_MoveToLeash.Size = new Size(51, 20);
             this.textBox_MoveToLeash.TabIndex = 47;
             this.textBox_MoveToLeash.Text = "100";
             // 
@@ -2300,7 +2300,7 @@ namespace L2_login
             this.checkBox_MoveToLoc.AutoSize = true;
             this.checkBox_MoveToLoc.Location = new System.Drawing.Point(4, 19);
             this.checkBox_MoveToLoc.Name = "checkBox_MoveToLoc";
-            this.checkBox_MoveToLoc.Size = new System.Drawing.Size(86, 17);
+            this.checkBox_MoveToLoc.Size = new Size(86, 17);
             this.checkBox_MoveToLoc.TabIndex = 46;
             this.checkBox_MoveToLoc.Text = "Move to Loc";
             this.checkBox_MoveToLoc.UseVisualStyleBackColor = true;
@@ -2308,10 +2308,10 @@ namespace L2_login
             // checkBox_OutOfCombat
             // 
             this.checkBox_OutOfCombat.AutoSize = true;
-            this.checkBox_OutOfCombat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.checkBox_OutOfCombat.Font = new Font("Microsoft Sans Serif", 8.25F);
             this.checkBox_OutOfCombat.Location = new System.Drawing.Point(90, 20);
             this.checkBox_OutOfCombat.Name = "checkBox_OutOfCombat";
-            this.checkBox_OutOfCombat.Size = new System.Drawing.Size(94, 17);
+            this.checkBox_OutOfCombat.Size = new Size(94, 17);
             this.checkBox_OutOfCombat.TabIndex = 42;
             this.checkBox_OutOfCombat.Text = "Out of Combat";
             this.checkBox_OutOfCombat.UseVisualStyleBackColor = true;
@@ -2321,7 +2321,7 @@ namespace L2_login
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(4, 45);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(17, 13);
+            this.label30.Size = new Size(17, 13);
             this.label30.TabIndex = 45;
             this.label30.Text = "X:";
             // 
@@ -2330,7 +2330,7 @@ namespace L2_login
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(75, 45);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(17, 13);
+            this.label29.Size = new Size(17, 13);
             this.label29.TabIndex = 44;
             this.label29.Text = "Y:";
             // 
@@ -2339,59 +2339,59 @@ namespace L2_login
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(149, 45);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(17, 13);
+            this.label28.Size = new Size(17, 13);
             this.label28.TabIndex = 43;
             this.label28.Text = "Z:";
             // 
             // textBox_Moveto_Z
             // 
-            this.textBox_Moveto_Z.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_Z.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Moveto_Z.Location = new System.Drawing.Point(169, 43);
             this.textBox_Moveto_Z.Name = "textBox_Moveto_Z";
-            this.textBox_Moveto_Z.Size = new System.Drawing.Size(40, 18);
+            this.textBox_Moveto_Z.Size = new Size(40, 18);
             this.textBox_Moveto_Z.TabIndex = 42;
             this.textBox_Moveto_Z.Text = "0";
             // 
             // textBox_Moveto_X
             // 
-            this.textBox_Moveto_X.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_X.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Moveto_X.Location = new System.Drawing.Point(22, 43);
             this.textBox_Moveto_X.Name = "textBox_Moveto_X";
-            this.textBox_Moveto_X.Size = new System.Drawing.Size(51, 18);
+            this.textBox_Moveto_X.Size = new Size(51, 18);
             this.textBox_Moveto_X.TabIndex = 41;
             this.textBox_Moveto_X.Text = "0";
             // 
             // textBox_Moveto_Y
             // 
-            this.textBox_Moveto_Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Moveto_Y.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Moveto_Y.Location = new System.Drawing.Point(93, 43);
             this.textBox_Moveto_Y.Name = "textBox_Moveto_Y";
-            this.textBox_Moveto_Y.Size = new System.Drawing.Size(54, 18);
+            this.textBox_Moveto_Y.Size = new Size(54, 18);
             this.textBox_Moveto_Y.TabIndex = 40;
             this.textBox_Moveto_Y.Text = "0";
             // 
             // Set_CurrentXYZ
             // 
-            this.Set_CurrentXYZ.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Set_CurrentXYZ.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             this.Set_CurrentXYZ.Location = new System.Drawing.Point(183, 17);
             this.Set_CurrentXYZ.Name = "Set_CurrentXYZ";
-            this.Set_CurrentXYZ.Size = new System.Drawing.Size(35, 22);
+            this.Set_CurrentXYZ.Size = new Size(35, 22);
             this.Set_CurrentXYZ.TabIndex = 29;
             this.Set_CurrentXYZ.Text = "SET";
-            this.Set_CurrentXYZ.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Set_CurrentXYZ.TextAlign = ContentAlignment.TopLeft;
             this.Set_CurrentXYZ.UseVisualStyleBackColor = true;
-            this.Set_CurrentXYZ.Click += new System.EventHandler(this.Set_CurrentXYZ_Click);
+            this.Set_CurrentXYZ.Click += new EventHandler(this.Set_CurrentXYZ_Click);
             // 
             // checkBox_active_move_first
             // 
             this.checkBox_active_move_first.Enabled = false;
             this.checkBox_active_move_first.Location = new System.Drawing.Point(7, 196);
             this.checkBox_active_move_first.Name = "checkBox_active_move_first";
-            this.checkBox_active_move_first.Size = new System.Drawing.Size(155, 24);
+            this.checkBox_active_move_first.Size = new Size(155, 24);
             this.checkBox_active_move_first.TabIndex = 28;
             this.checkBox_active_move_first.Text = "Smart Move Before Attack";
             this.checkBox_active_move_first.Visible = false;
-            this.checkBox_active_move_first.CheckedChanged += new System.EventHandler(this.checkBox_active_move_first_CheckedChanged);
+            this.checkBox_active_move_first.CheckedChanged += new EventHandler(this.checkBox_active_move_first_CheckedChanged);
             // 
             // groupBox_Pet
             // 
@@ -2401,7 +2401,7 @@ namespace L2_login
             this.groupBox_Pet.Controls.Add(this.checkBox_pet_autoassist);
             this.groupBox_Pet.Location = new System.Drawing.Point(229, 251);
             this.groupBox_Pet.Name = "groupBox_Pet";
-            this.groupBox_Pet.Size = new System.Drawing.Size(281, 62);
+            this.groupBox_Pet.Size = new Size(281, 62);
             this.groupBox_Pet.TabIndex = 48;
             this.groupBox_Pet.TabStop = false;
             this.groupBox_Pet.Text = "Pet Settings";
@@ -2411,7 +2411,7 @@ namespace L2_login
             this.checkBox_summon_instantattack.AutoSize = true;
             this.checkBox_summon_instantattack.Location = new System.Drawing.Point(137, 38);
             this.checkBox_summon_instantattack.Name = "checkBox_summon_instantattack";
-            this.checkBox_summon_instantattack.Size = new System.Drawing.Size(92, 17);
+            this.checkBox_summon_instantattack.Size = new Size(92, 17);
             this.checkBox_summon_instantattack.TabIndex = 3;
             this.checkBox_summon_instantattack.Text = "Instant Attack";
             this.checkBox_summon_instantattack.UseVisualStyleBackColor = true;
@@ -2421,7 +2421,7 @@ namespace L2_login
             this.checkBox_pet_soloattack.AutoSize = true;
             this.checkBox_pet_soloattack.Location = new System.Drawing.Point(6, 38);
             this.checkBox_pet_soloattack.Name = "checkBox_pet_soloattack";
-            this.checkBox_pet_soloattack.Size = new System.Drawing.Size(81, 17);
+            this.checkBox_pet_soloattack.Size = new Size(81, 17);
             this.checkBox_pet_soloattack.TabIndex = 2;
             this.checkBox_pet_soloattack.Text = "Attack Solo";
             this.checkBox_pet_soloattack.UseVisualStyleBackColor = true;
@@ -2431,7 +2431,7 @@ namespace L2_login
             this.checkBox_Summon_autoassist.AutoSize = true;
             this.checkBox_Summon_autoassist.Location = new System.Drawing.Point(137, 19);
             this.checkBox_Summon_autoassist.Name = "checkBox_Summon_autoassist";
-            this.checkBox_Summon_autoassist.Size = new System.Drawing.Size(122, 17);
+            this.checkBox_Summon_autoassist.Size = new Size(122, 17);
             this.checkBox_Summon_autoassist.TabIndex = 1;
             this.checkBox_Summon_autoassist.Text = "Summon Auto Assist";
             this.checkBox_Summon_autoassist.UseVisualStyleBackColor = true;
@@ -2441,7 +2441,7 @@ namespace L2_login
             this.checkBox_pet_autoassist.AutoSize = true;
             this.checkBox_pet_autoassist.Location = new System.Drawing.Point(6, 19);
             this.checkBox_pet_autoassist.Name = "checkBox_pet_autoassist";
-            this.checkBox_pet_autoassist.Size = new System.Drawing.Size(97, 17);
+            this.checkBox_pet_autoassist.Size = new Size(97, 17);
             this.checkBox_pet_autoassist.TabIndex = 0;
             this.checkBox_pet_autoassist.Text = "Pet Auto Assist";
             this.checkBox_pet_autoassist.UseVisualStyleBackColor = true;
@@ -2456,7 +2456,7 @@ namespace L2_login
             this.groupBox_DeadSettings.Controls.Add(this.comboBox_DeadReturn);
             this.groupBox_DeadSettings.Location = new System.Drawing.Point(229, 146);
             this.groupBox_DeadSettings.Name = "groupBox_DeadSettings";
-            this.groupBox_DeadSettings.Size = new System.Drawing.Size(281, 106);
+            this.groupBox_DeadSettings.Size = new Size(281, 106);
             this.groupBox_DeadSettings.TabIndex = 47;
             this.groupBox_DeadSettings.TabStop = false;
             this.groupBox_DeadSettings.Text = "Dead Settings";
@@ -2466,7 +2466,7 @@ namespace L2_login
             this.checkBox_DeadToggleBotting.AutoSize = true;
             this.checkBox_DeadToggleBotting.Location = new System.Drawing.Point(6, 19);
             this.checkBox_DeadToggleBotting.Name = "checkBox_DeadToggleBotting";
-            this.checkBox_DeadToggleBotting.Size = new System.Drawing.Size(124, 17);
+            this.checkBox_DeadToggleBotting.Size = new Size(124, 17);
             this.checkBox_DeadToggleBotting.TabIndex = 41;
             this.checkBox_DeadToggleBotting.Text = "Dead Toggle Botting";
             this.checkBox_DeadToggleBotting.UseVisualStyleBackColor = true;
@@ -2476,7 +2476,7 @@ namespace L2_login
             this.checkBox_DeadReturn.AutoSize = true;
             this.checkBox_DeadReturn.Location = new System.Drawing.Point(6, 42);
             this.checkBox_DeadReturn.Name = "checkBox_DeadReturn";
-            this.checkBox_DeadReturn.Size = new System.Drawing.Size(132, 17);
+            this.checkBox_DeadReturn.Size = new Size(132, 17);
             this.checkBox_DeadReturn.TabIndex = 37;
             this.checkBox_DeadReturn.Text = "Dead Return    Delay: ";
             this.checkBox_DeadReturn.UseVisualStyleBackColor = true;
@@ -2485,18 +2485,18 @@ namespace L2_login
             // 
             this.textBox_DeadReturnDelay.Location = new System.Drawing.Point(142, 39);
             this.textBox_DeadReturnDelay.Name = "textBox_DeadReturnDelay";
-            this.textBox_DeadReturnDelay.Size = new System.Drawing.Size(50, 20);
+            this.textBox_DeadReturnDelay.Size = new Size(50, 20);
             this.textBox_DeadReturnDelay.TabIndex = 39;
             this.textBox_DeadReturnDelay.Text = "10";
-            this.textBox_DeadReturnDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_DeadReturnDelay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeadReturnDelay_KeyPress);
+            this.textBox_DeadReturnDelay.TextAlign = HorizontalAlignment.Center;
+            this.textBox_DeadReturnDelay.KeyPress += new KeyPressEventHandler(this.textBox_DeadReturnDelay_KeyPress);
             // 
             // checkBox_DeadLogOut
             // 
             this.checkBox_DeadLogOut.AutoSize = true;
             this.checkBox_DeadLogOut.Location = new System.Drawing.Point(6, 65);
             this.checkBox_DeadLogOut.Name = "checkBox_DeadLogOut";
-            this.checkBox_DeadLogOut.Size = new System.Drawing.Size(130, 17);
+            this.checkBox_DeadLogOut.Size = new Size(130, 17);
             this.checkBox_DeadLogOut.TabIndex = 36;
             this.checkBox_DeadLogOut.Text = "Dead Logout    Delay:";
             this.checkBox_DeadLogOut.UseVisualStyleBackColor = true;
@@ -2505,11 +2505,11 @@ namespace L2_login
             // 
             this.textBox_DeadLogOutDelay.Location = new System.Drawing.Point(142, 65);
             this.textBox_DeadLogOutDelay.Name = "textBox_DeadLogOutDelay";
-            this.textBox_DeadLogOutDelay.Size = new System.Drawing.Size(50, 20);
+            this.textBox_DeadLogOutDelay.Size = new Size(50, 20);
             this.textBox_DeadLogOutDelay.TabIndex = 38;
             this.textBox_DeadLogOutDelay.Text = "30";
-            this.textBox_DeadLogOutDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_DeadLogOutDelay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeadLogOutDelay_KeyPress);
+            this.textBox_DeadLogOutDelay.TextAlign = HorizontalAlignment.Center;
+            this.textBox_DeadLogOutDelay.KeyPress += new KeyPressEventHandler(this.textBox_DeadLogOutDelay_KeyPress);
             // 
             // comboBox_DeadReturn
             // 
@@ -2522,7 +2522,7 @@ namespace L2_login
             "Fortress"});
             this.comboBox_DeadReturn.Location = new System.Drawing.Point(198, 39);
             this.comboBox_DeadReturn.Name = "comboBox_DeadReturn";
-            this.comboBox_DeadReturn.Size = new System.Drawing.Size(83, 21);
+            this.comboBox_DeadReturn.Size = new Size(83, 21);
             this.comboBox_DeadReturn.TabIndex = 40;
             // 
             // groupBox_StuckSettings
@@ -2531,7 +2531,7 @@ namespace L2_login
             this.groupBox_StuckSettings.Controls.Add(this.checkBox_AutoBlacklist);
             this.groupBox_StuckSettings.Location = new System.Drawing.Point(229, 314);
             this.groupBox_StuckSettings.Name = "groupBox_StuckSettings";
-            this.groupBox_StuckSettings.Size = new System.Drawing.Size(283, 57);
+            this.groupBox_StuckSettings.Size = new Size(283, 57);
             this.groupBox_StuckSettings.TabIndex = 46;
             this.groupBox_StuckSettings.TabStop = false;
             this.groupBox_StuckSettings.Text = "Stuck Settings";
@@ -2540,7 +2540,7 @@ namespace L2_login
             // 
             this.checkBox_StuckCheck.Location = new System.Drawing.Point(112, 19);
             this.checkBox_StuckCheck.Name = "checkBox_StuckCheck";
-            this.checkBox_StuckCheck.Size = new System.Drawing.Size(100, 24);
+            this.checkBox_StuckCheck.Size = new Size(100, 24);
             this.checkBox_StuckCheck.TabIndex = 31;
             this.checkBox_StuckCheck.Text = "Auto Unstuck";
             // 
@@ -2548,7 +2548,7 @@ namespace L2_login
             // 
             this.checkBox_AutoBlacklist.Location = new System.Drawing.Point(6, 19);
             this.checkBox_AutoBlacklist.Name = "checkBox_AutoBlacklist";
-            this.checkBox_AutoBlacklist.Size = new System.Drawing.Size(100, 24);
+            this.checkBox_AutoBlacklist.Size = new Size(100, 24);
             this.checkBox_AutoBlacklist.TabIndex = 34;
             this.checkBox_AutoBlacklist.Text = "Auto Blacklist";
             // 
@@ -2561,7 +2561,7 @@ namespace L2_login
             this.groupBox_AttackSettings.Controls.Add(this.checkBox_active_attack);
             this.groupBox_AttackSettings.Location = new System.Drawing.Point(4, 56);
             this.groupBox_AttackSettings.Name = "groupBox_AttackSettings";
-            this.groupBox_AttackSettings.Size = new System.Drawing.Size(225, 91);
+            this.groupBox_AttackSettings.Size = new Size(225, 91);
             this.groupBox_AttackSettings.TabIndex = 43;
             this.groupBox_AttackSettings.TabStop = false;
             this.groupBox_AttackSettings.Text = "Attack Settings";
@@ -2570,7 +2570,7 @@ namespace L2_login
             // 
             this.checkBox_cancel_target.Location = new System.Drawing.Point(6, 39);
             this.checkBox_cancel_target.Name = "checkBox_cancel_target";
-            this.checkBox_cancel_target.Size = new System.Drawing.Size(144, 24);
+            this.checkBox_cancel_target.Size = new Size(144, 24);
             this.checkBox_cancel_target.TabIndex = 38;
             this.checkBox_cancel_target.Text = "Cancel Target on Dead";
             // 
@@ -2578,37 +2578,37 @@ namespace L2_login
             // 
             this.checkBox_active_move_first_normal.Location = new System.Drawing.Point(92, 19);
             this.checkBox_active_move_first_normal.Name = "checkBox_active_move_first_normal";
-            this.checkBox_active_move_first_normal.Size = new System.Drawing.Size(124, 24);
+            this.checkBox_active_move_first_normal.Size = new Size(124, 24);
             this.checkBox_active_move_first_normal.TabIndex = 37;
             this.checkBox_active_move_first_normal.Text = "Move Before Attack";
-            this.checkBox_active_move_first_normal.CheckedChanged += new System.EventHandler(this.checkBox_active_move_first_normal_CheckedChanged);
+            this.checkBox_active_move_first_normal.CheckedChanged += new EventHandler(this.checkBox_active_move_first_normal_CheckedChanged);
             // 
             // label_active_move_range
             // 
             this.label_active_move_range.Location = new System.Drawing.Point(68, 60);
             this.label_active_move_range.Name = "label_active_move_range";
-            this.label_active_move_range.Size = new System.Drawing.Size(75, 24);
+            this.label_active_move_range.Size = new Size(75, 24);
             this.label_active_move_range.TabIndex = 36;
             this.label_active_move_range.Text = "Move Range";
-            this.label_active_move_range.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_active_move_range.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_active_move_range
             // 
             this.textBox_active_move_range.Location = new System.Drawing.Point(6, 63);
             this.textBox_active_move_range.Name = "textBox_active_move_range";
-            this.textBox_active_move_range.Size = new System.Drawing.Size(60, 20);
+            this.textBox_active_move_range.Size = new Size(60, 20);
             this.textBox_active_move_range.TabIndex = 35;
             this.textBox_active_move_range.Text = "150";
-            this.textBox_active_move_range.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_active_move_range.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_active_attack
             // 
             this.checkBox_active_attack.Location = new System.Drawing.Point(6, 19);
             this.checkBox_active_attack.Name = "checkBox_active_attack";
-            this.checkBox_active_attack.Size = new System.Drawing.Size(92, 24);
+            this.checkBox_active_attack.Size = new Size(92, 24);
             this.checkBox_active_attack.TabIndex = 34;
             this.checkBox_active_attack.Text = "Active Attack";
-            this.checkBox_active_attack.CheckedChanged += new System.EventHandler(this.checkBox_active_attack_CheckedChanged);
+            this.checkBox_active_attack.CheckedChanged += new EventHandler(this.checkBox_active_attack_CheckedChanged);
             // 
             // groupBox_SpoilSettings
             // 
@@ -2621,7 +2621,7 @@ namespace L2_login
             this.groupBox_SpoilSettings.Controls.Add(this.checkBox_autosweep);
             this.groupBox_SpoilSettings.Location = new System.Drawing.Point(229, 3);
             this.groupBox_SpoilSettings.Name = "groupBox_SpoilSettings";
-            this.groupBox_SpoilSettings.Size = new System.Drawing.Size(284, 70);
+            this.groupBox_SpoilSettings.Size = new Size(284, 70);
             this.groupBox_SpoilSettings.TabIndex = 44;
             this.groupBox_SpoilSettings.TabStop = false;
             this.groupBox_SpoilSettings.Text = "Spoil Settings";
@@ -2629,10 +2629,10 @@ namespace L2_login
             // checkBox_use_plunder
             // 
             this.checkBox_use_plunder.Checked = true;
-            this.checkBox_use_plunder.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_use_plunder.CheckState = CheckState.Checked;
             this.checkBox_use_plunder.Location = new System.Drawing.Point(106, 40);
             this.checkBox_use_plunder.Name = "checkBox_use_plunder";
-            this.checkBox_use_plunder.Size = new System.Drawing.Size(77, 24);
+            this.checkBox_use_plunder.Size = new Size(77, 24);
             this.checkBox_use_plunder.TabIndex = 34;
             this.checkBox_use_plunder.Text = "Plunder";
             // 
@@ -2641,7 +2641,7 @@ namespace L2_login
             this.label_SpoilMP.AutoSize = true;
             this.label_SpoilMP.Location = new System.Drawing.Point(207, 24);
             this.label_SpoilMP.Name = "label_SpoilMP";
-            this.label_SpoilMP.Size = new System.Drawing.Size(32, 13);
+            this.label_SpoilMP.Size = new Size(32, 13);
             this.label_SpoilMP.TabIndex = 33;
             this.label_SpoilMP.Text = "MP >";
             // 
@@ -2649,16 +2649,16 @@ namespace L2_login
             // 
             this.textBox_spoil_mp.Location = new System.Drawing.Point(245, 21);
             this.textBox_spoil_mp.Name = "textBox_spoil_mp";
-            this.textBox_spoil_mp.Size = new System.Drawing.Size(30, 20);
+            this.textBox_spoil_mp.Size = new Size(30, 20);
             this.textBox_spoil_mp.TabIndex = 32;
             this.textBox_spoil_mp.Text = "50";
-            this.textBox_spoil_mp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_spoil_mp_KeyPress);
+            this.textBox_spoil_mp.KeyPress += new KeyPressEventHandler(this.textBox_spoil_mp_KeyPress);
             // 
             // checkBox_UntilSuccess
             // 
             this.checkBox_UntilSuccess.Location = new System.Drawing.Point(119, 19);
             this.checkBox_UntilSuccess.Name = "checkBox_UntilSuccess";
-            this.checkBox_UntilSuccess.Size = new System.Drawing.Size(140, 24);
+            this.checkBox_UntilSuccess.Size = new Size(140, 24);
             this.checkBox_UntilSuccess.TabIndex = 31;
             this.checkBox_UntilSuccess.Text = "Until Success";
             // 
@@ -2666,7 +2666,7 @@ namespace L2_login
             // 
             this.checkBox_spoilcrush.Location = new System.Drawing.Point(6, 40);
             this.checkBox_spoilcrush.Name = "checkBox_spoilcrush";
-            this.checkBox_spoilcrush.Size = new System.Drawing.Size(107, 24);
+            this.checkBox_spoilcrush.Size = new Size(107, 24);
             this.checkBox_spoilcrush.TabIndex = 29;
             this.checkBox_spoilcrush.Text = "Use Spoil Crush";
             // 
@@ -2674,17 +2674,17 @@ namespace L2_login
             // 
             this.checkBox_autospoil.Location = new System.Drawing.Point(6, 19);
             this.checkBox_autospoil.Name = "checkBox_autospoil";
-            this.checkBox_autospoil.Size = new System.Drawing.Size(75, 24);
+            this.checkBox_autospoil.Size = new Size(75, 24);
             this.checkBox_autospoil.TabIndex = 28;
             this.checkBox_autospoil.Text = "Auto Spoil";
-            this.checkBox_autospoil.CheckedChanged += new System.EventHandler(this.checkBox_autospoil_CheckedChanged);
+            this.checkBox_autospoil.CheckedChanged += new EventHandler(this.checkBox_autospoil_CheckedChanged);
             // 
             // checkBox_autosweep
             // 
             this.checkBox_autosweep.Enabled = false;
             this.checkBox_autosweep.Location = new System.Drawing.Point(189, 40);
             this.checkBox_autosweep.Name = "checkBox_autosweep";
-            this.checkBox_autosweep.Size = new System.Drawing.Size(86, 24);
+            this.checkBox_autosweep.Size = new Size(86, 24);
             this.checkBox_autosweep.TabIndex = 30;
             this.checkBox_autosweep.Text = "Auto Sweep";
             // 
@@ -2694,7 +2694,7 @@ namespace L2_login
             this.groupBox_TargetSettings.Controls.Add(this.checkBox_active_target);
             this.groupBox_TargetSettings.Location = new System.Drawing.Point(3, 3);
             this.groupBox_TargetSettings.Name = "groupBox_TargetSettings";
-            this.groupBox_TargetSettings.Size = new System.Drawing.Size(226, 52);
+            this.groupBox_TargetSettings.Size = new Size(226, 52);
             this.groupBox_TargetSettings.TabIndex = 42;
             this.groupBox_TargetSettings.TabStop = false;
             this.groupBox_TargetSettings.Text = "Target Settings";
@@ -2704,19 +2704,19 @@ namespace L2_login
             this.checkBox_movebeforetargeting.Enabled = false;
             this.checkBox_movebeforetargeting.Location = new System.Drawing.Point(93, 19);
             this.checkBox_movebeforetargeting.Name = "checkBox_movebeforetargeting";
-            this.checkBox_movebeforetargeting.Size = new System.Drawing.Size(143, 24);
+            this.checkBox_movebeforetargeting.Size = new Size(143, 24);
             this.checkBox_movebeforetargeting.TabIndex = 37;
             this.checkBox_movebeforetargeting.Text = "Move Before Targeting";
-            this.checkBox_movebeforetargeting.CheckedChanged += new System.EventHandler(this.checkBox_movebeforetargeting_CheckedChanged);
+            this.checkBox_movebeforetargeting.CheckedChanged += new EventHandler(this.checkBox_movebeforetargeting_CheckedChanged);
             // 
             // checkBox_active_target
             // 
             this.checkBox_active_target.Location = new System.Drawing.Point(6, 19);
             this.checkBox_active_target.Name = "checkBox_active_target";
-            this.checkBox_active_target.Size = new System.Drawing.Size(90, 24);
+            this.checkBox_active_target.Size = new Size(90, 24);
             this.checkBox_active_target.TabIndex = 36;
             this.checkBox_active_target.Text = "Active Target";
-            this.checkBox_active_target.CheckedChanged += new System.EventHandler(this.checkBox_active_target_CheckedChanged);
+            this.checkBox_active_target.CheckedChanged += new EventHandler(this.checkBox_active_target_CheckedChanged);
             // 
             // tabPage_autofighter_advanced
             // 
@@ -2724,8 +2724,8 @@ namespace L2_login
             this.tabPage_autofighter_advanced.Controls.Add(this.groupBox_AdvancedS);
             this.tabPage_autofighter_advanced.Location = new System.Drawing.Point(104, 4);
             this.tabPage_autofighter_advanced.Name = "tabPage_autofighter_advanced";
-            this.tabPage_autofighter_advanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_autofighter_advanced.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_autofighter_advanced.Padding = new Padding(3);
+            this.tabPage_autofighter_advanced.Size = new Size(515, 377);
             this.tabPage_autofighter_advanced.TabIndex = 12;
             this.tabPage_autofighter_advanced.Text = "Advanced";
             this.tabPage_autofighter_advanced.UseVisualStyleBackColor = true;
@@ -2738,7 +2738,7 @@ namespace L2_login
             this.groupBox_WindowTitle.Controls.Add(this.button_Custom_WindowTitle_Set);
             this.groupBox_WindowTitle.Location = new System.Drawing.Point(6, 181);
             this.groupBox_WindowTitle.Name = "groupBox_WindowTitle";
-            this.groupBox_WindowTitle.Size = new System.Drawing.Size(499, 40);
+            this.groupBox_WindowTitle.Size = new Size(499, 40);
             this.groupBox_WindowTitle.TabIndex = 11;
             this.groupBox_WindowTitle.TabStop = false;
             // 
@@ -2747,7 +2747,7 @@ namespace L2_login
             this.label_Custom_WindowTitle.AutoSize = true;
             this.label_Custom_WindowTitle.Location = new System.Drawing.Point(6, 16);
             this.label_Custom_WindowTitle.Name = "label_Custom_WindowTitle";
-            this.label_Custom_WindowTitle.Size = new System.Drawing.Size(107, 13);
+            this.label_Custom_WindowTitle.Size = new Size(107, 13);
             this.label_Custom_WindowTitle.TabIndex = 8;
             this.label_Custom_WindowTitle.Text = "Custom Window Title";
             // 
@@ -2755,28 +2755,28 @@ namespace L2_login
             // 
             this.textBox_Custom_WindowTitle.Location = new System.Drawing.Point(119, 13);
             this.textBox_Custom_WindowTitle.Name = "textBox_Custom_WindowTitle";
-            this.textBox_Custom_WindowTitle.Size = new System.Drawing.Size(177, 20);
+            this.textBox_Custom_WindowTitle.Size = new Size(177, 20);
             this.textBox_Custom_WindowTitle.TabIndex = 6;
             // 
             // button_Custom_WindowTitle_Reset
             // 
             this.button_Custom_WindowTitle_Reset.Location = new System.Drawing.Point(383, 10);
             this.button_Custom_WindowTitle_Reset.Name = "button_Custom_WindowTitle_Reset";
-            this.button_Custom_WindowTitle_Reset.Size = new System.Drawing.Size(75, 23);
+            this.button_Custom_WindowTitle_Reset.Size = new Size(75, 23);
             this.button_Custom_WindowTitle_Reset.TabIndex = 9;
             this.button_Custom_WindowTitle_Reset.Text = "Reset";
             this.button_Custom_WindowTitle_Reset.UseVisualStyleBackColor = true;
-            this.button_Custom_WindowTitle_Reset.Click += new System.EventHandler(this.button_Custom_WindowTitle_Reset_Click);
+            this.button_Custom_WindowTitle_Reset.Click += new EventHandler(this.button_Custom_WindowTitle_Reset_Click);
             // 
             // button_Custom_WindowTitle_Set
             // 
             this.button_Custom_WindowTitle_Set.Location = new System.Drawing.Point(302, 10);
             this.button_Custom_WindowTitle_Set.Name = "button_Custom_WindowTitle_Set";
-            this.button_Custom_WindowTitle_Set.Size = new System.Drawing.Size(75, 23);
+            this.button_Custom_WindowTitle_Set.Size = new Size(75, 23);
             this.button_Custom_WindowTitle_Set.TabIndex = 7;
             this.button_Custom_WindowTitle_Set.Text = "Set";
             this.button_Custom_WindowTitle_Set.UseVisualStyleBackColor = true;
-            this.button_Custom_WindowTitle_Set.Click += new System.EventHandler(this.button_Custom_WindowTitle_Set_Click);
+            this.button_Custom_WindowTitle_Set.Click += new EventHandler(this.button_Custom_WindowTitle_Set_Click);
             // 
             // groupBox_AdvancedS
             // 
@@ -2790,7 +2790,7 @@ namespace L2_login
             this.groupBox_AdvancedS.Controls.Add(this.label_blacklist_tries);
             this.groupBox_AdvancedS.Location = new System.Drawing.Point(3, 3);
             this.groupBox_AdvancedS.Name = "groupBox_AdvancedS";
-            this.groupBox_AdvancedS.Size = new System.Drawing.Size(204, 121);
+            this.groupBox_AdvancedS.Size = new Size(204, 121);
             this.groupBox_AdvancedS.TabIndex = 10;
             this.groupBox_AdvancedS.TabStop = false;
             // 
@@ -2799,7 +2799,7 @@ namespace L2_login
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(6, 94);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(81, 13);
+            this.label27.Size = new Size(81, 13);
             this.label27.TabIndex = 7;
             this.label27.Text = "Pickup Timeout";
             // 
@@ -2812,7 +2812,7 @@ namespace L2_login
             0,
             0});
             this.numericUpDown_pickuptimeout.Name = "numericUpDown_pickuptimeout";
-            this.numericUpDown_pickuptimeout.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDown_pickuptimeout.Size = new Size(49, 20);
             this.numericUpDown_pickuptimeout.TabIndex = 6;
             this.numericUpDown_pickuptimeout.Value = new decimal(new int[] {
             5,
@@ -2825,7 +2825,7 @@ namespace L2_login
             this.label_anti_ks_delay.AutoSize = true;
             this.label_anti_ks_delay.Location = new System.Drawing.Point(6, 16);
             this.label_anti_ks_delay.Name = "label_anti_ks_delay";
-            this.label_anti_ks_delay.Size = new System.Drawing.Size(72, 13);
+            this.label_anti_ks_delay.Size = new Size(72, 13);
             this.label_anti_ks_delay.TabIndex = 3;
             this.label_anti_ks_delay.Text = "Anti KS Delay";
             // 
@@ -2838,7 +2838,7 @@ namespace L2_login
             0,
             0});
             this.numericUpDown_anti_ks_delay.Name = "numericUpDown_anti_ks_delay";
-            this.numericUpDown_anti_ks_delay.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDown_anti_ks_delay.Size = new Size(49, 20);
             this.numericUpDown_anti_ks_delay.TabIndex = 0;
             this.numericUpDown_anti_ks_delay.Value = new decimal(new int[] {
             20,
@@ -2855,7 +2855,7 @@ namespace L2_login
             0,
             0});
             this.numericUpDown_autofollow_delay.Name = "numericUpDown_autofollow_delay";
-            this.numericUpDown_autofollow_delay.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDown_autofollow_delay.Size = new Size(49, 20);
             this.numericUpDown_autofollow_delay.TabIndex = 1;
             this.numericUpDown_autofollow_delay.Value = new decimal(new int[] {
             10,
@@ -2872,7 +2872,7 @@ namespace L2_login
             0,
             0});
             this.numericUpDown_blacklist_tries.Name = "numericUpDown_blacklist_tries";
-            this.numericUpDown_blacklist_tries.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDown_blacklist_tries.Size = new Size(49, 20);
             this.numericUpDown_blacklist_tries.TabIndex = 2;
             this.numericUpDown_blacklist_tries.Value = new decimal(new int[] {
             5,
@@ -2885,7 +2885,7 @@ namespace L2_login
             this.label_autofollow_delay.AutoSize = true;
             this.label_autofollow_delay.Location = new System.Drawing.Point(6, 42);
             this.label_autofollow_delay.Name = "label_autofollow_delay";
-            this.label_autofollow_delay.Size = new System.Drawing.Size(86, 13);
+            this.label_autofollow_delay.Size = new Size(86, 13);
             this.label_autofollow_delay.TabIndex = 4;
             this.label_autofollow_delay.Text = "Autofollow Delay";
             // 
@@ -2894,7 +2894,7 @@ namespace L2_login
             this.label_blacklist_tries.AutoSize = true;
             this.label_blacklist_tries.Location = new System.Drawing.Point(6, 68);
             this.label_blacklist_tries.Name = "label_blacklist_tries";
-            this.label_blacklist_tries.Size = new System.Drawing.Size(72, 13);
+            this.label_blacklist_tries.Size = new Size(72, 13);
             this.label_blacklist_tries.TabIndex = 5;
             this.label_blacklist_tries.Text = "Blacklist Tries";
             // 
@@ -2904,8 +2904,8 @@ namespace L2_login
             this.tabPage_RestOptions.Controls.Add(this.groupBox_Rest_Solo);
             this.tabPage_RestOptions.Location = new System.Drawing.Point(104, 4);
             this.tabPage_RestOptions.Name = "tabPage_RestOptions";
-            this.tabPage_RestOptions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_RestOptions.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_RestOptions.Padding = new Padding(3);
+            this.tabPage_RestOptions.Size = new Size(515, 377);
             this.tabPage_RestOptions.TabIndex = 11;
             this.tabPage_RestOptions.Text = "Rest Options";
             this.tabPage_RestOptions.UseVisualStyleBackColor = true;
@@ -2917,7 +2917,7 @@ namespace L2_login
             this.groupBox_Rest_Party.Controls.Add(this.checkBox_FollowRest);
             this.groupBox_Rest_Party.Location = new System.Drawing.Point(3, 174);
             this.groupBox_Rest_Party.Name = "groupBox_Rest_Party";
-            this.groupBox_Rest_Party.Size = new System.Drawing.Size(384, 58);
+            this.groupBox_Rest_Party.Size = new Size(384, 58);
             this.groupBox_Rest_Party.TabIndex = 1;
             this.groupBox_Rest_Party.TabStop = false;
             this.groupBox_Rest_Party.Text = "Party Settings";
@@ -2926,23 +2926,23 @@ namespace L2_login
             // 
             this.label_followrestname.Location = new System.Drawing.Point(229, 12);
             this.label_followrestname.Name = "label_followrestname";
-            this.label_followrestname.Size = new System.Drawing.Size(175, 24);
+            this.label_followrestname.Size = new Size(175, 24);
             this.label_followrestname.TabIndex = 6;
             this.label_followrestname.Text = "Name";
-            this.label_followrestname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_followrestname.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_FollowRestName
             // 
             this.textBox_FollowRestName.Location = new System.Drawing.Point(123, 15);
             this.textBox_FollowRestName.Name = "textBox_FollowRestName";
-            this.textBox_FollowRestName.Size = new System.Drawing.Size(100, 20);
+            this.textBox_FollowRestName.Size = new Size(100, 20);
             this.textBox_FollowRestName.TabIndex = 5;
             // 
             // checkBox_FollowRest
             // 
             this.checkBox_FollowRest.Location = new System.Drawing.Point(5, 19);
             this.checkBox_FollowRest.Name = "checkBox_FollowRest";
-            this.checkBox_FollowRest.Size = new System.Drawing.Size(112, 17);
+            this.checkBox_FollowRest.Size = new Size(112, 17);
             this.checkBox_FollowRest.TabIndex = 4;
             this.checkBox_FollowRest.Text = "Follow Rest";
             this.checkBox_FollowRest.UseVisualStyleBackColor = true;
@@ -2963,7 +2963,7 @@ namespace L2_login
             this.groupBox_Rest_Solo.Controls.Add(this.checkBox_RestBelowHP);
             this.groupBox_Rest_Solo.Location = new System.Drawing.Point(3, 3);
             this.groupBox_Rest_Solo.Name = "groupBox_Rest_Solo";
-            this.groupBox_Rest_Solo.Size = new System.Drawing.Size(384, 165);
+            this.groupBox_Rest_Solo.Size = new Size(384, 165);
             this.groupBox_Rest_Solo.TabIndex = 0;
             this.groupBox_Rest_Solo.TabStop = false;
             this.groupBox_Rest_Solo.Text = "Solo Settings";
@@ -2973,7 +2973,7 @@ namespace L2_login
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(302, 46);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.Size = new Size(34, 13);
             this.label13.TabIndex = 11;
             this.label13.Text = "% MP";
             // 
@@ -2981,7 +2981,7 @@ namespace L2_login
             // 
             this.numericUpDown_RestUntilMP.Location = new System.Drawing.Point(244, 44);
             this.numericUpDown_RestUntilMP.Name = "numericUpDown_RestUntilMP";
-            this.numericUpDown_RestUntilMP.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDown_RestUntilMP.Size = new Size(54, 20);
             this.numericUpDown_RestUntilMP.TabIndex = 10;
             this.numericUpDown_RestUntilMP.Value = new decimal(new int[] {
             100,
@@ -2994,7 +2994,7 @@ namespace L2_login
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(302, 20);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 13);
+            this.label17.Size = new Size(33, 13);
             this.label17.TabIndex = 9;
             this.label17.Text = "% HP";
             // 
@@ -3002,7 +3002,7 @@ namespace L2_login
             // 
             this.numericUpDown_RestUntilHP.Location = new System.Drawing.Point(243, 16);
             this.numericUpDown_RestUntilHP.Name = "numericUpDown_RestUntilHP";
-            this.numericUpDown_RestUntilHP.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDown_RestUntilHP.Size = new Size(54, 20);
             this.numericUpDown_RestUntilHP.TabIndex = 8;
             this.numericUpDown_RestUntilHP.Value = new decimal(new int[] {
             100,
@@ -3015,7 +3015,7 @@ namespace L2_login
             this.checkBox_RestUntilMP.AutoSize = true;
             this.checkBox_RestUntilMP.Location = new System.Drawing.Point(190, 45);
             this.checkBox_RestUntilMP.Name = "checkBox_RestUntilMP";
-            this.checkBox_RestUntilMP.Size = new System.Drawing.Size(47, 17);
+            this.checkBox_RestUntilMP.Size = new Size(47, 17);
             this.checkBox_RestUntilMP.TabIndex = 7;
             this.checkBox_RestUntilMP.Text = "Until";
             this.checkBox_RestUntilMP.UseVisualStyleBackColor = true;
@@ -3025,7 +3025,7 @@ namespace L2_login
             this.checkBox_RestUntilHP.AutoSize = true;
             this.checkBox_RestUntilHP.Location = new System.Drawing.Point(190, 19);
             this.checkBox_RestUntilHP.Name = "checkBox_RestUntilHP";
-            this.checkBox_RestUntilHP.Size = new System.Drawing.Size(47, 17);
+            this.checkBox_RestUntilHP.Size = new Size(47, 17);
             this.checkBox_RestUntilHP.TabIndex = 6;
             this.checkBox_RestUntilHP.Text = "Until";
             this.checkBox_RestUntilHP.UseVisualStyleBackColor = true;
@@ -3035,7 +3035,7 @@ namespace L2_login
             this.label_percent_MP.AutoSize = true;
             this.label_percent_MP.Location = new System.Drawing.Point(150, 46);
             this.label_percent_MP.Name = "label_percent_MP";
-            this.label_percent_MP.Size = new System.Drawing.Size(34, 13);
+            this.label_percent_MP.Size = new Size(34, 13);
             this.label_percent_MP.TabIndex = 5;
             this.label_percent_MP.Text = "% MP";
             // 
@@ -3043,7 +3043,7 @@ namespace L2_login
             // 
             this.numericUpDown_RestBelowMP.Location = new System.Drawing.Point(92, 42);
             this.numericUpDown_RestBelowMP.Name = "numericUpDown_RestBelowMP";
-            this.numericUpDown_RestBelowMP.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDown_RestBelowMP.Size = new Size(53, 20);
             this.numericUpDown_RestBelowMP.TabIndex = 4;
             this.numericUpDown_RestBelowMP.Value = new decimal(new int[] {
             50,
@@ -3056,7 +3056,7 @@ namespace L2_login
             this.checkBox_RestBelowMP.AutoSize = true;
             this.checkBox_RestBelowMP.Location = new System.Drawing.Point(6, 45);
             this.checkBox_RestBelowMP.Name = "checkBox_RestBelowMP";
-            this.checkBox_RestBelowMP.Size = new System.Drawing.Size(80, 17);
+            this.checkBox_RestBelowMP.Size = new Size(80, 17);
             this.checkBox_RestBelowMP.TabIndex = 3;
             this.checkBox_RestBelowMP.Text = "Rest Below";
             this.checkBox_RestBelowMP.UseVisualStyleBackColor = true;
@@ -3066,7 +3066,7 @@ namespace L2_login
             this.label_percent_HP.AutoSize = true;
             this.label_percent_HP.Location = new System.Drawing.Point(150, 20);
             this.label_percent_HP.Name = "label_percent_HP";
-            this.label_percent_HP.Size = new System.Drawing.Size(33, 13);
+            this.label_percent_HP.Size = new Size(33, 13);
             this.label_percent_HP.TabIndex = 2;
             this.label_percent_HP.Text = "% HP";
             // 
@@ -3074,7 +3074,7 @@ namespace L2_login
             // 
             this.numericUpDown_RestBelowHP.Location = new System.Drawing.Point(91, 16);
             this.numericUpDown_RestBelowHP.Name = "numericUpDown_RestBelowHP";
-            this.numericUpDown_RestBelowHP.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDown_RestBelowHP.Size = new Size(54, 20);
             this.numericUpDown_RestBelowHP.TabIndex = 1;
             this.numericUpDown_RestBelowHP.Value = new decimal(new int[] {
             50,
@@ -3087,7 +3087,7 @@ namespace L2_login
             this.checkBox_RestBelowHP.AutoSize = true;
             this.checkBox_RestBelowHP.Location = new System.Drawing.Point(6, 17);
             this.checkBox_RestBelowHP.Name = "checkBox_RestBelowHP";
-            this.checkBox_RestBelowHP.Size = new System.Drawing.Size(80, 17);
+            this.checkBox_RestBelowHP.Size = new Size(80, 17);
             this.checkBox_RestBelowHP.TabIndex = 0;
             this.checkBox_RestBelowHP.Text = "Rest Below";
             this.checkBox_RestBelowHP.UseVisualStyleBackColor = true;
@@ -3102,7 +3102,7 @@ namespace L2_login
             this.tabPage_target.Controls.Add(this.checkBox_portect_priority);
             this.tabPage_target.Location = new System.Drawing.Point(104, 4);
             this.tabPage_target.Name = "tabPage_target";
-            this.tabPage_target.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_target.Size = new Size(515, 377);
             this.tabPage_target.TabIndex = 10;
             this.tabPage_target.Text = "Targeting";
             this.tabPage_target.UseVisualStyleBackColor = true;
@@ -3114,7 +3114,7 @@ namespace L2_login
             this.groupBox5.Controls.Add(this.radioButton_combat2);
             this.groupBox5.Location = new System.Drawing.Point(9, 148);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(335, 33);
+            this.groupBox5.Size = new Size(335, 33);
             this.groupBox5.TabIndex = 31;
             this.groupBox5.TabStop = false;
             // 
@@ -3123,7 +3123,7 @@ namespace L2_login
             this.radioButton_combat0.AutoSize = true;
             this.radioButton_combat0.Location = new System.Drawing.Point(25, 10);
             this.radioButton_combat0.Name = "radioButton_combat0";
-            this.radioButton_combat0.Size = new System.Drawing.Size(67, 17);
+            this.radioButton_combat0.Size = new Size(67, 17);
             this.radioButton_combat0.TabIndex = 12;
             this.radioButton_combat0.Text = "Don\'t KS";
             // 
@@ -3132,7 +3132,7 @@ namespace L2_login
             this.radioButton_combat1.AutoSize = true;
             this.radioButton_combat1.Location = new System.Drawing.Point(116, 10);
             this.radioButton_combat1.Name = "radioButton_combat1";
-            this.radioButton_combat1.Size = new System.Drawing.Size(63, 17);
+            this.radioButton_combat1.Size = new Size(63, 17);
             this.radioButton_combat1.TabIndex = 13;
             this.radioButton_combat1.Text = "Only KS";
             // 
@@ -3142,7 +3142,7 @@ namespace L2_login
             this.radioButton_combat2.Checked = true;
             this.radioButton_combat2.Location = new System.Drawing.Point(207, 10);
             this.radioButton_combat2.Name = "radioButton_combat2";
-            this.radioButton_combat2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton_combat2.Size = new Size(47, 17);
             this.radioButton_combat2.TabIndex = 14;
             this.radioButton_combat2.TabStop = true;
             this.radioButton_combat2.Text = "Both";
@@ -3154,7 +3154,7 @@ namespace L2_login
             this.groupBox4.Controls.Add(this.radioButton_inbox2);
             this.groupBox4.Location = new System.Drawing.Point(9, 115);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(335, 33);
+            this.groupBox4.Size = new Size(335, 33);
             this.groupBox4.TabIndex = 30;
             this.groupBox4.TabStop = false;
             // 
@@ -3164,7 +3164,7 @@ namespace L2_login
             this.radioButton_inbox0.Checked = true;
             this.radioButton_inbox0.Location = new System.Drawing.Point(25, 10);
             this.radioButton_inbox0.Name = "radioButton_inbox0";
-            this.radioButton_inbox0.Size = new System.Drawing.Size(55, 17);
+            this.radioButton_inbox0.Size = new Size(55, 17);
             this.radioButton_inbox0.TabIndex = 9;
             this.radioButton_inbox0.TabStop = true;
             this.radioButton_inbox0.Text = "In Box";
@@ -3174,7 +3174,7 @@ namespace L2_login
             this.radioButton_inbox1.AutoSize = true;
             this.radioButton_inbox1.Location = new System.Drawing.Point(116, 10);
             this.radioButton_inbox1.Name = "radioButton_inbox1";
-            this.radioButton_inbox1.Size = new System.Drawing.Size(75, 17);
+            this.radioButton_inbox1.Size = new Size(75, 17);
             this.radioButton_inbox1.TabIndex = 10;
             this.radioButton_inbox1.Text = "Not In Box";
             // 
@@ -3183,7 +3183,7 @@ namespace L2_login
             this.radioButton_inbox2.AutoSize = true;
             this.radioButton_inbox2.Location = new System.Drawing.Point(207, 10);
             this.radioButton_inbox2.Name = "radioButton_inbox2";
-            this.radioButton_inbox2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton_inbox2.Size = new Size(47, 17);
             this.radioButton_inbox2.TabIndex = 11;
             this.radioButton_inbox2.Text = "Both";
             // 
@@ -3194,7 +3194,7 @@ namespace L2_login
             this.groupBox3.Controls.Add(this.radioButton_alive2);
             this.groupBox3.Location = new System.Drawing.Point(9, 82);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 33);
+            this.groupBox3.Size = new Size(335, 33);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             // 
@@ -3204,7 +3204,7 @@ namespace L2_login
             this.radioButton_alive0.Checked = true;
             this.radioButton_alive0.Location = new System.Drawing.Point(25, 10);
             this.radioButton_alive0.Name = "radioButton_alive0";
-            this.radioButton_alive0.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_alive0.Size = new Size(48, 17);
             this.radioButton_alive0.TabIndex = 6;
             this.radioButton_alive0.TabStop = true;
             this.radioButton_alive0.Text = "Alive";
@@ -3214,7 +3214,7 @@ namespace L2_login
             this.radioButton_alive1.AutoSize = true;
             this.radioButton_alive1.Location = new System.Drawing.Point(116, 10);
             this.radioButton_alive1.Name = "radioButton_alive1";
-            this.radioButton_alive1.Size = new System.Drawing.Size(51, 17);
+            this.radioButton_alive1.Size = new Size(51, 17);
             this.radioButton_alive1.TabIndex = 7;
             this.radioButton_alive1.Text = "Dead";
             // 
@@ -3223,7 +3223,7 @@ namespace L2_login
             this.radioButton_alive2.AutoSize = true;
             this.radioButton_alive2.Location = new System.Drawing.Point(207, 10);
             this.radioButton_alive2.Name = "radioButton_alive2";
-            this.radioButton_alive2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton_alive2.Size = new Size(47, 17);
             this.radioButton_alive2.TabIndex = 8;
             this.radioButton_alive2.Text = "Both";
             // 
@@ -3234,7 +3234,7 @@ namespace L2_login
             this.groupBox2.Controls.Add(this.radioButton_attackable1);
             this.groupBox2.Location = new System.Drawing.Point(9, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(335, 33);
+            this.groupBox2.Size = new Size(335, 33);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
@@ -3243,7 +3243,7 @@ namespace L2_login
             this.radioButton_attackable2.AutoSize = true;
             this.radioButton_attackable2.Location = new System.Drawing.Point(207, 10);
             this.radioButton_attackable2.Name = "radioButton_attackable2";
-            this.radioButton_attackable2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton_attackable2.Size = new Size(47, 17);
             this.radioButton_attackable2.TabIndex = 5;
             this.radioButton_attackable2.Text = "Both";
             // 
@@ -3253,7 +3253,7 @@ namespace L2_login
             this.radioButton_attackable0.Checked = true;
             this.radioButton_attackable0.Location = new System.Drawing.Point(25, 10);
             this.radioButton_attackable0.Name = "radioButton_attackable0";
-            this.radioButton_attackable0.Size = new System.Drawing.Size(76, 17);
+            this.radioButton_attackable0.Size = new Size(76, 17);
             this.radioButton_attackable0.TabIndex = 3;
             this.radioButton_attackable0.TabStop = true;
             this.radioButton_attackable0.Text = "Attackable";
@@ -3263,7 +3263,7 @@ namespace L2_login
             this.radioButton_attackable1.AutoSize = true;
             this.radioButton_attackable1.Location = new System.Drawing.Point(116, 10);
             this.radioButton_attackable1.Name = "radioButton_attackable1";
-            this.radioButton_attackable1.Size = new System.Drawing.Size(70, 17);
+            this.radioButton_attackable1.Size = new Size(70, 17);
             this.radioButton_attackable1.TabIndex = 4;
             this.radioButton_attackable1.Text = "Invincible";
             // 
@@ -3274,7 +3274,7 @@ namespace L2_login
             this.groupBox1.Controls.Add(this.radioButton_type2);
             this.groupBox1.Location = new System.Drawing.Point(9, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(335, 33);
+            this.groupBox1.Size = new Size(335, 33);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
@@ -3284,7 +3284,7 @@ namespace L2_login
             this.radioButton_type0.Checked = true;
             this.radioButton_type0.Location = new System.Drawing.Point(25, 10);
             this.radioButton_type0.Name = "radioButton_type0";
-            this.radioButton_type0.Size = new System.Drawing.Size(52, 17);
+            this.radioButton_type0.Size = new Size(52, 17);
             this.radioButton_type0.TabIndex = 0;
             this.radioButton_type0.TabStop = true;
             this.radioButton_type0.Tag = "";
@@ -3295,7 +3295,7 @@ namespace L2_login
             this.radioButton_type1.AutoSize = true;
             this.radioButton_type1.Location = new System.Drawing.Point(116, 10);
             this.radioButton_type1.Name = "radioButton_type1";
-            this.radioButton_type1.Size = new System.Drawing.Size(59, 17);
+            this.radioButton_type1.Size = new Size(59, 17);
             this.radioButton_type1.TabIndex = 1;
             this.radioButton_type1.Text = "Players";
             // 
@@ -3304,7 +3304,7 @@ namespace L2_login
             this.radioButton_type2.AutoSize = true;
             this.radioButton_type2.Location = new System.Drawing.Point(207, 10);
             this.radioButton_type2.Name = "radioButton_type2";
-            this.radioButton_type2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton_type2.Size = new Size(47, 17);
             this.radioButton_type2.TabIndex = 2;
             this.radioButton_type2.Text = "Both";
             // 
@@ -3313,7 +3313,7 @@ namespace L2_login
             this.checkBox_portect_priority.Enabled = false;
             this.checkBox_portect_priority.Location = new System.Drawing.Point(109, 238);
             this.checkBox_portect_priority.Name = "checkBox_portect_priority";
-            this.checkBox_portect_priority.Size = new System.Drawing.Size(313, 24);
+            this.checkBox_portect_priority.Size = new Size(313, 24);
             this.checkBox_portect_priority.TabIndex = 26;
             this.checkBox_portect_priority.Text = "Protect Priority";
             // 
@@ -3340,7 +3340,7 @@ namespace L2_login
             this.tabPage_buffsheals.Controls.Add(this.listView_buffheal);
             this.tabPage_buffsheals.Location = new System.Drawing.Point(104, 4);
             this.tabPage_buffsheals.Name = "tabPage_buffsheals";
-            this.tabPage_buffsheals.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_buffsheals.Size = new Size(515, 377);
             this.tabPage_buffsheals.TabIndex = 2;
             this.tabPage_buffsheals.Text = "Buffs/Heals";
             this.tabPage_buffsheals.UseVisualStyleBackColor = true;
@@ -3349,126 +3349,126 @@ namespace L2_login
             // 
             this.comboBox_buffheal_skill.Location = new System.Drawing.Point(142, 64);
             this.comboBox_buffheal_skill.Name = "comboBox_buffheal_skill";
-            this.comboBox_buffheal_skill.Size = new System.Drawing.Size(137, 21);
+            this.comboBox_buffheal_skill.Size = new Size(137, 21);
             this.comboBox_buffheal_skill.TabIndex = 72;
             // 
             // label_target
             // 
             this.label_target.Location = new System.Drawing.Point(368, 8);
             this.label_target.Name = "label_target";
-            this.label_target.Size = new System.Drawing.Size(128, 16);
+            this.label_target.Size = new Size(128, 16);
             this.label_target.TabIndex = 71;
             this.label_target.Text = "Need Target";
-            this.label_target.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_target.TextAlign = ContentAlignment.MiddleRight;
             // 
             // checkBox_target
             // 
             this.checkBox_target.Checked = true;
-            this.checkBox_target.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_target.CheckState = CheckState.Checked;
             this.checkBox_target.Location = new System.Drawing.Point(456, 24);
             this.checkBox_target.Name = "checkBox_target";
-            this.checkBox_target.Size = new System.Drawing.Size(24, 24);
+            this.checkBox_target.Size = new Size(24, 24);
             this.checkBox_target.TabIndex = 2;
             // 
             // button_update
             // 
             this.button_update.Enabled = false;
-            this.button_update.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_update.FlatStyle = FlatStyle.System;
             this.button_update.Location = new System.Drawing.Point(240, 96);
             this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(128, 24);
+            this.button_update.Size = new Size(128, 24);
             this.button_update.TabIndex = 10;
             this.button_update.Text = "Update";
-            this.button_update.Click += new System.EventHandler(this.button_update_Click);
+            this.button_update.Click += new EventHandler(this.button_update_Click);
             // 
             // button_add
             // 
-            this.button_add.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_add.FlatStyle = FlatStyle.System;
             this.button_add.Location = new System.Drawing.Point(88, 96);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(128, 24);
+            this.button_add.Size = new Size(128, 24);
             this.button_add.TabIndex = 9;
             this.button_add.Text = "Add";
-            this.button_add.Click += new System.EventHandler(this.button_add_Click);
+            this.button_add.Click += new EventHandler(this.button_add_Click);
             // 
             // label_buffheal_mp
             // 
             this.label_buffheal_mp.Location = new System.Drawing.Point(436, 48);
             this.label_buffheal_mp.Name = "label_buffheal_mp";
-            this.label_buffheal_mp.Size = new System.Drawing.Size(60, 16);
+            this.label_buffheal_mp.Size = new Size(60, 16);
             this.label_buffheal_mp.TabIndex = 64;
             this.label_buffheal_mp.Text = "MP>";
-            this.label_buffheal_mp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_mp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_buffheal_mp
             // 
             this.textBox_buffheal_mp.Location = new System.Drawing.Point(436, 64);
             this.textBox_buffheal_mp.MaxLength = 4;
             this.textBox_buffheal_mp.Name = "textBox_buffheal_mp";
-            this.textBox_buffheal_mp.Size = new System.Drawing.Size(60, 20);
+            this.textBox_buffheal_mp.Size = new Size(60, 20);
             this.textBox_buffheal_mp.TabIndex = 8;
             this.textBox_buffheal_mp.Text = "100";
-            this.textBox_buffheal_mp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_buffheal_mp.TextAlign = HorizontalAlignment.Center;
             // 
             // label_buffheal_names
             // 
             this.label_buffheal_names.Location = new System.Drawing.Point(192, 8);
             this.label_buffheal_names.Name = "label_buffheal_names";
-            this.label_buffheal_names.Size = new System.Drawing.Size(104, 16);
+            this.label_buffheal_names.Size = new Size(104, 16);
             this.label_buffheal_names.TabIndex = 62;
             this.label_buffheal_names.Text = "Names";
-            this.label_buffheal_names.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_names.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_buffheal_on
             // 
             this.label_buffheal_on.Location = new System.Drawing.Point(24, 8);
             this.label_buffheal_on.Name = "label_buffheal_on";
-            this.label_buffheal_on.Size = new System.Drawing.Size(56, 16);
+            this.label_buffheal_on.Size = new Size(56, 16);
             this.label_buffheal_on.TabIndex = 61;
             this.label_buffheal_on.Text = "On";
-            this.label_buffheal_on.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_buffheal_on.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label_buffheal_trait
             // 
             this.label_buffheal_trait.Location = new System.Drawing.Point(16, 48);
             this.label_buffheal_trait.Name = "label_buffheal_trait";
-            this.label_buffheal_trait.Size = new System.Drawing.Size(120, 16);
+            this.label_buffheal_trait.Size = new Size(120, 16);
             this.label_buffheal_trait.TabIndex = 60;
             this.label_buffheal_trait.Text = "Trait";
-            this.label_buffheal_trait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_trait.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_buffheal_delay
             // 
             this.label_buffheal_delay.Location = new System.Drawing.Point(339, 48);
             this.label_buffheal_delay.Name = "label_buffheal_delay";
-            this.label_buffheal_delay.Size = new System.Drawing.Size(89, 16);
+            this.label_buffheal_delay.Size = new Size(89, 16);
             this.label_buffheal_delay.TabIndex = 58;
             this.label_buffheal_delay.Text = "Delay(sec)";
-            this.label_buffheal_delay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_delay.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_buffheal_minper
             // 
             this.label_buffheal_minper.Location = new System.Drawing.Point(285, 48);
             this.label_buffheal_minper.Name = "label_buffheal_minper";
-            this.label_buffheal_minper.Size = new System.Drawing.Size(48, 16);
+            this.label_buffheal_minper.Size = new Size(48, 16);
             this.label_buffheal_minper.TabIndex = 57;
             this.label_buffheal_minper.Text = "XX < %";
-            this.label_buffheal_minper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_minper.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_buffheal_skill
             // 
             this.label_buffheal_skill.Location = new System.Drawing.Point(176, 48);
             this.label_buffheal_skill.Name = "label_buffheal_skill";
-            this.label_buffheal_skill.Size = new System.Drawing.Size(72, 16);
+            this.label_buffheal_skill.Size = new Size(72, 16);
             this.label_buffheal_skill.TabIndex = 56;
             this.label_buffheal_skill.Text = "Skill";
-            this.label_buffheal_skill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_buffheal_skill.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_buffheal_names
             // 
             this.textBox_buffheal_names.Location = new System.Drawing.Point(64, 24);
             this.textBox_buffheal_names.Name = "textBox_buffheal_names";
-            this.textBox_buffheal_names.Size = new System.Drawing.Size(352, 20);
+            this.textBox_buffheal_names.Size = new Size(352, 20);
             this.textBox_buffheal_names.TabIndex = 1;
             // 
             // comboBox_buffheal_trait
@@ -3496,16 +3496,16 @@ namespace L2_login
             "Ultimate Defense"});
             this.comboBox_buffheal_trait.Location = new System.Drawing.Point(16, 64);
             this.comboBox_buffheal_trait.Name = "comboBox_buffheal_trait";
-            this.comboBox_buffheal_trait.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_buffheal_trait.Size = new Size(120, 21);
             this.comboBox_buffheal_trait.TabIndex = 3;
             // 
             // checkBox_buffheal_on
             // 
             this.checkBox_buffheal_on.Checked = true;
-            this.checkBox_buffheal_on.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_buffheal_on.CheckState = CheckState.Checked;
             this.checkBox_buffheal_on.Location = new System.Drawing.Point(27, 24);
             this.checkBox_buffheal_on.Name = "checkBox_buffheal_on";
-            this.checkBox_buffheal_on.Size = new System.Drawing.Size(24, 24);
+            this.checkBox_buffheal_on.Size = new Size(24, 24);
             this.checkBox_buffheal_on.TabIndex = 0;
             // 
             // textBox_buffheal_delay
@@ -3513,25 +3513,25 @@ namespace L2_login
             this.textBox_buffheal_delay.Location = new System.Drawing.Point(339, 64);
             this.textBox_buffheal_delay.MaxLength = 8;
             this.textBox_buffheal_delay.Name = "textBox_buffheal_delay";
-            this.textBox_buffheal_delay.Size = new System.Drawing.Size(91, 20);
+            this.textBox_buffheal_delay.Size = new Size(91, 20);
             this.textBox_buffheal_delay.TabIndex = 7;
             this.textBox_buffheal_delay.Text = "1";
-            this.textBox_buffheal_delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_buffheal_delay.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_buffheal_min_per
             // 
             this.textBox_buffheal_min_per.Location = new System.Drawing.Point(285, 65);
             this.textBox_buffheal_min_per.MaxLength = 3;
             this.textBox_buffheal_min_per.Name = "textBox_buffheal_min_per";
-            this.textBox_buffheal_min_per.Size = new System.Drawing.Size(48, 20);
+            this.textBox_buffheal_min_per.Size = new Size(48, 20);
             this.textBox_buffheal_min_per.TabIndex = 6;
             this.textBox_buffheal_min_per.Text = "60";
-            this.textBox_buffheal_min_per.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_buffheal_min_per.TextAlign = HorizontalAlignment.Center;
             // 
             // listView_buffheal
             // 
             this.listView_buffheal.CheckBoxes = true;
-            this.listView_buffheal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_buffheal.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_skill,
             this.columnHeader_trait,
             this.columnHeader_names,
@@ -3547,10 +3547,10 @@ namespace L2_login
             this.listView_buffheal.Location = new System.Drawing.Point(16, 126);
             this.listView_buffheal.MultiSelect = false;
             this.listView_buffheal.Name = "listView_buffheal";
-            this.listView_buffheal.Size = new System.Drawing.Size(488, 224);
+            this.listView_buffheal.Size = new Size(488, 224);
             this.listView_buffheal.TabIndex = 11;
             this.listView_buffheal.UseCompatibleStateImageBehavior = false;
-            this.listView_buffheal.View = System.Windows.Forms.View.Details;
+            this.listView_buffheal.View = View.Details;
             // 
             // columnHeader_skill
             // 
@@ -3599,25 +3599,25 @@ namespace L2_login
             // 
             // contextMenuStrip_buff
             // 
-            this.contextMenuStrip_buff.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_buff.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem2,
             this.moveUpToolStripMenuItem});
             this.contextMenuStrip_buff.Name = "contextMenuStrip1";
-            this.contextMenuStrip_buff.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip_buff.Size = new Size(123, 48);
             // 
             // removeToolStripMenuItem2
             // 
             this.removeToolStripMenuItem2.Name = "removeToolStripMenuItem2";
-            this.removeToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
+            this.removeToolStripMenuItem2.Size = new Size(122, 22);
             this.removeToolStripMenuItem2.Text = "Remove";
-            this.removeToolStripMenuItem2.Click += new System.EventHandler(this.removeToolStripMenuItem2_Click);
+            this.removeToolStripMenuItem2.Click += new EventHandler(this.removeToolStripMenuItem2_Click);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.moveUpToolStripMenuItem.Size = new Size(122, 22);
             this.moveUpToolStripMenuItem.Text = "Move Up";
-            this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
+            this.moveUpToolStripMenuItem.Click += new EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // tabPage_toggles
             // 
@@ -3636,7 +3636,7 @@ namespace L2_login
             this.tabPage_toggles.Controls.Add(this.listView_toggles);
             this.tabPage_toggles.Location = new System.Drawing.Point(104, 4);
             this.tabPage_toggles.Name = "tabPage_toggles";
-            this.tabPage_toggles.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_toggles.Size = new Size(515, 377);
             this.tabPage_toggles.TabIndex = 15;
             this.tabPage_toggles.Text = "Toggle Skills";
             this.tabPage_toggles.UseVisualStyleBackColor = true;
@@ -3645,94 +3645,94 @@ namespace L2_login
             // 
             this.label32.Location = new System.Drawing.Point(384, 6);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(48, 16);
+            this.label32.Size = new Size(48, 16);
             this.label32.TabIndex = 93;
             this.label32.Text = "XX < %";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label32.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_lesserthen_toggle
             // 
             this.textBox_lesserthen_toggle.Location = new System.Drawing.Point(378, 25);
             this.textBox_lesserthen_toggle.MaxLength = 4;
             this.textBox_lesserthen_toggle.Name = "textBox_lesserthen_toggle";
-            this.textBox_lesserthen_toggle.Size = new System.Drawing.Size(60, 20);
+            this.textBox_lesserthen_toggle.Size = new Size(60, 20);
             this.textBox_lesserthen_toggle.TabIndex = 92;
             this.textBox_lesserthen_toggle.Text = "100";
-            this.textBox_lesserthen_toggle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_lesserthen_toggle.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBox_skills_toggle
             // 
             this.comboBox_skills_toggle.Location = new System.Drawing.Point(169, 25);
             this.comboBox_skills_toggle.Name = "comboBox_skills_toggle";
-            this.comboBox_skills_toggle.Size = new System.Drawing.Size(137, 21);
+            this.comboBox_skills_toggle.Size = new Size(137, 21);
             this.comboBox_skills_toggle.TabIndex = 91;
             // 
             // button_update_toggle
             // 
             this.button_update_toggle.Enabled = false;
-            this.button_update_toggle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_update_toggle.FlatStyle = FlatStyle.System;
             this.button_update_toggle.Location = new System.Drawing.Point(244, 54);
             this.button_update_toggle.Name = "button_update_toggle";
-            this.button_update_toggle.Size = new System.Drawing.Size(128, 24);
+            this.button_update_toggle.Size = new Size(128, 24);
             this.button_update_toggle.TabIndex = 81;
             this.button_update_toggle.Text = "Update";
-            this.button_update_toggle.Click += new System.EventHandler(this.button_update_toggle_Click);
+            this.button_update_toggle.Click += new EventHandler(this.button_update_toggle_Click);
             // 
             // button_add_toggle
             // 
-            this.button_add_toggle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_add_toggle.FlatStyle = FlatStyle.System;
             this.button_add_toggle.Location = new System.Drawing.Point(92, 54);
             this.button_add_toggle.Name = "button_add_toggle";
-            this.button_add_toggle.Size = new System.Drawing.Size(128, 24);
+            this.button_add_toggle.Size = new Size(128, 24);
             this.button_add_toggle.TabIndex = 80;
             this.button_add_toggle.Text = "Add";
-            this.button_add_toggle.Click += new System.EventHandler(this.button_add_toggle_Click);
+            this.button_add_toggle.Click += new EventHandler(this.button_add_toggle_Click);
             // 
             // textBox_greaterthen_toggle
             // 
             this.textBox_greaterthen_toggle.Location = new System.Drawing.Point(312, 25);
             this.textBox_greaterthen_toggle.MaxLength = 4;
             this.textBox_greaterthen_toggle.Name = "textBox_greaterthen_toggle";
-            this.textBox_greaterthen_toggle.Size = new System.Drawing.Size(60, 20);
+            this.textBox_greaterthen_toggle.Size = new Size(60, 20);
             this.textBox_greaterthen_toggle.TabIndex = 79;
             this.textBox_greaterthen_toggle.Text = "100";
-            this.textBox_greaterthen_toggle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_greaterthen_toggle.TextAlign = HorizontalAlignment.Center;
             // 
             // label35
             // 
             this.label35.Location = new System.Drawing.Point(10, 9);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(56, 16);
+            this.label35.Size = new Size(56, 16);
             this.label35.TabIndex = 87;
             this.label35.Text = "On";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label35.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label36
             // 
             this.label36.Location = new System.Drawing.Point(43, 9);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(120, 16);
+            this.label36.Size = new Size(120, 16);
             this.label36.TabIndex = 86;
             this.label36.Text = "Trait";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label36.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label38
             // 
             this.label38.Location = new System.Drawing.Point(319, 6);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(48, 16);
+            this.label38.Size = new Size(48, 16);
             this.label38.TabIndex = 84;
             this.label38.Text = "XX > %";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label38.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label39
             // 
             this.label39.Location = new System.Drawing.Point(203, 9);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(72, 16);
+            this.label39.Size = new Size(72, 16);
             this.label39.TabIndex = 83;
             this.label39.Text = "Skill";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label39.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox_trait_toggle
             // 
@@ -3741,22 +3741,22 @@ namespace L2_login
             "MP"});
             this.comboBox_trait_toggle.Location = new System.Drawing.Point(43, 25);
             this.comboBox_trait_toggle.Name = "comboBox_trait_toggle";
-            this.comboBox_trait_toggle.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_trait_toggle.Size = new Size(120, 21);
             this.comboBox_trait_toggle.TabIndex = 76;
             // 
             // checkBox_onoff_toggle
             // 
             this.checkBox_onoff_toggle.Checked = true;
-            this.checkBox_onoff_toggle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_onoff_toggle.CheckState = CheckState.Checked;
             this.checkBox_onoff_toggle.Location = new System.Drawing.Point(13, 25);
             this.checkBox_onoff_toggle.Name = "checkBox_onoff_toggle";
-            this.checkBox_onoff_toggle.Size = new System.Drawing.Size(24, 24);
+            this.checkBox_onoff_toggle.Size = new Size(24, 24);
             this.checkBox_onoff_toggle.TabIndex = 73;
             // 
             // listView_toggles
             // 
             this.listView_toggles.CheckBoxes = true;
-            this.listView_toggles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_toggles.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_Toggle_Skill,
             this.columnHeader_Toggle_Trait,
             this.columnHeader_Toggle_LesserThen,
@@ -3769,10 +3769,10 @@ namespace L2_login
             this.listView_toggles.Location = new System.Drawing.Point(13, 84);
             this.listView_toggles.MultiSelect = false;
             this.listView_toggles.Name = "listView_toggles";
-            this.listView_toggles.Size = new System.Drawing.Size(488, 276);
+            this.listView_toggles.Size = new Size(488, 276);
             this.listView_toggles.TabIndex = 82;
             this.listView_toggles.UseCompatibleStateImageBehavior = false;
-            this.listView_toggles.View = System.Windows.Forms.View.Details;
+            this.listView_toggles.View = View.Details;
             // 
             // columnHeader_Toggle_Skill
             // 
@@ -3807,17 +3807,17 @@ namespace L2_login
             // 
             // contextMenuStrip_toggle
             // 
-            this.contextMenuStrip_toggle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_toggle.Items.AddRange(new ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip_toggle.Name = "contextMenuStrip1";
-            this.contextMenuStrip_toggle.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip_toggle.Size = new Size(153, 48);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new Size(152, 22);
             this.toolStripMenuItem1.Text = "Remove";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.toolStripMenuItem1.Click += new EventHandler(this.toolStripMenuItem1_Click);
             // 
             // tabPage_items
             // 
@@ -3840,38 +3840,38 @@ namespace L2_login
             this.tabPage_items.Controls.Add(this.comboBox_item1);
             this.tabPage_items.Location = new System.Drawing.Point(104, 4);
             this.tabPage_items.Name = "tabPage_items";
-            this.tabPage_items.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_items.Size = new Size(515, 377);
             this.tabPage_items.TabIndex = 3;
             this.tabPage_items.Text = "Items";
             this.tabPage_items.UseVisualStyleBackColor = true;
             // 
             // button_autoss_deactivate
             // 
-            this.button_autoss_deactivate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_autoss_deactivate.FlatStyle = FlatStyle.System;
             this.button_autoss_deactivate.Location = new System.Drawing.Point(401, 22);
             this.button_autoss_deactivate.Name = "button_autoss_deactivate";
-            this.button_autoss_deactivate.Size = new System.Drawing.Size(104, 24);
+            this.button_autoss_deactivate.Size = new Size(104, 24);
             this.button_autoss_deactivate.TabIndex = 35;
             this.button_autoss_deactivate.Text = "Deactivate";
-            this.button_autoss_deactivate.Click += new System.EventHandler(this.button_autoss_deactivate_Click);
+            this.button_autoss_deactivate.Click += new EventHandler(this.button_autoss_deactivate_Click);
             // 
             // button_autoss_activate
             // 
-            this.button_autoss_activate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_autoss_activate.FlatStyle = FlatStyle.System;
             this.button_autoss_activate.Location = new System.Drawing.Point(291, 22);
             this.button_autoss_activate.Name = "button_autoss_activate";
-            this.button_autoss_activate.Size = new System.Drawing.Size(104, 24);
+            this.button_autoss_activate.Size = new Size(104, 24);
             this.button_autoss_activate.TabIndex = 34;
             this.button_autoss_activate.Text = "Activate";
-            this.button_autoss_activate.Click += new System.EventHandler(this.button_autoss_activate_Click);
+            this.button_autoss_activate.Click += new EventHandler(this.button_autoss_activate_Click);
             // 
             // combobox_autoss
             // 
-            this.combobox_autoss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combobox_autoss.DropDownStyle = ComboBoxStyle.DropDownList;
             this.combobox_autoss.DropDownWidth = 250;
             this.combobox_autoss.Location = new System.Drawing.Point(117, 25);
             this.combobox_autoss.Name = "combobox_autoss";
-            this.combobox_autoss.Size = new System.Drawing.Size(168, 21);
+            this.combobox_autoss.Size = new Size(168, 21);
             this.combobox_autoss.TabIndex = 33;
             // 
             // label_autoss
@@ -3879,35 +3879,35 @@ namespace L2_login
             this.label_autoss.AutoSize = true;
             this.label_autoss.Location = new System.Drawing.Point(10, 28);
             this.label_autoss.Name = "label_autoss";
-            this.label_autoss.Size = new System.Drawing.Size(101, 13);
+            this.label_autoss.Size = new Size(101, 13);
             this.label_autoss.TabIndex = 32;
             this.label_autoss.Text = "Auto Soul/Spiritshot";
             // 
             // button_updateitem
             // 
             this.button_updateitem.Enabled = false;
-            this.button_updateitem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_updateitem.FlatStyle = FlatStyle.System;
             this.button_updateitem.Location = new System.Drawing.Point(247, 101);
             this.button_updateitem.Name = "button_updateitem";
-            this.button_updateitem.Size = new System.Drawing.Size(128, 24);
+            this.button_updateitem.Size = new Size(128, 24);
             this.button_updateitem.TabIndex = 6;
             this.button_updateitem.Text = "Update";
-            this.button_updateitem.Click += new System.EventHandler(this.button_updateitem_Click);
+            this.button_updateitem.Click += new EventHandler(this.button_updateitem_Click);
             // 
             // button_additem
             // 
-            this.button_additem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_additem.FlatStyle = FlatStyle.System;
             this.button_additem.Location = new System.Drawing.Point(95, 101);
             this.button_additem.Name = "button_additem";
-            this.button_additem.Size = new System.Drawing.Size(128, 24);
+            this.button_additem.Size = new Size(128, 24);
             this.button_additem.TabIndex = 5;
             this.button_additem.Text = "Add";
-            this.button_additem.Click += new System.EventHandler(this.button_additem_Click);
+            this.button_additem.Click += new EventHandler(this.button_additem_Click);
             // 
             // listView_item
             // 
             this.listView_item.CheckBoxes = true;
-            this.listView_item.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_item.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_i_item,
             this.columnHeader_i_trait,
             this.columnHeader_i_per,
@@ -3920,10 +3920,10 @@ namespace L2_login
             this.listView_item.Location = new System.Drawing.Point(15, 141);
             this.listView_item.MultiSelect = false;
             this.listView_item.Name = "listView_item";
-            this.listView_item.Size = new System.Drawing.Size(488, 224);
+            this.listView_item.Size = new Size(488, 224);
             this.listView_item.TabIndex = 7;
             this.listView_item.UseCompatibleStateImageBehavior = false;
-            this.listView_item.View = System.Windows.Forms.View.Details;
+            this.listView_item.View = View.Details;
             // 
             // columnHeader_i_item
             // 
@@ -3952,34 +3952,34 @@ namespace L2_login
             // 
             // contextMenuStrip_item
             // 
-            this.contextMenuStrip_item.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_item.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem3,
             this.moveUpToolStripMenuItem1});
             this.contextMenuStrip_item.Name = "contextMenuStrip_item";
-            this.contextMenuStrip_item.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip_item.Size = new Size(123, 48);
             // 
             // removeToolStripMenuItem3
             // 
             this.removeToolStripMenuItem3.Name = "removeToolStripMenuItem3";
-            this.removeToolStripMenuItem3.Size = new System.Drawing.Size(122, 22);
+            this.removeToolStripMenuItem3.Size = new Size(122, 22);
             this.removeToolStripMenuItem3.Text = "Remove";
-            this.removeToolStripMenuItem3.Click += new System.EventHandler(this.removeToolStripMenuItem3_Click);
+            this.removeToolStripMenuItem3.Click += new EventHandler(this.removeToolStripMenuItem3_Click);
             // 
             // moveUpToolStripMenuItem1
             // 
             this.moveUpToolStripMenuItem1.Name = "moveUpToolStripMenuItem1";
-            this.moveUpToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.moveUpToolStripMenuItem1.Size = new Size(122, 22);
             this.moveUpToolStripMenuItem1.Text = "Move Up";
-            this.moveUpToolStripMenuItem1.Click += new System.EventHandler(this.moveUpToolStripMenuItem1_Click);
+            this.moveUpToolStripMenuItem1.Click += new EventHandler(this.moveUpToolStripMenuItem1_Click);
             // 
             // label21
             // 
             this.label21.Location = new System.Drawing.Point(42, 58);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(120, 16);
+            this.label21.Size = new Size(120, 16);
             this.label21.TabIndex = 31;
             this.label21.Text = "Trait";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label21.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox_trait1
             // 
@@ -4006,50 +4006,50 @@ namespace L2_login
             "Ultimate Defense"});
             this.comboBox_trait1.Location = new System.Drawing.Point(42, 74);
             this.comboBox_trait1.Name = "comboBox_trait1";
-            this.comboBox_trait1.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_trait1.Size = new Size(120, 21);
             this.comboBox_trait1.TabIndex = 1;
             // 
             // label_on4
             // 
             this.label_on4.Location = new System.Drawing.Point(8, 58);
             this.label_on4.Name = "label_on4";
-            this.label_on4.Size = new System.Drawing.Size(40, 16);
+            this.label_on4.Size = new Size(40, 16);
             this.label_on4.TabIndex = 29;
             this.label_on4.Text = "On";
-            this.label_on4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_on4.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label_delaymsec
             // 
             this.label_delaymsec.Location = new System.Drawing.Point(403, 58);
             this.label_delaymsec.Name = "label_delaymsec";
-            this.label_delaymsec.Size = new System.Drawing.Size(95, 16);
+            this.label_delaymsec.Size = new Size(95, 16);
             this.label_delaymsec.TabIndex = 28;
             this.label_delaymsec.Text = "Delay(msec)";
-            this.label_delaymsec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_delaymsec.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label20
             // 
             this.label20.Location = new System.Drawing.Point(349, 58);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(48, 16);
+            this.label20.Size = new Size(48, 16);
             this.label20.TabIndex = 27;
             this.label20.Text = "XX < %";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label20.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label22
             // 
             this.label22.Location = new System.Drawing.Point(172, 58);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(168, 16);
+            this.label22.Size = new Size(168, 16);
             this.label22.TabIndex = 25;
             this.label22.Text = "Item";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label22.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // checkBox_item1
             // 
             this.checkBox_item1.Location = new System.Drawing.Point(10, 74);
             this.checkBox_item1.Name = "checkBox_item1";
-            this.checkBox_item1.Size = new System.Drawing.Size(24, 24);
+            this.checkBox_item1.Size = new Size(24, 24);
             this.checkBox_item1.TabIndex = 0;
             // 
             // textBox_itemdelay1
@@ -4057,27 +4057,27 @@ namespace L2_login
             this.textBox_itemdelay1.Location = new System.Drawing.Point(403, 74);
             this.textBox_itemdelay1.MaxLength = 12;
             this.textBox_itemdelay1.Name = "textBox_itemdelay1";
-            this.textBox_itemdelay1.Size = new System.Drawing.Size(95, 20);
+            this.textBox_itemdelay1.Size = new Size(95, 20);
             this.textBox_itemdelay1.TabIndex = 4;
             this.textBox_itemdelay1.Text = "100";
-            this.textBox_itemdelay1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_itemdelay1.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_itemper1
             // 
             this.textBox_itemper1.Location = new System.Drawing.Point(349, 74);
             this.textBox_itemper1.MaxLength = 3;
             this.textBox_itemper1.Name = "textBox_itemper1";
-            this.textBox_itemper1.Size = new System.Drawing.Size(48, 20);
+            this.textBox_itemper1.Size = new Size(48, 20);
             this.textBox_itemper1.TabIndex = 3;
             this.textBox_itemper1.Text = "60";
-            this.textBox_itemper1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_itemper1.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBox_item1
             // 
             this.comboBox_item1.DropDownWidth = 250;
             this.comboBox_item1.Location = new System.Drawing.Point(172, 74);
             this.comboBox_item1.Name = "comboBox_item1";
-            this.comboBox_item1.Size = new System.Drawing.Size(168, 21);
+            this.comboBox_item1.Size = new Size(168, 21);
             this.comboBox_item1.TabIndex = 2;
             // 
             // tabPage_combat
@@ -4103,7 +4103,7 @@ namespace L2_login
             this.tabPage_combat.Controls.Add(this.listView_combat);
             this.tabPage_combat.Location = new System.Drawing.Point(104, 4);
             this.tabPage_combat.Name = "tabPage_combat";
-            this.tabPage_combat.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_combat.Size = new Size(515, 377);
             this.tabPage_combat.TabIndex = 6;
             this.tabPage_combat.Text = "Combat";
             this.tabPage_combat.UseVisualStyleBackColor = true;
@@ -4111,32 +4111,32 @@ namespace L2_login
             // button_combat_update
             // 
             this.button_combat_update.Enabled = false;
-            this.button_combat_update.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_combat_update.FlatStyle = FlatStyle.System;
             this.button_combat_update.Location = new System.Drawing.Point(211, 96);
             this.button_combat_update.Name = "button_combat_update";
-            this.button_combat_update.Size = new System.Drawing.Size(128, 24);
+            this.button_combat_update.Size = new Size(128, 24);
             this.button_combat_update.TabIndex = 85;
             this.button_combat_update.Text = "Update";
-            this.button_combat_update.Click += new System.EventHandler(this.button_combat_update_Click);
+            this.button_combat_update.Click += new EventHandler(this.button_combat_update_Click);
             // 
             // button_combat_add
             // 
-            this.button_combat_add.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_combat_add.FlatStyle = FlatStyle.System;
             this.button_combat_add.Location = new System.Drawing.Point(68, 96);
             this.button_combat_add.Name = "button_combat_add";
-            this.button_combat_add.Size = new System.Drawing.Size(128, 24);
+            this.button_combat_add.Size = new Size(128, 24);
             this.button_combat_add.TabIndex = 84;
             this.button_combat_add.Text = "Add";
-            this.button_combat_add.Click += new System.EventHandler(this.button_combat_add_Click);
+            this.button_combat_add.Click += new EventHandler(this.button_combat_add_Click);
             // 
             // label_combat_conditional
             // 
             this.label_combat_conditional.Location = new System.Drawing.Point(183, 10);
             this.label_combat_conditional.Name = "label_combat_conditional";
-            this.label_combat_conditional.Size = new System.Drawing.Size(120, 16);
+            this.label_combat_conditional.Size = new Size(120, 16);
             this.label_combat_conditional.TabIndex = 83;
             this.label_combat_conditional.Text = "Conditional";
-            this.label_combat_conditional.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_conditional.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox_combat_conditional
             // 
@@ -4145,92 +4145,92 @@ namespace L2_login
             "<="});
             this.comboBox_combat_conditional.Location = new System.Drawing.Point(183, 26);
             this.comboBox_combat_conditional.Name = "comboBox_combat_conditional";
-            this.comboBox_combat_conditional.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_combat_conditional.Size = new Size(120, 21);
             this.comboBox_combat_conditional.TabIndex = 82;
             // 
             // label_combat_page
             // 
             this.label_combat_page.Location = new System.Drawing.Point(107, 50);
             this.label_combat_page.Name = "label_combat_page";
-            this.label_combat_page.Size = new System.Drawing.Size(64, 16);
+            this.label_combat_page.Size = new Size(64, 16);
             this.label_combat_page.TabIndex = 81;
             this.label_combat_page.Text = "Page";
-            this.label_combat_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_page.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_combat_sc_page
             // 
             this.textBox_combat_sc_page.Location = new System.Drawing.Point(115, 66);
             this.textBox_combat_sc_page.MaxLength = 2;
             this.textBox_combat_sc_page.Name = "textBox_combat_sc_page";
-            this.textBox_combat_sc_page.Size = new System.Drawing.Size(48, 20);
+            this.textBox_combat_sc_page.Size = new Size(48, 20);
             this.textBox_combat_sc_page.TabIndex = 72;
             this.textBox_combat_sc_page.Text = "1";
-            this.textBox_combat_sc_page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_combat_sc_page.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_combat_sc_item
             // 
             this.textBox_combat_sc_item.Location = new System.Drawing.Point(35, 66);
             this.textBox_combat_sc_item.MaxLength = 2;
             this.textBox_combat_sc_item.Name = "textBox_combat_sc_item";
-            this.textBox_combat_sc_item.Size = new System.Drawing.Size(48, 20);
+            this.textBox_combat_sc_item.Size = new Size(48, 20);
             this.textBox_combat_sc_item.TabIndex = 71;
             this.textBox_combat_sc_item.Text = "1";
-            this.textBox_combat_sc_item.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_combat_sc_item.TextAlign = HorizontalAlignment.Center;
             // 
             // label_combat_mp
             // 
             this.label_combat_mp.Location = new System.Drawing.Point(312, 50);
             this.label_combat_mp.Name = "label_combat_mp";
-            this.label_combat_mp.Size = new System.Drawing.Size(45, 16);
+            this.label_combat_mp.Size = new Size(45, 16);
             this.label_combat_mp.TabIndex = 80;
             this.label_combat_mp.Text = "MP>";
-            this.label_combat_mp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_mp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_combat_mp
             // 
             this.textBox_combat_mp.Location = new System.Drawing.Point(309, 66);
             this.textBox_combat_mp.MaxLength = 4;
             this.textBox_combat_mp.Name = "textBox_combat_mp";
-            this.textBox_combat_mp.Size = new System.Drawing.Size(48, 20);
+            this.textBox_combat_mp.Size = new Size(48, 20);
             this.textBox_combat_mp.TabIndex = 75;
             this.textBox_combat_mp.Text = "100";
-            this.textBox_combat_mp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_combat_mp.TextAlign = HorizontalAlignment.Center;
             // 
             // label_combat_trait
             // 
             this.label_combat_trait.Location = new System.Drawing.Point(57, 10);
             this.label_combat_trait.Name = "label_combat_trait";
-            this.label_combat_trait.Size = new System.Drawing.Size(120, 16);
+            this.label_combat_trait.Size = new Size(120, 16);
             this.label_combat_trait.TabIndex = 79;
             this.label_combat_trait.Text = "Trait";
-            this.label_combat_trait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_trait.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_combat_delay
             // 
             this.label_combat_delay.Location = new System.Drawing.Point(183, 50);
             this.label_combat_delay.Name = "label_combat_delay";
-            this.label_combat_delay.Size = new System.Drawing.Size(120, 16);
+            this.label_combat_delay.Size = new Size(120, 16);
             this.label_combat_delay.TabIndex = 78;
             this.label_combat_delay.Text = "Delay(msec)";
-            this.label_combat_delay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_delay.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_combat_percent
             // 
             this.label_combat_percent.Location = new System.Drawing.Point(309, 10);
             this.label_combat_percent.Name = "label_combat_percent";
-            this.label_combat_percent.Size = new System.Drawing.Size(48, 16);
+            this.label_combat_percent.Size = new Size(48, 16);
             this.label_combat_percent.TabIndex = 77;
             this.label_combat_percent.Text = "%";
-            this.label_combat_percent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_percent.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_combat_shortcut
             // 
             this.label_combat_shortcut.Location = new System.Drawing.Point(27, 50);
             this.label_combat_shortcut.Name = "label_combat_shortcut";
-            this.label_combat_shortcut.Size = new System.Drawing.Size(72, 16);
+            this.label_combat_shortcut.Size = new Size(72, 16);
             this.label_combat_shortcut.TabIndex = 76;
             this.label_combat_shortcut.Text = "ShortCut";
-            this.label_combat_shortcut.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_combat_shortcut.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox_combat_trait
             // 
@@ -4245,7 +4245,7 @@ namespace L2_login
             "Death Penalty"});
             this.comboBox_combat_trait.Location = new System.Drawing.Point(57, 26);
             this.comboBox_combat_trait.Name = "comboBox_combat_trait";
-            this.comboBox_combat_trait.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_combat_trait.Size = new Size(120, 21);
             this.comboBox_combat_trait.TabIndex = 70;
             // 
             // textBox_combat_delay
@@ -4253,43 +4253,43 @@ namespace L2_login
             this.textBox_combat_delay.Location = new System.Drawing.Point(183, 66);
             this.textBox_combat_delay.MaxLength = 8;
             this.textBox_combat_delay.Name = "textBox_combat_delay";
-            this.textBox_combat_delay.Size = new System.Drawing.Size(120, 20);
+            this.textBox_combat_delay.Size = new Size(120, 20);
             this.textBox_combat_delay.TabIndex = 74;
             this.textBox_combat_delay.Text = "1";
-            this.textBox_combat_delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_combat_delay.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_combat_min_per
             // 
             this.textBox_combat_min_per.Location = new System.Drawing.Point(309, 26);
             this.textBox_combat_min_per.MaxLength = 3;
             this.textBox_combat_min_per.Name = "textBox_combat_min_per";
-            this.textBox_combat_min_per.Size = new System.Drawing.Size(48, 20);
+            this.textBox_combat_min_per.Size = new Size(48, 20);
             this.textBox_combat_min_per.TabIndex = 73;
             this.textBox_combat_min_per.Text = "60";
-            this.textBox_combat_min_per.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_combat_min_per.TextAlign = HorizontalAlignment.Center;
             // 
             // label_combat_on
             // 
             this.label_combat_on.Location = new System.Drawing.Point(20, 10);
             this.label_combat_on.Name = "label_combat_on";
-            this.label_combat_on.Size = new System.Drawing.Size(56, 16);
+            this.label_combat_on.Size = new Size(56, 16);
             this.label_combat_on.TabIndex = 63;
             this.label_combat_on.Text = "On";
-            this.label_combat_on.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_combat_on.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // checkBox_combat_on
             // 
             this.checkBox_combat_on.Checked = true;
-            this.checkBox_combat_on.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_combat_on.CheckState = CheckState.Checked;
             this.checkBox_combat_on.Location = new System.Drawing.Point(25, 26);
             this.checkBox_combat_on.Name = "checkBox_combat_on";
-            this.checkBox_combat_on.Size = new System.Drawing.Size(24, 24);
+            this.checkBox_combat_on.Size = new Size(24, 24);
             this.checkBox_combat_on.TabIndex = 62;
             // 
             // listView_combat
             // 
             this.listView_combat.CheckBoxes = true;
-            this.listView_combat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_combat.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_combat_trait,
             this.columnHeader_combat_conditional,
             this.columnHeader_combat_percent,
@@ -4305,10 +4305,10 @@ namespace L2_login
             this.listView_combat.Location = new System.Drawing.Point(8, 131);
             this.listView_combat.MultiSelect = false;
             this.listView_combat.Name = "listView_combat";
-            this.listView_combat.Size = new System.Drawing.Size(488, 224);
+            this.listView_combat.Size = new Size(488, 224);
             this.listView_combat.TabIndex = 12;
             this.listView_combat.UseCompatibleStateImageBehavior = false;
-            this.listView_combat.View = System.Windows.Forms.View.Details;
+            this.listView_combat.View = View.Details;
             // 
             // columnHeader_combat_trait
             // 
@@ -4357,25 +4357,25 @@ namespace L2_login
             // 
             // contextMenuStrip_combat
             // 
-            this.contextMenuStrip_combat.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_combat.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem5,
             this.moveUpToolStripMenuItem2});
             this.contextMenuStrip_combat.Name = "contextMenuStrip_combat";
-            this.contextMenuStrip_combat.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip_combat.Size = new Size(123, 48);
             // 
             // removeToolStripMenuItem5
             // 
             this.removeToolStripMenuItem5.Name = "removeToolStripMenuItem5";
-            this.removeToolStripMenuItem5.Size = new System.Drawing.Size(122, 22);
+            this.removeToolStripMenuItem5.Size = new Size(122, 22);
             this.removeToolStripMenuItem5.Text = "Remove";
-            this.removeToolStripMenuItem5.Click += new System.EventHandler(this.removeToolStripMenuItem5_Click);
+            this.removeToolStripMenuItem5.Click += new EventHandler(this.removeToolStripMenuItem5_Click);
             // 
             // moveUpToolStripMenuItem2
             // 
             this.moveUpToolStripMenuItem2.Name = "moveUpToolStripMenuItem2";
-            this.moveUpToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
+            this.moveUpToolStripMenuItem2.Size = new Size(122, 22);
             this.moveUpToolStripMenuItem2.Text = "Move Up";
-            this.moveUpToolStripMenuItem2.Click += new System.EventHandler(this.moveUpToolStripMenuItem2_Click);
+            this.moveUpToolStripMenuItem2.Click += new EventHandler(this.moveUpToolStripMenuItem2_Click);
             // 
             // tabPage_polygon
             // 
@@ -4398,7 +4398,7 @@ namespace L2_login
             this.tabPage_polygon.Controls.Add(this.listView_border);
             this.tabPage_polygon.Location = new System.Drawing.Point(104, 4);
             this.tabPage_polygon.Name = "tabPage_polygon";
-            this.tabPage_polygon.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_polygon.Size = new Size(515, 377);
             this.tabPage_polygon.TabIndex = 5;
             this.tabPage_polygon.Text = "Bounding Polygon";
             this.tabPage_polygon.UseVisualStyleBackColor = true;
@@ -4407,152 +4407,152 @@ namespace L2_login
             // 
             this.button_box_generate.Location = new System.Drawing.Point(76, 307);
             this.button_box_generate.Name = "button_box_generate";
-            this.button_box_generate.Size = new System.Drawing.Size(128, 24);
+            this.button_box_generate.Size = new Size(128, 24);
             this.button_box_generate.TabIndex = 82;
             this.button_box_generate.Text = "Generate Box";
-            this.button_box_generate.Click += new System.EventHandler(this.button_box_generate_Click);
+            this.button_box_generate.Click += new EventHandler(this.button_box_generate_Click);
             // 
             // label_box_offset
             // 
             this.label_box_offset.Location = new System.Drawing.Point(114, 277);
             this.label_box_offset.Name = "label_box_offset";
-            this.label_box_offset.Size = new System.Drawing.Size(157, 24);
+            this.label_box_offset.Size = new Size(157, 24);
             this.label_box_offset.TabIndex = 80;
             this.label_box_offset.Text = "Offset";
-            this.label_box_offset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_box_offset.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_box_offset
             // 
             this.textBox_box_offset.Location = new System.Drawing.Point(8, 281);
             this.textBox_box_offset.Name = "textBox_box_offset";
-            this.textBox_box_offset.Size = new System.Drawing.Size(100, 20);
+            this.textBox_box_offset.Size = new Size(100, 20);
             this.textBox_box_offset.TabIndex = 81;
             this.textBox_box_offset.Text = "0";
-            this.textBox_box_offset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_box_offset.TextAlign = HorizontalAlignment.Center;
             // 
             // label_box_sides
             // 
             this.label_box_sides.Location = new System.Drawing.Point(114, 251);
             this.label_box_sides.Name = "label_box_sides";
-            this.label_box_sides.Size = new System.Drawing.Size(157, 24);
+            this.label_box_sides.Size = new Size(157, 24);
             this.label_box_sides.TabIndex = 78;
             this.label_box_sides.Text = "Sides";
-            this.label_box_sides.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_box_sides.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_box_sides
             // 
             this.textBox_box_sides.Location = new System.Drawing.Point(8, 255);
             this.textBox_box_sides.Name = "textBox_box_sides";
-            this.textBox_box_sides.Size = new System.Drawing.Size(100, 20);
+            this.textBox_box_sides.Size = new Size(100, 20);
             this.textBox_box_sides.TabIndex = 79;
             this.textBox_box_sides.Text = "4";
-            this.textBox_box_sides.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_box_sides.TextAlign = HorizontalAlignment.Center;
             // 
             // label_box_radius
             // 
             this.label_box_radius.Location = new System.Drawing.Point(114, 225);
             this.label_box_radius.Name = "label_box_radius";
-            this.label_box_radius.Size = new System.Drawing.Size(157, 24);
+            this.label_box_radius.Size = new Size(157, 24);
             this.label_box_radius.TabIndex = 76;
             this.label_box_radius.Text = "Radius";
-            this.label_box_radius.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_box_radius.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_box_radius
             // 
             this.textBox_box_radius.Location = new System.Drawing.Point(8, 229);
             this.textBox_box_radius.Name = "textBox_box_radius";
-            this.textBox_box_radius.Size = new System.Drawing.Size(100, 20);
+            this.textBox_box_radius.Size = new Size(100, 20);
             this.textBox_box_radius.TabIndex = 77;
             this.textBox_box_radius.Text = "500";
-            this.textBox_box_radius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_box_radius.TextAlign = HorizontalAlignment.Center;
             // 
             // label_zrange
             // 
             this.label_zrange.Location = new System.Drawing.Point(114, 122);
             this.label_zrange.Name = "label_zrange";
-            this.label_zrange.Size = new System.Drawing.Size(157, 24);
+            this.label_zrange.Size = new Size(157, 24);
             this.label_zrange.TabIndex = 74;
             this.label_zrange.Text = "Z Range";
-            this.label_zrange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_zrange.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_zrange
             // 
             this.textBox_zrange.Location = new System.Drawing.Point(8, 126);
             this.textBox_zrange.Name = "textBox_zrange";
-            this.textBox_zrange.Size = new System.Drawing.Size(100, 20);
+            this.textBox_zrange.Size = new Size(100, 20);
             this.textBox_zrange.TabIndex = 75;
             this.textBox_zrange.Text = "1000";
-            this.textBox_zrange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_zrange.TextAlign = HorizontalAlignment.Center;
             // 
             // button_addcur_polygon
             // 
             this.button_addcur_polygon.Location = new System.Drawing.Point(76, 95);
             this.button_addcur_polygon.Name = "button_addcur_polygon";
-            this.button_addcur_polygon.Size = new System.Drawing.Size(128, 24);
+            this.button_addcur_polygon.Size = new Size(128, 24);
             this.button_addcur_polygon.TabIndex = 4;
             this.button_addcur_polygon.Text = "Add Current Location";
-            this.button_addcur_polygon.Click += new System.EventHandler(this.button_addcur_polygon_Click);
+            this.button_addcur_polygon.Click += new EventHandler(this.button_addcur_polygon_Click);
             // 
             // label_polgon_y
             // 
             this.label_polgon_y.Location = new System.Drawing.Point(170, 22);
             this.label_polgon_y.Name = "label_polgon_y";
-            this.label_polgon_y.Size = new System.Drawing.Size(64, 16);
+            this.label_polgon_y.Size = new Size(64, 16);
             this.label_polgon_y.TabIndex = 73;
             this.label_polgon_y.Text = "Y";
-            this.label_polgon_y.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_polgon_y.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_polygon_y
             // 
             this.textBox_polygon_y.Location = new System.Drawing.Point(152, 38);
             this.textBox_polygon_y.MaxLength = 13;
             this.textBox_polygon_y.Name = "textBox_polygon_y";
-            this.textBox_polygon_y.Size = new System.Drawing.Size(100, 20);
+            this.textBox_polygon_y.Size = new Size(100, 20);
             this.textBox_polygon_y.TabIndex = 1;
             this.textBox_polygon_y.Text = "0";
-            this.textBox_polygon_y.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_polygon_y.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_polygon_x
             // 
             this.textBox_polygon_x.Location = new System.Drawing.Point(38, 38);
             this.textBox_polygon_x.MaxLength = 13;
             this.textBox_polygon_x.Name = "textBox_polygon_x";
-            this.textBox_polygon_x.Size = new System.Drawing.Size(100, 20);
+            this.textBox_polygon_x.Size = new Size(100, 20);
             this.textBox_polygon_x.TabIndex = 0;
             this.textBox_polygon_x.Text = "0";
-            this.textBox_polygon_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_polygon_x.TextAlign = HorizontalAlignment.Center;
             // 
             // label_polygon_x
             // 
             this.label_polygon_x.Location = new System.Drawing.Point(53, 22);
             this.label_polygon_x.Name = "label_polygon_x";
-            this.label_polygon_x.Size = new System.Drawing.Size(72, 16);
+            this.label_polygon_x.Size = new Size(72, 16);
             this.label_polygon_x.TabIndex = 72;
             this.label_polygon_x.Text = "X";
-            this.label_polygon_x.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_polygon_x.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button_updatepolygon
             // 
             this.button_updatepolygon.Enabled = false;
             this.button_updatepolygon.Location = new System.Drawing.Point(146, 65);
             this.button_updatepolygon.Name = "button_updatepolygon";
-            this.button_updatepolygon.Size = new System.Drawing.Size(128, 24);
+            this.button_updatepolygon.Size = new Size(128, 24);
             this.button_updatepolygon.TabIndex = 3;
             this.button_updatepolygon.Text = "Update";
-            this.button_updatepolygon.Click += new System.EventHandler(this.button_updatepolygon_Click);
+            this.button_updatepolygon.Click += new EventHandler(this.button_updatepolygon_Click);
             // 
             // button_addpolygon
             // 
             this.button_addpolygon.Location = new System.Drawing.Point(11, 65);
             this.button_addpolygon.Name = "button_addpolygon";
-            this.button_addpolygon.Size = new System.Drawing.Size(128, 24);
+            this.button_addpolygon.Size = new Size(128, 24);
             this.button_addpolygon.TabIndex = 2;
             this.button_addpolygon.Text = "Add";
-            this.button_addpolygon.Click += new System.EventHandler(this.button_addpolygon_Click);
+            this.button_addpolygon.Click += new EventHandler(this.button_addpolygon_Click);
             // 
             // listView_border
             // 
-            this.listView_border.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_border.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_x,
             this.columnHeader_y});
             this.listView_border.ContextMenuStrip = this.contextMenuStrip_polygon;
@@ -4561,10 +4561,10 @@ namespace L2_login
             this.listView_border.Location = new System.Drawing.Point(277, 19);
             this.listView_border.MultiSelect = false;
             this.listView_border.Name = "listView_border";
-            this.listView_border.Size = new System.Drawing.Size(205, 323);
+            this.listView_border.Size = new Size(205, 323);
             this.listView_border.TabIndex = 5;
             this.listView_border.UseCompatibleStateImageBehavior = false;
-            this.listView_border.View = System.Windows.Forms.View.Details;
+            this.listView_border.View = View.Details;
             // 
             // columnHeader_x
             // 
@@ -4578,25 +4578,25 @@ namespace L2_login
             // 
             // contextMenuStrip_polygon
             // 
-            this.contextMenuStrip_polygon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_polygon.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem4,
             this.removeAllToolStripMenuItem});
             this.contextMenuStrip_polygon.Name = "contextMenuStrip_polygon";
-            this.contextMenuStrip_polygon.Size = new System.Drawing.Size(135, 48);
+            this.contextMenuStrip_polygon.Size = new Size(135, 48);
             // 
             // removeToolStripMenuItem4
             // 
             this.removeToolStripMenuItem4.Name = "removeToolStripMenuItem4";
-            this.removeToolStripMenuItem4.Size = new System.Drawing.Size(134, 22);
+            this.removeToolStripMenuItem4.Size = new Size(134, 22);
             this.removeToolStripMenuItem4.Text = "Remove";
-            this.removeToolStripMenuItem4.Click += new System.EventHandler(this.removeToolStripMenuItem4_Click);
+            this.removeToolStripMenuItem4.Click += new EventHandler(this.removeToolStripMenuItem4_Click);
             // 
             // removeAllToolStripMenuItem
             // 
             this.removeAllToolStripMenuItem.Name = "removeAllToolStripMenuItem";
-            this.removeAllToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.removeAllToolStripMenuItem.Size = new Size(134, 22);
             this.removeAllToolStripMenuItem.Text = "Remove All";
-            this.removeAllToolStripMenuItem.Click += new System.EventHandler(this.removeAllToolStripMenuItem_Click);
+            this.removeAllToolStripMenuItem.Click += new EventHandler(this.removeAllToolStripMenuItem_Click);
             // 
             // tabPage_donot
             // 
@@ -4604,7 +4604,7 @@ namespace L2_login
             this.tabPage_donot.Controls.Add(this.panel2);
             this.tabPage_donot.Location = new System.Drawing.Point(104, 4);
             this.tabPage_donot.Name = "tabPage_donot";
-            this.tabPage_donot.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_donot.Size = new Size(515, 377);
             this.tabPage_donot.TabIndex = 4;
             this.tabPage_donot.Text = "Do Not";
             this.tabPage_donot.UseVisualStyleBackColor = true;
@@ -4622,45 +4622,45 @@ namespace L2_login
             this.panel3.Controls.Add(this.listView_donot_npcs);
             this.panel3.Location = new System.Drawing.Point(253, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(248, 352);
+            this.panel3.Size = new Size(248, 352);
             this.panel3.TabIndex = 1;
             // 
             // checkBox_AttackOnly
             // 
-            this.checkBox_AttackOnly.ForeColor = System.Drawing.Color.Red;
+            this.checkBox_AttackOnly.ForeColor = Color.Red;
             this.checkBox_AttackOnly.Location = new System.Drawing.Point(5, 271);
             this.checkBox_AttackOnly.Name = "checkBox_AttackOnly";
-            this.checkBox_AttackOnly.Size = new System.Drawing.Size(235, 24);
+            this.checkBox_AttackOnly.Size = new Size(235, 24);
             this.checkBox_AttackOnly.TabIndex = 9;
             this.checkBox_AttackOnly.Text = "Attack Only NPCs in List";
             // 
             // checkBox_Ign_Summons
             // 
             this.checkBox_Ign_Summons.Checked = true;
-            this.checkBox_Ign_Summons.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Ign_Summons.CheckState = CheckState.Checked;
             this.checkBox_Ign_Summons.Location = new System.Drawing.Point(125, 293);
             this.checkBox_Ign_Summons.Name = "checkBox_Ign_Summons";
-            this.checkBox_Ign_Summons.Size = new System.Drawing.Size(115, 24);
+            this.checkBox_Ign_Summons.Size = new Size(115, 24);
             this.checkBox_Ign_Summons.TabIndex = 8;
             this.checkBox_Ign_Summons.Text = "Ignore Summons";
             // 
             // checkBox_Ign_TreasureChests
             // 
             this.checkBox_Ign_TreasureChests.Checked = true;
-            this.checkBox_Ign_TreasureChests.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Ign_TreasureChests.CheckState = CheckState.Checked;
             this.checkBox_Ign_TreasureChests.Location = new System.Drawing.Point(5, 315);
             this.checkBox_Ign_TreasureChests.Name = "checkBox_Ign_TreasureChests";
-            this.checkBox_Ign_TreasureChests.Size = new System.Drawing.Size(235, 24);
+            this.checkBox_Ign_TreasureChests.Size = new Size(235, 24);
             this.checkBox_Ign_TreasureChests.TabIndex = 7;
             this.checkBox_Ign_TreasureChests.Text = "Ignore Chests";
             // 
             // checkBox_Ign_Raidbosses
             // 
             this.checkBox_Ign_Raidbosses.Checked = true;
-            this.checkBox_Ign_Raidbosses.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Ign_Raidbosses.CheckState = CheckState.Checked;
             this.checkBox_Ign_Raidbosses.Location = new System.Drawing.Point(5, 293);
             this.checkBox_Ign_Raidbosses.Name = "checkBox_Ign_Raidbosses";
-            this.checkBox_Ign_Raidbosses.Size = new System.Drawing.Size(121, 24);
+            this.checkBox_Ign_Raidbosses.Size = new Size(121, 24);
             this.checkBox_Ign_Raidbosses.TabIndex = 6;
             this.checkBox_Ign_Raidbosses.Text = "Ignore Raidbosses";
             // 
@@ -4669,7 +4669,7 @@ namespace L2_login
             this.label_donot_npcID.AutoSize = true;
             this.label_donot_npcID.Location = new System.Drawing.Point(24, 33);
             this.label_donot_npcID.Name = "label_donot_npcID";
-            this.label_donot_npcID.Size = new System.Drawing.Size(18, 13);
+            this.label_donot_npcID.Size = new Size(18, 13);
             this.label_donot_npcID.TabIndex = 5;
             this.label_donot_npcID.Text = "ID";
             // 
@@ -4678,7 +4678,7 @@ namespace L2_login
             this.label_donot_npcs.AutoSize = true;
             this.label_donot_npcs.Location = new System.Drawing.Point(103, 11);
             this.label_donot_npcs.Name = "label_donot_npcs";
-            this.label_donot_npcs.Size = new System.Drawing.Size(34, 13);
+            this.label_donot_npcs.Size = new Size(34, 13);
             this.label_donot_npcs.TabIndex = 4;
             this.label_donot_npcs.Text = "NPCs";
             // 
@@ -4686,21 +4686,21 @@ namespace L2_login
             // 
             this.textBox_donot_npcs.Location = new System.Drawing.Point(48, 30);
             this.textBox_donot_npcs.Name = "textBox_donot_npcs";
-            this.textBox_donot_npcs.Size = new System.Drawing.Size(147, 20);
+            this.textBox_donot_npcs.Size = new Size(147, 20);
             this.textBox_donot_npcs.TabIndex = 0;
             // 
             // button_donot_npcs
             // 
             this.button_donot_npcs.Location = new System.Drawing.Point(83, 56);
             this.button_donot_npcs.Name = "button_donot_npcs";
-            this.button_donot_npcs.Size = new System.Drawing.Size(75, 23);
+            this.button_donot_npcs.Size = new Size(75, 23);
             this.button_donot_npcs.TabIndex = 1;
             this.button_donot_npcs.Text = "Add";
-            this.button_donot_npcs.Click += new System.EventHandler(this.button_donot_npcs_Click);
+            this.button_donot_npcs.Click += new EventHandler(this.button_donot_npcs_Click);
             // 
             // listView_donot_npcs
             // 
-            this.listView_donot_npcs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_donot_npcs.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_donot_npc_id,
             this.columnHeader_donot_npc_name});
             this.listView_donot_npcs.ContextMenuStrip = this.contextMenuStrip_donot_npcs;
@@ -4709,10 +4709,10 @@ namespace L2_login
             this.listView_donot_npcs.Location = new System.Drawing.Point(5, 85);
             this.listView_donot_npcs.MultiSelect = false;
             this.listView_donot_npcs.Name = "listView_donot_npcs";
-            this.listView_donot_npcs.Size = new System.Drawing.Size(240, 180);
+            this.listView_donot_npcs.Size = new Size(240, 180);
             this.listView_donot_npcs.TabIndex = 2;
             this.listView_donot_npcs.UseCompatibleStateImageBehavior = false;
-            this.listView_donot_npcs.View = System.Windows.Forms.View.Details;
+            this.listView_donot_npcs.View = View.Details;
             // 
             // columnHeader_donot_npc_id
             // 
@@ -4725,25 +4725,25 @@ namespace L2_login
             // 
             // contextMenuStrip_donot_npcs
             // 
-            this.contextMenuStrip_donot_npcs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_donot_npcs.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem1,
             this.removeAllToolStripMenuItem1});
             this.contextMenuStrip_donot_npcs.Name = "contextMenuStrip_donot_npcs";
-            this.contextMenuStrip_donot_npcs.Size = new System.Drawing.Size(135, 48);
+            this.contextMenuStrip_donot_npcs.Size = new Size(135, 48);
             // 
             // removeToolStripMenuItem1
             // 
             this.removeToolStripMenuItem1.Name = "removeToolStripMenuItem1";
-            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.removeToolStripMenuItem1.Size = new Size(134, 22);
             this.removeToolStripMenuItem1.Text = "Remove";
-            this.removeToolStripMenuItem1.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
+            this.removeToolStripMenuItem1.Click += new EventHandler(this.removeToolStripMenuItem1_Click);
             // 
             // removeAllToolStripMenuItem1
             // 
             this.removeAllToolStripMenuItem1.Name = "removeAllToolStripMenuItem1";
-            this.removeAllToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.removeAllToolStripMenuItem1.Size = new Size(134, 22);
             this.removeAllToolStripMenuItem1.Text = "Remove All";
-            this.removeAllToolStripMenuItem1.Click += new System.EventHandler(this.removeAllToolStripMenuItem1_Click);
+            this.removeAllToolStripMenuItem1.Click += new EventHandler(this.removeAllToolStripMenuItem1_Click);
             // 
             // panel2
             // 
@@ -4757,35 +4757,35 @@ namespace L2_login
             this.panel2.Controls.Add(this.listView_donot_items);
             this.panel2.Location = new System.Drawing.Point(4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(248, 352);
+            this.panel2.Size = new Size(248, 352);
             this.panel2.TabIndex = 0;
             // 
             // checkBox_PickOnly
             // 
-            this.checkBox_PickOnly.ForeColor = System.Drawing.Color.Red;
+            this.checkBox_PickOnly.ForeColor = Color.Red;
             this.checkBox_PickOnly.Location = new System.Drawing.Point(3, 271);
             this.checkBox_PickOnly.Name = "checkBox_PickOnly";
-            this.checkBox_PickOnly.Size = new System.Drawing.Size(239, 24);
+            this.checkBox_PickOnly.Size = new Size(239, 24);
             this.checkBox_PickOnly.TabIndex = 6;
             this.checkBox_PickOnly.Text = "Pick Only Items in List";
             // 
             // checkBox_ignore_no_mesh
             // 
             this.checkBox_ignore_no_mesh.Checked = true;
-            this.checkBox_ignore_no_mesh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_ignore_no_mesh.CheckState = CheckState.Checked;
             this.checkBox_ignore_no_mesh.Location = new System.Drawing.Point(3, 315);
             this.checkBox_ignore_no_mesh.Name = "checkBox_ignore_no_mesh";
-            this.checkBox_ignore_no_mesh.Size = new System.Drawing.Size(239, 24);
+            this.checkBox_ignore_no_mesh.Size = new Size(239, 24);
             this.checkBox_ignore_no_mesh.TabIndex = 5;
             this.checkBox_ignore_no_mesh.Text = "Ignore Meshless Items";
             // 
             // checkBox_ignoreitems
             // 
             this.checkBox_ignoreitems.Checked = true;
-            this.checkBox_ignoreitems.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_ignoreitems.CheckState = CheckState.Checked;
             this.checkBox_ignoreitems.Location = new System.Drawing.Point(3, 293);
             this.checkBox_ignoreitems.Name = "checkBox_ignoreitems";
-            this.checkBox_ignoreitems.Size = new System.Drawing.Size(136, 24);
+            this.checkBox_ignoreitems.Size = new Size(136, 24);
             this.checkBox_ignoreitems.TabIndex = 3;
             this.checkBox_ignoreitems.Text = "Ignore Unknown Items";
             // 
@@ -4794,7 +4794,7 @@ namespace L2_login
             this.label_donot_itemID.AutoSize = true;
             this.label_donot_itemID.Location = new System.Drawing.Point(26, 33);
             this.label_donot_itemID.Name = "label_donot_itemID";
-            this.label_donot_itemID.Size = new System.Drawing.Size(18, 13);
+            this.label_donot_itemID.Size = new Size(18, 13);
             this.label_donot_itemID.TabIndex = 4;
             this.label_donot_itemID.Text = "ID";
             // 
@@ -4803,7 +4803,7 @@ namespace L2_login
             this.label_donot_items.AutoSize = true;
             this.label_donot_items.Location = new System.Drawing.Point(107, 11);
             this.label_donot_items.Name = "label_donot_items";
-            this.label_donot_items.Size = new System.Drawing.Size(32, 13);
+            this.label_donot_items.Size = new Size(32, 13);
             this.label_donot_items.TabIndex = 3;
             this.label_donot_items.Text = "Items";
             // 
@@ -4811,21 +4811,21 @@ namespace L2_login
             // 
             this.textBox_donot_items.Location = new System.Drawing.Point(50, 30);
             this.textBox_donot_items.Name = "textBox_donot_items";
-            this.textBox_donot_items.Size = new System.Drawing.Size(147, 20);
+            this.textBox_donot_items.Size = new Size(147, 20);
             this.textBox_donot_items.TabIndex = 0;
             // 
             // button_donot_items
             // 
             this.button_donot_items.Location = new System.Drawing.Point(85, 56);
             this.button_donot_items.Name = "button_donot_items";
-            this.button_donot_items.Size = new System.Drawing.Size(75, 23);
+            this.button_donot_items.Size = new Size(75, 23);
             this.button_donot_items.TabIndex = 1;
             this.button_donot_items.Text = "Add";
-            this.button_donot_items.Click += new System.EventHandler(this.button_donot_items_Click);
+            this.button_donot_items.Click += new EventHandler(this.button_donot_items_Click);
             // 
             // listView_donot_items
             // 
-            this.listView_donot_items.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_donot_items.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader_donot_item_id,
             this.columnHeader_donot_item_name});
             this.listView_donot_items.ContextMenuStrip = this.contextMenuStrip_donot_items;
@@ -4834,10 +4834,10 @@ namespace L2_login
             this.listView_donot_items.Location = new System.Drawing.Point(4, 85);
             this.listView_donot_items.MultiSelect = false;
             this.listView_donot_items.Name = "listView_donot_items";
-            this.listView_donot_items.Size = new System.Drawing.Size(239, 180);
+            this.listView_donot_items.Size = new Size(239, 180);
             this.listView_donot_items.TabIndex = 2;
             this.listView_donot_items.UseCompatibleStateImageBehavior = false;
-            this.listView_donot_items.View = System.Windows.Forms.View.Details;
+            this.listView_donot_items.View = View.Details;
             // 
             // columnHeader_donot_item_id
             // 
@@ -4850,25 +4850,25 @@ namespace L2_login
             // 
             // contextMenuStrip_donot_items
             // 
-            this.contextMenuStrip_donot_items.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_donot_items.Items.AddRange(new ToolStripItem[] {
             this.removeToolStripMenuItem,
             this.removeAllToolStripMenuItem2});
             this.contextMenuStrip_donot_items.Name = "contextMenuStrip_donot_items";
-            this.contextMenuStrip_donot_items.Size = new System.Drawing.Size(135, 48);
+            this.contextMenuStrip_donot_items.Size = new Size(135, 48);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.removeToolStripMenuItem.Size = new Size(134, 22);
             this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            this.removeToolStripMenuItem.Click += new EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // removeAllToolStripMenuItem2
             // 
             this.removeAllToolStripMenuItem2.Name = "removeAllToolStripMenuItem2";
-            this.removeAllToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.removeAllToolStripMenuItem2.Size = new Size(134, 22);
             this.removeAllToolStripMenuItem2.Text = "Remove All";
-            this.removeAllToolStripMenuItem2.Click += new System.EventHandler(this.removeAllToolStripMenuItem2_Click);
+            this.removeAllToolStripMenuItem2.Click += new EventHandler(this.removeAllToolStripMenuItem2_Click);
             // 
             // tabPage_soundalerts
             // 
@@ -4876,7 +4876,7 @@ namespace L2_login
             this.tabPage_soundalerts.Controls.Add(this.groupBox_SoundAlerts);
             this.tabPage_soundalerts.Location = new System.Drawing.Point(104, 4);
             this.tabPage_soundalerts.Name = "tabPage_soundalerts";
-            this.tabPage_soundalerts.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_soundalerts.Size = new Size(515, 377);
             this.tabPage_soundalerts.TabIndex = 9;
             this.tabPage_soundalerts.Text = "Sound Alerts/Log Out";
             this.tabPage_soundalerts.UseVisualStyleBackColor = true;
@@ -4901,7 +4901,7 @@ namespace L2_login
             this.groupBox_LogOut.Controls.Add(this.checkBox_n1waywar_logout);
             this.groupBox_LogOut.Location = new System.Drawing.Point(3, 160);
             this.groupBox_LogOut.Name = "groupBox_LogOut";
-            this.groupBox_LogOut.Size = new System.Drawing.Size(501, 100);
+            this.groupBox_LogOut.Size = new Size(501, 100);
             this.groupBox_LogOut.TabIndex = 64;
             this.groupBox_LogOut.TabStop = false;
             this.groupBox_LogOut.Text = "Log Out Settings";
@@ -4910,7 +4910,7 @@ namespace L2_login
             // 
             this.checkBox_1waywar_logout.Location = new System.Drawing.Point(6, 39);
             this.checkBox_1waywar_logout.Name = "checkBox_1waywar_logout";
-            this.checkBox_1waywar_logout.Size = new System.Drawing.Size(82, 24);
+            this.checkBox_1waywar_logout.Size = new Size(82, 24);
             this.checkBox_1waywar_logout.TabIndex = 49;
             this.checkBox_1waywar_logout.Text = "1 Way War";
             // 
@@ -4918,15 +4918,15 @@ namespace L2_login
             // 
             this.textBox_player_logout.Location = new System.Drawing.Point(259, 50);
             this.textBox_player_logout.Name = "textBox_player_logout";
-            this.textBox_player_logout.Size = new System.Drawing.Size(216, 20);
+            this.textBox_player_logout.Size = new Size(216, 20);
             this.textBox_player_logout.TabIndex = 61;
-            this.textBox_player_logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_player_logout.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_2waywar_logout
             // 
             this.checkBox_2waywar_logout.Location = new System.Drawing.Point(6, 19);
             this.checkBox_2waywar_logout.Name = "checkBox_2waywar_logout";
-            this.checkBox_2waywar_logout.Size = new System.Drawing.Size(82, 24);
+            this.checkBox_2waywar_logout.Size = new Size(82, 24);
             this.checkBox_2waywar_logout.TabIndex = 48;
             this.checkBox_2waywar_logout.Text = "2 Way War";
             // 
@@ -4934,15 +4934,15 @@ namespace L2_login
             // 
             this.textBox_clan_logout.Location = new System.Drawing.Point(259, 24);
             this.textBox_clan_logout.Name = "textBox_clan_logout";
-            this.textBox_clan_logout.Size = new System.Drawing.Size(216, 20);
+            this.textBox_clan_logout.Size = new Size(216, 20);
             this.textBox_clan_logout.TabIndex = 59;
-            this.textBox_clan_logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_clan_logout.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_player_logout
             // 
             this.checkBox_player_logout.Location = new System.Drawing.Point(206, 46);
             this.checkBox_player_logout.Name = "checkBox_player_logout";
-            this.checkBox_player_logout.Size = new System.Drawing.Size(56, 24);
+            this.checkBox_player_logout.Size = new Size(56, 24);
             this.checkBox_player_logout.TabIndex = 60;
             this.checkBox_player_logout.Text = "Player";
             // 
@@ -4950,16 +4950,16 @@ namespace L2_login
             // 
             this.textBox_cp_logout.Location = new System.Drawing.Point(141, 62);
             this.textBox_cp_logout.Name = "textBox_cp_logout";
-            this.textBox_cp_logout.Size = new System.Drawing.Size(37, 20);
+            this.textBox_cp_logout.Size = new Size(37, 20);
             this.textBox_cp_logout.TabIndex = 56;
             this.textBox_cp_logout.Text = "50";
-            this.textBox_cp_logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_cp_logout.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_clan_logout
             // 
             this.checkBox_clan_logout.Location = new System.Drawing.Point(206, 20);
             this.checkBox_clan_logout.Name = "checkBox_clan_logout";
-            this.checkBox_clan_logout.Size = new System.Drawing.Size(56, 24);
+            this.checkBox_clan_logout.Size = new Size(56, 24);
             this.checkBox_clan_logout.TabIndex = 57;
             this.checkBox_clan_logout.Text = "Clan";
             // 
@@ -4967,25 +4967,25 @@ namespace L2_login
             // 
             this.textBox_hp_logout.Location = new System.Drawing.Point(141, 19);
             this.textBox_hp_logout.Name = "textBox_hp_logout";
-            this.textBox_hp_logout.Size = new System.Drawing.Size(37, 20);
+            this.textBox_hp_logout.Size = new Size(37, 20);
             this.textBox_hp_logout.TabIndex = 52;
             this.textBox_hp_logout.Text = "50";
-            this.textBox_hp_logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_hp_logout.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_mp_logout
             // 
             this.textBox_mp_logout.Location = new System.Drawing.Point(141, 41);
             this.textBox_mp_logout.Name = "textBox_mp_logout";
-            this.textBox_mp_logout.Size = new System.Drawing.Size(37, 20);
+            this.textBox_mp_logout.Size = new Size(37, 20);
             this.textBox_mp_logout.TabIndex = 54;
             this.textBox_mp_logout.Text = "50";
-            this.textBox_mp_logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_mp_logout.TextAlign = HorizontalAlignment.Center;
             // 
             // label14
             // 
             this.label14.Location = new System.Drawing.Point(177, 65);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 17);
+            this.label14.Size = new Size(22, 17);
             this.label14.TabIndex = 63;
             this.label14.Text = "%";
             // 
@@ -4993,7 +4993,7 @@ namespace L2_login
             // 
             this.label16.Location = new System.Drawing.Point(177, 24);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(23, 15);
+            this.label16.Size = new Size(23, 15);
             this.label16.TabIndex = 58;
             this.label16.Text = "%";
             // 
@@ -5001,7 +5001,7 @@ namespace L2_login
             // 
             this.checkBox_hp_logout.Location = new System.Drawing.Point(94, 19);
             this.checkBox_hp_logout.Name = "checkBox_hp_logout";
-            this.checkBox_hp_logout.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_hp_logout.Size = new Size(59, 24);
             this.checkBox_hp_logout.TabIndex = 51;
             this.checkBox_hp_logout.Text = "HP <";
             // 
@@ -5009,7 +5009,7 @@ namespace L2_login
             // 
             this.checkBox_cp_logout.Location = new System.Drawing.Point(94, 60);
             this.checkBox_cp_logout.Name = "checkBox_cp_logout";
-            this.checkBox_cp_logout.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_cp_logout.Size = new Size(59, 24);
             this.checkBox_cp_logout.TabIndex = 55;
             this.checkBox_cp_logout.Text = "CP <";
             // 
@@ -5017,7 +5017,7 @@ namespace L2_login
             // 
             this.checkBox_mp_logout.Location = new System.Drawing.Point(94, 39);
             this.checkBox_mp_logout.Name = "checkBox_mp_logout";
-            this.checkBox_mp_logout.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_mp_logout.Size = new Size(59, 24);
             this.checkBox_mp_logout.TabIndex = 53;
             this.checkBox_mp_logout.Text = "MP <";
             // 
@@ -5025,7 +5025,7 @@ namespace L2_login
             // 
             this.label15.Location = new System.Drawing.Point(177, 44);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(22, 17);
+            this.label15.Size = new Size(22, 17);
             this.label15.TabIndex = 62;
             this.label15.Text = "%";
             // 
@@ -5033,7 +5033,7 @@ namespace L2_login
             // 
             this.checkBox_n1waywar_logout.Location = new System.Drawing.Point(6, 60);
             this.checkBox_n1waywar_logout.Name = "checkBox_n1waywar_logout";
-            this.checkBox_n1waywar_logout.Size = new System.Drawing.Size(92, 24);
+            this.checkBox_n1waywar_logout.Size = new Size(92, 24);
             this.checkBox_n1waywar_logout.TabIndex = 50;
             this.checkBox_n1waywar_logout.Text = "-1 Way War";
             // 
@@ -5062,7 +5062,7 @@ namespace L2_login
             this.groupBox_SoundAlerts.Controls.Add(this.checkBox_cp);
             this.groupBox_SoundAlerts.Location = new System.Drawing.Point(3, 3);
             this.groupBox_SoundAlerts.Name = "groupBox_SoundAlerts";
-            this.groupBox_SoundAlerts.Size = new System.Drawing.Size(501, 151);
+            this.groupBox_SoundAlerts.Size = new Size(501, 151);
             this.groupBox_SoundAlerts.TabIndex = 37;
             this.groupBox_SoundAlerts.TabStop = false;
             this.groupBox_SoundAlerts.Text = "Sound Alerts";
@@ -5071,7 +5071,7 @@ namespace L2_login
             // 
             this.checkBox_2waywar.Location = new System.Drawing.Point(6, 19);
             this.checkBox_2waywar.Name = "checkBox_2waywar";
-            this.checkBox_2waywar.Size = new System.Drawing.Size(82, 24);
+            this.checkBox_2waywar.Size = new Size(82, 24);
             this.checkBox_2waywar.TabIndex = 16;
             this.checkBox_2waywar.Text = "2 Way War";
             // 
@@ -5080,7 +5080,7 @@ namespace L2_login
             this.checkBox_player_ignore.AutoSize = true;
             this.checkBox_player_ignore.Location = new System.Drawing.Point(287, 122);
             this.checkBox_player_ignore.Name = "checkBox_player_ignore";
-            this.checkBox_player_ignore.Size = new System.Drawing.Size(129, 17);
+            this.checkBox_player_ignore.Size = new Size(129, 17);
             this.checkBox_player_ignore.TabIndex = 33;
             this.checkBox_player_ignore.Text = "Ignore Party Members";
             this.checkBox_player_ignore.UseVisualStyleBackColor = true;
@@ -5090,7 +5090,7 @@ namespace L2_login
             this.checkBox_friendchat.AutoSize = true;
             this.checkBox_friendchat.Location = new System.Drawing.Point(94, 67);
             this.checkBox_friendchat.Name = "checkBox_friendchat";
-            this.checkBox_friendchat.Size = new System.Drawing.Size(80, 17);
+            this.checkBox_friendchat.Size = new Size(80, 17);
             this.checkBox_friendchat.TabIndex = 36;
             this.checkBox_friendchat.Text = "Friend Chat";
             this.checkBox_friendchat.UseVisualStyleBackColor = true;
@@ -5100,7 +5100,7 @@ namespace L2_login
             this.checkBox_clan_ignore.AutoSize = true;
             this.checkBox_clan_ignore.Location = new System.Drawing.Point(287, 96);
             this.checkBox_clan_ignore.Name = "checkBox_clan_ignore";
-            this.checkBox_clan_ignore.Size = new System.Drawing.Size(129, 17);
+            this.checkBox_clan_ignore.Size = new Size(129, 17);
             this.checkBox_clan_ignore.TabIndex = 32;
             this.checkBox_clan_ignore.Text = "Ignore Party Members";
             this.checkBox_clan_ignore.UseVisualStyleBackColor = true;
@@ -5109,7 +5109,7 @@ namespace L2_login
             // 
             this.checkBox_1waywar.Location = new System.Drawing.Point(6, 39);
             this.checkBox_1waywar.Name = "checkBox_1waywar";
-            this.checkBox_1waywar.Size = new System.Drawing.Size(82, 24);
+            this.checkBox_1waywar.Size = new Size(82, 24);
             this.checkBox_1waywar.TabIndex = 17;
             this.checkBox_1waywar.Text = "1 Way War";
             // 
@@ -5117,16 +5117,16 @@ namespace L2_login
             // 
             this.textBox_player.Location = new System.Drawing.Point(68, 120);
             this.textBox_player.Name = "textBox_player";
-            this.textBox_player.Size = new System.Drawing.Size(216, 20);
+            this.textBox_player.Size = new Size(216, 20);
             this.textBox_player.TabIndex = 29;
-            this.textBox_player.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_player.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_privatemessage
             // 
             this.checkBox_privatemessage.AutoSize = true;
             this.checkBox_privatemessage.Location = new System.Drawing.Point(94, 42);
             this.checkBox_privatemessage.Name = "checkBox_privatemessage";
-            this.checkBox_privatemessage.Size = new System.Drawing.Size(105, 17);
+            this.checkBox_privatemessage.Size = new Size(105, 17);
             this.checkBox_privatemessage.TabIndex = 35;
             this.checkBox_privatemessage.Text = "Private Message";
             this.checkBox_privatemessage.UseVisualStyleBackColor = true;
@@ -5135,15 +5135,15 @@ namespace L2_login
             // 
             this.textBox_clan.Location = new System.Drawing.Point(69, 94);
             this.textBox_clan.Name = "textBox_clan";
-            this.textBox_clan.Size = new System.Drawing.Size(216, 20);
+            this.textBox_clan.Size = new Size(216, 20);
             this.textBox_clan.TabIndex = 27;
-            this.textBox_clan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_clan.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_player
             // 
             this.checkBox_player.Location = new System.Drawing.Point(6, 118);
             this.checkBox_player.Name = "checkBox_player";
-            this.checkBox_player.Size = new System.Drawing.Size(56, 24);
+            this.checkBox_player.Size = new Size(56, 24);
             this.checkBox_player.TabIndex = 28;
             this.checkBox_player.Text = "Player";
             // 
@@ -5151,7 +5151,7 @@ namespace L2_login
             // 
             this.checkBox_n1waywar.Location = new System.Drawing.Point(6, 62);
             this.checkBox_n1waywar.Name = "checkBox_n1waywar";
-            this.checkBox_n1waywar.Size = new System.Drawing.Size(92, 24);
+            this.checkBox_n1waywar.Size = new Size(92, 24);
             this.checkBox_n1waywar.TabIndex = 18;
             this.checkBox_n1waywar.Text = "-1 Way War";
             // 
@@ -5159,7 +5159,7 @@ namespace L2_login
             // 
             this.checkBox_clan.Location = new System.Drawing.Point(6, 92);
             this.checkBox_clan.Name = "checkBox_clan";
-            this.checkBox_clan.Size = new System.Drawing.Size(56, 24);
+            this.checkBox_clan.Size = new Size(56, 24);
             this.checkBox_clan.TabIndex = 25;
             this.checkBox_clan.Text = "Clan";
             // 
@@ -5167,17 +5167,17 @@ namespace L2_login
             // 
             this.textBox_cp.Location = new System.Drawing.Point(248, 62);
             this.textBox_cp.Name = "textBox_cp";
-            this.textBox_cp.Size = new System.Drawing.Size(37, 20);
+            this.textBox_cp.Size = new Size(37, 20);
             this.textBox_cp.TabIndex = 24;
             this.textBox_cp.Text = "50";
-            this.textBox_cp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_cp.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_whitechat
             // 
             this.checkBox_whitechat.AutoSize = true;
             this.checkBox_whitechat.Location = new System.Drawing.Point(94, 23);
             this.checkBox_whitechat.Name = "checkBox_whitechat";
-            this.checkBox_whitechat.Size = new System.Drawing.Size(79, 17);
+            this.checkBox_whitechat.Size = new Size(79, 17);
             this.checkBox_whitechat.TabIndex = 34;
             this.checkBox_whitechat.Text = "White Chat";
             this.checkBox_whitechat.UseVisualStyleBackColor = true;
@@ -5186,25 +5186,25 @@ namespace L2_login
             // 
             this.textBox_mp.Location = new System.Drawing.Point(248, 39);
             this.textBox_mp.Name = "textBox_mp";
-            this.textBox_mp.Size = new System.Drawing.Size(37, 20);
+            this.textBox_mp.Size = new Size(37, 20);
             this.textBox_mp.TabIndex = 22;
             this.textBox_mp.Text = "50";
-            this.textBox_mp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_mp.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_hp
             // 
             this.textBox_hp.Location = new System.Drawing.Point(248, 20);
             this.textBox_hp.Name = "textBox_hp";
-            this.textBox_hp.Size = new System.Drawing.Size(37, 20);
+            this.textBox_hp.Size = new Size(37, 20);
             this.textBox_hp.TabIndex = 20;
             this.textBox_hp.Text = "50";
-            this.textBox_hp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_hp.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_hp
             // 
             this.checkBox_hp.Location = new System.Drawing.Point(201, 19);
             this.checkBox_hp.Name = "checkBox_hp";
-            this.checkBox_hp.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_hp.Size = new Size(59, 24);
             this.checkBox_hp.TabIndex = 19;
             this.checkBox_hp.Text = "HP <";
             // 
@@ -5212,7 +5212,7 @@ namespace L2_login
             // 
             this.label12.Location = new System.Drawing.Point(284, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 17);
+            this.label12.Size = new Size(40, 17);
             this.label12.TabIndex = 26;
             this.label12.Text = "%";
             // 
@@ -5220,7 +5220,7 @@ namespace L2_login
             // 
             this.checkBox_mp.Location = new System.Drawing.Point(201, 39);
             this.checkBox_mp.Name = "checkBox_mp";
-            this.checkBox_mp.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_mp.Size = new Size(59, 24);
             this.checkBox_mp.TabIndex = 21;
             this.checkBox_mp.Text = "MP <";
             // 
@@ -5228,7 +5228,7 @@ namespace L2_login
             // 
             this.label10.Location = new System.Drawing.Point(284, 67);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 15);
+            this.label10.Size = new Size(40, 15);
             this.label10.TabIndex = 31;
             this.label10.Text = "%";
             // 
@@ -5236,7 +5236,7 @@ namespace L2_login
             // 
             this.label11.Location = new System.Drawing.Point(284, 44);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 15);
+            this.label11.Size = new Size(40, 15);
             this.label11.TabIndex = 30;
             this.label11.Text = "%";
             // 
@@ -5244,7 +5244,7 @@ namespace L2_login
             // 
             this.checkBox_cp.Location = new System.Drawing.Point(201, 60);
             this.checkBox_cp.Name = "checkBox_cp";
-            this.checkBox_cp.Size = new System.Drawing.Size(59, 24);
+            this.checkBox_cp.Size = new Size(59, 24);
             this.checkBox_cp.TabIndex = 23;
             this.checkBox_cp.Text = "CP <";
             // 
@@ -5253,8 +5253,8 @@ namespace L2_login
             this.tabPage_content_filter.Controls.Add(this.splitContainer1);
             this.tabPage_content_filter.Location = new System.Drawing.Point(104, 4);
             this.tabPage_content_filter.Name = "tabPage_content_filter";
-            this.tabPage_content_filter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_content_filter.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_content_filter.Padding = new Padding(3);
+            this.tabPage_content_filter.Size = new Size(515, 377);
             this.tabPage_content_filter.TabIndex = 13;
             this.tabPage_content_filter.Text = "Content Filter";
             this.tabPage_content_filter.UseVisualStyleBackColor = true;
@@ -5266,18 +5266,18 @@ namespace L2_login
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.splitContainer1.Panel1.BackColor = Color.Gainsboro;
             this.splitContainer1.Panel1.Controls.Add(this.cf_ExBrExtraUserInfo);
             this.splitContainer1.Panel1.Controls.Add(this.label18);
             this.splitContainer1.Panel1.Controls.Add(this.cf_targetselected);
             this.splitContainer1.Panel1.Controls.Add(this.cf_targetunselected);
             this.splitContainer1.Panel1.Controls.Add(this.cf_filtermagicskill);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(5);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.splitContainer1.Panel1.Margin = new Padding(5);
+            this.splitContainer1.Panel1.Padding = new Padding(5);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel2.BackColor = Color.WhiteSmoke;
             this.splitContainer1.Panel2.Controls.Add(this.cf_dwarfmode);
             this.splitContainer1.Panel2.Controls.Add(this.label19);
             this.splitContainer1.Panel2.Controls.Add(this.cf_striptitle);
@@ -5287,9 +5287,9 @@ namespace L2_login
             this.splitContainer1.Panel2.Controls.Add(this.cf_stripaugment);
             this.splitContainer1.Panel2.Controls.Add(this.cf_simple_appearance);
             this.splitContainer1.Panel2.Controls.Add(this.cf_zerononvisible);
-            this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(5);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.splitContainer1.Size = new System.Drawing.Size(484, 333);
+            this.splitContainer1.Panel2.Margin = new Padding(5);
+            this.splitContainer1.Panel2.Padding = new Padding(5);
+            this.splitContainer1.Size = new Size(484, 333);
             this.splitContainer1.SplitterDistance = 181;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -5298,7 +5298,7 @@ namespace L2_login
             this.cf_ExBrExtraUserInfo.AutoSize = true;
             this.cf_ExBrExtraUserInfo.Location = new System.Drawing.Point(9, 122);
             this.cf_ExBrExtraUserInfo.Name = "cf_ExBrExtraUserInfo";
-            this.cf_ExBrExtraUserInfo.Size = new System.Drawing.Size(125, 17);
+            this.cf_ExBrExtraUserInfo.Size = new Size(125, 17);
             this.cf_ExBrExtraUserInfo.TabIndex = 4;
             this.cf_ExBrExtraUserInfo.Text = "Filter Event User Info";
             this.cf_ExBrExtraUserInfo.UseVisualStyleBackColor = true;
@@ -5308,17 +5308,17 @@ namespace L2_login
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(58, 21);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 13);
+            this.label18.Size = new Size(66, 13);
             this.label18.TabIndex = 3;
             this.label18.Text = "Packet Filter";
             // 
             // cf_targetselected
             // 
             this.cf_targetselected.AutoSize = true;
-            this.cf_targetselected.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cf_targetselected.Cursor = Cursors.Default;
             this.cf_targetselected.Location = new System.Drawing.Point(8, 75);
             this.cf_targetselected.Name = "cf_targetselected";
-            this.cf_targetselected.Size = new System.Drawing.Size(124, 17);
+            this.cf_targetselected.Size = new Size(124, 17);
             this.cf_targetselected.TabIndex = 0;
             this.cf_targetselected.Text = "Filter TargetSelected";
             this.cf_targetselected.UseVisualStyleBackColor = true;
@@ -5328,7 +5328,7 @@ namespace L2_login
             this.cf_targetunselected.AutoSize = true;
             this.cf_targetunselected.Location = new System.Drawing.Point(8, 98);
             this.cf_targetunselected.Name = "cf_targetunselected";
-            this.cf_targetunselected.Size = new System.Drawing.Size(136, 17);
+            this.cf_targetunselected.Size = new Size(136, 17);
             this.cf_targetunselected.TabIndex = 1;
             this.cf_targetunselected.Text = "Filter TargetUnselected";
             this.cf_targetunselected.UseVisualStyleBackColor = true;
@@ -5338,7 +5338,7 @@ namespace L2_login
             this.cf_filtermagicskill.AutoSize = true;
             this.cf_filtermagicskill.Location = new System.Drawing.Point(8, 52);
             this.cf_filtermagicskill.Name = "cf_filtermagicskill";
-            this.cf_filtermagicskill.Size = new System.Drawing.Size(150, 17);
+            this.cf_filtermagicskill.Size = new Size(150, 17);
             this.cf_filtermagicskill.TabIndex = 2;
             this.cf_filtermagicskill.Text = "Filter Consumables Effects";
             this.cf_filtermagicskill.UseVisualStyleBackColor = true;
@@ -5349,7 +5349,7 @@ namespace L2_login
             this.cf_dwarfmode.Enabled = false;
             this.cf_dwarfmode.Location = new System.Drawing.Point(13, 214);
             this.cf_dwarfmode.Name = "cf_dwarfmode";
-            this.cf_dwarfmode.Size = new System.Drawing.Size(122, 17);
+            this.cf_dwarfmode.Size = new Size(122, 17);
             this.cf_dwarfmode.TabIndex = 11;
             this.cf_dwarfmode.Text = "Simplify Player Race";
             this.cf_dwarfmode.UseVisualStyleBackColor = true;
@@ -5359,7 +5359,7 @@ namespace L2_login
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(98, 21);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 13);
+            this.label19.Size = new Size(91, 13);
             this.label19.TabIndex = 10;
             this.label19.Text = "Packet Transform";
             // 
@@ -5369,7 +5369,7 @@ namespace L2_login
             this.cf_striptitle.Enabled = false;
             this.cf_striptitle.Location = new System.Drawing.Point(13, 52);
             this.cf_striptitle.Name = "cf_striptitle";
-            this.cf_striptitle.Size = new System.Drawing.Size(107, 17);
+            this.cf_striptitle.Size = new Size(107, 17);
             this.cf_striptitle.TabIndex = 3;
             this.cf_striptitle.Text = "Strip Player Titles";
             this.cf_striptitle.UseVisualStyleBackColor = true;
@@ -5380,7 +5380,7 @@ namespace L2_login
             this.cf_one_gender.Enabled = false;
             this.cf_one_gender.Location = new System.Drawing.Point(13, 190);
             this.cf_one_gender.Name = "cf_one_gender";
-            this.cf_one_gender.Size = new System.Drawing.Size(131, 17);
+            this.cf_one_gender.Size = new Size(131, 17);
             this.cf_one_gender.TabIndex = 8;
             this.cf_one_gender.Text = "Simplify Player Gender";
             this.cf_one_gender.UseVisualStyleBackColor = true;
@@ -5391,7 +5391,7 @@ namespace L2_login
             this.cf_stripenchant.Enabled = false;
             this.cf_stripenchant.Location = new System.Drawing.Point(13, 75);
             this.cf_stripenchant.Name = "cf_stripenchant";
-            this.cf_stripenchant.Size = new System.Drawing.Size(122, 17);
+            this.cf_stripenchant.Size = new Size(122, 17);
             this.cf_stripenchant.TabIndex = 4;
             this.cf_stripenchant.Text = "Strip Player Enchant";
             this.cf_stripenchant.UseVisualStyleBackColor = true;
@@ -5402,7 +5402,7 @@ namespace L2_login
             this.cf_norecs.Enabled = false;
             this.cf_norecs.Location = new System.Drawing.Point(13, 144);
             this.cf_norecs.Name = "cf_norecs";
-            this.cf_norecs.Size = new System.Drawing.Size(134, 17);
+            this.cf_norecs.Size = new Size(134, 17);
             this.cf_norecs.TabIndex = 9;
             this.cf_norecs.Text = "Strip Player Reputation";
             this.cf_norecs.UseVisualStyleBackColor = true;
@@ -5413,7 +5413,7 @@ namespace L2_login
             this.cf_stripaugment.Enabled = false;
             this.cf_stripaugment.Location = new System.Drawing.Point(13, 98);
             this.cf_stripaugment.Name = "cf_stripaugment";
-            this.cf_stripaugment.Size = new System.Drawing.Size(124, 17);
+            this.cf_stripaugment.Size = new Size(124, 17);
             this.cf_stripaugment.TabIndex = 5;
             this.cf_stripaugment.Text = "Strip Player Augment";
             this.cf_stripaugment.UseVisualStyleBackColor = true;
@@ -5424,7 +5424,7 @@ namespace L2_login
             this.cf_simple_appearance.Enabled = false;
             this.cf_simple_appearance.Location = new System.Drawing.Point(13, 167);
             this.cf_simple_appearance.Name = "cf_simple_appearance";
-            this.cf_simple_appearance.Size = new System.Drawing.Size(137, 17);
+            this.cf_simple_appearance.Size = new Size(137, 17);
             this.cf_simple_appearance.TabIndex = 7;
             this.cf_simple_appearance.Text = "Simplify Player Features";
             this.cf_simple_appearance.UseVisualStyleBackColor = true;
@@ -5435,7 +5435,7 @@ namespace L2_login
             this.cf_zerononvisible.Enabled = false;
             this.cf_zerononvisible.Location = new System.Drawing.Point(13, 121);
             this.cf_zerononvisible.Name = "cf_zerononvisible";
-            this.cf_zerononvisible.Size = new System.Drawing.Size(115, 17);
+            this.cf_zerononvisible.Size = new Size(115, 17);
             this.cf_zerononvisible.TabIndex = 6;
             this.cf_zerononvisible.Text = "Strip Unseen Items";
             this.cf_zerononvisible.UseVisualStyleBackColor = true;
@@ -5453,8 +5453,8 @@ namespace L2_login
             this.tabPage_player_sorting.Controls.Add(this.lv_player_sort);
             this.tabPage_player_sorting.Location = new System.Drawing.Point(104, 4);
             this.tabPage_player_sorting.Name = "tabPage_player_sorting";
-            this.tabPage_player_sorting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_player_sorting.Size = new System.Drawing.Size(515, 377);
+            this.tabPage_player_sorting.Padding = new Padding(3);
+            this.tabPage_player_sorting.Size = new Size(515, 377);
             this.tabPage_player_sorting.TabIndex = 14;
             this.tabPage_player_sorting.Text = "Player Sorting";
             this.tabPage_player_sorting.UseVisualStyleBackColor = true;
@@ -5463,16 +5463,16 @@ namespace L2_login
             // 
             this.textBox9.Location = new System.Drawing.Point(414, 87);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(57, 20);
+            this.textBox9.Size = new Size(57, 20);
             this.textBox9.TabIndex = 9;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox9.TextAlign = HorizontalAlignment.Center;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(299, 90);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(56, 13);
+            this.label26.Size = new Size(56, 13);
             this.label26.TabIndex = 8;
             this.label26.Text = "Max Z Diff";
             // 
@@ -5480,16 +5480,16 @@ namespace L2_login
             // 
             this.textBox8.Location = new System.Drawing.Point(414, 59);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(57, 20);
+            this.textBox8.Size = new Size(57, 20);
             this.textBox8.TabIndex = 7;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox8.TextAlign = HorizontalAlignment.Center;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(299, 62);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(48, 13);
+            this.label25.Size = new Size(48, 13);
             this.label25.TabIndex = 6;
             this.label25.Text = "Max Dist";
             // 
@@ -5497,16 +5497,16 @@ namespace L2_login
             // 
             this.textBox7.Location = new System.Drawing.Point(414, 29);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(57, 20);
+            this.textBox7.Size = new Size(57, 20);
             this.textBox7.TabIndex = 5;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox7.TextAlign = HorizontalAlignment.Center;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(299, 31);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(109, 13);
+            this.label24.Size = new Size(109, 13);
             this.label24.TabIndex = 4;
             this.label24.Text = "Equidistant Threshold";
             // 
@@ -5515,7 +5515,7 @@ namespace L2_login
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(293, 36);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(0, 13);
+            this.label23.Size = new Size(0, 13);
             this.label23.TabIndex = 3;
             // 
             // ps_label1
@@ -5523,21 +5523,21 @@ namespace L2_login
             this.ps_label1.AutoSize = true;
             this.ps_label1.Location = new System.Drawing.Point(305, 45);
             this.ps_label1.Name = "ps_label1";
-            this.ps_label1.Size = new System.Drawing.Size(0, 13);
+            this.ps_label1.Size = new Size(0, 13);
             this.ps_label1.TabIndex = 2;
             // 
             // lv_player_sort
             // 
-            this.lv_player_sort.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv_player_sort.Columns.AddRange(new ColumnHeader[] {
             this.player_sort_col_ID,
             this.player_sort_col_cname,
             this.player_sort_col_prio});
             this.lv_player_sort.Location = new System.Drawing.Point(10, 6);
             this.lv_player_sort.Name = "lv_player_sort";
-            this.lv_player_sort.Size = new System.Drawing.Size(268, 333);
+            this.lv_player_sort.Size = new Size(268, 333);
             this.lv_player_sort.TabIndex = 0;
             this.lv_player_sort.UseCompatibleStateImageBehavior = false;
-            this.lv_player_sort.View = System.Windows.Forms.View.Details;
+            this.lv_player_sort.View = View.Details;
             // 
             // player_sort_col_ID
             // 
@@ -5547,136 +5547,136 @@ namespace L2_login
             // player_sort_col_cname
             // 
             this.player_sort_col_cname.Text = "Class";
-            this.player_sort_col_cname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.player_sort_col_cname.TextAlign = HorizontalAlignment.Center;
             this.player_sort_col_cname.Width = 164;
             // 
             // player_sort_col_prio
             // 
             this.player_sort_col_prio.Text = "Priority";
-            this.player_sort_col_prio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.player_sort_col_prio.TextAlign = HorizontalAlignment.Center;
             // 
             // button_save
             // 
-            this.button_save.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_save.FlatStyle = FlatStyle.System;
             this.button_save.Location = new System.Drawing.Point(8, 428);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(128, 24);
+            this.button_save.Size = new Size(128, 24);
             this.button_save.TabIndex = 3;
             this.button_save.Text = "Apply";
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_save.Click += new EventHandler(this.button_save_Click);
             // 
             // button_cancel
             // 
-            this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_cancel.FlatStyle = FlatStyle.System;
             this.button_cancel.Location = new System.Drawing.Point(485, 428);
             this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(128, 24);
+            this.button_cancel.Size = new Size(128, 24);
             this.button_cancel.TabIndex = 4;
             this.button_cancel.Text = "Cancel";
-            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
+            this.button_cancel.Click += new EventHandler(this.button_cancel_Click);
             // 
             // button_saveoptions
             // 
-            this.button_saveoptions.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_saveoptions.FlatStyle = FlatStyle.System;
             this.button_saveoptions.Location = new System.Drawing.Point(242, 8);
             this.button_saveoptions.Name = "button_saveoptions";
-            this.button_saveoptions.Size = new System.Drawing.Size(144, 23);
+            this.button_saveoptions.Size = new Size(144, 23);
             this.button_saveoptions.TabIndex = 1;
             this.button_saveoptions.Text = "Save Options";
-            this.button_saveoptions.Click += new System.EventHandler(this.button_saveoptions_Click);
+            this.button_saveoptions.Click += new EventHandler(this.button_saveoptions_Click);
             // 
             // button_loadoptions
             // 
-            this.button_loadoptions.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_loadoptions.FlatStyle = FlatStyle.System;
             this.button_loadoptions.Location = new System.Drawing.Point(8, 8);
             this.button_loadoptions.Name = "button_loadoptions";
-            this.button_loadoptions.Size = new System.Drawing.Size(144, 23);
+            this.button_loadoptions.Size = new Size(144, 23);
             this.button_loadoptions.TabIndex = 0;
             this.button_loadoptions.Text = "Load Options";
-            this.button_loadoptions.Click += new System.EventHandler(this.button_loadoptions_Click);
+            this.button_loadoptions.Click += new EventHandler(this.button_loadoptions_Click);
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(232, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 16);
+            this.label1.Size = new Size(64, 16);
             this.label1.TabIndex = 69;
             this.label1.Text = "Page";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(240, 64);
             this.textBox1.MaxLength = 2;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(48, 20);
+            this.textBox1.Size = new Size(48, 20);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(168, 64);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(48, 20);
+            this.textBox2.Size = new Size(48, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "1";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(456, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 16);
+            this.label2.Size = new Size(32, 16);
             this.label2.TabIndex = 64;
             this.label2.Text = "MP>";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(456, 64);
             this.textBox3.MaxLength = 4;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(32, 20);
+            this.textBox3.Size = new Size(32, 20);
             this.textBox3.TabIndex = 8;
             this.textBox3.Text = "100";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(368, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 16);
+            this.label3.Size = new Size(128, 16);
             this.label3.TabIndex = 71;
             this.label3.Text = "Need Target";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // checkBox1
             // 
             this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.CheckState = CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(456, 24);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(24, 24);
+            this.checkBox1.Size = new Size(24, 24);
             this.checkBox1.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.FlatStyle = FlatStyle.System;
             this.button1.Location = new System.Drawing.Point(240, 96);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 24);
+            this.button1.Size = new Size(128, 24);
             this.button1.TabIndex = 10;
             this.button1.Text = "Update";
             // 
             // button2
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button2.FlatStyle = FlatStyle.System;
             this.button2.Location = new System.Drawing.Point(88, 96);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 24);
+            this.button2.Size = new Size(128, 24);
             this.button2.TabIndex = 9;
             this.button2.Text = "Add";
             // 
@@ -5684,61 +5684,61 @@ namespace L2_login
             // 
             this.label4.Location = new System.Drawing.Point(192, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 16);
+            this.label4.Size = new Size(104, 16);
             this.label4.TabIndex = 62;
             this.label4.Text = "Names";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
             this.label5.Location = new System.Drawing.Point(24, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.Size = new Size(56, 16);
             this.label5.TabIndex = 61;
             this.label5.Text = "On";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
             this.label6.Location = new System.Drawing.Point(24, 48);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 16);
+            this.label6.Size = new Size(104, 16);
             this.label6.TabIndex = 60;
             this.label6.Text = "Trait";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
             this.label7.Location = new System.Drawing.Point(376, 48);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 16);
+            this.label7.Size = new Size(72, 16);
             this.label7.TabIndex = 58;
             this.label7.Text = "Delay(sec)";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
             this.label8.Location = new System.Drawing.Point(320, 48);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 16);
+            this.label8.Size = new Size(48, 16);
             this.label8.TabIndex = 57;
             this.label8.Text = "XX < %";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
             this.label9.Location = new System.Drawing.Point(160, 48);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 16);
+            this.label9.Size = new Size(72, 16);
             this.label9.TabIndex = 56;
             this.label9.Text = "ShortCut";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(64, 24);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(352, 20);
+            this.textBox4.Size = new Size(352, 20);
             this.textBox4.TabIndex = 1;
             // 
             // comboBox1
@@ -5751,16 +5751,16 @@ namespace L2_login
             "Dead"});
             this.comboBox1.Location = new System.Drawing.Point(16, 64);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 21);
+            this.comboBox1.Size = new Size(120, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // checkBox2
             // 
             this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.CheckState = CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(27, 24);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(24, 24);
+            this.checkBox2.Size = new Size(24, 24);
             this.checkBox2.TabIndex = 0;
             // 
             // textBox5
@@ -5768,20 +5768,20 @@ namespace L2_login
             this.textBox5.Location = new System.Drawing.Point(376, 64);
             this.textBox5.MaxLength = 8;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(72, 20);
+            this.textBox5.Size = new Size(72, 20);
             this.textBox5.TabIndex = 7;
             this.textBox5.Text = "1";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox5.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(320, 64);
             this.textBox6.MaxLength = 3;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(48, 20);
+            this.textBox6.Size = new Size(48, 20);
             this.textBox6.TabIndex = 6;
             this.textBox6.Text = "60";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox6.TextAlign = HorizontalAlignment.Center;
             // 
             // columnHeader7
             // 
@@ -5830,28 +5830,28 @@ namespace L2_login
             // 
             // button_close
             // 
-            this.button_close.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_close.FlatStyle = FlatStyle.System;
             this.button_close.Location = new System.Drawing.Point(242, 428);
             this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(128, 24);
+            this.button_close.Size = new Size(128, 24);
             this.button_close.TabIndex = 6;
             this.button_close.Text = "Close";
-            this.button_close.Click += new System.EventHandler(this.button_close_Click);
+            this.button_close.Click += new EventHandler(this.button_close_Click);
             // 
             // button_clearoptions
             // 
-            this.button_clearoptions.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_clearoptions.FlatStyle = FlatStyle.System;
             this.button_clearoptions.Location = new System.Drawing.Point(469, 8);
             this.button_clearoptions.Name = "button_clearoptions";
-            this.button_clearoptions.Size = new System.Drawing.Size(144, 23);
+            this.button_clearoptions.Size = new Size(144, 23);
             this.button_clearoptions.TabIndex = 7;
             this.button_clearoptions.Text = "Clear Options";
-            this.button_clearoptions.Click += new System.EventHandler(this.button_clearoptions_Click);
+            this.button_clearoptions.Click += new EventHandler(this.button_clearoptions_Click);
             // 
             // BotOptionsScreen
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(625, 464);
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.ClientSize = new Size(625, 464);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl_botpages);
             this.Controls.Add(this.button_loadoptions);
@@ -5860,15 +5860,15 @@ namespace L2_login
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_saveoptions);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(631, 488);
+            this.MaximumSize = new Size(631, 488);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(631, 488);
+            this.MinimumSize = new Size(631, 488);
             this.Name = "BotOptionsScreen";
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.SizeGripStyle = SizeGripStyle.Hide;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Bot Options";
             this.tabControl_botpages.ResumeLayout(false);
             this.tabPage_party.ResumeLayout(false);
@@ -5900,19 +5900,19 @@ namespace L2_login
             this.groupBox_WindowTitle.PerformLayout();
             this.groupBox_AdvancedS.ResumeLayout(false);
             this.groupBox_AdvancedS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pickuptimeout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_anti_ks_delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_autofollow_delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_blacklist_tries)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_pickuptimeout)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_anti_ks_delay)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_autofollow_delay)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_blacklist_tries)).EndInit();
             this.tabPage_RestOptions.ResumeLayout(false);
             this.groupBox_Rest_Party.ResumeLayout(false);
             this.groupBox_Rest_Party.PerformLayout();
             this.groupBox_Rest_Solo.ResumeLayout(false);
             this.groupBox_Rest_Solo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestUntilMP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestUntilHP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestBelowMP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RestBelowHP)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_RestUntilMP)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_RestUntilHP)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_RestBelowMP)).EndInit();
+            ((ISupportInitialize)(this.numericUpDown_RestBelowHP)).EndInit();
             this.tabPage_target.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -5956,7 +5956,7 @@ namespace L2_login
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            ((ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabPage_player_sorting.ResumeLayout(false);
             this.tabPage_player_sorting.PerformLayout();
@@ -5965,12 +5965,12 @@ namespace L2_login
         }
         #endregion
 
-        private void button_cancel_Click(object sender, System.EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-        private void button_save_Click(object sender, System.EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             //save out the options
             ////////////////////////PARTY OPTIONS
@@ -6018,7 +6018,7 @@ namespace L2_login
             else
                 Globals.gamedata.botoptions.AutoSpoilUntilSuccess = 0;
 
-            Globals.gamedata.botoptions.SpoilMPAbove = System.Convert.ToInt32(textBox_spoil_mp.Text);
+            Globals.gamedata.botoptions.SpoilMPAbove = Convert.ToInt32(textBox_spoil_mp.Text);
 
             if (checkBox_spoilcrush.Checked)
                 Globals.gamedata.botoptions.SpoilCrush = 1;
@@ -6107,7 +6107,7 @@ namespace L2_login
             //set up oops ID
             Globals.gamedata.botoptions.OOPIDs = new ArrayList();
             Globals.gamedata.botoptions.OOPNamesArray = Util.GetArray(Globals.gamedata.botoptions.OOPNames);
-            Globals.gamedata.botoptions.OOPIDs = new System.Collections.ArrayList();
+            Globals.gamedata.botoptions.OOPIDs = new ArrayList();
 
             if (Globals.gamedata.botoptions.OOPNamesArray.Count > 0)
             {
@@ -6266,7 +6266,7 @@ namespace L2_login
             Globals.gamedata.botoptions.Moveto_X = textBox_Moveto_X.Text;
             Globals.gamedata.botoptions.Moveto_Y = textBox_Moveto_Y.Text;
             Globals.gamedata.botoptions.Moveto_Z = textBox_Moveto_Z.Text;
-            Globals.gamedata.botoptions.MoveToLeash = System.Convert.ToInt32(textBox_MoveToLeash.Text);
+            Globals.gamedata.botoptions.MoveToLeash = Convert.ToInt32(textBox_MoveToLeash.Text);
 
 
             if (checkBox_active_attack.Checked)
@@ -6343,7 +6343,7 @@ namespace L2_login
 
                 string inp, tmp;
 
-                foreach (System.Windows.Forms.ListViewItem lv in listView_buffheal.CheckedItems)
+                foreach (ListViewItem lv in listView_buffheal.CheckedItems)
                 {
                     BuffTargetClass btc = new BuffTargetClass();
 
@@ -6393,7 +6393,7 @@ namespace L2_login
             {
                 BotOptions.ItemTargets.Clear();
 
-                foreach (System.Windows.Forms.ListViewItem lv in listView_item.CheckedItems)
+                foreach (ListViewItem lv in listView_item.CheckedItems)
                 {
                     ItemTargetClass it;
 
@@ -6402,7 +6402,7 @@ namespace L2_login
                     it.Type = (BuffTriggers)Util.GetInt32(lv.SubItems[4].Text);
                     it.ItemID = Util.GetUInt32(lv.SubItems[5].Text);
                     it.Min_Per = Util.GetInt32(lv.SubItems[2].Text);
-                    it.TickDuration = ((long)Util.GetInt32(lv.SubItems[3].Text)) * System.TimeSpan.TicksPerMillisecond;
+                    it.TickDuration = ((long)Util.GetInt32(lv.SubItems[3].Text)) * TimeSpan.TicksPerMillisecond;
 
                     BotOptions.ItemTargets.Add(it);
                 }
@@ -6418,7 +6418,7 @@ namespace L2_login
             {
                 BotOptions.CombatTargets.Clear();
 
-                foreach (System.Windows.Forms.ListViewItem lv in listView_combat.CheckedItems)
+                foreach (ListViewItem lv in listView_combat.CheckedItems)
                 {
                     CombatTargetClass ct;
 
@@ -6429,7 +6429,7 @@ namespace L2_login
                     ct.ShortCutID = Util.GetInt32(lv.SubItems[8].Text);
                     ct.Min_Per = Util.GetInt32(lv.SubItems[2].Text);
                     ct.Min_MP = Util.GetInt32(lv.SubItems[5].Text);
-                    ct.TickDuration = ((long)Util.GetInt32(lv.SubItems[4].Text)) * System.TimeSpan.TicksPerMillisecond;
+                    ct.TickDuration = ((long)Util.GetInt32(lv.SubItems[4].Text)) * TimeSpan.TicksPerMillisecond;
 
                     BotOptions.CombatTargets.Add(ct);
                 }
@@ -6445,7 +6445,7 @@ namespace L2_login
             {
                 BotOptions.DoNotItems.Clear();
 
-                foreach (System.Windows.Forms.ListViewItem lv in listView_donot_items.Items)
+                foreach (ListViewItem lv in listView_donot_items.Items)
                 {
                     if (lv != null)
                     {
@@ -6464,7 +6464,7 @@ namespace L2_login
             {
                 BotOptions.DoNotNPCs.Clear();
 
-                foreach (System.Windows.Forms.ListViewItem lv in listView_donot_npcs.Items)
+                foreach (ListViewItem lv in listView_donot_npcs.Items)
                 {
                     try
                     {
@@ -6529,7 +6529,7 @@ namespace L2_login
             ////////////////////////////Bounding Polygon
             Globals.gamedata.Paths.PointList.Clear();
 
-            foreach (System.Windows.Forms.ListViewItem lv in listView_border.Items)
+            foreach (ListViewItem lv in listView_border.Items)
             {
                 Point p = new Point();
                 p.X = Util.GetInt32(lv.SubItems[0].Text);
@@ -6622,7 +6622,7 @@ namespace L2_login
             if (checkBox_DeadReturn.Checked)
             {
                 Globals.gamedata.botoptions.DeadReturn = comboBox_DeadReturn.SelectedIndex;
-                Globals.gamedata.botoptions.DeadReturnDelay = System.Convert.ToInt32(textBox_DeadReturnDelay.Text);
+                Globals.gamedata.botoptions.DeadReturnDelay = Convert.ToInt32(textBox_DeadReturnDelay.Text);
             }
             else
             {
@@ -6632,7 +6632,7 @@ namespace L2_login
             if (checkBox_DeadLogOut.Checked)
             {
                 Globals.gamedata.botoptions.DeadLogout = 1;
-                Globals.gamedata.botoptions.DeadLogoutDelay = System.Convert.ToInt32(textBox_DeadLogOutDelay.Text);
+                Globals.gamedata.botoptions.DeadLogoutDelay = Convert.ToInt32(textBox_DeadLogOutDelay.Text);
             }
             else
                 Globals.gamedata.botoptions.DeadLogout = 0;
@@ -6738,7 +6738,7 @@ namespace L2_login
 
         }
 
-        private void button_add_Click(object sender, System.EventArgs e)
+        private void button_add_Click(object sender, EventArgs e)
         {
             button_update.Enabled = false;
 
@@ -6767,7 +6767,7 @@ namespace L2_login
             }
         }
 
-        private void button_additem_Click(object sender, System.EventArgs e)
+        private void button_additem_Click(object sender, EventArgs e)
         {
             button_updateitem.Enabled = false;
 
@@ -6793,7 +6793,7 @@ namespace L2_login
             }
         }
 
-        private void button_loadoptions_Click(object sender, System.EventArgs e)
+        private void button_loadoptions_Click(object sender, EventArgs e)
         {
             //load data
             this.Enabled = false;//diable the screen
@@ -6826,7 +6826,7 @@ namespace L2_login
             this.Enabled = true;//renable everything
         }
 
-        private void button_saveoptions_Click(object sender, System.EventArgs e)
+        private void button_saveoptions_Click(object sender, EventArgs e)
         {
             //save data
             this.Enabled = false;
@@ -7587,25 +7587,25 @@ namespace L2_login
                     checkBox_RestBelowHP.Checked = true;
                 else
                     checkBox_RestBelowHP.Checked = false;
-                numericUpDown_RestBelowHP.Value = System.Convert.ToInt32(file.ReadLine());
+                numericUpDown_RestBelowHP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
                     checkBox_RestUntilHP.Checked = true;
                 else
                     checkBox_RestUntilHP.Checked = false;
-                numericUpDown_RestUntilHP.Value = System.Convert.ToInt32(file.ReadLine());
+                numericUpDown_RestUntilHP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
                     checkBox_RestBelowMP.Checked = true;
                 else
                     checkBox_RestBelowMP.Checked = false;
-                numericUpDown_RestBelowMP.Value = System.Convert.ToInt32(file.ReadLine());
+                numericUpDown_RestBelowMP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
                     checkBox_RestUntilMP.Checked = true;
                 else
                     checkBox_RestUntilMP.Checked = false;
-                numericUpDown_RestUntilMP.Value = System.Convert.ToInt32(file.ReadLine());
+                numericUpDown_RestUntilMP.Value = Convert.ToInt32(file.ReadLine());
 
                 //Party Settings
                 if (Util.GetInt32(file.ReadLine()) == 1)
@@ -7675,9 +7675,9 @@ namespace L2_login
             //v386 Advanced Autofighter, Partyloot, Attack/pick only, Custom window title
             try
             {
-                numericUpDown_anti_ks_delay.Value = System.Convert.ToInt32(file.ReadLine());
-                numericUpDown_autofollow_delay.Value = System.Convert.ToInt32(file.ReadLine());
-                numericUpDown_blacklist_tries.Value = System.Convert.ToInt32(file.ReadLine());
+                numericUpDown_anti_ks_delay.Value = Convert.ToInt32(file.ReadLine());
+                numericUpDown_autofollow_delay.Value = Convert.ToInt32(file.ReadLine());
+                numericUpDown_blacklist_tries.Value = Convert.ToInt32(file.ReadLine());
                 //Loot Type
                 comboBox_LootType.SelectedIndex = Util.GetInt32(file.ReadLine());
                 //Attack Only
@@ -8081,7 +8081,7 @@ namespace L2_login
             {
                 //all the buff/heal settings
                 file.WriteLine(listView_buffheal.Items.Count.ToString());//how many?
-                foreach (System.Windows.Forms.ListViewItem lv in listView_buffheal.Items)
+                foreach (ListViewItem lv in listView_buffheal.Items)
                 {
                     file.WriteLine(lv.SubItems[2].Text);//names
                     if (lv.Checked)
@@ -8105,7 +8105,7 @@ namespace L2_login
             {
                 //all the items
                 file.WriteLine(listView_item.Items.Count.ToString());//how many?
-                foreach (System.Windows.Forms.ListViewItem lv in listView_item.Items)
+                foreach (ListViewItem lv in listView_item.Items)
                 {
                     file.WriteLine(lv.SubItems[0].Text);//names
                     if (lv.Checked)
@@ -8128,7 +8128,7 @@ namespace L2_login
             {
                 //DoNot items
                 file.WriteLine(listView_donot_items.Items.Count.ToString());//how many?
-                foreach (System.Windows.Forms.ListViewItem lv in listView_donot_items.Items)
+                foreach (ListViewItem lv in listView_donot_items.Items)
                 {
                     file.WriteLine(lv.SubItems[0].Text);//names
                 }
@@ -8142,7 +8142,7 @@ namespace L2_login
             {
                 //DoNot NPCs
                 file.WriteLine(listView_donot_npcs.Items.Count.ToString());//how many?
-                foreach (System.Windows.Forms.ListViewItem lv in listView_donot_npcs.Items)
+                foreach (ListViewItem lv in listView_donot_npcs.Items)
                 {
                     file.WriteLine(lv.SubItems[0].Text);//names
                 }
@@ -8190,7 +8190,7 @@ namespace L2_login
 
             //bounding polygon
             file.WriteLine(listView_border.Items.Count.ToString());
-            foreach (System.Windows.Forms.ListViewItem lv in listView_border.Items)
+            foreach (ListViewItem lv in listView_border.Items)
             {
                 file.WriteLine(lv.SubItems[0].Text);
                 file.WriteLine(lv.SubItems[1].Text);
@@ -8198,7 +8198,7 @@ namespace L2_login
 
             //combat stuff
             file.WriteLine(listView_combat.Items.Count.ToString());
-            foreach (System.Windows.Forms.ListViewItem lv in listView_combat.Items)
+            foreach (ListViewItem lv in listView_combat.Items)
             {
                 if (lv.Checked)
                     file.WriteLine("1");
@@ -8708,7 +8708,7 @@ namespace L2_login
             {
                 //all the toggles settings
                 file.WriteLine(listView_toggles.Items.Count.ToString());//how many?
-                foreach (System.Windows.Forms.ListViewItem lv in listView_toggles.Items)
+                foreach (ListViewItem lv in listView_toggles.Items)
                 {
                     file.WriteLine(lv.SubItems[0].Text);//skill name
                     if (lv.Checked)
@@ -8755,7 +8755,7 @@ namespace L2_login
 
         }
 
-        private void button_update_Click(object sender, System.EventArgs e)
+        private void button_update_Click(object sender, EventArgs e)
         {
             button_update.Enabled = false;
 
@@ -8786,7 +8786,7 @@ namespace L2_login
             }
         }
 
-        private void button_updateitem_Click(object sender, System.EventArgs e)
+        private void button_updateitem_Click(object sender, EventArgs e)
         {
             button_updateitem.Enabled = false;
 
@@ -9231,7 +9231,7 @@ namespace L2_login
             sizeText = g.MeasureString(sText, ctlTab.Font);
             iX = e.Bounds.Left + 6;
             //iY = e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2;
-            iY = System.Convert.ToInt32(e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2);
+            iY = Convert.ToInt32(e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2);
 
             //Selected
             if (tabControl_botpages.SelectedIndex == e.Index)

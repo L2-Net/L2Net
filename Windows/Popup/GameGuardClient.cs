@@ -104,7 +104,7 @@ namespace L2_login
         }
         public class SocketPacket
         {
-            public System.Net.Sockets.Socket thisSocket;
+            public Socket thisSocket;
             public byte[] dataBuffer = new byte[64];
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace L2_login
 {
@@ -68,10 +69,10 @@ namespace L2_login
             np.Sender = Globals.gamedata.my_char.Name;
             np.SenderID = Globals.gamedata.my_char.ID;
             np.Name = st;
-            np.Param1 = System.Convert.ToInt32(p1.Value);
-            np.Param2 = System.Convert.ToInt32(p2.Value);
-            np.Param3 = System.Convert.ToInt32(p3.Value);
-            np.Param4 = System.Convert.ToInt32(p4.Value);
+            np.Param1 = Convert.ToInt32(p1.Value);
+            np.Param2 = Convert.ToInt32(p2.Value);
+            np.Param3 = Convert.ToInt32(p3.Value);
+            np.Param4 = Convert.ToInt32(p4.Value);
 
             NetCode.NetSend(np.GetBytes());
         }
@@ -112,10 +113,10 @@ namespace L2_login
             np.Sender = Globals.gamedata.my_char.Name;
             np.SenderID = Globals.gamedata.my_char.ID;
             np.Name = st;
-            np.Param1 = System.Convert.ToInt32(p1.Value);
-            np.Param2 = System.Convert.ToInt32(p2.Value);
-            np.Param3 = System.Convert.ToInt32(p3.Value);
-            np.Param4 = System.Convert.ToInt32(p4.Value);
+            np.Param1 = Convert.ToInt32(p1.Value);
+            np.Param2 = Convert.ToInt32(p2.Value);
+            np.Param3 = Convert.ToInt32(p3.Value);
+            np.Param4 = Convert.ToInt32(p4.Value);
 
             NetCode.NetSendIP(np.GetBytes(), ip);
         }
@@ -141,12 +142,12 @@ namespace L2_login
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ClientPackets.ContainsKey(packet_id))
+            if (Blocked_ClientPackets.ContainsKey(packet_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_ClientPackets.Add(packet_id, 0);
+                Blocked_ClientPackets.Add(packet_id, 0);
             }
         }
 
@@ -154,12 +155,12 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ClientPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_ClientPacketsEX.ContainsKey(packetex_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_ClientPacketsEX.Add(packetex_id, 0);
+                Blocked_ClientPacketsEX.Add(packetex_id, 0);
             }
         }
 
@@ -167,9 +168,9 @@ namespace L2_login
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ClientPackets.ContainsKey(packet_id))
+            if (Blocked_ClientPackets.ContainsKey(packet_id))
             {
-                ScriptEngine.Blocked_ClientPackets.Remove(packet_id);
+                Blocked_ClientPackets.Remove(packet_id);
             }
         }
 
@@ -177,32 +178,32 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ClientPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_ClientPacketsEX.ContainsKey(packetex_id))
             {
-                ScriptEngine.Blocked_ClientPacketsEX.Remove(packetex_id);
+                Blocked_ClientPacketsEX.Remove(packetex_id);
             }
         }
 
         private void Script_CLEAR_BLOCK_CLIENT()
         {
-            ScriptEngine.Blocked_ClientPackets.Clear();
+            Blocked_ClientPackets.Clear();
         }
 
         private void Script_CLEAR_BLOCKEX_CLIENT()
         {
-            ScriptEngine.Blocked_ClientPacketsEX.Clear();
+            Blocked_ClientPacketsEX.Clear();
         }
 
         private void Script_BLOCK_SELF(string line)
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_SelfPackets.ContainsKey(packet_id))
+            if (Blocked_SelfPackets.ContainsKey(packet_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_SelfPackets.Add(packet_id, 0);
+                Blocked_SelfPackets.Add(packet_id, 0);
             }
         }
 
@@ -213,13 +214,13 @@ namespace L2_login
             for (int i = 0; i<values.Length; i++)
             {
                 opcode = (int)values[i];
-                if (ScriptEngine.Blocked_SelfPackets.ContainsKey(opcode))
+                if (Blocked_SelfPackets.ContainsKey(opcode))
                 {
                 }
                 else
                 {
                     //Globals.l2net_home.Add_Text(opcode + " added to blocklist", Globals.Green);
-                    ScriptEngine.Blocked_SelfPackets.Add(opcode, 0);
+                    Blocked_SelfPackets.Add(opcode, 0);
                 }
             }
 
@@ -229,12 +230,12 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_SelfPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_SelfPacketsEX.ContainsKey(packetex_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_SelfPacketsEX.Add(packetex_id, 0);
+                Blocked_SelfPacketsEX.Add(packetex_id, 0);
             }
         }
 
@@ -245,13 +246,13 @@ namespace L2_login
             for (int i = 0; i < values.Length; i++)
             {
                 opcode = (int)values[i];
-                if (ScriptEngine.Blocked_SelfPacketsEX.ContainsKey(opcode))
+                if (Blocked_SelfPacketsEX.ContainsKey(opcode))
                 {
                 }
                 else
                 {
                     //Globals.l2net_home.Add_Text(opcode + " added to blocklist", Globals.Green);
-                    ScriptEngine.Blocked_SelfPacketsEX.Add(opcode, 0);
+                    Blocked_SelfPacketsEX.Add(opcode, 0);
                 }
             }
 
@@ -261,9 +262,9 @@ namespace L2_login
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_SelfPackets.ContainsKey(packet_id))
+            if (Blocked_SelfPackets.ContainsKey(packet_id))
             {
-                ScriptEngine.Blocked_SelfPackets.Remove(packet_id);
+                Blocked_SelfPackets.Remove(packet_id);
             }
         }
 
@@ -271,32 +272,32 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_SelfPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_SelfPacketsEX.ContainsKey(packetex_id))
             {
-                ScriptEngine.Blocked_SelfPacketsEX.Remove(packetex_id);
+                Blocked_SelfPacketsEX.Remove(packetex_id);
             }
         }
 
         private void Script_CLEAR_BLOCK_SELF()
         {
-            ScriptEngine.Blocked_SelfPackets.Clear();
+            Blocked_SelfPackets.Clear();
         }
 
         private void Script_CLEAR_BLOCKEX_SELF()
         {
-            ScriptEngine.Blocked_SelfPacketsEX.Clear();
+            Blocked_SelfPacketsEX.Clear();
         }
         
         private void Script_BLOCK(string line)
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ServerPackets.ContainsKey(packet_id))
+            if (Blocked_ServerPackets.ContainsKey(packet_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_ServerPackets.Add(packet_id, 0);
+                Blocked_ServerPackets.Add(packet_id, 0);
             }
         }
 
@@ -304,12 +305,12 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ServerPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_ServerPacketsEX.ContainsKey(packetex_id))
             {
             }
             else
             {
-                ScriptEngine.Blocked_ServerPacketsEX.Add(packetex_id, 0);
+                Blocked_ServerPacketsEX.Add(packetex_id, 0);
             }
         }
 
@@ -317,9 +318,9 @@ namespace L2_login
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ServerPackets.ContainsKey(packet_id))
+            if (Blocked_ServerPackets.ContainsKey(packet_id))
             {
-                ScriptEngine.Blocked_ServerPackets.Remove(packet_id);
+                Blocked_ServerPackets.Remove(packet_id);
             }
         }
 
@@ -327,20 +328,20 @@ namespace L2_login
         {
             int packetex_id = Util.GetInt32(Get_String(ref line));
 
-            if (ScriptEngine.Blocked_ServerPacketsEX.ContainsKey(packetex_id))
+            if (Blocked_ServerPacketsEX.ContainsKey(packetex_id))
             {
-                ScriptEngine.Blocked_ServerPacketsEX.Remove(packetex_id);
+                Blocked_ServerPacketsEX.Remove(packetex_id);
             }
         }
 
         private void Script_CLEAR_BLOCK()
         {
-            ScriptEngine.Blocked_ServerPackets.Clear();
+            Blocked_ServerPackets.Clear();
         }
 
         private void Script_CLEAR_BLOCKEX()
         {
-            ScriptEngine.Blocked_ServerPacketsEX.Clear();
+            Blocked_ServerPacketsEX.Clear();
         }
 
         private void Script_TARGET_SELF()
@@ -359,11 +360,11 @@ namespace L2_login
 
             float words = text.Length / Globals.Average_Word_Length;
 
-            float speed = System.Convert.ToSingle(Globals.Rando.NextDouble()) + 3.3F;
+            float speed = Convert.ToSingle(Globals.Rando.NextDouble()) + 3.3F;
 
             float time = words / speed * 1000.0F;
 
-            ((ScriptThread)Threads[CurrentThread]).Sleep_Until = System.DateTime.Now.AddMilliseconds(time);
+            ((ScriptThread)Threads[CurrentThread]).Sleep_Until = DateTime.Now.AddMilliseconds(time);
         }
 
         private void Script_SLEEP_HUMAN_WRITING(string inp)
@@ -388,11 +389,11 @@ namespace L2_login
 
             float keys = diff / Globals.Difficulty_Balance;
 
-            float speed = System.Convert.ToSingle(Globals.Rando.NextDouble()) + 3.0F;
+            float speed = Convert.ToSingle(Globals.Rando.NextDouble()) + 3.0F;
 
             float time = keys / speed * 1000;
 
-            ((ScriptThread)Threads[CurrentThread]).Sleep_Until = System.DateTime.Now.AddMilliseconds(time);
+            ((ScriptThread)Threads[CurrentThread]).Sleep_Until = DateTime.Now.AddMilliseconds(time);
         }
 
         private void Script_GET_ELIZA(string inp)
@@ -402,7 +403,7 @@ namespace L2_login
 
             if (dest.Type != Var_Types.STRING)
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -419,15 +420,15 @@ namespace L2_login
 
             if (dest.Type == Var_Types.ARRAYLIST)
             {
-                ((System.Collections.ArrayList)dest.Value).Clear();
+                ((ArrayList)dest.Value).Clear();
             }
             else if (dest.Type == Var_Types.SORTEDLIST)
             {
-                ((System.Collections.SortedList)dest.Value).Clear();
+                ((SortedList)dest.Value).Clear();
             }
             else
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -479,7 +480,7 @@ namespace L2_login
                     cd._Variables.Add("IN_COMBAT", new ScriptVariable((long)npc.isInCombat, "IN_COMBAT", Var_Types.INT, Var_State.PUBLIC));
                     try
                     {
-                        System.Collections.SortedList buffs = new System.Collections.SortedList();
+                        SortedList buffs = new SortedList();
                         foreach (CharBuff buff in npc.my_buffs.Values)
                         {
                             Script_ClassData ncd = new Script_ClassData();
@@ -493,12 +494,12 @@ namespace L2_login
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
-                        System.Collections.SortedList empty = new System.Collections.SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        SortedList empty = new SortedList();
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -506,11 +507,11 @@ namespace L2_login
 
                     if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        ((System.Collections.ArrayList)dest.Value).Add(sv);
+                        ((ArrayList)dest.Value).Add(sv);
                     }
                     else if (dest.Type == Var_Types.SORTEDLIST)
                     {
-                        ((System.Collections.SortedList)dest.Value).Add(npc.ID.ToString(), sv);
+                        ((SortedList)dest.Value).Add(npc.ID.ToString(), sv);
                     }
                 }
             }
@@ -527,15 +528,15 @@ namespace L2_login
 
             if (dest.Type == Var_Types.ARRAYLIST)
             {
-                ((System.Collections.ArrayList)dest.Value).Clear();
+                ((ArrayList)dest.Value).Clear();
             }
             else if (dest.Type == Var_Types.SORTEDLIST)
             {
-                ((System.Collections.SortedList)dest.Value).Clear();
+                ((SortedList)dest.Value).Clear();
             }
             else
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -575,11 +576,11 @@ namespace L2_login
 
                     if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        ((System.Collections.ArrayList)dest.Value).Add(sv);
+                        ((ArrayList)dest.Value).Add(sv);
                     }
                     else if (dest.Type == Var_Types.SORTEDLIST)
                     {
-                        ((System.Collections.SortedList)dest.Value).Add(it.ID.ToString(), sv);
+                        ((SortedList)dest.Value).Add(it.ID.ToString(), sv);
                     }
                 }
             }
@@ -596,15 +597,15 @@ namespace L2_login
 
             if (dest.Type == Var_Types.ARRAYLIST)
             {
-                ((System.Collections.ArrayList)dest.Value).Clear();
+                ((ArrayList)dest.Value).Clear();
             }
             else if (dest.Type == Var_Types.SORTEDLIST)
             {
-                ((System.Collections.SortedList)dest.Value).Clear();
+                ((SortedList)dest.Value).Clear();
             }
             else
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -631,11 +632,11 @@ namespace L2_login
 
                     if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        ((System.Collections.ArrayList)dest.Value).Add(sv);
+                        ((ArrayList)dest.Value).Add(sv);
                     }
                     else if (dest.Type == Var_Types.SORTEDLIST)
                     {
-                        ((System.Collections.SortedList)dest.Value).Add(it.ID.ToString(), sv);
+                        ((SortedList)dest.Value).Add(it.ID.ToString(), sv);
                     }
                 }
             }
@@ -652,15 +653,15 @@ namespace L2_login
 
                 if (dest.Type == Var_Types.ARRAYLIST)
                 {
-                    ((System.Collections.ArrayList)dest.Value).Clear();
+                    ((ArrayList)dest.Value).Clear();
                 }
                 else if (dest.Type == Var_Types.SORTEDLIST)
                 {
-                    ((System.Collections.SortedList)dest.Value).Clear();
+                    ((SortedList)dest.Value).Clear();
                 }
                 else
                 {
-                    ScriptEngine.Script_Error("GET_SKILLS: INVLAID DESTINATION TYPE - SORTEDLIST OR ARRAYLIST ONLY");
+                Script_Error("GET_SKILLS: INVLAID DESTINATION TYPE - SORTEDLIST OR ARRAYLIST ONLY");
                     return;
                 }
 
@@ -681,11 +682,11 @@ namespace L2_login
 
                         if (dest.Type == Var_Types.ARRAYLIST)
                         {
-                            ((System.Collections.ArrayList)dest.Value).Add(sv);
+                            ((ArrayList)dest.Value).Add(sv);
                         }
                         else if (dest.Type == Var_Types.SORTEDLIST)
                         {
-                            ((System.Collections.SortedList)dest.Value).Add(us.ID.ToString(), sv);
+                            ((SortedList)dest.Value).Add(us.ID.ToString(), sv);
                         }
                     }
                 }
@@ -705,11 +706,11 @@ namespace L2_login
 
                 if (dest.Type == Var_Types.SORTEDLIST)
                 {
-                    ((System.Collections.SortedList)dest.Value).Clear();
+                    ((SortedList)dest.Value).Clear();
                 }
                 else
                 {
-                    ScriptEngine.Script_Error("Usage: GET_EFFECTS SORTEDLIST OBJECT_ID");
+                Script_Error("Usage: GET_EFFECTS SORTEDLIST OBJECT_ID");
                     return;
                 }
 
@@ -751,7 +752,7 @@ namespace L2_login
                                             {
                                                 // xxx - Think about this before implementing
                                                 // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                                ((System.Collections.SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                                ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                             }
                                         }
 
@@ -797,7 +798,7 @@ namespace L2_login
                                             {
                                                 // xxx - Think about this before implementing
                                                 // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                                ((System.Collections.SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                                ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                             }
                                         }
                                     }
@@ -831,7 +832,7 @@ namespace L2_login
                                                                {
                                                                    // xxx - Think about this before implementing
                                                                    // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                                                   ((System.Collections.SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                                                   ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                                                }
                                                            }
                                                         }
@@ -866,7 +867,7 @@ namespace L2_login
                                     {
                                         // xxx - Think about this before implementing
                                         // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                        ((System.Collections.SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                        ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                     }
 
                                 }
@@ -896,15 +897,15 @@ namespace L2_login
 
             if (dest.Type == Var_Types.ARRAYLIST)
             {
-                ((System.Collections.ArrayList)dest.Value).Clear();
+                ((ArrayList)dest.Value).Clear();
             }
             else if (dest.Type == Var_Types.SORTEDLIST)
             {
-                ((System.Collections.SortedList)dest.Value).Clear();
+                ((SortedList)dest.Value).Clear();
             }
             else
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -947,7 +948,7 @@ namespace L2_login
 
                     try
                     {
-                        System.Collections.SortedList buffs = new System.Collections.SortedList();
+                        SortedList buffs = new SortedList();
                         foreach (CharBuff buff in pl.my_buffs.Values)
                         {
                             Script_ClassData ncd = new Script_ClassData();
@@ -961,12 +962,12 @@ namespace L2_login
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
-                        System.Collections.SortedList empty = new System.Collections.SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        SortedList empty = new SortedList();
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -1035,11 +1036,11 @@ namespace L2_login
 
                     if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        ((System.Collections.ArrayList)dest.Value).Add(sv);
+                        ((ArrayList)dest.Value).Add(sv);
                     }
                     else if (dest.Type == Var_Types.SORTEDLIST)
                     {
-                        ((System.Collections.SortedList)dest.Value).Add(pl.ID.ToString(), sv);
+                        ((SortedList)dest.Value).Add(pl.ID.ToString(), sv);
                     }
                 }
             }
@@ -1056,15 +1057,15 @@ namespace L2_login
 
             if (dest.Type == Var_Types.ARRAYLIST)
             {
-                ((System.Collections.ArrayList)dest.Value).Clear();
+                ((ArrayList)dest.Value).Clear();
             }
             else if (dest.Type == Var_Types.SORTEDLIST)
             {
-                ((System.Collections.SortedList)dest.Value).Clear();
+                ((SortedList)dest.Value).Clear();
             }
             else
             {
-                ScriptEngine.Script_Error("INVLAID DESTINATION TYPE");
+                Script_Error("INVLAID DESTINATION TYPE");
                 return;
             }
 
@@ -1119,7 +1120,7 @@ namespace L2_login
                     cd._Variables.Add("IN_COMBAT", new ScriptVariable((long)ch.isInCombat, "IN_COMBAT", Var_Types.INT, Var_State.PUBLIC));
                     try
                     {
-                        System.Collections.SortedList buffs = new System.Collections.SortedList();
+                        SortedList buffs = new SortedList();
                         foreach (CharBuff buff in ch.my_buffs.Values)
                         {
                             Script_ClassData ncd = new Script_ClassData();
@@ -1133,12 +1134,12 @@ namespace L2_login
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
-                        System.Collections.SortedList empty = new System.Collections.SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        SortedList empty = new SortedList();
+                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -1148,11 +1149,11 @@ namespace L2_login
 
                     if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        ((System.Collections.ArrayList)dest.Value).Add(sv);
+                        ((ArrayList)dest.Value).Add(sv);
                     }
                     else if (dest.Type == Var_Types.SORTEDLIST)
                     {
-                        ((System.Collections.SortedList)dest.Value).Add(ch.ID.ToString(), sv);
+                        ((SortedList)dest.Value).Add(ch.ID.ToString(), sv);
                     }
                 }
             }
@@ -1369,7 +1370,7 @@ namespace L2_login
                         Globals.gamedata.botoptions.MoveFirst = 0;
                     break;
                 default:
-                    ScriptEngine.Script_Error("bot setting does not exist : " + setting);
+                    Script_Error("bot setting does not exist : " + setting);
                     break;
             }
         }
@@ -1410,7 +1411,7 @@ namespace L2_login
 
             ScriptVariable ret = Get_Var(svar);
 
-            ServerPackets.Return(System.Convert.ToInt32(ret.Value));
+            ServerPackets.Return(Convert.ToInt32(ret.Value));
         }
 
         private void Script_INJECTBB(string line)
@@ -1530,7 +1531,7 @@ namespace L2_login
                         else
                         {
 
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - item.X, 2) + System.Math.Pow(my - item.Y, 2) + System.Math.Pow(mz - item.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - item.X, 2) + Math.Pow(my - item.Y, 2) + Math.Pow(mz - item.Z, 2)));
 
                             if (ndist <= Globals.gamedata.botoptions.LootRange)
                             {
@@ -1557,7 +1558,7 @@ namespace L2_login
                         else
                         {
 
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - item.X, 2) + System.Math.Pow(my - item.Y, 2) + System.Math.Pow(mz - item.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - item.X, 2) + Math.Pow(my - item.Y, 2) + Math.Pow(mz - item.Z, 2)));
                             if (ndist <= Globals.gamedata.botoptions.LootRange)
                             {
                                 if (ndist < dist)
@@ -1751,7 +1752,7 @@ namespace L2_login
                     }
                     else
                     {
-                        rtime = (us.NextTime.Ticks - System.DateTime.Now.Ticks) / System.TimeSpan.TicksPerMillisecond;
+                        rtime = (us.NextTime.Ticks - DateTime.Now.Ticks) / TimeSpan.TicksPerMillisecond;
                     }
                 }
             }
@@ -1970,7 +1971,7 @@ namespace L2_login
                             break;
                         default:
                             //lol?
-                            ScriptEngine.Script_Error("INVALID TARGET PARAMETER - CHECK");
+                            Script_Error("INVALID TARGET PARAMETER - CHECK");
                             break;
                     }
                     break;
@@ -2048,7 +2049,7 @@ namespace L2_login
                             break;
                         default:
                             //lol?
-                            ScriptEngine.Script_Error("INVALID TARGET PARAMETER - CHECK");
+                            Script_Error("INVALID TARGET PARAMETER - CHECK");
                             break;
                     }
                     break;
@@ -2082,60 +2083,60 @@ namespace L2_login
                     //0 = npcs
                     //1 = players
                     //2 = both
-                    BotOptions.Target_TYPE = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_TYPE = Convert.ToInt32(var_val.Value);
                     break;
                 case "ATTACKABLE":
                     //0 = attackable
                     //1 = invincible
                     //2 = both
-                    BotOptions.Target_ATTACKABLE = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_ATTACKABLE = Convert.ToInt32(var_val.Value);
                     break;
                 case "ALIVE":
                     //0 = alive
                     //1 = dead
                     //2 = both
-                    BotOptions.Target_ALIVE = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_ALIVE = Convert.ToInt32(var_val.Value);
                     break;
                 case "INBOX":
                     //0 = in box
                     //1 = outside box
                     //2 = both
-                    BotOptions.Target_INBOX = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_INBOX = Convert.ToInt32(var_val.Value);
                     break;
                 case "COMBAT":
                     //0 = not being attack
                     //1 = under attack
                     //2 = both
-                    BotOptions.Target_COMBAT = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_COMBAT = Convert.ToInt32(var_val.Value);
                     break;
                 case "TARGETTED":
                     //0 = not targeted
                     //1 = targeted by someone
                     //2 = both
-                    BotOptions.Target_TARGETTED = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_TARGETTED = Convert.ToInt32(var_val.Value);
                     break;
                 case "TARGETING":
                     //0 = targeting nobody
                     //1 = targeting something
                     //2 = both
-                    BotOptions.Target_TARGETING = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_TARGETING = Convert.ToInt32(var_val.Value);
                     break;
                 case "IGNORE":
                     //0 = not on the ignore list
                     //1 = on the ignore list
                     //2 = both
-                    BotOptions.Target_IGNORE = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_IGNORE = Convert.ToInt32(var_val.Value);
                     break;
                 case "ZRANGE":
-                    BotOptions.Target_ZRANGE = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_ZRANGE = Convert.ToInt32(var_val.Value);
                     break;
                 case "PATHFINDING":
-                    BotOptions.Target_Pathfinding = System.Convert.ToInt32(var_val.Value);
+                    BotOptions.Target_Pathfinding = Convert.ToInt32(var_val.Value);
                     break;
 
                 default:
                     //lol?
-                    ScriptEngine.Script_Error("INVALID TARGET PARAMETER - SET");
+                    Script_Error("INVALID TARGET PARAMETER - SET");
                     break;
             }
         }
@@ -2194,7 +2195,7 @@ namespace L2_login
                         //if the npc is close enough... no need to retarget
                         if (npc.NPCID == char_target)
                         {
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                             if (ndist < 100)
                             {
@@ -2229,7 +2230,7 @@ namespace L2_login
                                         }
                                         else
                                         {
-                                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                                             if (ndist < dist)
                                             {
@@ -2277,7 +2278,7 @@ namespace L2_login
                                         }
                                         else
                                         {
-                                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                                             if (ndist < dist)
                                             {
@@ -2313,7 +2314,7 @@ namespace L2_login
                     {
                         if (MeetsConditions(player))
                         {
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - player.X, 2) + System.Math.Pow(my - player.Y, 2) + System.Math.Pow(mz - player.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - player.X, 2) + Math.Pow(my - player.Y, 2) + Math.Pow(mz - player.Z, 2)));
 
                             if (ndist < dist)
                             {
@@ -2397,7 +2398,7 @@ namespace L2_login
 
                                 if ((npc.TargetID == Globals.gamedata.my_char.ID || MeetsConditions(npc) && npc.isInvisible == 0) && (!npc.Ignore) && (npc.showName == 1 && npc.isTargetable == 1))
                                 {
-                                    ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                                    ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                                     if (ndist < dist)
                                     {
@@ -2428,7 +2429,7 @@ namespace L2_login
                     {
                         if (System.String.Equals(player.Name, s_name) && MeetsConditions(player))
                         {
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - player.X, 2) + System.Math.Pow(my - player.Y, 2) + System.Math.Pow(mz - player.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - player.X, 2) + Math.Pow(my - player.Y, 2) + Math.Pow(mz - player.Z, 2)));
 
                             if (ndist < dist)
                             {
@@ -2508,7 +2509,7 @@ namespace L2_login
 
                                 if (npc.TargetID == Globals.gamedata.my_char.ID || MeetsConditions(npc))
                                 {
-                                    ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                                    ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                                     if (ndist < dist)
                                     {
@@ -2539,7 +2540,7 @@ namespace L2_login
                     {
                         if (player.ID == id && MeetsConditions(player))
                         {
-                            ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - player.X, 2) + System.Math.Pow(my - player.Y, 2) + System.Math.Pow(mz - player.Z, 2)));
+                            ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - player.X, 2) + Math.Pow(my - player.Y, 2) + Math.Pow(mz - player.Z, 2)));
 
                             if (ndist < dist)
                             {

@@ -27,7 +27,7 @@ namespace L2_login
             foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
             {
                 //add it
-                System.Windows.Forms.ListViewItem ObjListItem;
+                ListViewItem ObjListItem;
 
                 if (inv_inf.isEquipped == 0x01 || inv_inf.Type2 == 0x03 || inv_inf.Type2 == 0x04) //Equipped, quest item or adena
                 {
@@ -57,10 +57,10 @@ namespace L2_login
             {
                 string item = listView_privatestoresell_inv.SelectedItems[0].SubItems[0].Text;
                 int loc = listView_privatestoresell_inv.SelectedItems[0].Index;
-                uint objID = System.Convert.ToUInt32(listView_privatestoresell_inv.SelectedItems[0].SubItems[2].Text); //Obj ID
-                ulong invquantity = System.Convert.ToUInt64(listView_privatestoresell_inv.SelectedItems[0].SubItems[1].Text); //Number of items in invetory
-                ulong sellquantity = System.Convert.ToUInt64(textBox_privatestoresell_quantity.Text); //Number of items to sell
-                ulong price = System.Convert.ToUInt64(textBox_privatestoresell_price.Text);
+                uint objID = Convert.ToUInt32(listView_privatestoresell_inv.SelectedItems[0].SubItems[2].Text); //Obj ID
+                ulong invquantity = Convert.ToUInt64(listView_privatestoresell_inv.SelectedItems[0].SubItems[1].Text); //Number of items in invetory
+                ulong sellquantity = Convert.ToUInt64(textBox_privatestoresell_quantity.Text); //Number of items to sell
+                ulong price = Convert.ToUInt64(textBox_privatestoresell_price.Text);
                 string message = textBox_privatestoresell_message.Text;
 
                 if (sellquantity > invquantity)
@@ -81,7 +81,7 @@ namespace L2_login
                     listView_privatestoresell_inv.SelectedItems[0].SubItems[1].Text = (invquantity - sellquantity).ToString();
                 }
 
-                System.Windows.Forms.ListViewItem ObjListItem;
+                ListViewItem ObjListItem;
                 ObjListItem = new ListViewItem(item);
                 ObjListItem.SubItems.Add(sellquantity.ToString());
                 ObjListItem.SubItems.Add(price.ToString());
@@ -134,7 +134,7 @@ namespace L2_login
                 64 0C 05 10 //Unique ID
                 01 00 00 00 00 00 00 00 //quantity
                 0A 00 00 00 00 00 00 00 //price  */
-            uint NumberOfItems = System.Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items.Count);
+            uint NumberOfItems = Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items.Count);
 
             ByteBuffer bbuff = new ByteBuffer(512);
 
@@ -143,16 +143,16 @@ namespace L2_login
             bbuff.WriteUInt32(NumberOfItems);
             for (int i = 0; i < NumberOfItems; i++)
             {
-                bbuff.WriteUInt32(System.Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[3].Text)); //ObjID
+                bbuff.WriteUInt32(Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[3].Text)); //ObjID
                 if (Globals.gamedata.Chron >= Chronicle.CT2_3)
                 {
-                    bbuff.WriteUInt64(System.Convert.ToUInt64(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[1].Text)); //Quantity
-                    bbuff.WriteUInt64(System.Convert.ToUInt64(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[2].Text)); //Price
+                    bbuff.WriteUInt64(Convert.ToUInt64(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[1].Text)); //Quantity
+                    bbuff.WriteUInt64(Convert.ToUInt64(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[2].Text)); //Price
                 }
                 else
                 {
-                    bbuff.WriteUInt32(System.Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[1].Text)); //Quantity
-                    bbuff.WriteUInt32(System.Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[2].Text)); //Price
+                    bbuff.WriteUInt32(Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[1].Text)); //Quantity
+                    bbuff.WriteUInt32(Convert.ToUInt32(listView_privatestoresell_ItemsOnSale.Items[i].SubItems[2].Text)); //Price
                 }
             }
             bbuff.TrimToIndex();

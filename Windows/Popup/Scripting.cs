@@ -7,16 +7,16 @@ namespace L2_login
     /// <summary>
     /// Summary description for Scripting.
     /// </summary>
-    public class Scripting : System.Windows.Forms.Form
-	{
-		public System.Windows.Forms.RichTextBox richTextBox_script;
-		private System.Windows.Forms.Button button_loadscript;
-		private System.Windows.Forms.Button button_savescript;
-		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-		private System.Windows.Forms.Button button_close;
-		private System.Windows.Forms.Button button_top;
-		private System.Windows.Forms.Label label_linenum;
+    public class Scripting : Form
+    {
+		public RichTextBox richTextBox_script;
+		private Button button_loadscript;
+		private Button button_savescript;
+		private OpenFileDialog openFileDialog1;
+		private SaveFileDialog saveFileDialog1;
+		private Button button_close;
+		private Button button_top;
+		private Label label_linenum;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -67,14 +67,14 @@ namespace L2_login
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.richTextBox_script = new System.Windows.Forms.RichTextBox();
-            this.button_loadscript = new System.Windows.Forms.Button();
-            this.button_savescript = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button_close = new System.Windows.Forms.Button();
-            this.button_top = new System.Windows.Forms.Button();
-            this.label_linenum = new System.Windows.Forms.Label();
+            this.richTextBox_script = new RichTextBox();
+            this.button_loadscript = new Button();
+            this.button_savescript = new Button();
+            this.openFileDialog1 = new OpenFileDialog();
+            this.saveFileDialog1 = new SaveFileDialog();
+            this.button_close = new Button();
+            this.button_top = new Button();
+            this.label_linenum = new Label();
             this.SuspendLayout();
             // 
             // richTextBox_script
@@ -89,43 +89,43 @@ namespace L2_login
             // 
             // button_loadscript
             // 
-            this.button_loadscript.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_loadscript.FlatStyle = FlatStyle.System;
             this.button_loadscript.Location = new System.Drawing.Point(8, 8);
             this.button_loadscript.Name = "button_loadscript";
             this.button_loadscript.Size = new System.Drawing.Size(144, 23);
             this.button_loadscript.TabIndex = 0;
             this.button_loadscript.Text = "Load Script";
-            this.button_loadscript.Click += new System.EventHandler(this.button_loadscript_Click);
+            this.button_loadscript.Click += new EventHandler(this.button_loadscript_Click);
             // 
             // button_savescript
             // 
-            this.button_savescript.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_savescript.FlatStyle = FlatStyle.System;
             this.button_savescript.Location = new System.Drawing.Point(160, 8);
             this.button_savescript.Name = "button_savescript";
             this.button_savescript.Size = new System.Drawing.Size(144, 23);
             this.button_savescript.TabIndex = 1;
             this.button_savescript.Text = "Save Script";
-            this.button_savescript.Click += new System.EventHandler(this.button_savescript_Click);
+            this.button_savescript.Click += new EventHandler(this.button_savescript_Click);
             // 
             // button_close
             // 
-            this.button_close.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_close.FlatStyle = FlatStyle.System;
             this.button_close.Location = new System.Drawing.Point(462, 8);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(88, 23);
             this.button_close.TabIndex = 3;
             this.button_close.Text = "Close";
-            this.button_close.Click += new System.EventHandler(this.button_close_Click);
+            this.button_close.Click += new EventHandler(this.button_close_Click);
             // 
             // button_top
             // 
-            this.button_top.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_top.FlatStyle = FlatStyle.System;
             this.button_top.Location = new System.Drawing.Point(352, 8);
             this.button_top.Name = "button_top";
             this.button_top.Size = new System.Drawing.Size(72, 23);
             this.button_top.TabIndex = 2;
             this.button_top.Text = "Top";
-            this.button_top.Click += new System.EventHandler(this.button_top_Click);
+            this.button_top.Click += new EventHandler(this.button_top_Click);
             // 
             // label_linenum
             // 
@@ -138,7 +138,7 @@ namespace L2_login
             // 
             // Scripting
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(562, 526);
             this.ControlBox = false;
             this.Controls.Add(this.label_linenum);
@@ -147,20 +147,20 @@ namespace L2_login
             this.Controls.Add(this.button_savescript);
             this.Controls.Add(this.button_loadscript);
             this.Controls.Add(this.richTextBox_script);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Scripting";
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.SizeGripStyle = SizeGripStyle.Hide;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Script Editor";
             this.ResumeLayout(false);
 
 		}
 		#endregion
 
-		private void button_loadscript_Click(object sender, System.EventArgs e)
+		private void button_loadscript_Click(object sender, EventArgs e)
 		{
 			//load script
 			this.Enabled = false;//diable the screen
@@ -186,13 +186,13 @@ namespace L2_login
 			}
 			catch
 			{
-				Globals.l2net_home.Add_Error("ERROR WHILE LOADING SCRIPT!"+System.Environment.NewLine+"Is the script running?");
+				Globals.l2net_home.Add_Error("ERROR WHILE LOADING SCRIPT!"+ Environment.NewLine+"Is the script running?");
 			}
 
 			this.Enabled = true;//renable everything
 		}
 
-		private void button_savescript_Click(object sender, System.EventArgs e)
+		private void button_savescript_Click(object sender, EventArgs e)
 		{
 			//save script
 			this.Enabled = false;
@@ -216,7 +216,7 @@ namespace L2_login
 			}
 			catch
 			{
-				Globals.l2net_home.Add_Error("ERROR WHILE SAVING SCRIPT!"+System.Environment.NewLine+"Is the script running?");
+				Globals.l2net_home.Add_Error("ERROR WHILE SAVING SCRIPT!"+ Environment.NewLine+"Is the script running?");
 			}
 
 			this.Enabled = true;
@@ -240,12 +240,12 @@ namespace L2_login
 			}
 		}
 
-		private void button_close_Click(object sender, System.EventArgs e)
+		private void button_close_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 		}
 
-		private void button_top_Click(object sender, System.EventArgs e)
+		private void button_top_Click(object sender, EventArgs e)
 		{
 			this.TopMost = !this.TopMost;
 		}

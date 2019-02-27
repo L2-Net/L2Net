@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace L2_login
 {
@@ -23,8 +24,8 @@ namespace L2_login
 
        public  AstarNode parent = null;
         
-        public System.Collections.ArrayList adjacentNodes = new System.Collections.ArrayList();
-        public System.Collections.ArrayList children = new System.Collections.ArrayList();
+        public ArrayList adjacentNodes = new ArrayList();
+        public ArrayList children = new ArrayList();
 
         public AstarNode()
         {
@@ -64,8 +65,8 @@ namespace L2_login
             tmpNode.hvalue = this.hvalue;
             tmpNode.gvalue = this.gvalue;
             tmpNode.parent = this.parent;
-            tmpNode.adjacentNodes = (System.Collections.ArrayList)this.adjacentNodes.Clone();
-            tmpNode.children = (System.Collections.ArrayList)this.children.Clone();
+            tmpNode.adjacentNodes = (ArrayList)this.adjacentNodes.Clone();
+            tmpNode.children = (ArrayList)this.children.Clone();
             tmpNode.diagonal = this.diagonal;
 
             return tmpNode;

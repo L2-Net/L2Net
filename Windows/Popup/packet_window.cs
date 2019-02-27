@@ -4,7 +4,7 @@ namespace L2_login
 {
     public partial class packet_window : Form
     {
-        public System.Windows.Forms.ListViewItem[] cache_lictview_items;//= new System.Windows.Forms.ListViewItem[10000];
+        public ListViewItem[] cache_lictview_items;//= new System.Windows.Forms.ListViewItem[10000];
         //public int max_listview_count = 0;
 
         public packet_window()

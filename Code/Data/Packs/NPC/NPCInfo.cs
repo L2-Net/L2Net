@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     public class NPCInfo : Object_Base
@@ -49,7 +51,7 @@ namespace L2_login
         public volatile uint AbnormalEffects = 0;
         public volatile uint ExtendedEffects = 0;
         public volatile uint TeamCircle = 0;//byte
-        private System.Collections.ArrayList _AbnEffects = new System.Collections.ArrayList();
+        private ArrayList _AbnEffects = new ArrayList();
 
         public volatile float Dest_X = 0;
         public volatile float Dest_Y = 0;
@@ -80,7 +82,7 @@ namespace L2_login
         private readonly object NameLock = new object();
         private readonly object AbnEffectsLock = new object();
 
-        private System.Collections.SortedList _my_buffs;
+        private SortedList _my_buffs;
         private readonly object my_buffsLock = new object();
 
 
@@ -283,11 +285,11 @@ namespace L2_login
             }
         }
 
-        public System.Collections.ArrayList AbnEffects
+        public ArrayList AbnEffects
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (AbnEffectsLock)
                 {
                     tmp = this._AbnEffects;
@@ -322,11 +324,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.SortedList my_buffs
+        public SortedList my_buffs
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (my_buffsLock)
                 {
                     tmp = this._my_buffs;
@@ -344,7 +346,7 @@ namespace L2_login
 
         public NPCInfo()
         {
-            my_buffs = new System.Collections.SortedList();
+            my_buffs = new SortedList();
         }
 
         public void Copy(NPCInfo copy)

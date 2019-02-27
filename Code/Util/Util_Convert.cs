@@ -142,7 +142,7 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
                     return 0;
                 //return System.Convert.ToInt64(str);
@@ -158,7 +158,7 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
                     return 0;
                 //return System.Convert.ToUInt64(str);
@@ -174,7 +174,7 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
                     return 0;
                 //return System.Convert.ToInt32(str);
@@ -190,7 +190,7 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
                     return 0;
                 //return System.Convert.ToUInt32(str);

@@ -17,7 +17,7 @@ namespace L2_login
             {
                 if (Globals.gamedata.my_char.Moving == true)
                 {
-                    if (Globals.gamedata.OOG && ((System.TimeSpan)(System.DateTime.Now - Globals.gamedata.my_char.lastVerifyTime)).Milliseconds > 1000)
+                    if (Globals.gamedata.OOG && ((TimeSpan)(DateTime.Now - Globals.gamedata.my_char.lastVerifyTime)).Milliseconds > 1000)
                     {
                         //send the verify pos packet
                         ServerPackets.Send_Verify();
@@ -145,9 +145,9 @@ namespace L2_login
                     //movespeed = ((float)my_char.RunSpeed)*ch.MoveSpeedMult;
                     movespeed = Globals.gamedata.my_char.RunSpeed * Globals.gamedata.my_char.MoveSpeedMult;
 
-                    time = System.Convert.ToSingle(((System.TimeSpan)(System.DateTime.Now - Globals.gamedata.my_char.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                    time = Convert.ToSingle(((TimeSpan)(DateTime.Now - Globals.gamedata.my_char.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
 
-                    vxx = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+                    vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                     if (vxx != 0)
                     {
                         vxx = Util.Float_Cap((movespeed * time) / vxx);
@@ -160,7 +160,7 @@ namespace L2_login
                     Globals.gamedata.my_char.X += vx;
                     Globals.gamedata.my_char.Y += vy;
                     Globals.gamedata.my_char.Z += vz;
-                    Globals.gamedata.my_char.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_char.lastMoveTime = DateTime.Now;
 
                     if ((Globals.gamedata.my_char.MoveTarget == 0) && (Math.Sqrt(Math.Pow(Globals.gamedata.my_char.X - Globals.gamedata.my_char.Dest_X, 2) + Math.Pow(Globals.gamedata.my_char.Y - Globals.gamedata.my_char.Dest_Y, 2) + Math.Pow(Globals.gamedata.my_char.Z - Globals.gamedata.my_char.Dest_Z, 2)) < Globals.THRESHOLD))
                     {
@@ -306,9 +306,9 @@ namespace L2_login
                         //movespeed = ((float)my_char.RunSpeed)*ch.MoveSpeedMult;
                         movespeed = Globals.gamedata.my_pet.RunSpeed * Globals.gamedata.my_pet.MoveSpeedMult;
 
-                        time = System.Convert.ToSingle(((System.TimeSpan)(System.DateTime.Now - Globals.gamedata.my_pet.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - Globals.gamedata.my_pet.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
 
-                        vxx = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+                        vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
                             vxx = Util.Float_Cap((movespeed * time) / vxx);
@@ -321,7 +321,7 @@ namespace L2_login
                         Globals.gamedata.my_pet.X += vx;
                         Globals.gamedata.my_pet.Y += vy;
                         Globals.gamedata.my_pet.Z += vz;
-                        Globals.gamedata.my_pet.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet.lastMoveTime = DateTime.Now;
 
                         if ((Globals.gamedata.my_pet.MoveTarget == 0) && (Math.Sqrt(Math.Pow(Globals.gamedata.my_pet.X - Globals.gamedata.my_pet.Dest_X, 2) + Math.Pow(Globals.gamedata.my_pet.Y - Globals.gamedata.my_pet.Dest_Y, 2) + Math.Pow(Globals.gamedata.my_pet.Z - Globals.gamedata.my_pet.Dest_Z, 2)) < Globals.THRESHOLD))
                         {
@@ -463,9 +463,9 @@ namespace L2_login
                             movespeed = player.WalkSpeed * player.MoveSpeedMult;
                         }
 
-                        time = System.Convert.ToSingle(((System.TimeSpan)(System.DateTime.Now - player.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - player.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
 
-                        vxx = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+                        vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
                             vxx = Util.Float_Cap((movespeed * time) / vxx);
@@ -478,7 +478,7 @@ namespace L2_login
                         player.X += Util.Float_Int32(vx);
                         player.Y += Util.Float_Int32(vy);
                         player.Z += Util.Float_Int32(vz);
-                        player.lastMoveTime = System.DateTime.Now;
+                        player.lastMoveTime = DateTime.Now;
 
                         if ((player.MoveTarget == 0) && (Math.Sqrt(Math.Pow(player.X - player.Dest_X, 2) + Math.Pow(player.Y - player.Dest_Y, 2) + Math.Pow(player.Z - player.Dest_Z, 2)) < Globals.THRESHOLD))
                         {
@@ -624,9 +624,9 @@ namespace L2_login
                             movespeed = npc.WalkSpeed * npc.MoveSpeedMult;
                         }
 
-                        time = System.Convert.ToSingle(((System.TimeSpan)(System.DateTime.Now - npc.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - npc.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
 
-                        vxx = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+                        vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
                         {
                             vxx = Util.Float_Cap((movespeed * time) / vxx);
@@ -639,7 +639,7 @@ namespace L2_login
                         npc.X += Util.Float_Int32(vx);
                         npc.Y += Util.Float_Int32(vy);
                         npc.Z += Util.Float_Int32(vz);
-                        npc.lastMoveTime = System.DateTime.Now;
+                        npc.lastMoveTime = DateTime.Now;
 
                         if ((npc.MoveTarget == 0) && (Math.Sqrt(Math.Pow(npc.X - npc.Dest_X, 2) + Math.Pow(npc.Y - npc.Dest_Y, 2) + Math.Pow(npc.Z - npc.Dest_Z, 2)) < Globals.THRESHOLD))
                         {

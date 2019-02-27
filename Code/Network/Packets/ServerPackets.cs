@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace L2_login
 {
@@ -97,14 +98,14 @@ namespace L2_login
                 switch (sc.Type)
                 {
                     case ShortCut_Types.ITEM:
-                        ServerPackets.Use_Item(sc.ID);
+                        Use_Item(sc.ID);
                         break;
                     case ShortCut_Types.SKILL:
-                        ServerPackets.Try_Use_Skill(sc.ID, control, shift);
+                        Try_Use_Skill(sc.ID, control, shift);
                         is_skill = true;
                         break;
                     case ShortCut_Types.ACTION:
-                        ServerPackets.Use_Action_Parse(sc.ID, control, shift);
+                        Use_Action_Parse(sc.ID, control, shift);
                         break;
                     case ShortCut_Types.MACRO:
                         //um... do we handle this? or the server?
@@ -146,16 +147,16 @@ namespace L2_login
                     Globals.scriptthread.Script_CLICK_NEAREST_ITEM();
                     break;
                 case PClientAction.Assist://6
-                    ServerPackets.Assist();
+                    Assist();
                     break;
                 case PClientAction.Invite://7
-                    ServerPackets.Command_Invite(Util.GetCharName(Globals.gamedata.my_char.TargetID));
+                    Command_Invite(Util.GetCharName(Globals.gamedata.my_char.TargetID));
                     break;
                 case PClientAction.LeaveParty://8
-                    ServerPackets.Command_Leave();
+                    Command_Leave();
                     break;
                 case PClientAction.DismissPartyMember://9
-                    ServerPackets.Command_Dismiss(Util.GetCharName(Globals.gamedata.my_char.TargetID));
+                    Command_Dismiss(Util.GetCharName(Globals.gamedata.my_char.TargetID));
                     break;
                 case PClientAction.Open_PrivateStore_Sell://10
                     //Use_Action_Parse((int)PClientAction.Open_PrivateStore_Sell, control, shift);
@@ -163,13 +164,13 @@ namespace L2_login
                 case PClientAction.PartyMatching://11
                     break;
                 case PClientAction.Social_Greeting://12
-                    ServerPackets.Command_SocialHello();
+                    Command_SocialHello();
                     break;
                 case PClientAction.Social_Victory://13
-                    ServerPackets.Command_SocialVictory();
+                    Command_SocialVictory();
                     break;
                 case PClientAction.Social_Advance://14
-                    ServerPackets.Command_SocialCharge();
+                    Command_SocialCharge();
                     break;
                 case PClientAction.Pet_RunWalk://15
                     Use_Action_Internal(15, control, shift);
@@ -197,13 +198,13 @@ namespace L2_login
                     Use_Action_Internal(23, control, shift);
                     break;
                 case PClientAction.Social_Yes://24
-                    ServerPackets.Command_SocialYes();
+                    Command_SocialYes();
                     break;
                 case PClientAction.Social_No://25
-                    ServerPackets.Command_SocialNo();
+                    Command_SocialNo();
                     break;
                 case PClientAction.Social_Bow://26
-                    ServerPackets.Command_SocialBow();
+                    Command_SocialBow();
                     break;
                 case PClientAction.Summon_Special://27
                     break;
@@ -211,25 +212,25 @@ namespace L2_login
                     Use_Action_Parse((int)PClientAction.Open_PrivateStore_Buy, control, shift);
                     break;
                 case PClientAction.Social_Unaware://29
-                    ServerPackets.Command_SocialUnaware();
+                    Command_SocialUnaware();
                     break;
                 case PClientAction.Social_Waiting://30
-                    ServerPackets.Command_SocialWaiting();
+                    Command_SocialWaiting();
                     break;
                 case PClientAction.Social_Laugh://31
-                    ServerPackets.Command_SocialLaugh();
+                    Command_SocialLaugh();
                     break;
                 case PClientAction.SwitchMode://32
                     Use_Action_Internal(32, control, shift);
                     break;
                 case PClientAction.Social_Applaud://33
-                    ServerPackets.Command_SocialApplause();
+                    Command_SocialApplause();
                     break;
                 case PClientAction.Social_Dance://34
-                    ServerPackets.Command_SocialDance();
+                    Command_SocialDance();
                     break;
                 case PClientAction.Social_Sorrow://35
-                    ServerPackets.Command_SocialSad();
+                    Command_SocialSad();
                     break;
                 case PClientAction.ToxicSmoke://36
                     Use_Action_Internal(36, control, shift);
@@ -244,7 +245,7 @@ namespace L2_login
                     Use_Action_Internal(39, control, shift);
                     break;
                 case PClientAction.Evaluate://40
-                    ServerPackets.Command_Evaluate(Globals.gamedata.my_char.TargetID);
+                    Command_Evaluate(Globals.gamedata.my_char.TargetID);
                     break;
                 case PClientAction.WildCannon://41
                     Use_Action_Internal(41, control, shift);
@@ -274,7 +275,7 @@ namespace L2_login
                     Use_Action_Internal(49, control, shift);
                     break;
                 case PClientAction.ChangePartyLeader://50
-                    ServerPackets.Command_ChangePartyLeader(Util.GetCharName(Globals.gamedata.my_char.TargetID));
+                    Command_ChangePartyLeader(Util.GetCharName(Globals.gamedata.my_char.TargetID));
                     break;
                 case PClientAction.Open_GeneralManufacture://51
                     Use_Action_Internal(51, control, shift);
@@ -304,7 +305,7 @@ namespace L2_login
                     Use_Action_Internal(61, control, shift);
                     break;
                 case PClientAction.Social_Charm://62
-                    ServerPackets.Command_SocialCharm();
+                    Command_SocialCharm();
                     break;
                 case PClientAction.MiniGame://63
                     break;
@@ -313,7 +314,7 @@ namespace L2_login
                 case PClientAction.BotReport://65
                     break;
                 case PClientAction.Social_Shyness://66
-                    ServerPackets.Command_SocialShyness();
+                    Command_SocialShyness();
                     break;
                 case PClientAction.Steer://67
                     break;
@@ -404,7 +405,7 @@ namespace L2_login
 
         public static void Target(string name)
         {
-            ServerPackets.ClickNearest(name);
+            ClickNearest(name);
         }
 
         public static void Target(uint id, int x, int y, int z, bool shift)
@@ -426,7 +427,7 @@ namespace L2_login
 
         public static void MoveToPacket(int dx, int dy)
         {
-            ServerPackets.MoveToPacket(dx, dy, Util.Float_Int32(Globals.gamedata.my_char.Z));
+            MoveToPacket(dx, dy, Util.Float_Int32(Globals.gamedata.my_char.Z));
         }
 
         public static void MoveToPacket(int dx, int dy, int dz)
@@ -472,7 +473,7 @@ namespace L2_login
 
         public static void Use_Skill(uint id)
         {
-            ServerPackets.Use_Skill(id, false, false);
+            Use_Skill(id, false, false);
         }
 
         public static void RequestDispel(uint object_id, uint skill_id, uint skill_level)
@@ -531,13 +532,13 @@ namespace L2_login
 
                         if (sk.IsReady())//sk.Time
                         {
-                            ServerPackets.Use_Skill(sk.ID, control, shift);
-                            sk.LastTime = System.DateTime.Now;
-                            sk.NextTime = System.DateTime.Now.AddMilliseconds(Globals.SKILL_MIN_REUSE);
+                            Use_Skill(sk.ID, control, shift);
+                            sk.LastTime = DateTime.Now;
+                            sk.NextTime = DateTime.Now.AddMilliseconds(Globals.SKILL_MIN_REUSE);
                         }
                         else
                         {
-                            long msec = (sk.NextTime.Ticks - System.DateTime.Now.Ticks) / System.TimeSpan.TicksPerMillisecond;
+                            long msec = (sk.NextTime.Ticks - DateTime.Now.Ticks) / TimeSpan.TicksPerMillisecond;
                             Globals.l2net_home.Add_Text("tried to use skill too early: " + Util.GetSkillName(sk.ID, sk.Level) + " : try again in " + msec.ToString() + " milliseconds.");
                         }
                     }
@@ -568,23 +569,23 @@ namespace L2_login
 
                         if (sk.IsReady())//sk.Time
                         {
-                            ServerPackets.Use_Skill(sk.ID, control, shift);
+                            Use_Skill(sk.ID, control, shift);
                             //sk.LastTime = System.DateTime.Now;
-                            sk.NextTime = System.DateTime.Now.AddMilliseconds(Globals.SKILL_MIN_REUSE);
+                            sk.NextTime = DateTime.Now.AddMilliseconds(Globals.SKILL_MIN_REUSE);
 
                             while (Globals.gamedata.my_char.ExpiresTime == 0)
                             {
-                                System.Threading.Thread.Sleep(1);
+                                Thread.Sleep(1);
                             }
                             
-                            while (System.DateTime.Now.Ticks < Globals.gamedata.my_char.ExpiresTime) 
+                            while (DateTime.Now.Ticks < Globals.gamedata.my_char.ExpiresTime) 
                             {
-                                System.Threading.Thread.Sleep(1);
+                                Thread.Sleep(1);
                             }                            
                         }
                         else
                         {
-                            long msec = (sk.NextTime.Ticks - System.DateTime.Now.Ticks) / System.TimeSpan.TicksPerMillisecond;
+                            long msec = (sk.NextTime.Ticks - DateTime.Now.Ticks) / TimeSpan.TicksPerMillisecond;
                             // Globals.l2net_home.Add_Text("tried to use skill too early: " + Util.GetSkillName(sk.ID, sk.Level) + " : try again in " + msec.ToString() + " milliseconds.");
                             Globals.gamedata.my_char.ExpiresTime = 1;
                         }
@@ -637,7 +638,7 @@ namespace L2_login
             else
             {
                 //do we actually need a target?
-                Globals.gamedata.my_char.LastBuffTime = System.DateTime.Now;
+                Globals.gamedata.my_char.LastBuffTime = DateTime.Now;
                 Globals.gamedata.my_char.BuffSkillID = bft.SkillID;
                 Globals.gamedata.my_char.BuffTarget = tmp_id;
                 Globals.gamedata.my_char.LastTarget = Globals.gamedata.my_char.TargetID;
@@ -946,7 +947,7 @@ namespace L2_login
                             {
                                 try
                                 {
-                                    temp_int = System.Convert.ToInt32((Globals.ew_con_array[i] as System.Windows.Forms.TextBox).Text);
+                                    temp_int = Convert.ToInt32((Globals.ew_con_array[i] as System.Windows.Forms.TextBox).Text);
                                 }
                                 catch (FormatException) // non digit chars
                                 {
@@ -1516,7 +1517,7 @@ namespace L2_login
                             {
                                 try
                                 {
-                                    temp_int = System.Convert.ToInt32((Globals.ew_con_array[i] as System.Windows.Forms.TextBox).Text);
+                                    temp_int = Convert.ToInt32((Globals.ew_con_array[i] as System.Windows.Forms.TextBox).Text);
                                 }
                                 catch (FormatException) // non digit chars
                                 {
@@ -1729,7 +1730,7 @@ namespace L2_login
                         total_text = total_text.Substring(1, total_text.Length - 1);
                         break;
                     case '/'://run command
-                        ServerPackets.Run_Command(total_text);
+                        Run_Command(total_text);
                         index = -1;
                         break;
                 }
@@ -1839,7 +1840,7 @@ namespace L2_login
             {
                 start = start.Substring(1, start.Length - 1);
 
-                ServerPackets.Send_Text(type, start, end);
+                Send_Text(type, start, end);
             }
             else if (start.StartsWith("-"))
             {
@@ -1858,7 +1859,7 @@ namespace L2_login
             else
             {
                 //need to build a packet and send it out
-                ServerPackets.Send_Text(type, start, end);
+                Send_Text(type, start, end);
             }
         }
 
@@ -2111,7 +2112,7 @@ namespace L2_login
                 {
                     if (System.String.Equals(name, Util.GetNPCName(npc.NPCID).ToUpperInvariant()))
                     {
-                        ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                        ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                         if (ndist < dist)
                         {
@@ -2167,7 +2168,7 @@ namespace L2_login
                     if (id == npc.NPCID)
                     {
                         //lets get the distance
-                        ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                        ndist = Convert.ToSingle(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                         if (ndist < dist)
                         {
@@ -2404,9 +2405,9 @@ namespace L2_login
             bbuff3.WriteUInt64(count);
 
             Globals.gamedata.SendToGameServer(bbuff1);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
             Globals.gamedata.SendToGameServer(bbuff2);
-            System.Threading.Thread.Sleep(250);
+            Thread.Sleep(250);
             Globals.gamedata.SendToGameServer(bbuff3);
         }
 
@@ -2513,7 +2514,7 @@ namespace L2_login
                     Use_Action_Parse((int)PClientAction.Open_GeneralManufacture, Globals.gamedata.Control, Globals.gamedata.Shift);
                     break;
                 case "GETSKILLS":
-                    ServerPackets.RequestSkillList();
+                    RequestSkillList();
                     break;
                 case "SPAUSE":
                     Globals.gamedata.CurrentScriptState = ScriptState.Paused;
@@ -2545,31 +2546,31 @@ namespace L2_login
                     }
                     break;
                 case "ATTACK":
-                    ServerPackets.ClickOBJ(Globals.gamedata.my_char.TargetID, Globals.gamedata.Control, Globals.gamedata.Shift);
+                    ClickOBJ(Globals.gamedata.my_char.TargetID, Globals.gamedata.Control, Globals.gamedata.Shift);
                     break;
                 case "USESKILL":
-                    ServerPackets.Use_Skill(cmdtext);
+                    Use_Skill(cmdtext);
                     break;
                 case "TARGET":
-                    ServerPackets.Target(cmdtext);
+                    Target(cmdtext);
                     break;
                 case "ASSIST":
                     if (cmdtext.Length != 0)
-                        ServerPackets.Assist(cmdtext);
+                        Assist(cmdtext);
                     else
-                        ServerPackets.Assist();
+                        Assist();
                     break;
                 case "PLAYERLOC":
-                    ServerPackets.Player_Loc(cmdtext);
+                    Player_Loc(cmdtext);
                     break;
                 case "FORCELOGOUT":
                     Util.Stop_Connections();
                     break;
                 case "LOGOUT":
-                    ServerPackets.Send_Logout();
+                    Send_Logout();
                     break;
                 case "RESTART":
-                    ServerPackets.Send_Restart();
+                    Send_Restart();
                     break;
                 case "HIDEACCEPT":
                     Globals.l2net_home.Hide_YesNo();
@@ -2584,69 +2585,69 @@ namespace L2_login
                     Globals.l2net_home.Clear_ChatBox();
                     break;
                 case "GMLIST":
-                    ServerPackets.Command_GMList();
+                    Command_GMList();
                     break;
                 case "SCRIPT":
                     Globals.scriptthread.Proccess_Line(cmdtext, false);
                     break;
                 case "INVITE"://send party invite
-                    ServerPackets.Command_Invite(cmdtext);
+                    Command_Invite(cmdtext);
                     break;
                 case "DISMISS":
-                    ServerPackets.Command_Dismiss(cmdtext);
+                    Command_Dismiss(cmdtext);
                     break;
                 case "CHANGEPARTYLEADER":
-                    ServerPackets.Command_ChangePartyLeader(cmdtext);
+                    Command_ChangePartyLeader(cmdtext);
                     break;
                 case "SOCIALHELLO":
-                    ServerPackets.Command_SocialHello();
+                    Command_SocialHello();
                     break;
                 case "SOCIALVICTORY":
-                    ServerPackets.Command_SocialVictory();
+                    Command_SocialVictory();
                     break;
                 case "SOCIALCHARGE":
-                    ServerPackets.Command_SocialCharge();
+                    Command_SocialCharge();
                     break;
                 case "SOCIALNO":
-                    ServerPackets.Command_SocialNo();
+                    Command_SocialNo();
                     break;
                 case "SOCIALYES":
-                    ServerPackets.Command_SocialYes();
+                    Command_SocialYes();
                     break;
                 case "SOCIALBOW":
-                    ServerPackets.Command_SocialBow();
+                    Command_SocialBow();
                     break;
                 case "SOCIALUNAWARE":
-                    ServerPackets.Command_SocialUnaware();
+                    Command_SocialUnaware();
                     break;
                 case "SOCIALWAITING":
-                    ServerPackets.Command_SocialWaiting();
+                    Command_SocialWaiting();
                     break;
                 case "SOCIALLAUGH":
-                    ServerPackets.Command_SocialLaugh();
+                    Command_SocialLaugh();
                     break;
                 case "SOCIALAPPLAUSE":
-                    ServerPackets.Command_SocialApplause();
+                    Command_SocialApplause();
                     break;
                 case "SOCIALDANCE":
-                    ServerPackets.Command_SocialDance();
+                    Command_SocialDance();
                     break;
                 case "SOCIALSAD":
-                    ServerPackets.Command_SocialSad();
+                    Command_SocialSad();
                     break;
                 case "CHARM":
-                    ServerPackets.Command_SocialCharm();
+                    Command_SocialCharm();
                     break;
                 case "NSOCIALLEVELUP":
-                    ServerPackets.Command_NSocialLevelUp();
+                    Command_NSocialLevelUp();
                     //Add_Text("[level up animation]",Gray);
                     break;
                 case "NSOCIALHERO":
-                    ServerPackets.Command_NSocialHero();
+                    Command_NSocialHero();
                     //Add_Text("[become hero animation]",Gray);
                     break;
                 case "NSOCIALFLAME"://C5 emote only :O
-                    ServerPackets.Command_NSocialFlame();
+                    Command_NSocialFlame();
                     //Add_Text("[flame animation]",Gray);
                     break;
                 case "SIT":
@@ -2658,7 +2659,7 @@ namespace L2_login
                     //Add_Text("[stand]",Gray);
                     break;
                 case "LEAVE":
-                    ServerPackets.Command_Leave();
+                    Command_Leave();
                     //Add_Text("[leave party]",Gray);
                     break;
                 case "WALK":
@@ -2680,62 +2681,62 @@ namespace L2_login
                 //https://opensvn.csie.org/traccgi/l2jc4/browser/trunk/L2_Gameserver/java/net/sf/l2j/gameserver/clientpackets/RequestMagicSkillUse.java
                 case "SKILL":
                     uint sid = Util.GetUInt32(cmdtext);
-                    ServerPackets.Try_Use_Skill(sid, Globals.gamedata.Control, Globals.gamedata.Shift);
+                    Try_Use_Skill(sid, Globals.gamedata.Control, Globals.gamedata.Shift);
                     //Add_Text("[skill]",Gray);
                     break;
                 case "UNSTUCK":
-                    ServerPackets.Command_Unstuck();
+                    Command_Unstuck();
                     break;
                 case "LOC":
-                    ServerPackets.Command_Loc();
+                    Command_Loc();
                     break;
                 case "MOUNT":
-                    ServerPackets.Command_Mount();
+                    Command_Mount();
                     break;
                 case "DISMOUNT":
-                    ServerPackets.Command_Dismount();
+                    Command_Dismount();
                     break;
                 case "TIME":
-                    ServerPackets.Command_Time();
+                    Command_Time();
                     break;
                 case "PARTYINFO":
-                    ServerPackets.Command_PartyInfo();
+                    Command_PartyInfo();
                     break;
                 case "ATTACKLIST":
-                    ServerPackets.Command_AttackList();
+                    Command_AttackList();
                     break;
                 case "WARLIST":
-                    ServerPackets.Command_WarList();
+                    Command_WarList();
                     break;
                 case "CLANPENALTY":
-                    ServerPackets.Command_ClanPenalty();
+                    Command_ClanPenalty();
                     break;
                 case "INSTANCEZONE":
-                    ServerPackets.Command_InstanceZone();
+                    Command_InstanceZone();
                     break;
                 case "MYBIRTHDAY":
-                    ServerPackets.Command_MyBirthday();
+                    Command_MyBirthday();
                     break;
                 case "FRIENDLIST":
-                    ServerPackets.Command_FriendList();
+                    Command_FriendList();
                     break;
                 case "FRIENDINVITE":
-                    ServerPackets.Command_FriendInvite(cmdtext);
+                    Command_FriendInvite(cmdtext);
                     break;
                 case "FRIENDDEL":
-                    ServerPackets.Command_FriendDel(cmdtext);
+                    Command_FriendDel(cmdtext);
                     break;
                 case "BLOCK":
-                    ServerPackets.Command_Block(cmdtext);
+                    Command_Block(cmdtext);
                     break;
                 case "UNBLOCK":
-                    ServerPackets.Command_Unblock(cmdtext);
+                    Command_Unblock(cmdtext);
                     break;
                 case "BLOCKLIST":
-                    ServerPackets.Command_BlockList();
+                    Command_BlockList();
                     break;
                 case "EVALUATE":
-                    ServerPackets.Command_Evaluate(Globals.gamedata.my_char.TargetID);
+                    Command_Evaluate(Globals.gamedata.my_char.TargetID);
                     break;
                 case "TRADE":
                     if (Globals.tradewindow == null || Globals.tradewindow.IsDisposed == true)
@@ -2745,51 +2746,51 @@ namespace L2_login
                     Globals.tradewindow.TopMost = true;
                     Globals.tradewindow.BringToFront();
                     Globals.tradewindow.Show();
-                    ServerPackets.Command_Trade();
+                    Command_Trade();
                     break;
                 case "NICK":
-                    ServerPackets.Nick(cmdtext);
+                    Nick(cmdtext);
                     break;
                 case "GODMODE":
                     //lol yeah right...
                     System.Diagnostics.Process.Start("http://www.youtube.com/watch?v=eBGIQ7ZuuiU");
                     break;
                 case "ALLBLOCK":
-                    ServerPackets.Command_AllBlock();
+                    Command_AllBlock();
                     break;
                 case "ALLUNBLOCK":
-                    ServerPackets.Command_AllUnblock();
+                    Command_AllUnblock();
                     break;
                 case "GMCANCEL":
                     //8A C7 45 FC FF FF FF FF 8B 4D F4 64 89 0D 00 00 00 
                     //static?
                     break;
                 case "CLANWARSTART":
-                    ServerPackets.Command_ClanWarStart(cmdtext);
+                    Command_ClanWarStart(cmdtext);
                     break;
                 case "CLANWARSTOP":
-                    ServerPackets.Command_ClanWarStop(cmdtext);
+                    Command_ClanWarStop(cmdtext);
                     break;
                 case "SIEGESTATUS":
-                    ServerPackets.Command_SiegeStatus();
+                    Command_SiegeStatus();
                     break;
                 case "DELETEALLIANCECREST":
                     //91 00 00 00 00
                     //maybe the alliance crest id?
                     break;
                 case "ALLYINFO":
-                    ServerPackets.Command_AllyInfo();
+                    Command_AllyInfo();
                     break;
                 case "DUEL":
                     //no target
                     //48 00 00 - cancel target
-                    ServerPackets.Command_Duel(cmdtext);
+                    Command_Duel(cmdtext);
                     break;
                 case "PARTYDUEL":
-                    ServerPackets.Command_PartyDuel(cmdtext);
+                    Command_PartyDuel(cmdtext);
                     break;
                 case "WITHDRAW":
-                    ServerPackets.Command_Withdraw();
+                    Command_Withdraw();
                     break;
                 case "PETATTACK":
                     Use_Action_Parse((uint)PClientAction.Pet_Attack, Globals.gamedata.Control, false);
@@ -3485,7 +3486,7 @@ namespace L2_login
             }
             else
             {
-                ServerPackets.Target(target_id, Util.Float_Int32(x), Util.Float_Int32(y), Util.Float_Int32(z), Globals.gamedata.Shift);
+                Target(target_id, Util.Float_Int32(x), Util.Float_Int32(y), Util.Float_Int32(z), Globals.gamedata.Shift);
             }
         }
     }//end of class

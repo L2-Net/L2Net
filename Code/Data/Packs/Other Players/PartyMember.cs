@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     public class PartyMember : Object_Base
@@ -23,7 +25,7 @@ namespace L2_login
 
 		private readonly object NameLock = new object();
 
-        private System.Collections.SortedList _my_buffs;
+        private SortedList _my_buffs;
         private readonly object my_buffsLock = new object();
 		public string Name
 		{
@@ -44,11 +46,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.SortedList my_buffs
+        public SortedList my_buffs
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (my_buffsLock)
                 {
                     tmp = this._my_buffs;
@@ -66,7 +68,7 @@ namespace L2_login
 
         public PartyMember()
         {
-            my_buffs = new System.Collections.SortedList();
+            my_buffs = new SortedList();
 		}
 
 		public void Load(ByteBuffer buff)// (adifenix)

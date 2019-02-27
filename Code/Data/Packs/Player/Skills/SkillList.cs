@@ -1,16 +1,18 @@
+using System.Collections;
+
 namespace L2_login
 {
     public class SkillList
 	{
-		private System.Collections.ArrayList _Levels = new System.Collections.ArrayList();
+		private ArrayList _Levels = new ArrayList();
 
 		private readonly object LevelsLock = new object();
 
-		public System.Collections.ArrayList Levels
+		public ArrayList Levels
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(LevelsLock)
 				{
 					tmp = this._Levels;

@@ -1,6 +1,10 @@
 using System;
 using System.Collections;
+using System.Drawing;
+using System.IO;
+using System.Net.Sockets;
 using System.Resources;
+using System.Threading;
 
 namespace L2_login
 {
@@ -55,20 +59,20 @@ namespace L2_login
         public const int TimeOut = int.MaxValue;
 
         //IG/OOG : bot connection to login server
-        public static System.Net.Sockets.Socket Login_GameSocket;
+        public static Socket Login_GameSocket;
         //IG/OOG: bot conection to game server
-        public static System.Net.Sockets.Socket Game_GameSocket;
+        public static Socket Game_GameSocket;
         //IG: client connection to bot login server
-        public static System.Net.Sockets.TcpListener Login_ClientLink;
-        public static System.Net.Sockets.Socket Login_ClientSocket;
+        public static TcpListener Login_ClientLink;
+        public static Socket Login_ClientSocket;
         //IG: client connection to bot game server
-        public static System.Net.Sockets.TcpListener Game_ClientLink;
-        public static System.Net.Sockets.Socket Game_ClientSocket;
+        public static TcpListener Game_ClientLink;
+        public static Socket Game_ClientSocket;
 
         //GG Server
-        public static System.Net.Sockets.TcpListener GG_Clientlink;
-        public static System.Net.Sockets.TcpClient GG_TcpClient;
-        public static System.Net.Sockets.NetworkStream GG_Clientstream;
+        public static TcpListener GG_Clientlink;
+        public static TcpClient GG_TcpClient;
+        public static NetworkStream GG_Clientstream;
 
         public volatile static bool clientsocket_ready = false;
         public volatile static bool gamesocket_ready = false;
@@ -176,19 +180,19 @@ namespace L2_login
             26064, // Soulshot - S grade
         };
 
-        public static System.Threading.Thread gameprocessdatathread;
+        public static Thread gameprocessdatathread;
 
-        public static System.Threading.Thread oog_loginthread;
+        public static Thread oog_loginthread;
 
-        public static System.Threading.Thread ig_loginthread;
-        public static System.Threading.Thread ig_listener;
-        public static System.Threading.Thread loginsendthread;
-        public static System.Threading.Thread loginreadthread;
-        public static System.Threading.Thread ig_Gamelistener;
+        public static Thread ig_loginthread;
+        public static Thread ig_listener;
+        public static Thread loginsendthread;
+        public static Thread loginreadthread;
+        public static Thread ig_Gamelistener;
         //public static System.Threading.Thread GG_sendthread;
 
-        public static System.Threading.Thread gamedrawthread;
-        public static System.Threading.Thread directinputthread;
+        public static Thread gamedrawthread;
+        public static Thread directinputthread;
 
         public static SortedList Login_Servers;
         public static uint Login_SelectedServer = 0;
@@ -220,13 +224,13 @@ namespace L2_login
 
         public static DX_Keyboard Keyboard;
 
-        public static System.IO.StreamWriter text_out;
+        public static StreamWriter text_out;
 
 #if DEBUG
-        public static System.IO.StreamWriter gamedataout;
-        public static System.IO.StreamWriter gamedatato;
-        public static System.IO.StreamWriter clientdataout;
-        public static System.IO.StreamWriter clientdatato;
+        public static StreamWriter gamedataout;
+        public static StreamWriter gamedatato;
+        public static StreamWriter clientdataout;
+        public static StreamWriter clientdatato;
 #endif
 
         public static Login login_window;
@@ -331,7 +335,7 @@ namespace L2_login
 
         public static string Script_MainFile = "";
         public static bool Script_Debugging = false;
-        public const long Script_Ticks_Per_Switch = System.TimeSpan.TicksPerMillisecond * 1;
+        public const long Script_Ticks_Per_Switch = TimeSpan.TicksPerMillisecond * 1;
         public static string BotOptionsFile = "";
 
         public const int SLEEP_ClientSendThread = 75;
@@ -342,8 +346,8 @@ namespace L2_login
         public const int SLEEP_WhileScript = 1;//sleep while paused... TODO: for infinite loops as well
 
         public const int SLEEP_ProcessDataThread = 10;//50
-        public const long SLEEP_Animate = System.TimeSpan.TicksPerMillisecond * 120;
-        public const long SLEEP_Sound_Alerts = System.TimeSpan.TicksPerMillisecond * 500;
+        public const long SLEEP_Animate = TimeSpan.TicksPerMillisecond * 120;
+        public const long SLEEP_Sound_Alerts = TimeSpan.TicksPerMillisecond * 500;
 
         public const int SLEEP_BotAI = 100;
         //Oddi: Sleep_followrest..
@@ -369,7 +373,7 @@ namespace L2_login
 
         public const string SCRIPT_OUT_VAR = "@@@OUT";
 
-        public const long MAX_SOUND_DELAY = System.TimeSpan.TicksPerSecond * 3;
+        public const long MAX_SOUND_DELAY = TimeSpan.TicksPerSecond * 3;
 
         public static bool Use_Direct_Sound = true;
         public static bool Use_Hardware_Acceleration = true;
@@ -388,7 +392,7 @@ namespace L2_login
         public const float Difficulty_Balance = 12;
         public const float Average_Word_Length = 5.10F;
 
-        public static System.Random Rando = new Random(System.DateTime.Now.Millisecond);
+        public static Random Rando = new Random(DateTime.Now.Millisecond);
 
         public const int THREAD_WAIT_DX = 75;//wait to read from players/npcs/items to draw on the map //don't want to wait too long... the gui thread will get locked
         public const int THREAD_WAIT_GUI = 200;//interaction with the gui //don't want to wait too long... the gui thread will get locked
@@ -415,12 +419,12 @@ namespace L2_login
         public const int COUNT_NPCSTRING = 5460;
 
         public const float UNITS = 32768.0F;
-        public const float ModX = Globals.UNITS * 20;
-        public const float ModY = Globals.UNITS * 18;
+        public const float ModX = UNITS * 20;
+        public const float ModY = UNITS * 18;
         public const int ZRANGE_DIFF = 100;
-        public const long SLEEP_TEXTURE = 1500 * System.TimeSpan.TicksPerMillisecond;
-        public const long MAP_HOLD_STREAM = 5 * System.TimeSpan.TicksPerMinute;
-        public const long MAP_HOLD_TEXTURE = 60 * System.TimeSpan.TicksPerMinute;
+        public const long SLEEP_TEXTURE = 1500 * TimeSpan.TicksPerMillisecond;
+        public const long MAP_HOLD_STREAM = 5 * TimeSpan.TicksPerMinute;
+        public const long MAP_HOLD_TEXTURE = 60 * TimeSpan.TicksPerMinute;
 
         public const int MIN_RADIUS = 6;
         public const float THRESHOLD = 5.0F;
@@ -459,7 +463,7 @@ namespace L2_login
         public const string UnknownClass = "-unknown class-";
         public const string UnknownServer = "-unknown server-";
 
-        public const long FAILED_BUFF = System.TimeSpan.TicksPerSecond * 4;
+        public const long FAILED_BUFF = TimeSpan.TicksPerSecond * 4;
         public const double SKILL_MIN_REUSE = 100;
         public const double SKILL_INIT_REUSE = 2000;
 
@@ -469,10 +473,10 @@ namespace L2_login
         //3584 loses shit...
         //3840 loses shit...
         //4096 is just barely too far
-        public const long NPC_RemoveAtActive = System.TimeSpan.TicksPerDay * 60;//System.TimeSpan.TicksPerSecond * 300;//5 min
-        public const long NPC_RemoveAtInvin = System.TimeSpan.TicksPerDay * 60;//2 months
-        public const long NPC_RemoveAtDead = System.TimeSpan.TicksPerSecond * 15;//15 seconds
-        public const long CLEAN_TIMER = System.TimeSpan.TicksPerSecond * 45;//45 seconds
+        public const long NPC_RemoveAtActive = TimeSpan.TicksPerDay * 60;//System.TimeSpan.TicksPerSecond * 300;//5 min
+        public const long NPC_RemoveAtInvin = TimeSpan.TicksPerDay * 60;//2 months
+        public const long NPC_RemoveAtDead = TimeSpan.TicksPerSecond * 15;//15 seconds
+        public const long CLEAN_TIMER = TimeSpan.TicksPerSecond * 45;//45 seconds
         public const int CHAT_TIMER = 250;
         public const int PLAYERS_TIMER = 1500;
         public const int ITEMS_TIMER = 1500;
@@ -490,7 +494,7 @@ namespace L2_login
         public static System.Drawing.Brush Yellow = System.Drawing.Brushes.Yellow;
         public static System.Drawing.Brush Blue = System.Drawing.Brushes.Blue;
         public static System.Drawing.Brush Cyan = System.Drawing.Brushes.Cyan;
-        public static System.Drawing.Brush Pink = System.Drawing.Brushes.Pink;
+        public static Brush Pink = System.Drawing.Brushes.Pink;
         public static System.Drawing.Brush Orange = System.Drawing.Brushes.OrangeRed;
         public static System.Drawing.Brush Gold = System.Drawing.Brushes.Gold;
         public static System.Drawing.Brush Green = System.Drawing.Brushes.Lime;
@@ -554,42 +558,42 @@ namespace L2_login
         public static bool CanPrint = false;
         public static bool Got_Skills = false;
 
-        public static System.Threading.ReaderWriterLockSlim NPCLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim InventoryLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim PetInventoryLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim ItemLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim PlayerLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim BuyListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim MyBuffsListLock = new System.Threading.ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim NPCLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim InventoryLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim PetInventoryLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim ItemLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim PlayerLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim BuyListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim MyBuffsListLock = new ReaderWriterLockSlim();
 
-        public static System.Threading.ReaderWriterLockSlim PartyLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim BuffsGivenLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim ClanListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim SkillListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim BuffListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim ItemListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim CombatListLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim DoNotItemLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim DoNotNPCLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim RestBelowLock = new System.Threading.ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim PartyLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim BuffsGivenLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim ClanListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim SkillListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim BuffListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim ItemListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim CombatListLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim DoNotItemLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim DoNotNPCLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim RestBelowLock = new ReaderWriterLockSlim();
 
-        public static System.Threading.ReaderWriterLockSlim MobListLock = new System.Threading.ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim MobListLock = new ReaderWriterLockSlim();
 
         public static readonly object ItemImagesLock = new object();
         public static readonly object SkillImagesLock = new object();
 
-        public static System.Threading.ReaderWriterLockSlim GameSendQueueLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim ClientSendQueueLock = new System.Threading.ReaderWriterLockSlim();
-        public static System.Threading.ReaderWriterLockSlim GameReadQueueLock = new System.Threading.ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim GameSendQueueLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim ClientSendQueueLock = new ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim GameReadQueueLock = new ReaderWriterLockSlim();
 
-        public static System.Threading.ReaderWriterLockSlim ChatLock = new System.Threading.ReaderWriterLockSlim();
+        public static ReaderWriterLockSlim ChatLock = new ReaderWriterLockSlim();
 
         //only for debugging
         public static AstarNode debugNode;
         public static AstarNode debugNode2;
         public static AstarNode debugNode3;
 
-        public static System.Collections.ArrayList debugPath;
+        public static ArrayList debugPath;
 
         public static string ProductKey
         {

@@ -140,7 +140,7 @@ namespace L2_login
                         e.DrawBackground();
 
                         string line = ((ListBox)sender).Items[e.Index].ToString();
-                        Brush color = (System.Drawing.Brush)LineColors[e.Index];
+                        Brush color = (Brush)LineColors[e.Index];
 
                         /*SizeF size = e.Graphics.MeasureString(line, e.Font);
 

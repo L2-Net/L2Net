@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace L2_login
 {
@@ -120,13 +121,13 @@ namespace L2_login
             this.Refresh();
         }
 
-        private void menuItem_saveinterface_Click(object sender, System.EventArgs e)
+        private void menuItem_saveinterface_Click(object sender, EventArgs e)
         {
 #if !DEBUG
             try
             {
 #endif
-                System.IO.StreamWriter interout = new System.IO.StreamWriter("interface.txt");
+                StreamWriter interout = new StreamWriter("interface.txt");
 
                 interout.WriteLine(Globals.LanguageSet.ToString());
 
@@ -327,10 +328,10 @@ namespace L2_login
 
         private void Load_Interface()
         {
-            System.IO.StreamReader interin;
+            StreamReader interin;
             try {
-                interin = new System.IO.StreamReader("config\\interface.txt");
-            } catch (System.IO.FileNotFoundException e) {
+                interin = new StreamReader("config\\interface.txt");
+            } catch (FileNotFoundException e) {
                 throw new Exception(message: e.Message);
                 // Ideally, if the file did not exist then we would have kept going with default values and then create it.
                 // FIXME 

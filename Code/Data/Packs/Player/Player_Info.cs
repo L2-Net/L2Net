@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+
 namespace L2_login
 {
 	/// <summary>
@@ -42,10 +44,10 @@ namespace L2_login
         public volatile float Dest_Y = 0;
         public volatile float Dest_Z = 0;
         public volatile bool Moving = false;
-		private System.DateTime _lastMoveTime = System.DateTime.Now;
+		private DateTime _lastMoveTime = DateTime.Now;
         public volatile uint MoveTarget = 0;
         public volatile TargetType MoveTargetType = TargetType.NONE;
-		private System.DateTime _lastVerifyTime = System.DateTime.Now;
+		private DateTime _lastVerifyTime = DateTime.Now;
 
         public volatile int Heading = 0;
 
@@ -173,9 +175,9 @@ namespace L2_login
         public volatile uint PvPCount = 0;
 
         public volatile uint CubicCount = 0;//ushort
-		private System.Collections.ArrayList _Cubics = new System.Collections.ArrayList();
+		private ArrayList _Cubics = new ArrayList();
 
-        private System.Collections.ArrayList _AbnEffects = new System.Collections.ArrayList();
+        private ArrayList _AbnEffects = new ArrayList();
 
         public volatile uint FindParty = 0;//byte
 
@@ -227,7 +229,7 @@ namespace L2_login
         public volatile uint BuffTargetLast = 0;
         public volatile uint BuffNeedTarget = 0;
         public volatile uint BuffSkillID = 0;
-		private System.DateTime _lastbufftime;
+		private DateTime _lastbufftime;
 
         public volatile uint isInCombat = 0;//byte
         public volatile bool isAttacking = false;
@@ -324,11 +326,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.ArrayList Cubics
+		public ArrayList Cubics
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(CubicsLock)
 				{
 					tmp = this._Cubics;
@@ -344,11 +346,11 @@ namespace L2_login
 			}
 		}
 
-        public System.Collections.ArrayList AbnEffects
+        public ArrayList AbnEffects
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (AbnEffectsLock)
                 {
                     tmp = this._AbnEffects;
@@ -403,11 +405,11 @@ namespace L2_login
                 }
             }
         }
-		public System.DateTime LastBuffTime
+		public DateTime LastBuffTime
 		{
 			get
 			{
-				System.DateTime tmp;
+                DateTime tmp;
 				lock(lastbufftimeLock)
 				{
 					tmp = this._lastbufftime;
@@ -422,11 +424,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.DateTime lastMoveTime
+		public DateTime lastMoveTime
 		{
 			get
 			{
-				System.DateTime tmp;
+                DateTime tmp;
 				lock(lastMoveTimeLock)
 				{
 					tmp = this._lastMoveTime;
@@ -441,11 +443,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.DateTime lastVerifyTime
+		public DateTime lastVerifyTime
 		{
 			get
 			{
-				System.DateTime tmp;
+                DateTime tmp;
 				lock(lastVerifyTimeLock)
 				{
 					tmp = this._lastVerifyTime;
@@ -478,7 +480,7 @@ namespace L2_login
 		{
 			Moving = false;
 			TargetSpoiled = false;
-			lastVerifyTime = System.DateTime.Now;
+			lastVerifyTime = DateTime.Now;
             Globals.gamedata.BOT_STATE = BotState.Nothing;
 			BuffTarget = 0;
             BuffTargetLast = 0;
@@ -643,7 +645,7 @@ namespace L2_login
             Vitality_Points = buff.ReadInt32(); //CF 5D 18 00 
             buff.ReadInt32(); //00 00 00 00
             XP = buff.ReadUInt64(); //4A 96 44 0A 00 00 00 00
-            XPPercent = System.Convert.ToSingle(buff.ReadDouble()); //F7 53 D6 BD C3 23 CC 3F
+            XPPercent = Convert.ToSingle(buff.ReadDouble()); //F7 53 D6 BD C3 23 CC 3F
 
             buff.ReadInt16(); //03 00
             buff.ReadByte(); //00
@@ -696,9 +698,9 @@ namespace L2_login
             buff.ReadInt32();//00 00 00 00
 
             buff.ReadInt16(); //12 00 
-            System.Convert.ToSingle(buff.ReadDouble()); //55 55 55 55 55 55 F1 3F <-- not working
+            Convert.ToSingle(buff.ReadDouble()); //55 55 55 55 55 55 F1 3F <-- not working
             RunSpeed = 143; //Ugly
-            MoveSpeedMult = System.Convert.ToSingle(buff.ReadDouble()); //31 0B ED 9C 66 81 F6 3F 
+            MoveSpeedMult = Convert.ToSingle(buff.ReadDouble()); //31 0B ED 9C 66 81 F6 3F 
 
             buff.ReadInt16(); //12 00 
             buff.ReadInt32(); //00 00 00 00 
@@ -796,7 +798,7 @@ namespace L2_login
                     GameData.initial_XP = XP;
                 }
 
-                XPPercent = System.Convert.ToSingle(buff.ReadDouble());
+                XPPercent = Convert.ToSingle(buff.ReadDouble());
 
                 STR = buff.ReadUInt32();//12 0 0 0
                 DEX = buff.ReadUInt32();//15 0 0 0
@@ -981,11 +983,11 @@ namespace L2_login
 
                 //GD OK
 
-                MoveSpeedMult = System.Convert.ToSingle(buff.ReadDouble());//8F C2 F5 28 5C 8F F4 3F
-                AttackSpeedMult = System.Convert.ToSingle(buff.ReadDouble());//4E EA 78 8A 24 53 FD 3F
+                MoveSpeedMult = Convert.ToSingle(buff.ReadDouble());//8F C2 F5 28 5C 8F F4 3F
+                AttackSpeedMult = Convert.ToSingle(buff.ReadDouble());//4E EA 78 8A 24 53 FD 3F
 
-                CollisionRadius = System.Convert.ToSingle(buff.ReadDouble());//0 0 0 0 0 0 1A 40
-                CollisionHeight = System.Convert.ToSingle(buff.ReadDouble());// 0 0 0 0 0 80 36 40
+                CollisionRadius = Convert.ToSingle(buff.ReadDouble());//0 0 0 0 0 0 1A 40
+                CollisionHeight = Convert.ToSingle(buff.ReadDouble());// 0 0 0 0 0 80 36 40
 
                 //GD OK
 
@@ -1139,7 +1141,7 @@ namespace L2_login
                 XP = buff.ReadUInt64();//FB 62 76 43 0 0 0 0
                 if (Globals.gamedata.Chron >= Chronicle.CT2_6)
                 {
-                    XPPercent = System.Convert.ToSingle(buff.ReadDouble());//buff.ReadUInt64(); //00 00 00 00 00 00 00 00
+                    XPPercent = Convert.ToSingle(buff.ReadDouble());//buff.ReadUInt64(); //00 00 00 00 00 00 00 00
                 }
                 STR = buff.ReadUInt32();//12 0 0 0
                 DEX = buff.ReadUInt32();//15 0 0 0
@@ -1315,11 +1317,11 @@ namespace L2_login
                 FlyRunSpeed = buff.ReadUInt32();//0 0 0 0
                 FlyWalkSpeed = buff.ReadUInt32();//0 0 0 0
 
-                MoveSpeedMult = System.Convert.ToSingle(buff.ReadDouble());//8F C2 F5 28 5C 8F F4 3F
-                AttackSpeedMult = System.Convert.ToSingle(buff.ReadDouble());//4E EA 78 8A 24 53 FD 3F
+                MoveSpeedMult = Convert.ToSingle(buff.ReadDouble());//8F C2 F5 28 5C 8F F4 3F
+                AttackSpeedMult = Convert.ToSingle(buff.ReadDouble());//4E EA 78 8A 24 53 FD 3F
 
-                CollisionRadius = System.Convert.ToSingle(buff.ReadDouble());//0 0 0 0 0 0 1A 40
-                CollisionHeight = System.Convert.ToSingle(buff.ReadDouble());// 0 0 0 0 0 80 36 40
+                CollisionRadius = Convert.ToSingle(buff.ReadDouble());//0 0 0 0 0 0 1A 40
+                CollisionHeight = Convert.ToSingle(buff.ReadDouble());// 0 0 0 0 0 80 36 40
 
                 HairSytle = buff.ReadUInt32();//0 0 0 0
                 HairColor = buff.ReadUInt32();//1 0 0 0
@@ -1467,8 +1469,8 @@ namespace L2_login
             Dest_Y = Y;
             Dest_Z = Z;
 
-            Cur_HP = System.Convert.ToSingle(buff.ReadDouble());
-            Cur_MP = System.Convert.ToSingle(buff.ReadDouble());
+            Cur_HP = Convert.ToSingle(buff.ReadDouble());
+            Cur_MP = Convert.ToSingle(buff.ReadDouble());
 
             SP = buff.ReadUInt32();
             XP = buff.ReadUInt64();//c5
@@ -1487,7 +1489,7 @@ namespace L2_login
             MEN = buff.ReadUInt32();
 
 
-            Globals.gamedata.LoginTime = System.DateTime.Now.Ticks;
+            Globals.gamedata.LoginTime = DateTime.Now.Ticks;
             Globals.gamedata.GameTime = buff.ReadUInt32();//reset on 24 hour timers
             buff.ReadUInt32();//00
 
@@ -1665,7 +1667,7 @@ namespace L2_login
                         if (Util.GetCharID(((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Name) == Globals.gamedata.my_char.BuffTarget)
 						{
 							if(success)
-                                ((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Set_Time(Globals.gamedata.my_char.BuffSkillID, System.DateTime.Now.Ticks);
+                                ((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Set_Time(Globals.gamedata.my_char.BuffSkillID, DateTime.Now.Ticks);
 							else
                                 ((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Add_Time(Globals.gamedata.my_char.BuffSkillID, Globals.FAILED_BUFF);
 							break;

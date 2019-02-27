@@ -7,7 +7,7 @@ namespace L2_login
     public class Chat_Line
     {
         public string text = "";
-        public System.Drawing.Brush color = System.Drawing.Brushes.Black;
+        public Brush color = Brushes.Black;
         public TextType type = TextType.ALL;
     }
 
@@ -104,18 +104,18 @@ namespace L2_login
             Add_Text(text, Globals.Red);
         }
 
-        public void Add_Text(string text, System.Drawing.Brush col)
+        public void Add_Text(string text, Brush col)
         {
             Add_Text(text, col, TextType.ALL);
         }
 
-        public void Add_Text(string text, System.Drawing.Brush col, TextType type)
+        public void Add_Text(string text, Brush col, TextType type)
         {
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
 
-            string time = System.DateTime.Now.ToLongTimeString() + " :[" + text + Environment.NewLine;
+            string time = DateTime.Now.ToLongTimeString() + " :[" + text + Environment.NewLine;
             Chat_Line new_chat = new Chat_Line();
             new_chat.text = time;
             new_chat.color = col;

@@ -1,7 +1,8 @@
+using System.Collections;
 /// <summary>
 /// This class is an implementation of the 'IComparer' interface.
 /// </summary>
-public class ListViewColumnSorter : System.Collections.IComparer
+public class ListViewColumnSorter : IComparer
 {
 	/// <summary>
 	/// Specifies the column to be sorted
@@ -14,7 +15,7 @@ public class ListViewColumnSorter : System.Collections.IComparer
 	/// <summary>
 	/// Case insensitive comparer object
 	/// </summary>
-	private System.Collections.CaseInsensitiveComparer ObjectCompare;
+	private CaseInsensitiveComparer ObjectCompare;
 
 	/// <summary>
 	/// Class constructor.  Initializes various elements
@@ -28,7 +29,7 @@ public class ListViewColumnSorter : System.Collections.IComparer
 		OrderOfSort = System.Windows.Forms.SortOrder.None;
 
 		// Initialize the CaseInsensitiveComparer object
-		ObjectCompare = new System.Collections.CaseInsensitiveComparer();
+		ObjectCompare = new CaseInsensitiveComparer();
 	}
 
 	/// <summary>

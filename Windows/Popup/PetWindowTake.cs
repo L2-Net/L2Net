@@ -15,9 +15,9 @@ namespace L2_login
         {
             string item = listView_petTake_PetInv.SelectedItems[0].SubItems[0].Text;
             int loc = listView_petTake_PetInv.SelectedItems[0].Index; //Index
-            uint objID = System.Convert.ToUInt32(listView_petTake_PetInv.SelectedItems[0].SubItems[2].Text); //Obj ID
-            ulong quantity = System.Convert.ToUInt64(listView_petTake_PetInv.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
-            ulong trquantity = System.Convert.ToUInt64(textBox_petTake_Quantity.Text);
+            uint objID = Convert.ToUInt32(listView_petTake_PetInv.SelectedItems[0].SubItems[2].Text); //Obj ID
+            ulong quantity = Convert.ToUInt64(listView_petTake_PetInv.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
+            ulong trquantity = Convert.ToUInt64(textBox_petTake_Quantity.Text);
 
             if (trquantity > quantity)
             {
@@ -63,7 +63,7 @@ namespace L2_login
                 foreach (PetInventoryInfo inv_inf in Globals.gamedata.my_pet.inventory.Values)
                 {
                     //add it
-                    System.Windows.Forms.ListViewItem ObjListItem;
+                    ListViewItem ObjListItem;
 
                     if (inv_inf.isEquipped == 0x01) //Equipped
                     {

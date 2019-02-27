@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Threading;
+
 namespace L2_login
 {
     public enum DeviceState : int
@@ -183,13 +186,13 @@ namespace L2_login
 
 	public class GameData
 	{
-		private System.Collections.Queue _gamesendqueue = new System.Collections.Queue();
-		private System.Collections.Queue _gamereadqueue = new System.Collections.Queue();
-		private System.Collections.Queue _clientsendqueue = new System.Collections.Queue();
-		private System.Collections.Queue _clientreadqueue = new System.Collections.Queue();
+		private Queue _gamesendqueue = new Queue();
+		private Queue _gamereadqueue = new Queue();
+		private Queue _clientsendqueue = new Queue();
+		private Queue _clientreadqueue = new Queue();
 
-        private System.Collections.Queue _LocalChatQueue = new System.Collections.Queue();
-        private System.Collections.Queue _PrivateMsgQueue = new System.Collections.Queue();
+        private Queue _LocalChatQueue = new Queue();
+        private Queue _PrivateMsgQueue = new Queue();
 
         //stats tabpage stuff
         public static ulong meshless_ignored = 0;
@@ -203,7 +206,7 @@ namespace L2_login
         public volatile bool initial_Adena_Gained_received = false;
         
         
-        public System.Collections.Stack stc_buffer = new System.Collections.Stack();
+        public Stack stc_buffer = new Stack();
 
         private static Player_Info _my_char;
         private static Pet_Info _my_pet;
@@ -213,14 +216,14 @@ namespace L2_login
         private static BotOptions _botoptions;
         private static AlertOptions _alertoptions;
 
-		private System.Collections.ArrayList _BuffsGiven = new System.Collections.ArrayList();
-        private System.Collections.ArrayList _Moblist = new System.Collections.ArrayList();
-        private System.Collections.SortedList _inventory = new System.Collections.SortedList();
-        private System.Collections.SortedList _skills = new System.Collections.SortedList();
-        private System.Collections.SortedList _buffs = new System.Collections.SortedList();
-        private System.Collections.SortedList _buylist = new System.Collections.SortedList();
+		private ArrayList _BuffsGiven = new ArrayList();
+        private ArrayList _Moblist = new ArrayList();
+        private SortedList _inventory = new SortedList();
+        private SortedList _skills = new SortedList();
+        private SortedList _buffs = new SortedList();
+        private SortedList _buylist = new SortedList();
 
-        private System.Collections.SortedList _PartyMembers = new System.Collections.SortedList();
+        private SortedList _PartyMembers = new SortedList();
         public volatile uint PartyLeader = 0;
         public volatile uint PartyLoot = 0;
         public volatile uint PartyCount = 0;
@@ -229,14 +232,14 @@ namespace L2_login
         public long LoginTime = 0;
         public volatile uint GameTime = 0;
 
-        private System.Collections.SortedList _nearby_chars = new System.Collections.SortedList();
-        private System.Collections.SortedList _nearby_npcs = new System.Collections.SortedList();
-        private System.Collections.SortedList _nearby_items = new System.Collections.SortedList();
+        private SortedList _nearby_chars = new SortedList();
+        private SortedList _nearby_npcs = new SortedList();
+        private SortedList _nearby_items = new SortedList();
 
-        private System.Collections.ArrayList _ShortCuts = new System.Collections.ArrayList(Globals.Skills_Pages * Globals.Skills_PerPage);
+        private ArrayList _ShortCuts = new ArrayList(Globals.Skills_Pages * Globals.Skills_PerPage);
 
 		private Polygon _Paths = new Polygon();
-		private System.Collections.ArrayList _Walls = new System.Collections.ArrayList();
+		private ArrayList _Walls = new ArrayList();
 
         private byte[] _sessionID = new byte[4];
         private byte[] _login_ok = new byte[8];
@@ -361,7 +364,7 @@ namespace L2_login
         //public uint[] SummonIDs = new uint[] { 1538, 1561, 12077, 12311, 12312, 12313, 12526, 12527, 12528, 12564, 12621, 14001, 14002, 14003, 14004, 14005, 14006, 14007, 14008, 14009, 14010, 14011, 14012, 14013, 14014, 14015, 14016, 14017, 14018, 14019, 14020, 14021, 14022, 14023, 14024, 14025, 14026, 14027, 14028, 14029, 14030, 14031, 14032, 14033, 14034, 14035, 14036, 14037, 14038, 14039, 14040, 14041, 14042, 14043, 14044, 14045, 14046, 14047, 14048, 14049, 14050, 14051, 14052, 14053, 14054, 14055, 14056, 14057, 14058, 14059, 14060, 14061, 14062, 14063, 14064, 14065, 14066, 14067, 14068, 14069, 14070, 14071, 14072, 14073, 14074, 14075, 14076, 14077, 14078, 14079, 14080, 14081, 14082, 14083, 14084, 14085, 14086, 14087, 14088, 14089, 14090, 14091, 14092, 14093, 14094, 14095, 14096, 14097, 14098, 14099, 14100, 14101, 14102, 14103, 14104, 14105, 14106, 14107, 14108, 14109, 14110, 14111, 14112, 14113, 14114, 14115, 14116, 14117, 14118, 14119, 14120, 14121, 14122, 14123, 14124, 14125, 14126, 14127, 14128, 14129, 14130, 14131, 14132, 14133, 14134, 14135, 14136, 14137, 14138, 14139, 14140, 14141, 14142, 14143, 14144, 14145, 14146, 14147, 14148, 14149, 14150, 14151, 14152, 14153, 14154, 14155, 14156, 14157, 14158, 14159, 14160, 14161, 14162, 14163, 14164, 14165, 14166, 14167, 14168, 14169, 14170, 14171, 14172, 14173, 14174, 14175, 14176, 14177, 14178, 14179, 14180, 14181, 14182, 14183, 14184, 14185, 14186, 14187, 14188, 14189, 14190, 14191, 14192, 14193, 14194, 14195, 14196, 14197, 14198, 14199, 14200, 14201, 14202, 14203, 14204, 14205, 14206, 14207, 14208, 14209, 14210, 14211, 14212, 14213, 14214, 14215, 14216, 14217, 14218, 14219, 14220, 14221, 14222, 14223, 14224, 14225, 14226, 14227, 14228, 14229, 14230, 14231, 14232, 14233, 14234, 14235, 14236, 14237, 14238, 14239, 14240, 14241, 14242, 14243, 14244, 14245, 14246, 14247, 14248, 14249, 14250, 14251, 14252, 14253, 14254, 14255, 14256, 14257, 14258, 14259, 14260, 14265, 14266, 14267, 14268, 14269, 14270, 14271, 14272, 14273, 14274, 14275, 14276, 14277, 14278, 14279, 14280, 14281, 14282, 14283, 14284, 14285, 14286, 14287, 14288, 14289, 14290, 14291, 14292, 14293, 14294, 14295, 14296, 14297, 14298, 14299, 14300, 14301, 14302, 14303, 14304, 14305, 14306, 14307, 14308, 14309, 14310, 14311, 14312, 14313, 14314, 14315, 14316, 14317, 14318, 14319, 14320, 14321, 14322, 14323, 14324, 14325, 14326, 14327, 14328, 14329, 14330, 14331, 14332, 14333, 14334, 14335, 14336, 14337, 14338, 14339, 14340, 14341, 14342, 14343, 14344, 14345, 14346, 14347, 14348, 14349, 14350, 14351, 14352, 14353, 14354, 14355, 14356, 14357, 14358, 14359, 14360, 14361, 14362, 14363, 14364, 14365, 14366, 14367, 14368, 14369, 14370, 14371, 14372, 14373, 14374, 14375, 14376, 14377, 14378, 14379, 14380, 14381, 14382, 14383, 14384, 14385, 14386, 14387, 14388, 14389, 14390, 14391, 14392, 14393, 14394, 14395, 14396, 14397, 14398, 14399, 14400, 14401, 14402, 14403, 14404, 14405, 14406, 14407, 14408, 14409, 14410, 14411, 14412, 14413, 14414, 14415, 14416, 14417, 14418, 14419, 14420, 14421, 14422, 14423, 14424, 14425, 14426, 14427, 14428, 14429, 14430, 14431, 14432, 14433, 14434, 14435, 14436, 14437, 14438, 14439, 14440, 14441, 14442, 14443, 14444, 14449, 14450, 14451, 14452, 14453, 14454, 14455, 14456, 14457, 14458, 14459, 14460, 14461, 14462, 14463, 14464, 14465, 14466, 14467, 14468, 14469, 14470, 14471, 14472, 14473, 14474, 14475, 14476, 14477, 14478, 14479, 14480, 14481, 14482, 14483, 14484, 14485, 14486, 14487, 14488, 14489, 14490, 14491, 14492, 14493, 14494, 14495, 14496, 14497, 14498, 14499, 14500, 14501, 14502, 14503, 14504, 14505, 14506, 14507, 14508, 14509, 14510, 14511, 14512, 14513, 14514, 14515, 14516, 14517, 14518, 14519, 14520, 14521, 14522, 14523, 14524, 14525, 14526, 14527, 14528, 14529, 14530, 14531, 14532, 14533, 14534, 14535, 14536, 14537, 14538, 14539, 14540, 14541, 14542, 14543, 14544, 14545, 14546, 14547, 14548, 14549, 14550, 14551, 14552, 14553, 14554, 14555, 14556, 14557, 14558, 14559, 14560, 14561, 14562, 14563, 14564, 14565, 14566, 14567, 14568, 14569, 14570, 14571, 14572, 14573, 14574, 14575, 14576, 14577, 14578, 14579, 14580, 14581, 14582, 14583, 14584, 14585, 14586, 14587, 14588, 14589, 14590, 14591, 14592, 14593, 14594, 14595, 14596, 14597, 14598, 14599, 14600, 14601, 14602, 14603, 14604, 14605, 14606, 14607, 14608, 14609, 14610, 14611, 14612, 14613, 14614, 14615, 14616, 14617, 14618, 14619, 14620, 14621, 14622, 14623, 14624, 14625, 14626, 14627, 14628, 14633, 14634, 14635, 14636, 14637, 14638, 14639, 14640, 14641, 14642, 14643, 14644, 14645, 14646, 14647, 14648, 14649, 14650, 14651, 14652, 14653, 14654, 14655, 14656, 14657, 14658, 14659, 14660, 14661, 14662, 14663, 14664, 14665, 14666, 14667, 14668, 14669, 14670, 14671, 14672, 14673, 14674, 14675, 14676, 14677, 14678, 14679, 14680, 14681, 14682, 14683, 14684, 14685, 14686, 14687, 14688, 14689, 14690, 14691, 14692, 14693, 14694, 14695, 14696, 14697, 14698, 14699, 14700, 14701, 14702, 14703, 14704, 14705, 14706, 14707, 14708, 14709, 14710, 14711, 14712, 14713, 14714, 14715, 14716, 14717, 14718, 14719, 14720, 14721, 14722, 14723, 14724, 14725, 14726, 14727, 14728, 14729, 14730, 14731, 14732, 14733, 14734, 14735, 14736, 14799, 14800, 14801, 14802, 14803, 14804, 14805, 14806, 14807, 14808, 14809, 14810, 14811, 14812, 14813, 14814, 14815, 14816, 14817, 14818, 14819, 14820, 14821, 14822, 14823, 14824, 14825, 14826, 14827, 14828, 14829, 14830, 14831, 14832, 14833, 14834, 14835, 14836, 14837, 14838, 14870, 14871, 14872, 14873, 14874, 14875, 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14886, 14887, 14888, 14889, 14890, 14891, 14892, 14893, 14894, 14895, 14896, 14897, 14898, 14899, 14900, 14901, 14902, 14903, 14904, 14905, 14906, 14907, 14908, 14909, 14910, 14911, 14912, 14913, 14914, 14915, 14916, 14917, 14918, 16025, 16030, 16037, 16038, 16039, 16040, 16041, 16042, 16043, 16044, 16045, 16046, 16050, 16051, 16052, 16053, 16067, 16068 };
         public uint[] SummonIDs = new uint[] { 14702, 14703, 14704, 14705, 14706, 14707, 14708, 14709, 14710, 14711, 14712, 14713, 14714, 14715, 14716, 14717, 14718, 14719, 14720, 14721, 14722, 14723, 14724, 14725, 14726, 14727, 14728, 14729, 14730, 14731, 14732, 14733, 14734, 14735, 14736, 106, 139, 14296, 14298, 14300, 14301, 14302, 14303, 14304, 14305, 14306, 14307, 14308, 14309, 14310, 14311, 14312, 14313, 14314, 14315, 14316, 14317, 14318, 14319, 14320, 14321, 14322, 14323, 14324, 14325, 14326, 14327, 14328, 14329, 14330, 14331, 14332, 14333, 14334, 14335, 14336, 14337, 14338, 14339, 14340, 14341, 14342, 14295, 14297, 14299, 14929, 14947, 14948, 14949, 14950, 14951, 14952, 14953, 14971, 15022, 15023, 15024, 15025, 15026, 15027, 15028, 15029, 15030, 15031, 14074, 14075, 14076, 14077, 14078, 14079, 14080, 14081, 14082, 14083, 14084, 14085, 14086, 14087, 14088, 14089, 14090, 14091, 14092, 14093, 14094, 14095, 14096, 14097, 14098, 14099, 14100, 14101, 14102, 14103, 14104, 14105, 14106, 14107, 14108, 14109, 14110, 19365, 19387, 14799, 14800, 14801, 14802, 14803, 14804, 14805, 14806, 14807, 14808, 14809, 14810, 14811, 14812, 14813, 14814, 14815, 14816, 14817, 14818, 14819, 14820, 14821, 14822, 14823, 14824, 14825, 14826, 14827, 14828, 14829, 14830, 14831, 14832, 14833, 14834, 14835, 14038, 14039, 14040, 14041, 14042, 14043, 14044, 14045, 14046, 14047, 14048, 14049, 14050, 14051, 14052, 14053, 14054, 14055, 14056, 14057, 14058, 14059, 14060, 14061, 14062, 14063, 14064, 14065, 14066, 14067, 14068, 14069, 14070, 14071, 14072, 14073, 14836, 14871, 14872, 14873, 14874, 14875, 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14251, 14252, 14253, 14254, 14255, 14256, 14257, 14258, 14259, 14260, 14265, 14266, 14267, 14268, 14269, 14270, 14271, 14272, 14273, 14274, 14275, 14276, 14277, 14278, 14279, 14280, 14281, 14282, 14283, 14284, 14285, 14286, 14287, 14288, 14289, 14290, 14291, 14292, 14293, 14294, 14207, 14208, 14209, 14210, 14211, 14212, 14213, 14214, 14215, 14216, 14217, 14218, 14219, 14220, 14221, 14222, 14223, 14224, 14225, 14226, 14227, 14228, 14229, 14230, 14231, 14232, 14233, 14234, 14235, 14236, 14237, 14238, 14239, 14240, 14241, 14242, 14243, 14244, 14245, 14246, 14247, 14248, 14249, 14250, 14111, 14112, 14113, 14114, 14115, 14116, 14117, 14118, 14119, 14120, 14121, 14122, 14123, 14124, 14125, 14126, 14127, 14128, 14129, 14130, 14131, 14132, 14133, 14134, 14135, 14136, 14137, 14138, 14139, 14140, 14141, 14142, 14143, 14144, 14145, 14146, 14147, 14148, 14149, 14150, 14151, 14152, 14153, 14154, 14155, 14156, 14157, 14158, 14837, 14886, 14887, 14888, 14889, 14890, 14891, 14892, 14893, 14894, 14895, 14896, 14897, 14898, 14899, 14900, 14663, 14664, 14665, 14666, 14667, 14668, 14669, 14670, 14671, 14672, 14673, 14674, 14675, 14676, 14677, 14678, 14679, 14680, 14681, 14682, 14683, 14684, 14685, 14686, 14687, 14688, 14689, 14690, 14691, 14692, 14693, 14694, 14695, 14696, 14697, 14698, 14699, 14700, 14701, 14391, 14392, 14393, 14394, 14395, 14396, 14397, 14398, 14399, 14400, 14401, 14402, 14403, 14404, 14405, 14406, 14407, 14408, 14409, 14410, 14411, 14412, 14413, 14414, 14415, 14416, 14417, 14418, 14419, 14420, 14421, 14422, 14423, 14424, 14425, 14426, 14427, 14428, 14429, 14430, 14431, 14432, 14433, 14434, 14159, 14160, 14161, 14162, 14163, 14164, 14165, 14166, 14167, 14168, 14169, 14170, 14171, 14172, 14173, 14174, 14175, 14176, 14177, 14178, 14179, 14180, 14181, 14182, 14183, 14184, 14185, 14186, 14187, 14188, 14189, 14190, 14191, 14192, 14193, 14194, 14195, 14196, 14197, 14198, 14199, 14200, 14201, 14202, 14203, 14204, 14205, 14206, 14343, 14345, 14347, 14349, 14350, 14351, 14352, 14353, 14354, 14355, 14356, 14357, 14358, 14359, 14360, 14344, 14346, 14348, 14361, 14362, 14363, 14364, 14365, 14366, 14367, 14368, 14369, 14370, 14371, 14372, 14373, 14374, 14375, 14376, 14377, 14378, 14379, 14380, 14381, 14382, 14383, 14384, 14385, 14386, 14387, 14388, 14389, 14390, 14619, 14620, 14621, 14622, 14623, 14624, 14625, 14626, 14627, 14628, 14633, 14634, 14635, 14636, 14637, 14638, 14639, 14640, 14641, 14642, 14643, 14644, 14645, 14646, 14647, 14648, 14649, 14650, 14651, 14652, 14653, 14654, 14655, 14656, 14657, 14658, 14659, 14660, 14661, 14662, 14001, 14002, 14003, 14004, 14005, 14006, 14007, 14008, 14009, 14010, 14011, 14012, 14013, 14014, 14015, 14016, 14017, 14018, 14019, 14020, 14021, 14022, 14023, 14024, 14025, 14026, 14027, 14028, 14029, 14030, 14031, 14032, 14033, 14034, 14035, 14036, 14037, 14930, 14954, 14955, 14956, 14957, 14958, 14959, 14960, 14972, 15032, 15033, 15034, 15035, 15036, 15037, 15038, 15039, 15040, 15041, 14435, 14436, 14437, 14438, 14439, 14440, 14441, 14442, 14443, 14444, 14449, 14450, 14451, 14452, 14453, 14454, 14455, 14456, 14457, 14458, 14459, 14460, 14461, 14462, 14463, 14464, 14465, 14466, 14467, 14468, 14469, 14470, 14471, 14472, 14473, 14474, 14475, 14476, 14477, 14478, 14479, 14480, 14481, 14482, 14483, 14484, 14485, 14486, 14487, 14488, 14489, 14490, 14491, 14492, 14493, 14494, 14495, 14496, 14497, 14498, 14499, 14500, 14501, 14502, 14503, 14504, 14505, 14506, 14507, 14508, 14509, 14510, 14511, 14512, 14513, 14514, 14515, 14516, 14517, 14518, 14519, 14520, 14521, 14522, 14523, 14524, 14525, 14526, 14527, 14528, 14529, 14530, 14531, 14532, 14533, 14534, 14535, 14536, 14537, 14538, 14539, 14540, 14541, 14542, 14543, 14544, 14545, 14546, 14547, 14548, 14549, 14550, 14551, 14552, 14553, 14554, 14555, 14556, 14557, 14558, 14559, 14560, 14561, 14562, 14563, 14564, 14565, 14566, 14567, 14568, 14569, 14570, 14571, 14572, 14573, 14574, 16098, 16099, 16100, 16101, 16102, 12564, 14575, 14576, 14577, 14578, 14579, 14580, 14581, 14582, 14583, 14584, 14585, 14586, 14587, 14588, 14589, 14590, 14591, 14592, 14593, 14594, 14595, 14596, 14597, 14598, 14599, 14600, 14601, 14602, 14603, 14604, 14605, 14606, 14607, 14608, 14609, 14610, 14611, 14612, 14613, 14614, 14615, 14616, 14617, 14618, 30627, 19256, 2529, 14933, 14943, 15010, 15011, 15012, 15013, 15014, 15015, 15016, 15017, 15018, 15019, 15020, 15021, 14925, 14944, 14945, 14946, 15000, 15001, 15002, 15003, 15004, 15005, 15006, 15007, 15008, 15009, 14931, 14961, 14962, 14963, 14964, 14965, 14966, 14967, 14973, 15042, 15043, 15044, 15045, 15046, 15047, 15048, 15049, 15050, 15051, 14936, 14937, 14938, 14939, 14974, 14975, 14976, 14977, 14978, 14979, 14980, 14981, 14982, 14983, 14984, 14985 };
 
-        public System.Collections.SortedList ClassNick = new System.Collections.SortedList() 
+        public SortedList ClassNick = new SortedList() 
         { 
             {0,"Lo"},       // Human Fighter
             {1,"Lo"},       // Human Warrior
@@ -539,13 +542,13 @@ namespace L2_login
                     Globals.GameSendQueueLock.ExitWriteLock();
                 }
 
-                if (Globals.gamethread.sendthread.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+                if (Globals.gamethread.sendthread.ThreadState == ThreadState.WaitSleepJoin)
                 {
                     try
                     {
                         Globals.gamethread.sendthread.Interrupt();
                     }
-                    catch (System.Threading.ThreadInterruptedException)
+                    catch (ThreadInterruptedException)
                     {
                         //everything worked perfect
                     }
@@ -574,13 +577,13 @@ namespace L2_login
                 Globals.GameSendQueueLock.ExitWriteLock();
             }
 
-            if (Globals.gamethread.sendthread.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+            if (Globals.gamethread.sendthread.ThreadState == ThreadState.WaitSleepJoin)
             {
                 try
                 {
                     Globals.gamethread.sendthread.Interrupt();
                 }
-                catch (System.Threading.ThreadInterruptedException)
+                catch (ThreadInterruptedException)
                 {
                     //everything worked perfect
                 }
@@ -603,13 +606,13 @@ namespace L2_login
                 Globals.GameSendQueueLock.ExitWriteLock();
             }
 
-            if (Globals.gamethread.sendthread.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+            if (Globals.gamethread.sendthread.ThreadState == ThreadState.WaitSleepJoin)
             {
                 try
                 {
                     Globals.gamethread.sendthread.Interrupt();
                 }
-                catch (System.Threading.ThreadInterruptedException)
+                catch (ThreadInterruptedException)
                 {
                     //everything worked perfect
                 }
@@ -632,13 +635,13 @@ namespace L2_login
                 Globals.ClientSendQueueLock.ExitWriteLock();
             }
 
-            if (Globals.clientthread.sendthread.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+            if (Globals.clientthread.sendthread.ThreadState == ThreadState.WaitSleepJoin)
 			{
 				try
 				{
                     Globals.clientthread.sendthread.Interrupt();
 				}
-				catch (System.Threading.ThreadInterruptedException)
+				catch (ThreadInterruptedException)
 				{
 					//everything worked perfect
 				}
@@ -661,13 +664,13 @@ namespace L2_login
                 Globals.GameReadQueueLock.ExitWriteLock();
             }
 
-            if (Globals.gameprocessdatathread.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+            if (Globals.gameprocessdatathread.ThreadState == ThreadState.WaitSleepJoin)
 			{
 				try
 				{
                     Globals.gameprocessdatathread.Interrupt();
 				}
-				catch (System.Threading.ThreadInterruptedException)
+				catch (ThreadInterruptedException)
 				{
 					//everything worked perfect
 				}
@@ -751,8 +754,8 @@ namespace L2_login
 					//lets set it to be paused while we do our shit
                     CurrentScriptState = ScriptState.Paused;
 
-					//need to sleep for a moment while we wait for the script thread to pause
-                    System.Threading.Thread.Sleep(Globals.SLEEP_Script_Reset2);
+                    //need to sleep for a moment while we wait for the script thread to pause
+                    Thread.Sleep(Globals.SLEEP_Script_Reset2);
 				}
 			}
 		}
@@ -776,8 +779,8 @@ namespace L2_login
                         }
                     }
 
-					//need to sleep for a moment while we wait for the target to be restored
-                    System.Threading.Thread.Sleep(Globals.SLEEP_Script_Reset); //500ms
+                    //need to sleep for a moment while we wait for the target to be restored
+                    Thread.Sleep(Globals.SLEEP_Script_Reset); //500ms
 
 					//lets restore the script running state
                     CurrentScriptState = ScriptState.DelayStart;
@@ -785,11 +788,11 @@ namespace L2_login
 			}
 		}
 
-		public System.Collections.ArrayList Walls
+		public ArrayList Walls
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(WallsLock)
 				{
 					tmp = this._Walls;
@@ -823,11 +826,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.SortedList inventory
+        public SortedList inventory
 		{
 			get
 			{
-                System.Collections.SortedList tmp;
+                SortedList tmp;
 				lock(inventoryLock)
 				{
 					tmp = this._inventory;
@@ -842,11 +845,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.SortedList buylist
+        public SortedList buylist
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (buylistLock)
                 {
                     tmp = this._buylist;
@@ -861,11 +864,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.SortedList nearby_npcs
+        public SortedList nearby_npcs
 		{
 			get
 			{
-                System.Collections.SortedList tmp;
+                SortedList tmp;
 				lock(nearby_npcsLock)
 				{
 					tmp = this._nearby_npcs;
@@ -880,11 +883,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.SortedList nearby_items
+		public SortedList nearby_items
 		{
 			get
 			{
-                System.Collections.SortedList tmp;
+                SortedList tmp;
 				lock(nearby_itemsLock)
 				{
 					tmp = this._nearby_items;
@@ -899,11 +902,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.SortedList nearby_chars
+        public SortedList nearby_chars
 		{
 			get
 			{
-                System.Collections.SortedList tmp;
+                SortedList tmp;
 				lock(nearby_charsLock)
 				{
 					tmp = this._nearby_chars;
@@ -918,11 +921,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.Queue clientreadqueue
+		public Queue clientreadqueue
 		{
 			get
 			{
-				System.Collections.Queue tmp;
+                Queue tmp;
 				lock(clientreadqueueLock)
 				{
 					tmp = this._clientreadqueue;
@@ -937,11 +940,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.Queue clientsendqueue
+		public Queue clientsendqueue
 		{
 			get
 			{
-				System.Collections.Queue tmp;
+                Queue tmp;
 				lock(clientsendqueueLock)
 				{
 					tmp = this._clientsendqueue;
@@ -956,11 +959,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.Queue gamereadqueue
+		public Queue gamereadqueue
 		{
 			get
 			{
-				System.Collections.Queue tmp;
+                Queue tmp;
 				lock(gamereadqueueLock)
 				{
 					tmp = this._gamereadqueue;
@@ -975,11 +978,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.Queue gamesendqueue
+		public Queue gamesendqueue
 		{
 			get
 			{
-				System.Collections.Queue tmp;
+                Queue tmp;
 				lock(gamesendqueueLock)
 				{
 					tmp = this._gamesendqueue;
@@ -995,11 +998,11 @@ namespace L2_login
 			}
 		}
 
-        public System.Collections.Queue LocalChatQueue
+        public Queue LocalChatQueue
         {
             get
             {
-                System.Collections.Queue tmp;
+                Queue tmp;
                 lock (LocalChatQueueLock)
                 {
                     tmp = this._LocalChatQueue;
@@ -1015,11 +1018,11 @@ namespace L2_login
             }
         }
 
-        public System.Collections.Queue PrivateMsgQueue
+        public Queue PrivateMsgQueue
         {
             get
             {
-                System.Collections.Queue tmp;
+                Queue tmp;
                 lock (PrivateMsgQueueLock)
                 {
                     tmp = this._PrivateMsgQueue;
@@ -1189,11 +1192,11 @@ namespace L2_login
                 }
             }
         }
-		public System.Collections.ArrayList BuffsGiven
+		public ArrayList BuffsGiven
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(BuffsGivenLock)
 				{
 					tmp = this._BuffsGiven;
@@ -1210,11 +1213,11 @@ namespace L2_login
 		}
 
 
-		public System.Collections.ArrayList MobList
+		public ArrayList MobList
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (MoblistLock)
 				{
                     tmp = this._Moblist;
@@ -1383,11 +1386,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.SortedList mybuffs
+        public SortedList mybuffs
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (buffsLock)
                 {
                     tmp = this._buffs;
@@ -1403,11 +1406,11 @@ namespace L2_login
             }
         }
 
-        public System.Collections.SortedList skills
+        public SortedList skills
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (skillsLock)
                 {
                     tmp = this._skills;
@@ -1422,11 +1425,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.SortedList PartyMembers
+        public SortedList PartyMembers
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (PartyMembersLock)
                 {
                     tmp = this._PartyMembers;
@@ -1482,11 +1485,11 @@ namespace L2_login
         }
 
 
-        public System.Collections.ArrayList ShortCuts
+        public ArrayList ShortCuts
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (ShortCutsLock)
                 {
                     tmp = this._ShortCuts;
@@ -1524,77 +1527,77 @@ namespace L2_login
         {
             get
             {
-                return GameData._my_char;
+                return _my_char;
             }
             set
             {
-                GameData._my_char = value;
+                _my_char = value;
             }
         }
         public Pet_Info my_pet
         {
             get
             {
-                return GameData._my_pet;
+                return _my_pet;
             }
             set
             {
-                GameData._my_pet = value;
+                _my_pet = value;
             }
         }
         public Pet_Info my_pet1
         {
             get
             {
-                return GameData._my_pet1;
+                return _my_pet1;
             }
             set
             {
-                GameData._my_pet1 = value;
+                _my_pet1 = value;
             }
         }
         public Pet_Info my_pet2
         {
             get
             {
-                return GameData._my_pet2;
+                return _my_pet2;
             }
             set
             {
-                GameData._my_pet2 = value;
+                _my_pet2 = value;
             }
         }
         public Pet_Info my_pet3
         {
             get
             {
-                return GameData._my_pet3;
+                return _my_pet3;
             }
             set
             {
-                GameData._my_pet3 = value;
+                _my_pet3 = value;
             }
         }
         public BotOptions botoptions
         {
             get
             {
-                return GameData._botoptions;
+                return _botoptions;
             }
             set
             {
-                GameData._botoptions = value;
+                _botoptions = value;
             }
         }
         public AlertOptions alertoptions
         {
             get
             {
-                return GameData._alertoptions;
+                return _alertoptions;
             }
             set
             {
-                GameData._alertoptions = value;
+                _alertoptions = value;
             }
         }
 

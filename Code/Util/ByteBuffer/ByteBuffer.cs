@@ -110,7 +110,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 2)
 			{
-				UInt16 temp = System.BitConverter.ToUInt16(_data,_index);
+				UInt16 temp = BitConverter.ToUInt16(_data,_index);
 				_index += 2;
 				return temp;
 			}
@@ -125,7 +125,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 4)
 			{
-				UInt32 temp = System.BitConverter.ToUInt32(_data,_index);
+				UInt32 temp = BitConverter.ToUInt32(_data,_index);
 				_index += 4;
 				return temp;
             }
@@ -140,7 +140,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 8)
 			{
-				UInt64 temp = System.BitConverter.ToUInt64(_data,_index);
+				UInt64 temp = BitConverter.ToUInt64(_data,_index);
 				_index += 8;
 				return temp;
             }
@@ -154,7 +154,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 2)
 			{
-				Int16 temp = System.BitConverter.ToInt16(_data,_index);
+				Int16 temp = BitConverter.ToInt16(_data,_index);
 				_index += 2;
 				return temp;
             }
@@ -169,7 +169,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 4)
 			{
-				Int32 temp = System.BitConverter.ToInt32(_data,_index);
+				Int32 temp = BitConverter.ToInt32(_data,_index);
 				_index += 4;
 				return temp;
             }
@@ -184,7 +184,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 8)
 			{
-				Int64 temp = System.BitConverter.ToInt64(_data,_index);
+				Int64 temp = BitConverter.ToInt64(_data,_index);
 				_index += 8;
 				return temp;
             }
@@ -199,7 +199,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 8)
 			{
-				double temp = System.BitConverter.ToDouble(_data,_index);
+				double temp = BitConverter.ToDouble(_data,_index);
 				_index += 8;
 				return temp;
             }
@@ -214,7 +214,7 @@ namespace L2_login
 		{
 			if(_length >= _index + 2)
 			{
-				char temp = System.BitConverter.ToChar(_data,_index);
+				char temp = BitConverter.ToChar(_data,_index);
 				_index += 2;
 				return temp;
             }
@@ -289,7 +289,7 @@ namespace L2_login
 			if(_length >= _index + 2)
 			{
 				byte[] tmp = new byte[2];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -309,7 +309,7 @@ namespace L2_login
 			if(_length >= _index + 4)
 			{
 				byte[] tmp = new byte[4];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -331,7 +331,7 @@ namespace L2_login
 			if(_length >= _index + 8)
 			{
 				byte[] tmp = new byte[8];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -357,7 +357,7 @@ namespace L2_login
 			if(_length >= _index + 2)
 			{
 				byte[] tmp = new byte[2];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -377,7 +377,7 @@ namespace L2_login
 			if(_length >= _index + 4)
 			{
 				byte[] tmp = new byte[4];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -399,7 +399,7 @@ namespace L2_login
 			if(_length >= _index + 8)
 			{
 				byte[] tmp = new byte[8];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];
@@ -425,7 +425,7 @@ namespace L2_login
 			if(_length >= _index + 8)
 			{
 				byte[] tmp = new byte[8];
-				tmp = System.BitConverter.GetBytes(val);
+				tmp = BitConverter.GetBytes(val);
 
 				_data[_index] = tmp[0];
 				_data[_index+1] = tmp[1];

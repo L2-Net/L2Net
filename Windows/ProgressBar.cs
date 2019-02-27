@@ -10,15 +10,15 @@ namespace VistaStyleProgressBar
     /// A replacement for the default ProgressBar control.
     /// </summary>
     [DefaultEvent("ValueChanged")]
-	public class ProgressBar : System.Windows.Forms.UserControl 
-	{
+	public class ProgressBar : UserControl
+    {
 
 		#region -  Designer  -
 
 			/// <summary> 
 			/// Required designer variable.
 			/// </summary>
-			private System.ComponentModel.Container components = null;
+			private Container components = null;
 
 			/// <summary>
 			/// Create the control and initialize it.
@@ -69,7 +69,7 @@ namespace VistaStyleProgressBar
 					// ProgressBar
 					// 
 					this.Name = "ProgressBar";
-					this.Size = new System.Drawing.Size(264, 32);
+					this.Size = new Size(264, 32);
 					this.Paint +=new PaintEventHandler(ProgressBar_Paint);
 				}
 
@@ -98,7 +98,7 @@ namespace VistaStyleProgressBar
                 {
                     BarTextInt = value;
                     ValueChangedHandler vc = ValueChanged;
-                    if (vc != null) { vc(this, new System.EventArgs()); }
+                    if (vc != null) { vc(this, new EventArgs()); }
                     this.Invalidate(); 
                 }
             }
@@ -147,7 +147,7 @@ namespace VistaStyleProgressBar
 						if (value < MaxValue) {mGlowAnimation.Start();}
 						if (value == MaxValue) {mGlowAnimation.Stop();}
 						ValueChangedHandler vc = ValueChanged;
-						if (vc != null){vc(this, new System.EventArgs());}
+						if (vc != null){vc(this, new EventArgs());}
 						this.Invalidate(); 
 					}
 				}
@@ -168,7 +168,7 @@ namespace VistaStyleProgressBar
 						if (value > MaxValue) {Value = MaxValue;}
 						if (Value < MaxValue) {mGlowAnimation.Start();} 
 						MaxChangedHandler mc = MaxChanged;
-						if (mc != null){mc(this, new System.EventArgs());}
+						if (mc != null){mc(this, new EventArgs());}
 						this.Invalidate(); 
 					}
 				}
@@ -188,7 +188,7 @@ namespace VistaStyleProgressBar
 						mMinValue = value; 
 						if (value < MinValue) {Value = MinValue;}
 						MinChangedHandler mc = MinChanged;
-						if (mc != null){mc(this, new System.EventArgs());}
+						if (mc != null){mc(this, new EventArgs());}
 						this.Invalidate(); 
 					}
 				}

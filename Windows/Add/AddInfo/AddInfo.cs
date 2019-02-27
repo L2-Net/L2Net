@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Drawing;
+
 namespace L2_login
 {
     /// <summary>
@@ -129,7 +132,7 @@ namespace L2_login
                 {
                     if (!Globals.l2net_home.imageList_items_loaded.ContainsKey(id))
                     {
-                        System.Drawing.Bitmap img;
+                        Bitmap img;
 
                         if (System.IO.File.Exists(Util.GetItemImagePath(id)))
                         {
@@ -583,7 +586,7 @@ namespace L2_login
         {
             long now = System.DateTime.Now.Ticks;
 
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.NPCLock.EnterReadLock();
             try
@@ -751,7 +754,7 @@ namespace L2_login
 
         public static void CleanUp_Item()
         {
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.ItemLock.EnterReadLock();
             try
@@ -829,7 +832,7 @@ namespace L2_login
 
         public static void CleanUp_Char()
         {
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.PlayerLock.EnterReadLock();
             try

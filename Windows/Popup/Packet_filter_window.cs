@@ -37,7 +37,7 @@ namespace L2_login
                                     bbuffer_[i] = tem_bytebuf[i];
                                     //bytebuf[i] = tem_bytebuf[i];
                                 }
-                                temp_id = System.BitConverter.ToInt32(bbuffer_, 0);
+                                temp_id = BitConverter.ToInt32(bbuffer_, 0);
                                 if (check__temp_serv_id_exist(temp_id)== false)
                                 {
                                     int temp_cout = listView1.Items.Count;
@@ -164,7 +164,7 @@ namespace L2_login
                             }
                             else// d0 packet
                             {
-                                int temp_id = System.BitConverter.ToUInt16(bytebuf, 1);
+                                int temp_id = BitConverter.ToUInt16(bytebuf, 1);
                                 temp_id = temp_id + 0xd0;
                                 //check if we dont have it ...
                                 if (check__temp_cli_id_exist(temp_id) == false)
@@ -252,7 +252,7 @@ namespace L2_login
                     else
                     {
                         int tmp_int = Globals.pck_thread.tmp_server_pck_filter[i];// -0xfe;
-                        tmp_bytes = System.BitConverter.GetBytes(tmp_int);
+                        tmp_bytes = BitConverter.GetBytes(tmp_int);
                        // tmp_bytes[2] = tmp_bytes[1];
                        // tmp_bytes[1] = tmp_bytes[0];
                        // tmp_bytes[0] = 0xfe;
@@ -301,7 +301,7 @@ namespace L2_login
                     else
                     {
                         int tmp_int = Globals.pck_thread.tmp_client_pck_filter[i] - 0xd0;
-                        tmp_bytes = System.BitConverter.GetBytes(tmp_int);
+                        tmp_bytes = BitConverter.GetBytes(tmp_int);
                         tmp_bytes[2] = tmp_bytes[1];
                         tmp_bytes[1] = tmp_bytes[0];
                         tmp_bytes[0] = 0xfe;

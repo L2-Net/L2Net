@@ -14,7 +14,7 @@ namespace L2_login
 
         public static void Encrypt(string source, string output)
         {
-            StreamWriter outf = new System.IO.StreamWriter(output);
+            StreamWriter outf = new StreamWriter(output);
 
             BinaryReader b_read = new BinaryReader(new StreamReader(source).BaseStream);
 
@@ -74,8 +74,8 @@ namespace L2_login
             dec = new byte[cnt];
             System.Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
 
-            MemoryStream mem_stream = new System.IO.MemoryStream(dec);
-            StreamReader output = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+            MemoryStream mem_stream = new MemoryStream(dec);
+            StreamReader output = new StreamReader((Stream)mem_stream);
 
             return output;
         }

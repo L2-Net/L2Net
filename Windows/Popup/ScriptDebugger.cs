@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.IO;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -169,49 +171,49 @@ namespace L2_login
                     break;
                 case Var_Types.INT:
                     type = new TreeNode("Type : INT");
-                    value = new TreeNode("Value : " + System.Convert.ToInt64(sv.Value).ToString());
+                    value = new TreeNode("Value : " + Convert.ToInt64(sv.Value).ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(value);
                     break;
                 case Var_Types.DOUBLE:
                     type = new TreeNode("Type : DOUBLE");
-                    value = new TreeNode("Value : " + System.Convert.ToDouble(sv.Value).ToString());
+                    value = new TreeNode("Value : " + Convert.ToDouble(sv.Value).ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(value);
                     break;
                 case Var_Types.STRING:
                     type = new TreeNode("Type : STRING");
-                    value = new TreeNode("Value : " + System.Convert.ToString(sv.Value));
+                    value = new TreeNode("Value : " + Convert.ToString(sv.Value));
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(value);
                     break;
                 case Var_Types.FILEWRITER:
                     type = new TreeNode("Type : FILEWRITER");
-                    value = new TreeNode("Value : " + ((System.IO.StreamWriter)sv.Value).ToString());
+                    value = new TreeNode("Value : " + ((StreamWriter)sv.Value).ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(value);
                     break;
                 case Var_Types.FILEREADER:
                     type = new TreeNode("Type : FILEREADER");
-                    value = new TreeNode("Value : " + ((System.IO.StreamReader)sv.Value).ToString());
+                    value = new TreeNode("Value : " + ((StreamReader)sv.Value).ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(value);
                     break;
                 case Var_Types.ARRAYLIST:
                     type = new TreeNode("Type : ARRAYLIST");
-                    count = new TreeNode("Count : " + ((System.Collections.ArrayList)sv.Value).Count.ToString());
+                    count = new TreeNode("Count : " + ((ArrayList)sv.Value).Count.ToString());
                     value = new TreeNode("Values");
 
-                    foreach (ScriptVariable child_sv in ((System.Collections.ArrayList)sv.Value))
+                    foreach (ScriptVariable child_sv in ((ArrayList)sv.Value))
                     {
                         //TreeNode child_node = new TreeNode(child_sv.Name);
-                        TreeNode child_node = new TreeNode("[" + ((System.Collections.ArrayList)sv.Value).IndexOf(child_sv).ToString() + "]");
-                        child_node.Nodes.Add("Index : " + ((System.Collections.ArrayList)sv.Value).IndexOf(child_sv).ToString());
+                        TreeNode child_node = new TreeNode("[" + ((ArrayList)sv.Value).IndexOf(child_sv).ToString() + "]");
+                        child_node.Nodes.Add("Index : " + ((ArrayList)sv.Value).IndexOf(child_sv).ToString());
                         child_node.Nodes.Add("Name : " + child_sv.Name);
 
                         BuildVarTree(child_node, child_sv);
@@ -225,16 +227,16 @@ namespace L2_login
                     break;
                 case Var_Types.SORTEDLIST:
                     type = new TreeNode("Type : SORTEDLIST");
-                    count = new TreeNode("Count : " + ((System.Collections.SortedList)sv.Value).Count.ToString());
+                    count = new TreeNode("Count : " + ((SortedList)sv.Value).Count.ToString());
                     value = new TreeNode("Values");
 
                     try
                     {
-                        foreach (string key in ((System.Collections.SortedList)sv.Value).Keys)
+                        foreach (string key in ((SortedList)sv.Value).Keys)
                         {
                             try
                             {
-                                ScriptVariable child_sv = (ScriptVariable)(((System.Collections.SortedList)sv.Value)[key]);
+                                ScriptVariable child_sv = (ScriptVariable)(((SortedList)sv.Value)[key]);
 
                                 //TreeNode child_node = new TreeNode(child_sv.Name);
                                 TreeNode child_node = new TreeNode("[" + key + "]");
@@ -262,14 +264,14 @@ namespace L2_login
                     break;
                 case Var_Types.STACK:
                     type = new TreeNode("Type : STACK");
-                    count = new TreeNode("Count : " + ((System.Collections.Stack)sv.Value).Count.ToString());
+                    count = new TreeNode("Count : " + ((Stack)sv.Value).Count.ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(count);
                     break;
                 case Var_Types.QUEUE:
                     type = new TreeNode("Type : QUEUE");
-                    count = new TreeNode("Count : " + ((System.Collections.Queue)sv.Value).Count.ToString());
+                    count = new TreeNode("Count : " + ((Queue)sv.Value).Count.ToString());
 
                     parent.Nodes.Add(type);
                     parent.Nodes.Add(count);

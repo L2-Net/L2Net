@@ -242,7 +242,7 @@ namespace L2_login
                                 if (fstring == 1)
                                 {
                                     fstring = 0;
-                                    command = ((NPCString)Globals.npcstring[System.Convert.ToUInt32(command)]).text;
+                                    command = ((NPCString)Globals.npcstring[Convert.ToUInt32(command)]).text;
                                 }
                                 else
                                 {

@@ -1,4 +1,6 @@
-﻿namespace L2_login
+﻿using System.Collections;
+
+namespace L2_login
 {
     public class Pet_Info : Object_Base
     {
@@ -94,7 +96,7 @@
         public volatile uint TargetID = 0;
         public volatile TargetType CurrentTargetType = TargetType.NONE;
 
-        private System.Collections.SortedList _inventory = new System.Collections.SortedList();
+        private SortedList _inventory = new SortedList();
 
         private readonly object NameLock = new object();
         private readonly object TitleLock = new object();
@@ -105,7 +107,7 @@
         private readonly object lastMoveTimeLock = new object();
 
         private readonly object inventoryLock = new object();
-        private System.Collections.ArrayList _AbnEffects = new System.Collections.ArrayList();
+        private ArrayList _AbnEffects = new ArrayList();
         public bool HasEffect(AbnormalEffects test)
         {
             return (AbnormalEffects & (uint)test) != 0;
@@ -226,11 +228,11 @@
             }
         }
 
-        public System.Collections.SortedList inventory
+        public SortedList inventory
         {
             get
             {
-                System.Collections.SortedList tmp;
+                SortedList tmp;
                 lock (inventoryLock)
                 {
                     tmp = this._inventory;

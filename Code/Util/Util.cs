@@ -1,3 +1,7 @@
+using System.Collections;
+using System.IO;
+using System.Net.Sockets;
+
 namespace L2_login
 {
 	/// <summary>
@@ -41,13 +45,13 @@ namespace L2_login
 
             double dist = System.Math.Sqrt(System.Math.Pow(xlim, 2) + System.Math.Pow(ylim, 2) + System.Math.Pow(zlim, 2));
 
-            return Util.Double_Int32(dist);
+            return Double_Int32(dist);
         }
 
 		static public int Distance(uint id)
 		{
             //this function will lock based on what we are checking distance to
-            TargetType type = Util.GetType(id);
+            TargetType type = GetType(id);
 
             switch (type)
             {
@@ -80,7 +84,7 @@ namespace L2_login
                     Globals.PlayerLock.EnterReadLock();
                     try
                     {
-                        CharInfo player = Util.GetChar(id);
+                        CharInfo player = GetChar(id);
 
                         if (player != null)
                         {
@@ -99,7 +103,7 @@ namespace L2_login
                     Globals.NPCLock.EnterReadLock();
                     try
                     {
-                        NPCInfo npc = Util.GetNPC(id);
+                        NPCInfo npc = GetNPC(id);
 
                         if (npc != null)
                         {
@@ -118,7 +122,7 @@ namespace L2_login
                     Globals.ItemLock.EnterReadLock();
                     try
                     {
-                        ItemInfo item = Util.GetItem(id);
+                        ItemInfo item = GetItem(id);
 
                         if (item != null)
                         {
@@ -169,7 +173,7 @@ namespace L2_login
                         System.Math.Pow(Globals.gamedata.my_pet3.Y - Globals.gamedata.my_char.Y, 2) +
                         System.Math.Pow(Globals.gamedata.my_pet3.Z - Globals.gamedata.my_char.Z, 2));
                 case TargetType.PLAYER:
-                    CharInfo player = Util.GetChar(id);
+                    CharInfo player = GetChar(id);
 
                     if (player != null)
                     {
@@ -180,7 +184,7 @@ namespace L2_login
                     }
                     break;
                 case TargetType.NPC:
-                    NPCInfo npc = Util.GetNPC(id);
+                    NPCInfo npc = GetNPC(id);
 
                     if (npc != null)
                     {
@@ -191,7 +195,7 @@ namespace L2_login
                     }
                     break;
                 case TargetType.ITEM:
-                    ItemInfo item = Util.GetItem(id);
+                    ItemInfo item = GetItem(id);
 
                     if (item != null)
                     {
@@ -221,9 +225,9 @@ namespace L2_login
 			}
 		}
 
-		public static System.Collections.ArrayList GetArray(string inp)
+		public static ArrayList GetArray(string inp)
 		{
-			System.Collections.ArrayList val = new System.Collections.ArrayList();
+            ArrayList val = new ArrayList();
 
 			int pipe;
 
@@ -338,7 +342,7 @@ namespace L2_login
                 try
                 {
                     // Open a StreamReader to a random time server
-                    System.IO.StreamReader reader = new System.IO.StreamReader(new System.Net.Sockets.TcpClient(servers[ran.Next(0, servers.Length)], 13).GetStream());
+                    StreamReader reader = new StreamReader(new TcpClient(servers[ran.Next(0, servers.Length)], 13).GetStream());
                     serverResponse = reader.ReadToEnd();
                     reader.Close();
 

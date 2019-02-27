@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     public enum BuffTriggers : byte
@@ -88,7 +90,7 @@ namespace L2_login
             }
         }
 
-		private System.Collections.ArrayList _TargetNames = new System.Collections.ArrayList();//uppercase array of target names
+		private ArrayList _TargetNames = new ArrayList();//uppercase array of target names
         public volatile BuffTriggers Type;
 		public volatile uint SkillID;
         public volatile int Min_Per;
@@ -139,11 +141,11 @@ namespace L2_login
             return false;
         }
 
-		public System.Collections.ArrayList TargetNames
+		public ArrayList TargetNames
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(TargetNamesLock)
 				{
 					tmp = this._TargetNames;

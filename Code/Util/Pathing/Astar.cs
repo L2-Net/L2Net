@@ -1,15 +1,15 @@
 using System;
-
+using System.Collections;
 
 namespace L2_login
 {
     public class Astar
     {
-       private System.Collections.ArrayList _nodelist =  new System.Collections.ArrayList();
-       private System.Collections.ArrayList _pathPoints = new System.Collections.ArrayList();
+       private ArrayList _nodelist =  new ArrayList();
+       private ArrayList _pathPoints = new ArrayList();
        private AstarNode _targetNode = null;
        private AstarNode _startNode = null;
-       private System.Collections.ArrayList _pathNodes = new System.Collections.ArrayList();
+       private ArrayList _pathNodes = new ArrayList();
 
 
        private readonly object startNodeLock = new object();
@@ -38,11 +38,11 @@ namespace L2_login
        private const int INFINITY = 9999999;
 
 
-       public System.Collections.ArrayList pathPoints
+       public ArrayList pathPoints
        {
            get
            {
-               System.Collections.ArrayList tmp;
+                ArrayList tmp;
                lock (pathPointsLock)
                {
                    tmp = this._pathPoints;
@@ -58,11 +58,11 @@ namespace L2_login
            }
        }
 
-       public System.Collections.ArrayList nodelist
+       public ArrayList nodelist
        {
            get
            {
-               System.Collections.ArrayList tmp;
+                ArrayList tmp;
                lock (nodelistLock)
                {
                    tmp = this._nodelist;
@@ -118,11 +118,11 @@ namespace L2_login
            }
        }
 
-       public System.Collections.ArrayList pathNodes
+       public ArrayList pathNodes
        {
            get
            {
-               System.Collections.ArrayList tmp;
+                ArrayList tmp;
                lock (pathNodesLock)
                {
                    tmp = this._pathNodes;
@@ -660,8 +660,8 @@ namespace L2_login
        /* Standard A* */
        public bool Astar_start(AstarNode startNode, AstarNode targetNode)
        {
-           System.Collections.ArrayList closedlist = new System.Collections.ArrayList();
-           System.Collections.ArrayList openlist = new System.Collections.ArrayList();
+            ArrayList closedlist = new ArrayList();
+            ArrayList openlist = new ArrayList();
 
            closedlist.Clear();
            openlist.Clear();
@@ -721,10 +721,10 @@ namespace L2_login
         * Fringe search is a memory enchanced version of IDA* */
        public bool fringeSearch()
        {
-           //initialize:
-           System.Collections.ArrayList nowList = new System.Collections.ArrayList();
-           System.Collections.ArrayList laterList = new System.Collections.ArrayList();
-           System.Collections.ArrayList rejectedList = new System.Collections.ArrayList();
+            //initialize:
+            ArrayList nowList = new ArrayList();
+            ArrayList laterList = new ArrayList();
+            ArrayList rejectedList = new ArrayList();
            int limit = calcHvalue(startNode);
            
            #if DEBUG
@@ -807,7 +807,7 @@ namespace L2_login
                limit = fmin;
 
                //set now list to later list.
-               nowList = (System.Collections.ArrayList)laterList.Clone();
+               nowList = (ArrayList)laterList.Clone();
                nowList.Sort();
                Globals.debugPath = nowList;
                laterList.Clear();
@@ -846,7 +846,7 @@ namespace L2_login
            return;
        }
 
-       private void insertSorted(System.Collections.ArrayList list, AstarNode node)
+       private void insertSorted(ArrayList list, AstarNode node)
        {
            node.fvalue = calcFvalue(node);
           // bool inserted = false;
@@ -869,7 +869,7 @@ namespace L2_login
            }
        }
 
-       private bool isNodeIn(System.Collections.ArrayList list, AstarNode node)
+       private bool isNodeIn(ArrayList list, AstarNode node)
        {
            foreach (AstarNode n in list)
            {
@@ -968,7 +968,7 @@ namespace L2_login
            AstarNode NextNode;
            int LastMoveDirection = -1;
            int moveDirection = -1;
-           System.Collections.ArrayList newpath = new System.Collections.ArrayList();
+            ArrayList newpath = new ArrayList();
            for (int i = 0; i < (pathNodes.Count-1); i++)
            {
                CurrentNode = ((AstarNode)pathNodes[i]);

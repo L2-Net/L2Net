@@ -4,7 +4,7 @@ namespace L2_login
     {
 	    public static bool verifyChecksum(byte[] raw)
 	    {
-		    return NewCrypt.verifyChecksum(raw, 0, raw.Length);
+		    return verifyChecksum(raw, 0, raw.Length);
 	    }
 
         public static bool verifyChecksum(byte[] raw, int offset, int size)
@@ -40,7 +40,7 @@ namespace L2_login
 
         public static void appendChecksum(byte[] raw)
 	    {
-		    NewCrypt.appendChecksum(raw, 0, raw.Length);
+            appendChecksum(raw, 0, raw.Length);
 	    }
     	
 	    public static void appendChecksum(byte[] raw, int offset, int size)
@@ -80,7 +80,7 @@ namespace L2_login
 	     */
 	    public static void encXORPass(byte[] raw, int key)
 	    {
-		    NewCrypt.encXORPass(raw, 0, raw.Length, key);
+            encXORPass(raw, 0, raw.Length, key);
 	    }
     	
 	    /**

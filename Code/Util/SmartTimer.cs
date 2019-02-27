@@ -14,7 +14,7 @@ namespace L2_login
         public volatile int Interval;
         private Thread _timerThread;
         private bool _fire = false;
-        private System.DateTime _lastfired = new DateTime(0L);
+        private DateTime _lastfired = new DateTime(0L);
 
         private readonly object LastFiredLock = new object();
         private readonly object FireLock = new object();
@@ -25,7 +25,7 @@ namespace L2_login
             {
                 Thread.Sleep(InternalTick);
 
-                if (Fire && System.DateTime.Now > LastFired.AddMilliseconds(Interval))
+                if (Fire && DateTime.Now > LastFired.AddMilliseconds(Interval))
                 {
                     OnTimerTick();
                 }
@@ -44,7 +44,7 @@ namespace L2_login
         {
             Initialized = true;
 
-            LastFired = System.DateTime.Now;
+            LastFired = DateTime.Now;
 
             _timerThread = new Thread(new ThreadStart(Run));
             _timerThread.IsBackground = true;
@@ -67,11 +67,11 @@ namespace L2_login
             Fire = false;
         }
 
-        private System.DateTime LastFired
+        private DateTime LastFired
         {
             get
             {
-                System.DateTime tmp;
+                DateTime tmp;
                 lock (LastFiredLock)
                 {
                     tmp = this._lastfired;
@@ -103,7 +103,7 @@ namespace L2_login
                 {
                     if (value == true && _fire == false)
                     {
-                        LastFired = System.DateTime.Now;
+                        LastFired = DateTime.Now;
                     }
 
                     _fire = value;

@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace L2_login
 {
     /// <summary>
@@ -83,7 +85,7 @@ namespace L2_login
 			this.button_s1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s1.Location = new System.Drawing.Point(7, 33);
 			this.button_s1.Name = "button_s1";
-			this.button_s1.Size = new System.Drawing.Size(32, 32);
+			this.button_s1.Size = new Size(32, 32);
 			this.button_s1.TabIndex = 0;
 			this.button_s1.Click += new System.EventHandler(this.button_s1_Click);
 			// 
@@ -93,7 +95,7 @@ namespace L2_login
 			this.button_s2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s2.Location = new System.Drawing.Point(7, 70);
 			this.button_s2.Name = "button_s2";
-			this.button_s2.Size = new System.Drawing.Size(32, 32);
+			this.button_s2.Size = new Size(32, 32);
 			this.button_s2.TabIndex = 1;
 			this.button_s2.Click += new System.EventHandler(this.button_s2_Click);
 			// 
@@ -103,7 +105,7 @@ namespace L2_login
 			this.button_s3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s3.Location = new System.Drawing.Point(7, 107);
 			this.button_s3.Name = "button_s3";
-			this.button_s3.Size = new System.Drawing.Size(32, 32);
+			this.button_s3.Size = new Size(32, 32);
 			this.button_s3.TabIndex = 2;
 			this.button_s3.Click += new System.EventHandler(this.button_s3_Click);
 			// 
@@ -113,7 +115,7 @@ namespace L2_login
 			this.button_s4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s4.Location = new System.Drawing.Point(7, 144);
 			this.button_s4.Name = "button_s4";
-			this.button_s4.Size = new System.Drawing.Size(32, 32);
+			this.button_s4.Size = new Size(32, 32);
 			this.button_s4.TabIndex = 3;
 			this.button_s4.Click += new System.EventHandler(this.button_s4_Click);
 			// 
@@ -123,7 +125,7 @@ namespace L2_login
 			this.button_s5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s5.Location = new System.Drawing.Point(7, 186);
 			this.button_s5.Name = "button_s5";
-			this.button_s5.Size = new System.Drawing.Size(32, 32);
+			this.button_s5.Size = new Size(32, 32);
 			this.button_s5.TabIndex = 4;
 			this.button_s5.Click += new System.EventHandler(this.button_s5_Click);
 			// 
@@ -133,7 +135,7 @@ namespace L2_login
 			this.button_s6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s6.Location = new System.Drawing.Point(7, 223);
 			this.button_s6.Name = "button_s6";
-			this.button_s6.Size = new System.Drawing.Size(32, 32);
+			this.button_s6.Size = new Size(32, 32);
 			this.button_s6.TabIndex = 5;
 			this.button_s6.Click += new System.EventHandler(this.button_s6_Click);
 			// 
@@ -143,7 +145,7 @@ namespace L2_login
 			this.button_s7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s7.Location = new System.Drawing.Point(7, 260);
 			this.button_s7.Name = "button_s7";
-			this.button_s7.Size = new System.Drawing.Size(32, 32);
+			this.button_s7.Size = new Size(32, 32);
 			this.button_s7.TabIndex = 6;
 			this.button_s7.Click += new System.EventHandler(this.button_s7_Click);
 			// 
@@ -153,7 +155,7 @@ namespace L2_login
 			this.button_s8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s8.Location = new System.Drawing.Point(7, 297);
 			this.button_s8.Name = "button_s8";
-			this.button_s8.Size = new System.Drawing.Size(32, 32);
+			this.button_s8.Size = new Size(32, 32);
 			this.button_s8.TabIndex = 7;
 			this.button_s8.Click += new System.EventHandler(this.button_s8_Click);
 			// 
@@ -163,7 +165,7 @@ namespace L2_login
 			this.button_s9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s9.Location = new System.Drawing.Point(7, 339);
 			this.button_s9.Name = "button_s9";
-			this.button_s9.Size = new System.Drawing.Size(32, 32);
+			this.button_s9.Size = new Size(32, 32);
 			this.button_s9.TabIndex = 8;
 			this.button_s9.Click += new System.EventHandler(this.button_s9_Click);
 			// 
@@ -173,7 +175,7 @@ namespace L2_login
 			this.button_s10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s10.Location = new System.Drawing.Point(7, 376);
 			this.button_s10.Name = "button_s10";
-			this.button_s10.Size = new System.Drawing.Size(32, 32);
+			this.button_s10.Size = new Size(32, 32);
 			this.button_s10.TabIndex = 9;
 			this.button_s10.Click += new System.EventHandler(this.button_s10_Click);
 			// 
@@ -183,7 +185,7 @@ namespace L2_login
 			this.button_s11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s11.Location = new System.Drawing.Point(7, 413);
 			this.button_s11.Name = "button_s11";
-			this.button_s11.Size = new System.Drawing.Size(32, 32);
+			this.button_s11.Size = new Size(32, 32);
 			this.button_s11.TabIndex = 10;
 			this.button_s11.Click += new System.EventHandler(this.button_s11_Click);
 			// 
@@ -193,7 +195,7 @@ namespace L2_login
 			this.button_s12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_s12.Location = new System.Drawing.Point(7, 450);
 			this.button_s12.Name = "button_s12";
-			this.button_s12.Size = new System.Drawing.Size(32, 32);
+			this.button_s12.Size = new Size(32, 32);
 			this.button_s12.TabIndex = 11;
 			this.button_s12.Click += new System.EventHandler(this.button_s12_Click);
 			// 
@@ -203,7 +205,7 @@ namespace L2_login
 			this.button_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_left.Location = new System.Drawing.Point(2, 14);
 			this.button_left.Name = "button_left";
-			this.button_left.Size = new System.Drawing.Size(12, 12);
+			this.button_left.Size = new Size(12, 12);
 			this.button_left.TabIndex = 12;
 			this.button_left.Click += new System.EventHandler(this.button_left_Click);
 			// 
@@ -213,7 +215,7 @@ namespace L2_login
 			this.button_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_right.Location = new System.Drawing.Point(32, 14);
 			this.button_right.Name = "button_right";
-			this.button_right.Size = new System.Drawing.Size(12, 12);
+			this.button_right.Size = new Size(12, 12);
 			this.button_right.TabIndex = 13;
 			this.button_right.Click += new System.EventHandler(this.button_right_Click);
 			// 
@@ -223,16 +225,16 @@ namespace L2_login
 			this.label_page.ForeColor = System.Drawing.Color.White;
 			this.label_page.Location = new System.Drawing.Point(12, 10);
 			this.label_page.Name = "label_page";
-			this.label_page.Size = new System.Drawing.Size(20, 16);
+			this.label_page.Size = new Size(20, 16);
 			this.label_page.TabIndex = 14;
 			this.label_page.Text = "1";
 			this.label_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ShortCutBar
 			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(46, 504);
+			this.AutoScaleBaseSize = new Size(5, 13);
+			this.BackgroundImage = ((Image)(resources.GetObject("$this.BackgroundImage")));
+			this.ClientSize = new Size(46, 504);
 			this.ControlBox = false;
 			this.Controls.Add(this.label_page);
 			this.Controls.Add(this.button_right);
@@ -552,40 +554,40 @@ namespace L2_login
 				switch(i)
 				{
 					case 0:
-						button_s1.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s1.BackgroundImage = new Bitmap(file);
 						break;
 					case 1:
-						button_s2.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s2.BackgroundImage = new Bitmap(file);
 						break;
 					case 2:
-						button_s3.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s3.BackgroundImage = new Bitmap(file);
 						break;
 					case 3:
-						button_s4.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s4.BackgroundImage = new Bitmap(file);
 						break;
 					case 4:
-						button_s5.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s5.BackgroundImage = new Bitmap(file);
 						break;
 					case 5:
-						button_s6.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s6.BackgroundImage = new Bitmap(file);
 						break;
 					case 6:
-						button_s7.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s7.BackgroundImage = new Bitmap(file);
 						break;
 					case 7:
-						button_s8.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s8.BackgroundImage = new Bitmap(file);
 						break;
 					case 8:
-						button_s9.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s9.BackgroundImage = new Bitmap(file);
 						break;
 					case 9:
-						button_s10.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s10.BackgroundImage = new Bitmap(file);
 						break;
 					case 10:
-						button_s11.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s11.BackgroundImage = new Bitmap(file);
 						break;
 					case 11:
-						button_s12.BackgroundImage = new System.Drawing.Bitmap(file);
+						button_s12.BackgroundImage = new Bitmap(file);
 						break;
 				}
 			}

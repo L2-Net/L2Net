@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     public enum BuffState : int
@@ -11,7 +13,7 @@ namespace L2_login
 	public class CharBuffTimer
 	{
 		private string _Name = "";
-		private System.Collections.ArrayList _BuffTimes = new System.Collections.ArrayList();
+		private ArrayList _BuffTimes = new ArrayList();
 
 		private readonly object NameLock = new object();
 		private readonly object BuffTimesLock = new object();
@@ -41,11 +43,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.ArrayList BuffTimes
+		public ArrayList BuffTimes
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(BuffTimesLock)
 				{
 					tmp = this._BuffTimes;

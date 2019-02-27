@@ -1,10 +1,11 @@
 using SlimDX.DirectInput;
+using System.Threading;
 
 namespace L2_login
 {
     public class DX_Keyboard
     {
-        private System.Threading.Thread dx_keyboard_thread;
+        private Thread dx_keyboard_thread;
         Keyboard keyboard;
 
         public DX_Keyboard()
@@ -15,7 +16,7 @@ namespace L2_login
             keyboard.SetCooperativeLevel(Globals.l2net_home, CooperativeLevel.Nonexclusive | CooperativeLevel.Background);
             keyboard.Acquire();
 
-            dx_keyboard_thread = new System.Threading.Thread(new System.Threading.ThreadStart(DX_KeyboardEngine));
+            dx_keyboard_thread = new Thread(new ThreadStart(DX_KeyboardEngine));
 
             dx_keyboard_thread.IsBackground = true;
 
@@ -26,7 +27,7 @@ namespace L2_login
         {
             while (true == true)
             {
-                System.Threading.Thread.Sleep(Globals.SLEEP_DirectInputDelay);
+                Thread.Sleep(Globals.SLEEP_DirectInputDelay);
 
                 UpdateKeyboard();
             }

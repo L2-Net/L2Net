@@ -1,5 +1,6 @@
 using System.Media;
 using System.Collections;
+using System.Threading;
 
 namespace L2_login
 {
@@ -28,11 +29,11 @@ namespace L2_login
 	public class WSounds
 	{
         private Queue sounds = new Queue();
-        private System.Threading.Thread soundengine_thread;
+        private Thread soundengine_thread;
         
         public WSounds()
         {
-            soundengine_thread = new System.Threading.Thread(new System.Threading.ThreadStart(SoundEngine));
+            soundengine_thread = new Thread(new ThreadStart(SoundEngine));
 
             soundengine_thread.IsBackground = true;
 
@@ -85,7 +86,7 @@ namespace L2_login
                     }
                 }
 
-                System.Threading.Thread.Sleep(Globals.SLEEP_SoundEngine);
+                Thread.Sleep(Globals.SLEEP_SoundEngine);
             }
         }
        

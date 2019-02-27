@@ -5,17 +5,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using SlimDX;
 using SlimDX.Direct3D9;
+using System.IO;
 
 namespace L2_login
 {
     public class Map : Base
     {
-		private System.Collections.ArrayList cache_draw = new ArrayList();
-		private System.Collections.ArrayList tmp_players = new ArrayList();
-		private System.Collections.ArrayList tmp_npcs = new ArrayList();
-		private System.Collections.ArrayList tmp_items = new ArrayList();
-		private System.Collections.ArrayList tmp_path = new ArrayList();
-		private System.Collections.ArrayList tmp_walls = new ArrayList();
+		private ArrayList cache_draw = new ArrayList();
+		private ArrayList tmp_players = new ArrayList();
+		private ArrayList tmp_npcs = new ArrayList();
+		private ArrayList tmp_items = new ArrayList();
+		private ArrayList tmp_path = new ArrayList();
+		private ArrayList tmp_walls = new ArrayList();
 
         private Device dxDevice;
         private Sprite dxTextSprite;
@@ -53,27 +54,27 @@ namespace L2_login
 		//end of drawing variables
 
 		//my pretty pens
-		public static System.Drawing.Pen BlackPen = new System.Drawing.Pen(System.Drawing.Color.Black);
-        public static System.Drawing.Pen WhitePen = new System.Drawing.Pen(System.Drawing.Color.White);
-        public static System.Drawing.Pen BluePen = new System.Drawing.Pen(System.Drawing.Color.Blue);
-        public static System.Drawing.Pen DBluePen = new System.Drawing.Pen(System.Drawing.Color.DarkBlue);
-        public static System.Drawing.Pen LBluePen = new System.Drawing.Pen(System.Drawing.Color.LightBlue);
-        public static System.Drawing.Pen RedPen = new System.Drawing.Pen(System.Drawing.Color.Red);
-        public static System.Drawing.Pen YellowPen = new System.Drawing.Pen(System.Drawing.Color.Yellow);
-        public static System.Drawing.Pen GreenPen = new System.Drawing.Pen(System.Drawing.Color.DarkGreen);
-        public static System.Drawing.Pen PurplePen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(184, 0, 184));
-        public static System.Drawing.Pen LPurplePen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(247, 0, 247));
+		public static Pen BlackPen = new Pen(Color.Black);
+        public static Pen WhitePen = new Pen(Color.White);
+        public static Pen BluePen = new Pen(Color.Blue);
+        public static Pen DBluePen = new Pen(Color.DarkBlue);
+        public static Pen LBluePen = new Pen(Color.LightBlue);
+        public static Pen RedPen = new Pen(Color.Red);
+        public static Pen YellowPen = new Pen(Color.Yellow);
+        public static Pen GreenPen = new Pen(Color.DarkGreen);
+        public static Pen PurplePen = new Pen(Color.FromArgb(184, 0, 184));
+        public static Pen LPurplePen = new Pen(Color.FromArgb(247, 0, 247));
 
-        public static System.Drawing.SolidBrush BlackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-        public static System.Drawing.SolidBrush WhiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-        public static System.Drawing.SolidBrush BlueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
-        public static System.Drawing.SolidBrush DBlueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.DarkBlue);
-        public static System.Drawing.SolidBrush LBlueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.LightBlue);
-        public static System.Drawing.SolidBrush RedBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-        public static System.Drawing.SolidBrush YellowBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
-        public static System.Drawing.SolidBrush GreenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.DarkGreen);
-        public static System.Drawing.SolidBrush PurpleBrush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(184, 0, 184));
-        public static System.Drawing.SolidBrush LPurpleBrush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(247, 0, 247));
+        public static SolidBrush BlackBrush = new SolidBrush(Color.Black);
+        public static SolidBrush WhiteBrush = new SolidBrush(Color.White);
+        public static SolidBrush BlueBrush = new SolidBrush(Color.Blue);
+        public static SolidBrush DBlueBrush = new SolidBrush(Color.DarkBlue);
+        public static SolidBrush LBlueBrush = new SolidBrush(Color.LightBlue);
+        public static SolidBrush RedBrush = new SolidBrush(Color.Red);
+        public static SolidBrush YellowBrush = new SolidBrush(Color.Yellow);
+        public static SolidBrush GreenBrush = new SolidBrush(Color.DarkGreen);
+        public static SolidBrush PurpleBrush = new SolidBrush(Color.FromArgb(184, 0, 184));
+        public static SolidBrush LPurpleBrush = new SolidBrush(Color.FromArgb(247, 0, 247));
 
         public static Color text_color;
         public static Color text_color_shadow;
@@ -82,17 +83,17 @@ namespace L2_login
         private PresentParameters presentParams = new PresentParameters();
 
         private volatile bool LoadTextures = false;
-        private System.DateTime LastTextureLoad = new DateTime(0L);
+        private DateTime LastTextureLoad = new DateTime(0L);
         private volatile bool resized = false;
         private volatile bool resources_created = false;
 
         public PictureBox pictureBox_test;
 
-		public Map(System.Windows.Forms.Form pf)
+		public Map(Form pf)
 		{
 			InitializeComponent();
 
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
 
             this.pictureBox_test.MouseDown += new MouseEventHandler(Form1_MouseDown);
 
@@ -134,7 +135,7 @@ namespace L2_login
 
             dxLine = new Line(dxDevice);
 
-            LastTextureLoad = System.DateTime.Now.AddMilliseconds(500);
+            LastTextureLoad = DateTime.Now.AddMilliseconds(500);
             LoadTextures = true;
         }
 
@@ -196,24 +197,24 @@ namespace L2_login
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.pictureBox_test = new System.Windows.Forms.PictureBox();
+            this.pictureBox_test = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_test)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_test
             // 
-            this.pictureBox_test.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_test.Dock = DockStyle.Fill;
             this.pictureBox_test.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_test.Name = "pictureBox_test";
-            this.pictureBox_test.Size = new System.Drawing.Size(622, 518);
+            this.pictureBox_test.Size = new Size(622, 518);
             this.pictureBox_test.TabIndex = 0;
             this.pictureBox_test.TabStop = false;
             // 
             // Map
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(622, 518);
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.AutoValidate = AutoValidate.EnableAllowFocusChange;
+            this.ClientSize = new Size(622, 518);
             this.Controls.Add(this.pictureBox_test);
             this.Name = "Map";
             this.Text = "Map";
@@ -226,7 +227,7 @@ namespace L2_login
         //delegate void Draw_Callback();
         public void Draw()
         {
-            this.Invalidate(new System.Drawing.Region(new Rectangle(0,0, this.Width, this.Height)));
+            this.Invalidate(new Region(new Rectangle(0,0, this.Width, this.Height)));
         }
 
         protected override void OnPaintBackground(PaintEventArgs prevent)
@@ -258,13 +259,13 @@ namespace L2_login
 
                         dxDevice.Reset(presentParams);
 
-                        LastTextureLoad = System.DateTime.Now.AddMilliseconds(500);
+                        LastTextureLoad = DateTime.Now.AddMilliseconds(500);
                         LoadTextures = true;
                     }
 
                     ClearUnusedMaps();
 
-                    SlimDX.Result res = dxDevice.TestCooperativeLevel();
+                    Result res = dxDevice.TestCooperativeLevel();
 
                     if (res == ResultCode.Success)
                     {
@@ -820,7 +821,7 @@ namespace L2_login
                     for (int i = 0; i < Globals.debugPath.Count; i++)
                     {
                         int drawX, drawY, drawX2, drawY2;
-                        System.Drawing.Color tempPen;
+                        Color tempPen;
 
                         tempPen = Color.White;
 
@@ -838,7 +839,7 @@ namespace L2_login
                 if (Globals.debugNode != null)
                 {
                     int drawX, drawY, drawX2, drawY2;
-                    System.Drawing.Color tempPen;
+                    Color tempPen;
 
                     tempPen = Color.Gold;
 
@@ -855,7 +856,7 @@ namespace L2_login
                 if (Globals.debugNode2 != null)
                 {
                     int drawX, drawY, drawX2, drawY2;
-                    System.Drawing.Color tempPen;
+                    Color tempPen;
 
                     tempPen = Color.Aquamarine;
 
@@ -872,7 +873,7 @@ namespace L2_login
                 if (Globals.debugNode3 != null)
                 {
                     int drawX, drawY, drawX2, drawY2;
-                    System.Drawing.Color tempPen;
+                    Color tempPen;
 
                     tempPen = Color.SpringGreen;
 
@@ -1522,7 +1523,7 @@ namespace L2_login
                 string loaded;
 
                 //load the map datafiles...
-                System.IO.StreamReader filein = new System.IO.StreamReader(Globals.PATH + "\\data\\maps.txt");
+                StreamReader filein = new StreamReader(Globals.PATH + "\\data\\maps.txt");
 
                 while ((loaded = filein.ReadLine()) != null)
                 {
@@ -1547,19 +1548,19 @@ namespace L2_login
             {
                 if (map.Image == null)
                 {
-                    if (System.IO.File.Exists(Globals.PATH + "\\Maps\\" + map.FileName))
+                    if (File.Exists(Globals.PATH + "\\Maps\\" + map.FileName))
                     {
-                        map.Image = new System.IO.MemoryStream();
+                        map.Image = new MemoryStream();
 
                         if (map.Encrypted)
                         {
                             byte[] data = AES.Decrypt(Globals.PATH + "\\Maps\\" + map.FileName, Globals.Map_Key, Globals.Map_Salt);
 
-                            (new System.Drawing.Bitmap(new System.IO.MemoryStream(data))).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
+                            (new Bitmap(new MemoryStream(data))).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                         }
                         else
                         {
-                            (new System.Drawing.Bitmap(Globals.PATH + "\\Maps\\" + map.FileName)).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
+                            (new Bitmap(Globals.PATH + "\\Maps\\" + map.FileName)).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                         }
 
                         LoadTextures = true;
@@ -1593,7 +1594,7 @@ namespace L2_login
 
         private void LoadTexturesInternal()
         {
-            if ((System.DateTime.Now - LastTextureLoad).Ticks < Globals.SLEEP_TEXTURE)
+            if ((DateTime.Now - LastTextureLoad).Ticks < Globals.SLEEP_TEXTURE)
             {
                 return;
             }
@@ -1606,7 +1607,7 @@ namespace L2_login
 
                     map.dxTexture = Texture.FromStream(dxDevice, map.Image, Usage.None, Pool.Managed);
                     //map.dxTexture = Texture.FromStream(dxDevice, stream, map.Image.Width, map.Image.Height, 0, Usage.Dynamic, Format.R8G8B8, Pool.Managed, Filter.None, Filter.None, 0);*/
-                    LastTextureLoad = System.DateTime.Now;
+                    LastTextureLoad = DateTime.Now;
                     return;
                 }
             }

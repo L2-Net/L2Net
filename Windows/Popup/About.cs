@@ -6,12 +6,12 @@ namespace L2_login
     /// <summary>
     /// Summary description for About.
     /// </summary>
-    public class About : System.Windows.Forms.Form
-	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label_netversion;
-		private System.Windows.Forms.Label label_version;
-		private System.Windows.Forms.LinkLabel linkLabel_http;
+    public class About : Form
+    {
+		private Label label1;
+		private Label label_netversion;
+		private Label label_version;
+		private LinkLabel linkLabel_http;
         private Button button_close;
         private Label label_mode;
         private ListBox listBox_help;
@@ -76,14 +76,14 @@ namespace L2_login
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_version = new System.Windows.Forms.Label();
-            this.label_netversion = new System.Windows.Forms.Label();
-            this.linkLabel_http = new System.Windows.Forms.LinkLabel();
-            this.button_close = new System.Windows.Forms.Button();
-            this.label_mode = new System.Windows.Forms.Label();
-            this.listBox_help = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new Label();
+            this.label_version = new Label();
+            this.label_netversion = new Label();
+            this.linkLabel_http = new LinkLabel();
+            this.button_close = new Button();
+            this.label_mode = new Label();
+            this.listBox_help = new ListBox();
+            this.label2 = new Label();
             this.SuspendLayout();
             // 
             // label1
@@ -103,11 +103,11 @@ namespace L2_login
             this.label_version.Size = new System.Drawing.Size(88, 16);
             this.label_version.TabIndex = 1;
             this.label_version.Text = "2015-??-??";
-            this.label_version.Click += new System.EventHandler(this.label_version_Click);
+            this.label_version.Click += new EventHandler(this.label_version_Click);
             // 
             // label_netversion
             // 
-            this.label_netversion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_netversion.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.label_netversion.Location = new System.Drawing.Point(49, 210);
             this.label_netversion.Name = "label_netversion";
             this.label_netversion.Size = new System.Drawing.Size(192, 23);
@@ -124,21 +124,21 @@ namespace L2_login
             this.linkLabel_http.TabStop = true;
             this.linkLabel_http.Text = "http://l2net.insane-gamers.com";
             this.linkLabel_http.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel_http.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_http_LinkClicked);
+            this.linkLabel_http.LinkClicked += new LinkLabelLinkClickedEventHandler(this.linkLabel_http_LinkClicked);
             // 
             // button_close
             // 
-            this.button_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_close.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.button_close.Location = new System.Drawing.Point(110, 234);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(75, 23);
             this.button_close.TabIndex = 0;
             this.button_close.Text = "Close";
-            this.button_close.Click += new System.EventHandler(this.button_close_Click);
+            this.button_close.Click += new EventHandler(this.button_close_Click);
             // 
             // label_mode
             // 
-            this.label_mode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_mode.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.label_mode.Location = new System.Drawing.Point(49, 185);
             this.label_mode.Name = "label_mode";
             this.label_mode.Size = new System.Drawing.Size(192, 23);
@@ -148,7 +148,7 @@ namespace L2_login
             // 
             // listBox_help
             // 
-            this.listBox_help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox_help.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.listBox_help.FormattingEnabled = true;
             this.listBox_help.Items.AddRange(new object[] {
             "mpj123 for making this open source",
@@ -172,7 +172,7 @@ namespace L2_login
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.label2.Location = new System.Drawing.Point(97, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 24);
@@ -193,13 +193,13 @@ namespace L2_login
             this.Controls.Add(this.label_netversion);
             this.Controls.Add(this.label_version);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "About";
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.SizeGripStyle = SizeGripStyle.Hide;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "About";
             this.TopMost = true;
             this.ResumeLayout(false);
@@ -207,7 +207,7 @@ namespace L2_login
 		}
 		#endregion
 
-		private void linkLabel_http_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void linkLabel_http_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			try
 			{

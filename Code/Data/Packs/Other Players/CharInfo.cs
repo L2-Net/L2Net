@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     public class CharInfo : Object_Base
@@ -72,8 +74,8 @@ namespace L2_login
         public volatile uint PrivateStoreType = 0;//  1 - sellshop//byte
 
         public volatile uint CubicCount = 0;//ushort
-		private System.Collections.ArrayList _Cubics = new System.Collections.ArrayList();
-        private System.Collections.ArrayList _AbnEffects = new System.Collections.ArrayList();
+		private ArrayList _Cubics = new ArrayList();
+        private ArrayList _AbnEffects = new ArrayList();
 
         public volatile uint FindParty = 0;//byte
 
@@ -128,7 +130,7 @@ namespace L2_login
         private string _ClanName = "";
         public volatile int ClanCrestIndex = 0;
         private string _AllyName = "";
-		private System.Collections.SortedList _my_buffs;
+		private SortedList _my_buffs;
 
 		private readonly object my_buffsLock = new object();
         private readonly object ClanNameLock = new object();
@@ -338,11 +340,11 @@ namespace L2_login
 				}
 			}
 		}
-		public System.Collections.ArrayList Cubics
+		public ArrayList Cubics
 		{
 			get
 			{
-				System.Collections.ArrayList tmp;
+                ArrayList tmp;
 				lock(CubicsLock)
 				{
 					tmp = this._Cubics;
@@ -357,11 +359,11 @@ namespace L2_login
 				}
 			}
 		}
-        public System.Collections.ArrayList AbnEffects
+        public ArrayList AbnEffects
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (AbnEffectsLock)
                 {
                     tmp = this._AbnEffects;
@@ -472,11 +474,11 @@ namespace L2_login
                 }
             }
         }
-		public System.Collections.SortedList my_buffs
+		public SortedList my_buffs
 		{
 			get
 			{
-                System.Collections.SortedList tmp;
+                SortedList tmp;
 				lock(my_buffsLock)
 				{
 					tmp = this._my_buffs;
@@ -495,7 +497,7 @@ namespace L2_login
 		public CharInfo()
 		{
 			Moving = false;
-            my_buffs = new System.Collections.SortedList();
+            my_buffs = new SortedList();
 		}
                
 	public void Load(ByteBuffer buff)

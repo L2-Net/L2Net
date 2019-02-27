@@ -2,6 +2,8 @@ using System;
 using System.Drawing;
 using System.Collections;
 using System.Windows.Forms;
+using System.Threading;
+using System.IO;
 
 namespace L2_login
 {
@@ -10,22 +12,22 @@ namespace L2_login
     /// </summary>
     public class Login : Base
     {
-        private System.Windows.Forms.Panel panel_select;
-        private System.Windows.Forms.Button button_select_ig;
-        private System.Windows.Forms.Button button_select_oog;
-        private System.Windows.Forms.Panel panel_ig;
-        private System.Windows.Forms.ComboBox comboBox_ig_login;
-        private System.Windows.Forms.TextBox textBox_local_ip;
-        private System.Windows.Forms.TextBox textBox_ig_login_port;
-        private System.Windows.Forms.TextBox textBox_ig_login_ip;
-        private System.Windows.Forms.Button button_ig_listen;
-        private System.Windows.Forms.ComboBox comboBox_blowfish;
-        private System.Windows.Forms.TextBox textBox_blowfish;
-        private System.Windows.Forms.TextBox textBox_local_port;
-        private System.Windows.Forms.Label label_blowfishkey;
-        private System.Windows.Forms.Label label_localport;
-        private System.Windows.Forms.Label label_loginserver;
-        private System.Windows.Forms.Button button_back_ig;
+        private Panel panel_select;
+        private Button button_select_ig;
+        private Button button_select_oog;
+        private Panel panel_ig;
+        private ComboBox comboBox_ig_login;
+        private TextBox textBox_local_ip;
+        private TextBox textBox_ig_login_port;
+        private TextBox textBox_ig_login_ip;
+        private Button button_ig_listen;
+        private ComboBox comboBox_blowfish;
+        private TextBox textBox_blowfish;
+        private TextBox textBox_local_port;
+        private Label label_blowfishkey;
+        private Label label_localport;
+        private Label label_loginserver;
+        private Button button_back_ig;
         private TextBox textBox_oog_logon_ip;
         private ListView listView_servers;
         private ColumnHeader columnHeader1;
@@ -164,7 +166,7 @@ namespace L2_login
         private RadioButton radioButton_c14;
         public ArrayList gameserver_list = new ArrayList();
 
-        public Login(System.Windows.Forms.Form pf)
+        public Login(Form pf)
         {
             //
             // Required for Windows Form Designer support
@@ -333,8 +335,8 @@ namespace L2_login
 
             if ((index < Globals.ew_con_array.Count) && (index >= 0))
             {
-                (Globals.ew_con_array[index] as System.Windows.Forms.TextBox).ReadOnly = true;
-                (Globals.ew_con_array[index] as System.Windows.Forms.TextBox).ForeColor = SystemColors.ControlText;
+                (Globals.ew_con_array[index] as TextBox).ReadOnly = true;
+                (Globals.ew_con_array[index] as TextBox).ForeColor = SystemColors.ControlText;
             }
 
         }
@@ -343,16 +345,16 @@ namespace L2_login
             for (int i = 0; i < Globals.ew_con_array.Count; i++)
             {
 
-                (Globals.ew_con_array[i] as System.Windows.Forms.TextBox).ReadOnly = true;
-                (Globals.ew_con_array[i] as System.Windows.Forms.TextBox).ForeColor = SystemColors.ControlText;
+                (Globals.ew_con_array[i] as TextBox).ReadOnly = true;
+                (Globals.ew_con_array[i] as TextBox).ForeColor = SystemColors.ControlText;
             }
         }
         public void Enable_ip_edit(int index)//adifenix
         {
             if ((index < Globals.ew_con_array.Count) && (index >= 0))
             {
-                (Globals.ew_con_array[index] as System.Windows.Forms.TextBox).ReadOnly = false;
-                (Globals.ew_con_array[index] as System.Windows.Forms.TextBox).ForeColor = SystemColors.WindowText;
+                (Globals.ew_con_array[index] as TextBox).ReadOnly = false;
+                (Globals.ew_con_array[index] as TextBox).ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -361,10 +363,10 @@ namespace L2_login
         {
             for (int i = 0; i < Globals.ew_con_array.Count; i++)
             {
-                if (!(Globals.ew_chc_ed_array[i] as System.Windows.Forms.CheckBox).Checked)
+                if (!(Globals.ew_chc_ed_array[i] as CheckBox).Checked)
                 {
-                    (Globals.ew_con_array[i] as System.Windows.Forms.TextBox).ReadOnly = false;
-                    (Globals.ew_con_array[i] as System.Windows.Forms.TextBox).ForeColor = SystemColors.WindowText;
+                    (Globals.ew_con_array[i] as TextBox).ReadOnly = false;
+                    (Globals.ew_con_array[i] as TextBox).ForeColor = SystemColors.WindowText;
                 }
             }
 
@@ -441,16 +443,16 @@ namespace L2_login
                     {
                         if ((Globals.pre_enterworld_ip_tab[i].Length > 0) && (Globals.pre_enterworld_ip_tab[i].Length <= 3))
                         {
-                            (Globals.ew_con_array[i] as System.Windows.Forms.TextBox).Text = Globals.pre_enterworld_ip_tab[i];
+                            (Globals.ew_con_array[i] as TextBox).Text = Globals.pre_enterworld_ip_tab[i];
                         }
                         else // check random if string leg == 0 or leg > 3
                         {
-                            (Globals.ew_chc_ed_array[i] as System.Windows.Forms.CheckBox).Checked = true;
+                            (Globals.ew_chc_ed_array[i] as CheckBox).Checked = true;
                         }
                     }
                     catch // exceptions for leng == 0 ??? loled
                     {
-                        (Globals.ew_chc_ed_array[i] as System.Windows.Forms.CheckBox).Checked = true;
+                        (Globals.ew_chc_ed_array[i] as CheckBox).Checked = true;
                     }
                 }
             }
@@ -479,155 +481,155 @@ namespace L2_login
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel_select = new System.Windows.Forms.Panel();
-            this.radioButton_c14 = new System.Windows.Forms.RadioButton();
-            this.radioButton_c18 = new System.Windows.Forms.RadioButton();
-            this.radioButton_c17 = new System.Windows.Forms.RadioButton();
-            this.checkBox_LS_GS_Same_IP = new System.Windows.Forms.CheckBox();
-            this.checkBox_Unknown_Blowfish = new System.Windows.Forms.CheckBox();
-            this.panel_advanced = new System.Windows.Forms.Panel();
-            this.ch_w_a_s = new System.Windows.Forms.CheckBox();
-            this.c_ew_c04 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e04 = new System.Windows.Forms.TextBox();
-            this.c_ew_c03 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c02 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c01 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e03 = new System.Windows.Forms.TextBox();
-            this.c_ew_e02 = new System.Windows.Forms.TextBox();
-            this.c_ew_e01 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.c_ew_c44 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e44 = new System.Windows.Forms.TextBox();
-            this.c_ew_c34 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e34 = new System.Windows.Forms.TextBox();
-            this.c_ew_c24 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e24 = new System.Windows.Forms.TextBox();
-            this.c_ew_c14 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e14 = new System.Windows.Forms.TextBox();
-            this.c_ew_c43 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c42 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c41 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e43 = new System.Windows.Forms.TextBox();
-            this.c_ew_e42 = new System.Windows.Forms.TextBox();
-            this.c_ew_e41 = new System.Windows.Forms.TextBox();
-            this.c_ew_c33 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c32 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c31 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e33 = new System.Windows.Forms.TextBox();
-            this.c_ew_e32 = new System.Windows.Forms.TextBox();
-            this.c_ew_e31 = new System.Windows.Forms.TextBox();
-            this.c_ew_c23 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c22 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c21 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e23 = new System.Windows.Forms.TextBox();
-            this.c_ew_e22 = new System.Windows.Forms.TextBox();
-            this.c_ew_e21 = new System.Windows.Forms.TextBox();
-            this.c_ew_c13 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c12 = new System.Windows.Forms.CheckBox();
-            this.c_ew_c11 = new System.Windows.Forms.CheckBox();
-            this.c_ew_e13 = new System.Windows.Forms.TextBox();
-            this.c_ew_e12 = new System.Windows.Forms.TextBox();
-            this.c_ew_e11 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.c_ew_ip = new System.Windows.Forms.CheckBox();
-            this.textBox_game_listenport = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_gsList = new System.Windows.Forms.ComboBox();
-            this.checkBox_ManualGK = new System.Windows.Forms.CheckBox();
-            this.label_packet = new System.Windows.Forms.Label();
-            this.textBox_Custom_EnterWorld = new System.Windows.Forms.TextBox();
-            this.checkBox_Custom_EnterWorld = new System.Windows.Forms.CheckBox();
-            this.checkBox_game_proxy = new System.Windows.Forms.CheckBox();
-            this.textBox_socks_password = new System.Windows.Forms.TextBox();
-            this.label_socks_password = new System.Windows.Forms.Label();
-            this.textBox_socks_username = new System.Windows.Forms.TextBox();
-            this.label_socks_username = new System.Windows.Forms.Label();
-            this.label_socks_ip = new System.Windows.Forms.Label();
-            this.textBox_socks_port = new System.Windows.Forms.TextBox();
-            this.label_socks_port = new System.Windows.Forms.Label();
-            this.textBox_socks_ip = new System.Windows.Forms.TextBox();
-            this.checkBox_login_proxy = new System.Windows.Forms.CheckBox();
-            this.textBox_game_port = new System.Windows.Forms.TextBox();
-            this.label_game_port = new System.Windows.Forms.Label();
-            this.textBox_game_ip = new System.Windows.Forms.TextBox();
-            this.checkBox_override_gameserver = new System.Windows.Forms.CheckBox();
-            this.label_game_ip = new System.Windows.Forms.Label();
-            this.checkBox_advanced = new System.Windows.Forms.CheckBox();
-            this.label_prot = new System.Windows.Forms.Label();
-            this.textBox_logon_prot = new System.Windows.Forms.TextBox();
-            this.comboBox_blowfish = new System.Windows.Forms.ComboBox();
-            this.label_blowfishkey = new System.Windows.Forms.Label();
-            this.textBox_blowfish = new System.Windows.Forms.TextBox();
-            this.button_select_ig = new System.Windows.Forms.Button();
-            this.button_select_oog = new System.Windows.Forms.Button();
-            this.panel_ig = new System.Windows.Forms.Panel();
-            this.checkBox_security_old_client = new System.Windows.Forms.CheckBox();
-            this.label_IG_pin = new System.Windows.Forms.Label();
-            this.textBox_IG_pin = new System.Windows.Forms.TextBox();
-            this.checkBox_OverrideProtocol = new System.Windows.Forms.CheckBox();
-            this.label_loginport = new System.Windows.Forms.Label();
-            this.label_ip = new System.Windows.Forms.Label();
-            this.button_back_ig = new System.Windows.Forms.Button();
-            this.textBox_local_port = new System.Windows.Forms.TextBox();
-            this.label_localport = new System.Windows.Forms.Label();
-            this.comboBox_ig_login = new System.Windows.Forms.ComboBox();
-            this.label_loginserver = new System.Windows.Forms.Label();
-            this.textBox_local_ip = new System.Windows.Forms.TextBox();
-            this.textBox_ig_login_port = new System.Windows.Forms.TextBox();
-            this.textBox_ig_login_ip = new System.Windows.Forms.TextBox();
-            this.button_ig_listen = new System.Windows.Forms.Button();
-            this.textBox_oog_logon_ip = new System.Windows.Forms.TextBox();
-            this.listView_servers = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader79 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox_oog_logon_port = new System.Windows.Forms.TextBox();
-            this.button_logon = new System.Windows.Forms.Button();
-            this.textBox_pword = new System.Windows.Forms.TextBox();
-            this.button_server = new System.Windows.Forms.Button();
-            this.button_char = new System.Windows.Forms.Button();
-            this.textBox_lname = new System.Windows.Forms.TextBox();
-            this.comboBox_oog_login = new System.Windows.Forms.ComboBox();
-            this.button_back_oog = new System.Windows.Forms.Button();
-            this.panel_oog = new System.Windows.Forms.Panel();
-            this.label_security_pin = new System.Windows.Forms.Label();
-            this.textBox_security_pin = new System.Windows.Forms.TextBox();
-            this.listView_chars = new System.Windows.Forms.ListView();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button_delete_char = new System.Windows.Forms.Button();
-            this.button_oog_create = new System.Windows.Forms.Button();
-            this.label_oog_password = new System.Windows.Forms.Label();
-            this.label_oog_username = new System.Windows.Forms.Label();
-            this.label_oog_loginport = new System.Windows.Forms.Label();
+            this.panel_select = new Panel();
+            this.radioButton_c14 = new RadioButton();
+            this.radioButton_c18 = new RadioButton();
+            this.radioButton_c17 = new RadioButton();
+            this.checkBox_LS_GS_Same_IP = new CheckBox();
+            this.checkBox_Unknown_Blowfish = new CheckBox();
+            this.panel_advanced = new Panel();
+            this.ch_w_a_s = new CheckBox();
+            this.c_ew_c04 = new CheckBox();
+            this.c_ew_e04 = new TextBox();
+            this.c_ew_c03 = new CheckBox();
+            this.c_ew_c02 = new CheckBox();
+            this.c_ew_c01 = new CheckBox();
+            this.c_ew_e03 = new TextBox();
+            this.c_ew_e02 = new TextBox();
+            this.c_ew_e01 = new TextBox();
+            this.label7 = new Label();
+            this.label6 = new Label();
+            this.c_ew_c44 = new CheckBox();
+            this.c_ew_e44 = new TextBox();
+            this.c_ew_c34 = new CheckBox();
+            this.c_ew_e34 = new TextBox();
+            this.c_ew_c24 = new CheckBox();
+            this.c_ew_e24 = new TextBox();
+            this.c_ew_c14 = new CheckBox();
+            this.c_ew_e14 = new TextBox();
+            this.c_ew_c43 = new CheckBox();
+            this.c_ew_c42 = new CheckBox();
+            this.c_ew_c41 = new CheckBox();
+            this.c_ew_e43 = new TextBox();
+            this.c_ew_e42 = new TextBox();
+            this.c_ew_e41 = new TextBox();
+            this.c_ew_c33 = new CheckBox();
+            this.c_ew_c32 = new CheckBox();
+            this.c_ew_c31 = new CheckBox();
+            this.c_ew_e33 = new TextBox();
+            this.c_ew_e32 = new TextBox();
+            this.c_ew_e31 = new TextBox();
+            this.c_ew_c23 = new CheckBox();
+            this.c_ew_c22 = new CheckBox();
+            this.c_ew_c21 = new CheckBox();
+            this.c_ew_e23 = new TextBox();
+            this.c_ew_e22 = new TextBox();
+            this.c_ew_e21 = new TextBox();
+            this.c_ew_c13 = new CheckBox();
+            this.c_ew_c12 = new CheckBox();
+            this.c_ew_c11 = new CheckBox();
+            this.c_ew_e13 = new TextBox();
+            this.c_ew_e12 = new TextBox();
+            this.c_ew_e11 = new TextBox();
+            this.label5 = new Label();
+            this.label4 = new Label();
+            this.label3 = new Label();
+            this.label2 = new Label();
+            this.c_ew_ip = new CheckBox();
+            this.textBox_game_listenport = new TextBox();
+            this.label1 = new Label();
+            this.comboBox_gsList = new ComboBox();
+            this.checkBox_ManualGK = new CheckBox();
+            this.label_packet = new Label();
+            this.textBox_Custom_EnterWorld = new TextBox();
+            this.checkBox_Custom_EnterWorld = new CheckBox();
+            this.checkBox_game_proxy = new CheckBox();
+            this.textBox_socks_password = new TextBox();
+            this.label_socks_password = new Label();
+            this.textBox_socks_username = new TextBox();
+            this.label_socks_username = new Label();
+            this.label_socks_ip = new Label();
+            this.textBox_socks_port = new TextBox();
+            this.label_socks_port = new Label();
+            this.textBox_socks_ip = new TextBox();
+            this.checkBox_login_proxy = new CheckBox();
+            this.textBox_game_port = new TextBox();
+            this.label_game_port = new Label();
+            this.textBox_game_ip = new TextBox();
+            this.checkBox_override_gameserver = new CheckBox();
+            this.label_game_ip = new Label();
+            this.checkBox_advanced = new CheckBox();
+            this.label_prot = new Label();
+            this.textBox_logon_prot = new TextBox();
+            this.comboBox_blowfish = new ComboBox();
+            this.label_blowfishkey = new Label();
+            this.textBox_blowfish = new TextBox();
+            this.button_select_ig = new Button();
+            this.button_select_oog = new Button();
+            this.panel_ig = new Panel();
+            this.checkBox_security_old_client = new CheckBox();
+            this.label_IG_pin = new Label();
+            this.textBox_IG_pin = new TextBox();
+            this.checkBox_OverrideProtocol = new CheckBox();
+            this.label_loginport = new Label();
+            this.label_ip = new Label();
+            this.button_back_ig = new Button();
+            this.textBox_local_port = new TextBox();
+            this.label_localport = new Label();
+            this.comboBox_ig_login = new ComboBox();
+            this.label_loginserver = new Label();
+            this.textBox_local_ip = new TextBox();
+            this.textBox_ig_login_port = new TextBox();
+            this.textBox_ig_login_ip = new TextBox();
+            this.button_ig_listen = new Button();
+            this.textBox_oog_logon_ip = new TextBox();
+            this.listView_servers = new ListView();
+            this.columnHeader1 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader79 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader2 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader3 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader4 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader5 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader6 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader7 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader8 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader9 = ((ColumnHeader)(new ColumnHeader()));
+            this.textBox_oog_logon_port = new TextBox();
+            this.button_logon = new Button();
+            this.textBox_pword = new TextBox();
+            this.button_server = new Button();
+            this.button_char = new Button();
+            this.textBox_lname = new TextBox();
+            this.comboBox_oog_login = new ComboBox();
+            this.button_back_oog = new Button();
+            this.panel_oog = new Panel();
+            this.label_security_pin = new Label();
+            this.textBox_security_pin = new TextBox();
+            this.listView_chars = new ListView();
+            this.columnHeader10 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader11 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader12 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader13 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader14 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader15 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader16 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader17 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader18 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader19 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader20 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader21 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader22 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader23 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader24 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader25 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader26 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader27 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader28 = ((ColumnHeader)(new ColumnHeader()));
+            this.button_delete_char = new Button();
+            this.button_oog_create = new Button();
+            this.label_oog_password = new Label();
+            this.label_oog_username = new Label();
+            this.label_oog_loginport = new Label();
             this.panel_select.SuspendLayout();
             this.panel_advanced.SuspendLayout();
             this.panel_ig.SuspendLayout();
@@ -650,10 +652,10 @@ namespace L2_login
             this.panel_select.Controls.Add(this.textBox_blowfish);
             this.panel_select.Controls.Add(this.button_select_ig);
             this.panel_select.Controls.Add(this.button_select_oog);
-            this.panel_select.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_select.Dock = DockStyle.Fill;
             this.panel_select.Location = new System.Drawing.Point(0, 0);
             this.panel_select.Name = "panel_select";
-            this.panel_select.Size = new System.Drawing.Size(607, 445);
+            this.panel_select.Size = new Size(607, 445);
             this.panel_select.TabIndex = 0;
             // 
             // radioButton_c14
@@ -662,18 +664,18 @@ namespace L2_login
             this.radioButton_c14.Checked = true;
             this.radioButton_c14.Location = new System.Drawing.Point(303, 20);
             this.radioButton_c14.Name = "radioButton_c14";
-            this.radioButton_c14.Size = new System.Drawing.Size(70, 17);
+            this.radioButton_c14.Size = new Size(70, 17);
             this.radioButton_c14.TabIndex = 42;
             this.radioButton_c14.TabStop = true;
             this.radioButton_c14.Text = "High Five";
-            this.radioButton_c14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.radioButton_c14.TextAlign = ContentAlignment.TopRight;
             this.radioButton_c14.UseVisualStyleBackColor = true;
             // 
             // radioButton_c18
             // 
             this.radioButton_c18.Location = new System.Drawing.Point(303, 67);
             this.radioButton_c18.Name = "radioButton_c18";
-            this.radioButton_c18.Size = new System.Drawing.Size(135, 18);
+            this.radioButton_c18.Size = new Size(135, 18);
             this.radioButton_c18.TabIndex = 44;
             this.radioButton_c18.Text = "Lindvior";
             this.radioButton_c18.Visible = false;
@@ -682,7 +684,7 @@ namespace L2_login
             // 
             this.radioButton_c17.Location = new System.Drawing.Point(303, 43);
             this.radioButton_c17.Name = "radioButton_c17";
-            this.radioButton_c17.Size = new System.Drawing.Size(135, 18);
+            this.radioButton_c17.Size = new Size(135, 18);
             this.radioButton_c17.TabIndex = 43;
             this.radioButton_c17.Text = "Glory Days";
             this.radioButton_c17.Visible = false;
@@ -693,7 +695,7 @@ namespace L2_login
             this.checkBox_LS_GS_Same_IP.Enabled = false;
             this.checkBox_LS_GS_Same_IP.Location = new System.Drawing.Point(160, 38);
             this.checkBox_LS_GS_Same_IP.Name = "checkBox_LS_GS_Same_IP";
-            this.checkBox_LS_GS_Same_IP.Size = new System.Drawing.Size(119, 17);
+            this.checkBox_LS_GS_Same_IP.Size = new Size(119, 17);
             this.checkBox_LS_GS_Same_IP.TabIndex = 38;
             this.checkBox_LS_GS_Same_IP.Text = "LS and GS same IP";
             this.checkBox_LS_GS_Same_IP.UseVisualStyleBackColor = true;
@@ -703,11 +705,11 @@ namespace L2_login
             this.checkBox_Unknown_Blowfish.AutoSize = true;
             this.checkBox_Unknown_Blowfish.Location = new System.Drawing.Point(160, 19);
             this.checkBox_Unknown_Blowfish.Name = "checkBox_Unknown_Blowfish";
-            this.checkBox_Unknown_Blowfish.Size = new System.Drawing.Size(108, 17);
+            this.checkBox_Unknown_Blowfish.Size = new Size(108, 17);
             this.checkBox_Unknown_Blowfish.TabIndex = 37;
             this.checkBox_Unknown_Blowfish.Text = "Unkown Blowfish";
             this.checkBox_Unknown_Blowfish.UseVisualStyleBackColor = true;
-            this.checkBox_Unknown_Blowfish.CheckedChanged += new System.EventHandler(this.checkBox_Unknown_Blowfish_CheckedChanged);
+            this.checkBox_Unknown_Blowfish.CheckedChanged += new EventHandler(this.checkBox_Unknown_Blowfish_CheckedChanged);
             // 
             // panel_advanced
             // 
@@ -783,7 +785,7 @@ namespace L2_login
             this.panel_advanced.Controls.Add(this.label_game_ip);
             this.panel_advanced.Location = new System.Drawing.Point(3, 180);
             this.panel_advanced.Name = "panel_advanced";
-            this.panel_advanced.Size = new System.Drawing.Size(596, 239);
+            this.panel_advanced.Size = new Size(596, 239);
             this.panel_advanced.TabIndex = 33;
             this.panel_advanced.Visible = false;
             // 
@@ -792,28 +794,28 @@ namespace L2_login
             this.ch_w_a_s.AutoSize = true;
             this.ch_w_a_s.Location = new System.Drawing.Point(225, 53);
             this.ch_w_a_s.Name = "ch_w_a_s";
-            this.ch_w_a_s.Size = new System.Drawing.Size(111, 17);
+            this.ch_w_a_s.Size = new Size(111, 17);
             this.ch_w_a_s.TabIndex = 97;
             this.ch_w_a_s.Text = "Work as proxy srv";
             this.ch_w_a_s.UseVisualStyleBackColor = true;
-            this.ch_w_a_s.CheckedChanged += new System.EventHandler(this.ch_w_a_s_CheckedChanged);
+            this.ch_w_a_s.CheckedChanged += new EventHandler(this.ch_w_a_s_CheckedChanged);
             // 
             // c_ew_c04
             // 
             this.c_ew_c04.AutoSize = true;
             this.c_ew_c04.Location = new System.Drawing.Point(572, 83);
             this.c_ew_c04.Name = "c_ew_c04";
-            this.c_ew_c04.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c04.Size = new Size(15, 14);
             this.c_ew_c04.TabIndex = 96;
             this.c_ew_c04.UseVisualStyleBackColor = true;
-            this.c_ew_c04.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c04.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e04
             // 
             this.c_ew_e04.Location = new System.Drawing.Point(541, 80);
             this.c_ew_e04.MaxLength = 3;
             this.c_ew_e04.Name = "c_ew_e04";
-            this.c_ew_e04.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e04.Size = new Size(25, 20);
             this.c_ew_e04.TabIndex = 95;
             // 
             // c_ew_c03
@@ -821,37 +823,37 @@ namespace L2_login
             this.c_ew_c03.AutoSize = true;
             this.c_ew_c03.Location = new System.Drawing.Point(524, 83);
             this.c_ew_c03.Name = "c_ew_c03";
-            this.c_ew_c03.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c03.Size = new Size(15, 14);
             this.c_ew_c03.TabIndex = 94;
             this.c_ew_c03.UseVisualStyleBackColor = true;
-            this.c_ew_c03.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c03.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c02
             // 
             this.c_ew_c02.AutoSize = true;
             this.c_ew_c02.Location = new System.Drawing.Point(472, 83);
             this.c_ew_c02.Name = "c_ew_c02";
-            this.c_ew_c02.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c02.Size = new Size(15, 14);
             this.c_ew_c02.TabIndex = 93;
             this.c_ew_c02.UseVisualStyleBackColor = true;
-            this.c_ew_c02.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c02.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c01
             // 
             this.c_ew_c01.AutoSize = true;
             this.c_ew_c01.Location = new System.Drawing.Point(420, 83);
             this.c_ew_c01.Name = "c_ew_c01";
-            this.c_ew_c01.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c01.Size = new Size(15, 14);
             this.c_ew_c01.TabIndex = 92;
             this.c_ew_c01.UseVisualStyleBackColor = true;
-            this.c_ew_c01.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c01.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e03
             // 
             this.c_ew_e03.Location = new System.Drawing.Point(493, 80);
             this.c_ew_e03.MaxLength = 3;
             this.c_ew_e03.Name = "c_ew_e03";
-            this.c_ew_e03.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e03.Size = new Size(25, 20);
             this.c_ew_e03.TabIndex = 91;
             // 
             // c_ew_e02
@@ -859,7 +861,7 @@ namespace L2_login
             this.c_ew_e02.Location = new System.Drawing.Point(441, 80);
             this.c_ew_e02.MaxLength = 3;
             this.c_ew_e02.Name = "c_ew_e02";
-            this.c_ew_e02.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e02.Size = new Size(25, 20);
             this.c_ew_e02.TabIndex = 90;
             // 
             // c_ew_e01
@@ -867,7 +869,7 @@ namespace L2_login
             this.c_ew_e01.Location = new System.Drawing.Point(389, 80);
             this.c_ew_e01.MaxLength = 3;
             this.c_ew_e01.Name = "c_ew_e01";
-            this.c_ew_e01.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e01.Size = new Size(25, 20);
             this.c_ew_e01.TabIndex = 89;
             // 
             // label7
@@ -875,7 +877,7 @@ namespace L2_login
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(365, 83);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 13);
+            this.label7.Size = new Size(26, 13);
             this.label7.TabIndex = 88;
             this.label7.Text = "IP0:";
             // 
@@ -884,7 +886,7 @@ namespace L2_login
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(489, 208);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 13);
+            this.label6.Size = new Size(104, 13);
             this.label6.TabIndex = 87;
             this.label6.Text = "Checkbox - Random";
             // 
@@ -893,17 +895,17 @@ namespace L2_login
             this.c_ew_c44.AutoSize = true;
             this.c_ew_c44.Location = new System.Drawing.Point(572, 188);
             this.c_ew_c44.Name = "c_ew_c44";
-            this.c_ew_c44.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c44.Size = new Size(15, 14);
             this.c_ew_c44.TabIndex = 86;
             this.c_ew_c44.UseVisualStyleBackColor = true;
-            this.c_ew_c44.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c44.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e44
             // 
             this.c_ew_e44.Location = new System.Drawing.Point(541, 185);
             this.c_ew_e44.MaxLength = 3;
             this.c_ew_e44.Name = "c_ew_e44";
-            this.c_ew_e44.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e44.Size = new Size(25, 20);
             this.c_ew_e44.TabIndex = 85;
             // 
             // c_ew_c34
@@ -911,17 +913,17 @@ namespace L2_login
             this.c_ew_c34.AutoSize = true;
             this.c_ew_c34.Location = new System.Drawing.Point(572, 164);
             this.c_ew_c34.Name = "c_ew_c34";
-            this.c_ew_c34.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c34.Size = new Size(15, 14);
             this.c_ew_c34.TabIndex = 84;
             this.c_ew_c34.UseVisualStyleBackColor = true;
-            this.c_ew_c34.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c34.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e34
             // 
             this.c_ew_e34.Location = new System.Drawing.Point(541, 161);
             this.c_ew_e34.MaxLength = 3;
             this.c_ew_e34.Name = "c_ew_e34";
-            this.c_ew_e34.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e34.Size = new Size(25, 20);
             this.c_ew_e34.TabIndex = 83;
             // 
             // c_ew_c24
@@ -929,17 +931,17 @@ namespace L2_login
             this.c_ew_c24.AutoSize = true;
             this.c_ew_c24.Location = new System.Drawing.Point(572, 138);
             this.c_ew_c24.Name = "c_ew_c24";
-            this.c_ew_c24.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c24.Size = new Size(15, 14);
             this.c_ew_c24.TabIndex = 82;
             this.c_ew_c24.UseVisualStyleBackColor = true;
-            this.c_ew_c24.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c24.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e24
             // 
             this.c_ew_e24.Location = new System.Drawing.Point(541, 135);
             this.c_ew_e24.MaxLength = 3;
             this.c_ew_e24.Name = "c_ew_e24";
-            this.c_ew_e24.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e24.Size = new Size(25, 20);
             this.c_ew_e24.TabIndex = 81;
             // 
             // c_ew_c14
@@ -947,17 +949,17 @@ namespace L2_login
             this.c_ew_c14.AutoSize = true;
             this.c_ew_c14.Location = new System.Drawing.Point(572, 111);
             this.c_ew_c14.Name = "c_ew_c14";
-            this.c_ew_c14.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c14.Size = new Size(15, 14);
             this.c_ew_c14.TabIndex = 80;
             this.c_ew_c14.UseVisualStyleBackColor = true;
-            this.c_ew_c14.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c14.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e14
             // 
             this.c_ew_e14.Location = new System.Drawing.Point(541, 108);
             this.c_ew_e14.MaxLength = 3;
             this.c_ew_e14.Name = "c_ew_e14";
-            this.c_ew_e14.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e14.Size = new Size(25, 20);
             this.c_ew_e14.TabIndex = 79;
             // 
             // c_ew_c43
@@ -965,37 +967,37 @@ namespace L2_login
             this.c_ew_c43.AutoSize = true;
             this.c_ew_c43.Location = new System.Drawing.Point(524, 188);
             this.c_ew_c43.Name = "c_ew_c43";
-            this.c_ew_c43.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c43.Size = new Size(15, 14);
             this.c_ew_c43.TabIndex = 78;
             this.c_ew_c43.UseVisualStyleBackColor = true;
-            this.c_ew_c43.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c43.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c42
             // 
             this.c_ew_c42.AutoSize = true;
             this.c_ew_c42.Location = new System.Drawing.Point(472, 188);
             this.c_ew_c42.Name = "c_ew_c42";
-            this.c_ew_c42.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c42.Size = new Size(15, 14);
             this.c_ew_c42.TabIndex = 77;
             this.c_ew_c42.UseVisualStyleBackColor = true;
-            this.c_ew_c42.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c42.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c41
             // 
             this.c_ew_c41.AutoSize = true;
             this.c_ew_c41.Location = new System.Drawing.Point(420, 188);
             this.c_ew_c41.Name = "c_ew_c41";
-            this.c_ew_c41.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c41.Size = new Size(15, 14);
             this.c_ew_c41.TabIndex = 76;
             this.c_ew_c41.UseVisualStyleBackColor = true;
-            this.c_ew_c41.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c41.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e43
             // 
             this.c_ew_e43.Location = new System.Drawing.Point(493, 185);
             this.c_ew_e43.MaxLength = 3;
             this.c_ew_e43.Name = "c_ew_e43";
-            this.c_ew_e43.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e43.Size = new Size(25, 20);
             this.c_ew_e43.TabIndex = 75;
             // 
             // c_ew_e42
@@ -1003,7 +1005,7 @@ namespace L2_login
             this.c_ew_e42.Location = new System.Drawing.Point(441, 185);
             this.c_ew_e42.MaxLength = 3;
             this.c_ew_e42.Name = "c_ew_e42";
-            this.c_ew_e42.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e42.Size = new Size(25, 20);
             this.c_ew_e42.TabIndex = 74;
             // 
             // c_ew_e41
@@ -1011,7 +1013,7 @@ namespace L2_login
             this.c_ew_e41.Location = new System.Drawing.Point(389, 185);
             this.c_ew_e41.MaxLength = 3;
             this.c_ew_e41.Name = "c_ew_e41";
-            this.c_ew_e41.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e41.Size = new Size(25, 20);
             this.c_ew_e41.TabIndex = 73;
             // 
             // c_ew_c33
@@ -1019,37 +1021,37 @@ namespace L2_login
             this.c_ew_c33.AutoSize = true;
             this.c_ew_c33.Location = new System.Drawing.Point(524, 164);
             this.c_ew_c33.Name = "c_ew_c33";
-            this.c_ew_c33.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c33.Size = new Size(15, 14);
             this.c_ew_c33.TabIndex = 72;
             this.c_ew_c33.UseVisualStyleBackColor = true;
-            this.c_ew_c33.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c33.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c32
             // 
             this.c_ew_c32.AutoSize = true;
             this.c_ew_c32.Location = new System.Drawing.Point(472, 164);
             this.c_ew_c32.Name = "c_ew_c32";
-            this.c_ew_c32.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c32.Size = new Size(15, 14);
             this.c_ew_c32.TabIndex = 71;
             this.c_ew_c32.UseVisualStyleBackColor = true;
-            this.c_ew_c32.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c32.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c31
             // 
             this.c_ew_c31.AutoSize = true;
             this.c_ew_c31.Location = new System.Drawing.Point(420, 164);
             this.c_ew_c31.Name = "c_ew_c31";
-            this.c_ew_c31.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c31.Size = new Size(15, 14);
             this.c_ew_c31.TabIndex = 70;
             this.c_ew_c31.UseVisualStyleBackColor = true;
-            this.c_ew_c31.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c31.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e33
             // 
             this.c_ew_e33.Location = new System.Drawing.Point(493, 161);
             this.c_ew_e33.MaxLength = 3;
             this.c_ew_e33.Name = "c_ew_e33";
-            this.c_ew_e33.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e33.Size = new Size(25, 20);
             this.c_ew_e33.TabIndex = 69;
             // 
             // c_ew_e32
@@ -1057,7 +1059,7 @@ namespace L2_login
             this.c_ew_e32.Location = new System.Drawing.Point(441, 161);
             this.c_ew_e32.MaxLength = 3;
             this.c_ew_e32.Name = "c_ew_e32";
-            this.c_ew_e32.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e32.Size = new Size(25, 20);
             this.c_ew_e32.TabIndex = 68;
             // 
             // c_ew_e31
@@ -1065,7 +1067,7 @@ namespace L2_login
             this.c_ew_e31.Location = new System.Drawing.Point(389, 161);
             this.c_ew_e31.MaxLength = 3;
             this.c_ew_e31.Name = "c_ew_e31";
-            this.c_ew_e31.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e31.Size = new Size(25, 20);
             this.c_ew_e31.TabIndex = 67;
             // 
             // c_ew_c23
@@ -1073,37 +1075,37 @@ namespace L2_login
             this.c_ew_c23.AutoSize = true;
             this.c_ew_c23.Location = new System.Drawing.Point(524, 138);
             this.c_ew_c23.Name = "c_ew_c23";
-            this.c_ew_c23.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c23.Size = new Size(15, 14);
             this.c_ew_c23.TabIndex = 66;
             this.c_ew_c23.UseVisualStyleBackColor = true;
-            this.c_ew_c23.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c23.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c22
             // 
             this.c_ew_c22.AutoSize = true;
             this.c_ew_c22.Location = new System.Drawing.Point(472, 138);
             this.c_ew_c22.Name = "c_ew_c22";
-            this.c_ew_c22.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c22.Size = new Size(15, 14);
             this.c_ew_c22.TabIndex = 65;
             this.c_ew_c22.UseVisualStyleBackColor = true;
-            this.c_ew_c22.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c22.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c21
             // 
             this.c_ew_c21.AutoSize = true;
             this.c_ew_c21.Location = new System.Drawing.Point(420, 138);
             this.c_ew_c21.Name = "c_ew_c21";
-            this.c_ew_c21.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c21.Size = new Size(15, 14);
             this.c_ew_c21.TabIndex = 64;
             this.c_ew_c21.UseVisualStyleBackColor = true;
-            this.c_ew_c21.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c21.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e23
             // 
             this.c_ew_e23.Location = new System.Drawing.Point(493, 135);
             this.c_ew_e23.MaxLength = 3;
             this.c_ew_e23.Name = "c_ew_e23";
-            this.c_ew_e23.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e23.Size = new Size(25, 20);
             this.c_ew_e23.TabIndex = 63;
             // 
             // c_ew_e22
@@ -1111,7 +1113,7 @@ namespace L2_login
             this.c_ew_e22.Location = new System.Drawing.Point(441, 135);
             this.c_ew_e22.MaxLength = 3;
             this.c_ew_e22.Name = "c_ew_e22";
-            this.c_ew_e22.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e22.Size = new Size(25, 20);
             this.c_ew_e22.TabIndex = 62;
             // 
             // c_ew_e21
@@ -1119,7 +1121,7 @@ namespace L2_login
             this.c_ew_e21.Location = new System.Drawing.Point(389, 135);
             this.c_ew_e21.MaxLength = 3;
             this.c_ew_e21.Name = "c_ew_e21";
-            this.c_ew_e21.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e21.Size = new Size(25, 20);
             this.c_ew_e21.TabIndex = 61;
             // 
             // c_ew_c13
@@ -1127,37 +1129,37 @@ namespace L2_login
             this.c_ew_c13.AutoSize = true;
             this.c_ew_c13.Location = new System.Drawing.Point(524, 111);
             this.c_ew_c13.Name = "c_ew_c13";
-            this.c_ew_c13.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c13.Size = new Size(15, 14);
             this.c_ew_c13.TabIndex = 60;
             this.c_ew_c13.UseVisualStyleBackColor = true;
-            this.c_ew_c13.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c13.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c12
             // 
             this.c_ew_c12.AutoSize = true;
             this.c_ew_c12.Location = new System.Drawing.Point(472, 111);
             this.c_ew_c12.Name = "c_ew_c12";
-            this.c_ew_c12.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c12.Size = new Size(15, 14);
             this.c_ew_c12.TabIndex = 59;
             this.c_ew_c12.UseVisualStyleBackColor = true;
-            this.c_ew_c12.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c12.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_c11
             // 
             this.c_ew_c11.AutoSize = true;
             this.c_ew_c11.Location = new System.Drawing.Point(420, 111);
             this.c_ew_c11.Name = "c_ew_c11";
-            this.c_ew_c11.Size = new System.Drawing.Size(15, 14);
+            this.c_ew_c11.Size = new Size(15, 14);
             this.c_ew_c11.TabIndex = 58;
             this.c_ew_c11.UseVisualStyleBackColor = true;
-            this.c_ew_c11.CheckedChanged += new System.EventHandler(this.chc_ew_iprand);
+            this.c_ew_c11.CheckedChanged += new EventHandler(this.chc_ew_iprand);
             // 
             // c_ew_e13
             // 
             this.c_ew_e13.Location = new System.Drawing.Point(493, 108);
             this.c_ew_e13.MaxLength = 3;
             this.c_ew_e13.Name = "c_ew_e13";
-            this.c_ew_e13.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e13.Size = new Size(25, 20);
             this.c_ew_e13.TabIndex = 56;
             // 
             // c_ew_e12
@@ -1165,7 +1167,7 @@ namespace L2_login
             this.c_ew_e12.Location = new System.Drawing.Point(441, 108);
             this.c_ew_e12.MaxLength = 3;
             this.c_ew_e12.Name = "c_ew_e12";
-            this.c_ew_e12.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e12.Size = new Size(25, 20);
             this.c_ew_e12.TabIndex = 55;
             // 
             // c_ew_e11
@@ -1173,7 +1175,7 @@ namespace L2_login
             this.c_ew_e11.Location = new System.Drawing.Point(389, 108);
             this.c_ew_e11.MaxLength = 3;
             this.c_ew_e11.Name = "c_ew_e11";
-            this.c_ew_e11.Size = new System.Drawing.Size(25, 20);
+            this.c_ew_e11.Size = new Size(25, 20);
             this.c_ew_e11.TabIndex = 54;
             // 
             // label5
@@ -1181,7 +1183,7 @@ namespace L2_login
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(365, 188);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.Size = new Size(26, 13);
             this.label5.TabIndex = 53;
             this.label5.Text = "IP4:";
             // 
@@ -1190,7 +1192,7 @@ namespace L2_login
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(365, 165);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.Size = new Size(26, 13);
             this.label4.TabIndex = 52;
             this.label4.Text = "IP3:";
             // 
@@ -1199,7 +1201,7 @@ namespace L2_login
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(365, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new Size(26, 13);
             this.label3.TabIndex = 51;
             this.label3.Text = "IP2:";
             // 
@@ -1208,7 +1210,7 @@ namespace L2_login
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(365, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new Size(26, 13);
             this.label2.TabIndex = 50;
             this.label2.Text = "IP1:";
             // 
@@ -1217,44 +1219,44 @@ namespace L2_login
             this.c_ew_ip.AutoSize = true;
             this.c_ew_ip.Location = new System.Drawing.Point(376, 57);
             this.c_ew_ip.Name = "c_ew_ip";
-            this.c_ew_ip.Size = new System.Drawing.Size(130, 17);
+            this.c_ew_ip.Size = new Size(130, 17);
             this.c_ew_ip.TabIndex = 49;
             this.c_ew_ip.Text = "Custom EnterWorld IP";
             this.c_ew_ip.UseVisualStyleBackColor = true;
-            this.c_ew_ip.CheckedChanged += new System.EventHandler(this.chc_ew_ip_CheckedChanged);
+            this.c_ew_ip.CheckedChanged += new EventHandler(this.chc_ew_ip_CheckedChanged);
             // 
             // textBox_game_listenport
             // 
             this.textBox_game_listenport.Location = new System.Drawing.Point(124, 51);
             this.textBox_game_listenport.MaxLength = 5;
             this.textBox_game_listenport.Name = "textBox_game_listenport";
-            this.textBox_game_listenport.Size = new System.Drawing.Size(81, 20);
+            this.textBox_game_listenport.Size = new Size(81, 20);
             this.textBox_game_listenport.TabIndex = 48;
-            this.textBox_game_listenport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_game_listenport.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(236, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 24);
+            this.label1.Size = new Size(92, 24);
             this.label1.TabIndex = 47;
             this.label1.Text = "Game Server Port";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox_gsList
             // 
             this.comboBox_gsList.Location = new System.Drawing.Point(171, 2);
             this.comboBox_gsList.Name = "comboBox_gsList";
-            this.comboBox_gsList.Size = new System.Drawing.Size(157, 21);
+            this.comboBox_gsList.Size = new Size(157, 21);
             this.comboBox_gsList.TabIndex = 46;
-            this.comboBox_gsList.SelectedIndexChanged += new System.EventHandler(this.comboBox_gsList_SelectedIndexChanged);
+            this.comboBox_gsList.SelectedIndexChanged += new EventHandler(this.comboBox_gsList_SelectedIndexChanged);
             // 
             // checkBox_ManualGK
             // 
             this.checkBox_ManualGK.AutoSize = true;
             this.checkBox_ManualGK.Location = new System.Drawing.Point(225, 76);
             this.checkBox_ManualGK.Name = "checkBox_ManualGK";
-            this.checkBox_ManualGK.Size = new System.Drawing.Size(109, 17);
+            this.checkBox_ManualGK.Size = new Size(109, 17);
             this.checkBox_ManualGK.TabIndex = 45;
             this.checkBox_ManualGK.Text = "Manual Gamekey";
             this.checkBox_ManualGK.UseVisualStyleBackColor = true;
@@ -1263,26 +1265,26 @@ namespace L2_login
             // 
             this.label_packet.Location = new System.Drawing.Point(332, 27);
             this.label_packet.Name = "label_packet";
-            this.label_packet.Size = new System.Drawing.Size(51, 24);
+            this.label_packet.Size = new Size(51, 24);
             this.label_packet.TabIndex = 44;
             this.label_packet.Text = "Packet";
-            this.label_packet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_packet.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_Custom_EnterWorld
             // 
             this.textBox_Custom_EnterWorld.Location = new System.Drawing.Point(379, 28);
             this.textBox_Custom_EnterWorld.MaxLength = 4096;
             this.textBox_Custom_EnterWorld.Name = "textBox_Custom_EnterWorld";
-            this.textBox_Custom_EnterWorld.Size = new System.Drawing.Size(209, 20);
+            this.textBox_Custom_EnterWorld.Size = new Size(209, 20);
             this.textBox_Custom_EnterWorld.TabIndex = 43;
-            this.textBox_Custom_EnterWorld.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_Custom_EnterWorld.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_Custom_EnterWorld
             // 
             this.checkBox_Custom_EnterWorld.AutoSize = true;
             this.checkBox_Custom_EnterWorld.Location = new System.Drawing.Point(376, 4);
             this.checkBox_Custom_EnterWorld.Name = "checkBox_Custom_EnterWorld";
-            this.checkBox_Custom_EnterWorld.Size = new System.Drawing.Size(154, 17);
+            this.checkBox_Custom_EnterWorld.Size = new Size(154, 17);
             this.checkBox_Custom_EnterWorld.TabIndex = 42;
             this.checkBox_Custom_EnterWorld.Text = "Custom EnterWorld Packet";
             this.checkBox_Custom_EnterWorld.UseVisualStyleBackColor = true;
@@ -1292,7 +1294,7 @@ namespace L2_login
             this.checkBox_game_proxy.AutoSize = true;
             this.checkBox_game_proxy.Location = new System.Drawing.Point(5, 100);
             this.checkBox_game_proxy.Name = "checkBox_game_proxy";
-            this.checkBox_game_proxy.Size = new System.Drawing.Size(210, 17);
+            this.checkBox_game_proxy.Size = new Size(210, 17);
             this.checkBox_game_proxy.TabIndex = 41;
             this.checkBox_game_proxy.Text = "Use Proxy for Game Server connection";
             this.checkBox_game_proxy.UseVisualStyleBackColor = true;
@@ -1302,79 +1304,79 @@ namespace L2_login
             this.textBox_socks_password.Location = new System.Drawing.Point(144, 201);
             this.textBox_socks_password.MaxLength = 32;
             this.textBox_socks_password.Name = "textBox_socks_password";
-            this.textBox_socks_password.Size = new System.Drawing.Size(184, 20);
+            this.textBox_socks_password.Size = new Size(184, 20);
             this.textBox_socks_password.TabIndex = 40;
-            this.textBox_socks_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_socks_password.TextAlign = HorizontalAlignment.Center;
             // 
             // label_socks_password
             // 
             this.label_socks_password.Location = new System.Drawing.Point(5, 199);
             this.label_socks_password.Name = "label_socks_password";
-            this.label_socks_password.Size = new System.Drawing.Size(133, 24);
+            this.label_socks_password.Size = new Size(133, 24);
             this.label_socks_password.TabIndex = 39;
             this.label_socks_password.Text = "SOCKS5 Password";
-            this.label_socks_password.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_socks_password.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_socks_username
             // 
             this.textBox_socks_username.Location = new System.Drawing.Point(142, 175);
             this.textBox_socks_username.MaxLength = 32;
             this.textBox_socks_username.Name = "textBox_socks_username";
-            this.textBox_socks_username.Size = new System.Drawing.Size(184, 20);
+            this.textBox_socks_username.Size = new Size(184, 20);
             this.textBox_socks_username.TabIndex = 38;
-            this.textBox_socks_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_socks_username.TextAlign = HorizontalAlignment.Center;
             // 
             // label_socks_username
             // 
             this.label_socks_username.Location = new System.Drawing.Point(5, 173);
             this.label_socks_username.Name = "label_socks_username";
-            this.label_socks_username.Size = new System.Drawing.Size(131, 24);
+            this.label_socks_username.Size = new Size(131, 24);
             this.label_socks_username.TabIndex = 37;
             this.label_socks_username.Text = "SOCKS5 Username";
-            this.label_socks_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_socks_username.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_socks_ip
             // 
             this.label_socks_ip.Location = new System.Drawing.Point(8, 120);
             this.label_socks_ip.Name = "label_socks_ip";
-            this.label_socks_ip.Size = new System.Drawing.Size(128, 24);
+            this.label_socks_ip.Size = new Size(128, 24);
             this.label_socks_ip.TabIndex = 36;
             this.label_socks_ip.Text = "SOCKS5 IP";
-            this.label_socks_ip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_socks_ip.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_socks_port
             // 
             this.textBox_socks_port.Location = new System.Drawing.Point(142, 149);
             this.textBox_socks_port.MaxLength = 5;
             this.textBox_socks_port.Name = "textBox_socks_port";
-            this.textBox_socks_port.Size = new System.Drawing.Size(184, 20);
+            this.textBox_socks_port.Size = new Size(184, 20);
             this.textBox_socks_port.TabIndex = 35;
-            this.textBox_socks_port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_socks_port.TextAlign = HorizontalAlignment.Center;
             // 
             // label_socks_port
             // 
             this.label_socks_port.Location = new System.Drawing.Point(8, 146);
             this.label_socks_port.Name = "label_socks_port";
-            this.label_socks_port.Size = new System.Drawing.Size(128, 24);
+            this.label_socks_port.Size = new Size(128, 24);
             this.label_socks_port.TabIndex = 34;
             this.label_socks_port.Text = "SOCKS5 Port";
-            this.label_socks_port.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_socks_port.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_socks_ip
             // 
             this.textBox_socks_ip.Location = new System.Drawing.Point(142, 123);
             this.textBox_socks_ip.MaxLength = 15;
             this.textBox_socks_ip.Name = "textBox_socks_ip";
-            this.textBox_socks_ip.Size = new System.Drawing.Size(184, 20);
+            this.textBox_socks_ip.Size = new Size(184, 20);
             this.textBox_socks_ip.TabIndex = 33;
-            this.textBox_socks_ip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_socks_ip.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_login_proxy
             // 
             this.checkBox_login_proxy.AutoSize = true;
             this.checkBox_login_proxy.Location = new System.Drawing.Point(5, 77);
             this.checkBox_login_proxy.Name = "checkBox_login_proxy";
-            this.checkBox_login_proxy.Size = new System.Drawing.Size(208, 17);
+            this.checkBox_login_proxy.Size = new Size(208, 17);
             this.checkBox_login_proxy.TabIndex = 32;
             this.checkBox_login_proxy.Text = "Use Proxy for Login Server connection";
             this.checkBox_login_proxy.UseVisualStyleBackColor = true;
@@ -1384,34 +1386,34 @@ namespace L2_login
             this.textBox_game_port.Location = new System.Drawing.Point(245, 27);
             this.textBox_game_port.MaxLength = 5;
             this.textBox_game_port.Name = "textBox_game_port";
-            this.textBox_game_port.Size = new System.Drawing.Size(81, 20);
+            this.textBox_game_port.Size = new Size(81, 20);
             this.textBox_game_port.TabIndex = 30;
-            this.textBox_game_port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_game_port.TextAlign = HorizontalAlignment.Center;
             // 
             // label_game_port
             // 
             this.label_game_port.Location = new System.Drawing.Point(3, 49);
             this.label_game_port.Name = "label_game_port";
-            this.label_game_port.Size = new System.Drawing.Size(133, 24);
+            this.label_game_port.Size = new Size(133, 24);
             this.label_game_port.TabIndex = 29;
             this.label_game_port.Text = "Game Server Listen Port";
-            this.label_game_port.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_game_port.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // textBox_game_ip
             // 
             this.textBox_game_ip.Location = new System.Drawing.Point(109, 28);
             this.textBox_game_ip.MaxLength = 15;
             this.textBox_game_ip.Name = "textBox_game_ip";
-            this.textBox_game_ip.Size = new System.Drawing.Size(131, 20);
+            this.textBox_game_ip.Size = new Size(131, 20);
             this.textBox_game_ip.TabIndex = 28;
-            this.textBox_game_ip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_game_ip.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_override_gameserver
             // 
             this.checkBox_override_gameserver.AutoSize = true;
             this.checkBox_override_gameserver.Location = new System.Drawing.Point(5, 4);
             this.checkBox_override_gameserver.Name = "checkBox_override_gameserver";
-            this.checkBox_override_gameserver.Size = new System.Drawing.Size(165, 17);
+            this.checkBox_override_gameserver.Size = new Size(165, 17);
             this.checkBox_override_gameserver.TabIndex = 0;
             this.checkBox_override_gameserver.Text = "Overide Game Server IP/Port";
             this.checkBox_override_gameserver.UseVisualStyleBackColor = true;
@@ -1420,83 +1422,83 @@ namespace L2_login
             // 
             this.label_game_ip.Location = new System.Drawing.Point(3, 25);
             this.label_game_ip.Name = "label_game_ip";
-            this.label_game_ip.Size = new System.Drawing.Size(116, 24);
+            this.label_game_ip.Size = new Size(116, 24);
             this.label_game_ip.TabIndex = 31;
             this.label_game_ip.Text = "Game Server IP/Port";
-            this.label_game_ip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_game_ip.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // checkBox_advanced
             // 
             this.checkBox_advanced.AutoSize = true;
             this.checkBox_advanced.Location = new System.Drawing.Point(60, 161);
             this.checkBox_advanced.Name = "checkBox_advanced";
-            this.checkBox_advanced.Size = new System.Drawing.Size(143, 17);
+            this.checkBox_advanced.Size = new Size(143, 17);
             this.checkBox_advanced.TabIndex = 32;
             this.checkBox_advanced.Text = "Advanced Login Options";
             this.checkBox_advanced.UseVisualStyleBackColor = true;
-            this.checkBox_advanced.CheckedChanged += new System.EventHandler(this.checkBox_advanced_CheckedChanged);
+            this.checkBox_advanced.CheckedChanged += new EventHandler(this.checkBox_advanced_CheckedChanged);
             // 
             // label_prot
             // 
             this.label_prot.Location = new System.Drawing.Point(78, 88);
             this.label_prot.Name = "label_prot";
-            this.label_prot.Size = new System.Drawing.Size(48, 24);
+            this.label_prot.Size = new Size(48, 24);
             this.label_prot.TabIndex = 28;
             this.label_prot.Text = "Protocol";
-            this.label_prot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_prot.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_logon_prot
             // 
             this.textBox_logon_prot.Location = new System.Drawing.Point(132, 91);
             this.textBox_logon_prot.Name = "textBox_logon_prot";
-            this.textBox_logon_prot.Size = new System.Drawing.Size(88, 20);
+            this.textBox_logon_prot.Size = new Size(88, 20);
             this.textBox_logon_prot.TabIndex = 27;
-            this.textBox_logon_prot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_logon_prot.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBox_blowfish
             // 
             this.comboBox_blowfish.Location = new System.Drawing.Point(7, 32);
             this.comboBox_blowfish.Name = "comboBox_blowfish";
-            this.comboBox_blowfish.Size = new System.Drawing.Size(144, 21);
+            this.comboBox_blowfish.Size = new Size(144, 21);
             this.comboBox_blowfish.TabIndex = 0;
             // 
             // label_blowfishkey
             // 
             this.label_blowfishkey.Location = new System.Drawing.Point(6, 5);
             this.label_blowfishkey.Name = "label_blowfishkey";
-            this.label_blowfishkey.Size = new System.Drawing.Size(120, 24);
+            this.label_blowfishkey.Size = new Size(120, 24);
             this.label_blowfishkey.TabIndex = 23;
             this.label_blowfishkey.Text = "Blowfish Key(token)";
-            this.label_blowfishkey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_blowfishkey.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_blowfish
             // 
             this.textBox_blowfish.Location = new System.Drawing.Point(7, 65);
             this.textBox_blowfish.MaxLength = 32;
             this.textBox_blowfish.Name = "textBox_blowfish";
-            this.textBox_blowfish.Size = new System.Drawing.Size(274, 20);
+            this.textBox_blowfish.Size = new Size(274, 20);
             this.textBox_blowfish.TabIndex = 1;
-            this.textBox_blowfish.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_blowfish.TextAlign = HorizontalAlignment.Center;
             // 
             // button_select_ig
             // 
-            this.button_select_ig.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_select_ig.FlatStyle = FlatStyle.System;
             this.button_select_ig.Location = new System.Drawing.Point(248, 115);
             this.button_select_ig.Name = "button_select_ig";
-            this.button_select_ig.Size = new System.Drawing.Size(152, 40);
+            this.button_select_ig.Size = new Size(152, 40);
             this.button_select_ig.TabIndex = 6;
             this.button_select_ig.Text = "IG";
-            this.button_select_ig.Click += new System.EventHandler(this.button_select_ig_Click);
+            this.button_select_ig.Click += new EventHandler(this.button_select_ig_Click);
             // 
             // button_select_oog
             // 
-            this.button_select_oog.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_select_oog.FlatStyle = FlatStyle.System;
             this.button_select_oog.Location = new System.Drawing.Point(60, 115);
             this.button_select_oog.Name = "button_select_oog";
-            this.button_select_oog.Size = new System.Drawing.Size(160, 40);
+            this.button_select_oog.Size = new Size(160, 40);
             this.button_select_oog.TabIndex = 5;
             this.button_select_oog.Text = "OOG";
-            this.button_select_oog.Click += new System.EventHandler(this.button_select_oog_Click);
+            this.button_select_oog.Click += new EventHandler(this.button_select_oog_Click);
             // 
             // panel_ig
             // 
@@ -1515,10 +1517,10 @@ namespace L2_login
             this.panel_ig.Controls.Add(this.textBox_ig_login_port);
             this.panel_ig.Controls.Add(this.textBox_ig_login_ip);
             this.panel_ig.Controls.Add(this.button_ig_listen);
-            this.panel_ig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_ig.Dock = DockStyle.Fill;
             this.panel_ig.Location = new System.Drawing.Point(0, 0);
             this.panel_ig.Name = "panel_ig";
-            this.panel_ig.Size = new System.Drawing.Size(607, 445);
+            this.panel_ig.Size = new Size(607, 445);
             this.panel_ig.TabIndex = 0;
             // 
             // checkBox_security_old_client
@@ -1526,7 +1528,7 @@ namespace L2_login
             this.checkBox_security_old_client.AutoSize = true;
             this.checkBox_security_old_client.Location = new System.Drawing.Point(266, 91);
             this.checkBox_security_old_client.Name = "checkBox_security_old_client";
-            this.checkBox_security_old_client.Size = new System.Drawing.Size(71, 17);
+            this.checkBox_security_old_client.Size = new Size(71, 17);
             this.checkBox_security_old_client.TabIndex = 32;
             this.checkBox_security_old_client.Text = "Old Client";
             this.checkBox_security_old_client.UseVisualStyleBackColor = true;
@@ -1536,25 +1538,25 @@ namespace L2_login
             // 
             this.label_IG_pin.Location = new System.Drawing.Point(61, 86);
             this.label_IG_pin.Name = "label_IG_pin";
-            this.label_IG_pin.Size = new System.Drawing.Size(93, 24);
+            this.label_IG_pin.Size = new Size(93, 24);
             this.label_IG_pin.TabIndex = 31;
             this.label_IG_pin.Text = "Pin";
-            this.label_IG_pin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_IG_pin.TextAlign = ContentAlignment.MiddleRight;
             // 
             // textBox_IG_pin
             // 
             this.textBox_IG_pin.Location = new System.Drawing.Point(160, 89);
             this.textBox_IG_pin.Name = "textBox_IG_pin";
-            this.textBox_IG_pin.Size = new System.Drawing.Size(100, 20);
+            this.textBox_IG_pin.Size = new Size(100, 20);
             this.textBox_IG_pin.TabIndex = 30;
-            this.textBox_IG_pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_IG_pin.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox_OverrideProtocol
             // 
             this.checkBox_OverrideProtocol.AutoSize = true;
             this.checkBox_OverrideProtocol.Location = new System.Drawing.Point(160, 178);
             this.checkBox_OverrideProtocol.Name = "checkBox_OverrideProtocol";
-            this.checkBox_OverrideProtocol.Size = new System.Drawing.Size(146, 17);
+            this.checkBox_OverrideProtocol.Size = new Size(146, 17);
             this.checkBox_OverrideProtocol.TabIndex = 29;
             this.checkBox_OverrideProtocol.Text = "Override Protocol Version";
             this.checkBox_OverrideProtocol.UseVisualStyleBackColor = true;
@@ -1563,114 +1565,114 @@ namespace L2_login
             // 
             this.label_loginport.Location = new System.Drawing.Point(63, 57);
             this.label_loginport.Name = "label_loginport";
-            this.label_loginport.Size = new System.Drawing.Size(93, 24);
+            this.label_loginport.Size = new Size(93, 24);
             this.label_loginport.TabIndex = 28;
             this.label_loginport.Text = "Login Server Port";
-            this.label_loginport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_loginport.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_ip
             // 
             this.label_ip.Location = new System.Drawing.Point(107, 123);
             this.label_ip.Name = "label_ip";
-            this.label_ip.Size = new System.Drawing.Size(47, 24);
+            this.label_ip.Size = new Size(47, 24);
             this.label_ip.TabIndex = 27;
             this.label_ip.Text = "Local IP";
-            this.label_ip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_ip.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button_back_ig
             // 
-            this.button_back_ig.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_back_ig.FlatStyle = FlatStyle.System;
             this.button_back_ig.Location = new System.Drawing.Point(16, 208);
             this.button_back_ig.Name = "button_back_ig";
-            this.button_back_ig.Size = new System.Drawing.Size(104, 24);
+            this.button_back_ig.Size = new Size(104, 24);
             this.button_back_ig.TabIndex = 26;
             this.button_back_ig.Text = "Back";
-            this.button_back_ig.Click += new System.EventHandler(this.button_back_ig_Click);
+            this.button_back_ig.Click += new EventHandler(this.button_back_ig_Click);
             // 
             // textBox_local_port
             // 
             this.textBox_local_port.Location = new System.Drawing.Point(160, 152);
             this.textBox_local_port.MaxLength = 5;
             this.textBox_local_port.Name = "textBox_local_port";
-            this.textBox_local_port.Size = new System.Drawing.Size(184, 20);
+            this.textBox_local_port.Size = new Size(184, 20);
             this.textBox_local_port.TabIndex = 25;
-            this.textBox_local_port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_local_port.TextAlign = HorizontalAlignment.Center;
             // 
             // label_localport
             // 
             this.label_localport.Location = new System.Drawing.Point(62, 149);
             this.label_localport.Name = "label_localport";
-            this.label_localport.Size = new System.Drawing.Size(92, 24);
+            this.label_localport.Size = new Size(92, 24);
             this.label_localport.TabIndex = 24;
             this.label_localport.Text = "Local Login Port";
-            this.label_localport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_localport.TextAlign = ContentAlignment.MiddleCenter;
             this.label_localport.Visible = false;
             // 
             // comboBox_ig_login
             // 
             this.comboBox_ig_login.Location = new System.Drawing.Point(10, 28);
             this.comboBox_ig_login.Name = "comboBox_ig_login";
-            this.comboBox_ig_login.Size = new System.Drawing.Size(144, 21);
+            this.comboBox_ig_login.Size = new Size(144, 21);
             this.comboBox_ig_login.TabIndex = 1;
             // 
             // label_loginserver
             // 
             this.label_loginserver.Location = new System.Drawing.Point(210, 4);
             this.label_loginserver.Name = "label_loginserver";
-            this.label_loginserver.Size = new System.Drawing.Size(88, 24);
+            this.label_loginserver.Size = new Size(88, 24);
             this.label_loginserver.TabIndex = 19;
             this.label_loginserver.Text = "Login Server IP";
-            this.label_loginserver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_loginserver.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_local_ip
             // 
             this.textBox_local_ip.Location = new System.Drawing.Point(160, 126);
             this.textBox_local_ip.MaxLength = 15;
             this.textBox_local_ip.Name = "textBox_local_ip";
-            this.textBox_local_ip.Size = new System.Drawing.Size(184, 20);
+            this.textBox_local_ip.Size = new Size(184, 20);
             this.textBox_local_ip.TabIndex = 0;
-            this.textBox_local_ip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_local_ip.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_ig_login_port
             // 
             this.textBox_ig_login_port.Location = new System.Drawing.Point(162, 60);
             this.textBox_ig_login_port.MaxLength = 5;
             this.textBox_ig_login_port.Name = "textBox_ig_login_port";
-            this.textBox_ig_login_port.Size = new System.Drawing.Size(184, 20);
+            this.textBox_ig_login_port.Size = new Size(184, 20);
             this.textBox_ig_login_port.TabIndex = 3;
-            this.textBox_ig_login_port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_ig_login_port.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_ig_login_ip
             // 
             this.textBox_ig_login_ip.Location = new System.Drawing.Point(162, 28);
             this.textBox_ig_login_ip.MaxLength = 64;
             this.textBox_ig_login_ip.Name = "textBox_ig_login_ip";
-            this.textBox_ig_login_ip.Size = new System.Drawing.Size(184, 20);
+            this.textBox_ig_login_ip.Size = new Size(184, 20);
             this.textBox_ig_login_ip.TabIndex = 2;
-            this.textBox_ig_login_ip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_ig_login_ip.TextAlign = HorizontalAlignment.Center;
             // 
             // button_ig_listen
             // 
-            this.button_ig_listen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_ig_listen.FlatStyle = FlatStyle.System;
             this.button_ig_listen.Location = new System.Drawing.Point(176, 208);
             this.button_ig_listen.Name = "button_ig_listen";
-            this.button_ig_listen.Size = new System.Drawing.Size(168, 24);
+            this.button_ig_listen.Size = new Size(168, 24);
             this.button_ig_listen.TabIndex = 7;
             this.button_ig_listen.Text = "Listen";
-            this.button_ig_listen.Click += new System.EventHandler(this.button_ig_listen_Click);
+            this.button_ig_listen.Click += new EventHandler(this.button_ig_listen_Click);
             // 
             // textBox_oog_logon_ip
             // 
             this.textBox_oog_logon_ip.Location = new System.Drawing.Point(183, 6);
             this.textBox_oog_logon_ip.MaxLength = 64;
             this.textBox_oog_logon_ip.Name = "textBox_oog_logon_ip";
-            this.textBox_oog_logon_ip.Size = new System.Drawing.Size(182, 20);
+            this.textBox_oog_logon_ip.Size = new Size(182, 20);
             this.textBox_oog_logon_ip.TabIndex = 1;
-            this.textBox_oog_logon_ip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_oog_logon_ip.TextAlign = HorizontalAlignment.Center;
             // 
             // listView_servers
             // 
-            this.listView_servers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_servers.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader79,
             this.columnHeader2,
@@ -1686,10 +1688,10 @@ namespace L2_login
             this.listView_servers.HideSelection = false;
             this.listView_servers.Location = new System.Drawing.Point(7, 84);
             this.listView_servers.Name = "listView_servers";
-            this.listView_servers.Size = new System.Drawing.Size(552, 71);
+            this.listView_servers.Size = new Size(552, 71);
             this.listView_servers.TabIndex = 7;
             this.listView_servers.UseCompatibleStateImageBehavior = false;
-            this.listView_servers.View = System.Windows.Forms.View.Details;
+            this.listView_servers.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -1745,19 +1747,19 @@ namespace L2_login
             this.textBox_oog_logon_port.Location = new System.Drawing.Point(423, 6);
             this.textBox_oog_logon_port.MaxLength = 5;
             this.textBox_oog_logon_port.Name = "textBox_oog_logon_port";
-            this.textBox_oog_logon_port.Size = new System.Drawing.Size(88, 20);
+            this.textBox_oog_logon_port.Size = new Size(88, 20);
             this.textBox_oog_logon_port.TabIndex = 2;
-            this.textBox_oog_logon_port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_oog_logon_port.TextAlign = HorizontalAlignment.Center;
             // 
             // button_logon
             // 
-            this.button_logon.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_logon.FlatStyle = FlatStyle.System;
             this.button_logon.Location = new System.Drawing.Point(399, 57);
             this.button_logon.Name = "button_logon";
-            this.button_logon.Size = new System.Drawing.Size(148, 24);
+            this.button_logon.Size = new Size(148, 24);
             this.button_logon.TabIndex = 6;
             this.button_logon.Text = "Logon";
-            this.button_logon.Click += new System.EventHandler(this.button_logon_Click);
+            this.button_logon.Click += new EventHandler(this.button_logon_Click);
             // 
             // textBox_pword
             // 
@@ -1765,59 +1767,59 @@ namespace L2_login
             this.textBox_pword.MaxLength = 16;
             this.textBox_pword.Name = "textBox_pword";
             this.textBox_pword.PasswordChar = '*';
-            this.textBox_pword.Size = new System.Drawing.Size(182, 20);
+            this.textBox_pword.Size = new Size(182, 20);
             this.textBox_pword.TabIndex = 5;
-            this.textBox_pword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_pword.TextChanged += new System.EventHandler(this.textBox_pword_TextChanged);
-            this.textBox_pword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_pword_KeyDown);
+            this.textBox_pword.TextAlign = HorizontalAlignment.Center;
+            this.textBox_pword.TextChanged += new EventHandler(this.textBox_pword_TextChanged);
+            this.textBox_pword.KeyDown += new KeyEventHandler(this.textBox_pword_KeyDown);
             // 
             // button_server
             // 
             this.button_server.Enabled = false;
-            this.button_server.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_server.FlatStyle = FlatStyle.System;
             this.button_server.Location = new System.Drawing.Point(399, 160);
             this.button_server.Name = "button_server";
-            this.button_server.Size = new System.Drawing.Size(148, 24);
+            this.button_server.Size = new Size(148, 24);
             this.button_server.TabIndex = 8;
             this.button_server.Text = "Select Server";
-            this.button_server.Click += new System.EventHandler(this.button_server_Click);
+            this.button_server.Click += new EventHandler(this.button_server_Click);
             // 
             // button_char
             // 
             this.button_char.Enabled = false;
-            this.button_char.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_char.FlatStyle = FlatStyle.System;
             this.button_char.Location = new System.Drawing.Point(434, 307);
             this.button_char.Name = "button_char";
-            this.button_char.Size = new System.Drawing.Size(125, 24);
+            this.button_char.Size = new Size(125, 24);
             this.button_char.TabIndex = 10;
             this.button_char.Text = "Select Char";
-            this.button_char.Click += new System.EventHandler(this.button_char_Click);
+            this.button_char.Click += new EventHandler(this.button_char_Click);
             // 
             // textBox_lname
             // 
             this.textBox_lname.Location = new System.Drawing.Point(183, 32);
             this.textBox_lname.MaxLength = 255;
             this.textBox_lname.Name = "textBox_lname";
-            this.textBox_lname.Size = new System.Drawing.Size(182, 20);
+            this.textBox_lname.Size = new Size(182, 20);
             this.textBox_lname.TabIndex = 4;
-            this.textBox_lname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_lname.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBox_oog_login
             // 
             this.comboBox_oog_login.Location = new System.Drawing.Point(23, 6);
             this.comboBox_oog_login.Name = "comboBox_oog_login";
-            this.comboBox_oog_login.Size = new System.Drawing.Size(144, 21);
+            this.comboBox_oog_login.Size = new Size(144, 21);
             this.comboBox_oog_login.TabIndex = 0;
             // 
             // button_back_oog
             // 
-            this.button_back_oog.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_back_oog.FlatStyle = FlatStyle.System;
             this.button_back_oog.Location = new System.Drawing.Point(20, 307);
             this.button_back_oog.Name = "button_back_oog";
-            this.button_back_oog.Size = new System.Drawing.Size(104, 24);
+            this.button_back_oog.Size = new Size(104, 24);
             this.button_back_oog.TabIndex = 11;
             this.button_back_oog.Text = "Back";
-            this.button_back_oog.Click += new System.EventHandler(this.button_back_oog_Click);
+            this.button_back_oog.Click += new EventHandler(this.button_back_oog_Click);
             // 
             // panel_oog
             // 
@@ -1839,33 +1841,33 @@ namespace L2_login
             this.panel_oog.Controls.Add(this.textBox_oog_logon_port);
             this.panel_oog.Controls.Add(this.listView_servers);
             this.panel_oog.Controls.Add(this.textBox_oog_logon_ip);
-            this.panel_oog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_oog.Dock = DockStyle.Fill;
             this.panel_oog.Location = new System.Drawing.Point(0, 0);
             this.panel_oog.Name = "panel_oog";
-            this.panel_oog.Size = new System.Drawing.Size(607, 445);
+            this.panel_oog.Size = new Size(607, 445);
             this.panel_oog.TabIndex = 16;
             // 
             // label_security_pin
             // 
             this.label_security_pin.Location = new System.Drawing.Point(384, 29);
             this.label_security_pin.Name = "label_security_pin";
-            this.label_security_pin.Size = new System.Drawing.Size(32, 24);
+            this.label_security_pin.Size = new Size(32, 24);
             this.label_security_pin.TabIndex = 32;
             this.label_security_pin.Text = "Pin";
-            this.label_security_pin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_security_pin.TextAlign = ContentAlignment.MiddleRight;
             // 
             // textBox_security_pin
             // 
             this.textBox_security_pin.Location = new System.Drawing.Point(423, 32);
             this.textBox_security_pin.MaxLength = 14;
             this.textBox_security_pin.Name = "textBox_security_pin";
-            this.textBox_security_pin.Size = new System.Drawing.Size(88, 20);
+            this.textBox_security_pin.Size = new Size(88, 20);
             this.textBox_security_pin.TabIndex = 31;
-            this.textBox_security_pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_security_pin.TextAlign = HorizontalAlignment.Center;
             // 
             // listView_chars
             // 
-            this.listView_chars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_chars.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12,
@@ -1890,10 +1892,10 @@ namespace L2_login
             this.listView_chars.HideSelection = false;
             this.listView_chars.Location = new System.Drawing.Point(9, 190);
             this.listView_chars.Name = "listView_chars";
-            this.listView_chars.Size = new System.Drawing.Size(552, 114);
+            this.listView_chars.Size = new Size(552, 114);
             this.listView_chars.TabIndex = 30;
             this.listView_chars.UseCompatibleStateImageBehavior = false;
-            this.listView_chars.View = System.Windows.Forms.View.Details;
+            this.listView_chars.View = View.Details;
             // 
             // columnHeader10
             // 
@@ -1978,30 +1980,30 @@ namespace L2_login
             // button_delete_char
             // 
             this.button_delete_char.Enabled = false;
-            this.button_delete_char.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_delete_char.FlatStyle = FlatStyle.System;
             this.button_delete_char.Location = new System.Drawing.Point(172, 307);
             this.button_delete_char.Name = "button_delete_char";
-            this.button_delete_char.Size = new System.Drawing.Size(125, 24);
+            this.button_delete_char.Size = new Size(125, 24);
             this.button_delete_char.TabIndex = 24;
             this.button_delete_char.Text = "Delete Char";
-            this.button_delete_char.Click += new System.EventHandler(this.button_delete_char_Click);
+            this.button_delete_char.Click += new EventHandler(this.button_delete_char_Click);
             // 
             // button_oog_create
             // 
-            this.button_oog_create.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_oog_create.FlatStyle = FlatStyle.System;
             this.button_oog_create.Location = new System.Drawing.Point(303, 307);
             this.button_oog_create.Name = "button_oog_create";
-            this.button_oog_create.Size = new System.Drawing.Size(125, 24);
+            this.button_oog_create.Size = new Size(125, 24);
             this.button_oog_create.TabIndex = 23;
             this.button_oog_create.Text = "Create New Char";
-            this.button_oog_create.Click += new System.EventHandler(this.button_oog_create_Click);
+            this.button_oog_create.Click += new EventHandler(this.button_oog_create_Click);
             // 
             // label_oog_password
             // 
             this.label_oog_password.AutoSize = true;
             this.label_oog_password.Location = new System.Drawing.Point(124, 61);
             this.label_oog_password.Name = "label_oog_password";
-            this.label_oog_password.Size = new System.Drawing.Size(53, 13);
+            this.label_oog_password.Size = new Size(53, 13);
             this.label_oog_password.TabIndex = 22;
             this.label_oog_password.Text = "Password";
             // 
@@ -2010,7 +2012,7 @@ namespace L2_login
             this.label_oog_username.AutoSize = true;
             this.label_oog_username.Location = new System.Drawing.Point(124, 35);
             this.label_oog_username.Name = "label_oog_username";
-            this.label_oog_username.Size = new System.Drawing.Size(55, 13);
+            this.label_oog_username.Size = new Size(55, 13);
             this.label_oog_username.TabIndex = 21;
             this.label_oog_username.Text = "Username";
             // 
@@ -2018,15 +2020,15 @@ namespace L2_login
             // 
             this.label_oog_loginport.Location = new System.Drawing.Point(385, 3);
             this.label_oog_loginport.Name = "label_oog_loginport";
-            this.label_oog_loginport.Size = new System.Drawing.Size(32, 24);
+            this.label_oog_loginport.Size = new Size(32, 24);
             this.label_oog_loginport.TabIndex = 20;
             this.label_oog_loginport.Text = "Port";
-            this.label_oog_loginport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_oog_loginport.TextAlign = ContentAlignment.MiddleRight;
             // 
             // Login
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(607, 445);
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.ClientSize = new Size(607, 445);
             this.Controls.Add(this.panel_select);
             this.Controls.Add(this.panel_ig);
             this.Controls.Add(this.panel_oog);
@@ -2072,7 +2074,7 @@ namespace L2_login
         {
             //load the blowfish list
             blowfish_list.Clear();
-            System.IO.StreamReader blowfish_file = new System.IO.StreamReader("config\\blowfish.txt");
+            StreamReader blowfish_file = new StreamReader("config\\blowfish.txt");
 
             string b_name;
             string b_ip;
@@ -2094,7 +2096,7 @@ namespace L2_login
             {
                 //load the login server list
                 loginserver_list.Clear();
-                System.IO.StreamReader login_file = new System.IO.StreamReader("config\\loginlist.txt");
+                StreamReader login_file = new StreamReader("config\\loginlist.txt");
 
                 string l_name;
                 string l_ip;
@@ -2121,7 +2123,7 @@ namespace L2_login
             {
                 //load the login server list
                 gameserver_list.Clear();
-                System.IO.StreamReader gs_file = new System.IO.StreamReader("config\\gslist.txt");
+                StreamReader gs_file = new StreamReader("config\\gslist.txt");
 
                 string gs_name;
                 string gs_ip;
@@ -2145,7 +2147,7 @@ namespace L2_login
         {
             try
             {
-                System.IO.StreamReader ew_file = new System.IO.StreamReader("config\\enterworld.txt");
+                StreamReader ew_file = new StreamReader("config\\enterworld.txt");
 
                 string ew = ew_file.ReadLine();
                 ew_file.Close();
@@ -2211,13 +2213,13 @@ namespace L2_login
             textBox_blowfish.Text = blowfish_list[comboBox_blowfish.SelectedIndex].ToString();
         }
 
-        private void button_select_oog_Click(object sender, System.EventArgs e)
+        private void button_select_oog_Click(object sender, EventArgs e)
         {
             if (Set_Modes())
                 panel_oog.BringToFront();
         }
 
-        private void button_select_ig_Click(object sender, System.EventArgs e)
+        private void button_select_ig_Click(object sender, EventArgs e)
         {
             if (Set_Modes())
                 panel_ig.BringToFront();
@@ -2280,7 +2282,7 @@ namespace L2_login
         }
 
         /******************In game login section*************************/
-        private void button_ig_listen_Click(object sender, System.EventArgs e)
+        private void button_ig_listen_Click(object sender, EventArgs e)
         {
             if (checkBox_OverrideProtocol.Checked)
             {
@@ -2315,7 +2317,7 @@ namespace L2_login
         }
 
         /******************out of game login section*************************/
-        private void button_logon_Click(object sender, System.EventArgs e)
+        private void button_logon_Click(object sender, EventArgs e)
         {
             if (Globals.Login_State != 0)
             {
@@ -2369,11 +2371,11 @@ namespace L2_login
                 ObjListItem = listView_servers.Items.Add(dec_buff[0 + offset + i * m].ToString("X"));//21 is the length of the packet
                 ObjListItem.SubItems.Add(Util.GetServer(Util.HexToUInt(ObjListItem.SubItems[0].Text) - 1));
                 ObjListItem.SubItems.Add(((int)dec_buff[1 + offset + i * m]).ToString() + "." + ((int)dec_buff[2 + offset + i * m]).ToString() + "." + ((int)dec_buff[3 + offset + i * m]).ToString() + "." + ((int)dec_buff[4 + offset + i * m]).ToString());
-                ObjListItem.SubItems.Add(System.BitConverter.ToUInt32(dec_buff, 5 + offset + i * m).ToString());//((int)pack210u[5 + offset + i * m] + ((int)pack210u[6 + offset + i * m]*256)).ToString() );// + "" + pack210u[7 + offset + i * m].ToString("X") + "-" + pack210u[8 + offset + i * m].ToString("X"));
+                ObjListItem.SubItems.Add(BitConverter.ToUInt32(dec_buff, 5 + offset + i * m).ToString());//((int)pack210u[5 + offset + i * m] + ((int)pack210u[6 + offset + i * m]*256)).ToString() );// + "" + pack210u[7 + offset + i * m].ToString("X") + "-" + pack210u[8 + offset + i * m].ToString("X"));
                 ObjListItem.SubItems.Add(dec_buff[9 + offset + i * m].ToString("X2"));//age limit
                 ObjListItem.SubItems.Add(dec_buff[10 + offset + i * m].ToString("X2"));//pvp
-                ObjListItem.SubItems.Add(System.BitConverter.ToUInt16(dec_buff, 11 + offset + i * m).ToString());//player count
-                ObjListItem.SubItems.Add(System.BitConverter.ToUInt16(dec_buff, 13 + offset + i * m).ToString());//max
+                ObjListItem.SubItems.Add(BitConverter.ToUInt16(dec_buff, 11 + offset + i * m).ToString());//player count
+                ObjListItem.SubItems.Add(BitConverter.ToUInt16(dec_buff, 13 + offset + i * m).ToString());//max
                 ObjListItem.SubItems.Add(dec_buff[15 + offset + i * m].ToString("X2"));//online
                 ObjListItem.SubItems.Add(dec_buff[16 + offset + i * m].ToString("X2") + "-" + dec_buff[17 + offset + i * m].ToString("X2") + "-" + dec_buff[18 + offset + i * m].ToString("X2") + "-" + dec_buff[19 + offset + i * m].ToString("X2") + "-" + dec_buff[20 + offset + i * m].ToString("X2"));//poo
             }
@@ -2383,7 +2385,7 @@ namespace L2_login
             button_server.Enabled = true;
         }
 
-        private void button_server_Click(object sender, System.EventArgs e)
+        private void button_server_Click(object sender, EventArgs e)
         {
             button_server.Enabled = false;
 
@@ -2502,7 +2504,7 @@ namespace L2_login
             button_delete_char.Enabled = true;
         }
 
-        private void button_char_Click(object sender, System.EventArgs e)
+        private void button_char_Click(object sender, EventArgs e)
         {
             button_char.Enabled = false;
 
@@ -2524,17 +2526,17 @@ namespace L2_login
 
                     while (!Globals.gamedata.SecurityPinWindow)
                     {
-                        System.Threading.Thread.Sleep(100);
+                        Thread.Sleep(100);
                     }
 
                     Globals.l2net_home.Add_Text("Sending security pin: " + Globals.SecurityPin, Globals.Green, TextType.BOT);
 
-                    System.Threading.Thread.Sleep(2143);
+                    Thread.Sleep(2143);
                     ServerPackets.SecurityPin();
 
                     while (!Globals.gamedata.SecurityPinOk)
                     {
-                        System.Threading.Thread.Sleep(100);
+                        Thread.Sleep(100);
                     }
                     Globals.l2net_home.Add_Text("Pin OK", Globals.Green, TextType.BOT);
                 }
@@ -2548,12 +2550,12 @@ namespace L2_login
             }
         }
 
-        private void button_back_ig_Click(object sender, System.EventArgs e)
+        private void button_back_ig_Click(object sender, EventArgs e)
         {
             panel_select.BringToFront();
         }
 
-        private void button_back_oog_Click(object sender, System.EventArgs e)
+        private void button_back_oog_Click(object sender, EventArgs e)
         {
             panel_select.BringToFront();
         }
@@ -2671,7 +2673,7 @@ namespace L2_login
             for (int i = 0; i < Globals.ew_chc_ed_array.Count; i++)
                 if (Globals.ew_chc_ed_array[i] == sender)
                 {
-                    if ((Globals.ew_chc_ed_array[i] as System.Windows.Forms.CheckBox).Checked)
+                    if ((Globals.ew_chc_ed_array[i] as CheckBox).Checked)
                     {
                         Disable_ip_edit(i);
                     }

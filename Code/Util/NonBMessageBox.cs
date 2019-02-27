@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace L2_login
 {
     class NonBMessageBox
@@ -6,11 +8,11 @@ namespace L2_login
         public string text;
         public long type;
 
-        private System.Threading.Thread bthread;
+        private Thread bthread;
 
         public NonBMessageBox(bool back = true)
         {
-            bthread = new System.Threading.Thread(new System.Threading.ThreadStart(ShowBox));
+            bthread = new Thread(new ThreadStart(ShowBox));
             bthread.IsBackground = back;
         }
 

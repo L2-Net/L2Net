@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace L2_login
 {
@@ -7,8 +10,8 @@ namespace L2_login
 	/// </summary>
 	public class ServerThread
 	{
-		public System.Threading.Thread readthread;
-		public System.Threading.Thread sendthread;
+		public Thread readthread;
+		public Thread sendthread;
 
 		public ServerThread()
 		{
@@ -17,14 +20,14 @@ namespace L2_login
 
         public void Init()
         {
-            sendthread = new System.Threading.Thread(new System.Threading.ThreadStart(GameSendThread));
-            readthread = new System.Threading.Thread(new System.Threading.ThreadStart(GameReadThread));
+            sendthread = new Thread(new ThreadStart(GameSendThread));
+            readthread = new Thread(new ThreadStart(GameReadThread));
 
             sendthread.IsBackground = true;
             readthread.IsBackground = true;
 
-            sendthread.Priority = System.Threading.ThreadPriority.Highest;
-            readthread.Priority = System.Threading.ThreadPriority.Highest;
+            sendthread.Priority = ThreadPriority.Highest;
+            readthread.Priority = ThreadPriority.Highest;
         }
 
 		private void GameSendThread()
@@ -69,7 +72,7 @@ namespace L2_login
 #if DEBUG
 
 						//need to output to the send to game file
-                        Globals.gamedatato.WriteLine(" :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::");
+                        Globals.gamedatato.WriteLine(" :::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::");
                         Globals.gamedatato.WriteLine("-data from bot to gameserver hex-");
                         for (uint i = 0; i < buff.Length; i++)
 						{
@@ -94,19 +97,19 @@ namespace L2_login
 
 						buffe = new byte[2+buff.Length];
 
-						b2 = System.BitConverter.GetBytes(buffe.Length);
+						b2 = BitConverter.GetBytes(buffe.Length);
 						buffe[0] = b2[0];
 						buffe[1] = b2[1];
 
                         buff.CopyTo(buffe, 2);
 
-                        Globals.Game_GameSocket.Send(buffe, 0, buffe.Length, System.Net.Sockets.SocketFlags.None);
+                        Globals.Game_GameSocket.Send(buffe, 0, buffe.Length, SocketFlags.None);
 					}
 
-					System.Threading.Thread.Sleep(Globals.SLEEP_GameSendThread);//sleep for 100 mili seconds; this is okay because a new send should wake the thread up
+                    Thread.Sleep(Globals.SLEEP_GameSendThread);//sleep for 100 mili seconds; this is okay because a new send should wake the thread up
 				}//end of while running
 			}
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: GameSendThread : " + e.Message);
             }
@@ -132,7 +135,7 @@ namespace L2_login
 
             System.Text.StringBuilder dumpbuilder;
 
-            System.Collections.ArrayList names;
+            ArrayList names;
 
             Globals.l2net_home.Add_Text("Welcome to the game loop", Globals.Red, TextType.BOT);
 
@@ -140,8 +143,8 @@ namespace L2_login
 			{
 				while(Globals.gamedata.running)
 				{
-                    cnt += Globals.Game_GameSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, System.Net.Sockets.SocketFlags.None);
-                    size = System.BitConverter.ToUInt16(buffread, 0);
+                    cnt += Globals.Game_GameSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, SocketFlags.None);
+                    size = BitConverter.ToUInt16(buffread, 0);
 
                        
                         while (cnt >= size && cnt > 2)
@@ -149,7 +152,7 @@ namespace L2_login
                             //if we got partial shit we cant use, read some more until it is full
                             while (size > cnt)
                             {
-                                cnt += Globals.Game_GameSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, System.Net.Sockets.SocketFlags.None);
+                                cnt += Globals.Game_GameSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, SocketFlags.None);
                             }
 
                             while (size < 2)
@@ -157,12 +160,12 @@ namespace L2_login
                                 Globals.l2net_home.Add_Text("L2J : tiny packet - start", Globals.Red, TextType.BOT);
                                 if (!Globals.gamedata.OOG)
                                 {
-                                    Globals.Game_ClientSocket.Send(buffread, cnt, System.Net.Sockets.SocketFlags.None);
+                                    Globals.Game_ClientSocket.Send(buffread, cnt, SocketFlags.None);
                                 }
                                 cnt = 0;
                                 Globals.l2net_home.Add_Text("L2J : tiny packet - finished", Globals.Red, TextType.BOT);
-                                cnt = Globals.Game_GameSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
-                                size = System.BitConverter.ToUInt16(buffread, 0);
+                                cnt = Globals.Game_GameSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, SocketFlags.None);
+                                size = BitConverter.ToUInt16(buffread, 0);
                             }
 
                             buffpacket = new byte[size - 2];
@@ -177,14 +180,14 @@ namespace L2_login
                                 pck_window_dat pck_dat = new pck_window_dat(buffpacket);
                                 pck_dat.action = 1;
                                 pck_dat.type = 2;
-                                pck_dat.time = System.DateTime.Now.TimeOfDay.ToString();
+                                pck_dat.time = DateTime.Now.TimeOfDay.ToString();
                                 Globals.pck_thread.mine_queue.Enqueue(pck_dat);
                                 //* }
                             }
 #if DEBUG
 
                             //need to output to the send to gameserver log file
-                            Globals.gamedataout.WriteLine("-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::");
+                            Globals.gamedataout.WriteLine("-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::");
                             Globals.gamedataout.WriteLine("-data from game server to bot hex-");
                             for (uint i = 0; i < size - 2; i++)
                             {
@@ -232,14 +235,14 @@ namespace L2_login
                                 {
                                     if ((PServer)buffpacket[0] == PServer.EXPacket)
                                     {
-                                        if (ScriptEngine.Blocked_ServerPacketsEX.ContainsKey(System.Convert.ToInt32(buffpacket[1])))
+                                        if (ScriptEngine.Blocked_ServerPacketsEX.ContainsKey(Convert.ToInt32(buffpacket[1])))
                                         {
                                             forward = false;
                                         }
                                     }
                                     else
                                     {
-                                        if (ScriptEngine.Blocked_ServerPackets.ContainsKey(System.Convert.ToInt32(buffpacket[0])))
+                                        if (ScriptEngine.Blocked_ServerPackets.ContainsKey(Convert.ToInt32(buffpacket[0])))
                                         {
                                             forward = false;
                                         }
@@ -302,7 +305,7 @@ namespace L2_login
                                             //need to send this here... so it dones't get encrypted
                                             byte[] key_send = new byte[2 + buffpacket.Length];
 
-                                            byte[] b2 = System.BitConverter.GetBytes((short)key_send.Length);
+                                            byte[] b2 = BitConverter.GetBytes((short)key_send.Length);
                                             key_send[0] = b2[0];
                                             key_send[1] = b2[1];
 
@@ -324,7 +327,7 @@ namespace L2_login
                                             {
                                                 try
                                                 {
-                                                    Globals.Mixer = new MixedPackets(System.BitConverter.ToInt32(buffpacket, 19));
+                                                    Globals.Mixer = new MixedPackets(BitConverter.ToInt32(buffpacket, 19));
                                                 }
                                                 catch
                                                 {
@@ -1177,11 +1180,11 @@ namespace L2_login
                             }
 
                             if (cnt > 2)
-                                size = System.BitConverter.ToUInt16(buffread, 0);
+                                size = BitConverter.ToUInt16(buffread, 0);
                         }//end of while loop
 				}//end of while running
 			}
-            catch (System.Exception e)
+            catch (Exception e)
             {
                Globals.l2net_home.Add_Error("crash: GameReadThread : " + e.Message);
             }

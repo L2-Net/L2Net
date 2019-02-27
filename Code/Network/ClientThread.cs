@@ -1,4 +1,6 @@
 using System;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace L2_login
 {
@@ -7,8 +9,8 @@ namespace L2_login
 	/// </summary>
 	public class ClientThread
 	{
-		public System.Threading.Thread sendthread;
-		public System.Threading.Thread readthread;
+		public Thread sendthread;
+		public Thread readthread;
 
 		public ClientThread()
 		{
@@ -17,14 +19,14 @@ namespace L2_login
 
         public void Init()
         {
-            sendthread = new System.Threading.Thread(new System.Threading.ThreadStart(ClientSendThread));
-            readthread = new System.Threading.Thread(new System.Threading.ThreadStart(ClientReadThread));
+            sendthread = new Thread(new ThreadStart(ClientSendThread));
+            readthread = new Thread(new ThreadStart(ClientReadThread));
 
             sendthread.IsBackground = true;
             readthread.IsBackground = true;
 
-            sendthread.Priority = System.Threading.ThreadPriority.Highest;
-            readthread.Priority = System.Threading.ThreadPriority.Highest;
+            sendthread.Priority = ThreadPriority.Highest;
+            readthread.Priority = ThreadPriority.Highest;
         }
 
         public void network_exception()
@@ -98,7 +100,7 @@ namespace L2_login
 #if DEBUG
 
 						//need to output to the send to client log file
-                        Globals.clientdatato.WriteLine(":::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::");
+                        Globals.clientdatato.WriteLine(":::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::");
                         Globals.clientdatato.WriteLine("-data from bot to client hex-");
 						for (uint i = 0; i < buff.Length; i++)
 						{
@@ -118,7 +120,7 @@ namespace L2_login
 
 						buffe = new byte[2+buff.Length];
 
-						b2 = System.BitConverter.GetBytes((short)buffe.Length);
+						b2 = BitConverter.GetBytes((short)buffe.Length);
 						buffe[0] = b2[0];
 						buffe[1] = b2[1];;
 
@@ -131,10 +133,10 @@ namespace L2_login
 						buffe = null;
 					}
 
-                    System.Threading.Thread.Sleep(Globals.SLEEP_ClientSendThread);//sleep for 100 mili seconds; this is okay because a new send should wake the thread up
+                    Thread.Sleep(Globals.SLEEP_ClientSendThread);//sleep for 100 mili seconds; this is okay because a new send should wake the thread up
 				}//end of while running
 			}
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: ClientSendThread : " + e.Message);
                 network_exception();
@@ -161,15 +163,15 @@ namespace L2_login
 			{
 				while(Globals.gamedata.running && !Globals.gamedata.OOG)
 				{
-                    cnt += Globals.Game_ClientSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, System.Net.Sockets.SocketFlags.None);
-					size = System.BitConverter.ToUInt16(buffread,0);
+                    cnt += Globals.Game_ClientSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, SocketFlags.None);
+					size = BitConverter.ToUInt16(buffread,0);
 
 					while(cnt >= size && cnt > 2)
 					{
 						//if we got partial shit we cant use, read some more until it is full
 						while(size > cnt)
 						{
-                            cnt += Globals.Game_ClientSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, System.Net.Sockets.SocketFlags.None);
+                            cnt += Globals.Game_ClientSocket.Receive(buffread, cnt, Globals.BUFFER_PACKET - cnt, SocketFlags.None);
 						}
 
 						buffpacketin = new byte[size - 2];
@@ -191,7 +193,7 @@ namespace L2_login
                             pck_window_dat pck_dat = new pck_window_dat(buffpacket);
                             pck_dat.action = 1;
                             pck_dat.type = 1;
-                            pck_dat.time = System.DateTime.Now.TimeOfDay.ToString();
+                            pck_dat.time = DateTime.Now.TimeOfDay.ToString();
                             Globals.pck_thread.mine_queue.Enqueue(pck_dat);
                              
                         }
@@ -211,7 +213,7 @@ namespace L2_login
                              //* }
                              }*/
                             //
-                            Globals.clientdataout.WriteLine("packet...-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::");
+                            Globals.clientdataout.WriteLine("packet...-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::");
                             Globals.clientdataout.WriteLine("-data from client to bot hex-");
                             for (uint i = 0; i < size - 2; i++)
                             {
@@ -260,39 +262,39 @@ namespace L2_login
                             {
                                 if ((PClient)buffpacket[0] == PClient.EXPacket)
                                 {
-                                    if (ScriptEngine.Blocked_ClientPacketsEX.ContainsKey(System.Convert.ToInt32(buffpacket[1])))
+                                    if (ScriptEngine.Blocked_ClientPacketsEX.ContainsKey(Convert.ToInt32(buffpacket[1])))
                                     {
                                         forward = false;
                                     }
 
-                                    if (ScriptEngine.ClientPacketsEXContainsKey(System.Convert.ToInt32(buffpacket[1])))
+                                    if (ScriptEngine.ClientPacketsEXContainsKey(Convert.ToInt32(buffpacket[1])))
                                     {
                                         ByteBuffer bb = new ByteBuffer(buffpacket);
 
                                         ScriptEvent sc_ev = new ScriptEvent();
                                         sc_ev.Type = EventType.ClientPacketEX;
-                                        sc_ev.Type2 = System.Convert.ToInt32(buffpacket[1]);
+                                        sc_ev.Type2 = Convert.ToInt32(buffpacket[1]);
                                         sc_ev.Variables.Add(new ScriptVariable(bb, "PACKET", Var_Types.BYTEBUFFER, Var_State.PUBLIC));
-                                        sc_ev.Variables.Add(new ScriptVariable(System.DateTime.Now.Ticks, "TIMESTAMP", Var_Types.INT, Var_State.PUBLIC));
+                                        sc_ev.Variables.Add(new ScriptVariable(DateTime.Now.Ticks, "TIMESTAMP", Var_Types.INT, Var_State.PUBLIC));
                                         ScriptEngine.SendToEventQueue(sc_ev);
                                     }
                                 }
                                 else
                                 {
-                                    if (ScriptEngine.Blocked_ClientPackets.ContainsKey(System.Convert.ToInt32(buffpacket[0])))
+                                    if (ScriptEngine.Blocked_ClientPackets.ContainsKey(Convert.ToInt32(buffpacket[0])))
                                     {
                                         forward = false;
                                     }
 
-                                    if (ScriptEngine.ClientPacketsContainsKey(System.Convert.ToInt32(buffpacket[0])))
+                                    if (ScriptEngine.ClientPacketsContainsKey(Convert.ToInt32(buffpacket[0])))
                                     {
                                         ByteBuffer bb = new ByteBuffer(buffpacket);
 
                                         ScriptEvent sc_ev = new ScriptEvent();
                                         sc_ev.Type = EventType.ClientPacket;
-                                        sc_ev.Type2 = System.Convert.ToInt32(buffpacket[0]);
+                                        sc_ev.Type2 = Convert.ToInt32(buffpacket[0]);
                                         sc_ev.Variables.Add(new ScriptVariable(bb, "PACKET", Var_Types.BYTEBUFFER, Var_State.PUBLIC));
-                                        sc_ev.Variables.Add(new ScriptVariable(System.DateTime.Now.Ticks, "TIMESTAMP", Var_Types.INT, Var_State.PUBLIC));
+                                        sc_ev.Variables.Add(new ScriptVariable(DateTime.Now.Ticks, "TIMESTAMP", Var_Types.INT, Var_State.PUBLIC));
                                         ScriptEngine.SendToEventQueue(sc_ev);
                                     }
                                 }
@@ -302,7 +304,7 @@ namespace L2_login
                             switch ((PClient)buffpacket[0])
 							{
                                 case PClient.AuthLogin://protocol version
-                                    int prot = System.BitConverter.ToInt16(buffpacket, 1);
+                                    int prot = BitConverter.ToInt16(buffpacket, 1);
                                     Globals.l2net_home.Add_Text("protocol version: " + prot.ToString(), Globals.Red, TextType.BOT);
 
                                     if (prot == -2)
@@ -395,7 +397,7 @@ namespace L2_login
 
                                         while (!Globals.gamedata.SecurityPinWindow)
                                         {
-                                            System.Threading.Thread.Sleep(100);
+                                            Thread.Sleep(100);
                                         }
 
                                         Globals.l2net_home.Add_Text("Sending security pin: " + Globals.SecurityPin, Globals.Green, TextType.BOT);
@@ -404,7 +406,7 @@ namespace L2_login
 
                                         while (!Globals.gamedata.SecurityPinOk)
                                         {
-                                            System.Threading.Thread.Sleep(100);
+                                            Thread.Sleep(100);
                                         }
                                         Globals.l2net_home.Add_Text("Pin OK", Globals.Green, TextType.BOT);
                                         Globals.gamedata.SecurityPinSent = true;
@@ -422,11 +424,11 @@ namespace L2_login
 						}
 
 						if(cnt > 2)
-							size = System.BitConverter.ToUInt16(buffread,0);
+							size = BitConverter.ToUInt16(buffread,0);
 					}//end of while loop
 				}//end of while running
 			}
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: ClientReadThread : " + e.Message);
                 network_exception();

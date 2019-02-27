@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace L2_login
 {
@@ -14,7 +15,7 @@ namespace L2_login
 
     public class BotAIThread
     {
-        public System.Threading.Thread botaithread;
+        public Thread botaithread;
 
         private static bool _was_smart_moving = false;
 
@@ -32,7 +33,7 @@ namespace L2_login
 
         public BotAIThread()
         {
-            botaithread = new System.Threading.Thread(new System.Threading.ThreadStart(BotAI));
+            botaithread = new Thread(new ThreadStart(BotAI));
 
             botaithread.IsBackground = true;
         }
@@ -57,7 +58,7 @@ namespace L2_login
             {
                 breaktotop = false;
                 //moved sleep to the top for when breaking to top
-                System.Threading.Thread.Sleep(Globals.SLEEP_BotAI);
+                Thread.Sleep(Globals.SLEEP_BotAI);
 
                 if ((Globals.gamedata.BOTTING) && (Globals.gamedata.my_char.Cur_HP > 0))
                 {
@@ -80,7 +81,7 @@ namespace L2_login
                     }//end of BOT_STATE = 2
 
                     //if it has been more than 15 seconds since we tried to do the buff... lets set our state back to normal
-                    if (!breaktotop && Globals.gamedata.JustBuffing() && (Globals.gamedata.my_char.LastBuffTime.AddTicks(Globals.FAILED_BUFF) <= System.DateTime.Now))
+                    if (!breaktotop && Globals.gamedata.JustBuffing() && (Globals.gamedata.my_char.LastBuffTime.AddTicks(Globals.FAILED_BUFF) <= DateTime.Now))
                     {
                         Globals.gamedata.my_char.Clear_Botting_Buffing(false);
 
@@ -221,7 +222,7 @@ namespace L2_login
                                         Globals.l2net_home.Add_Text("Canceleling target from BlacklistNPC: ", Globals.Blue, TextType.SYSTEM);
 #endif
                                         ServerPackets.Send_CancelTarget(); //cancel target
-                                        System.Threading.Thread.Sleep(1500); //Give game time to lose the target
+                                        Thread.Sleep(1500); //Give game time to lose the target
                                         Target(); //get a new target
                                     }
                                 }
@@ -453,7 +454,7 @@ namespace L2_login
 
                                     while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                     {
-                                        System.Threading.Thread.Sleep(50);
+                                        Thread.Sleep(50);
                                         delay += 50;
                                     }
 
@@ -560,7 +561,7 @@ namespace L2_login
 
                                             while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                             {
-                                                System.Threading.Thread.Sleep(50);
+                                                Thread.Sleep(50);
                                                 delay += 50;
                                             }
 
@@ -612,7 +613,7 @@ namespace L2_login
 
                                                 while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                                 {
-                                                    System.Threading.Thread.Sleep(50);
+                                                    Thread.Sleep(50);
                                                     delay += 50;
                                                 }
                                                 Target(); //get a new target
@@ -654,7 +655,7 @@ namespace L2_login
 
                                                 while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                                 {
-                                                    System.Threading.Thread.Sleep(50);
+                                                    Thread.Sleep(50);
                                                     delay += 50;
                                                 }
                                                 Target(); //get a new target
@@ -770,7 +771,7 @@ namespace L2_login
 
                                             while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                             {
-                                                System.Threading.Thread.Sleep(50);
+                                                Thread.Sleep(50);
                                                 delay += 50;
                                             }
                                             Target(); //get a new target
@@ -798,7 +799,7 @@ namespace L2_login
                                         Globals.gamedata.BOT_STATE = BotState.Attacking;
                                     }
                                     delay2 += Globals.SLEEP_BotAIDelay_TargetInc;
-                                    System.Threading.Thread.Sleep(Globals.SLEEP_BotAIDelay_TargetInc);
+                                    Thread.Sleep(Globals.SLEEP_BotAIDelay_TargetInc);
                                 }
 
                                 Attack();
@@ -852,7 +853,7 @@ namespace L2_login
 
                                         while ((Globals.gamedata.my_char.TargetID != 0) && delay < 1500) //Give game time to lose the target, max 1,5 seconds
                                         {
-                                            System.Threading.Thread.Sleep(50);
+                                            Thread.Sleep(50);
                                             delay += 50;
                                         }
                                         Target(); //get a new target
@@ -882,23 +883,23 @@ namespace L2_login
                     if ((Globals.gamedata.botoptions.DeadLogoutDelay > Globals.gamedata.botoptions.DeadReturnDelay) && (Globals.gamedata.botoptions.DeadLogout == 1) && (Globals.gamedata.botoptions.DeadReturn >= 0))
                     {
                         //Return First
-                        System.Threading.Thread.Sleep(Globals.gamedata.botoptions.DeadReturnDelay * 1000);
+                        Thread.Sleep(Globals.gamedata.botoptions.DeadReturnDelay * 1000);
                         ServerPackets.Return(Globals.gamedata.botoptions.DeadReturn);
 
                         //Then Logout
-                        System.Threading.Thread.Sleep((Globals.gamedata.botoptions.DeadLogoutDelay - Globals.gamedata.botoptions.DeadReturnDelay) * 1000);
+                        Thread.Sleep((Globals.gamedata.botoptions.DeadLogoutDelay - Globals.gamedata.botoptions.DeadReturnDelay) * 1000);
                         ServerPackets.Send_Logout();
                     }
 
                     if (Globals.gamedata.botoptions.DeadLogout == 1)
                     {
-                        System.Threading.Thread.Sleep(Globals.gamedata.botoptions.DeadLogoutDelay * 1000);
+                        Thread.Sleep(Globals.gamedata.botoptions.DeadLogoutDelay * 1000);
                         ServerPackets.Send_Logout();
                     }
 
                     if (Globals.gamedata.botoptions.DeadReturn >= 0)
                     {
-                        System.Threading.Thread.Sleep(Globals.gamedata.botoptions.DeadReturnDelay * 1000);
+                        Thread.Sleep(Globals.gamedata.botoptions.DeadReturnDelay * 1000);
                         ServerPackets.Return(Globals.gamedata.botoptions.DeadReturn);
                     }
 
@@ -918,9 +919,9 @@ namespace L2_login
                             if (Globals.gamedata.my_char.TargetID != 0 && Globals.gamedata.botoptions.AutoSpoil == 0)
                             {
                                 ServerPackets.Send_CancelTarget();
-                                System.Threading.Thread.Sleep(100);
+                                Thread.Sleep(100);
                                 ServerPackets.Send_CancelTarget();
-                                System.Threading.Thread.Sleep(100);
+                                Thread.Sleep(100);
 
                             }
                             if (OOCLoops > 15)
@@ -972,11 +973,11 @@ namespace L2_login
 
         private uint DISTANCE(int x1, int y1, int z1, int x2, int y2, int z2)
         {
-            double xlim = System.Convert.ToDouble(x1) - System.Convert.ToDouble(x2);
-            double ylim = System.Convert.ToDouble(y1) - System.Convert.ToDouble(y2);
-            double zlim = System.Convert.ToDouble(z1) - System.Convert.ToDouble(z2);
+            double xlim = Convert.ToDouble(x1) - Convert.ToDouble(x2);
+            double ylim = Convert.ToDouble(y1) - Convert.ToDouble(y2);
+            double zlim = Convert.ToDouble(z1) - Convert.ToDouble(z2);
 
-            double dist = System.Math.Sqrt(System.Math.Pow(xlim, 2) + System.Math.Pow(ylim, 2) + System.Math.Pow(zlim, 2));
+            double dist = Math.Sqrt(Math.Pow(xlim, 2) + Math.Pow(ylim, 2) + Math.Pow(zlim, 2));
 
             return (uint)dist;
         }
@@ -1100,7 +1101,7 @@ namespace L2_login
                             return true;
                         }
                         delay += Globals.SLEEP_BotAIDelay_TargetInc;
-                        System.Threading.Thread.Sleep(Globals.SLEEP_BotAIDelay_TargetInc);
+                        Thread.Sleep(Globals.SLEEP_BotAIDelay_TargetInc);
                     }
                     target_timeout_loops++;
                     if (target_timeout_loops == 5) //10 seconds
@@ -1136,7 +1137,7 @@ namespace L2_login
             {
                 Globals.l2net_home.Add_Text("I'm not attacking something (stunned etc)", Globals.Green, TextType.BOT);
                 Globals.gamedata.my_char.isAttacking = false;
-                System.Threading.Thread.Sleep(Globals.SLEEP_BotAIDelay);
+                Thread.Sleep(Globals.SLEEP_BotAIDelay);
             }
             else
             {
@@ -1170,7 +1171,7 @@ namespace L2_login
                     Globals.scriptthread.Script_ATTACK_TARGET();
                     //Globals.l2net_home.Add_Text("Sending attack packet", Globals.Cyan, TextType.BOT);
                 }
-                System.Threading.Thread.Sleep(Globals.SLEEP_BotAIDelay);
+                Thread.Sleep(Globals.SLEEP_BotAIDelay);
 
             }
         }
@@ -1184,7 +1185,7 @@ namespace L2_login
 
                 ServerPackets.Try_Use_Skill(Globals.gamedata.my_char.BuffSkillID, Globals.gamedata.botoptions.ControlBuffing == 1, Globals.gamedata.botoptions.ShiftBuffing == 1);
 
-                Globals.gamedata.my_char.LastBuffTime = System.DateTime.Now;
+                Globals.gamedata.my_char.LastBuffTime = DateTime.Now;
                 //Globals.l2net_home.Add_Text("I'm not attacking something (buffing)", Globals.Green, TextType.BOT);
                 Globals.gamedata.my_char.isAttacking = false;
                 breaktotop = true;
@@ -1308,9 +1309,9 @@ namespace L2_login
             nearest_item = Script_Ops.NEAREST_ITEM_DISTANCE(false);
             if (nearest_item != 0)
             {
-                if (nearest_item == BotAIThread.PickUpItem)
+                if (nearest_item == PickUpItem)
                 {
-                    if (BotAIThread.PickUpItemSleep >= (Globals.gamedata.botoptions.PickupTimeout * 1000)) //Globals.SLEEP_BotAIDelay_Pickup)
+                    if (PickUpItemSleep >= (Globals.gamedata.botoptions.PickupTimeout * 1000)) //Globals.SLEEP_BotAIDelay_Pickup)
                     {
                         //need to flag this item as useless...
                         Util.IgnoreItem(nearest_item, true);
@@ -1323,8 +1324,8 @@ namespace L2_login
                 }
                 else
                 {
-                    BotAIThread.PickUpItemSleep = 0;
-                    BotAIThread.PickUpItem = nearest_item;
+                    PickUpItemSleep = 0;
+                    PickUpItem = nearest_item;
                     //will pickup below
                 }
 
@@ -1345,8 +1346,8 @@ namespace L2_login
                 else
                 {
                     Script_CLICK_NEAREST_ITEM_GUI(nearest_item);
-                    System.Threading.Thread.Sleep(Globals.SLEEP_BotAIDelay_PickupInc);
-                    BotAIThread.PickUpItemSleep += Globals.SLEEP_BotAIDelay_PickupInc;
+                    Thread.Sleep(Globals.SLEEP_BotAIDelay_PickupInc);
+                    PickUpItemSleep += Globals.SLEEP_BotAIDelay_PickupInc;
                 }
             }
             else 
@@ -1399,7 +1400,7 @@ namespace L2_login
             {
                 foreach (ItemTargetClass it in BotOptions.ItemTargets)
                 {
-                    if (it.Active && it.ItemID != 0 && it.LastTickTime + it.TickDuration < System.DateTime.Now.Ticks)
+                    if (it.Active && it.ItemID != 0 && it.LastTickTime + it.TickDuration < DateTime.Now.Ticks)
                     {
                         bool use_item = false;
 
@@ -1488,7 +1489,7 @@ namespace L2_login
 
                         if (use_item)
                         {
-                            it.LastTickTime = System.DateTime.Now.Ticks;
+                            it.LastTickTime = DateTime.Now.Ticks;
                             //should be access by reference
 
                             //lets check for the item still in inventory
@@ -1604,7 +1605,7 @@ namespace L2_login
             {
                 foreach (CombatTargetClass ct in BotOptions.CombatTargets)
                 {
-                    if (ct.Active && (ct.LastTickTime + ct.TickDuration <= System.DateTime.Now.Ticks) && (Globals.gamedata.my_char.Cur_MP >= ct.Min_MP))
+                    if (ct.Active && (ct.LastTickTime + ct.TickDuration <= DateTime.Now.Ticks) && (Globals.gamedata.my_char.Cur_MP >= ct.Min_MP))
                     {
                         bool use_item = false;
 
@@ -1695,7 +1696,7 @@ namespace L2_login
                         {
                             breaktotop = true;
 
-                            ct.LastTickTime = System.DateTime.Now.Ticks;
+                            ct.LastTickTime = DateTime.Now.Ticks;
 
                             if (!is_summon && !Globals.picking_up_items)
                             {
@@ -1744,7 +1745,7 @@ namespace L2_login
                                 used = true;
                                 breaktotop = true;
                                 ServerPackets.Use_Skill(sk.ID);
-                                sk.LastTime = System.DateTime.Now;
+                                sk.LastTime = DateTime.Now;
                             }
                         }
                     }
@@ -1759,7 +1760,7 @@ namespace L2_login
                                 used = true;
                                 breaktotop = true;
                                 ServerPackets.Use_Skill(sk.ID);
-                                sk.LastTime = System.DateTime.Now;
+                                sk.LastTime = DateTime.Now;
                             }
                         }
                     }
@@ -1774,7 +1775,7 @@ namespace L2_login
                                 used = true;
                                 breaktotop = true;
                                 ServerPackets.Use_Skill(sk.ID);
-                                sk.LastTime = System.DateTime.Now;
+                                sk.LastTime = DateTime.Now;
                             }
                         }
                     }
@@ -1836,7 +1837,7 @@ namespace L2_login
                         THRESHOLDs2 = 0;
                     }
 
-                    vxx = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+                    vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
 
                     if (vxx < Globals.gamedata.botoptions.ActiveFollowDistance + Globals.THRESHOLD + THRESHOLDs2)
                     {
@@ -1906,7 +1907,7 @@ namespace L2_login
                         //Sit
                         //Globals.l2net_home.Add_Text("Debug: HP or MP low, Sitting down", Globals.Green, TextType.BOT);
                         //ServerPackets.Use_Action_Parse((uint)PClientAction.SitStand, Globals.gamedata.Control, false); //For some reason l2net gets real slow when using this here
-                        System.Threading.Thread.Sleep(500); //Need a small break before sending sit/stand command or it won't react sometimes
+                        Thread.Sleep(500); //Need a small break before sending sit/stand command or it won't react sometimes
                         SitStandInternal();
 
                     }
@@ -1920,7 +1921,7 @@ namespace L2_login
                         }
                         else
                         {
-                            System.Threading.Thread.Sleep(1000);
+                            Thread.Sleep(1000);
                         }
 
                     }
@@ -1931,7 +1932,7 @@ namespace L2_login
                         //Globals.l2net_home.Add_Debug("HP full, standing up");
                         //ServerPackets.Use_Action_Parse((uint)PClientAction.SitStand, Globals.gamedata.Control, false);
                         SitStandInternal();
-                        System.Threading.Thread.Sleep(500);
+                        Thread.Sleep(500);
                     }
                 }
                 breaktotop = true;
@@ -1985,7 +1986,7 @@ namespace L2_login
             vx = tx - Globals.gamedata.my_char.X;
             vy = ty - Globals.gamedata.my_char.Y;
             vz = tz - Globals.gamedata.my_char.Z;
-            dist = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+            dist = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
 
             //Old Direction
             if (dist > 0)
@@ -2025,7 +2026,7 @@ namespace L2_login
             //Globals.l2net_home.Add_Text("Sending moveto packet", Globals.Cyan, TextType.BOT);
             ServerPackets.MoveToPacket(Util.Float_Int32(newX), Util.Float_Int32(newY), Util.Float_Int32(newZ));
             /* Sleep while char moves */
-            System.Threading.Thread.Sleep(1200);
+            Thread.Sleep(1200);
 
 
             /* Turn around 90 degrees */
@@ -2052,7 +2053,7 @@ namespace L2_login
             vx = tx - Globals.gamedata.my_char.X;
             vy = ty - Globals.gamedata.my_char.Y;
             vz = tz - Globals.gamedata.my_char.Z;
-            dist = System.Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
+            dist = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
 
             //Old Direction
             if (dist > 0)
@@ -2092,7 +2093,7 @@ namespace L2_login
             //Globals.l2net_home.Add_Text("Sending moveto packet", Globals.Cyan, TextType.BOT);
             ServerPackets.MoveToPacket(Util.Float_Int32(newX), Util.Float_Int32(newY), Util.Float_Int32(newZ));
             /* Sleep while char moves */
-            System.Threading.Thread.Sleep(1200);
+            Thread.Sleep(1200);
 
             breaktotop = true;
         }
@@ -2141,7 +2142,7 @@ namespace L2_login
                 Globals.l2net_home.Add_Text("NPC with objid: " + id + " blacklisted", Globals.Green, TextType.BOT);
             }
 
-            System.Threading.Thread.Sleep(200);
+            Thread.Sleep(200);
         }
 
         private double DegreeToRadian(double angle)

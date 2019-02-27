@@ -22,7 +22,7 @@ namespace L2_login
 
         public static void pre_listen()
         {
-            System.Net.IPAddress ipAd = System.Net.IPAddress.Parse(Globals.gamedata.GG_IP);
+            IPAddress ipAd = IPAddress.Parse(Globals.gamedata.GG_IP);
 
             Globals.GG_Servermode = true;
             try
@@ -52,7 +52,7 @@ namespace L2_login
         {
             Globals.gamedata.GG_IP = textBox_gg_local_ip.Text;
             Globals.gamedata.GG_Port = Util.GetInt32(textBox_gg_local_port.Text);
-            System.Net.IPAddress ipAd = System.Net.IPAddress.Parse(Globals.gamedata.GG_IP);
+            IPAddress ipAd = IPAddress.Parse(Globals.gamedata.GG_IP);
 
             Globals.GG_Servermode = true;
             try
@@ -111,12 +111,12 @@ namespace L2_login
 
         public class SocketPacket
         {
-            public System.Net.Sockets.Socket m_currentSocket;
+            public Socket m_currentSocket;
             public byte[] dataBuffer = new byte[64];
         }
 
         // Start waiting for data from the client
-        public static void WaitForData(System.Net.Sockets.Socket soc)
+        public static void WaitForData(Socket soc)
         {
             try
             {

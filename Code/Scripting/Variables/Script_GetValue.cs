@@ -1638,12 +1638,12 @@ namespace L2_login
                 case "PI":
                     scr_var.Name = "PI";
                     scr_var.Type = Var_Types.DOUBLE;
-                    scr_var.Value = System.Math.PI;
+                    scr_var.Value = Math.PI;
                     break;
                 case "E":
                     scr_var.Name = "E";
                     scr_var.Type = Var_Types.DOUBLE;
-                    scr_var.Value = System.Math.E;
+                    scr_var.Value = Math.E;
                     break;
                 case "CMD":
                     scr_var.Name = "CMD";
@@ -1939,7 +1939,7 @@ namespace L2_login
                 case "NOW":
                     scr_var.Name = "NOW";
                     scr_var.Type = Var_Types.INT;
-                    scr_var.Value = System.DateTime.Now.Ticks;
+                    scr_var.Value = DateTime.Now.Ticks;
                     break;
                 case "GAME_TIME":
                     scr_var.Name = "GAME_TIME";
@@ -2027,7 +2027,7 @@ namespace L2_login
                             scr_var.Name = name;
                             scr_var.Type = Var_Types.STRING;
                             scr_var.Value = "ERROR - VARIABLE NOT FOUND AT LINE " + Line_Pos.ToString();
-                            ScriptEngine.Script_Error("VARIABLE " + name + " IS UNDEFINED");
+                            Script_Error("VARIABLE " + name + " IS UNDEFINED");
                         }
                     }
                     break;

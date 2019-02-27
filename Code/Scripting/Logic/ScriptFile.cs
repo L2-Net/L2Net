@@ -1,12 +1,14 @@
+using System.Collections;
+
 namespace L2_login
 {
     class ScriptFile
     {
-        public System.Collections.ArrayList _ScriptLines = new System.Collections.ArrayList();
+        public ArrayList _ScriptLines = new ArrayList();
 
-        public System.Collections.SortedList _labellist = new System.Collections.SortedList();
-        public System.Collections.SortedList _functionlist = new System.Collections.SortedList();
-        public System.Collections.SortedList _sublist = new System.Collections.SortedList();
+        public SortedList _labellist = new SortedList();
+        public SortedList _functionlist = new SortedList();
+        public SortedList _sublist = new SortedList();
         public string Name = "";
 
         public void ReadScript(System.IO.StreamReader filein)

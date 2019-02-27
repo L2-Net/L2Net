@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace L2_login
 {
@@ -13,7 +14,7 @@ namespace L2_login
             {
                 if (Globals.LogWriting)
                 {
-                    Globals.text_out = new System.IO.StreamWriter(Globals.PATH + "\\logs\\" + System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Day.ToString() + ".txt");
+                    Globals.text_out = new StreamWriter(Globals.PATH + "\\logs\\" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + ".txt");
 
                 }
                 else
@@ -30,10 +31,10 @@ namespace L2_login
 #if DEBUG
             try
             {
-                Globals.gamedataout = new System.IO.StreamWriter(Globals.PATH + "\\logs\\from_gamelog.txt");
-                Globals.gamedatato = new System.IO.StreamWriter(Globals.PATH + "\\logs\\to_gamelog.txt");
-                Globals.clientdataout = new System.IO.StreamWriter(Globals.PATH + "\\logs\\from_clientlog.txt");
-                Globals.clientdatato = new System.IO.StreamWriter(Globals.PATH + "\\logs\\to_clientlog.txt");
+                Globals.gamedataout = new StreamWriter(Globals.PATH + "\\logs\\from_gamelog.txt");
+                Globals.gamedatato = new StreamWriter(Globals.PATH + "\\logs\\to_gamelog.txt");
+                Globals.clientdataout = new StreamWriter(Globals.PATH + "\\logs\\from_clientlog.txt");
+                Globals.clientdatato = new StreamWriter(Globals.PATH + "\\logs\\to_clientlog.txt");
 
                 Globals.gamedataout.AutoFlush = true;
                 Globals.gamedatato.AutoFlush = true;
@@ -71,7 +72,7 @@ namespace L2_login
             {
                 Globals.Keyboard = new DX_Keyboard();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: failed to create SlimDX Keyboard : " + e.Message);
             }
@@ -320,7 +321,7 @@ namespace L2_login
 
         public static void ProcessDataThread()
         {
-            Globals.gamedata.my_char.lastVerifyTime = System.DateTime.Now;
+            Globals.gamedata.my_char.lastVerifyTime = DateTime.Now;
 
             DateTime last_animate = DateTime.Now;
             DateTime last_alert = DateTime.Now;
@@ -358,7 +359,7 @@ namespace L2_login
                     }
                 }//end of while running
 			}
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: ProcessDataThread : hardcore crash... every bot function is DOA now : " + e.Message);
             }

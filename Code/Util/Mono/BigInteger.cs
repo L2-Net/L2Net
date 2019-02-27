@@ -855,7 +855,7 @@ namespace Mono.Math {
 						return false;
 				}
 			}
-			return PrimalityTests.RabinMillerTest (this, Prime.ConfidenceFactor.Medium);
+			return PrimalityTests.RabinMillerTest (this, ConfidenceFactor.Medium);
 		}
 
 		#endregion
@@ -1888,7 +1888,7 @@ namespace Mono.Math {
 
 			public static BigInteger [] multiByteDivide (BigInteger bi1, BigInteger bi2)
 			{
-				if (Kernel.Compare (bi1, bi2) == Sign.Negative)
+				if (Compare(bi1, bi2) == Sign.Negative)
 					return new BigInteger [2] { 0, new BigInteger (bi1) };
 
 				bi1.Normalize (); bi2.Normalize ();

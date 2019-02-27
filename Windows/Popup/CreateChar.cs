@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -27,7 +28,7 @@ namespace L2_login
             ByteBuffer bb = new ByteBuffer(1);
             bb.WriteByte((byte)PClient.NewCharacter);
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             bb = new ByteBuffer();
             bb.WriteByte((byte)PClient.CharacterCreate);
@@ -104,7 +105,7 @@ namespace L2_login
 
             bb.TrimToIndex();
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             bb = new ByteBuffer(3);
             bb.WriteByte((byte)PClient.EXPacket);
@@ -118,7 +119,7 @@ namespace L2_login
             }
             bb.WriteByte(0x00);
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             this.Close();
         }

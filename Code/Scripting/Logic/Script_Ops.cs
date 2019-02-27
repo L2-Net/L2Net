@@ -25,7 +25,7 @@ namespace L2_login
 			{
                 foreach(CharInfo player in Globals.gamedata.nearby_chars.Values)
 				{
-                    ndist = System.Convert.ToInt64(System.Math.Sqrt(System.Math.Pow(mx - player.X, 2) + System.Math.Pow(my - player.Y, 2) + System.Math.Pow(mz - player.Z, 2)));
+                    ndist = Convert.ToInt64(Math.Sqrt(Math.Pow(mx - player.X, 2) + Math.Pow(my - player.Y, 2) + Math.Pow(mz - player.Z, 2)));
 
 					if(ndist < dist)
 					{
@@ -70,7 +70,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ndist = System.Convert.ToInt64(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
+                        ndist = Convert.ToInt64(Math.Sqrt(Math.Pow(mx - npc.X, 2) + Math.Pow(my - npc.Y, 2) + Math.Pow(mz - npc.Z, 2)));
 
                         if (ndist < dist)
                         {
@@ -143,7 +143,7 @@ namespace L2_login
                                 if (myitem || Globals.gamedata.botoptions.OnlyPickMine == 0)
                                 {
                                     //if everything checks out, let's register this item and keep trying to find a closer one.
-                                    ndist = System.Convert.ToUInt32(System.Math.Sqrt(System.Math.Pow(mx - item.X, 2) + System.Math.Pow(my - item.Y, 2) + System.Math.Pow(mz - item.Z, 2)));
+                                    ndist = Convert.ToUInt32(Math.Sqrt(Math.Pow(mx - item.X, 2) + Math.Pow(my - item.Y, 2) + Math.Pow(mz - item.Z, 2)));
 
                                     if (ndist < dist)
                                     {
@@ -187,7 +187,7 @@ namespace L2_login
                                 if (myitem || Globals.gamedata.botoptions.OnlyPickMine == 0)
                                 {
                                     //if everything checks out, let's register this item and keep trying to find a closer one.
-                                    ndist = System.Convert.ToUInt32(System.Math.Sqrt(System.Math.Pow(mx - item.X, 2) + System.Math.Pow(my - item.Y, 2) + System.Math.Pow(mz - item.Z, 2)));
+                                    ndist = Convert.ToUInt32(Math.Sqrt(Math.Pow(mx - item.X, 2) + Math.Pow(my - item.Y, 2) + Math.Pow(mz - item.Z, 2)));
 
                                     if (ndist < dist)
                                     {

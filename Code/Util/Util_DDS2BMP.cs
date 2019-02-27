@@ -29,7 +29,7 @@ namespace L2_login
             {
                 Texture MyImage = Texture.FromStream(GraphicCard, s);
                 Bitmap a;
-                a = new Bitmap(Image.FromStream(Texture.ToStream(MyImage, ImageFileFormat.Bmp)));
+                a = new Bitmap(Image.FromStream(BaseTexture.ToStream(MyImage, ImageFileFormat.Bmp)));
                 return a;
             }
             catch

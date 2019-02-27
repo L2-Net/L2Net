@@ -99,7 +99,7 @@ namespace L2_login
 
         public static byte[] Decrypt(string filename, string key, string salt)
         {
-            System.IO.BinaryReader filein = new System.IO.BinaryReader(new System.IO.StreamReader(filename).BaseStream);
+            BinaryReader filein = new BinaryReader(new StreamReader(filename).BaseStream);
 
             byte[] data = filein.ReadBytes((int)filein.BaseStream.Length);
             filein.Close();
@@ -132,16 +132,16 @@ namespace L2_login
 
             try
             {
-                dec = AES.DecryptData(data, key, salt, System.Security.Cryptography.PaddingMode.ISO10126);
+                dec = DecryptData(data, key, salt, PaddingMode.ISO10126);
             }
             catch (Exception e)
             {
                 throw e;
             }
 
-            int d_len = System.BitConverter.ToInt32(dec, 0);
+            int d_len = BitConverter.ToInt32(dec, 0);
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(dec);
+            MemoryStream ms = new MemoryStream(dec);
             ms.Position = 4;
 
             // Use the newly created memory stream for the compressed data.
@@ -154,7 +154,7 @@ namespace L2_login
             ms.Close();
 
             dec = new byte[cnt];
-            System.Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
+            Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
 
             zdec = null;
 

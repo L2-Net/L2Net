@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
 	public class BotOptions
@@ -30,8 +32,8 @@ namespace L2_login
         private string _SendPartyNames = "";
         public volatile int OOP = 0;//1 = yes
         private string _OOPNames = "";
-        private System.Collections.ArrayList _OOPNamesArray = new System.Collections.ArrayList();
-        private System.Collections.ArrayList _OOPIDs = new System.Collections.ArrayList();
+        private ArrayList _OOPNamesArray = new ArrayList();
+        private ArrayList _OOPIDs = new ArrayList();
         public volatile int AcceptRez = 0;//1 = yes
         private string _AcceptRezNames = "";
         public volatile int HealRange = 550;//1 = yes
@@ -108,11 +110,11 @@ namespace L2_login
         private readonly object OOPIDsLock = new object();
         private readonly object AcceptRezNamesLock = new object();
 
-		public static System.Collections.ArrayList BuffTargets = new System.Collections.ArrayList(Globals.BUFF_COUNT);
-        public static System.Collections.ArrayList ItemTargets = new System.Collections.ArrayList(Globals.ITEM_COUNT);
-        public static System.Collections.ArrayList CombatTargets = new System.Collections.ArrayList(Globals.COMBAT_COUNT);
-        public static System.Collections.ArrayList DoNotItems = new System.Collections.ArrayList();
-        public static System.Collections.ArrayList DoNotNPCs = new System.Collections.ArrayList();
+		public static ArrayList BuffTargets = new ArrayList(Globals.BUFF_COUNT);
+        public static ArrayList ItemTargets = new ArrayList(Globals.ITEM_COUNT);
+        public static ArrayList CombatTargets = new ArrayList(Globals.COMBAT_COUNT);
+        public static ArrayList DoNotItems = new ArrayList();
+        public static ArrayList DoNotNPCs = new ArrayList();
 
         public static int Target_TYPE = 0;
         public static int Target_ATTACKABLE = 0;
@@ -130,7 +132,7 @@ namespace L2_login
             Globals.BuffListLock.EnterWriteLock();
 			try
 			{
-                BotOptions.BuffTargets.Clear();
+                BuffTargets.Clear();
 			}
 			finally
 			{
@@ -140,7 +142,7 @@ namespace L2_login
             Globals.ItemListLock.EnterWriteLock();
 			try
 			{
-                BotOptions.ItemTargets.Clear();
+                ItemTargets.Clear();
 			}
 			finally
 			{
@@ -150,7 +152,7 @@ namespace L2_login
             Globals.CombatListLock.EnterWriteLock();
             try
             {
-                BotOptions.CombatTargets.Clear();
+                CombatTargets.Clear();
             }
             finally
             {
@@ -215,11 +217,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.ArrayList OOPNamesArray
+        public ArrayList OOPNamesArray
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (OOPNamesArrayLock)
                 {
                     tmp = this._OOPNamesArray;
@@ -234,11 +236,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.ArrayList OOPIDs
+        public ArrayList OOPIDs
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (OOPIDsLock)
                 {
                     tmp = this._OOPIDs;

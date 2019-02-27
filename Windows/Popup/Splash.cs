@@ -42,10 +42,10 @@ namespace L2_login
             // 
             // SplashScreen
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(520, 238);
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.BackColor = Color.White;
+            this.BackgroundImage = ((Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new Size(520, 238);
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;

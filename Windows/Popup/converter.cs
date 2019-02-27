@@ -99,11 +99,11 @@ namespace L2_login
             {
                 if (checkBox1.Checked) // unsigned
                 {
-                    return System.BitConverter.ToUInt16(data, 0).ToString();
+                    return BitConverter.ToUInt16(data, 0).ToString();
                 }
                 else // signed
                 {
-                    return System.BitConverter.ToInt16(data, 0).ToString();
+                    return BitConverter.ToInt16(data, 0).ToString();
                 }
             }
             return "";
@@ -115,11 +115,11 @@ namespace L2_login
             {
                 if (checkBox1.Checked) // unsigned
                 {
-                    return System.BitConverter.ToUInt32(data, 0).ToString();
+                    return BitConverter.ToUInt32(data, 0).ToString();
                 }
                 else // signed
                 {
-                    return System.BitConverter.ToInt32(data, 0).ToString();
+                    return BitConverter.ToInt32(data, 0).ToString();
                 }
             }
             return "";
@@ -131,11 +131,11 @@ namespace L2_login
             {
                 if (checkBox1.Checked) // unsigned
                 {
-                    return System.BitConverter.ToUInt64(data, 0).ToString();
+                    return BitConverter.ToUInt64(data, 0).ToString();
                 }
                 else // signed
                 {
-                    return System.BitConverter.ToInt64(data, 0).ToString();
+                    return BitConverter.ToInt64(data, 0).ToString();
                 }
             }
             return "";
@@ -145,7 +145,7 @@ namespace L2_login
             byte[] data = Globals.pck_thread.StringToByteArray2(text);
             if (data.Length > 5)
             {
-                    return System.BitConverter.ToDouble(data, 0).ToString();
+                    return BitConverter.ToDouble(data, 0).ToString();
             }
             return "";
 
@@ -211,7 +211,7 @@ namespace L2_login
         }
         public string conv_byte_to_hex(string text)
         {
-            int temp= System.Convert.ToByte(text);
+            int temp= Convert.ToByte(text);
             if (temp < 255)
             {
                 return temp.ToString("X2");
@@ -221,8 +221,8 @@ namespace L2_login
         }
         public string conv_int16_to_hex(string text)
         {
-                int temp = System.Convert.ToInt16(text);
-                byte[] con = System.BitConverter.GetBytes(temp);
+                int temp = Convert.ToInt16(text);
+                byte[] con = BitConverter.GetBytes(temp);
                 string oki = con[0].ToString("X2");
                 oki += " ";
                 oki += con[1].ToString("X2");
@@ -233,8 +233,8 @@ namespace L2_login
         {
             try
             {
-                int temp = System.Convert.ToInt32(text);
-                byte[] con = System.BitConverter.GetBytes(temp);
+                int temp = Convert.ToInt32(text);
+                byte[] con = BitConverter.GetBytes(temp);
                 string oki = con[0].ToString("X2");
                 oki += " ";
                 oki += con[1].ToString("X2");
@@ -246,8 +246,8 @@ namespace L2_login
             }
             catch
             { // ugly but im lazy
-                uint temp = System.Convert.ToUInt32(text);
-                byte[] con = System.BitConverter.GetBytes(temp);
+                uint temp = Convert.ToUInt32(text);
+                byte[] con = BitConverter.GetBytes(temp);
                 string oki = con[0].ToString("X2");
                 oki += " ";
                 oki += con[1].ToString("X2");
@@ -262,8 +262,8 @@ namespace L2_login
         {
             try
             {
-                long temp = System.Convert.ToInt64(text);
-                byte[] con = System.BitConverter.GetBytes(temp);
+                long temp = Convert.ToInt64(text);
+                byte[] con = BitConverter.GetBytes(temp);
                 string oki = con[0].ToString("X2");
                 oki += " ";
                 oki += con[1].ToString("X2");
@@ -283,8 +283,8 @@ namespace L2_login
             }
             catch
             { // ugly but im lazy ...
-                ulong temp = System.Convert.ToUInt64(text);
-                byte[] con = System.BitConverter.GetBytes(temp);
+                ulong temp = Convert.ToUInt64(text);
+                byte[] con = BitConverter.GetBytes(temp);
                 string oki = con[0].ToString("X2");
                 oki += " ";
                 oki += con[1].ToString("X2");
@@ -305,8 +305,8 @@ namespace L2_login
         }
         public string conv_double_to_hex(string text)
         {
-            double temp = System.Convert.ToDouble(text);
-            byte[] con = System.BitConverter.GetBytes(temp);
+            double temp = Convert.ToDouble(text);
+            byte[] con = BitConverter.GetBytes(temp);
             string oki = con[0].ToString("X2");
             oki += " ";
             oki += con[1].ToString("X2");

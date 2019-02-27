@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     class Script_Class
@@ -6,7 +8,7 @@ namespace L2_login
         public string File = "";
         public string ParentName = "";
         public string ParentFile = "";
-        public System.Collections.ArrayList _Variables = new System.Collections.ArrayList();
+        public ArrayList _Variables = new ArrayList();
 
         public bool Has_Function(string name)
         {
@@ -189,7 +191,7 @@ namespace L2_login
     {
 
         public string Name;
-        public System.Collections.SortedList _Variables = new System.Collections.SortedList();//ArrayList
+        public SortedList _Variables = new SortedList();//ArrayList
         public bool Initialized = false;
 
         public void Init(string _name)

@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace L2_login
 {
     /// <summary>
@@ -109,35 +111,35 @@ namespace L2_login
                     sout.Value = Value;
                     break;
                 case Var_Types.ARRAYLIST:
-                    sout.Value = new System.Collections.ArrayList(((System.Collections.ArrayList)Value).Capacity);
+                    sout.Value = new ArrayList(((ArrayList)Value).Capacity);
 
-                    foreach (ScriptVariable nv in ((System.Collections.ArrayList)Value))
+                    foreach (ScriptVariable nv in ((ArrayList)Value))
                     {
-                        ((System.Collections.ArrayList)sout.Value).Add(nv.Clone());
+                        ((ArrayList)sout.Value).Add(nv.Clone());
                     }
                     break;
                 case Var_Types.SORTEDLIST:
-                    sout.Value = new System.Collections.SortedList(((System.Collections.SortedList)Value).Capacity);
+                    sout.Value = new SortedList(((SortedList)Value).Capacity);
 
-                    foreach (System.Collections.DictionaryEntry dic in ((System.Collections.SortedList)Value))
+                    foreach (DictionaryEntry dic in ((SortedList)Value))
                     {
-                        ((System.Collections.SortedList)sout.Value).Add(dic.Key, ((ScriptVariable)dic.Value).Clone());
+                        ((SortedList)sout.Value).Add(dic.Key, ((ScriptVariable)dic.Value).Clone());
                     }
                     break;
                 case Var_Types.STACK:
-                    sout.Value = new System.Collections.Stack(((System.Collections.Stack)Value).Count);
+                    sout.Value = new Stack(((Stack)Value).Count);
 
-                    foreach (ScriptVariable nv in ((System.Collections.Stack)Value))
+                    foreach (ScriptVariable nv in ((Stack)Value))
                     {
-                        ((System.Collections.Stack)sout.Value).Push(nv.Clone());
+                        ((Stack)sout.Value).Push(nv.Clone());
                     }
                     break;
                 case Var_Types.QUEUE:
-                    sout.Value = new System.Collections.Queue(((System.Collections.Queue)Value).Count);
+                    sout.Value = new Queue(((Queue)Value).Count);
 
-                    foreach (ScriptVariable nv in ((System.Collections.Queue)Value))
+                    foreach (ScriptVariable nv in ((Queue)Value))
                     {
-                        ((System.Collections.Queue)sout.Value).Enqueue(nv.Clone());
+                        ((Queue)sout.Value).Enqueue(nv.Clone());
                     } 
                     break;
                 case Var_Types.CLASS:

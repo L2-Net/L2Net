@@ -4,14 +4,15 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace L2_login
 {
     /// <summary>
     /// Summary description for Form1.
     /// </summary>
-    public partial class L2NET : System.Windows.Forms.Form
-	{
+    public partial class L2NET : Form
+    {
 		private System.ComponentModel.IContainer components;
 
         public ListViewColumnSorter lvwColumnSorter_inventory;
@@ -49,162 +50,162 @@ namespace L2_login
         
         private SortedList ScriptWindows = new SortedList();
 
-        private System.Collections.Queue Chat_Messages = new Queue();
+        private Queue Chat_Messages = new Queue();
 
 		#region form items
 
         public RichTextBoxEx richTextBox_dialog;
 
-        public System.Collections.SortedList imageList_skills_loaded = new SortedList();
-        public System.Windows.Forms.ImageList imageList_skills;
-        public System.Windows.Forms.ImageList imageList_crests;
-        public System.Collections.SortedList imageList_items_loaded = new SortedList();
-        public System.Windows.Forms.ImageList imageList_items;
+        public SortedList imageList_skills_loaded = new SortedList();
+        public ImageList imageList_skills;
+        public ImageList imageList_crests;
+        public SortedList imageList_items_loaded = new SortedList();
+        public ImageList imageList_items;
 
-        private System.Windows.Forms.ToolStripMenuItem menuItem_actions;
-        private System.Windows.Forms.PictureBox pictureBox_clan_crest;
-        private System.Windows.Forms.Panel panel_charinfo;
-        private System.Windows.Forms.Panel panel_char;
-        private System.Windows.Forms.Panel panel_chat;
-        private System.Windows.Forms.TextBox textBox_say;
-        private System.Windows.Forms.Button button_sendtext;
-        private System.Windows.Forms.Label label_char_name;
-        private System.Windows.Forms.Label label_char_hp;
-        private System.Windows.Forms.Label label_char_mp;
-        private System.Windows.Forms.Label label_char_cp;
-        private System.Windows.Forms.TabControl tabControl_char;
-        private System.Windows.Forms.TabPage tabPage_char_info;
-        private System.Windows.Forms.TabPage tabPage_char_inv;
-        private System.Windows.Forms.Label label_info_cp;
-        private System.Windows.Forms.Label label_info_mp;
-        private System.Windows.Forms.Label label_info_hp;
-        private System.Windows.Forms.Label label_info_title;
-        private System.Windows.Forms.Label label_info_name;
-        private System.Windows.Forms.Label label_info_xp;
-        private System.Windows.Forms.Label label_info_sp;
-        private System.Windows.Forms.Label label_info_level;
-        private System.Windows.Forms.Label label_info_str;
-        private System.Windows.Forms.Label label_info_dex;
-        private System.Windows.Forms.Label label_info_con;
-        private System.Windows.Forms.Label label_info_int;
-        private System.Windows.Forms.Label label_info_wit;
-        private System.Windows.Forms.Label label_info_men;
-        private System.Windows.Forms.ComboBox comboBox_msg_type;
-        private System.Windows.Forms.Button button_yesno_yes;
-        private System.Windows.Forms.Button button_yesno_no;
-        private System.Windows.Forms.Label label_yesno;
-        private System.Windows.Forms.Panel panel_yesno;
-        private System.Windows.Forms.Label label_info_karma;
-        private System.Windows.Forms.Label label_info_load;
-        private System.Windows.Forms.Label label_info_patk;
-        private System.Windows.Forms.Label label_info_pdef;
-        private System.Windows.Forms.Label label_info_acc;
-        private System.Windows.Forms.Label label_info_crit;
-        private System.Windows.Forms.Label label_info_atkspd;
-        private System.Windows.Forms.Label label_info_matkspd;
-        private System.Windows.Forms.Label label_info_spd;
-        private System.Windows.Forms.Label label_info_eva;
-        private System.Windows.Forms.Label label_info_mdef;
-        private System.Windows.Forms.Label label_info_matk;
-        private System.Windows.Forms.Label label_info_pvp;
-        private System.Windows.Forms.ColumnHeader columnHeader169;
-        private System.Windows.Forms.ColumnHeader columnHeader173;
-        private System.Windows.Forms.ColumnHeader columnHeader170;
-        private System.Windows.Forms.ColumnHeader columnHeader171;
-        private System.Windows.Forms.ColumnHeader columnHeader172;
-        private System.Windows.Forms.Panel panel_inven_head;
-        private System.Windows.Forms.Panel panel_inven_rhand;
-        private System.Windows.Forms.Panel panel_inven_top;
-        private System.Windows.Forms.Panel panel_inven_pants;
-        private System.Windows.Forms.Panel panel_inven_lhand;
-        private System.Windows.Forms.Panel panel_inven_gloves;
-        private System.Windows.Forms.Panel panel_inven_boots;
-        private System.Windows.Forms.Panel panel_inven_acc;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Panel panel_inven_neck;
-        private System.Windows.Forms.Panel panel_inven_lear;
-        private System.Windows.Forms.Panel panel_inven_rear;
-        private System.Windows.Forms.Panel panel_inven_rfinger;
-        private System.Windows.Forms.Panel panel_inven_lfinger;
-        private System.Windows.Forms.Panel panel_tat1;
-        private System.Windows.Forms.Panel panel_tat2;
-        private System.Windows.Forms.Panel panel_tat3;
-        private System.Windows.Forms.TabPage tabPage_char_skills;
-        private System.Windows.Forms.ColumnHeader columnHeader180;
-        private System.Windows.Forms.ColumnHeader columnHeader178;
-        private System.Windows.Forms.ColumnHeader columnHeader177;
-        private System.Windows.Forms.Panel panel_party_1;
-        private System.Windows.Forms.Label label_1_name;
-        private System.Windows.Forms.Label label_1_cp;
-        private System.Windows.Forms.Label label_1_hp;
-        private System.Windows.Forms.Panel panel_party_2;
-        private System.Windows.Forms.Label label_2_cp;
-        private System.Windows.Forms.Label label_2_mp;
-        private System.Windows.Forms.Label label_2_hp;
-        private System.Windows.Forms.Label label_2_name;
-        private System.Windows.Forms.Panel panel_party_3;
-        private System.Windows.Forms.Label label_3_cp;
-        private System.Windows.Forms.Label label_3_mp;
-        private System.Windows.Forms.Label label_3_hp;
-        private System.Windows.Forms.Label label_3_name;
-        private System.Windows.Forms.Panel panel_party_4;
-        private System.Windows.Forms.Label label_4_cp;
-        private System.Windows.Forms.Label label_4_mp;
-        private System.Windows.Forms.Label label_4_hp;
-        private System.Windows.Forms.Label label_4_name;
-        private System.Windows.Forms.Panel panel_party_8;
-        private System.Windows.Forms.Label label_8_cp;
-        private System.Windows.Forms.Label label_8_mp;
-        private System.Windows.Forms.Label label_8_hp;
-        private System.Windows.Forms.Label label_8_name;
-        private System.Windows.Forms.Panel panel_party_7;
-        private System.Windows.Forms.Label label_7_cp;
-        private System.Windows.Forms.Label label_7_mp;
-        private System.Windows.Forms.Label label_7_hp;
-        private System.Windows.Forms.Label label_7_name;
-        private System.Windows.Forms.Panel panel_party_6;
-        private System.Windows.Forms.Label label_6_cp;
-        private System.Windows.Forms.Label label_6_mp;
-        private System.Windows.Forms.Label label_6_hp;
-        private System.Windows.Forms.Label label_6_name;
-        private System.Windows.Forms.Panel panel_party_5;
-        private System.Windows.Forms.Label label_5_cp;
-        private System.Windows.Forms.Label label_5_mp;
-        private System.Windows.Forms.Label label_5_hp;
-        private System.Windows.Forms.Label label_5_name;
-        private System.Windows.Forms.Label label_char_level;
-        private System.Windows.Forms.Panel panel_dead;
-        private System.Windows.Forms.Button button_dead_town;
-        private System.Windows.Forms.Button button_dead_castle;
-        private System.Windows.Forms.Button button_dead_siege;
-        private System.Windows.Forms.Button button_dead_clanhall;
-        private System.Windows.Forms.TabPage tabPage_char_clan;
-        private System.Windows.Forms.ColumnHeader columnHeader191;
-        private System.Windows.Forms.ColumnHeader columnHeader192;
-        private System.Windows.Forms.ColumnHeader columnHeader193;
-        private System.Windows.Forms.ColumnHeader columnHeader194;
-        private System.Windows.Forms.Label label_clan_online;
-        private System.Windows.Forms.Label label_clan_leader;
-        private System.Windows.Forms.Label label_clan_name;
-        private System.Windows.Forms.Label label_clan_level;
-        private System.Windows.Forms.Label label_clan_war;
-        private System.Windows.Forms.Label label_clan_hall;
-        private System.Windows.Forms.Label label_clan_castle;
-        private System.Windows.Forms.Label label_caln_ally;
-        private System.Windows.Forms.Panel panel_npc_chat;
-        private System.Windows.Forms.Button button_npc_close;
-        private System.Windows.Forms.Label label_1_mp;
-        private System.Windows.Forms.Panel panel_charinfo_ul;
-        private System.Windows.Forms.Label label_target_name;
-        private System.Windows.Forms.Label label_target_hp;
-        private System.Windows.Forms.Label label_target_cp;
-        private System.Windows.Forms.Label label_target_mp;
-        private System.Windows.Forms.Label label_youdied;
-        private System.Windows.Forms.Label label_clan_rep;
-        private System.Windows.Forms.Label label_char_xp;
-        private System.Windows.Forms.NotifyIcon notifyIcon_us;
-        private System.Windows.Forms.Panel panel_target;
-        private System.Windows.Forms.Panel panel_party_cover;
+        private ToolStripMenuItem menuItem_actions;
+        private PictureBox pictureBox_clan_crest;
+        private Panel panel_charinfo;
+        private Panel panel_char;
+        private Panel panel_chat;
+        private TextBox textBox_say;
+        private Button button_sendtext;
+        private Label label_char_name;
+        private Label label_char_hp;
+        private Label label_char_mp;
+        private Label label_char_cp;
+        private TabControl tabControl_char;
+        private TabPage tabPage_char_info;
+        private TabPage tabPage_char_inv;
+        private Label label_info_cp;
+        private Label label_info_mp;
+        private Label label_info_hp;
+        private Label label_info_title;
+        private Label label_info_name;
+        private Label label_info_xp;
+        private Label label_info_sp;
+        private Label label_info_level;
+        private Label label_info_str;
+        private Label label_info_dex;
+        private Label label_info_con;
+        private Label label_info_int;
+        private Label label_info_wit;
+        private Label label_info_men;
+        private ComboBox comboBox_msg_type;
+        private Button button_yesno_yes;
+        private Button button_yesno_no;
+        private Label label_yesno;
+        private Panel panel_yesno;
+        private Label label_info_karma;
+        private Label label_info_load;
+        private Label label_info_patk;
+        private Label label_info_pdef;
+        private Label label_info_acc;
+        private Label label_info_crit;
+        private Label label_info_atkspd;
+        private Label label_info_matkspd;
+        private Label label_info_spd;
+        private Label label_info_eva;
+        private Label label_info_mdef;
+        private Label label_info_matk;
+        private Label label_info_pvp;
+        private ColumnHeader columnHeader169;
+        private ColumnHeader columnHeader173;
+        private ColumnHeader columnHeader170;
+        private ColumnHeader columnHeader171;
+        private ColumnHeader columnHeader172;
+        private Panel panel_inven_head;
+        private Panel panel_inven_rhand;
+        private Panel panel_inven_top;
+        private Panel panel_inven_pants;
+        private Panel panel_inven_lhand;
+        private Panel panel_inven_gloves;
+        private Panel panel_inven_boots;
+        private Panel panel_inven_acc;
+        private ToolTip toolTip1;
+        private Panel panel_inven_neck;
+        private Panel panel_inven_lear;
+        private Panel panel_inven_rear;
+        private Panel panel_inven_rfinger;
+        private Panel panel_inven_lfinger;
+        private Panel panel_tat1;
+        private Panel panel_tat2;
+        private Panel panel_tat3;
+        private TabPage tabPage_char_skills;
+        private ColumnHeader columnHeader180;
+        private ColumnHeader columnHeader178;
+        private ColumnHeader columnHeader177;
+        private Panel panel_party_1;
+        private Label label_1_name;
+        private Label label_1_cp;
+        private Label label_1_hp;
+        private Panel panel_party_2;
+        private Label label_2_cp;
+        private Label label_2_mp;
+        private Label label_2_hp;
+        private Label label_2_name;
+        private Panel panel_party_3;
+        private Label label_3_cp;
+        private Label label_3_mp;
+        private Label label_3_hp;
+        private Label label_3_name;
+        private Panel panel_party_4;
+        private Label label_4_cp;
+        private Label label_4_mp;
+        private Label label_4_hp;
+        private Label label_4_name;
+        private Panel panel_party_8;
+        private Label label_8_cp;
+        private Label label_8_mp;
+        private Label label_8_hp;
+        private Label label_8_name;
+        private Panel panel_party_7;
+        private Label label_7_cp;
+        private Label label_7_mp;
+        private Label label_7_hp;
+        private Label label_7_name;
+        private Panel panel_party_6;
+        private Label label_6_cp;
+        private Label label_6_mp;
+        private Label label_6_hp;
+        private Label label_6_name;
+        private Panel panel_party_5;
+        private Label label_5_cp;
+        private Label label_5_mp;
+        private Label label_5_hp;
+        private Label label_5_name;
+        private Label label_char_level;
+        private Panel panel_dead;
+        private Button button_dead_town;
+        private Button button_dead_castle;
+        private Button button_dead_siege;
+        private Button button_dead_clanhall;
+        private TabPage tabPage_char_clan;
+        private ColumnHeader columnHeader191;
+        private ColumnHeader columnHeader192;
+        private ColumnHeader columnHeader193;
+        private ColumnHeader columnHeader194;
+        private Label label_clan_online;
+        private Label label_clan_leader;
+        private Label label_clan_name;
+        private Label label_clan_level;
+        private Label label_clan_war;
+        private Label label_clan_hall;
+        private Label label_clan_castle;
+        private Label label_caln_ally;
+        private Panel panel_npc_chat;
+        private Button button_npc_close;
+        private Label label_1_mp;
+        private Panel panel_charinfo_ul;
+        private Label label_target_name;
+        private Label label_target_hp;
+        private Label label_target_cp;
+        private Label label_target_mp;
+        private Label label_youdied;
+        private Label label_clan_rep;
+        private Label label_char_xp;
+        private NotifyIcon notifyIcon_us;
+        private Panel panel_target;
+        private Panel panel_party_cover;
         private OpenFileDialog openFileDialog1;
         private ContextMenuStrip contextMenuStrip_inventory;
         private ToolStripMenuItem dropStackToolStripMenuItem;
@@ -411,7 +412,7 @@ namespace L2_login
             splash.Show();
             splash.Update();
 
-            Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.AboveNormal;
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.AboveNormal;
             //System.Threading.Thread thread = System.Threading.Thread.CurrentThread;
             //thread.Priority = System.Threading.ThreadPriority.AboveNormal;
 
@@ -524,7 +525,7 @@ namespace L2_login
 
             comboBox_msg_type.SelectedIndex = 0;
 
-            System.Drawing.Bitmap img;
+            Bitmap img;
             try
             {
                 img = new System.Drawing.Bitmap(Globals.PATH + "\\crests\\0.bmp");
@@ -593,359 +594,359 @@ namespace L2_login
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(L2NET));
-            this.panel_party_5 = new System.Windows.Forms.Panel();
-            this.label_5_cp = new System.Windows.Forms.Label();
-            this.label_5_mp = new System.Windows.Forms.Label();
-            this.label_5_hp = new System.Windows.Forms.Label();
-            this.label_5_name = new System.Windows.Forms.Label();
-            this.panel_party_6 = new System.Windows.Forms.Panel();
-            this.label_6_cp = new System.Windows.Forms.Label();
-            this.label_6_mp = new System.Windows.Forms.Label();
-            this.label_6_hp = new System.Windows.Forms.Label();
-            this.label_6_name = new System.Windows.Forms.Label();
-            this.panel_party_7 = new System.Windows.Forms.Panel();
-            this.label_7_cp = new System.Windows.Forms.Label();
-            this.label_7_mp = new System.Windows.Forms.Label();
-            this.label_7_hp = new System.Windows.Forms.Label();
-            this.label_7_name = new System.Windows.Forms.Label();
-            this.panel_party_8 = new System.Windows.Forms.Panel();
-            this.label_8_cp = new System.Windows.Forms.Label();
-            this.label_8_mp = new System.Windows.Forms.Label();
-            this.label_8_hp = new System.Windows.Forms.Label();
-            this.label_8_name = new System.Windows.Forms.Label();
-            this.panel_party_4 = new System.Windows.Forms.Panel();
-            this.label_4_cp = new System.Windows.Forms.Label();
-            this.label_4_mp = new System.Windows.Forms.Label();
-            this.label_4_hp = new System.Windows.Forms.Label();
-            this.label_4_name = new System.Windows.Forms.Label();
-            this.panel_party_3 = new System.Windows.Forms.Panel();
-            this.label_3_cp = new System.Windows.Forms.Label();
-            this.label_3_mp = new System.Windows.Forms.Label();
-            this.label_3_hp = new System.Windows.Forms.Label();
-            this.label_3_name = new System.Windows.Forms.Label();
-            this.panel_party_2 = new System.Windows.Forms.Panel();
-            this.label_2_cp = new System.Windows.Forms.Label();
-            this.label_2_mp = new System.Windows.Forms.Label();
-            this.label_2_hp = new System.Windows.Forms.Label();
-            this.label_2_name = new System.Windows.Forms.Label();
-            this.panel_party_1 = new System.Windows.Forms.Panel();
-            this.label_1_cp = new System.Windows.Forms.Label();
-            this.label_1_mp = new System.Windows.Forms.Label();
-            this.label_1_hp = new System.Windows.Forms.Label();
-            this.label_1_name = new System.Windows.Forms.Label();
-            this.panel_charinfo = new System.Windows.Forms.Panel();
-            this.panel_target = new System.Windows.Forms.Panel();
-            this.label_target_cp = new System.Windows.Forms.Label();
-            this.label_target_mp = new System.Windows.Forms.Label();
-            this.label_target_hp = new System.Windows.Forms.Label();
-            this.label_target_name = new System.Windows.Forms.Label();
-            this.panel_charinfo_ul = new System.Windows.Forms.Panel();
+            this.panel_party_5 = new Panel();
+            this.label_5_cp = new Label();
+            this.label_5_mp = new Label();
+            this.label_5_hp = new Label();
+            this.label_5_name = new Label();
+            this.panel_party_6 = new Panel();
+            this.label_6_cp = new Label();
+            this.label_6_mp = new Label();
+            this.label_6_hp = new Label();
+            this.label_6_name = new Label();
+            this.panel_party_7 = new Panel();
+            this.label_7_cp = new Label();
+            this.label_7_mp = new Label();
+            this.label_7_hp = new Label();
+            this.label_7_name = new Label();
+            this.panel_party_8 = new Panel();
+            this.label_8_cp = new Label();
+            this.label_8_mp = new Label();
+            this.label_8_hp = new Label();
+            this.label_8_name = new Label();
+            this.panel_party_4 = new Panel();
+            this.label_4_cp = new Label();
+            this.label_4_mp = new Label();
+            this.label_4_hp = new Label();
+            this.label_4_name = new Label();
+            this.panel_party_3 = new Panel();
+            this.label_3_cp = new Label();
+            this.label_3_mp = new Label();
+            this.label_3_hp = new Label();
+            this.label_3_name = new Label();
+            this.panel_party_2 = new Panel();
+            this.label_2_cp = new Label();
+            this.label_2_mp = new Label();
+            this.label_2_hp = new Label();
+            this.label_2_name = new Label();
+            this.panel_party_1 = new Panel();
+            this.label_1_cp = new Label();
+            this.label_1_mp = new Label();
+            this.label_1_hp = new Label();
+            this.label_1_name = new Label();
+            this.panel_charinfo = new Panel();
+            this.panel_target = new Panel();
+            this.label_target_cp = new Label();
+            this.label_target_mp = new Label();
+            this.label_target_hp = new Label();
+            this.label_target_name = new Label();
+            this.panel_charinfo_ul = new Panel();
             this.progressBar_char_XP = new VistaStyleProgressBar.ProgressBar();
             this.progressBar_char_MP = new VistaStyleProgressBar.ProgressBar();
             this.progressBar_char_CP = new VistaStyleProgressBar.ProgressBar();
-            this.label_char_vitality = new System.Windows.Forms.Label();
-            this.label_char_xp = new System.Windows.Forms.Label();
-            this.label_char_level = new System.Windows.Forms.Label();
-            this.label_char_cp = new System.Windows.Forms.Label();
-            this.label_char_mp = new System.Windows.Forms.Label();
-            this.label_char_name = new System.Windows.Forms.Label();
+            this.label_char_vitality = new Label();
+            this.label_char_xp = new Label();
+            this.label_char_level = new Label();
+            this.label_char_cp = new Label();
+            this.label_char_mp = new Label();
+            this.label_char_name = new Label();
             this.progressBar_char_HP = new VistaStyleProgressBar.ProgressBar();
-            this.label_char_hp = new System.Windows.Forms.Label();
-            this.panel_party_cover = new System.Windows.Forms.Panel();
-            this.panel_char = new System.Windows.Forms.Panel();
-            this.tabControl_char = new System.Windows.Forms.TabControl();
-            this.tabPage_char_info = new System.Windows.Forms.TabPage();
-            this.label_info_mcritical = new System.Windows.Forms.Label();
-            this.label_info_mevasion = new System.Windows.Forms.Label();
-            this.label_info_maccuracy = new System.Windows.Forms.Label();
-            this.label_info_mcrit_descr = new System.Windows.Forms.Label();
-            this.label_info_meva_descr = new System.Windows.Forms.Label();
-            this.label_info_macc_descr = new System.Windows.Forms.Label();
-            this.label_info_eval = new System.Windows.Forms.Label();
-            this.label_info_fame = new System.Windows.Forms.Label();
-            this.label_info_darkness = new System.Windows.Forms.Label();
-            this.label_info_earth = new System.Windows.Forms.Label();
-            this.label_info_water = new System.Windows.Forms.Label();
-            this.label_info_divinity = new System.Windows.Forms.Label();
-            this.label_info_wind = new System.Windows.Forms.Label();
-            this.label_info_fire = new System.Windows.Forms.Label();
-            this.label_info_atk_attrib_value = new System.Windows.Forms.Label();
-            this.label_info_atk_attrib = new System.Windows.Forms.Label();
-            this.label_info_recommend_desc = new System.Windows.Forms.Label();
-            this.label_info_fame_desc = new System.Windows.Forms.Label();
-            this.label_info_darkness_desc = new System.Windows.Forms.Label();
-            this.label_info_earth_desc = new System.Windows.Forms.Label();
-            this.label_info_water_desc = new System.Windows.Forms.Label();
-            this.label_info_divinity_desc = new System.Windows.Forms.Label();
-            this.label_info_wind_desc = new System.Windows.Forms.Label();
-            this.label_info_fire_desc = new System.Windows.Forms.Label();
-            this.label_info_atk_attrib_val_desc = new System.Windows.Forms.Label();
-            this.label_info_atk_attrib_descr = new System.Windows.Forms.Label();
-            this.label_info_pvp = new System.Windows.Forms.Label();
-            this.label_info_matkspd = new System.Windows.Forms.Label();
-            this.label_info_spd = new System.Windows.Forms.Label();
-            this.label_info_eva = new System.Windows.Forms.Label();
-            this.label_info_mdef = new System.Windows.Forms.Label();
-            this.panel_dead = new System.Windows.Forms.Panel();
-            this.button1_close_dead = new System.Windows.Forms.Button();
-            this.button_dead_fort = new System.Windows.Forms.Button();
-            this.label_youdied = new System.Windows.Forms.Label();
-            this.button_dead_siege = new System.Windows.Forms.Button();
-            this.button_dead_clanhall = new System.Windows.Forms.Button();
-            this.button_dead_castle = new System.Windows.Forms.Button();
-            this.button_dead_town = new System.Windows.Forms.Button();
-            this.panel_yesno = new System.Windows.Forms.Panel();
-            this.button_close_accept = new System.Windows.Forms.Button();
-            this.label_yesno = new System.Windows.Forms.Label();
-            this.button_yesno_no = new System.Windows.Forms.Button();
-            this.button_yesno_yes = new System.Windows.Forms.Button();
-            this.label_info_matk = new System.Windows.Forms.Label();
-            this.label_info_atkspd = new System.Windows.Forms.Label();
-            this.label_info_crit = new System.Windows.Forms.Label();
-            this.label_info_acc = new System.Windows.Forms.Label();
-            this.label_info_pdef = new System.Windows.Forms.Label();
-            this.label_info_patk = new System.Windows.Forms.Label();
-            this.label_info_load = new System.Windows.Forms.Label();
-            this.label_info_karma = new System.Windows.Forms.Label();
-            this.label_info_men = new System.Windows.Forms.Label();
-            this.label_info_wit = new System.Windows.Forms.Label();
-            this.label_info_int = new System.Windows.Forms.Label();
-            this.label_info_con = new System.Windows.Forms.Label();
-            this.label_info_dex = new System.Windows.Forms.Label();
-            this.label_info_str = new System.Windows.Forms.Label();
-            this.label_info_level = new System.Windows.Forms.Label();
-            this.label_info_sp = new System.Windows.Forms.Label();
-            this.label_info_xp = new System.Windows.Forms.Label();
-            this.label_info_cp = new System.Windows.Forms.Label();
-            this.label_info_mp = new System.Windows.Forms.Label();
-            this.label_info_hp = new System.Windows.Forms.Label();
-            this.label_info_title = new System.Windows.Forms.Label();
-            this.label_info_name = new System.Windows.Forms.Label();
-            this.tabPage_char_inv = new System.Windows.Forms.TabPage();
-            this.radioButton_inv_quest = new System.Windows.Forms.RadioButton();
-            this.radioButton_inv_equipped = new System.Windows.Forms.RadioButton();
-            this.radioButton_inv_items = new System.Windows.Forms.RadioButton();
-            this.label_inventory_count = new System.Windows.Forms.Label();
-            this.panel_inven_shirt = new System.Windows.Forms.Panel();
-            this.panel_tat3 = new System.Windows.Forms.Panel();
-            this.panel_tat2 = new System.Windows.Forms.Panel();
-            this.panel_tat1 = new System.Windows.Forms.Panel();
-            this.panel_inven_rfinger = new System.Windows.Forms.Panel();
-            this.panel_inven_lfinger = new System.Windows.Forms.Panel();
-            this.panel_inven_rear = new System.Windows.Forms.Panel();
-            this.panel_inven_lear = new System.Windows.Forms.Panel();
-            this.panel_inven_neck = new System.Windows.Forms.Panel();
-            this.panel_inven_acc = new System.Windows.Forms.Panel();
-            this.panel_inven_boots = new System.Windows.Forms.Panel();
-            this.panel_inven_gloves = new System.Windows.Forms.Panel();
-            this.panel_inven_lhand = new System.Windows.Forms.Panel();
-            this.panel_inven_pants = new System.Windows.Forms.Panel();
-            this.panel_inven_top = new System.Windows.Forms.Panel();
-            this.panel_inven_rhand = new System.Windows.Forms.Panel();
-            this.panel_inven_head = new System.Windows.Forms.Panel();
-            this.listView_inventory = new System.Windows.Forms.ListView();
-            this.columnHeader169 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader170 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader171 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader172 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader173 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_inventory = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dropStackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteStackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crystalizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTodoNotListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList_items = new System.Windows.Forms.ImageList(this.components);
-            this.tabPage_char_skills = new System.Windows.Forms.TabPage();
-            this.radiobutton_passive = new System.Windows.Forms.RadioButton();
-            this.radiobutton_active = new System.Windows.Forms.RadioButton();
-            this.listView_skills = new System.Windows.Forms.ListView();
-            this.columnHeader177 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader178 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader180 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList_skills = new System.Windows.Forms.ImageList(this.components);
-            this.tabPage_char_clan = new System.Windows.Forms.TabPage();
-            this.label_clan_castle_text = new System.Windows.Forms.Label();
-            this.label_clan_hall_text = new System.Windows.Forms.Label();
-            this.label_clan_war_text = new System.Windows.Forms.Label();
-            this.label_clan_rep_text = new System.Windows.Forms.Label();
-            this.label_clan_lvl_text = new System.Windows.Forms.Label();
-            this.label_clan_ally_text = new System.Windows.Forms.Label();
-            this.label_clan_name_text = new System.Windows.Forms.Label();
-            this.label_clan_leader_text = new System.Windows.Forms.Label();
-            this.label_clan_rep = new System.Windows.Forms.Label();
-            this.pictureBox_clan_crest = new System.Windows.Forms.PictureBox();
-            this.label_caln_ally = new System.Windows.Forms.Label();
-            this.label_clan_castle = new System.Windows.Forms.Label();
-            this.label_clan_hall = new System.Windows.Forms.Label();
-            this.label_clan_war = new System.Windows.Forms.Label();
-            this.label_clan_level = new System.Windows.Forms.Label();
-            this.label_clan_name = new System.Windows.Forms.Label();
-            this.label_clan_leader = new System.Windows.Forms.Label();
-            this.label_clan_online = new System.Windows.Forms.Label();
-            this.listView_char_clan = new System.Windows.Forms.ListView();
-            this.columnHeader191 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader192 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader193 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader194 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList_crests = new System.Windows.Forms.ImageList(this.components);
-            this.tabPage_char_detail = new System.Windows.Forms.TabPage();
-            this.listView_char_data = new System.Windows.Forms.ListView();
-            this.columnHeader103 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader104 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage_players = new System.Windows.Forms.TabPage();
-            this.listView_players_data = new System.Windows.Forms.ListView();
-            this.columnHeader80 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader81 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader82 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader83 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader84 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader85 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage_items = new System.Windows.Forms.TabPage();
-            this.listView_items_data = new System.Windows.Forms.ListView();
-            this.columnHeader130 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader131 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader132 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_Items = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addToDoNotListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_npc = new System.Windows.Forms.TabPage();
-            this.listView_npc_data = new System.Windows.Forms.ListView();
-            this.columnHeader135 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader136 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader137 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_NPC = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addToDoNotListNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToBlackListNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_npc_chat = new System.Windows.Forms.TabPage();
-            this.panel_npc_chat = new System.Windows.Forms.Panel();
-            this.textBox_rtb_input = new System.Windows.Forms.TextBox();
-            this.richTextBox_dialog = new L2_login.RichTextBoxEx();
-            this.button_npc_close = new System.Windows.Forms.Button();
-            this.tabPage_buffs = new System.Windows.Forms.TabPage();
-            this.listView_mybuffs_data = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage_stats = new System.Windows.Forms.TabPage();
-            this.label_badmobs = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label_meshlessignored = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label_adena_total = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button_clear_stats = new System.Windows.Forms.Button();
-            this.listView_stats = new System.Windows.Forms.ListView();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label_SP = new System.Windows.Forms.Label();
-            this.label_XP = new System.Windows.Forms.Label();
-            this.label_Adena = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox_op_control = new System.Windows.Forms.CheckBox();
-            this.checkBox_op_shift = new System.Windows.Forms.CheckBox();
-            this.label_zrange_map = new System.Windows.Forms.Label();
-            this.trackBar_map_zoom = new System.Windows.Forms.TrackBar();
-            this.textBox_zrange_map = new System.Windows.Forms.TextBox();
-            this.checkBox_minimap = new System.Windows.Forms.CheckBox();
-            this.panel_chat = new System.Windows.Forms.Panel();
-            this.checkBox_BoundingPoints = new System.Windows.Forms.CheckBox();
-            this.comboBox_msg_type = new System.Windows.Forms.ComboBox();
-            this.button_sendtext = new System.Windows.Forms.Button();
-            this.textBox_say = new System.Windows.Forms.TextBox();
-            this.tabControl_ChatSelect = new System.Windows.Forms.TabControl();
-            this.tab_all = new System.Windows.Forms.TabPage();
-            this.colorListBox_all = new L2_login.ColorListBox();
-            this.tab_system = new System.Windows.Forms.TabPage();
-            this.colorListBox_system = new L2_login.ColorListBox();
-            this.tab_bot = new System.Windows.Forms.TabPage();
-            this.colorListBox_bot = new L2_login.ColorListBox();
-            this.tab_local = new System.Windows.Forms.TabPage();
-            this.colorListBox_local = new L2_login.ColorListBox();
-            this.tab_trade = new System.Windows.Forms.TabPage();
-            this.colorListBox_trade = new L2_login.ColorListBox();
-            this.tab_party = new System.Windows.Forms.TabPage();
-            this.colorListBox_party = new L2_login.ColorListBox();
-            this.tab_clan = new System.Windows.Forms.TabPage();
-            this.colorListBox_clan = new L2_login.ColorListBox();
-            this.tab_alliance = new System.Windows.Forms.TabPage();
-            this.colorListBox_ally = new L2_login.ColorListBox();
-            this.tab_hero = new System.Windows.Forms.TabPage();
-            this.colorListBox_hero = new L2_login.ColorListBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.notifyIcon_us = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip_notify = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toggleBottingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.botOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceLogToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuItem_File = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_cmd_logon = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_cmd_game = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuitem_cmd_GG = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuitem_cmd_ggclient = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_cmd_overlay = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_cmd_shortcut = new System.Windows.Forms.ToolStripMenuItem();
-            this.petWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_actions = new System.Windows.Forms.ToolStripMenuItem();
-            this.extendedActionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_options_setup = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_saveinterface = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_launchl2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_Commands = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_cmd_cancel = new System.Windows.Forms.ToolStripMenuItem();
-            this.blacklistTargetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showTargetInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_toggle_botting = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_toggle_autoreply = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_toggle_autoreplyPM = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_cmd_restart = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_cmd_logout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_closeclient = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_killthreads = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconectClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_Options = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_scripting = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_loadscript = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_startscript = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_scriptwindow = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_scriptdebugger = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_encryptscript = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_debug_mode = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_dump_mode = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_dump_mode_server = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip_pck = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_about = new System.Windows.Forms.ToolStripMenuItem();
-            this.eULAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_forums = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_help_donate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuitem_help_checkforupdates = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_language = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItem_hosts = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItem_forcecollect = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label_char_hp = new Label();
+            this.panel_party_cover = new Panel();
+            this.panel_char = new Panel();
+            this.tabControl_char = new TabControl();
+            this.tabPage_char_info = new TabPage();
+            this.label_info_mcritical = new Label();
+            this.label_info_mevasion = new Label();
+            this.label_info_maccuracy = new Label();
+            this.label_info_mcrit_descr = new Label();
+            this.label_info_meva_descr = new Label();
+            this.label_info_macc_descr = new Label();
+            this.label_info_eval = new Label();
+            this.label_info_fame = new Label();
+            this.label_info_darkness = new Label();
+            this.label_info_earth = new Label();
+            this.label_info_water = new Label();
+            this.label_info_divinity = new Label();
+            this.label_info_wind = new Label();
+            this.label_info_fire = new Label();
+            this.label_info_atk_attrib_value = new Label();
+            this.label_info_atk_attrib = new Label();
+            this.label_info_recommend_desc = new Label();
+            this.label_info_fame_desc = new Label();
+            this.label_info_darkness_desc = new Label();
+            this.label_info_earth_desc = new Label();
+            this.label_info_water_desc = new Label();
+            this.label_info_divinity_desc = new Label();
+            this.label_info_wind_desc = new Label();
+            this.label_info_fire_desc = new Label();
+            this.label_info_atk_attrib_val_desc = new Label();
+            this.label_info_atk_attrib_descr = new Label();
+            this.label_info_pvp = new Label();
+            this.label_info_matkspd = new Label();
+            this.label_info_spd = new Label();
+            this.label_info_eva = new Label();
+            this.label_info_mdef = new Label();
+            this.panel_dead = new Panel();
+            this.button1_close_dead = new Button();
+            this.button_dead_fort = new Button();
+            this.label_youdied = new Label();
+            this.button_dead_siege = new Button();
+            this.button_dead_clanhall = new Button();
+            this.button_dead_castle = new Button();
+            this.button_dead_town = new Button();
+            this.panel_yesno = new Panel();
+            this.button_close_accept = new Button();
+            this.label_yesno = new Label();
+            this.button_yesno_no = new Button();
+            this.button_yesno_yes = new Button();
+            this.label_info_matk = new Label();
+            this.label_info_atkspd = new Label();
+            this.label_info_crit = new Label();
+            this.label_info_acc = new Label();
+            this.label_info_pdef = new Label();
+            this.label_info_patk = new Label();
+            this.label_info_load = new Label();
+            this.label_info_karma = new Label();
+            this.label_info_men = new Label();
+            this.label_info_wit = new Label();
+            this.label_info_int = new Label();
+            this.label_info_con = new Label();
+            this.label_info_dex = new Label();
+            this.label_info_str = new Label();
+            this.label_info_level = new Label();
+            this.label_info_sp = new Label();
+            this.label_info_xp = new Label();
+            this.label_info_cp = new Label();
+            this.label_info_mp = new Label();
+            this.label_info_hp = new Label();
+            this.label_info_title = new Label();
+            this.label_info_name = new Label();
+            this.tabPage_char_inv = new TabPage();
+            this.radioButton_inv_quest = new RadioButton();
+            this.radioButton_inv_equipped = new RadioButton();
+            this.radioButton_inv_items = new RadioButton();
+            this.label_inventory_count = new Label();
+            this.panel_inven_shirt = new Panel();
+            this.panel_tat3 = new Panel();
+            this.panel_tat2 = new Panel();
+            this.panel_tat1 = new Panel();
+            this.panel_inven_rfinger = new Panel();
+            this.panel_inven_lfinger = new Panel();
+            this.panel_inven_rear = new Panel();
+            this.panel_inven_lear = new Panel();
+            this.panel_inven_neck = new Panel();
+            this.panel_inven_acc = new Panel();
+            this.panel_inven_boots = new Panel();
+            this.panel_inven_gloves = new Panel();
+            this.panel_inven_lhand = new Panel();
+            this.panel_inven_pants = new Panel();
+            this.panel_inven_top = new Panel();
+            this.panel_inven_rhand = new Panel();
+            this.panel_inven_head = new Panel();
+            this.listView_inventory = new ListView();
+            this.columnHeader169 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader170 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader171 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader172 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader173 = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_inventory = new ContextMenuStrip(this.components);
+            this.dropStackToolStripMenuItem = new ToolStripMenuItem();
+            this.deleteStackToolStripMenuItem = new ToolStripMenuItem();
+            this.crystalizeToolStripMenuItem = new ToolStripMenuItem();
+            this.addTodoNotListToolStripMenuItem1 = new ToolStripMenuItem();
+            this.imageList_items = new ImageList(this.components);
+            this.tabPage_char_skills = new TabPage();
+            this.radiobutton_passive = new RadioButton();
+            this.radiobutton_active = new RadioButton();
+            this.listView_skills = new ListView();
+            this.columnHeader177 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader178 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader180 = ((ColumnHeader)(new ColumnHeader()));
+            this.imageList_skills = new ImageList(this.components);
+            this.tabPage_char_clan = new TabPage();
+            this.label_clan_castle_text = new Label();
+            this.label_clan_hall_text = new Label();
+            this.label_clan_war_text = new Label();
+            this.label_clan_rep_text = new Label();
+            this.label_clan_lvl_text = new Label();
+            this.label_clan_ally_text = new Label();
+            this.label_clan_name_text = new Label();
+            this.label_clan_leader_text = new Label();
+            this.label_clan_rep = new Label();
+            this.pictureBox_clan_crest = new PictureBox();
+            this.label_caln_ally = new Label();
+            this.label_clan_castle = new Label();
+            this.label_clan_hall = new Label();
+            this.label_clan_war = new Label();
+            this.label_clan_level = new Label();
+            this.label_clan_name = new Label();
+            this.label_clan_leader = new Label();
+            this.label_clan_online = new Label();
+            this.listView_char_clan = new ListView();
+            this.columnHeader191 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader192 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader193 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader194 = ((ColumnHeader)(new ColumnHeader()));
+            this.imageList_crests = new ImageList(this.components);
+            this.tabPage_char_detail = new TabPage();
+            this.listView_char_data = new ListView();
+            this.columnHeader103 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader104 = ((ColumnHeader)(new ColumnHeader()));
+            this.tabPage_players = new TabPage();
+            this.listView_players_data = new ListView();
+            this.columnHeader80 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader81 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader82 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader83 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader84 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader85 = ((ColumnHeader)(new ColumnHeader()));
+            this.tabPage_items = new TabPage();
+            this.listView_items_data = new ListView();
+            this.columnHeader130 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader131 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader132 = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_Items = new ContextMenuStrip(this.components);
+            this.addToDoNotListToolStripMenuItem = new ToolStripMenuItem();
+            this.tabPage_npc = new TabPage();
+            this.listView_npc_data = new ListView();
+            this.columnHeader135 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader136 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader137 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader5 = ((ColumnHeader)(new ColumnHeader()));
+            this.contextMenuStrip_NPC = new ContextMenuStrip(this.components);
+            this.addToDoNotListNPCToolStripMenuItem = new ToolStripMenuItem();
+            this.addToBlackListNPCToolStripMenuItem = new ToolStripMenuItem();
+            this.tabPage_npc_chat = new TabPage();
+            this.panel_npc_chat = new Panel();
+            this.textBox_rtb_input = new TextBox();
+            this.richTextBox_dialog = new RichTextBoxEx();
+            this.button_npc_close = new Button();
+            this.tabPage_buffs = new TabPage();
+            this.listView_mybuffs_data = new ListView();
+            this.columnHeader1 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader2 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader4 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader3 = ((ColumnHeader)(new ColumnHeader()));
+            this.tabPage_stats = new TabPage();
+            this.label_badmobs = new Label();
+            this.label7 = new Label();
+            this.label_meshlessignored = new Label();
+            this.label6 = new Label();
+            this.label_adena_total = new Label();
+            this.label5 = new Label();
+            this.button_clear_stats = new Button();
+            this.listView_stats = new ListView();
+            this.columnHeader8 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader6 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader7 = ((ColumnHeader)(new ColumnHeader()));
+            this.columnHeader10 = ((ColumnHeader)(new ColumnHeader()));
+            this.label_SP = new Label();
+            this.label_XP = new Label();
+            this.label_Adena = new Label();
+            this.label3 = new Label();
+            this.label2 = new Label();
+            this.label1 = new Label();
+            this.checkBox_op_control = new CheckBox();
+            this.checkBox_op_shift = new CheckBox();
+            this.label_zrange_map = new Label();
+            this.trackBar_map_zoom = new TrackBar();
+            this.textBox_zrange_map = new TextBox();
+            this.checkBox_minimap = new CheckBox();
+            this.panel_chat = new Panel();
+            this.checkBox_BoundingPoints = new CheckBox();
+            this.comboBox_msg_type = new ComboBox();
+            this.button_sendtext = new Button();
+            this.textBox_say = new TextBox();
+            this.tabControl_ChatSelect = new TabControl();
+            this.tab_all = new TabPage();
+            this.colorListBox_all = new ColorListBox();
+            this.tab_system = new TabPage();
+            this.colorListBox_system = new ColorListBox();
+            this.tab_bot = new TabPage();
+            this.colorListBox_bot = new ColorListBox();
+            this.tab_local = new TabPage();
+            this.colorListBox_local = new ColorListBox();
+            this.tab_trade = new TabPage();
+            this.colorListBox_trade = new ColorListBox();
+            this.tab_party = new TabPage();
+            this.colorListBox_party = new ColorListBox();
+            this.tab_clan = new TabPage();
+            this.colorListBox_clan = new ColorListBox();
+            this.tab_alliance = new TabPage();
+            this.colorListBox_ally = new ColorListBox();
+            this.tab_hero = new TabPage();
+            this.colorListBox_hero = new ColorListBox();
+            this.toolTip1 = new ToolTip(this.components);
+            this.notifyIcon_us = new NotifyIcon(this.components);
+            this.contextMenuStrip_notify = new ContextMenuStrip(this.components);
+            this.toggleBottingToolStripMenuItem = new ToolStripMenuItem();
+            this.botOptionsToolStripMenuItem = new ToolStripMenuItem();
+            this.startScriptToolStripMenuItem = new ToolStripMenuItem();
+            this.toolStripSeparator8 = new ToolStripSeparator();
+            this.closeToolStripMenuItem = new ToolStripMenuItem();
+            this.forceLogToolStripMenuItem1 = new ToolStripMenuItem();
+            this.openFileDialog1 = new OpenFileDialog();
+            this.menuStrip1 = new MenuStrip();
+            this.menuItem_File = new ToolStripMenuItem();
+            this.menuItem_cmd_logon = new ToolStripMenuItem();
+            this.menuItem_cmd_game = new ToolStripMenuItem();
+            this.menuitem_cmd_GG = new ToolStripMenuItem();
+            this.menuitem_cmd_ggclient = new ToolStripMenuItem();
+            this.toolStripSeparator1 = new ToolStripSeparator();
+            this.menuItem_cmd_overlay = new ToolStripMenuItem();
+            this.menuItem_cmd_shortcut = new ToolStripMenuItem();
+            this.petWindowToolStripMenuItem = new ToolStripMenuItem();
+            this.menuItem_actions = new ToolStripMenuItem();
+            this.extendedActionsToolStripMenuItem = new ToolStripMenuItem();
+            this.toolStripSeparator3 = new ToolStripSeparator();
+            this.menuItem_options_setup = new ToolStripMenuItem();
+            this.menuItem_saveinterface = new ToolStripMenuItem();
+            this.toolStripSeparator12 = new ToolStripSeparator();
+            this.menuItem_launchl2 = new ToolStripMenuItem();
+            this.toolStripSeparator2 = new ToolStripSeparator();
+            this.menuItem_exit = new ToolStripMenuItem();
+            this.menuItem_Commands = new ToolStripMenuItem();
+            this.menuItem_cmd_cancel = new ToolStripMenuItem();
+            this.blacklistTargetToolStripMenuItem = new ToolStripMenuItem();
+            this.showTargetInfoToolStripMenuItem = new ToolStripMenuItem();
+            this.toolStripSeparator6 = new ToolStripSeparator();
+            this.menuItem_toggle_botting = new ToolStripMenuItem();
+            this.menuItem_toggle_autoreply = new ToolStripMenuItem();
+            this.menuItem_toggle_autoreplyPM = new ToolStripMenuItem();
+            this.toolStripSeparator5 = new ToolStripSeparator();
+            this.menuItem_cmd_restart = new ToolStripMenuItem();
+            this.menuItem_cmd_logout = new ToolStripMenuItem();
+            this.toolStripSeparator4 = new ToolStripSeparator();
+            this.menuItem_closeclient = new ToolStripMenuItem();
+            this.menuItem_killthreads = new ToolStripMenuItem();
+            this.forceLogToolStripMenuItem = new ToolStripMenuItem();
+            this.disconectClientToolStripMenuItem = new ToolStripMenuItem();
+            this.menuItem_Options = new ToolStripMenuItem();
+            this.menuItem_scripting = new ToolStripMenuItem();
+            this.menuItem_loadscript = new ToolStripMenuItem();
+            this.menuItem_startscript = new ToolStripMenuItem();
+            this.toolStripSeparator10 = new ToolStripSeparator();
+            this.menuItem_scriptwindow = new ToolStripMenuItem();
+            this.menuItem_scriptdebugger = new ToolStripMenuItem();
+            this.menuItem_encryptscript = new ToolStripMenuItem();
+            this.toolStripSeparator9 = new ToolStripSeparator();
+            this.menuItem_debug_mode = new ToolStripMenuItem();
+            this.menuItem_dump_mode = new ToolStripMenuItem();
+            this.menuItem_dump_mode_server = new ToolStripMenuItem();
+            this.toolStrip_pck = new ToolStripMenuItem();
+            this.menuItem_Help = new ToolStripMenuItem();
+            this.menuItem_about = new ToolStripMenuItem();
+            this.eULAToolStripMenuItem = new ToolStripMenuItem();
+            this.menuItem_forums = new ToolStripMenuItem();
+            this.menuItem_help_donate = new ToolStripMenuItem();
+            this.menuitem_help_checkforupdates = new ToolStripMenuItem();
+            this.toolStripSeparator7 = new ToolStripSeparator();
+            this.menuItem_language = new ToolStripMenuItem();
+            this.menuItem_hosts = new ToolStripMenuItem();
+            this.toolStripSeparator11 = new ToolStripSeparator();
+            this.menuItem_forcecollect = new ToolStripMenuItem();
+            this.saveFileDialog1 = new SaveFileDialog();
             this.panel_party_5.SuspendLayout();
             this.panel_party_6.SuspendLayout();
             this.panel_party_7.SuspendLayout();
@@ -996,7 +997,7 @@ namespace L2_login
             // panel_party_5
             // 
             this.panel_party_5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_5.BackgroundImage")));
-            this.panel_party_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_5.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_5.Controls.Add(this.label_5_cp);
             this.panel_party_5.Controls.Add(this.label_5_mp);
             this.panel_party_5.Controls.Add(this.label_5_hp);
@@ -1046,12 +1047,12 @@ namespace L2_login
             this.label_5_name.TabIndex = 1;
             this.label_5_name.Text = "Name";
             this.label_5_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_5_name.Click += new System.EventHandler(this.label_5_name_Click);
+            this.label_5_name.Click += new EventHandler(this.label_5_name_Click);
             // 
             // panel_party_6
             // 
             this.panel_party_6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_6.BackgroundImage")));
-            this.panel_party_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_6.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_6.Controls.Add(this.label_6_cp);
             this.panel_party_6.Controls.Add(this.label_6_mp);
             this.panel_party_6.Controls.Add(this.label_6_hp);
@@ -1101,12 +1102,12 @@ namespace L2_login
             this.label_6_name.TabIndex = 1;
             this.label_6_name.Text = "Name";
             this.label_6_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_6_name.Click += new System.EventHandler(this.label_6_name_Click);
+            this.label_6_name.Click += new EventHandler(this.label_6_name_Click);
             // 
             // panel_party_7
             // 
             this.panel_party_7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_7.BackgroundImage")));
-            this.panel_party_7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_7.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_7.Controls.Add(this.label_7_cp);
             this.panel_party_7.Controls.Add(this.label_7_mp);
             this.panel_party_7.Controls.Add(this.label_7_hp);
@@ -1156,12 +1157,12 @@ namespace L2_login
             this.label_7_name.TabIndex = 1;
             this.label_7_name.Text = "Name";
             this.label_7_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_7_name.Click += new System.EventHandler(this.label_7_name_Click);
+            this.label_7_name.Click += new EventHandler(this.label_7_name_Click);
             // 
             // panel_party_8
             // 
             this.panel_party_8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_8.BackgroundImage")));
-            this.panel_party_8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_8.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_8.Controls.Add(this.label_8_cp);
             this.panel_party_8.Controls.Add(this.label_8_mp);
             this.panel_party_8.Controls.Add(this.label_8_hp);
@@ -1211,12 +1212,12 @@ namespace L2_login
             this.label_8_name.TabIndex = 1;
             this.label_8_name.Text = "Name";
             this.label_8_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_8_name.Click += new System.EventHandler(this.label_8_name_Click);
+            this.label_8_name.Click += new EventHandler(this.label_8_name_Click);
             // 
             // panel_party_4
             // 
             this.panel_party_4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_4.BackgroundImage")));
-            this.panel_party_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_4.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_4.Controls.Add(this.label_4_cp);
             this.panel_party_4.Controls.Add(this.label_4_mp);
             this.panel_party_4.Controls.Add(this.label_4_hp);
@@ -1266,12 +1267,12 @@ namespace L2_login
             this.label_4_name.TabIndex = 1;
             this.label_4_name.Text = "Name";
             this.label_4_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_4_name.Click += new System.EventHandler(this.label_4_name_Click);
+            this.label_4_name.Click += new EventHandler(this.label_4_name_Click);
             // 
             // panel_party_3
             // 
             this.panel_party_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_3.BackgroundImage")));
-            this.panel_party_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_3.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_3.Controls.Add(this.label_3_cp);
             this.panel_party_3.Controls.Add(this.label_3_mp);
             this.panel_party_3.Controls.Add(this.label_3_hp);
@@ -1321,12 +1322,12 @@ namespace L2_login
             this.label_3_name.TabIndex = 1;
             this.label_3_name.Text = "Name";
             this.label_3_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_3_name.Click += new System.EventHandler(this.label_3_name_Click);
+            this.label_3_name.Click += new EventHandler(this.label_3_name_Click);
             // 
             // panel_party_2
             // 
             this.panel_party_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_2.BackgroundImage")));
-            this.panel_party_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_2.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_2.Controls.Add(this.label_2_cp);
             this.panel_party_2.Controls.Add(this.label_2_mp);
             this.panel_party_2.Controls.Add(this.label_2_hp);
@@ -1376,12 +1377,12 @@ namespace L2_login
             this.label_2_name.TabIndex = 1;
             this.label_2_name.Text = "Name";
             this.label_2_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_2_name.Click += new System.EventHandler(this.label_2_name_Click);
+            this.label_2_name.Click += new EventHandler(this.label_2_name_Click);
             // 
             // panel_party_1
             // 
             this.panel_party_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_party_1.BackgroundImage")));
-            this.panel_party_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_party_1.BackgroundImageLayout = ImageLayout.None;
             this.panel_party_1.Controls.Add(this.label_1_cp);
             this.panel_party_1.Controls.Add(this.label_1_mp);
             this.panel_party_1.Controls.Add(this.label_1_hp);
@@ -1435,7 +1436,7 @@ namespace L2_login
             this.label_1_name.TabIndex = 1;
             this.label_1_name.Text = "Name";
             this.label_1_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_1_name.Click += new System.EventHandler(this.label_1_name_Click);
+            this.label_1_name.Click += new EventHandler(this.label_1_name_Click);
             // 
             // panel_charinfo
             // 
@@ -1450,7 +1451,7 @@ namespace L2_login
             this.panel_charinfo.Controls.Add(this.panel_party_2);
             this.panel_charinfo.Controls.Add(this.panel_party_1);
             this.panel_charinfo.Controls.Add(this.panel_party_cover);
-            this.panel_charinfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_charinfo.Dock = DockStyle.Left;
             this.panel_charinfo.ForeColor = System.Drawing.Color.White;
             this.panel_charinfo.Location = new System.Drawing.Point(0, 0);
             this.panel_charinfo.Name = "panel_charinfo";
@@ -1460,7 +1461,7 @@ namespace L2_login
             // panel_target
             // 
             this.panel_target.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_target.BackgroundImage")));
-            this.panel_target.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_target.BackgroundImageLayout = ImageLayout.None;
             this.panel_target.Controls.Add(this.label_target_cp);
             this.panel_target.Controls.Add(this.label_target_mp);
             this.panel_target.Controls.Add(this.label_target_hp);
@@ -1517,7 +1518,7 @@ namespace L2_login
             // panel_charinfo_ul
             // 
             this.panel_charinfo_ul.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_charinfo_ul.BackgroundImage")));
-            this.panel_charinfo_ul.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_charinfo_ul.BackgroundImageLayout = ImageLayout.None;
             this.panel_charinfo_ul.Controls.Add(this.progressBar_char_XP);
             this.panel_charinfo_ul.Controls.Add(this.progressBar_char_MP);
             this.panel_charinfo_ul.Controls.Add(this.progressBar_char_CP);
@@ -1671,7 +1672,7 @@ namespace L2_login
             // panel_char
             // 
             this.panel_char.Controls.Add(this.tabControl_char);
-            this.panel_char.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel_char.Dock = DockStyle.Right;
             this.panel_char.Location = new System.Drawing.Point(754, 0);
             this.panel_char.Name = "panel_char";
             this.panel_char.Size = new System.Drawing.Size(262, 659);
@@ -1679,8 +1680,8 @@ namespace L2_login
             // 
             // tabControl_char
             // 
-            this.tabControl_char.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl_char.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left)));
             this.tabControl_char.Controls.Add(this.tabPage_char_info);
             this.tabControl_char.Controls.Add(this.tabPage_char_inv);
             this.tabControl_char.Controls.Add(this.tabPage_char_skills);
@@ -1703,7 +1704,7 @@ namespace L2_login
             // tabPage_char_info
             // 
             this.tabPage_char_info.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage_char_info.BackgroundImage")));
-            this.tabPage_char_info.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPage_char_info.BackgroundImageLayout = ImageLayout.None;
             this.tabPage_char_info.Controls.Add(this.label_info_mcritical);
             this.tabPage_char_info.Controls.Add(this.label_info_mevasion);
             this.tabPage_char_info.Controls.Add(this.label_info_maccuracy);
@@ -2109,9 +2110,9 @@ namespace L2_login
             // 
             // panel_dead
             // 
-            this.panel_dead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel_dead.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.panel_dead.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_dead.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_dead.BorderStyle = BorderStyle.Fixed3D;
             this.panel_dead.Controls.Add(this.button1_close_dead);
             this.panel_dead.Controls.Add(this.button_dead_fort);
             this.panel_dead.Controls.Add(this.label_youdied);
@@ -2132,17 +2133,17 @@ namespace L2_login
             this.button1_close_dead.Size = new System.Drawing.Size(18, 23);
             this.button1_close_dead.TabIndex = 6;
             this.button1_close_dead.Text = "x";
-            this.button1_close_dead.Click += new System.EventHandler(this.button1_close_dead_Click);
+            this.button1_close_dead.Click += new EventHandler(this.button1_close_dead_Click);
             // 
             // button_dead_fort
             // 
-            this.button_dead_fort.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_dead_fort.FlatStyle = FlatStyle.System;
             this.button_dead_fort.Location = new System.Drawing.Point(139, 36);
             this.button_dead_fort.Name = "button_dead_fort";
             this.button_dead_fort.Size = new System.Drawing.Size(46, 24);
             this.button_dead_fort.TabIndex = 5;
             this.button_dead_fort.Text = "Fortress";
-            this.button_dead_fort.Click += new System.EventHandler(this.button_dead_fort_Click);
+            this.button_dead_fort.Click += new EventHandler(this.button_dead_fort_Click);
             // 
             // label_youdied
             // 
@@ -2156,47 +2157,47 @@ namespace L2_login
             // 
             // button_dead_siege
             // 
-            this.button_dead_siege.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_dead_siege.FlatStyle = FlatStyle.System;
             this.button_dead_siege.Location = new System.Drawing.Point(187, 36);
             this.button_dead_siege.Name = "button_dead_siege";
             this.button_dead_siege.Size = new System.Drawing.Size(57, 24);
             this.button_dead_siege.TabIndex = 3;
             this.button_dead_siege.Text = "Siege HQ";
-            this.button_dead_siege.Click += new System.EventHandler(this.button_dead_siege_Click);
+            this.button_dead_siege.Click += new EventHandler(this.button_dead_siege_Click);
             // 
             // button_dead_clanhall
             // 
-            this.button_dead_clanhall.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_dead_clanhall.FlatStyle = FlatStyle.System;
             this.button_dead_clanhall.Location = new System.Drawing.Point(84, 36);
             this.button_dead_clanhall.Name = "button_dead_clanhall";
             this.button_dead_clanhall.Size = new System.Drawing.Size(54, 24);
             this.button_dead_clanhall.TabIndex = 2;
             this.button_dead_clanhall.Text = "Clan Hall";
-            this.button_dead_clanhall.Click += new System.EventHandler(this.button_dead_clanhall_Click);
+            this.button_dead_clanhall.Click += new EventHandler(this.button_dead_clanhall_Click);
             // 
             // button_dead_castle
             // 
-            this.button_dead_castle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_dead_castle.FlatStyle = FlatStyle.System;
             this.button_dead_castle.Location = new System.Drawing.Point(43, 36);
             this.button_dead_castle.Name = "button_dead_castle";
             this.button_dead_castle.Size = new System.Drawing.Size(41, 24);
             this.button_dead_castle.TabIndex = 1;
             this.button_dead_castle.Text = "Castle";
-            this.button_dead_castle.Click += new System.EventHandler(this.button_dead_castle_Click);
+            this.button_dead_castle.Click += new EventHandler(this.button_dead_castle_Click);
             // 
             // button_dead_town
             // 
-            this.button_dead_town.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_dead_town.FlatStyle = FlatStyle.System;
             this.button_dead_town.Location = new System.Drawing.Point(2, 36);
             this.button_dead_town.Name = "button_dead_town";
             this.button_dead_town.Size = new System.Drawing.Size(41, 24);
             this.button_dead_town.TabIndex = 0;
             this.button_dead_town.Text = "Town";
-            this.button_dead_town.Click += new System.EventHandler(this.button_dead_town_Click);
+            this.button_dead_town.Click += new EventHandler(this.button_dead_town_Click);
             // 
             // panel_yesno
             // 
-            this.panel_yesno.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_yesno.BorderStyle = BorderStyle.Fixed3D;
             this.panel_yesno.Controls.Add(this.button_close_accept);
             this.panel_yesno.Controls.Add(this.label_yesno);
             this.panel_yesno.Controls.Add(this.button_yesno_no);
@@ -2214,7 +2215,7 @@ namespace L2_login
             this.button_close_accept.Size = new System.Drawing.Size(18, 23);
             this.button_close_accept.TabIndex = 3;
             this.button_close_accept.Text = "x";
-            this.button_close_accept.Click += new System.EventHandler(this.button_close_accept_Click);
+            this.button_close_accept.Click += new EventHandler(this.button_close_accept_Click);
             // 
             // label_yesno
             // 
@@ -2227,23 +2228,23 @@ namespace L2_login
             // 
             // button_yesno_no
             // 
-            this.button_yesno_no.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_yesno_no.FlatStyle = FlatStyle.System;
             this.button_yesno_no.Location = new System.Drawing.Point(98, 83);
             this.button_yesno_no.Name = "button_yesno_no";
             this.button_yesno_no.Size = new System.Drawing.Size(64, 24);
             this.button_yesno_no.TabIndex = 1;
             this.button_yesno_no.Text = "No";
-            this.button_yesno_no.Click += new System.EventHandler(this.button_yesno_no_Click);
+            this.button_yesno_no.Click += new EventHandler(this.button_yesno_no_Click);
             // 
             // button_yesno_yes
             // 
-            this.button_yesno_yes.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_yesno_yes.FlatStyle = FlatStyle.System;
             this.button_yesno_yes.Location = new System.Drawing.Point(14, 83);
             this.button_yesno_yes.Name = "button_yesno_yes";
             this.button_yesno_yes.Size = new System.Drawing.Size(64, 24);
             this.button_yesno_yes.TabIndex = 0;
             this.button_yesno_yes.Text = "Yes";
-            this.button_yesno_yes.Click += new System.EventHandler(this.button_yesno_yes_Click);
+            this.button_yesno_yes.Click += new EventHandler(this.button_yesno_yes_Click);
             // 
             // label_info_matk
             // 
@@ -2490,7 +2491,7 @@ namespace L2_login
             // tabPage_char_inv
             // 
             this.tabPage_char_inv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage_char_inv.BackgroundImage")));
-            this.tabPage_char_inv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPage_char_inv.BackgroundImageLayout = ImageLayout.None;
             this.tabPage_char_inv.Controls.Add(this.radioButton_inv_quest);
             this.tabPage_char_inv.Controls.Add(this.radioButton_inv_equipped);
             this.tabPage_char_inv.Controls.Add(this.radioButton_inv_items);
@@ -2529,7 +2530,7 @@ namespace L2_login
             this.radioButton_inv_quest.TabIndex = 21;
             this.radioButton_inv_quest.Text = "Quest";
             this.radioButton_inv_quest.UseVisualStyleBackColor = true;
-            this.radioButton_inv_quest.CheckedChanged += new System.EventHandler(this.radioButton_inv_quest_CheckedChanged);
+            this.radioButton_inv_quest.CheckedChanged += new EventHandler(this.radioButton_inv_quest_CheckedChanged);
             // 
             // radioButton_inv_equipped
             // 
@@ -2540,7 +2541,7 @@ namespace L2_login
             this.radioButton_inv_equipped.TabIndex = 20;
             this.radioButton_inv_equipped.Text = "Equipped";
             this.radioButton_inv_equipped.UseVisualStyleBackColor = true;
-            this.radioButton_inv_equipped.CheckedChanged += new System.EventHandler(this.radioButton_inv_equipped_CheckedChanged);
+            this.radioButton_inv_equipped.CheckedChanged += new EventHandler(this.radioButton_inv_equipped_CheckedChanged);
             // 
             // radioButton_inv_items
             // 
@@ -2553,11 +2554,11 @@ namespace L2_login
             this.radioButton_inv_items.TabStop = true;
             this.radioButton_inv_items.Text = "Items";
             this.radioButton_inv_items.UseVisualStyleBackColor = true;
-            this.radioButton_inv_items.CheckedChanged += new System.EventHandler(this.radioButton_inv_items_CheckedChanged);
+            this.radioButton_inv_items.CheckedChanged += new EventHandler(this.radioButton_inv_items_CheckedChanged);
             // 
             // label_inventory_count
             // 
-            this.label_inventory_count.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_inventory_count.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.label_inventory_count.Location = new System.Drawing.Point(78, 519);
             this.label_inventory_count.Name = "label_inventory_count";
             this.label_inventory_count.Size = new System.Drawing.Size(100, 23);
@@ -2568,7 +2569,7 @@ namespace L2_login
             // panel_inven_shirt
             // 
             this.panel_inven_shirt.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_shirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_shirt.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_shirt.Location = new System.Drawing.Point(14, 37);
             this.panel_inven_shirt.Name = "panel_inven_shirt";
             this.panel_inven_shirt.Size = new System.Drawing.Size(32, 32);
@@ -2577,7 +2578,7 @@ namespace L2_login
             // panel_tat3
             // 
             this.panel_tat3.BackColor = System.Drawing.Color.Transparent;
-            this.panel_tat3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_tat3.BackgroundImageLayout = ImageLayout.None;
             this.panel_tat3.Location = new System.Drawing.Point(223, 94);
             this.panel_tat3.Name = "panel_tat3";
             this.panel_tat3.Size = new System.Drawing.Size(24, 24);
@@ -2586,7 +2587,7 @@ namespace L2_login
             // panel_tat2
             // 
             this.panel_tat2.BackColor = System.Drawing.Color.Transparent;
-            this.panel_tat2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_tat2.BackgroundImageLayout = ImageLayout.None;
             this.panel_tat2.Location = new System.Drawing.Point(223, 67);
             this.panel_tat2.Name = "panel_tat2";
             this.panel_tat2.Size = new System.Drawing.Size(24, 24);
@@ -2595,7 +2596,7 @@ namespace L2_login
             // panel_tat1
             // 
             this.panel_tat1.BackColor = System.Drawing.Color.Transparent;
-            this.panel_tat1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_tat1.BackgroundImageLayout = ImageLayout.None;
             this.panel_tat1.Location = new System.Drawing.Point(223, 40);
             this.panel_tat1.Name = "panel_tat1";
             this.panel_tat1.Size = new System.Drawing.Size(24, 24);
@@ -2604,7 +2605,7 @@ namespace L2_login
             // panel_inven_rfinger
             // 
             this.panel_inven_rfinger.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_rfinger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_rfinger.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_rfinger.Location = new System.Drawing.Point(176, 113);
             this.panel_inven_rfinger.Name = "panel_inven_rfinger";
             this.panel_inven_rfinger.Size = new System.Drawing.Size(32, 32);
@@ -2613,7 +2614,7 @@ namespace L2_login
             // panel_inven_lfinger
             // 
             this.panel_inven_lfinger.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_lfinger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_lfinger.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_lfinger.Location = new System.Drawing.Point(137, 113);
             this.panel_inven_lfinger.Name = "panel_inven_lfinger";
             this.panel_inven_lfinger.Size = new System.Drawing.Size(32, 32);
@@ -2622,7 +2623,7 @@ namespace L2_login
             // panel_inven_rear
             // 
             this.panel_inven_rear.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_rear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_rear.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_rear.Location = new System.Drawing.Point(176, 75);
             this.panel_inven_rear.Name = "panel_inven_rear";
             this.panel_inven_rear.Size = new System.Drawing.Size(32, 32);
@@ -2631,7 +2632,7 @@ namespace L2_login
             // panel_inven_lear
             // 
             this.panel_inven_lear.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_lear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_lear.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_lear.Location = new System.Drawing.Point(137, 75);
             this.panel_inven_lear.Name = "panel_inven_lear";
             this.panel_inven_lear.Size = new System.Drawing.Size(32, 32);
@@ -2640,7 +2641,7 @@ namespace L2_login
             // panel_inven_neck
             // 
             this.panel_inven_neck.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_neck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_neck.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_neck.Location = new System.Drawing.Point(176, 37);
             this.panel_inven_neck.Name = "panel_inven_neck";
             this.panel_inven_neck.Size = new System.Drawing.Size(32, 32);
@@ -2649,7 +2650,7 @@ namespace L2_login
             // panel_inven_acc
             // 
             this.panel_inven_acc.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_acc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_acc.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_acc.Location = new System.Drawing.Point(137, 37);
             this.panel_inven_acc.Name = "panel_inven_acc";
             this.panel_inven_acc.Size = new System.Drawing.Size(32, 32);
@@ -2658,7 +2659,7 @@ namespace L2_login
             // panel_inven_boots
             // 
             this.panel_inven_boots.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_boots.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_boots.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_boots.Location = new System.Drawing.Point(92, 113);
             this.panel_inven_boots.Name = "panel_inven_boots";
             this.panel_inven_boots.Size = new System.Drawing.Size(32, 32);
@@ -2667,7 +2668,7 @@ namespace L2_login
             // panel_inven_gloves
             // 
             this.panel_inven_gloves.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_gloves.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_gloves.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_gloves.Location = new System.Drawing.Point(14, 113);
             this.panel_inven_gloves.Name = "panel_inven_gloves";
             this.panel_inven_gloves.Size = new System.Drawing.Size(32, 32);
@@ -2676,7 +2677,7 @@ namespace L2_login
             // panel_inven_lhand
             // 
             this.panel_inven_lhand.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_lhand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_lhand.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_lhand.Location = new System.Drawing.Point(92, 75);
             this.panel_inven_lhand.Name = "panel_inven_lhand";
             this.panel_inven_lhand.Size = new System.Drawing.Size(32, 32);
@@ -2685,7 +2686,7 @@ namespace L2_login
             // panel_inven_pants
             // 
             this.panel_inven_pants.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_pants.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_pants.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_pants.Location = new System.Drawing.Point(53, 113);
             this.panel_inven_pants.Name = "panel_inven_pants";
             this.panel_inven_pants.Size = new System.Drawing.Size(32, 32);
@@ -2694,7 +2695,7 @@ namespace L2_login
             // panel_inven_top
             // 
             this.panel_inven_top.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_top.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_top.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_top.Location = new System.Drawing.Point(53, 75);
             this.panel_inven_top.Name = "panel_inven_top";
             this.panel_inven_top.Size = new System.Drawing.Size(32, 32);
@@ -2703,7 +2704,7 @@ namespace L2_login
             // panel_inven_rhand
             // 
             this.panel_inven_rhand.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_rhand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_rhand.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_rhand.Location = new System.Drawing.Point(14, 75);
             this.panel_inven_rhand.Name = "panel_inven_rhand";
             this.panel_inven_rhand.Size = new System.Drawing.Size(32, 32);
@@ -2712,7 +2713,7 @@ namespace L2_login
             // panel_inven_head
             // 
             this.panel_inven_head.BackColor = System.Drawing.Color.Transparent;
-            this.panel_inven_head.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_inven_head.BackgroundImageLayout = ImageLayout.None;
             this.panel_inven_head.Location = new System.Drawing.Point(53, 37);
             this.panel_inven_head.Name = "panel_inven_head";
             this.panel_inven_head.Size = new System.Drawing.Size(32, 32);
@@ -2720,10 +2721,10 @@ namespace L2_login
             // 
             // listView_inventory
             // 
-            this.listView_inventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_inventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_inventory.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_inventory.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader169,
             this.columnHeader170,
             this.columnHeader171,
@@ -2739,7 +2740,7 @@ namespace L2_login
             this.listView_inventory.SmallImageList = this.imageList_items;
             this.listView_inventory.TabIndex = 0;
             this.listView_inventory.UseCompatibleStateImageBehavior = false;
-            this.listView_inventory.View = System.Windows.Forms.View.Details;
+            this.listView_inventory.View = View.Details;
             this.listView_inventory.VirtualMode = true;
             // 
             // columnHeader169
@@ -2767,7 +2768,7 @@ namespace L2_login
             // 
             // contextMenuStrip_inventory
             // 
-            this.contextMenuStrip_inventory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_inventory.Items.AddRange(new ToolStripItem[] {
             this.dropStackToolStripMenuItem,
             this.deleteStackToolStripMenuItem,
             this.crystalizeToolStripMenuItem,
@@ -2780,32 +2781,32 @@ namespace L2_login
             this.dropStackToolStripMenuItem.Name = "dropStackToolStripMenuItem";
             this.dropStackToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.dropStackToolStripMenuItem.Text = "Drop Stack";
-            this.dropStackToolStripMenuItem.Click += new System.EventHandler(this.dropStackToolStripMenuItem_Click);
+            this.dropStackToolStripMenuItem.Click += new EventHandler(this.dropStackToolStripMenuItem_Click);
             // 
             // deleteStackToolStripMenuItem
             // 
             this.deleteStackToolStripMenuItem.Name = "deleteStackToolStripMenuItem";
             this.deleteStackToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.deleteStackToolStripMenuItem.Text = "Delete Stack";
-            this.deleteStackToolStripMenuItem.Click += new System.EventHandler(this.deleteStackToolStripMenuItem_Click);
+            this.deleteStackToolStripMenuItem.Click += new EventHandler(this.deleteStackToolStripMenuItem_Click);
             // 
             // crystalizeToolStripMenuItem
             // 
             this.crystalizeToolStripMenuItem.Name = "crystalizeToolStripMenuItem";
             this.crystalizeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.crystalizeToolStripMenuItem.Text = "Crystalize";
-            this.crystalizeToolStripMenuItem.Click += new System.EventHandler(this.crystalizeToolStripMenuItem_Click);
+            this.crystalizeToolStripMenuItem.Click += new EventHandler(this.crystalizeToolStripMenuItem_Click);
             // 
             // addTodoNotListToolStripMenuItem1
             // 
             this.addTodoNotListToolStripMenuItem1.Name = "addTodoNotListToolStripMenuItem1";
             this.addTodoNotListToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
             this.addTodoNotListToolStripMenuItem1.Text = "Add to \"Do Not\" list";
-            this.addTodoNotListToolStripMenuItem1.Click += new System.EventHandler(this.addTodoNotListToolStripMenuItem1_Click);
+            this.addTodoNotListToolStripMenuItem1.Click += new EventHandler(this.addTodoNotListToolStripMenuItem1_Click);
             // 
             // imageList_items
             // 
-            this.imageList_items.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList_items.ColorDepth = ColorDepth.Depth8Bit;
             this.imageList_items.ImageSize = new System.Drawing.Size(32, 32);
             this.imageList_items.TransparentColor = System.Drawing.Color.Transparent;
             // 
@@ -2842,14 +2843,14 @@ namespace L2_login
             this.radiobutton_active.TabStop = true;
             this.radiobutton_active.Text = "Active";
             this.radiobutton_active.UseVisualStyleBackColor = true;
-            this.radiobutton_active.CheckedChanged += new System.EventHandler(this.radiobutton_active_CheckedChanged);
+            this.radiobutton_active.CheckedChanged += new EventHandler(this.radiobutton_active_CheckedChanged);
             // 
             // listView_skills
             // 
-            this.listView_skills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_skills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_skills.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_skills.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader177,
             this.columnHeader178,
             this.columnHeader180});
@@ -2862,7 +2863,7 @@ namespace L2_login
             this.listView_skills.SmallImageList = this.imageList_skills;
             this.listView_skills.TabIndex = 1;
             this.listView_skills.UseCompatibleStateImageBehavior = false;
-            this.listView_skills.View = System.Windows.Forms.View.Details;
+            this.listView_skills.View = View.Details;
             // 
             // columnHeader177
             // 
@@ -2878,7 +2879,7 @@ namespace L2_login
             // 
             // imageList_skills
             // 
-            this.imageList_skills.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList_skills.ColorDepth = ColorDepth.Depth8Bit;
             this.imageList_skills.ImageSize = new System.Drawing.Size(32, 32);
             this.imageList_skills.TransparentColor = System.Drawing.Color.Transparent;
             // 
@@ -2985,11 +2986,11 @@ namespace L2_login
             // pictureBox_clan_crest
             // 
             this.pictureBox_clan_crest.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_clan_crest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox_clan_crest.BackgroundImageLayout = ImageLayout.None;
             this.pictureBox_clan_crest.Location = new System.Drawing.Point(216, 8);
             this.pictureBox_clan_crest.Name = "pictureBox_clan_crest";
             this.pictureBox_clan_crest.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox_clan_crest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_clan_crest.SizeMode = PictureBoxSizeMode.AutoSize;
             this.pictureBox_clan_crest.TabIndex = 9;
             this.pictureBox_clan_crest.TabStop = false;
             // 
@@ -3060,10 +3061,10 @@ namespace L2_login
             // 
             // listView_char_clan
             // 
-            this.listView_char_clan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_char_clan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_char_clan.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_char_clan.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader191,
             this.columnHeader192,
             this.columnHeader193,
@@ -3076,7 +3077,7 @@ namespace L2_login
             this.listView_char_clan.Size = new System.Drawing.Size(253, 421);
             this.listView_char_clan.TabIndex = 0;
             this.listView_char_clan.UseCompatibleStateImageBehavior = false;
-            this.listView_char_clan.View = System.Windows.Forms.View.Details;
+            this.listView_char_clan.View = View.Details;
             // 
             // columnHeader191
             // 
@@ -3100,7 +3101,7 @@ namespace L2_login
             // 
             // imageList_crests
             // 
-            this.imageList_crests.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList_crests.ColorDepth = ColorDepth.Depth8Bit;
             this.imageList_crests.ImageSize = new System.Drawing.Size(16, 12);
             this.imageList_crests.TransparentColor = System.Drawing.Color.Transparent;
             // 
@@ -3116,11 +3117,11 @@ namespace L2_login
             // 
             // listView_char_data
             // 
-            this.listView_char_data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_char_data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView_char_data.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_char_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_char_data.BorderStyle = BorderStyle.FixedSingle;
+            this.listView_char_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader103,
             this.columnHeader104});
             this.listView_char_data.FullRowSelect = true;
@@ -3131,7 +3132,7 @@ namespace L2_login
             this.listView_char_data.Size = new System.Drawing.Size(253, 559);
             this.listView_char_data.TabIndex = 0;
             this.listView_char_data.UseCompatibleStateImageBehavior = false;
-            this.listView_char_data.View = System.Windows.Forms.View.Details;
+            this.listView_char_data.View = View.Details;
             // 
             // columnHeader103
             // 
@@ -3155,11 +3156,11 @@ namespace L2_login
             // 
             // listView_players_data
             // 
-            this.listView_players_data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_players_data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView_players_data.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_players_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_players_data.BorderStyle = BorderStyle.FixedSingle;
+            this.listView_players_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader80,
             this.columnHeader81,
             this.columnHeader82,
@@ -3173,10 +3174,10 @@ namespace L2_login
             this.listView_players_data.Name = "listView_players_data";
             this.listView_players_data.Size = new System.Drawing.Size(253, 595);
             this.listView_players_data.SmallImageList = this.imageList_crests;
-            this.listView_players_data.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_players_data.Sorting = SortOrder.Ascending;
             this.listView_players_data.TabIndex = 0;
             this.listView_players_data.UseCompatibleStateImageBehavior = false;
-            this.listView_players_data.View = System.Windows.Forms.View.Details;
+            this.listView_players_data.View = View.Details;
             this.listView_players_data.VirtualMode = true;
             // 
             // columnHeader80
@@ -3215,11 +3216,11 @@ namespace L2_login
             // 
             // listView_items_data
             // 
-            this.listView_items_data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_items_data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView_items_data.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_items_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_items_data.BorderStyle = BorderStyle.FixedSingle;
+            this.listView_items_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader130,
             this.columnHeader131,
             this.columnHeader132});
@@ -3231,10 +3232,10 @@ namespace L2_login
             this.listView_items_data.Name = "listView_items_data";
             this.listView_items_data.Size = new System.Drawing.Size(253, 616);
             this.listView_items_data.SmallImageList = this.imageList_items;
-            this.listView_items_data.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_items_data.Sorting = SortOrder.Ascending;
             this.listView_items_data.TabIndex = 1;
             this.listView_items_data.UseCompatibleStateImageBehavior = false;
-            this.listView_items_data.View = System.Windows.Forms.View.Details;
+            this.listView_items_data.View = View.Details;
             this.listView_items_data.VirtualMode = true;
             // 
             // columnHeader130
@@ -3251,7 +3252,7 @@ namespace L2_login
             // 
             // contextMenuStrip_Items
             // 
-            this.contextMenuStrip_Items.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_Items.Items.AddRange(new ToolStripItem[] {
             this.addToDoNotListToolStripMenuItem});
             this.contextMenuStrip_Items.Name = "contextMenuStrip_Items";
             this.contextMenuStrip_Items.Size = new System.Drawing.Size(180, 26);
@@ -3261,7 +3262,7 @@ namespace L2_login
             this.addToDoNotListToolStripMenuItem.Name = "addToDoNotListToolStripMenuItem";
             this.addToDoNotListToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.addToDoNotListToolStripMenuItem.Text = "Add to \"Do Not\" list";
-            this.addToDoNotListToolStripMenuItem.Click += new System.EventHandler(this.addToDoNotListToolStripMenuItem_Click);
+            this.addToDoNotListToolStripMenuItem.Click += new EventHandler(this.addToDoNotListToolStripMenuItem_Click);
             // 
             // tabPage_npc
             // 
@@ -3275,11 +3276,11 @@ namespace L2_login
             // 
             // listView_npc_data
             // 
-            this.listView_npc_data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_npc_data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView_npc_data.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_npc_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_npc_data.BorderStyle = BorderStyle.FixedSingle;
+            this.listView_npc_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader135,
             this.columnHeader136,
             this.columnHeader137,
@@ -3291,10 +3292,10 @@ namespace L2_login
             this.listView_npc_data.MultiSelect = false;
             this.listView_npc_data.Name = "listView_npc_data";
             this.listView_npc_data.Size = new System.Drawing.Size(253, 613);
-            this.listView_npc_data.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_npc_data.Sorting = SortOrder.Ascending;
             this.listView_npc_data.TabIndex = 2;
             this.listView_npc_data.UseCompatibleStateImageBehavior = false;
-            this.listView_npc_data.View = System.Windows.Forms.View.Details;
+            this.listView_npc_data.View = View.Details;
             this.listView_npc_data.VirtualMode = true;
             // 
             // columnHeader135
@@ -3315,7 +3316,7 @@ namespace L2_login
             // 
             // contextMenuStrip_NPC
             // 
-            this.contextMenuStrip_NPC.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_NPC.Items.AddRange(new ToolStripItem[] {
             this.addToDoNotListNPCToolStripMenuItem,
             this.addToBlackListNPCToolStripMenuItem});
             this.contextMenuStrip_NPC.Name = "contextMenuStrip_NPC";
@@ -3326,14 +3327,14 @@ namespace L2_login
             this.addToDoNotListNPCToolStripMenuItem.Name = "addToDoNotListNPCToolStripMenuItem";
             this.addToDoNotListNPCToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.addToDoNotListNPCToolStripMenuItem.Text = "Add to \"Do Not\" list";
-            this.addToDoNotListNPCToolStripMenuItem.Click += new System.EventHandler(this.addToDoNotListNPCToolStripMenuItem_Click);
+            this.addToDoNotListNPCToolStripMenuItem.Click += new EventHandler(this.addToDoNotListNPCToolStripMenuItem_Click);
             // 
             // addToBlackListNPCToolStripMenuItem
             // 
             this.addToBlackListNPCToolStripMenuItem.Name = "addToBlackListNPCToolStripMenuItem";
             this.addToBlackListNPCToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.addToBlackListNPCToolStripMenuItem.Text = "Blacklist NPC";
-            this.addToBlackListNPCToolStripMenuItem.Click += new System.EventHandler(this.addToBlackListNPCToolStripMenuItem_Click);
+            this.addToBlackListNPCToolStripMenuItem.Click += new EventHandler(this.addToBlackListNPCToolStripMenuItem_Click);
             // 
             // tabPage_npc_chat
             // 
@@ -3347,9 +3348,9 @@ namespace L2_login
             // 
             // panel_npc_chat
             // 
-            this.panel_npc_chat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_npc_chat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_npc_chat.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Right)));
+            this.panel_npc_chat.BorderStyle = BorderStyle.FixedSingle;
             this.panel_npc_chat.Controls.Add(this.textBox_rtb_input);
             this.panel_npc_chat.Controls.Add(this.richTextBox_dialog);
             this.panel_npc_chat.Controls.Add(this.button_npc_close);
@@ -3368,10 +3369,10 @@ namespace L2_login
             // 
             // richTextBox_dialog
             // 
-            this.richTextBox_dialog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox_dialog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_dialog.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.richTextBox_dialog.BorderStyle = BorderStyle.None;
             this.richTextBox_dialog.Location = new System.Drawing.Point(3, 3);
             this.richTextBox_dialog.Name = "richTextBox_dialog";
             this.richTextBox_dialog.ReadOnly = true;
@@ -3381,15 +3382,15 @@ namespace L2_login
             // 
             // button_npc_close
             // 
-            this.button_npc_close.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_npc_close.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_npc_close.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.button_npc_close.FlatStyle = FlatStyle.System;
             this.button_npc_close.Location = new System.Drawing.Point(39, 578);
             this.button_npc_close.Name = "button_npc_close";
             this.button_npc_close.Size = new System.Drawing.Size(173, 24);
             this.button_npc_close.TabIndex = 0;
             this.button_npc_close.Text = "Close";
-            this.button_npc_close.Click += new System.EventHandler(this.button_npc_close_Click);
+            this.button_npc_close.Click += new EventHandler(this.button_npc_close_Click);
             // 
             // tabPage_buffs
             // 
@@ -3403,10 +3404,10 @@ namespace L2_login
             // 
             // listView_mybuffs_data
             // 
-            this.listView_mybuffs_data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_mybuffs_data.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_mybuffs_data.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_mybuffs_data.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader4,
@@ -3418,10 +3419,10 @@ namespace L2_login
             this.listView_mybuffs_data.Name = "listView_mybuffs_data";
             this.listView_mybuffs_data.Size = new System.Drawing.Size(253, 592);
             this.listView_mybuffs_data.SmallImageList = this.imageList_skills;
-            this.listView_mybuffs_data.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_mybuffs_data.Sorting = SortOrder.Ascending;
             this.listView_mybuffs_data.TabIndex = 2;
             this.listView_mybuffs_data.UseCompatibleStateImageBehavior = false;
-            this.listView_mybuffs_data.View = System.Windows.Forms.View.Details;
+            this.listView_mybuffs_data.View = View.Details;
             this.listView_mybuffs_data.VirtualMode = true;
             // 
             // columnHeader1
@@ -3543,14 +3544,14 @@ namespace L2_login
             this.button_clear_stats.TabIndex = 30;
             this.button_clear_stats.Text = "Clear Stats";
             this.button_clear_stats.UseVisualStyleBackColor = true;
-            this.button_clear_stats.Click += new System.EventHandler(this.button_clear_stats_Click);
+            this.button_clear_stats.Click += new EventHandler(this.button_clear_stats_Click);
             // 
             // listView_stats
             // 
-            this.listView_stats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_stats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_stats.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.listView_stats.Columns.AddRange(new ColumnHeader[] {
             this.columnHeader8,
             this.columnHeader6,
             this.columnHeader7,
@@ -3563,7 +3564,7 @@ namespace L2_login
             this.listView_stats.Size = new System.Drawing.Size(255, 451);
             this.listView_stats.TabIndex = 29;
             this.listView_stats.UseCompatibleStateImageBehavior = false;
-            this.listView_stats.View = System.Windows.Forms.View.Details;
+            this.listView_stats.View = View.Details;
             // 
             // columnHeader8
             // 
@@ -3713,8 +3714,8 @@ namespace L2_login
             // 
             // panel_chat
             // 
-            this.panel_chat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_chat.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.panel_chat.Controls.Add(this.checkBox_BoundingPoints);
             this.panel_chat.Controls.Add(this.comboBox_msg_type);
             this.panel_chat.Controls.Add(this.button_sendtext);
@@ -3738,11 +3739,11 @@ namespace L2_login
             this.checkBox_BoundingPoints.Size = new System.Drawing.Size(141, 18);
             this.checkBox_BoundingPoints.TabIndex = 33;
             this.checkBox_BoundingPoints.Text = "Add Polygon Points";
-            this.checkBox_BoundingPoints.CheckedChanged += new System.EventHandler(this.checkBox_BoundingPoints_CheckedChanged);
+            this.checkBox_BoundingPoints.CheckedChanged += new EventHandler(this.checkBox_BoundingPoints_CheckedChanged);
             // 
             // comboBox_msg_type
             // 
-            this.comboBox_msg_type.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox_msg_type.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.comboBox_msg_type.DropDownWidth = 150;
             this.comboBox_msg_type.Items.AddRange(new object[] {
             "Local",
@@ -3771,19 +3772,19 @@ namespace L2_login
             // 
             // button_sendtext
             // 
-            this.button_sendtext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_sendtext.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_sendtext.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
+            this.button_sendtext.FlatStyle = FlatStyle.System;
             this.button_sendtext.Location = new System.Drawing.Point(552, 32);
             this.button_sendtext.Name = "button_sendtext";
             this.button_sendtext.Size = new System.Drawing.Size(72, 24);
             this.button_sendtext.TabIndex = 2;
             this.button_sendtext.Text = "Say";
-            this.button_sendtext.Click += new System.EventHandler(this.button_sendtext_Click);
+            this.button_sendtext.Click += new EventHandler(this.button_sendtext_Click);
             // 
             // textBox_say
             // 
-            this.textBox_say.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_say.Anchor = ((AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.textBox_say.Location = new System.Drawing.Point(88, 34);
             this.textBox_say.Name = "textBox_say";
             this.textBox_say.Size = new System.Drawing.Size(465, 20);
@@ -3791,10 +3792,10 @@ namespace L2_login
             // 
             // tabControl_ChatSelect
             // 
-            this.tabControl_ChatSelect.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControl_ChatSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl_ChatSelect.Alignment = TabAlignment.Bottom;
+            this.tabControl_ChatSelect.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.tabControl_ChatSelect.Controls.Add(this.tab_all);
             this.tabControl_ChatSelect.Controls.Add(this.tab_system);
             this.tabControl_ChatSelect.Controls.Add(this.tab_bot);
@@ -3817,7 +3818,7 @@ namespace L2_login
             this.tab_all.Controls.Add(this.colorListBox_all);
             this.tab_all.Location = new System.Drawing.Point(4, 4);
             this.tab_all.Name = "tab_all";
-            this.tab_all.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_all.Padding = new Padding(3);
             this.tab_all.Size = new System.Drawing.Size(625, 132);
             this.tab_all.TabIndex = 0;
             this.tab_all.Text = "All";
@@ -3825,18 +3826,18 @@ namespace L2_login
             // 
             // colorListBox_all
             // 
-            this.colorListBox_all.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_all.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_all.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_all.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_all.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_all.BorderStyle = BorderStyle.None;
+            this.colorListBox_all.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_all.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_all.FormattingEnabled = true;
             this.colorListBox_all.HorizontalScrollbar = true;
             this.colorListBox_all.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_all.Name = "colorListBox_all";
-            this.colorListBox_all.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_all.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_all.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_all.TabIndex = 0;
             // 
@@ -3852,18 +3853,18 @@ namespace L2_login
             // 
             // colorListBox_system
             // 
-            this.colorListBox_system.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_system.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_system.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_system.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_system.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_system.BorderStyle = BorderStyle.None;
+            this.colorListBox_system.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_system.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_system.FormattingEnabled = true;
             this.colorListBox_system.HorizontalScrollbar = true;
             this.colorListBox_system.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_system.Name = "colorListBox_system";
-            this.colorListBox_system.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_system.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_system.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_system.TabIndex = 1;
             // 
@@ -3879,18 +3880,18 @@ namespace L2_login
             // 
             // colorListBox_bot
             // 
-            this.colorListBox_bot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_bot.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_bot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_bot.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_bot.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_bot.BorderStyle = BorderStyle.None;
+            this.colorListBox_bot.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_bot.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_bot.FormattingEnabled = true;
             this.colorListBox_bot.HorizontalScrollbar = true;
             this.colorListBox_bot.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_bot.Name = "colorListBox_bot";
-            this.colorListBox_bot.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_bot.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_bot.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_bot.TabIndex = 1;
             // 
@@ -3899,7 +3900,7 @@ namespace L2_login
             this.tab_local.Controls.Add(this.colorListBox_local);
             this.tab_local.Location = new System.Drawing.Point(4, 4);
             this.tab_local.Name = "tab_local";
-            this.tab_local.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_local.Padding = new Padding(3);
             this.tab_local.Size = new System.Drawing.Size(625, 132);
             this.tab_local.TabIndex = 1;
             this.tab_local.Text = "Local";
@@ -3907,18 +3908,18 @@ namespace L2_login
             // 
             // colorListBox_local
             // 
-            this.colorListBox_local.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_local.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_local.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_local.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_local.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_local.BorderStyle = BorderStyle.None;
+            this.colorListBox_local.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_local.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_local.FormattingEnabled = true;
             this.colorListBox_local.HorizontalScrollbar = true;
             this.colorListBox_local.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_local.Name = "colorListBox_local";
-            this.colorListBox_local.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_local.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_local.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_local.TabIndex = 1;
             // 
@@ -3934,18 +3935,18 @@ namespace L2_login
             // 
             // colorListBox_trade
             // 
-            this.colorListBox_trade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_trade.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_trade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_trade.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_trade.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_trade.BorderStyle = BorderStyle.None;
+            this.colorListBox_trade.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_trade.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_trade.FormattingEnabled = true;
             this.colorListBox_trade.HorizontalScrollbar = true;
             this.colorListBox_trade.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_trade.Name = "colorListBox_trade";
-            this.colorListBox_trade.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_trade.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_trade.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_trade.TabIndex = 1;
             // 
@@ -3961,18 +3962,18 @@ namespace L2_login
             // 
             // colorListBox_party
             // 
-            this.colorListBox_party.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_party.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_party.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_party.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_party.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_party.BorderStyle = BorderStyle.None;
+            this.colorListBox_party.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_party.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_party.FormattingEnabled = true;
             this.colorListBox_party.HorizontalScrollbar = true;
             this.colorListBox_party.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_party.Name = "colorListBox_party";
-            this.colorListBox_party.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_party.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_party.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_party.TabIndex = 1;
             // 
@@ -3988,18 +3989,18 @@ namespace L2_login
             // 
             // colorListBox_clan
             // 
-            this.colorListBox_clan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_clan.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_clan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_clan.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_clan.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_clan.BorderStyle = BorderStyle.None;
+            this.colorListBox_clan.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_clan.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_clan.FormattingEnabled = true;
             this.colorListBox_clan.HorizontalScrollbar = true;
             this.colorListBox_clan.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_clan.Name = "colorListBox_clan";
-            this.colorListBox_clan.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_clan.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_clan.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_clan.TabIndex = 1;
             // 
@@ -4015,18 +4016,18 @@ namespace L2_login
             // 
             // colorListBox_ally
             // 
-            this.colorListBox_ally.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_ally.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_ally.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_ally.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_ally.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_ally.BorderStyle = BorderStyle.None;
+            this.colorListBox_ally.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_ally.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_ally.FormattingEnabled = true;
             this.colorListBox_ally.HorizontalScrollbar = true;
             this.colorListBox_ally.Location = new System.Drawing.Point(0, 0);
             this.colorListBox_ally.Name = "colorListBox_ally";
-            this.colorListBox_ally.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_ally.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_ally.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_ally.TabIndex = 1;
             // 
@@ -4042,18 +4043,18 @@ namespace L2_login
             // 
             // colorListBox_hero
             // 
-            this.colorListBox_hero.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorListBox_hero.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
             this.colorListBox_hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.colorListBox_hero.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.colorListBox_hero.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.colorListBox_hero.BorderStyle = BorderStyle.None;
+            this.colorListBox_hero.DrawMode = DrawMode.OwnerDrawVariable;
             this.colorListBox_hero.Font = new System.Drawing.Font("Arial", 9F);
             this.colorListBox_hero.FormattingEnabled = true;
             this.colorListBox_hero.HorizontalScrollbar = true;
             this.colorListBox_hero.Location = new System.Drawing.Point(2, 0);
             this.colorListBox_hero.Name = "colorListBox_hero";
-            this.colorListBox_hero.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.colorListBox_hero.SelectionMode = SelectionMode.MultiExtended;
             this.colorListBox_hero.Size = new System.Drawing.Size(625, 132);
             this.colorListBox_hero.TabIndex = 2;
             // 
@@ -4070,7 +4071,7 @@ namespace L2_login
             // 
             // contextMenuStrip_notify
             // 
-            this.contextMenuStrip_notify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStrip_notify.Items.AddRange(new ToolStripItem[] {
             this.toggleBottingToolStripMenuItem,
             this.botOptionsToolStripMenuItem,
             this.startScriptToolStripMenuItem,
@@ -4083,25 +4084,25 @@ namespace L2_login
             // toggleBottingToolStripMenuItem
             // 
             this.toggleBottingToolStripMenuItem.Checked = true;
-            this.toggleBottingToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toggleBottingToolStripMenuItem.CheckState = CheckState.Checked;
             this.toggleBottingToolStripMenuItem.Name = "toggleBottingToolStripMenuItem";
             this.toggleBottingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.toggleBottingToolStripMenuItem.Text = "Toggle Botting";
-            this.toggleBottingToolStripMenuItem.Click += new System.EventHandler(this.toggleBottingToolStripMenuItem_Click);
+            this.toggleBottingToolStripMenuItem.Click += new EventHandler(this.toggleBottingToolStripMenuItem_Click);
             // 
             // botOptionsToolStripMenuItem
             // 
             this.botOptionsToolStripMenuItem.Name = "botOptionsToolStripMenuItem";
             this.botOptionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.botOptionsToolStripMenuItem.Text = "Bot Options";
-            this.botOptionsToolStripMenuItem.Click += new System.EventHandler(this.botOptionsToolStripMenuItem_Click);
+            this.botOptionsToolStripMenuItem.Click += new EventHandler(this.botOptionsToolStripMenuItem_Click);
             // 
             // startScriptToolStripMenuItem
             // 
             this.startScriptToolStripMenuItem.Name = "startScriptToolStripMenuItem";
             this.startScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startScriptToolStripMenuItem.Text = "Start Script";
-            this.startScriptToolStripMenuItem.Click += new System.EventHandler(this.menuItem_startscript_Click);
+            this.startScriptToolStripMenuItem.Click += new EventHandler(this.menuItem_startscript_Click);
             // 
             // toolStripSeparator8
             // 
@@ -4113,14 +4114,14 @@ namespace L2_login
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // forceLogToolStripMenuItem1
             // 
             this.forceLogToolStripMenuItem1.Name = "forceLogToolStripMenuItem1";
             this.forceLogToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.forceLogToolStripMenuItem1.Text = "Force Log";
-            this.forceLogToolStripMenuItem1.Click += new System.EventHandler(this.forceLogToolStripMenuItem_Click);
+            this.forceLogToolStripMenuItem1.Click += new EventHandler(this.forceLogToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -4128,7 +4129,7 @@ namespace L2_login
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip1.Items.AddRange(new ToolStripItem[] {
             this.menuItem_File,
             this.menuItem_Commands,
             this.menuItem_Options,
@@ -4142,7 +4143,7 @@ namespace L2_login
             // 
             // menuItem_File
             // 
-            this.menuItem_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItem_File.DropDownItems.AddRange(new ToolStripItem[] {
             this.menuItem_cmd_logon,
             this.menuItem_cmd_game,
             this.menuitem_cmd_GG,
@@ -4169,28 +4170,28 @@ namespace L2_login
             this.menuItem_cmd_logon.Name = "menuItem_cmd_logon";
             this.menuItem_cmd_logon.Size = new System.Drawing.Size(180, 22);
             this.menuItem_cmd_logon.Text = "Logon Window";
-            this.menuItem_cmd_logon.Click += new System.EventHandler(this.menuItem_cmd_logon_Click);
+            this.menuItem_cmd_logon.Click += new EventHandler(this.menuItem_cmd_logon_Click);
             // 
             // menuItem_cmd_game
             // 
             this.menuItem_cmd_game.Name = "menuItem_cmd_game";
             this.menuItem_cmd_game.Size = new System.Drawing.Size(180, 22);
             this.menuItem_cmd_game.Text = "Game Window";
-            this.menuItem_cmd_game.Click += new System.EventHandler(this.menuItem_cmd_game_Click);
+            this.menuItem_cmd_game.Click += new EventHandler(this.menuItem_cmd_game_Click);
             // 
             // menuitem_cmd_GG
             // 
             this.menuitem_cmd_GG.Name = "menuitem_cmd_GG";
             this.menuitem_cmd_GG.Size = new System.Drawing.Size(180, 22);
             this.menuitem_cmd_GG.Text = "Gameguard Server";
-            this.menuitem_cmd_GG.Click += new System.EventHandler(this.menuitem_cmd_GG_Click);
+            this.menuitem_cmd_GG.Click += new EventHandler(this.menuitem_cmd_GG_Click);
             // 
             // menuitem_cmd_ggclient
             // 
             this.menuitem_cmd_ggclient.Name = "menuitem_cmd_ggclient";
             this.menuitem_cmd_ggclient.Size = new System.Drawing.Size(180, 22);
             this.menuitem_cmd_ggclient.Text = "Gameguard Client";
-            this.menuitem_cmd_ggclient.Click += new System.EventHandler(this.menuitem_cmd_ggclient_Click);
+            this.menuitem_cmd_ggclient.Click += new EventHandler(this.menuitem_cmd_ggclient_Click);
             // 
             // toolStripSeparator1
             // 
@@ -4202,35 +4203,35 @@ namespace L2_login
             this.menuItem_cmd_overlay.Name = "menuItem_cmd_overlay";
             this.menuItem_cmd_overlay.Size = new System.Drawing.Size(180, 22);
             this.menuItem_cmd_overlay.Text = "Overlay Window";
-            this.menuItem_cmd_overlay.Click += new System.EventHandler(this.menuItem_cmd_overlay_Click);
+            this.menuItem_cmd_overlay.Click += new EventHandler(this.menuItem_cmd_overlay_Click);
             // 
             // menuItem_cmd_shortcut
             // 
             this.menuItem_cmd_shortcut.Name = "menuItem_cmd_shortcut";
             this.menuItem_cmd_shortcut.Size = new System.Drawing.Size(180, 22);
             this.menuItem_cmd_shortcut.Text = "Shortcut Window";
-            this.menuItem_cmd_shortcut.Click += new System.EventHandler(this.menuItem_cmd_shortcut_Click);
+            this.menuItem_cmd_shortcut.Click += new EventHandler(this.menuItem_cmd_shortcut_Click);
             // 
             // petWindowToolStripMenuItem
             // 
             this.petWindowToolStripMenuItem.Name = "petWindowToolStripMenuItem";
             this.petWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.petWindowToolStripMenuItem.Text = "Pet Window";
-            this.petWindowToolStripMenuItem.Click += new System.EventHandler(this.petWindowToolStripMenuItem_Click);
+            this.petWindowToolStripMenuItem.Click += new EventHandler(this.petWindowToolStripMenuItem_Click);
             // 
             // menuItem_actions
             // 
             this.menuItem_actions.Name = "menuItem_actions";
             this.menuItem_actions.Size = new System.Drawing.Size(180, 22);
             this.menuItem_actions.Text = "Actions";
-            this.menuItem_actions.Click += new System.EventHandler(this.ActionsToolStripMenuItem_Click);
+            this.menuItem_actions.Click += new EventHandler(this.ActionsToolStripMenuItem_Click);
             // 
             // extendedActionsToolStripMenuItem
             // 
             this.extendedActionsToolStripMenuItem.Name = "extendedActionsToolStripMenuItem";
             this.extendedActionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.extendedActionsToolStripMenuItem.Text = "Extended Actions";
-            this.extendedActionsToolStripMenuItem.Click += new System.EventHandler(this.extendedActionsToolStripMenuItem_Click);
+            this.extendedActionsToolStripMenuItem.Click += new EventHandler(this.extendedActionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -4242,14 +4243,14 @@ namespace L2_login
             this.menuItem_options_setup.Name = "menuItem_options_setup";
             this.menuItem_options_setup.Size = new System.Drawing.Size(180, 22);
             this.menuItem_options_setup.Text = "Setup";
-            this.menuItem_options_setup.Click += new System.EventHandler(this.menuItem_options_setup_Click);
+            this.menuItem_options_setup.Click += new EventHandler(this.menuItem_options_setup_Click);
             // 
             // menuItem_saveinterface
             // 
             this.menuItem_saveinterface.Name = "menuItem_saveinterface";
             this.menuItem_saveinterface.Size = new System.Drawing.Size(180, 22);
             this.menuItem_saveinterface.Text = "Save Interface";
-            this.menuItem_saveinterface.Click += new System.EventHandler(this.menuItem_saveinterface_Click);
+            this.menuItem_saveinterface.Click += new EventHandler(this.menuItem_saveinterface_Click);
             // 
             // toolStripSeparator12
             // 
@@ -4261,7 +4262,7 @@ namespace L2_login
             this.menuItem_launchl2.Name = "menuItem_launchl2";
             this.menuItem_launchl2.Size = new System.Drawing.Size(180, 22);
             this.menuItem_launchl2.Text = "Launch Lineage 2";
-            this.menuItem_launchl2.Click += new System.EventHandler(this.menuItem_launchl2_Click);
+            this.menuItem_launchl2.Click += new EventHandler(this.menuItem_launchl2_Click);
             // 
             // toolStripSeparator2
             // 
@@ -4273,11 +4274,11 @@ namespace L2_login
             this.menuItem_exit.Name = "menuItem_exit";
             this.menuItem_exit.Size = new System.Drawing.Size(180, 22);
             this.menuItem_exit.Text = "Exit";
-            this.menuItem_exit.Click += new System.EventHandler(this.menuItem_exit_Click);
+            this.menuItem_exit.Click += new EventHandler(this.menuItem_exit_Click);
             // 
             // menuItem_Commands
             // 
-            this.menuItem_Commands.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItem_Commands.DropDownItems.AddRange(new ToolStripItem[] {
             this.menuItem_cmd_cancel,
             this.blacklistTargetToolStripMenuItem,
             this.showTargetInfoToolStripMenuItem,
@@ -4302,14 +4303,14 @@ namespace L2_login
             this.menuItem_cmd_cancel.Name = "menuItem_cmd_cancel";
             this.menuItem_cmd_cancel.Size = new System.Drawing.Size(202, 22);
             this.menuItem_cmd_cancel.Text = "Cancel Target";
-            this.menuItem_cmd_cancel.Click += new System.EventHandler(this.menuItem_cmd_cancel_Click);
+            this.menuItem_cmd_cancel.Click += new EventHandler(this.menuItem_cmd_cancel_Click);
             // 
             // blacklistTargetToolStripMenuItem
             // 
             this.blacklistTargetToolStripMenuItem.Name = "blacklistTargetToolStripMenuItem";
             this.blacklistTargetToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.blacklistTargetToolStripMenuItem.Text = "Blacklist Target";
-            this.blacklistTargetToolStripMenuItem.Click += new System.EventHandler(this.blacklistTargetToolStripMenuItem_Click);
+            this.blacklistTargetToolStripMenuItem.Click += new EventHandler(this.blacklistTargetToolStripMenuItem_Click);
             // 
             // showTargetInfoToolStripMenuItem
             // 
@@ -4317,7 +4318,7 @@ namespace L2_login
             this.showTargetInfoToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.showTargetInfoToolStripMenuItem.Text = "Show Target Info";
             this.showTargetInfoToolStripMenuItem.Visible = false;
-            this.showTargetInfoToolStripMenuItem.Click += new System.EventHandler(this.showTargetInfoToolStripMenuItem_Click);
+            this.showTargetInfoToolStripMenuItem.Click += new EventHandler(this.showTargetInfoToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -4327,26 +4328,26 @@ namespace L2_login
             // menuItem_toggle_botting
             // 
             this.menuItem_toggle_botting.Checked = true;
-            this.menuItem_toggle_botting.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItem_toggle_botting.CheckState = CheckState.Checked;
             this.menuItem_toggle_botting.Name = "menuItem_toggle_botting";
-            this.menuItem_toggle_botting.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F3)));
+            this.menuItem_toggle_botting.ShortcutKeys = ((Keys)((Keys.Control | Keys.F3)));
             this.menuItem_toggle_botting.Size = new System.Drawing.Size(202, 22);
             this.menuItem_toggle_botting.Text = "Toggle Botting";
-            this.menuItem_toggle_botting.Click += new System.EventHandler(this.menuItem_toggle_botting_Click);
+            this.menuItem_toggle_botting.Click += new EventHandler(this.menuItem_toggle_botting_Click);
             // 
             // menuItem_toggle_autoreply
             // 
             this.menuItem_toggle_autoreply.Name = "menuItem_toggle_autoreply";
             this.menuItem_toggle_autoreply.Size = new System.Drawing.Size(202, 22);
             this.menuItem_toggle_autoreply.Text = "Toggle Auto Reply Local";
-            this.menuItem_toggle_autoreply.Click += new System.EventHandler(this.menuItem_toggle_autoreply_Click);
+            this.menuItem_toggle_autoreply.Click += new EventHandler(this.menuItem_toggle_autoreply_Click);
             // 
             // menuItem_toggle_autoreplyPM
             // 
             this.menuItem_toggle_autoreplyPM.Name = "menuItem_toggle_autoreplyPM";
             this.menuItem_toggle_autoreplyPM.Size = new System.Drawing.Size(202, 22);
             this.menuItem_toggle_autoreplyPM.Text = "Toggle Auto Reply PM";
-            this.menuItem_toggle_autoreplyPM.Click += new System.EventHandler(this.menuItem_toggle_autoreplyPM_Click);
+            this.menuItem_toggle_autoreplyPM.Click += new EventHandler(this.menuItem_toggle_autoreplyPM_Click);
             // 
             // toolStripSeparator5
             // 
@@ -4358,14 +4359,14 @@ namespace L2_login
             this.menuItem_cmd_restart.Name = "menuItem_cmd_restart";
             this.menuItem_cmd_restart.Size = new System.Drawing.Size(202, 22);
             this.menuItem_cmd_restart.Text = "Restart";
-            this.menuItem_cmd_restart.Click += new System.EventHandler(this.menuItem_cmd_restart_Click);
+            this.menuItem_cmd_restart.Click += new EventHandler(this.menuItem_cmd_restart_Click);
             // 
             // menuItem_cmd_logout
             // 
             this.menuItem_cmd_logout.Name = "menuItem_cmd_logout";
             this.menuItem_cmd_logout.Size = new System.Drawing.Size(202, 22);
             this.menuItem_cmd_logout.Text = "Logout";
-            this.menuItem_cmd_logout.Click += new System.EventHandler(this.menuItem_cmd_logout_Click);
+            this.menuItem_cmd_logout.Click += new EventHandler(this.menuItem_cmd_logout_Click);
             // 
             // toolStripSeparator4
             // 
@@ -4377,39 +4378,39 @@ namespace L2_login
             this.menuItem_closeclient.Name = "menuItem_closeclient";
             this.menuItem_closeclient.Size = new System.Drawing.Size(202, 22);
             this.menuItem_closeclient.Text = "Close Client";
-            this.menuItem_closeclient.Click += new System.EventHandler(this.menuItem_closeclient_Click);
+            this.menuItem_closeclient.Click += new EventHandler(this.menuItem_closeclient_Click);
             // 
             // menuItem_killthreads
             // 
             this.menuItem_killthreads.Name = "menuItem_killthreads";
             this.menuItem_killthreads.Size = new System.Drawing.Size(202, 22);
             this.menuItem_killthreads.Text = "Kill Threads";
-            this.menuItem_killthreads.Click += new System.EventHandler(this.menuItem_killthreads_Click);
+            this.menuItem_killthreads.Click += new EventHandler(this.menuItem_killthreads_Click);
             // 
             // forceLogToolStripMenuItem
             // 
             this.forceLogToolStripMenuItem.Name = "forceLogToolStripMenuItem";
             this.forceLogToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.forceLogToolStripMenuItem.Text = "Force Log";
-            this.forceLogToolStripMenuItem.Click += new System.EventHandler(this.forceLogToolStripMenuItem_Click);
+            this.forceLogToolStripMenuItem.Click += new EventHandler(this.forceLogToolStripMenuItem_Click);
             // 
             // disconectClientToolStripMenuItem
             // 
             this.disconectClientToolStripMenuItem.Name = "disconectClientToolStripMenuItem";
             this.disconectClientToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.disconectClientToolStripMenuItem.Text = "Disconect Client";
-            this.disconectClientToolStripMenuItem.Click += new System.EventHandler(this.disconectClientToolStripMenuItem_Click);
+            this.disconectClientToolStripMenuItem.Click += new EventHandler(this.disconectClientToolStripMenuItem_Click);
             // 
             // menuItem_Options
             // 
             this.menuItem_Options.Name = "menuItem_Options";
             this.menuItem_Options.Size = new System.Drawing.Size(82, 20);
             this.menuItem_Options.Text = "Bot &Options";
-            this.menuItem_Options.Click += new System.EventHandler(this.menuItem_Options_Click);
+            this.menuItem_Options.Click += new EventHandler(this.menuItem_Options_Click);
             // 
             // menuItem_scripting
             // 
-            this.menuItem_scripting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItem_scripting.DropDownItems.AddRange(new ToolStripItem[] {
             this.menuItem_loadscript,
             this.menuItem_startscript,
             this.toolStripSeparator10,
@@ -4430,15 +4431,15 @@ namespace L2_login
             this.menuItem_loadscript.Name = "menuItem_loadscript";
             this.menuItem_loadscript.Size = new System.Drawing.Size(180, 22);
             this.menuItem_loadscript.Text = "Set Script Main";
-            this.menuItem_loadscript.Click += new System.EventHandler(this.menuItem_loadscript_Click);
+            this.menuItem_loadscript.Click += new EventHandler(this.menuItem_loadscript_Click);
             // 
             // menuItem_startscript
             // 
             this.menuItem_startscript.Name = "menuItem_startscript";
-            this.menuItem_startscript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.menuItem_startscript.ShortcutKeys = ((Keys)((Keys.Control | Keys.F1)));
             this.menuItem_startscript.Size = new System.Drawing.Size(180, 22);
             this.menuItem_startscript.Text = "Start Script";
-            this.menuItem_startscript.Click += new System.EventHandler(this.menuItem_startscript_Click);
+            this.menuItem_startscript.Click += new EventHandler(this.menuItem_startscript_Click);
             // 
             // toolStripSeparator10
             // 
@@ -4450,21 +4451,21 @@ namespace L2_login
             this.menuItem_scriptwindow.Name = "menuItem_scriptwindow";
             this.menuItem_scriptwindow.Size = new System.Drawing.Size(180, 22);
             this.menuItem_scriptwindow.Text = "Script Editor";
-            this.menuItem_scriptwindow.Click += new System.EventHandler(this.menuItem_scriptwindow_Click);
+            this.menuItem_scriptwindow.Click += new EventHandler(this.menuItem_scriptwindow_Click);
             // 
             // menuItem_scriptdebugger
             // 
             this.menuItem_scriptdebugger.Name = "menuItem_scriptdebugger";
             this.menuItem_scriptdebugger.Size = new System.Drawing.Size(180, 22);
             this.menuItem_scriptdebugger.Text = "Script Debugger";
-            this.menuItem_scriptdebugger.Click += new System.EventHandler(this.menuItem_scriptdebugger_Click);
+            this.menuItem_scriptdebugger.Click += new EventHandler(this.menuItem_scriptdebugger_Click);
             // 
             // menuItem_encryptscript
             // 
             this.menuItem_encryptscript.Name = "menuItem_encryptscript";
             this.menuItem_encryptscript.Size = new System.Drawing.Size(180, 22);
             this.menuItem_encryptscript.Text = "Encrypt Script";
-            this.menuItem_encryptscript.Click += new System.EventHandler(this.menuItem_encryptscript_Click);
+            this.menuItem_encryptscript.Click += new EventHandler(this.menuItem_encryptscript_Click);
             // 
             // toolStripSeparator9
             // 
@@ -4476,32 +4477,32 @@ namespace L2_login
             this.menuItem_debug_mode.Name = "menuItem_debug_mode";
             this.menuItem_debug_mode.Size = new System.Drawing.Size(180, 22);
             this.menuItem_debug_mode.Text = "Debug Mode";
-            this.menuItem_debug_mode.Click += new System.EventHandler(this.menuItem_debug_mode_Click);
+            this.menuItem_debug_mode.Click += new EventHandler(this.menuItem_debug_mode_Click);
             // 
             // menuItem_dump_mode
             // 
             this.menuItem_dump_mode.Name = "menuItem_dump_mode";
             this.menuItem_dump_mode.Size = new System.Drawing.Size(180, 22);
             this.menuItem_dump_mode.Text = "Client Dump Mode";
-            this.menuItem_dump_mode.Click += new System.EventHandler(this.menuItem_dump_mode_Click);
+            this.menuItem_dump_mode.Click += new EventHandler(this.menuItem_dump_mode_Click);
             // 
             // menuItem_dump_mode_server
             // 
             this.menuItem_dump_mode_server.Name = "menuItem_dump_mode_server";
             this.menuItem_dump_mode_server.Size = new System.Drawing.Size(180, 22);
             this.menuItem_dump_mode_server.Text = "Server Dump Mode";
-            this.menuItem_dump_mode_server.Click += new System.EventHandler(this.menuItem_dump_mode_server_Click);
+            this.menuItem_dump_mode_server.Click += new EventHandler(this.menuItem_dump_mode_server_Click);
             // 
             // toolStrip_pck
             // 
             this.toolStrip_pck.Name = "toolStrip_pck";
             this.toolStrip_pck.Size = new System.Drawing.Size(180, 22);
             this.toolStrip_pck.Text = "Packet Window";
-            this.toolStrip_pck.Click += new System.EventHandler(this.toolStrip_pck_Click);
+            this.toolStrip_pck.Click += new EventHandler(this.toolStrip_pck_Click);
             // 
             // menuItem_Help
             // 
-            this.menuItem_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItem_Help.DropDownItems.AddRange(new ToolStripItem[] {
             this.menuItem_about,
             this.eULAToolStripMenuItem,
             this.menuItem_forums,
@@ -4521,28 +4522,28 @@ namespace L2_login
             this.menuItem_about.Name = "menuItem_about";
             this.menuItem_about.Size = new System.Drawing.Size(171, 22);
             this.menuItem_about.Text = "About";
-            this.menuItem_about.Click += new System.EventHandler(this.menuItem_about_Click);
+            this.menuItem_about.Click += new EventHandler(this.menuItem_about_Click);
             // 
             // eULAToolStripMenuItem
             // 
             this.eULAToolStripMenuItem.Name = "eULAToolStripMenuItem";
             this.eULAToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.eULAToolStripMenuItem.Text = "EULA";
-            this.eULAToolStripMenuItem.Click += new System.EventHandler(this.eULAToolStripMenuItem_Click);
+            this.eULAToolStripMenuItem.Click += new EventHandler(this.eULAToolStripMenuItem_Click);
             // 
             // menuItem_forums
             // 
             this.menuItem_forums.Name = "menuItem_forums";
             this.menuItem_forums.Size = new System.Drawing.Size(171, 22);
             this.menuItem_forums.Text = "Forums";
-            this.menuItem_forums.Click += new System.EventHandler(this.menuItem_forums_Click);
+            this.menuItem_forums.Click += new EventHandler(this.menuItem_forums_Click);
             // 
             // menuItem_help_donate
             // 
             this.menuItem_help_donate.Name = "menuItem_help_donate";
             this.menuItem_help_donate.Size = new System.Drawing.Size(171, 22);
             this.menuItem_help_donate.Text = "Donate";
-            this.menuItem_help_donate.Click += new System.EventHandler(this.menuItem_help_donate_Click);
+            this.menuItem_help_donate.Click += new EventHandler(this.menuItem_help_donate_Click);
             // 
             // menuitem_help_checkforupdates
             // 
@@ -4560,14 +4561,14 @@ namespace L2_login
             this.menuItem_language.Name = "menuItem_language";
             this.menuItem_language.Size = new System.Drawing.Size(171, 22);
             this.menuItem_language.Text = "Language";
-            this.menuItem_language.Click += new System.EventHandler(this.menuItem_language_Click);
+            this.menuItem_language.Click += new EventHandler(this.menuItem_language_Click);
             // 
             // menuItem_hosts
             // 
             this.menuItem_hosts.Name = "menuItem_hosts";
             this.menuItem_hosts.Size = new System.Drawing.Size(171, 22);
             this.menuItem_hosts.Text = "Hosts";
-            this.menuItem_hosts.Click += new System.EventHandler(this.menuItem_hosts_Click);
+            this.menuItem_hosts.Click += new EventHandler(this.menuItem_hosts_Click);
             // 
             // toolStripSeparator11
             // 
@@ -4579,7 +4580,7 @@ namespace L2_login
             this.menuItem_forcecollect.Name = "menuItem_forcecollect";
             this.menuItem_forcecollect.Size = new System.Drawing.Size(171, 22);
             this.menuItem_forcecollect.Text = "Force Collect";
-            this.menuItem_forcecollect.Click += new System.EventHandler(this.menuItem_forcecollect_Click);
+            this.menuItem_forcecollect.Click += new EventHandler(this.menuItem_forcecollect_Click);
             // 
             // L2NET
             // 
@@ -4595,8 +4596,8 @@ namespace L2_login
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "L2NET";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.RightToLeft = RightToLeft.No;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "no name";
             this.panel_party_5.ResumeLayout(false);
             this.panel_party_6.ResumeLayout(false);
@@ -4657,7 +4658,7 @@ namespace L2_login
 
 		/*********************/
 	
-		private void menuItem_about_Click(object sender, System.EventArgs e)
+		private void menuItem_about_Click(object sender, EventArgs e)
 		{
 			About about = new About();
 			about.ShowDialog();
@@ -4668,12 +4669,12 @@ namespace L2_login
 			this.Close();
 		}
 
-		private void menuItem_exit_Click(object sender, System.EventArgs e)
+		private void menuItem_exit_Click(object sender, EventArgs e)
 		{
 			Exit();
 		}
 
-		private void menuItem_closeclient_Click(object sender, System.EventArgs e)
+		private void menuItem_closeclient_Click(object sender, EventArgs e)
 		{
 			if(!Globals.gamedata.OOG)
 			{
@@ -4721,7 +4722,7 @@ namespace L2_login
 			Util.Free_Assets();
 		}
 
-		private void menuItem_forcecollect_Click(object sender, System.EventArgs e)
+		private void menuItem_forcecollect_Click(object sender, EventArgs e)
 		{
 			Util.Force_Collect();
 		}
@@ -4737,7 +4738,7 @@ namespace L2_login
 		private void L2NET_SizeChanged(object sender, EventArgs e)
 		{
 			//
-			if(this.WindowState == System.Windows.Forms.FormWindowState.Minimized)
+			if(this.WindowState == FormWindowState.Minimized)
 			{
                 if (Globals.MinimizeToTray)
 				{
@@ -4839,7 +4840,7 @@ namespace L2_login
             try
             {
                 //need to run the lineage 2 client
-                System.Diagnostics.Process conv = new System.Diagnostics.Process();
+                Process conv = new Process();
                 conv.StartInfo.FileName = Globals.L2Path;
                 conv.Start();
             }

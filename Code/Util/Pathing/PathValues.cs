@@ -1,13 +1,14 @@
 using System;
+using System.Collections;
 
 namespace L2_login
 {
 	public class Pathing
 	{
-		static public System.Collections.ArrayList GetPath(Point start, Point dest)
+		static public ArrayList GetPath(Point start, Point dest)
 		{
-            System.Collections.ArrayList my_path;
-            my_path = new System.Collections.ArrayList();
+            ArrayList my_path;
+            my_path = new ArrayList();
             if (Globals.gamedata.pathManager.runASTAR(dest.X, dest.Y))
             {
                 my_path = Globals.gamedata.pathManager.path;
@@ -23,7 +24,7 @@ namespace L2_login
 
 	public class Polygon
 	{
-		public System.Collections.ArrayList PointList = new System.Collections.ArrayList();
+		public ArrayList PointList = new ArrayList();
 
 		public void ClearBorder()
 		{
@@ -98,9 +99,9 @@ namespace L2_login
             return found;
         }
 
-        public System.Collections.ArrayList GeneratePath(Point start, Point dest)
+        public ArrayList GeneratePath(Point start, Point dest)
         {
-            System.Collections.ArrayList my_path = new System.Collections.ArrayList();
+            ArrayList my_path = new ArrayList();
 
             Point intersect = new Point();
             int index = 0;
@@ -113,8 +114,8 @@ namespace L2_login
                 double left_dist = 0;
                 double right_dist = 0;
 
-                System.Collections.ArrayList left_path = new System.Collections.ArrayList();
-                System.Collections.ArrayList right_path = new System.Collections.ArrayList();
+                ArrayList left_path = new ArrayList();
+                ArrayList right_path = new ArrayList();
 
                 Point t1 = new Point();
                 Point t2 = new Point();
@@ -349,7 +350,7 @@ namespace L2_login
 
 		public void Normalize()
 		{
-            float len = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(X, 2) + System.Math.Pow(Z, 2) + System.Math.Pow(Z, 2)));
+            float len = Convert.ToSingle(Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Z, 2) + Math.Pow(Z, 2)));
 
 			X = X/len;
 			Y = Y/len;

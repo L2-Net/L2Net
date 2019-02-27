@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Drawing;
+using System.Threading;
 
 namespace L2_login
 {
@@ -155,14 +157,14 @@ namespace L2_login
 
             if ((texttype != 0x16) && Globals.NpcSay)
             {
-            Globals.l2net_home.Add_Text(n_msg, System.Drawing.Brushes.White, TextType.LOCAL);     
+            Globals.l2net_home.Add_Text(n_msg, Brushes.White, TextType.LOCAL);     
             }
         }
 
         public static string SystemMessageInternal(uint type, ByteBuffer buffe)
         {
             string message = "";
-            System.Collections.ArrayList msglist = new System.Collections.ArrayList();
+            ArrayList msglist = new ArrayList();
 
             uint count = buffe.ReadUInt32();
 
@@ -392,7 +394,7 @@ namespace L2_login
                     Globals.gamedata.my_char.Moving = true;
                     Globals.gamedata.my_char.MoveTarget = data2;
                     Globals.gamedata.my_char.MoveTargetType = movetargettype;
-                    Globals.gamedata.my_char.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_char.lastMoveTime = DateTime.Now;
                     Globals.gamedata.my_char.X = ox;
                     Globals.gamedata.my_char.Y = oy;
                     Globals.gamedata.my_char.Z = oz;
@@ -401,7 +403,7 @@ namespace L2_login
                     Globals.gamedata.my_pet.Moving = true;
                     Globals.gamedata.my_pet.MoveTarget = data2;
                     Globals.gamedata.my_pet.MoveTargetType = movetargettype;
-                    Globals.gamedata.my_pet.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_pet.lastMoveTime = DateTime.Now;
                     Globals.gamedata.my_pet.X = ox;
                     Globals.gamedata.my_pet.Y = oy;
                     Globals.gamedata.my_pet.Z = oz;
@@ -410,7 +412,7 @@ namespace L2_login
                     Globals.gamedata.my_pet1.Moving = true;
                     Globals.gamedata.my_pet1.MoveTarget = data2;
                     Globals.gamedata.my_pet1.MoveTargetType = movetargettype;
-                    Globals.gamedata.my_pet1.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_pet1.lastMoveTime = DateTime.Now;
                     Globals.gamedata.my_pet1.X = ox;
                     Globals.gamedata.my_pet1.Y = oy;
                     Globals.gamedata.my_pet1.Z = oz;
@@ -419,7 +421,7 @@ namespace L2_login
                     Globals.gamedata.my_pet2.Moving = true;
                     Globals.gamedata.my_pet2.MoveTarget = data2;
                     Globals.gamedata.my_pet2.MoveTargetType = movetargettype;
-                    Globals.gamedata.my_pet2.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_pet2.lastMoveTime = DateTime.Now;
                     Globals.gamedata.my_pet2.X = ox;
                     Globals.gamedata.my_pet2.Y = oy;
                     Globals.gamedata.my_pet2.Z = oz;
@@ -428,7 +430,7 @@ namespace L2_login
                     Globals.gamedata.my_pet3.Moving = true;
                     Globals.gamedata.my_pet3.MoveTarget = data2;
                     Globals.gamedata.my_pet3.MoveTargetType = movetargettype;
-                    Globals.gamedata.my_pet3.lastMoveTime = System.DateTime.Now;
+                    Globals.gamedata.my_pet3.lastMoveTime = DateTime.Now;
                     Globals.gamedata.my_pet3.X = ox;
                     Globals.gamedata.my_pet3.Y = oy;
                     Globals.gamedata.my_pet3.Z = oz;
@@ -444,7 +446,7 @@ namespace L2_login
                             player.Moving = true;
                             player.MoveTarget = data2;
                             player.MoveTargetType = movetargettype;
-                            player.lastMoveTime = System.DateTime.Now;
+                            player.lastMoveTime = DateTime.Now;
                             player.X = ox;
                             player.Y = oy;
                             player.Z = oz;
@@ -466,7 +468,7 @@ namespace L2_login
                             npc.Moving = true;
                             npc.MoveTarget = data2;
                             npc.MoveTargetType = movetargettype;
-                            npc.lastMoveTime = System.DateTime.Now;
+                            npc.lastMoveTime = DateTime.Now;
                             npc.X = ox;
                             npc.Y = oy;
                             npc.Z = oz;
@@ -574,7 +576,7 @@ namespace L2_login
 
                                 try
                                 {
-                                    System.Collections.SortedList buffs = new System.Collections.SortedList();
+                                    SortedList buffs = new SortedList();
                                     foreach (CharBuff _buff in ph.my_buffs.Values)
                                     {
                                         Script_ClassData ncd = new Script_ClassData();
@@ -588,12 +590,12 @@ namespace L2_login
                                         buffs.Add(_buff.ID.ToString(), nsv);
                                     }
 
-                                    cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                                    cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                                 }
                                 catch
                                 {
-                                    System.Collections.SortedList empty = new System.Collections.SortedList();
-                                    cd._Variables.Add("EFFECTS", new ScriptVariable((System.Collections.SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                                    SortedList empty = new SortedList();
+                                    cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                                 }
 
 
@@ -696,7 +698,7 @@ namespace L2_login
                         }
                         else
                         {*/
-                            cb.ExpiresTime = System.DateTime.Now.AddSeconds(skill_duration).Ticks;
+                            cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
                             cb.EFFECT_TIME = skill_duration;
                             //v392B11: This hopefully fixes F4 packeterror
                             if (ph.my_buffs.ContainsKey(cb.ID))
@@ -791,7 +793,7 @@ namespace L2_login
                 }
                 else
                 {
-                    cb.ExpiresTime = System.DateTime.Now.AddSeconds(skill_duration).Ticks;
+                    cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
                 }
             }
             else
@@ -811,7 +813,7 @@ namespace L2_login
                 else
                 {
                     cb.EFFECT_TIME = skill_duration;
-                    cb.ExpiresTime = System.DateTime.Now.AddSeconds(skill_duration).Ticks;
+                    cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
                     Globals.gamedata.mybuffs.Add(cb.ID, cb);
                 }
             }
@@ -846,7 +848,7 @@ namespace L2_login
                     else
                     {
                         cb.EFFECT_TIME = skill_duration;
-                        cb.ExpiresTime = System.DateTime.Now.AddSeconds(skill_duration).Ticks;
+                        cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
                     }
                 }
                 else
@@ -865,7 +867,7 @@ namespace L2_login
                     else
                     {
                         cb.EFFECT_TIME = skill_duration;
-                        cb.ExpiresTime = System.DateTime.Now.AddSeconds(skill_duration).Ticks;
+                        cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
                         Globals.gamedata.mybuffs.Add(cb.ID, cb);
                     }
                 }
@@ -959,7 +961,7 @@ namespace L2_login
                 }
 
                 //remove all of our old skills
-                System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+                ArrayList dirty_items = new ArrayList();
 
                 foreach (UserSkill old_us in Globals.gamedata.skills.Values)
                 {
@@ -1005,11 +1007,11 @@ namespace L2_login
 
                     if (Globals.gamedata.skills.ContainsKey(skillid))
                     {
-                        ((UserSkill)Globals.gamedata.skills[skillid]).LastTime = System.DateTime.Now;
+                        ((UserSkill)Globals.gamedata.skills[skillid]).LastTime = DateTime.Now;
                         remain_time = remain_time * 1000;
 
                         //Globals.l2net_home.Add_Text("remain time: " + remain_time.ToString());
-                        ((UserSkill)Globals.gamedata.skills[skillid]).NextTime = System.DateTime.Now.AddMilliseconds(remain_time);
+                        ((UserSkill)Globals.gamedata.skills[skillid]).NextTime = DateTime.Now.AddMilliseconds(remain_time);
                     }
                 }
             }
@@ -1398,7 +1400,7 @@ namespace L2_login
 
             if (Globals.gamedata.OOG)
             {
-                System.Threading.Thread.Sleep(2500);
+                Thread.Sleep(2500);
 
                 //D0 01 00 
                 ServerPackets.RequestManorList();
@@ -1413,7 +1415,7 @@ namespace L2_login
                 ServerPackets.Send_EnterWorld();
 
             }
-            System.Threading.Thread.Sleep(1500);
+            Thread.Sleep(1500);
             Globals.enterworld_sent = true;
         }
 
@@ -2291,7 +2293,7 @@ namespace L2_login
                         Globals.gamedata.my_char.Moving = false;
                         Globals.gamedata.my_char.MoveTarget = 0;
                         Globals.gamedata.my_char.MoveTargetType = 0;
-                        Globals.gamedata.my_char.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_char.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET:
                         Globals.gamedata.my_pet.X = ox;
@@ -2303,7 +2305,7 @@ namespace L2_login
                         Globals.gamedata.my_pet.Moving = false;
                         Globals.gamedata.my_pet.MoveTarget = 0;
                         Globals.gamedata.my_pet.MoveTargetType = 0;
-                        Globals.gamedata.my_pet.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET1:
                         Globals.gamedata.my_pet1.X = ox;
@@ -2315,7 +2317,7 @@ namespace L2_login
                         Globals.gamedata.my_pet1.Moving = false;
                         Globals.gamedata.my_pet1.MoveTarget = 0;
                         Globals.gamedata.my_pet1.MoveTargetType = 0;
-                        Globals.gamedata.my_pet1.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet1.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET2:
                         Globals.gamedata.my_pet2.X = ox;
@@ -2327,7 +2329,7 @@ namespace L2_login
                         Globals.gamedata.my_pet2.Moving = false;
                         Globals.gamedata.my_pet2.MoveTarget = 0;
                         Globals.gamedata.my_pet2.MoveTargetType = 0;
-                        Globals.gamedata.my_pet2.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet2.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET3:
                         Globals.gamedata.my_pet3.X = ox;
@@ -2339,7 +2341,7 @@ namespace L2_login
                         Globals.gamedata.my_pet3.Moving = false;
                         Globals.gamedata.my_pet3.MoveTarget = 0;
                         Globals.gamedata.my_pet3.MoveTargetType = 0;
-                        Globals.gamedata.my_pet3.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet3.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.PLAYER:
                         Globals.PlayerLock.EnterReadLock();
@@ -2358,7 +2360,7 @@ namespace L2_login
                                 player.Moving = false;
                                 player.MoveTarget = 0;
                                 player.MoveTargetType = 0;
-                                player.lastMoveTime = System.DateTime.Now;
+                                player.lastMoveTime = DateTime.Now;
                             }
                         }//unlock
                         finally
@@ -2383,7 +2385,7 @@ namespace L2_login
                                 npc.Moving = false;
                                 npc.MoveTarget = 0;
                                 npc.MoveTargetType = 0;
-                                npc.lastMoveTime = System.DateTime.Now;
+                                npc.lastMoveTime = DateTime.Now;
                             }
                         }//unlock
                         finally
@@ -2408,7 +2410,7 @@ namespace L2_login
                         Globals.gamedata.my_char.Moving = true;
                         Globals.gamedata.my_char.MoveTarget = 0;
                         Globals.gamedata.my_char.MoveTargetType = 0;
-                        Globals.gamedata.my_char.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_char.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET:
                         Globals.gamedata.my_pet.X = ox;
@@ -2420,7 +2422,7 @@ namespace L2_login
                         Globals.gamedata.my_pet.Moving = true;
                         Globals.gamedata.my_pet.MoveTarget = 0;
                         Globals.gamedata.my_pet.MoveTargetType = 0;
-                        Globals.gamedata.my_pet.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET1:
                         Globals.gamedata.my_pet1.X = ox;
@@ -2432,7 +2434,7 @@ namespace L2_login
                         Globals.gamedata.my_pet1.Moving = true;
                         Globals.gamedata.my_pet1.MoveTarget = 0;
                         Globals.gamedata.my_pet1.MoveTargetType = 0;
-                        Globals.gamedata.my_pet1.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet1.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET2:
                         Globals.gamedata.my_pet2.X = ox;
@@ -2444,7 +2446,7 @@ namespace L2_login
                         Globals.gamedata.my_pet2.Moving = true;
                         Globals.gamedata.my_pet2.MoveTarget = 0;
                         Globals.gamedata.my_pet2.MoveTargetType = 0;
-                        Globals.gamedata.my_pet2.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet2.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.MYPET3:
                         Globals.gamedata.my_pet3.X = ox;
@@ -2456,7 +2458,7 @@ namespace L2_login
                         Globals.gamedata.my_pet3.Moving = true;
                         Globals.gamedata.my_pet3.MoveTarget = 0;
                         Globals.gamedata.my_pet3.MoveTargetType = 0;
-                        Globals.gamedata.my_pet3.lastMoveTime = System.DateTime.Now;
+                        Globals.gamedata.my_pet3.lastMoveTime = DateTime.Now;
                         break;
                     case TargetType.PLAYER:
                         Globals.PlayerLock.EnterReadLock();
@@ -2475,7 +2477,7 @@ namespace L2_login
                                 player.Moving = true;
                                 player.MoveTarget = 0;
                                 player.MoveTargetType = 0;
-                                player.lastMoveTime = System.DateTime.Now;
+                                player.lastMoveTime = DateTime.Now;
                             }
                         }//unlock
                         finally
@@ -2500,7 +2502,7 @@ namespace L2_login
                                 npc.Moving = true;
                                 npc.MoveTarget = 0;
                                 npc.MoveTargetType = 0;
-                                npc.lastMoveTime = System.DateTime.Now;
+                                npc.lastMoveTime = DateTime.Now;
                             }
                         }//unlock
                         finally
@@ -2976,7 +2978,7 @@ namespace L2_login
                 Globals.gamedata.my_char.Resisted = 0;
                 
                 // Globals.gamedata.my_char.ExpiresTime = ((1000 + _hittime) * TimeSpan.TicksPerMillisecond) + System.DateTime.Now.Ticks;
-                Globals.gamedata.my_char.ExpiresTime = ((_hittime) * TimeSpan.TicksPerMillisecond) + System.DateTime.Now.Ticks;
+                Globals.gamedata.my_char.ExpiresTime = ((_hittime) * TimeSpan.TicksPerMillisecond) + DateTime.Now.Ticks;
                 
                 if (Globals.gamedata.CurrentScriptState == ScriptState.Running)
                 {
@@ -2997,8 +2999,8 @@ namespace L2_login
                 {                    
                     if (Globals.gamedata.skills.ContainsKey(_skillid))
                     {
-                        ((UserSkill)Globals.gamedata.skills[_skillid]).LastTime = System.DateTime.Now;                     
-                        ((UserSkill)Globals.gamedata.skills[_skillid]).NextTime = System.DateTime.Now.AddMilliseconds(_delay);                        
+                        ((UserSkill)Globals.gamedata.skills[_skillid]).LastTime = DateTime.Now;                     
+                        ((UserSkill)Globals.gamedata.skills[_skillid]).NextTime = DateTime.Now.AddMilliseconds(_delay);                        
                     }
                 }
                 finally
@@ -3167,7 +3169,7 @@ namespace L2_login
             uint nid = buffe.ReadUInt32();
             Globals.gamedata.my_char.TargetColor = buffe.ReadUInt16();
             buffe.ReadUInt32(); //00 00 00 00
-            ClientPackets.Set_Target_Data(nid);
+            Set_Target_Data(nid);
             AddInfo.Set_Target_HP();
         }
 
@@ -5062,7 +5064,7 @@ namespace L2_login
                                                 _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
                                                 buffe.ReadUInt32(); // xxx
                                                 _mybuff.EFFECT_TIME = buffe.ReadInt32();
-                                                _mybuff.ExpiresTime = System.DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
+                                                _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
                                                 buffe.ReadUInt32();
                                                 if (player.my_buffs.ContainsKey(_mybuff.ID))
                                                 {
@@ -5109,7 +5111,7 @@ namespace L2_login
                                                 _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
                                                 buffe.ReadUInt32(); // xxx
                                                 _mybuff.EFFECT_TIME = buffe.ReadInt32();
-                                                _mybuff.ExpiresTime = System.DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
+                                                _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
                                                 buffe.ReadUInt32();
                                                 if (npc.my_buffs.ContainsKey(_mybuff.ID))
                                                 {

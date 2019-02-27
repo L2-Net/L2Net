@@ -44,7 +44,7 @@ namespace L2_login
             }
         }
 
-        private void button_sendtext_Click(object sender, System.EventArgs e)
+        private void button_sendtext_Click(object sender, EventArgs e)
         {
 #if !DEBUG
             if (!Globals.gamedata.logged_in)
@@ -58,14 +58,14 @@ namespace L2_login
             ServerPackets.Send_Text(index, total_text);
         } 
 
-        private void button_yesno_yes_Click(object sender, System.EventArgs e)
+        private void button_yesno_yes_Click(object sender, EventArgs e)
         {
             panel_yesno.SendToBack();
 
             Process_YesNo(true);
         }
 
-        private void button_yesno_no_Click(object sender, System.EventArgs e)
+        private void button_yesno_no_Click(object sender, EventArgs e)
         {
             panel_yesno.SendToBack();
 
@@ -108,28 +108,28 @@ namespace L2_login
             }
         }
 
-        private void button_dead_town_Click(object sender, System.EventArgs e)
+        private void button_dead_town_Click(object sender, EventArgs e)
         {
             //return to town
             ServerPackets.Return(0);
             panel_dead.Hide();
         }
 
-        private void button_dead_clanhall_Click(object sender, System.EventArgs e)
+        private void button_dead_clanhall_Click(object sender, EventArgs e)
         {
             //return to clanhall
             ServerPackets.Return(1);
             panel_dead.Hide();
         }
 
-        private void button_dead_castle_Click(object sender, System.EventArgs e)
+        private void button_dead_castle_Click(object sender, EventArgs e)
         {
             //return to castle
             ServerPackets.Return(2);
             panel_dead.Hide();
         }
 
-        private void button_dead_siege_Click(object sender, System.EventArgs e)
+        private void button_dead_siege_Click(object sender, EventArgs e)
         {
             //return to siege hq
             ServerPackets.Return(3);
@@ -143,12 +143,12 @@ namespace L2_login
             panel_dead.Hide();
         }
 
-        private void button_npc_close_Click(object sender, System.EventArgs e)
+        private void button_npc_close_Click(object sender, EventArgs e)
         {
             panel_npc_chat.Hide();
         }
 
-        private void menuItem_hosts_Click(object sender, System.EventArgs e)
+        private void menuItem_hosts_Click(object sender, EventArgs e)
         {
             string st = Environment.GetEnvironmentVariable("SystemRoot") + "\\system32\\drivers\\etc\\hosts";
 
@@ -337,7 +337,7 @@ namespace L2_login
 
         }
 
-        private void menuItem_cmd_logon_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_logon_Click(object sender, EventArgs e)
         {
             Globals.gamedata.drawing_game = false;
 
@@ -356,7 +356,7 @@ namespace L2_login
             Globals.login_window.Show();
         }
 
-        private void menuItem_cmd_game_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_game_Click(object sender, EventArgs e)
         {
             Globals.gamedata.drawing_game = true;
 
@@ -368,7 +368,7 @@ namespace L2_login
             Globals.map_window.Show();
         }
 
-        private void menuItem_cmd_logout_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_logout_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running && Globals.gamedata.logged_in)
             {
@@ -377,7 +377,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_restart_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_restart_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running && Globals.gamedata.logged_in)
             {
@@ -386,7 +386,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_cancel_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_cancel_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.logged_in)
             {
@@ -395,7 +395,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_toggle_botting_Click(object sender, System.EventArgs e)
+        private void menuItem_toggle_botting_Click(object sender, EventArgs e)
         {
             Toggle_Botting();
         }
@@ -487,7 +487,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_language_Click(object sender, System.EventArgs e)
+        private void menuItem_language_Click(object sender, EventArgs e)
         {
             Language lang = new Language();
             lang.parent_form = this;
@@ -510,7 +510,7 @@ namespace L2_login
             Globals.botoptionsscreen.Show();
         }
 
-        private void menuItem_options_setup_Click(object sender, System.EventArgs e)
+        private void menuItem_options_setup_Click(object sender, EventArgs e)
         {
             //Setup
             if (Globals.setupwindow == null || Globals.setupwindow.IsDisposed == true)
@@ -537,7 +537,7 @@ namespace L2_login
             Globals.gamedata.AddPolygon = checkBox_BoundingPoints.Checked;
         }
 
-        private void menuItem_cmd_overlay_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_overlay_Click(object sender, EventArgs e)
         {
             if (menuItem_cmd_overlay.Checked)
             {
@@ -558,7 +558,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_shortcut_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_shortcut_Click(object sender, EventArgs e)
         {
             if (menuItem_cmd_shortcut.Checked)
             {
@@ -578,7 +578,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_help_donate_Click(object sender, System.EventArgs e)
+        private void menuItem_help_donate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -614,7 +614,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_scriptwindow_Click(object sender, System.EventArgs e)
+        private void menuItem_scriptwindow_Click(object sender, EventArgs e)
         {
             try
             {
@@ -631,7 +631,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_startscript_Click(object sender, System.EventArgs e)
+        private void menuItem_startscript_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running)
             {
@@ -879,7 +879,7 @@ namespace L2_login
             }
         }
 
-        void TabControl_HandleCreated(object sender, System.EventArgs e)
+        void TabControl_HandleCreated(object sender, EventArgs e)
         {
             // Send TCM_SETMINTABWIDTH
             SendMessage((sender as TabControl).Handle, 0x1300 + 49, IntPtr.Zero, (IntPtr)4);

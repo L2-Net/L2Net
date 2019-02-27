@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 
 namespace L2_login
 {
@@ -91,13 +92,13 @@ namespace L2_login
 
         private static byte[] GetData(string filename)
         {
-            if (!System.IO.File.Exists(filename))
+            if (!File.Exists(filename))
             {
                 throw new Exception("File not found: " + filename);
             }
 
 
-            System.IO.BinaryReader filein = new System.IO.BinaryReader(new System.IO.StreamReader(filename).BaseStream);
+            BinaryReader filein = new BinaryReader(new StreamReader(filename).BaseStream);
 
             byte[] data = new byte[filein.BaseStream.Length];
             data = filein.ReadBytes((int)filein.BaseStream.Length);
@@ -117,7 +118,7 @@ namespace L2_login
             try
             {
 #endif
-            System.IO.StreamReader filein = new System.IO.StreamReader(Globals.PATH + "\\data\\gg.txt");
+            StreamReader filein = new StreamReader(Globals.PATH + "\\data\\gg.txt");
 
             string login_gg = filein.ReadLine();
             //need to convert this string and store in the global thingy...
@@ -179,8 +180,8 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
 #if !DEBUG
             try
@@ -188,8 +189,8 @@ namespace L2_login
 #endif
             dec = GetData(data_lvlexp, "<M4H90ag7{_j6~3[");
 
-            mem_stream = new System.IO.MemoryStream(dec);
-            temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+            mem_stream = new MemoryStream(dec);
+            temp_stream = new StreamReader((Stream)mem_stream);
 
             int version = Util.GetInt32(temp_stream.ReadLine());
             if (version < Globals.MinDataPack)
@@ -232,15 +233,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_servername, "-8:2eF_08$6-o)IJ");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -279,15 +280,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_systemmsg, "gA7ru8akusakenaf");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -326,15 +327,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_hennagrp, "8Er5FREjaCen7Thu");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -378,15 +379,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_npcname, "c8c2xagUga5enE7A");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -430,15 +431,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_itemname, "speves4azu52JutH");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -478,8 +479,8 @@ namespace L2_login
             {
                 dec = GetData(data_etcitemgrp, "5rePruchetupHuth");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version2 = Util.GetInt32(temp_stream.ReadLine());
                 if (version2 < Globals.MinDataPack)
@@ -511,8 +512,8 @@ namespace L2_login
             {
                 dec = GetData(data_weapongrp, "defru6e4ezuyuSWE");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version232 = Util.GetInt32(temp_stream.ReadLine());
                 if (version232 < Globals.MinDataPack)
@@ -547,8 +548,8 @@ namespace L2_login
             {
                 dec = GetData(data_armorgrp, "8uf53XU3ravudepe");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -584,15 +585,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_classes, "-^P_6.97R)YEFW4y");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -631,15 +632,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_races, "3L=GSb_H4j-&S£m1");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -679,13 +680,13 @@ namespace L2_login
                 string loaded;
 
                 byte[] dec;
-                System.IO.StreamReader temp_stream;
-                System.IO.MemoryStream mem_stream;
+                StreamReader temp_stream;
+                MemoryStream mem_stream;
 
                 dec = GetData(data_skillname, "br2qeSw65ephepH8");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
 
@@ -732,15 +733,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_actionname, "bruyurEja6rUwaph");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -779,15 +780,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_questname, "D_d/-pmzRPnC|!mS");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -826,15 +827,15 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
                 dec = GetData(data_zonename, "pUB6epUC7uwraxaw");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -873,8 +874,8 @@ namespace L2_login
             string loaded;
 
             byte[] dec;
-            System.IO.StreamReader temp_stream;
-            System.IO.MemoryStream mem_stream;
+            StreamReader temp_stream;
+            MemoryStream mem_stream;
 
             try
             {
@@ -882,8 +883,8 @@ namespace L2_login
                 //dec = GetData(Globals.PATH + "\\data\\npcstring.txt");
                 dec = GetData(data_npcstring, ")#&!%J)(/S)J/&%¤");
 
-                mem_stream = new System.IO.MemoryStream(dec);
-                temp_stream = new System.IO.StreamReader((System.IO.Stream)mem_stream);
+                mem_stream = new MemoryStream(dec);
+                temp_stream = new StreamReader((Stream)mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)

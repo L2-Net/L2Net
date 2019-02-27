@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections;
+using System.Diagnostics;
+using System.IO;
 
 namespace L2_login
 {
@@ -82,7 +84,7 @@ namespace L2_login
                     else
                         return false;
                 default:
-                    ScriptEngine.Script_Error("CANNOT PERFORM BOOLEAN EVALUATION ON TYPE OF " + outv.Type);
+                    Script_Error("CANNOT PERFORM BOOLEAN EVALUATION ON TYPE OF " + outv.Type);
                     break;
             }
 
@@ -91,7 +93,7 @@ namespace L2_login
 
         private void Assignment(ScriptVariable dest, string equation)
         {
-            System.Collections.Queue parsed = new System.Collections.Queue();
+            Queue parsed = new Queue();
 
             while (equation.Length > 0)
             {
@@ -145,16 +147,16 @@ namespace L2_login
             }
         }
 
-        private ScriptVariable ProcessData(System.Collections.Queue equation)
+        private ScriptVariable ProcessData(Queue equation)
         {
-            System.Collections.ArrayList tmpvars = new System.Collections.ArrayList();
+            ArrayList tmpvars = new ArrayList();
 
             ScriptVariable outv = new ScriptVariable();
             outv.Type = Var_Types.ASSIGNABLE;
 
             ScriptVariable outi;
 
-            System.Collections.Queue neweq = new System.Collections.Queue();
+            Queue neweq = new Queue();
 
             //lets process all the paran bullshit first
             while (equation.Count > 0)
@@ -165,7 +167,7 @@ namespace L2_login
                 {
                     int pcnt = 1;
 
-                    System.Collections.Queue subeq = new System.Collections.Queue();
+                    Queue subeq = new Queue();
 
                     while (pcnt != 0)
                     {
@@ -243,7 +245,7 @@ namespace L2_login
                     Add_Variable(outi, StackHeight);
 
                     //now we need to push this variable to the front of our queue via a temporary queue
-                    System.Collections.Queue tmpeq = new System.Collections.Queue();
+                    Queue tmpeq = new Queue();
                     tmpeq.Enqueue(outi.Name);
                     while (neweq.Count > 0)
                     {
@@ -7128,7 +7130,7 @@ namespace L2_login
                             found = false;
                             if (source1_ob.Type == Var_Types.STRING)
                             {
-                                if (System.IO.File.Exists(source1_ob.Value.ToString()))
+                                if (File.Exists(source1_ob.Value.ToString()))
                                 {
                                     found = true;
                                 }
@@ -7302,7 +7304,7 @@ namespace L2_login
                             }
                             break;
                         default:
-                            ScriptEngine.Script_Error("UNKNOWN MATH TYPE : " + op);
+                            Script_Error("UNKNOWN MATH TYPE : " + op);
                             break;
                     }
                     break;
@@ -7311,7 +7313,7 @@ namespace L2_login
             if(cast == Var_Types.NULL)
             {
                 //we tried an operation that didn't succeed
-                ScriptEngine.Script_Error("can't perform [" + op + "] on [" + var1 + "]");
+                Script_Error("can't perform [" + op + "] on [" + var1 + "]");
             }
 
             switch (dest_ob.Type)
@@ -7372,7 +7374,7 @@ namespace L2_login
                     break;
                 default:
                     //script error
-                    ScriptEngine.Script_Error("couldn't cast type " + cast.ToString() + " to type " + dest_ob.Type.ToString());
+                    Script_Error("couldn't cast type " + cast.ToString() + " to type " + dest_ob.Type.ToString());
                     break;
             }
         }
@@ -7455,8 +7457,8 @@ namespace L2_login
                             }
                         }
                         else
-                        {                        
-                            ScriptEngine.Script_Error("Usage: IF SKILL_ID IS_RESISTED (USE_SKILL|USE_SKILL_FORCE|USE_SKILL_SHIFT|USE_SKILL_FORCE_SHIFT)");
+                        {
+                        Script_Error("Usage: IF SKILL_ID IS_RESISTED (USE_SKILL|USE_SKILL_FORCE|USE_SKILL_SHIFT|USE_SKILL_FORCE_SHIFT)");
                         }
                     break;
                 case "GROUP_HP":
@@ -7505,7 +7507,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("Usage: IF NUM_PARTY GROUP_HP INT_PERCENT");
+                        Script_Error("Usage: IF NUM_PARTY GROUP_HP INT_PERCENT");
                     }
                     break;
                 case "GROUP_MP":
@@ -7559,7 +7561,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("Usage: IF NUM_PARTY GROUP_MP INT_PERCENT");
+                        Script_Error("Usage: IF NUM_PARTY GROUP_MP INT_PERCENT");
                     }
                     break;
                 case "GROUP_CP":
@@ -7611,7 +7613,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("Usage: IF NUM_PARTY GROUP_CP INT_PERCENT");
+                        Script_Error("Usage: IF NUM_PARTY GROUP_CP INT_PERCENT");
                     }
                     break; 
                 case "IN_RANGE":
@@ -7660,7 +7662,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("Usage: IF OBJECT_ID IN_RANGE DIST");
+                        Script_Error("Usage: IF OBJECT_ID IN_RANGE DIST");
                     }
                     break;
                 case "IS_CLAN":
@@ -7738,7 +7740,7 @@ namespace L2_login
                         }
                         else
                         {
-                            ScriptEngine.Script_Error("Usage: IF OBJECT_ID IS_CLAN CLAN_NAME");
+                        Script_Error("Usage: IF OBJECT_ID IS_CLAN CLAN_NAME");
                         }
                     break;
                 case "IS_ALLY":
@@ -7816,7 +7818,7 @@ namespace L2_login
                         }
                         else
                         {
-                            ScriptEngine.Script_Error("Usage: IF OBJECT_ID IS_ALLY ALLY_NAME");
+                        Script_Error("Usage: IF OBJECT_ID IS_ALLY ALLY_NAME");
                         }
                     break;
                 case "IS_CLASS":
@@ -7889,7 +7891,7 @@ namespace L2_login
                         }
                         else
                         {
-                            ScriptEngine.Script_Error("Usage: IF OBJECT_ID IS_CLASS CLASS_NAME");
+                        Script_Error("Usage: IF OBJECT_ID IS_CLASS CLASS_NAME");
                         }
                     break;
                 case "IS_ROOTCLASS":
@@ -7959,7 +7961,7 @@ namespace L2_login
                         }
                         else
                         {
-                            ScriptEngine.Script_Error("Usage: IF OBJECT_ID IS_ROOTCLASS CLASS_NAME");
+                        Script_Error("Usage: IF OBJECT_ID IS_ROOTCLASS CLASS_NAME");
                         }
                     break;
                 case "+":
@@ -8236,14 +8238,14 @@ namespace L2_login
                     }
                     break;
                 default:
-                    ScriptEngine.Script_Error("UNKNOWN MATH TYPE : " + op);
+                    Script_Error("UNKNOWN MATH TYPE : " + op);
                     break;
             }
 
             if (cast == Var_Types.NULL)
             {
                 //we tried an operation that didn't succeed
-                ScriptEngine.Script_Error("invalid type: can't perform [" + source1_ob.Name + "] [" + op + "] [" + source2_ob.Name + "]");
+                Script_Error("invalid type: can't perform [" + source1_ob.Name + "] [" + op + "] [" + source2_ob.Name + "]");
             }
 
 
@@ -8312,7 +8314,7 @@ namespace L2_login
                     break;
                 default:
                     //script error
-                    ScriptEngine.Script_Error("couldn't cast type " + cast.ToString() + " to type " + dest_ob.Type.ToString());
+                    Script_Error("couldn't cast type " + cast.ToString() + " to type " + dest_ob.Type.ToString());
                     break;
             }
         }

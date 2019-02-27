@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.IO;//do wyj
+using System.Collections;
 
 namespace L2_login
 {
@@ -29,8 +30,8 @@ namespace L2_login
         // public static System.Windows.Forms.ListViewItem[] cache_for_pck_window = new System.Windows.Forms.ListViewItem[100000]; // for data
 
         //
-        public System.Collections.SortedList client_pck_names = new System.Collections.SortedList();
-        public System.Collections.SortedList server_pck_names = new System.Collections.SortedList();
+        public SortedList client_pck_names = new SortedList();
+        public SortedList server_pck_names = new SortedList();
 
         // conv
         public converter conv_obj = new converter();
@@ -341,7 +342,7 @@ namespace L2_login
                     {
                         if (filter_wind_pck == true)
                         {
-                            System.IO.BinaryWriter test = new BinaryWriter(File.Open(tmp_dat.time, FileMode.Create));
+                        BinaryWriter test = new BinaryWriter(File.Open(tmp_dat.time, FileMode.Create));
                             test.Write(filtered_pck.Count);
                             for (int i = 0; i < filtered_pck.Count; i++)
                             {
@@ -390,7 +391,7 @@ namespace L2_login
         {
             try
             {
-                System.IO.BinaryWriter test = new BinaryWriter(File.Open(tmp_dat.time, FileMode.Create));
+                BinaryWriter test = new BinaryWriter(File.Open(tmp_dat.time, FileMode.Create));
                 test.Write(Globals.pck_thread.pck_record.Count);
                 for (int i = 0; i < Globals.pck_thread.pck_record.Count; i++)
                 {
@@ -414,7 +415,7 @@ namespace L2_login
             try
             {
                 clean_data();
-                System.IO.BinaryReader redfil = new BinaryReader(File.Open(tmp_dat.time, FileMode.Open));
+                BinaryReader redfil = new BinaryReader(File.Open(tmp_dat.time, FileMode.Open));
                 int temp_ilo = redfil.ReadInt32();
                 pck_window_dat temp_dat;
                 for (int i = 0; i < temp_ilo; i++)
@@ -2419,7 +2420,7 @@ namespace L2_login
                    apply_filters();
                    string file_patch = Globals.PATH;
                    file_patch += "\\pck_filters.dat";
-                   System.IO.BinaryWriter test = new BinaryWriter(File.Open(file_patch, FileMode.Create));
+                BinaryWriter test = new BinaryWriter(File.Open(file_patch, FileMode.Create));
                    test.Write(Globals.pck_thread.client_pck_filter.Count );
                    test.Write(Globals.pck_thread.server_pck_filter.Count );
                    //client filter
@@ -2450,8 +2451,8 @@ namespace L2_login
                    tmp_server_pck_filter.Clear();
                    string file_patch = Globals.PATH;
                    file_patch += "\\pck_filters.dat";
-                  // if(file_patch.
-                   System.IO.BinaryReader redfil = new BinaryReader(File.Open(file_patch, FileMode.Open));
+                // if(file_patch.
+                BinaryReader redfil = new BinaryReader(File.Open(file_patch, FileMode.Open));
                    int temp_ilo_cli = redfil.ReadInt32();
                    int temp_ilo_srv = redfil.ReadInt32();
 
@@ -3324,7 +3325,7 @@ namespace L2_login
                file_patch += "\\data\\client_packets.txt";
                if (File.Exists(file_patch))
                {
-                   System.IO.StreamReader pack_file = new System.IO.StreamReader(file_patch);
+                    StreamReader pack_file = new StreamReader(file_patch);
                    string newline;
                    string separator = "|";
 
@@ -3398,7 +3399,7 @@ namespace L2_login
                    file_patch += "\\data\\server_packets.txt";
                    if (File.Exists(file_patch))
                    {
-                       System.IO.StreamReader pack_file = new System.IO.StreamReader(file_patch);
+                    StreamReader pack_file = new StreamReader(file_patch);
                        string newline;
                        string separator = "|";
 
