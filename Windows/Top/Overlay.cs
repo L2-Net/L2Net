@@ -1,15 +1,12 @@
 using System;
 using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Overlay.
-	/// </summary>
-	public class Overlay : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Overlay.
+    /// </summary>
+    public class Overlay : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label_target_cp;
         private System.Windows.Forms.Label label_target_mp;

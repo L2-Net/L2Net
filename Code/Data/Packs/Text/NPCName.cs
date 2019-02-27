@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class NPCName : BaseText
+    public class NPCName : BaseText
 	{
 		public string Name = "";
 		public string Description = "";

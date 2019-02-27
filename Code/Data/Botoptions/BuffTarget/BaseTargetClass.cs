@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class BaseTargetClass
+    public class BaseTargetClass
 	{
 		protected bool _Active;
 		private readonly object ActiveLock = new object();

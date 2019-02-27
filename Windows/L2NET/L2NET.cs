@@ -3,17 +3,14 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
-using System.Data;
-using System.Resources;
-using System.Globalization;
 using System.Diagnostics;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Form1.
-	/// </summary>
-	public partial class L2NET : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Form1.
+    /// </summary>
+    public partial class L2NET : System.Windows.Forms.Form
 	{
 		private System.ComponentModel.IContainer components;
 

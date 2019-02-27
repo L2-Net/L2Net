@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace L2_login
 {
-   public class Astar
+    public class Astar
     {
        private System.Collections.ArrayList _nodelist =  new System.Collections.ArrayList();
        private System.Collections.ArrayList _pathPoints = new System.Collections.ArrayList();

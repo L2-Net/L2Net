@@ -28,16 +28,16 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
 
-namespace Mono.Math.Prime {
-	/// <summary>
-	/// A factor of confidence.
-	/// </summary>
+namespace Mono.Math.Prime
+{
+    /// <summary>
+    /// A factor of confidence.
+    /// </summary>
 #if INSIDE_CORLIB
 	internal
 #else
-	public
+    public
 #endif
 	enum ConfidenceFactor {
 		/// <summary>

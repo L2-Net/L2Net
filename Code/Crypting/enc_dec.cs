@@ -1,12 +1,11 @@
-using System;
 using System.Text;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for enc_dec.
-	/// </summary>
-	public class Encoder
+    /// <summary>
+    /// Summary description for enc_dec.
+    /// </summary>
+    public class Encoder
 	{
 		static public uint decode_version = 1;
 		private int offset;

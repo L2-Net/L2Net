@@ -1,16 +1,13 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Scripting.
-	/// </summary>
-	public class Scripting : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Scripting.
+    /// </summary>
+    public class Scripting : System.Windows.Forms.Form
 	{
 		public System.Windows.Forms.RichTextBox richTextBox_script;
 		private System.Windows.Forms.Button button_loadscript;

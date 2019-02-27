@@ -1,11 +1,9 @@
-using System;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for ShortCuts.
-	/// </summary>
-	public enum ShortCut_Types : int
+    /// <summary>
+    /// Summary description for ShortCuts.
+    /// </summary>
+    public enum ShortCut_Types : int
 	{
 		NULL = 0,
 		ITEM = 1,

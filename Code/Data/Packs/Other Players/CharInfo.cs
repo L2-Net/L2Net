@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class CharInfo : Object_Base
+    public class CharInfo : Object_Base
 	{
         public volatile float X = 0;
         public volatile float Y = 0;

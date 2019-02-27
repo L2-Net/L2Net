@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class HennaGroup : BaseText
+    public class HennaGroup : BaseText
 	{
 		//id|dye_id|name|symbol_add_name|added_type|added_amount|subtracted_type|subtracted_amount
         public uint DYE_ID = 0;

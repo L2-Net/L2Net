@@ -1,5 +1,3 @@
-using System;
-
 namespace L2_login
 {
     public enum DeviceState : int

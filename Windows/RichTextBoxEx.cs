@@ -1,12 +1,11 @@
 using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 namespace L2_login
 {
-	public class RichTextBoxEx : RichTextBox
+    public class RichTextBoxEx : RichTextBox
 	{
 		#region Interop-Defines
 		[ StructLayout( LayoutKind.Sequential )]

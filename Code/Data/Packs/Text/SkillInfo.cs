@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class SkillInfo
+    public class SkillInfo
 	{
 		public uint ID = 0;
         public uint Level = 0;

@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class QuestName : BaseText
+    public class QuestName : BaseText
 	{
 		//quest_id|quest_prog|main_name|prog_name|description|quest_x|quest_y|quest_z|lvl_min|lvl_max|quest_type|entity_name|contact_npc_id|contact_npc_x|contact_npc_y|contact_npc_z|restricions|short_description|clan_pet_quest|req_quest_complete|area_id
         public uint quest_prog = 0;

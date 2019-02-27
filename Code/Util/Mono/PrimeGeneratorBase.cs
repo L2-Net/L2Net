@@ -28,14 +28,14 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
 
-namespace Mono.Math.Prime.Generator {
+namespace Mono.Math.Prime.Generator
+{
 
 #if INSIDE_CORLIB
 	internal
 #else
-	public
+    public
 #endif
 	abstract class PrimeGeneratorBase {
 

@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class SystemMsg : BaseText
+    public class SystemMsg : BaseText
 	{
 		public string Message = "";
         public uint Group = 0;

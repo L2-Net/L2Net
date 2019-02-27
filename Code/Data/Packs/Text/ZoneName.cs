@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class ZoneName : BaseText
+    public class ZoneName : BaseText
 	{
 		public string Name = "";
         public uint WorldX = 0;

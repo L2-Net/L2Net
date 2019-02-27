@@ -1,9 +1,8 @@
-using System;
 using System.Net.Sockets;
 
 namespace L2_login
 {
-	public class BroadcastThread
+    public class BroadcastThread
 	{
 		private System.Threading.Thread readthread;
 

@@ -1,11 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
 using System.Collections;
 using System.Resources;
-using System.Globalization;
-using System.Diagnostics;
 
 namespace L2_login
 {

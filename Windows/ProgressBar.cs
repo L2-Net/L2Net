@@ -1,17 +1,15 @@
 using System;
-using System.Data;
 using System.Drawing;
-using System.Collections;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
 namespace VistaStyleProgressBar
 {
-	/// <summary>
-	/// A replacement for the default ProgressBar control.
-	/// </summary>
-	[DefaultEvent("ValueChanged")]
+    /// <summary>
+    /// A replacement for the default ProgressBar control.
+    /// </summary>
+    [DefaultEvent("ValueChanged")]
 	public class ProgressBar : System.Windows.Forms.UserControl 
 	{
 

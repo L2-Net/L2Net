@@ -1,11 +1,9 @@
-using System;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for AddInfo.
-	/// </summary>
-	public class AddInfo
+    /// <summary>
+    /// Summary description for AddInfo.
+    /// </summary>
+    public class AddInfo
 	{
 		public AddInfo()
 		{

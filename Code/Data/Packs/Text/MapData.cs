@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using SlimDX.Direct3D9;
 
 namespace L2_login

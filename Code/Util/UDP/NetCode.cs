@@ -1,9 +1,8 @@
-using System;
 using System.Net.Sockets;
 
 namespace L2_login
 {
-	public class NetCode
+    public class NetCode
 	{
         static bool init = false;
         static Socket broadcast_sender;

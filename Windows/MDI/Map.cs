@@ -1,17 +1,14 @@
 using System;
 using System.Drawing;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 using System.Runtime.InteropServices;
 using SlimDX;
 using SlimDX.Direct3D9;
-using SlimDX.Windows;
 
 namespace L2_login
 {
-	public class Map : Base
+    public class Map : Base
     {
 		private System.Collections.ArrayList cache_draw = new ArrayList();
 		private System.Collections.ArrayList tmp_players = new ArrayList();

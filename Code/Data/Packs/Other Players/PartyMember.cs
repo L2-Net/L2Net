@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class PartyMember : Object_Base
+    public class PartyMember : Object_Base
 	{
 		private string _Name = "";
         public volatile float Cur_CP = 0;

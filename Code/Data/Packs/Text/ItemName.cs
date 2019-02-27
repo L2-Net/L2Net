@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class ItemName : BaseText
+    public class ItemName : BaseText
 	{
 		public string Name = "";
 		public string Add_Name = "";

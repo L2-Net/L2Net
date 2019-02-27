@@ -1,15 +1,12 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Setup.
-	/// </summary>
-	public class Setup : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Setup.
+    /// </summary>
+    public class Setup : System.Windows.Forms.Form
 	{
 		public System.Windows.Forms.ComboBox comboBox_voice;
 		private System.Windows.Forms.Label label_voice;

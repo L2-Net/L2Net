@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SlimDX;
 using SlimDX.DirectInput;
 
 namespace L2_login

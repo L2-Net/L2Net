@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class ItemTargetClass : BaseTargetClass
+    public class ItemTargetClass : BaseTargetClass
 	{
         public volatile BuffTriggers Type;
         public volatile uint ItemID;//generic item type

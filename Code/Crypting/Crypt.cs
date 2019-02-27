@@ -1,11 +1,9 @@
-using System;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Crypt.
-	/// </summary>
-	public class Crypt
+    /// <summary>
+    /// Summary description for Crypt.
+    /// </summary>
+    public class Crypt
 	{
         private byte[] _key = new byte[16];//8];
 		private bool enabled = false;

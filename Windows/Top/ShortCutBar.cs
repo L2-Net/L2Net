@@ -1,15 +1,9 @@
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for ShortCutBar.
-	/// </summary>
-	public class ShortCutBar : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for ShortCutBar.
+    /// </summary>
+    public class ShortCutBar : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Button button_s1;
 		private System.Windows.Forms.Button button_s2;

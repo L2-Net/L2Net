@@ -1,11 +1,9 @@
-using System;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for ScriptVariable.
-	/// </summary>
-	public class ScriptLabel
+    /// <summary>
+    /// Summary description for ScriptVariable.
+    /// </summary>
+    public class ScriptLabel
 	{
 		public string Name;
 		public int Line;

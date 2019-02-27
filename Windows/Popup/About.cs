@@ -1,15 +1,12 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for About.
-	/// </summary>
-	public class About : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for About.
+    /// </summary>
+    public class About : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label_netversion;

@@ -1,56 +1,54 @@
-﻿using System;
-
-namespace L2_login
+﻿namespace L2_login
 {
-            /*07
-            BA 25 3D 00 //??
-            00 00 00 00 //??
-            7C 91 2E 00 //Buy list id ?
+    /*07
+    BA 25 3D 00 //??
+    00 00 00 00 //??
+    7C 91 2E 00 //Buy list id ?
 
-            2A 00 //Itemcount
+    2A 00 //Itemcount
 
 
-            04 00 // itemType1  0-weapon/ring/earring/necklace  1-armor/shield  4-item/questitem/adena
-            00 00 00 00// objectid
-            2B 07 00 00 //1st item ID
-            00 00 00 00
-            00 00 00 00
-            05 00 // itemType2  0-weapon  1-shield/armor  2-ring/earring/necklace  3-questitem  4-adena  5-item
-            00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00
-            07 00 00 00 //price
-            00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00
+    04 00 // itemType1  0-weapon/ring/earring/necklace  1-armor/shield  4-item/questitem/adena
+    00 00 00 00// objectid
+    2B 07 00 00 //1st item ID
+    00 00 00 00
+    00 00 00 00
+    05 00 // itemType2  0-weapon  1-shield/armor  2-ring/earring/necklace  3-questitem  4-adena  5-item
+    00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00
+    07 00 00 00 //price
+    00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00
 
-             
-            04 00
-            00 00 00 00 
-            CD 09 00 00 // 2nd item ID
-            00 00 00 00
-            00 00 00 00 
-            05 00
-            00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 
-            12 00 00 00 //price
-            00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00
 
-            04 00 
-            00 00 00 00
-            6B 0F 00 00 //3rd item ID
-            and so on*/
+    04 00
+    00 00 00 00 
+    CD 09 00 00 // 2nd item ID
+    00 00 00 00
+    00 00 00 00 
+    05 00
+    00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00 
+    12 00 00 00 //price
+    00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00 00 00 
+    00 00
+
+    04 00 
+    00 00 00 00
+    6B 0F 00 00 //3rd item ID
+    and so on*/
     public class BuyList : Object_Base
     {
         public volatile uint ItemType1 = 0; // itemType1  0-weapon/ring/earring/necklace  1-armor/shield  4-item/questitem/adena

@@ -1,15 +1,11 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Base.
-	/// </summary>
-	public class Base : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Base.
+    /// </summary>
+    public class Base : System.Windows.Forms.Form
 	{
 		/// <summary>
 		/// Required designer variable.

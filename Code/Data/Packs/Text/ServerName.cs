@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class ServerName : BaseText
+    public class ServerName : BaseText
 	{
 		public string Name = "";
 

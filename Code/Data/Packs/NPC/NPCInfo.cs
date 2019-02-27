@@ -1,5 +1,3 @@
-using System;
-
 namespace L2_login
 {
     public class NPCInfo : Object_Base

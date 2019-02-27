@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace L2_login
+﻿namespace L2_login
 {
     public partial class GameServer
     {

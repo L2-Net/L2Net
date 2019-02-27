@@ -1,11 +1,9 @@
-using System;
-
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for SoundOptions.
-	/// </summary>
-	public class AlertOptions
+    /// <summary>
+    /// Summary description for SoundOptions.
+    /// </summary>
+    public class AlertOptions
 	{
         //1 - start
         //2 - close

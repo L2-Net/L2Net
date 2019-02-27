@@ -2,19 +2,14 @@
 //    #define SILENT
 #endif
 
-using System;
 using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Threading;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Splash.
-	/// </summary>
-	public class SplashScreen : System.Windows.Forms.Form
+    /// <summary>
+    /// Summary description for Splash.
+    /// </summary>
+    public class SplashScreen : System.Windows.Forms.Form
     {
 		public SplashScreen()
 		{

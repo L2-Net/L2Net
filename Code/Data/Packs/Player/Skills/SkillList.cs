@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class SkillList
+    public class SkillList
 	{
 		private System.Collections.ArrayList _Levels = new System.Collections.ArrayList();
 

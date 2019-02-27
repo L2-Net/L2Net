@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace L2_login
+﻿namespace L2_login
 {
     class pck_parser
     {

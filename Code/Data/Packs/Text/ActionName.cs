@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class Actions : BaseText
+    public class Actions : BaseText
 	{
         public int Type = 0;
         public int Category = 0;

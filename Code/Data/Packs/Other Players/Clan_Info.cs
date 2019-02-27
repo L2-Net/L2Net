@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class Clan_Info : Object_Base
+    public class Clan_Info : Object_Base
 	{
         public volatile uint AllyID = 0;
         public volatile uint CrestID = 0;

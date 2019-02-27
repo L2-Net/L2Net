@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class Races : BaseText
+    public class Races : BaseText
 	{
 		public string Name = "";
 

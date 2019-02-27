@@ -1,7 +1,5 @@
-using System;
 using System.Media;
 using System.Collections;
-using System.Threading;
 
 namespace L2_login
 {

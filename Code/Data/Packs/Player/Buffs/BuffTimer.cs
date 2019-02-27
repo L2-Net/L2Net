@@ -1,8 +1,6 @@
-using System;
-
 namespace L2_login
 {
-	public class BuffTimer
+    public class BuffTimer
 	{
 		public volatile uint SkillID = 0;
         private long _LastTickTime = 0;

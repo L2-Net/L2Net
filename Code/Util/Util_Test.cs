@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data.Odbc;
 using System.Net;
-using System.Net.Sockets;
 using System.Net.Mail;
 using System.Net.NetworkInformation;
 
