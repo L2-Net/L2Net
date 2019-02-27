@@ -112,7 +112,9 @@ namespace L2_login
                 if (sk.Levels.Count != 0)
                 {
                     if (System.String.Equals(str, ((SkillInfo)sk.Levels[0]).Name.ToUpperInvariant()))
+                    {
                         return ((SkillInfo)sk.Levels[0]).ID;
+                    }
                 }
             }
 
@@ -679,10 +681,10 @@ namespace L2_login
             {
                 ((ItemInfo)Globals.gamedata.nearby_items[id]).Ignore = ignore;
             }
-           // catch(Exception e)
-           // {
-                //Globals.l2net_home.Add_Error("Crashed ignoring item " + e.Message);
-           // }
+            // catch(Exception e)
+            // {
+            //Globals.l2net_home.Add_Error("Crashed ignoring item " + e.Message);
+            // }
             finally
             {
                 Globals.ItemLock.ExitWriteLock();
@@ -729,7 +731,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCName)Globals.npcname[(uint)(id - Globals.NPC_OFF)]).Name;
+                return ((NPCName)Globals.npcname[id - Globals.NPC_OFF]).Name;
             }
             catch
             {
@@ -741,7 +743,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCName)Globals.npcname[(uint)(id - Globals.NPC_OFF)]).Description;
+                return ((NPCName)Globals.npcname[id - Globals.NPC_OFF]).Description;
             }
             catch
             {
@@ -902,7 +904,9 @@ namespace L2_login
                     foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
                     {
                         if (inv_inf.ID == id)
+                        {
                             return inv_inf.ItemID;
+                        }
                     }
                 }//unlock
                 finally
@@ -922,7 +926,9 @@ namespace L2_login
                 foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
                 {
                     if (inv_inf.ItemID == id)
+                    {
                         return inv_inf.ID;
+                    }
                 }
             }//unlock
             finally

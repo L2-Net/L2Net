@@ -5,7 +5,7 @@ namespace L2_login
 {
     public class AstarNode : IComparable
     {
-        
+
         public double x; //upper left corner
         public double y;
         public double x2; //lower right corner
@@ -22,8 +22,8 @@ namespace L2_login
         public int hvalue;
         public int ivalue; //iterative cost...
 
-       public  AstarNode parent = null;
-        
+        public AstarNode parent = null;
+
         public ArrayList adjacentNodes = new ArrayList();
         public ArrayList children = new ArrayList();
 
@@ -38,7 +38,7 @@ namespace L2_login
             diagonal = false;
         }
 
-         public AstarNode getParent()
+        public AstarNode getParent()
         {
             return parent;
         }
@@ -79,20 +79,31 @@ namespace L2_login
             AstarNode n1;
 
             if (x is AstarNode)
+            {
                 n1 = x as AstarNode;
+            }
             else
+            {
                 throw new ArgumentException("Object is not of type AstarNode");
-                            
+            }
 
             if (this == n1)
+            {
                 return 0;
+            }
+
             if (n1.hvalue == this.hvalue)
+            {
                 return 0;
+            }
+
             if (n1.hvalue > this.hvalue)
+            {
                 return -1;
-          
+            }
+
             return 1;
-      
+
         }
 
         public override string ToString()

@@ -5,7 +5,7 @@ namespace L2_login
     public class ScriptLine
     {
         public string FullLine = "";
-        
+
         public ScriptCommands Command = ScriptCommands.NULL;
 
         public bool Compilied = false;

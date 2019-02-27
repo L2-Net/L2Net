@@ -190,17 +190,21 @@ namespace L2_login
             try
             {
                 if (Globals.oog_loginthread != null)
+                {
                     Globals.oog_loginthread.Abort();
+                }
             }
             catch//(Exception e)
             {
                 //Globals.l2net_home.Add_Error("oog_loginthread : " + e.Message);
-            } 
-            
+            }
+
             try
             {
                 if (Globals.ig_loginthread != null)
+                {
                     Globals.ig_loginthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -210,7 +214,9 @@ namespace L2_login
             try
             {
                 if (Globals.ig_listener != null)
+                {
                     Globals.ig_listener.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -220,7 +226,9 @@ namespace L2_login
             try
             {
                 if (Globals.ig_Gamelistener != null)
+                {
                     Globals.ig_Gamelistener.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -230,7 +238,9 @@ namespace L2_login
             try
             {
                 if (Globals.loginsendthread != null)
+                {
                     Globals.loginsendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -240,7 +250,9 @@ namespace L2_login
             try
             {
                 if (Globals.loginreadthread != null)
+                {
                     Globals.loginreadthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -250,7 +262,9 @@ namespace L2_login
             try
             {
                 if (Globals.gameprocessdatathread != null)
+                {
                     Globals.gameprocessdatathread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -260,7 +274,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamedrawthread != null)
+                {
                     Globals.gamedrawthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -270,7 +286,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamethread != null)
+                {
                     Globals.gamethread.readthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -280,7 +298,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamethread != null)
+                {
                     Globals.gamethread.sendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -290,7 +310,9 @@ namespace L2_login
             try
             {
                 if (Globals.clientthread != null)
+                {
                     Globals.clientthread.readthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -300,7 +322,9 @@ namespace L2_login
             try
             {
                 if (Globals.clientthread != null)
+                {
                     Globals.clientthread.sendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -310,7 +334,9 @@ namespace L2_login
             try
             {
                 if (Globals.botaithread != null)
+                {
                     Globals.botaithread.botaithread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -321,7 +347,9 @@ namespace L2_login
             try
             {
                 if (Globals.followrestthread != null)
+                {
                     Globals.followrestthread.followrestthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -331,7 +359,9 @@ namespace L2_login
             try
             {
                 if (Globals.scriptthread != null)
+                {
                     Globals.scriptthread.scriptthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -380,11 +410,20 @@ namespace L2_login
             Globals.gamedata.running = false;
 
             if (Globals.gameprocessdatathread != null && Globals.gameprocessdatathread.ThreadState == ThreadState.Running)
+            {
                 Globals.gameprocessdatathread.Abort();
+            }
+
             if (Globals.gamedrawthread != null && Globals.gamedrawthread.ThreadState == ThreadState.Running)
+            {
                 Globals.gamedrawthread.Abort();
+            }
+
             if (Globals.directinputthread != null && Globals.directinputthread.ThreadState == ThreadState.Running)
+            {
                 Globals.directinputthread.Abort();
+            }
+
             Globals.pck_thread.stop();
             try
             {
@@ -491,7 +530,10 @@ namespace L2_login
             int startlen = start.Length * 2 + 2;
             int endlen = end.Length * 2;
             if (endlen > 0)
+            {
                 endlen += 2;
+            }
+
             ByteBuffer bbuff;
             if (Globals.gamedata.Chron >= Chronicle.CT2_6)
             {

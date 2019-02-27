@@ -3,13 +3,13 @@ using System.Collections;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Char_Info.
-	/// </summary>
-	public class Player_Info : Object_Base
-	{
-		private string _Name = "";
-		private string _Title = "";
+    /// <summary>
+    /// Summary description for Char_Info.
+    /// </summary>
+    public class Player_Info : Object_Base
+    {
+        private string _Name = "";
+        private string _Title = "";
         public volatile uint Sex = 0;
         public volatile uint Race = 0;
         public volatile uint Class = 0;
@@ -44,10 +44,10 @@ namespace L2_login
         public volatile float Dest_Y = 0;
         public volatile float Dest_Z = 0;
         public volatile bool Moving = false;
-		private DateTime _lastMoveTime = DateTime.Now;
+        private DateTime _lastMoveTime = DateTime.Now;
         public volatile uint MoveTarget = 0;
         public volatile TargetType MoveTargetType = TargetType.NONE;
-		private DateTime _lastVerifyTime = DateTime.Now;
+        private DateTime _lastVerifyTime = DateTime.Now;
 
         public volatile int Heading = 0;
 
@@ -175,7 +175,7 @@ namespace L2_login
         public volatile uint PvPCount = 0;
 
         public volatile uint CubicCount = 0;//ushort
-		private ArrayList _Cubics = new ArrayList();
+        private ArrayList _Cubics = new ArrayList();
 
         private ArrayList _AbnEffects = new ArrayList();
 
@@ -229,7 +229,7 @@ namespace L2_login
         public volatile uint BuffTargetLast = 0;
         public volatile uint BuffNeedTarget = 0;
         public volatile uint BuffSkillID = 0;
-		private DateTime _lastbufftime;
+        private DateTime _lastbufftime;
 
         public volatile uint isInCombat = 0;//byte
         public volatile bool isAttacking = false;
@@ -256,27 +256,27 @@ namespace L2_login
         public volatile uint MEvasion = 0;
         public volatile uint MCritical = 0;
 
-		//need to keep track of:
-		//sit/stand
-		//in party
-		//party leader
-		//loot type
-		
-		private readonly object lastbufftimeLock = new object();
-		private readonly object lastVerifyTimeLock = new object();
-		private readonly object lastMoveTimeLock = new object();
+        //need to keep track of:
+        //sit/stand
+        //in party
+        //party leader
+        //loot type
+
+        private readonly object lastbufftimeLock = new object();
+        private readonly object lastVerifyTimeLock = new object();
+        private readonly object lastMoveTimeLock = new object();
         private readonly object ClanPrivilegesLock = new object();
         private readonly object XPLock = new object();
-		private readonly object CubicsLock = new object();
+        private readonly object CubicsLock = new object();
         private readonly object AbnEffectsLock = new object();
-		private readonly object TitleLock = new object();
-		private readonly object NameLock = new object();
+        private readonly object TitleLock = new object();
+        private readonly object NameLock = new object();
 
         public bool HasEffect(AbnormalEffects test)
         {
             return AbnEffects.IndexOf((uint)test) != -1;
         }
-        
+
         public bool HasExtendedEffect(ExtendedEffects test)
         {
             return (ExtendedEffects & (uint)test) != 0;
@@ -285,66 +285,66 @@ namespace L2_login
         public bool MyCharRelation(MyRelation test)
         {
             return (isClanLeader & (uint)test) != 0;
-        }   
+        }
 
         public string Name
-		{
-			get
-			{
-				string tmp;
-				lock(NameLock)
-				{
-					tmp = this._Name;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(NameLock)
-				{
-					_Name = value;
-				}
+        {
+            get
+            {
+                string tmp;
+                lock (NameLock)
+                {
+                    tmp = this._Name;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (NameLock)
+                {
+                    _Name = value;
+                }
                 Globals.l2net_home.SetName();
-			}
-		}
-		public string Title
-		{
-			get
-			{
-				string tmp;
-				lock(TitleLock)
-				{
-					tmp = this._Title;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(TitleLock)
-				{
-					_Title = value;
-				}
-			}
-		}
-		public ArrayList Cubics
-		{
-			get
-			{
+            }
+        }
+        public string Title
+        {
+            get
+            {
+                string tmp;
+                lock (TitleLock)
+                {
+                    tmp = this._Title;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (TitleLock)
+                {
+                    _Title = value;
+                }
+            }
+        }
+        public ArrayList Cubics
+        {
+            get
+            {
                 ArrayList tmp;
-				lock(CubicsLock)
-				{
-					tmp = this._Cubics;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(CubicsLock)
-				{
-					_Cubics = value;
-				}
-			}
-		}
+                lock (CubicsLock)
+                {
+                    tmp = this._Cubics;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (CubicsLock)
+                {
+                    _Cubics = value;
+                }
+            }
+        }
 
         public ArrayList AbnEffects
         {
@@ -366,25 +366,25 @@ namespace L2_login
             }
         }
 
-		public ulong XP
-		{
-			get
-			{
-				ulong tmp;
-				lock(XPLock)
-				{
-					tmp = this._XP;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(XPLock)
-				{
-					_XP = value;
-				}
-			}
-		}
+        public ulong XP
+        {
+            get
+            {
+                ulong tmp;
+                lock (XPLock)
+                {
+                    tmp = this._XP;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (XPLock)
+                {
+                    _XP = value;
+                }
+            }
+        }
 
         public ulong ClanPrivileges
         {
@@ -405,63 +405,63 @@ namespace L2_login
                 }
             }
         }
-		public DateTime LastBuffTime
-		{
-			get
-			{
+        public DateTime LastBuffTime
+        {
+            get
+            {
                 DateTime tmp;
-				lock(lastbufftimeLock)
-				{
-					tmp = this._lastbufftime;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(lastbufftimeLock)
-				{
-					_lastbufftime = value;
-				}
-			}
-		}
-		public DateTime lastMoveTime
-		{
-			get
-			{
+                lock (lastbufftimeLock)
+                {
+                    tmp = this._lastbufftime;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (lastbufftimeLock)
+                {
+                    _lastbufftime = value;
+                }
+            }
+        }
+        public DateTime lastMoveTime
+        {
+            get
+            {
                 DateTime tmp;
-				lock(lastMoveTimeLock)
-				{
-					tmp = this._lastMoveTime;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(lastMoveTimeLock)
-				{
-					_lastMoveTime = value;
-				}
-			}
-		}
-		public DateTime lastVerifyTime
-		{
-			get
-			{
+                lock (lastMoveTimeLock)
+                {
+                    tmp = this._lastMoveTime;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (lastMoveTimeLock)
+                {
+                    _lastMoveTime = value;
+                }
+            }
+        }
+        public DateTime lastVerifyTime
+        {
+            get
+            {
                 DateTime tmp;
-				lock(lastVerifyTimeLock)
-				{
-					tmp = this._lastVerifyTime;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(lastVerifyTimeLock)
-				{
-					_lastVerifyTime = value;
-				}
-			}
-		}
+                lock (lastVerifyTimeLock)
+                {
+                    tmp = this._lastVerifyTime;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (lastVerifyTimeLock)
+                {
+                    _lastVerifyTime = value;
+                }
+            }
+        }
 
         public bool CanBuff()
         {
@@ -476,18 +476,18 @@ namespace L2_login
             return false;
         }
 
-		public Player_Info()
-		{
-			Moving = false;
-			TargetSpoiled = false;
-			lastVerifyTime = DateTime.Now;
+        public Player_Info()
+        {
+            Moving = false;
+            TargetSpoiled = false;
+            lastVerifyTime = DateTime.Now;
             Globals.gamedata.BOT_STATE = BotState.Nothing;
-			BuffTarget = 0;
+            BuffTarget = 0;
             BuffTargetLast = 0;
-			Clear_Skills();
+            Clear_Skills();
             Clear_MyBuffs();
             Clear_Party();
-		}
+        }
 
         private void Clear_Party()
         {
@@ -503,18 +503,18 @@ namespace L2_login
             }
         }
 
-		private void Clear_Skills()
-		{
+        private void Clear_Skills()
+        {
             Globals.SkillListLock.EnterWriteLock();
-			try
-			{
+            try
+            {
                 Globals.gamedata.skills.Clear();
-			}
-			finally
-			{
+            }
+            finally
+            {
                 Globals.SkillListLock.ExitWriteLock();
-			}
-		}
+            }
+        }
 
         private void Clear_MyBuffs()
         {
@@ -531,11 +531,11 @@ namespace L2_login
         public void LoadStatsEX(ByteBuffer buff)
         {
             ID = buff.ReadUInt32();//A0 B9 B0 49
-            // still working on this
-            // next one is 1-4 bytes probably bit mask ...
+                                   // still working on this
+                                   // next one is 1-4 bytes probably bit mask ...
 
 
-         }
+        }
         public void LoadItemsEX(ByteBuffer buff)
         {
             ID = buff.ReadUInt32();//A0 B9 B0 49
@@ -618,12 +618,12 @@ namespace L2_login
             buff.ReadInt16();//0C 00
 
             Name = buff.ReadString(); //54 00 75 00 6C 00 6C 00 61 00 6D 00 6F 00 72 00 65 00 44 00 65 00 77 00 00 00 //tullamoreDew
-            
+
             buff.ReadByte();//00
             buff.ReadInt32(); //00 00 00 00 
             buff.ReadInt32(); //08 00 00 00
 
-            Level = (uint)buff.ReadByte(); //3E
+            Level = buff.ReadByte(); //3E
 
             buff.ReadInt16(); //0E 00 
             STR = buff.ReadUInt16();
@@ -737,7 +737,7 @@ namespace L2_login
             buff.ReadInt32(); //02 00 00 00 
             buff.ReadInt16(); //00 00 
             buff.ReadByte(); //00 
-            
+
             buff.ReadInt16(); //09 00
             buff.ReadInt32(); //00 00 00 00
             buff.ReadInt16(); //00 00
@@ -768,7 +768,7 @@ namespace L2_login
         }
 
         public void Load_User(ByteBuffer buff)
-		{
+        {
 
             //tauti dddddSddddQfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddddffffddddSdddddcccddh
 
@@ -947,12 +947,12 @@ namespace L2_login
                 buff.ReadUInt32();
                 buff.ReadUInt32();
                 buff.ReadUInt32();
-                buff.ReadUInt32(); 
-                buff.ReadUInt32(); 
-                buff.ReadUInt32(); 
-                buff.ReadUInt32(); 
-                buff.ReadUInt32(); 
-                buff.ReadUInt32(); 
+                buff.ReadUInt32();
+                buff.ReadUInt32();
+                buff.ReadUInt32();
+                buff.ReadUInt32();
+                buff.ReadUInt32();
+                buff.ReadUInt32();
 
                 //GD OK
 
@@ -1018,7 +1018,7 @@ namespace L2_login
                 CubicCount = buff.ReadUInt16();//0 0
 
                 Cubics.Clear();
-                for (uint i = 0; i < (uint)CubicCount; i++)
+                for (uint i = 0; i < CubicCount; i++)
                 {
                     uint tmpc = buff.ReadUInt16();//ushort
                     Cubics.Add(tmpc);
@@ -1027,7 +1027,7 @@ namespace L2_login
 
                 buff.ReadUInt16();
                 //AbnormalEffects = buff.ReadUInt32();//Abnormal effects no longer stored here, 00 FE FF FF
-                buff.ReadUInt32(); 
+                buff.ReadUInt32();
 
                 RecLeft = buff.ReadUInt16();//9 0
                 RecAmount = buff.ReadUInt16();//13 0
@@ -1100,7 +1100,7 @@ namespace L2_login
                 buff.ReadUInt32(); //00
                 buff.ReadUInt32(); //00
                 buff.ReadByte(); //00
-                
+
                 //Abnormal effects? 
                 //1 herb: 01 00 00 00 2C 00 00 00 00
                 //2 herbs: 02 00 00 00 24 00 00 00 27 00 00 00 00
@@ -1110,7 +1110,7 @@ namespace L2_login
 
                 AbnEffects.Clear();
 
-                for (uint i = 0; i < (uint)AbnEffCount; i++)
+                for (uint i = 0; i < AbnEffCount; i++)
                 {
                     uint tmpabneff = buff.ReadUInt32();
 #if DEBUG
@@ -1344,7 +1344,7 @@ namespace L2_login
 
                 CubicCount = buff.ReadUInt16();//0 0
                 Cubics.Clear();
-                for (uint i = 0; i < (uint)CubicCount; i++)
+                for (uint i = 0; i < CubicCount; i++)
                 {
                     uint tmpc = buff.ReadUInt16();//ushort
                     Cubics.Add(tmpc);
@@ -1439,32 +1439,32 @@ namespace L2_login
             }
         }
 
-		public void Load(ByteBuffer buff)
-		{
-			Name = buff.ReadString();//Util.Get_String(buff,ref offset);
+        public void Load(ByteBuffer buff)
+        {
+            Name = buff.ReadString();//Util.Get_String(buff,ref offset);
 
-			ID = buff.ReadUInt32();//System.BitConverter.ToUInt32(buff,offset);
+            ID = buff.ReadUInt32();//System.BitConverter.ToUInt32(buff,offset);
             charID = ID; //ID gets converted to objID later on.
 
-			Title = buff.ReadString();//Util.Get_String(buff,ref offset);
+            Title = buff.ReadString();//Util.Get_String(buff,ref offset);
 
-			Globals.gamedata.sessionID[0] = buff.ReadByte();
+            Globals.gamedata.sessionID[0] = buff.ReadByte();
             Globals.gamedata.sessionID[1] = buff.ReadByte();
             Globals.gamedata.sessionID[2] = buff.ReadByte();
             Globals.gamedata.sessionID[3] = buff.ReadByte();
 
-			ClanID = buff.ReadUInt32();
+            ClanID = buff.ReadUInt32();
 
-			buff.ReadUInt32();//00
+            buff.ReadUInt32();//00
 
-			Sex = buff.ReadUInt32();
-			Race = buff.ReadUInt32();
-			BaseClass = buff.ReadUInt32();
-			Active = buff.ReadUInt32();
+            Sex = buff.ReadUInt32();
+            Race = buff.ReadUInt32();
+            BaseClass = buff.ReadUInt32();
+            Active = buff.ReadUInt32();
 
-			X = buff.ReadInt32();
-			Y = buff.ReadInt32();
-			Z = buff.ReadInt32();
+            X = buff.ReadInt32();
+            Y = buff.ReadInt32();
+            Z = buff.ReadInt32();
             Dest_X = X;
             Dest_Y = Y;
             Dest_Z = Z;
@@ -1537,7 +1537,7 @@ namespace L2_login
         public void Update(ByteBuffer buff)
         {
             uint NumberOfUpdates = buff.ReadUInt32();
-            
+
             for (int i = 0; i < NumberOfUpdates; i++)
             {
                 uint data = buff.ReadUInt32();
@@ -1653,34 +1653,39 @@ namespace L2_login
         }
 
 
-		public void Clear_Botting_Buffing(bool success)
-		{
+        public void Clear_Botting_Buffing(bool success)
+        {
             string name = Util.GetCharName(Globals.gamedata.my_char.BuffTarget).ToUpperInvariant();
 
             Globals.BuffsGivenLock.EnterWriteLock();
-			try
-			{
+            try
+            {
                 if (Globals.gamedata.my_char.BuffTarget != 0)
-				{
+                {
                     for (int i = 0; i < Globals.gamedata.BuffsGiven.Count; i++)
-					{
+                    {
                         if (Util.GetCharID(((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Name) == Globals.gamedata.my_char.BuffTarget)
-						{
-							if(success)
+                        {
+                            if (success)
+                            {
                                 ((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Set_Time(Globals.gamedata.my_char.BuffSkillID, DateTime.Now.Ticks);
-							else
+                            }
+                            else
+                            {
                                 ((CharBuffTimer)Globals.gamedata.BuffsGiven[i]).Add_Time(Globals.gamedata.my_char.BuffSkillID, Globals.FAILED_BUFF);
-							break;
-						}
-					}
-				}
-			}
+                            }
+
+                            break;
+                        }
+                    }
+                }
+            }
             catch
-			{
-				Globals.l2net_home.Add_Error("crash: Clear_Botting_Buffing");
-			}
-			finally
-			{
+            {
+                Globals.l2net_home.Add_Error("crash: Clear_Botting_Buffing");
+            }
+            finally
+            {
                 Globals.BuffsGivenLock.ExitWriteLock();
 
                 Globals.gamedata.my_char.BuffTargetLast = Globals.gamedata.my_char.BuffTarget;
@@ -1693,7 +1698,7 @@ namespace L2_login
                     //we don't need a target for this buff...
                     Globals.gamedata.BOT_STATE = BotState.Nothing;
                 }*/
-			}
-		}
-	}//end of class
+            }
+        }
+    }//end of class
 }

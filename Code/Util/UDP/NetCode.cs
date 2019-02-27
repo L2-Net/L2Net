@@ -3,13 +3,13 @@ using System.Net.Sockets;
 namespace L2_login
 {
     public class NetCode
-	{
+    {
         static bool init = false;
         static Socket broadcast_sender;
 
-		public NetCode()
-		{
-		}
+        public NetCode()
+        {
+        }
 
         static private void Initialize()
         {
@@ -78,5 +78,5 @@ namespace L2_login
                 Globals.l2net_home.Add_Error("Netsend - udp ip failed");
             }
         }
-	}//end of class
+    }//end of class
 }

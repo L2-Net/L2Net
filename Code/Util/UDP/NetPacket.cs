@@ -8,8 +8,8 @@ namespace L2_login
         NPCUpdate = 3
     }
 
-	public class NetPacket
-	{
+    public class NetPacket
+    {
         public volatile uint Type;
         private string _Sender;
         public volatile uint SenderID;
@@ -50,25 +50,25 @@ namespace L2_login
                 }
             }
         }
-		public string Name
-		{
-			get
-			{
-				string tmp;
-				lock(NameLock)
-				{
-					tmp = this._Name;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(NameLock)
-				{
-					_Name = value;
-				}
-			}
-		}
+        public string Name
+        {
+            get
+            {
+                string tmp;
+                lock (NameLock)
+                {
+                    tmp = this._Name;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (NameLock)
+                {
+                    _Name = value;
+                }
+            }
+        }
         public string Sender
         {
             get
@@ -89,38 +89,38 @@ namespace L2_login
             }
         }
 
-		public NetPacket()
-		{
-			Clear();
-		}
+        public NetPacket()
+        {
+            Clear();
+        }
 
-		public void Clear()
-		{
-			Type = 0;
+        public void Clear()
+        {
+            Type = 0;
             Sender = "";
             SenderID = 0;
-			Name = "";
+            Name = "";
             ID = 0;
-			MaxCP = 0;
-			CurCP = 0;
-			MaxHP = 0;
-			CurHP = 0;
-			MaxMP = 0;
-			CurMP = 0;
-			Param1 = 0;
-			Param2 = 0;
-			Param3 = 0;
-			Param4 = 0;
-		}
+            MaxCP = 0;
+            CurCP = 0;
+            MaxHP = 0;
+            CurHP = 0;
+            MaxMP = 0;
+            CurMP = 0;
+            Param1 = 0;
+            Param2 = 0;
+            Param3 = 0;
+            Param4 = 0;
+        }
 
-		public void Parse(ByteBuffer t_buff)
-		{
-			//int off = 0;
-			Type = t_buff.ReadUInt32();
+        public void Parse(ByteBuffer t_buff)
+        {
+            //int off = 0;
+            Type = t_buff.ReadUInt32();
             Sender = t_buff.ReadString();
             SenderID = t_buff.ReadUInt32();
 
-            switch(Type)
+            switch (Type)
             {
                 case (uint)NetPacketType.Update:
                 case (uint)NetPacketType.Script:
@@ -141,22 +141,22 @@ namespace L2_login
                     BBuff = new ByteBuffer(t_buff.Get_ByteArray2());
                     break;
             }
-		}
+        }
 
-		public void Parse(byte[] buff)
-		{
+        public void Parse(byte[] buff)
+        {
             ByteBuffer bbuff = new ByteBuffer(buff);
             Parse(bbuff);
-		}
+        }
 
-		public byte[] GetBytes()
-		{
+        public byte[] GetBytes()
+        {
             ByteBuffer t_bbuff = new ByteBuffer();
             t_bbuff.WriteUInt32(Type);
             t_bbuff.WriteString(Sender);
             t_bbuff.WriteUInt32(SenderID);
 
-            switch(Type)
+            switch (Type)
             {
                 case (uint)NetPacketType.Update:
                 case (uint)NetPacketType.Script:
@@ -180,7 +180,7 @@ namespace L2_login
 
             t_bbuff.TrimToIndex();
 
-			return t_bbuff.Get_ByteArray();
-		}
-	}
+            return t_bbuff.Get_ByteArray();
+        }
+    }
 }

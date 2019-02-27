@@ -8,31 +8,31 @@ namespace L2_login
     /// </summary>
     public class About : Form
     {
-		private Label label1;
-		private Label label_netversion;
-		private Label label_version;
-		private LinkLabel linkLabel_http;
+        private Label label1;
+        private Label label_netversion;
+        private Label label_version;
+        private LinkLabel linkLabel_http;
         private Button button_close;
         private Label label_mode;
         private ListBox listBox_help;
         private Label label2;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public About()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public About()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
 
             label_mode.Text = "Running in FULL mode";
 
             string cpu = "";
-            switch(IntPtr.Size)
+            switch (IntPtr.Size)
             {
                 case 4:
                     cpu = "x86";
@@ -46,36 +46,36 @@ namespace L2_login
 
             label_netversion.Text = ".Net version " + Environment.Version.Major.ToString() + "." + Environment.Version.Minor.ToString() + "." + Environment.Version.Revision.ToString() + " " + cpu;
 
-			UpdateUI();
-		}
+            UpdateUI();
+        }
 
-		public void UpdateUI()
-		{
+        public void UpdateUI()
+        {
             this.Text = Globals.m_ResourceManager.GetString("menuItem_about");
-		}
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.label1 = new Label();
             this.label_version = new Label();
             this.label_netversion = new Label();
@@ -88,7 +88,7 @@ namespace L2_login
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             this.label1.Location = new System.Drawing.Point(0, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(290, 40);
@@ -107,7 +107,7 @@ namespace L2_login
             // 
             // label_netversion
             // 
-            this.label_netversion.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.label_netversion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.label_netversion.Location = new System.Drawing.Point(49, 210);
             this.label_netversion.Name = "label_netversion";
             this.label_netversion.Size = new System.Drawing.Size(192, 23);
@@ -128,7 +128,7 @@ namespace L2_login
             // 
             // button_close
             // 
-            this.button_close.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.button_close.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.button_close.Location = new System.Drawing.Point(110, 234);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(75, 23);
@@ -138,7 +138,7 @@ namespace L2_login
             // 
             // label_mode
             // 
-            this.label_mode.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.label_mode.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.label_mode.Location = new System.Drawing.Point(49, 185);
             this.label_mode.Name = "label_mode";
             this.label_mode.Size = new System.Drawing.Size(192, 23);
@@ -148,7 +148,7 @@ namespace L2_login
             // 
             // listBox_help
             // 
-            this.listBox_help.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.listBox_help.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.listBox_help.FormattingEnabled = true;
             this.listBox_help.Items.AddRange(new object[] {
             "mpj123 for making this open source",
@@ -172,7 +172,7 @@ namespace L2_login
             // 
             // label2
             // 
-            this.label2.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.label2.Location = new System.Drawing.Point(97, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 24);
@@ -204,20 +204,20 @@ namespace L2_login
             this.TopMost = true;
             this.ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void linkLabel_http_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			try
-			{
-				System.Diagnostics.Process.Start(linkLabel_http.Text);
-			}
-			catch
-			{
-				//problem opening browser?
-			}
-		}
+        private void linkLabel_http_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(linkLabel_http.Text);
+            }
+            catch
+            {
+                //problem opening browser?
+            }
+        }
 
         private void button_close_Click(object sender, EventArgs e)
         {

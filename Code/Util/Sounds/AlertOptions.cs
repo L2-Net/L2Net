@@ -4,7 +4,7 @@ namespace L2_login
     /// Summary description for SoundOptions.
     /// </summary>
     public class AlertOptions
-	{
+    {
         //1 - start
         //2 - close
         //3 - error
@@ -52,54 +52,54 @@ namespace L2_login
         private string _clan_value_logout;
         private string _player_value_logout;
 
-		private readonly object clan_valueLock = new object();
-		private readonly object player_valueLock = new object();
+        private readonly object clan_valueLock = new object();
+        private readonly object player_valueLock = new object();
 
-		public AlertOptions()
-		{
-			beepon_2waywar = false;
-			beepon_1waywar = false;
+        public AlertOptions()
+        {
+            beepon_2waywar = false;
+            beepon_1waywar = false;
             beepon_n1waywar = false;
-		}
+        }
 
-		public string clan_value
-		{
-			get
-			{
-				string tmp;
-				lock(clan_valueLock)
-				{
-					tmp = this._clan_value;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(clan_valueLock)
-				{
-					_clan_value = value.ToUpperInvariant();
-				}
-			}
-		}
-		public string player_value
-		{
-			get
-			{
-				string tmp;
-				lock(player_valueLock)
-				{
-					tmp = this._player_value;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(player_valueLock)
-				{
-					_player_value = value.ToUpperInvariant();
-				}
-			}
-		}
+        public string clan_value
+        {
+            get
+            {
+                string tmp;
+                lock (clan_valueLock)
+                {
+                    tmp = this._clan_value;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (clan_valueLock)
+                {
+                    _clan_value = value.ToUpperInvariant();
+                }
+            }
+        }
+        public string player_value
+        {
+            get
+            {
+                string tmp;
+                lock (player_valueLock)
+                {
+                    tmp = this._player_value;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (player_valueLock)
+                {
+                    _player_value = value.ToUpperInvariant();
+                }
+            }
+        }
 
         public string clan_value_logout
         {
@@ -139,5 +139,5 @@ namespace L2_login
                 }
             }
         }
-	}//end of class
+    }//end of class
 }//end of namespace

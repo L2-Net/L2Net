@@ -2,8 +2,8 @@ using System;
 
 namespace L2_login
 {
-	public class UserSkill : Object_Base
-	{
+    public class UserSkill : Object_Base
+    {
         public volatile bool OldSkill = false;
         public volatile uint Passive = 0;
         public volatile uint Level = 0;
@@ -43,23 +43,23 @@ namespace L2_login
             }
         }
         public DateTime LastTime
-		{
-			get
-			{
+        {
+            get
+            {
                 DateTime tmp;
-				lock(LastTimeLock)
-				{
-					tmp = this._LastTime;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(LastTimeLock)
-				{
-					_LastTime = value;
-				}
-			}
-		}
-	}//end of UserSkill
+                lock (LastTimeLock)
+                {
+                    tmp = this._LastTime;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (LastTimeLock)
+                {
+                    _LastTime = value;
+                }
+            }
+        }
+    }//end of UserSkill
 }

@@ -79,7 +79,9 @@ namespace L2_login
             for (i = 0; i < IdTable.Length; i++)
             {
                 if (IdTable[i] == Value)
+                {
                     return i;
+                }
             }
             return -1;
         }
@@ -158,7 +160,7 @@ namespace L2_login
                     {
                         Packet.SetByte(0, (byte)GetIndexOf(Packet.GetByte(0), PacketIDs));
                     }
-                    
+
                     if (Globals.gamedata.Chron <= Chronicle.CT2_4)
                     {
                         Packet.SetByte(0, (byte)GetIndexOf(Packet.GetByte(0), PacketIDs));

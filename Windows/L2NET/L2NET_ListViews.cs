@@ -187,7 +187,7 @@ namespace L2_login
                         "Z: " + player.Z.ToString() + Environment.NewLine +
                         "Dist: " + Util.Distance(Globals.gamedata.my_char.X, Globals.gamedata.my_char.Y, Globals.gamedata.my_char.Z, player.X, player.Y, player.Z).ToString() + Environment.NewLine +
                         "Unique ID: " + player.ID + Environment.NewLine +
-                        "Name Color: " + player.NameColor.ToString() ;
+                        "Name Color: " + player.NameColor.ToString();
                 }
             }
 

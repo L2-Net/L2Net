@@ -69,7 +69,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
-                e.Item.ImageIndex = -1; 
+                e.Item.ImageIndex = -1;
             }
         }
 
@@ -130,7 +130,7 @@ namespace L2_login
                     //((ListViewItem)listView_players_data_items[i]).SubItems[1].Text = player.Name;
                     if (Active)
                     {
-                        ((ListViewItem)listView_players_data_items[i]).SubItems[2].Text = Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + ((int)Util.Distance(x, y, z, player.X, player.Y, player.Z)).ToString("0000");
+                        ((ListViewItem)listView_players_data_items[i]).SubItems[2].Text = Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + Util.Distance(x, y, z, player.X, player.Y, player.Z).ToString("0000");
                     }
                     else
                     {
@@ -169,7 +169,7 @@ namespace L2_login
                     ObjListItem.SubItems.Add(player.Name);//name
                     if (Active)
                     {
-                        ObjListItem.SubItems.Add(Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + ((int)Util.Distance(x, y, z, player.X, player.Y, player.Z)).ToString("0000"));//class
+                        ObjListItem.SubItems.Add(Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + Util.Distance(x, y, z, player.X, player.Y, player.Z).ToString("0000"));//class
                     }
                     else
                     {
@@ -327,7 +327,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.ImageIndex = -1;
-            } 
+            }
         }
 
         private void UpdateNPCsList()
@@ -433,7 +433,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.ImageIndex = -1;
-            } 
+            }
         }
 
         private void UpdateInventoryList()
@@ -870,7 +870,7 @@ namespace L2_login
 
                     //add it
                     ListViewItem ObjListItem;
-                    ObjListItem = new ListViewItem(Util.GetSkillName(cb.ID,cb.SkillLevel));//Name
+                    ObjListItem = new ListViewItem(Util.GetSkillName(cb.ID, cb.SkillLevel));//Name
                     ObjListItem.SubItems.Add(cb.SkillLevel.ToString());//Title
                     if (cb.ExpiresTime == -1)
                     {

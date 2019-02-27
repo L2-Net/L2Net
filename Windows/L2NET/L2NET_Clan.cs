@@ -52,7 +52,7 @@ namespace L2_login
                             obj.SubItems[3].Text = " ";
                         }
                     }
-                    
+
                     found = true;
                 }
             }
@@ -394,7 +394,8 @@ namespace L2_login
                 buff.ReadUInt32(); //Sponsor
             }
 
-            if (mem_name == "") {
+            if (mem_name == "")
+            {
                 return;
             }
             bool found = false;
@@ -426,7 +427,7 @@ namespace L2_login
                             obj.SubItems[3].Text = " ";
                         }
                     }
-                    
+
                     found = true;
                 }
             }

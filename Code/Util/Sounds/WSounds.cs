@@ -26,11 +26,11 @@ namespace L2_login
         public long PlayBefore = System.DateTime.MaxValue.Ticks;
     }
 
-	public class WSounds
-	{
+    public class WSounds
+    {
         private Queue sounds = new Queue();
         private Thread soundengine_thread;
-        
+
         public WSounds()
         {
             soundengine_thread = new Thread(new ThreadStart(SoundEngine));
@@ -72,7 +72,9 @@ namespace L2_login
                                 System.IO.Stream str = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(Globals.SOUND_NAMESPACE + play.Name);
 
                                 if (str == null)
+                                {
                                     return;
+                                }
 
                                 // play the resource
                                 SoundPlayer snd = new SoundPlayer(str);
@@ -89,9 +91,9 @@ namespace L2_login
                 Thread.Sleep(Globals.SLEEP_SoundEngine);
             }
         }
-       
-		public void PlayWavFile(string fname)
-		{
+
+        public void PlayWavFile(string fname)
+        {
             Sound snd = new Sound();
             snd.Name = fname;
             snd.isFile = true;
@@ -99,9 +101,9 @@ namespace L2_login
 
             sounds.Enqueue(snd);
         }
- 
-		public void PlayWavResource(string wav)
-		{
+
+        public void PlayWavResource(string wav)
+        {
             Sound snd = new Sound();
             snd.Name = wav;
             snd.isFile = false;
@@ -109,5 +111,5 @@ namespace L2_login
 
             sounds.Enqueue(snd);
         }
-	}//end of class
+    }//end of class
 }

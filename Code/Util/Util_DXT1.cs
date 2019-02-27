@@ -121,11 +121,11 @@ namespace L2_login
                         green = (g1 + g2) / 2 * 255;
                         blue = (b1 + b2) / 2 * 255;
                         break;
-                    /*case 3:
-                        red = 255;
-                        green = 255;
-                        blue = 255;
-                        break;*/
+                        /*case 3:
+                            red = 255;
+                            green = 255;
+                            blue = 255;
+                            break;*/
                 }
             }
 

@@ -9,24 +9,24 @@ namespace L2_login
         public int type; // 1 - Client , 2 - Server
         public string time;
         public byte[] bytebuffer;
-        
-          public pck_window_dat()
-            {
-                        action =new int();
-                        type =new int();
-                        time ="";
-         }
+
+        public pck_window_dat()
+        {
+            action = new int();
+            type = new int();
+            time = "";
+        }
         public pck_window_dat(pck_window_dat dat)
-                {
-                    action = dat.action;
-                    type = dat.type;
-                    time = String.Copy(dat.time);
-                    bytebuffer = new byte[dat.bytebuffer.Length];
-                    for (int i = 0; i < bytebuffer.Length; i++)
-                    {
-                        bytebuffer[i] = dat.bytebuffer[i];
-                    }
-                  }
+        {
+            action = dat.action;
+            type = dat.type;
+            time = String.Copy(dat.time);
+            bytebuffer = new byte[dat.bytebuffer.Length];
+            for (int i = 0; i < bytebuffer.Length; i++)
+            {
+                bytebuffer[i] = dat.bytebuffer[i];
+            }
+        }
         public pck_window_dat(byte[] bbufer)
         {
             bytebuffer = new byte[bbufer.Length];

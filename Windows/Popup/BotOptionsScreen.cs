@@ -282,7 +282,7 @@ namespace L2_login
         //private uint[] RaidBossIDs = new uint[] { 25001, 25004, 25007, 25010, 25013, 25016, 25019, 25020, 25023, 25026, 25029, 25032, 25035, 25038, 25041, 25044, 25047, 25050, 25051, 25054, 25057, 25060, 25063, 25064, 25067, 25070, 25073, 25076, 25079, 25082, 25085, 25088, 25089, 25092, 25095, 25098, 25099, 25102, 25103, 25106, 25109, 25112, 25115, 25118, 25119, 25122, 25125, 25126, 25127, 25128, 25131, 25134, 25137, 25140, 25143, 25146, 25149, 25152, 25155, 25158, 25159, 25162, 25163, 25166, 25169, 25170, 25173, 25176, 25179, 25182, 25185, 25188, 25189, 25192, 25198, 25199, 25202, 25205, 25208, 25211, 25214, 25217, 25220, 25223, 25226, 25229, 25230, 25233, 25234, 25235, 25238, 25241, 25244, 25245, 25248, 25249, 25252, 25255, 25256, 25259, 25260, 25263, 25266, 25269, 25272, 25273, 25276, 25277, 25280, 25281, 25282, 25283, 25286, 25290, 25293, 25296, 25299, 25302, 25305, 25306, 25309, 25312, 25315, 25316, 25319, 25322, 25325, 25328, 25352, 25354, 25357, 25360, 25362, 25365, 25366, 25369, 25372, 25373, 25375, 25378, 25380, 25383, 25385, 25388, 25391, 25392, 25394, 25395, 25398, 25401, 25404, 25407, 25410, 25412, 25415, 25418, 25420, 25423, 25426, 25429, 25431, 25434, 25437, 25438, 25441, 25444, 25447, 25450, 25453, 25456, 25460, 25463, 25467, 25470, 25473, 25475, 25478, 25481, 25484, 25487, 25490, 25493, 25496, 25498, 25501, 25504, 25506, 25509, 25512, 25514, 25523, 25524, 25527, 25528, 25531, 25532, 25534, 25536, 25539, 25540, 25542, 25544, 25603, 25609, 25610, 25611, 25612, 25616, 25617, 25618, 25619, 25620, 25621, 25622, 25624, 25671, 25674, 25677, 25680, 25681, 25684, 25687, 25690, 25691, 25692, 25693, 25694, 25695, 29030, 29033, 29036, 29037, 29056, 29060, 29062, 29065, 29095, 29096, 29129, 29132, 29135, 29138, 29141, 29144, 29147, 25374, 25503, 25502, 25499, 25500, 25287, 25288, 29064, 29063, 25443, 25371, 25399, 25257, 25258, 25206, 25207, 25147, 25210, 25209, 25031, 25030, 25327, 25326, 25435, 25436, 25046, 25271, 25270, 25120, 25121, 25058, 25059, 25148, 25037, 25036, 25077, 25274, 25275, 25084, 25083, 25081, 25526, 25218, 25219, 25153, 25009, 25008, 25110, 25111, 25370, 25468, 25682, 25469, 25683, 25045, 25278, 25222, 25221, 25268, 25267, 25379, 25184, 25332, 25419, 25543, 25432, 25433, 25537, 25445, 25461, 25462, 25017, 25442, 25150, 25279, 25151, 25497, 25323, 25317, 25318, 25292, 25291, 25307, 25308, 25200, 25156, 25157, 25053, 25541, 25294, 25101, 25525, 25492, 25676, 25295, 25403, 25012, 25427, 25428, 25451, 25466, 25464, 25465, 25132, 25133, 25130, 25015, 25014, 25386, 25353, 25246, 25247, 25675, 25491, 25002, 25201, 25011, 25177, 25679, 25489, 25397, 25253, 25142, 25689, 25141, 25688, 25187, 25186, 25171, 25172, 25480, 25479, 25382, 25116, 25117, 25298, 25297, 25167, 25449, 25448, 25408, 25409, 25104, 25105, 25025, 25024, 25477, 25476, 25061, 25062, 25237, 25236, 25048, 25049, 25180, 25181, 25174, 25175, 25228, 25227, 25027, 25028, 25439, 25440, 25264, 25265, 25474, 25093, 25094, 25204, 25183, 25368, 25367, 25330, 25396, 25406, 25405, 25123, 25124, 25107, 25108, 25284, 25285, 25387, 25250, 25393, 25114, 25113, 25034, 25080, 25452, 25321, 25033, 25331, 25239, 25313, 25314, 25191, 25417, 25416, 25413, 25414, 25505, 25381, 25422, 25400, 25193, 25194, 25203, 25022, 25021, 25168, 25003, 25483, 25377, 25052, 25078, 25231, 25232, 25160, 25507, 25508, 25389, 25390, 25042, 25043, 25096, 25097, 25402, 25161, 25411, 25074, 25075, 25072, 25071, 25251, 25300, 25213, 25212, 25320, 25139, 25384, 25324, 25301, 25178, 25310, 25311, 25482, 25458, 25069, 25068, 25459, 25457, 25364, 25363, 25446, 25144, 25145, 25216, 25215, 25355, 25356, 29058, 29057, 25138, 25224, 25225, 25091, 25090, 25673, 25516, 25672, 25515, 25488, 25494, 25495, 25100, 29097, 29098, 25678, 25455, 25358, 25359, 25018, 25055, 25136, 25135, 25430, 25242, 25243, 25303, 25304, 25065, 25066, 25254, 25486, 25485, 25087, 25086, 25425, 25424, 25039, 25040, 25262, 25261, 25421, 25545, 25005, 25006, 25472, 25686, 25471, 25685, 25510, 25511, 25056, 25538, 25329, 25129, 25376, 25154, 25240, 25454, 25361 };
         //GoD
         private uint[] RaidBossIDs = new uint[] { 29001, 29006, 29014, 29068, 29020, 29022, 29028, 29047, 25001, 25004, 25007, 25010, 25013, 25016, 25019, 25023, 25026, 25029, 25032, 25038, 25041, 25044, 25047, 25050, 25051, 25057, 25060, 25063, 25064, 25067, 25070, 25076, 25079, 25082, 25085, 25088, 25089, 25092, 25095, 25098, 25099, 25102, 25103, 25106, 25112, 25115, 25118, 25119, 25122, 25125, 25127, 25128, 25131, 25134, 25143, 25146, 25149, 25152, 25155, 25158, 25159, 25163, 25166, 25169, 25170, 25179, 25182, 25185, 25188, 25189, 25192, 25208, 25211, 25214, 25223, 25226, 25229, 25230, 25233, 25235, 25238, 25241, 25244, 25245, 25248, 25249, 25252, 25255, 25256, 25259, 25260, 25263, 25269, 25272, 25273, 25276, 25290, 25293, 25299, 25302, 25305, 25306, 25309, 25312, 25315, 25316, 25319, 25322, 25325, 25328, 25339, 25342, 25346, 25349, 25352, 25354, 25357, 25360, 25362, 25365, 25366, 25369, 25373, 25375, 25378, 25380, 25383, 25385, 25388, 25391, 25392, 25394, 25395, 25398, 25404, 25410, 25415, 25418, 25420, 25423, 25426, 25429, 25431, 25434, 25437, 25438, 25441, 25444, 25447, 25450, 25453, 25456, 25460, 25463, 25473, 25475, 25478, 25481, 25484, 25493, 25496, 25498, 25501, 25504, 25506, 25512, 29060, 29096, 29062, 25523, 25524, 29056, 29054, 25527, 29065, 29095, 25528, 25536, 25539, 25540, 25542, 25544, 29213, 25603, 25609, 25610, 25611, 25612, 29118, 29129, 29132, 29135, 29138, 29141, 29144, 29147, 25643, 25644, 25645, 25646, 25647, 25648, 25649, 25650, 25651, 25652, 29150, 25623, 25624, 25625, 25626, 29163, 25665, 25666, 25667, 25671, 25674, 25677, 25680, 25681, 25684, 25687, 29179, 25725, 25726, 25727, 25718, 25719, 25720, 25721, 25722, 25723, 25724, 25710, 29181, 25020, 25173, 29195, 29196, 25696, 25697, 25698, 25859, 25862, 25856, 25855, 25796, 25797, 25799, 29197, 25745, 25758, 25785, 25875, 25779, 25775, 25870, 25871, 29191, 29218, 25809, 25811, 25813, 25815, 25816, 25818, 25820, 25002, 25003, 25005, 25006, 25008, 25009, 25011, 25012, 25014, 25015, 25017, 25018, 25021, 25022, 25024, 25025, 25027, 25028, 25030, 25031, 25033, 25034, 25036, 25037, 25039, 25040, 25042, 25043, 25045, 25046, 25048, 25049, 25052, 25053, 25055, 25056, 25058, 25059, 25061, 25062, 25065, 25066, 25068, 25069, 25071, 25072, 25074, 25075, 25077, 25078, 25080, 25081, 25083, 25084, 25086, 25087, 25090, 25091, 25093, 25094, 25096, 25097, 25100, 25101, 25104, 25105, 25107, 25108, 25110, 25111, 25113, 25114, 25116, 25117, 25120, 25121, 25123, 25124, 25129, 25130, 25132, 25133, 25135, 25136, 25138, 25139, 25141, 25142, 25144, 25145, 25147, 25148, 25150, 25151, 25153, 25154, 25156, 25157, 25160, 25161, 25167, 25168, 25171, 25172, 25174, 25175, 25177, 25178, 25180, 25181, 25183, 25184, 25186, 25187, 25190, 25191, 25193, 25194, 25200, 25201, 25203, 25204, 25206, 25207, 25209, 25210, 25212, 25213, 25215, 25216, 25218, 25219, 25221, 25222, 25224, 25225, 25227, 25228, 25231, 25232, 25236, 25237, 25239, 25240, 25242, 25243, 25246, 25247, 25250, 25251, 25253, 25254, 25257, 25258, 25261, 25262, 25264, 25265, 25267, 25268, 25270, 25271, 25274, 25275, 25278, 25279, 25291, 25292, 25294, 25295, 25297, 25298, 25300, 25301, 25303, 25304, 25307, 25308, 25310, 25311, 25313, 25314, 25317, 25318, 25320, 25321, 25323, 25324, 25326, 25327, 25329, 25330, 25331, 25332, 25353, 25355, 25356, 25358, 25359, 25361, 25363, 25364, 25367, 25368, 25370, 25371, 25374, 25376, 25377, 25379, 25381, 25382, 25384, 25386, 25387, 25389, 25390, 25393, 25396, 25397, 25399, 25400, 25402, 25403, 25405, 25406, 25408, 25409, 25411, 25413, 25414, 25416, 25417, 25419, 25421, 25422, 25424, 25425, 25427, 25428, 25430, 25432, 25433, 25435, 25436, 25439, 25440, 25442, 25443, 25445, 25446, 25448, 25449, 25451, 25452, 25454, 25455, 25457, 25458, 25459, 25461, 25462, 25464, 25465, 25466, 25468, 25469, 25471, 25472, 25474, 25476, 25477, 25479, 25480, 25482, 25483, 25485, 25486, 25488, 25489, 25491, 25492, 25494, 25495, 25497, 25499, 25500, 25502, 25503, 25505, 25507, 25508, 25510, 25511, 25515, 25516, 25525, 25526, 25537, 25538, 25541, 25543, 25545, 25672, 25673, 25675, 25676, 25678, 25679, 25682, 25683, 25685, 25686, 25688, 25689, 25765, 25826, 25842, 25860, 25861, 25863, 25864, 25878, 29057, 29058, 29063, 29064, 29097, 29098 };
-        
+
         private CheckBox checkBox_StuckCheck;
         private CheckBox checkBox_OnlyPickMine;
         private CheckBox checkBox_ignore_no_mesh;
@@ -762,9 +762,13 @@ namespace L2_login
             textBox_buffheal_mp.Text = listView_buffheal.Items[listView_buffheal.SelectedIndices[0]].SubItems[5].Text;
 
             if (listView_buffheal.Items[listView_buffheal.SelectedIndices[0]].SubItems[6].Text == "1")
+            {
                 checkBox_target.Checked = true;
+            }
             else
+            {
                 checkBox_target.Checked = false;
+            }
 
             for (int i = 0; i < skill_ids.Count; i++)
             {
@@ -988,9 +992,9 @@ namespace L2_login
                     //ListViewItem item = listView_donot_items.FindItemWithText(id.ToString());
                     //if (item == null)
                     //{
-                        ListViewItem ObjListItem = listView_donot_items.Items.Add(id.ToString());
-                        ObjListItem.SubItems.Add(Util.GetItemName(id));
-                        //Globals.l2net_home.Add_Text("ID: " + id.ToString() + " Added to listview_donot_items", Globals.Green);
+                    ListViewItem ObjListItem = listView_donot_items.Items.Add(id.ToString());
+                    ObjListItem.SubItems.Add(Util.GetItemName(id));
+                    //Globals.l2net_home.Add_Text("ID: " + id.ToString() + " Added to listview_donot_items", Globals.Green);
                     //}
                 }
 
@@ -1065,9 +1069,13 @@ namespace L2_login
         {
             ////////////////////////PARTY OPTIONS
             if (Globals.gamedata.botoptions.ActiveFollow == 1)
+            {
                 checkBox_activefollow.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow.Checked = false;
+            }
 
             textBox_activefollow_name.Text = Globals.gamedata.botoptions.ActiveFollowName;
 
@@ -1085,46 +1093,78 @@ namespace L2_login
             textBox_ActiveFollow_Dist.Text = Util.Float_Int32(Globals.gamedata.botoptions.ActiveFollowDistance).ToString();
 
             if (Globals.gamedata.botoptions.ActiveFollowAttack == 1)
+            {
                 checkBox_activefollow_attack.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow_attack.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.ActiveFollowAttackInstant == 1)
+            {
                 checkBox_activefollow_attack_Instant.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow_attack_Instant.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.ActiveFollowTarget == 1)
+            {
                 checkBox_activefollow_target.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow_target.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AutoSweep == 1)
+            {
                 checkBox_autosweep.Checked = true;
+            }
             else
+            {
                 checkBox_autosweep.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AutoSpoil == 1)
+            {
                 checkBox_autospoil.Checked = true;
+            }
             else
+            {
                 checkBox_autospoil.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AutoSpoilUntilSuccess == 1)
+            {
                 checkBox_UntilSuccess.Checked = true;
+            }
             else
+            {
                 checkBox_UntilSuccess.Checked = false;
+            }
 
             textBox_spoil_mp.Text = Globals.gamedata.botoptions.SpoilMPAbove.ToString();
 
             if (Globals.gamedata.botoptions.SpoilCrush == 1)
+            {
                 checkBox_spoilcrush.Checked = true;
+            }
             else
+            {
                 checkBox_spoilcrush.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.Plunder == 1)
+            {
                 checkBox_use_plunder.Checked = true;
+            }
             else
+            {
                 checkBox_use_plunder.Checked = false;
+            }
 
             textBox_buffrange.Text = Globals.gamedata.botoptions.HealRange.ToString();
 
@@ -1134,109 +1174,201 @@ namespace L2_login
                 checkBox_movebeforetargeting.Enabled = true;
             }
             else
+            {
                 checkBox_active_target.Checked = false;
+            }
+
             if (Globals.gamedata.botoptions.Attack == 1)
+            {
                 checkBox_active_attack.Checked = true;
+            }
             else
+            {
                 checkBox_active_attack.Checked = false;
+            }
+
             if (Globals.gamedata.botoptions.Pickup == 1)
+            {
                 checkBox_pickup.Checked = true;
+            }
             else
+            {
                 checkBox_pickup.Checked = false;
+            }
+
             if (Globals.gamedata.botoptions.PetAssist == 1)
+            {
                 checkBox_pet_autoassist.Checked = true;
+            }
             else
+            {
                 checkBox_pet_autoassist.Checked = false;
+            }
+
             if (Globals.gamedata.botoptions.PickupAfterAttack == 1)
+            {
                 checkBox_PickupAfterAttack.Checked = true;
+            }
             else
+            {
                 checkBox_PickupAfterAttack.Checked = false;
+            }
+
             textBox_pickup_range.Text = Globals.gamedata.botoptions.LootRange.ToString();
             if (Globals.gamedata.botoptions.ControlBuffing == 1)
+            {
                 checkBox_buff_control.Checked = true;
+            }
             else
+            {
                 checkBox_buff_control.Checked = false;
+            }
+
             if (Globals.gamedata.botoptions.ShiftBuffing == 1)
+            {
                 checkBox_buff_shift.Checked = true;
+            }
             else
+            {
                 checkBox_buff_shift.Checked = false;
+            }
 
             textBox_zrange.Text = BotOptions.Target_ZRANGE.ToString();
 
             //party stuff
             if (Globals.gamedata.botoptions.AcceptParty == 1)
+            {
                 checkBox_accept_party.Checked = true;
+            }
             else
+            {
                 checkBox_accept_party.Checked = false;
+            }
+
             textBox_accept_party.Text = Globals.gamedata.botoptions.AcceptPartyNames;
 
             if (Globals.gamedata.botoptions.SendParty == 1)
+            {
                 checkBox_auto_invite.Checked = true;
+            }
             else
+            {
                 checkBox_auto_invite.Checked = false;
+            }
+
             textBox_auto_invite.Text = Globals.gamedata.botoptions.SendPartyNames;
 
             if (Globals.gamedata.botoptions.OOP == 1)
+            {
                 checkBox_oop.Checked = true;
+            }
             else
+            {
                 checkBox_oop.Checked = false;
+            }
+
             textBox_oop.Text = Globals.gamedata.botoptions.OOPNames;
 
             if (Globals.gamedata.botoptions.LeavePartyOnLeader == 1)
+            {
                 checkBox_drop_leader.Checked = true;
+            }
             else
+            {
                 checkBox_drop_leader.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptRezClan == 1)
+            {
                 checkBox_accept_rez_clan.Checked = true;
+            }
             else
+            {
                 checkBox_accept_rez_clan.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptRezParty == 1)
+            {
                 checkBox_accept_rez_Party.Checked = true;
+            }
             else
+            {
                 checkBox_accept_rez_Party.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptRezAlly == 1)
+            {
                 checkBox_accept_rez_alliance.Checked = true;
+            }
             else
+            {
                 checkBox_accept_rez_alliance.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptPartyClan == 1)
+            {
                 checkBox_accept_party_clan.Checked = true;
+            }
             else
+            {
                 checkBox_accept_party_clan.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptPartyAlly == 1)
+            {
                 checkBox_accept_party_alliance.Checked = true;
+            }
             else
+            {
                 checkBox_accept_party_alliance.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AcceptRez == 1)
+            {
                 checkBox_accept_rez.Checked = true;
+            }
             else
+            {
                 checkBox_accept_rez.Checked = false;
+            }
+
             textBox_accept_rez.Text = Globals.gamedata.botoptions.AcceptRezNames;
 
             if (Globals.gamedata.botoptions.ProtectPriority == 1)
+            {
                 checkBox_portect_priority.Checked = true;
+            }
             else
+            {
                 checkBox_portect_priority.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.IgnoreItems == 1)
+            {
                 checkBox_ignoreitems.Checked = true;
+            }
             else
+            {
                 checkBox_ignoreitems.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.AutoBlacklist == 1)
+            {
                 checkBox_AutoBlacklist.Checked = true;
+            }
             else
+            {
                 checkBox_AutoBlacklist.Checked = false;
+            }
 
             if (Globals.gamedata.botoptions.StuckCheck == 1)
+            {
                 checkBox_StuckCheck.Checked = true;
+            }
             else
-                checkBox_StuckCheck.Checked =false;
+            {
+                checkBox_StuckCheck.Checked = false;
+            }
             //bounding polygon
             listView_border.Items.Clear();
 
@@ -1280,35 +1412,69 @@ namespace L2_login
 
             //targeting
             if (BotOptions.Target_TYPE == 0)
+            {
                 radioButton_type0.Checked = true;
+            }
             else if (BotOptions.Target_TYPE == 1)
+            {
                 radioButton_type1.Checked = true;
+            }
             else if (BotOptions.Target_TYPE == 2)
+            {
                 radioButton_type2.Checked = true;
+            }
+
             if (BotOptions.Target_ATTACKABLE == 0)
+            {
                 radioButton_attackable0.Checked = true;
+            }
             else if (BotOptions.Target_ATTACKABLE == 1)
+            {
                 radioButton_attackable1.Checked = true;
+            }
             else if (BotOptions.Target_ATTACKABLE == 2)
+            {
                 radioButton_attackable2.Checked = true;
+            }
+
             if (BotOptions.Target_ALIVE == 0)
+            {
                 radioButton_alive0.Checked = true;
+            }
             else if (BotOptions.Target_ALIVE == 1)
+            {
                 radioButton_alive1.Checked = true;
+            }
             else if (BotOptions.Target_ALIVE == 2)
+            {
                 radioButton_alive2.Checked = true;
+            }
+
             if (BotOptions.Target_INBOX == 0)
+            {
                 radioButton_inbox0.Checked = true;
+            }
             else if (BotOptions.Target_INBOX == 1)
+            {
                 radioButton_inbox1.Checked = true;
+            }
             else if (BotOptions.Target_INBOX == 2)
+            {
                 radioButton_inbox2.Checked = true;
+            }
+
             if (BotOptions.Target_COMBAT == 0)
+            {
                 radioButton_combat0.Checked = true;
+            }
             else if (BotOptions.Target_COMBAT == 1)
+            {
                 radioButton_combat1.Checked = true;
+            }
             else if (BotOptions.Target_COMBAT == 2)
+            {
                 radioButton_combat2.Checked = true;
+            }
 
             //no need to load buffs/heals or combat settings since those can't be set via scripting
         }
@@ -1499,15 +1665,15 @@ namespace L2_login
             this.textBox_buffheal_delay = new TextBox();
             this.textBox_buffheal_min_per = new TextBox();
             this.listView_buffheal = new ListView();
-            this.columnHeader_skill = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_trait = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_names = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_xx = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_delay = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_mp = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_needtarget = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_traitID = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_scID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_skill = new ColumnHeader();
+            this.columnHeader_trait = new ColumnHeader();
+            this.columnHeader_names = new ColumnHeader();
+            this.columnHeader_xx = new ColumnHeader();
+            this.columnHeader_delay = new ColumnHeader();
+            this.columnHeader_mp = new ColumnHeader();
+            this.columnHeader_needtarget = new ColumnHeader();
+            this.columnHeader_traitID = new ColumnHeader();
+            this.columnHeader_scID = new ColumnHeader();
             this.contextMenuStrip_buff = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem2 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem = new ToolStripMenuItem();
@@ -1525,12 +1691,12 @@ namespace L2_login
             this.comboBox_trait_toggle = new ComboBox();
             this.checkBox_onoff_toggle = new CheckBox();
             this.listView_toggles = new ListView();
-            this.columnHeader_Toggle_Skill = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_Toggle_Trait = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_Toggle_LesserThen = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_Toggle_Biggerthan = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_Toggle_TraitID = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_SkillID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_Toggle_Skill = new ColumnHeader();
+            this.columnHeader_Toggle_Trait = new ColumnHeader();
+            this.columnHeader_Toggle_LesserThen = new ColumnHeader();
+            this.columnHeader_Toggle_Biggerthan = new ColumnHeader();
+            this.columnHeader_Toggle_TraitID = new ColumnHeader();
+            this.columnHeader_SkillID = new ColumnHeader();
             this.contextMenuStrip_toggle = new ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new ToolStripMenuItem();
             this.tabPage_items = new TabPage();
@@ -1541,11 +1707,11 @@ namespace L2_login
             this.button_updateitem = new Button();
             this.button_additem = new Button();
             this.listView_item = new ListView();
-            this.columnHeader_i_item = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_i_trait = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_i_per = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_i_delay = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_i_traitid = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_i_item = new ColumnHeader();
+            this.columnHeader_i_trait = new ColumnHeader();
+            this.columnHeader_i_per = new ColumnHeader();
+            this.columnHeader_i_delay = new ColumnHeader();
+            this.columnHeader_i_traitid = new ColumnHeader();
             this.contextMenuStrip_item = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem3 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem1 = new ToolStripMenuItem();
@@ -1579,15 +1745,15 @@ namespace L2_login
             this.label_combat_on = new Label();
             this.checkBox_combat_on = new CheckBox();
             this.listView_combat = new ListView();
-            this.columnHeader_combat_trait = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_conditional = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_percent = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_shortcut = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_delay = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_mp = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_traitID = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_conditionalID = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_combat_shortcutID = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_combat_trait = new ColumnHeader();
+            this.columnHeader_combat_conditional = new ColumnHeader();
+            this.columnHeader_combat_percent = new ColumnHeader();
+            this.columnHeader_combat_shortcut = new ColumnHeader();
+            this.columnHeader_combat_delay = new ColumnHeader();
+            this.columnHeader_combat_mp = new ColumnHeader();
+            this.columnHeader_combat_traitID = new ColumnHeader();
+            this.columnHeader_combat_conditionalID = new ColumnHeader();
+            this.columnHeader_combat_shortcutID = new ColumnHeader();
             this.contextMenuStrip_combat = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem5 = new ToolStripMenuItem();
             this.moveUpToolStripMenuItem2 = new ToolStripMenuItem();
@@ -1609,8 +1775,8 @@ namespace L2_login
             this.button_updatepolygon = new Button();
             this.button_addpolygon = new Button();
             this.listView_border = new ListView();
-            this.columnHeader_x = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_y = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_x = new ColumnHeader();
+            this.columnHeader_y = new ColumnHeader();
             this.contextMenuStrip_polygon = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem4 = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem = new ToolStripMenuItem();
@@ -1625,8 +1791,8 @@ namespace L2_login
             this.textBox_donot_npcs = new TextBox();
             this.button_donot_npcs = new Button();
             this.listView_donot_npcs = new ListView();
-            this.columnHeader_donot_npc_id = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_donot_npc_name = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_donot_npc_id = new ColumnHeader();
+            this.columnHeader_donot_npc_name = new ColumnHeader();
             this.contextMenuStrip_donot_npcs = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem1 = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem1 = new ToolStripMenuItem();
@@ -1639,8 +1805,8 @@ namespace L2_login
             this.textBox_donot_items = new TextBox();
             this.button_donot_items = new Button();
             this.listView_donot_items = new ListView();
-            this.columnHeader_donot_item_id = (ColumnHeader)new ColumnHeader();
-            this.columnHeader_donot_item_name = (ColumnHeader)new ColumnHeader();
+            this.columnHeader_donot_item_id = new ColumnHeader();
+            this.columnHeader_donot_item_name = new ColumnHeader();
             this.contextMenuStrip_donot_items = new ContextMenuStrip(this.components);
             this.removeToolStripMenuItem = new ToolStripMenuItem();
             this.removeAllToolStripMenuItem2 = new ToolStripMenuItem();
@@ -1710,9 +1876,9 @@ namespace L2_login
             this.label23 = new Label();
             this.ps_label1 = new Label();
             this.lv_player_sort = new ListView();
-            this.player_sort_col_ID = (ColumnHeader)new ColumnHeader();
-            this.player_sort_col_cname = (ColumnHeader)new ColumnHeader();
-            this.player_sort_col_prio = (ColumnHeader)new ColumnHeader();
+            this.player_sort_col_ID = new ColumnHeader();
+            this.player_sort_col_cname = new ColumnHeader();
+            this.player_sort_col_prio = new ColumnHeader();
             this.button_save = new Button();
             this.button_cancel = new Button();
             this.button_saveoptions = new Button();
@@ -1739,19 +1905,19 @@ namespace L2_login
             this.checkBox2 = new CheckBox();
             this.textBox5 = new TextBox();
             this.textBox6 = new TextBox();
-            this.columnHeader7 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader11 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader12 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader13 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader14 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader15 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader16 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader17 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader18 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader7 = new ColumnHeader();
+            this.columnHeader11 = new ColumnHeader();
+            this.columnHeader12 = new ColumnHeader();
+            this.columnHeader13 = new ColumnHeader();
+            this.columnHeader14 = new ColumnHeader();
+            this.columnHeader15 = new ColumnHeader();
+            this.columnHeader16 = new ColumnHeader();
+            this.columnHeader17 = new ColumnHeader();
+            this.columnHeader18 = new ColumnHeader();
             this.button_close = new Button();
             this.button_clearoptions = new Button();
             this.toolTip_Instant_attack = new ToolTip(this.components);
-            columnHeader_i_itemid = (ColumnHeader)new ColumnHeader();
+            columnHeader_i_itemid = new ColumnHeader();
             this.tabControl_botpages.SuspendLayout();
             this.tabPage_party.SuspendLayout();
             this.groupBox_RezSettings.SuspendLayout();
@@ -2288,7 +2454,7 @@ namespace L2_login
             // 
             // textBox_MoveToLeash
             // 
-            this.textBox_MoveToLeash.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
+            this.textBox_MoveToLeash.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             this.textBox_MoveToLeash.Location = new System.Drawing.Point(45, 68);
             this.textBox_MoveToLeash.Name = "textBox_MoveToLeash";
             this.textBox_MoveToLeash.Size = new Size(51, 20);
@@ -2345,7 +2511,7 @@ namespace L2_login
             // 
             // textBox_Moveto_Z
             // 
-            this.textBox_Moveto_Z.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
+            this.textBox_Moveto_Z.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             this.textBox_Moveto_Z.Location = new System.Drawing.Point(169, 43);
             this.textBox_Moveto_Z.Name = "textBox_Moveto_Z";
             this.textBox_Moveto_Z.Size = new Size(40, 18);
@@ -2354,7 +2520,7 @@ namespace L2_login
             // 
             // textBox_Moveto_X
             // 
-            this.textBox_Moveto_X.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
+            this.textBox_Moveto_X.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             this.textBox_Moveto_X.Location = new System.Drawing.Point(22, 43);
             this.textBox_Moveto_X.Name = "textBox_Moveto_X";
             this.textBox_Moveto_X.Size = new Size(51, 18);
@@ -2363,7 +2529,7 @@ namespace L2_login
             // 
             // textBox_Moveto_Y
             // 
-            this.textBox_Moveto_Y.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
+            this.textBox_Moveto_Y.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             this.textBox_Moveto_Y.Location = new System.Drawing.Point(93, 43);
             this.textBox_Moveto_Y.Name = "textBox_Moveto_Y";
             this.textBox_Moveto_Y.Size = new Size(54, 18);
@@ -2372,7 +2538,7 @@ namespace L2_login
             // 
             // Set_CurrentXYZ
             // 
-            this.Set_CurrentXYZ.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
+            this.Set_CurrentXYZ.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             this.Set_CurrentXYZ.Location = new System.Drawing.Point(183, 17);
             this.Set_CurrentXYZ.Name = "Set_CurrentXYZ";
             this.Set_CurrentXYZ.Size = new Size(35, 22);
@@ -5975,134 +6141,227 @@ namespace L2_login
             //save out the options
             ////////////////////////PARTY OPTIONS
             if (checkBox_activefollow.Checked)
+            {
                 Globals.gamedata.botoptions.ActiveFollow = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ActiveFollow = 0;
+            }
 
             Globals.gamedata.botoptions.Set_ActiveFollow(textBox_activefollow_name.Text);
 
             if (radioButton_ActiveFollow_style1.Checked)
+            {
                 Globals.gamedata.botoptions.ActiveFollowStyle = 1;//walker style
+            }
             else
+            {
                 Globals.gamedata.botoptions.ActiveFollowStyle = 0;//l2.net style
+            }
 
             Globals.gamedata.botoptions.ActiveFollowDistance = Util.GetInt32(textBox_ActiveFollow_Dist.Text);
 
             if (checkBox_activefollow_attack.Checked)
+            {
                 Globals.gamedata.botoptions.ActiveFollowAttack = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ActiveFollowAttack = 0;
+            }
 
             if (checkBox_activefollow_attack_Instant.Checked)
+            {
                 Globals.gamedata.botoptions.ActiveFollowAttackInstant = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ActiveFollowAttackInstant = 0;
+            }
 
             if (checkBox_activefollow_target.Checked)
+            {
                 Globals.gamedata.botoptions.ActiveFollowTarget = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ActiveFollowTarget = 0;
+            }
 
             if (checkBox_autosweep.Checked)
+            {
                 Globals.gamedata.botoptions.AutoSweep = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AutoSweep = 0;
+            }
 
             if (checkBox_autospoil.Checked)
+            {
                 Globals.gamedata.botoptions.AutoSpoil = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AutoSpoil = 0;
+            }
 
             if (checkBox_UntilSuccess.Checked)
+            {
                 Globals.gamedata.botoptions.AutoSpoilUntilSuccess = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AutoSpoilUntilSuccess = 0;
+            }
 
             Globals.gamedata.botoptions.SpoilMPAbove = Convert.ToInt32(textBox_spoil_mp.Text);
 
             if (checkBox_spoilcrush.Checked)
+            {
                 Globals.gamedata.botoptions.SpoilCrush = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.SpoilCrush = 0;
+            }
 
             if (checkBox_use_plunder.Checked)
+            {
                 Globals.gamedata.botoptions.Plunder = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.Plunder = 0;
+            }
 
             if (checkBox_ignoreitems.Checked)
+            {
                 Globals.gamedata.botoptions.IgnoreItems = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.IgnoreItems = 0;
+            }
 
             if (checkBox_PickOnly.Checked)
+            {
                 Globals.gamedata.botoptions.PickOnlyItemsInList = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.PickOnlyItemsInList = 0;
+            }
 
             if (checkBox_AttackOnly.Checked)
+            {
                 Globals.gamedata.botoptions.AttackOnlyMobsInList = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AttackOnlyMobsInList = 0;
+            }
 
             if (checkBox_ignore_no_mesh.Checked)
+            {
                 Globals.gamedata.botoptions.IgnoreMeshlessItems = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.IgnoreMeshlessItems = 0;
+            }
 
             Globals.gamedata.botoptions.HealRange = Util.GetInt32(textBox_buffrange.Text);
 
             if (checkBox_accept_party.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptParty = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptParty = 0;
+            }
 
             Globals.gamedata.botoptions.AcceptPartyNames = textBox_accept_party.Text;
 
             if (checkBox_auto_invite.Checked)
+            {
                 Globals.gamedata.botoptions.SendParty = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.SendParty = 0;
+            }
 
             Globals.gamedata.botoptions.SendPartyNames = textBox_auto_invite.Text;
 
             if (checkBox_oop.Checked)
+            {
                 Globals.gamedata.botoptions.OOP = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.OOP = 0;
+            }
+
             Globals.gamedata.botoptions.OOPNames = textBox_oop.Text;
 
             if (checkBox_drop_leader.Checked)
+            {
                 Globals.gamedata.botoptions.LeavePartyOnLeader = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.LeavePartyOnLeader = 0;
+            }
 
             if (checkBox_accept_rez_clan.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptRezClan = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptRezClan = 0;
+            }
 
             if (checkBox_accept_rez_Party.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptRezParty = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptRezParty = 0;
+            }
 
             if (checkBox_accept_rez_alliance.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptRezAlly = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptRezAlly = 0;
+            }
 
             if (checkBox_accept_party_clan.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptPartyClan = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptPartyClan = 0;
+            }
 
             if (checkBox_accept_party_alliance.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptPartyAlly = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptPartyAlly = 0;
+            }
 
-            
+
 
             //set up oops ID
             Globals.gamedata.botoptions.OOPIDs = new ArrayList();
@@ -6147,7 +6406,9 @@ namespace L2_login
                 Globals.l2net_home.Add_Text("Rest Below " + Globals.gamedata.botoptions.RestBelowHealth.ToString() + " HP", Globals.Green, TextType.BOT);
             }
             else
+            {
                 Globals.gamedata.botoptions.RestBelowHP = 0;
+            }
 
             if (checkBox_RestBelowMP.Checked)
             {
@@ -6163,7 +6424,9 @@ namespace L2_login
                 Globals.l2net_home.Add_Text("Rest Below " + Globals.gamedata.botoptions.RestBelowMana.ToString() + " MP", Globals.Green, TextType.BOT);
             }
             else
+            {
                 Globals.gamedata.botoptions.RestBelowMP = 0;
+            }
 
             /* Rest Until */
             if (checkBox_RestUntilHP.Checked)
@@ -6215,53 +6478,86 @@ namespace L2_login
 
             /* Follow Rest */
             if (checkBox_FollowRest.Checked)
+            {
                 Globals.gamedata.botoptions.FollowRest = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.FollowRest = 0;
+            }
+
             Globals.gamedata.botoptions.Set_FollowRest(textBox_FollowRestName.Text); //ActiveFollow(textBox_activefollow_name.Text);
 
             /* Stuck Check */
             if (checkBox_StuckCheck.Checked)
+            {
                 Globals.gamedata.botoptions.StuckCheck = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.StuckCheck = 0;
+            }
 
             /* Auto Blacklist */
             if (checkBox_AutoBlacklist.Checked)
+            {
                 Globals.gamedata.botoptions.AutoBlacklist = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AutoBlacklist = 0;
+            }
 
 
             /*************************/
 
             if (checkBox_accept_rez.Checked)
+            {
                 Globals.gamedata.botoptions.AcceptRez = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.AcceptRez = 0;
+            }
 
             Globals.gamedata.botoptions.AcceptRezNames = textBox_accept_rez.Text;
 
             if (checkBox_active_target.Checked)
+            {
                 Globals.gamedata.botoptions.Target = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.Target = 0;
+            }
 
             if (checkBox_cancel_target.Checked)
+            {
                 Globals.gamedata.botoptions.Cancel_Target = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.Cancel_Target = 0;
+            }
 
             //move to location stuff
             if (checkBox_MoveToLoc.Checked)
+            {
                 Globals.gamedata.botoptions.MoveToLoc = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.MoveToLoc = 0;
+            }
 
             if (checkBox_OutOfCombat.Checked)
+            {
                 Globals.gamedata.botoptions.OutOfCombat = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.OutOfCombat = 0;
+            }
 
             Globals.gamedata.botoptions.Moveto_X = textBox_Moveto_X.Text;
             Globals.gamedata.botoptions.Moveto_Y = textBox_Moveto_Y.Text;
@@ -6270,68 +6566,116 @@ namespace L2_login
 
 
             if (checkBox_active_attack.Checked)
+            {
                 Globals.gamedata.botoptions.Attack = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.Attack = 0;
+            }
 
             if (checkBox_pet_autoassist.Checked)
+            {
                 Globals.gamedata.botoptions.PetAssist = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.PetAssist = 0;
+            }
 
             if (checkBox_Summon_autoassist.Checked)
+            {
                 Globals.gamedata.botoptions.SummonAssist = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.SummonAssist = 0;
+            }
 
             if (checkBox_pet_soloattack.Checked)
+            {
                 Globals.gamedata.botoptions.PetAttackSolo = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.PetAttackSolo = 0;
+            }
 
             if (checkBox_summon_instantattack.Checked)
+            {
                 Globals.gamedata.botoptions.SummonInstantAttack = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.SummonInstantAttack = 0;
+            }
 
             if (checkBox_active_move_first.Checked)
+            {
                 Globals.gamedata.botoptions.MoveFirst = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.MoveFirst = 0;
+            }
 
             Globals.gamedata.botoptions.MoveRange = Util.GetInt32(textBox_active_move_range.Text);
 
             if (checkBox_pickup.Checked)
+            {
                 Globals.gamedata.botoptions.Pickup = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.Pickup = 0;
+            }
 
             if (checkBox_PickupAfterAttack.Checked)
+            {
                 Globals.gamedata.botoptions.PickupAfterAttack = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.PickupAfterAttack = 0;
+            }
 
             if (checkBox_OnlyPickMine.Checked)
+            {
                 Globals.gamedata.botoptions.OnlyPickMine = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.OnlyPickMine = 0;
+            }
 
             Globals.gamedata.botoptions.LootRange = Util.GetInt32(textBox_pickup_range.Text);
 
             if (checkBox_buff_control.Checked)
+            {
                 Globals.gamedata.botoptions.ControlBuffing = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ControlBuffing = 0;
+            }
 
             if (checkBox_buff_shift.Checked)
+            {
                 Globals.gamedata.botoptions.ShiftBuffing = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ShiftBuffing = 0;
+            }
 
             if (checkBox_portect_priority.Checked)
+            {
                 Globals.gamedata.botoptions.ProtectPriority = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.ProtectPriority = 0;
+            }
 
             BotOptions.Target_ZRANGE = Util.GetInt32(textBox_zrange.Text);
 
@@ -6402,7 +6746,7 @@ namespace L2_login
                     it.Type = (BuffTriggers)Util.GetInt32(lv.SubItems[4].Text);
                     it.ItemID = Util.GetUInt32(lv.SubItems[5].Text);
                     it.Min_Per = Util.GetInt32(lv.SubItems[2].Text);
-                    it.TickDuration = ((long)Util.GetInt32(lv.SubItems[3].Text)) * TimeSpan.TicksPerMillisecond;
+                    it.TickDuration = Util.GetInt32(lv.SubItems[3].Text) * TimeSpan.TicksPerMillisecond;
 
                     BotOptions.ItemTargets.Add(it);
                 }
@@ -6429,7 +6773,7 @@ namespace L2_login
                     ct.ShortCutID = Util.GetInt32(lv.SubItems[8].Text);
                     ct.Min_Per = Util.GetInt32(lv.SubItems[2].Text);
                     ct.Min_MP = Util.GetInt32(lv.SubItems[5].Text);
-                    ct.TickDuration = ((long)Util.GetInt32(lv.SubItems[4].Text)) * TimeSpan.TicksPerMillisecond;
+                    ct.TickDuration = Util.GetInt32(lv.SubItems[4].Text) * TimeSpan.TicksPerMillisecond;
 
                     BotOptions.CombatTargets.Add(ct);
                 }
@@ -6575,48 +6919,100 @@ namespace L2_login
 
             //targeting
             if (radioButton_type0.Checked)
+            {
                 BotOptions.Target_TYPE = 0;
+            }
+
             if (radioButton_type1.Checked)
+            {
                 BotOptions.Target_TYPE = 1;
+            }
+
             if (radioButton_type2.Checked)
+            {
                 BotOptions.Target_TYPE = 2;
+            }
+
             if (radioButton_attackable0.Checked)
+            {
                 BotOptions.Target_ATTACKABLE = 0;
+            }
+
             if (radioButton_attackable1.Checked)
+            {
                 BotOptions.Target_ATTACKABLE = 1;
+            }
+
             if (radioButton_attackable2.Checked)
+            {
                 BotOptions.Target_ATTACKABLE = 2;
+            }
+
             if (radioButton_alive0.Checked)
+            {
                 BotOptions.Target_ALIVE = 0;
+            }
+
             if (radioButton_alive1.Checked)
+            {
                 BotOptions.Target_ALIVE = 1;
+            }
+
             if (radioButton_alive2.Checked)
+            {
                 BotOptions.Target_ALIVE = 2;
+            }
+
             if (radioButton_inbox0.Checked)
+            {
                 BotOptions.Target_INBOX = 0;
+            }
+
             if (radioButton_inbox1.Checked)
+            {
                 BotOptions.Target_INBOX = 1;
+            }
+
             if (radioButton_inbox2.Checked)
+            {
                 BotOptions.Target_INBOX = 2;
+            }
+
             if (radioButton_combat0.Checked)
+            {
                 BotOptions.Target_COMBAT = 0;
+            }
+
             if (radioButton_combat1.Checked)
+            {
                 BotOptions.Target_COMBAT = 1;
+            }
+
             if (radioButton_combat2.Checked)
+            {
                 BotOptions.Target_COMBAT = 2;
+            }
             //this.Hide();
 
             //Normal Move Before Attack v385//
             if (checkBox_active_move_first_normal.Checked)
+            {
                 Globals.gamedata.botoptions.MoveFirstNormal = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.MoveFirstNormal = 0;
+            }
 
             //Move before targeting v391
             if (checkBox_movebeforetargeting.Checked)
+            {
                 Globals.gamedata.botoptions.MoveBeforeTargeting = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.MoveBeforeTargeting = 0;
+            }
 
             //Dead logout/return/toggle v391
             if (checkBox_DeadReturn.Checked)
@@ -6635,12 +7031,18 @@ namespace L2_login
                 Globals.gamedata.botoptions.DeadLogoutDelay = Convert.ToInt32(textBox_DeadLogOutDelay.Text);
             }
             else
+            {
                 Globals.gamedata.botoptions.DeadLogout = 0;
+            }
 
             if (checkBox_DeadToggleBotting.Checked)
+            {
                 Globals.gamedata.botoptions.DeadToggleBotting = 1;
+            }
             else
+            {
                 Globals.gamedata.botoptions.DeadToggleBotting = 0;
+            }
 
             //Advanced
             Globals.gamedata.botoptions.AntiKSDelay = (int)numericUpDown_anti_ks_delay.Value;
@@ -6677,65 +7079,112 @@ namespace L2_login
 
             // Content Filter
             if (cf_targetselected.Checked)
+            {
                 Globals.lagfilter_TargetSelected = true;
+            }
             else
+            {
                 Globals.lagfilter_TargetSelected = false;
+            }
 
             if (cf_targetunselected.Checked)
+            {
                 Globals.lagfilter_TargetUnselected = true;
+            }
             else
+            {
                 Globals.lagfilter_TargetUnselected = false;
+            }
 
             if (cf_filtermagicskill.Checked)
+            {
                 Globals.lagfilter_Skills = true;
+            }
             else
+            {
                 Globals.lagfilter_Skills = false;
+            }
 
             if (cf_ExBrExtraUserInfo.Checked)
+            {
                 Globals.lagfilter_ExBrExtraUserInfo = true;
+            }
             else
+            {
                 Globals.lagfilter_ExBrExtraUserInfo = false;
+            }
 
             if (cf_striptitle.Checked)
+            {
                 Globals.lagfilter_xf_ci_striptitle = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_striptitle = false;
+            }
 
             if (cf_stripenchant.Checked)
+            {
                 Globals.lagfilter_xf_ci_stripenchant = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_stripenchant = false;
+            }
 
             if (cf_stripaugment.Checked)
+            {
                 Globals.lagfilter_xf_ci_stripaug = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_stripaug = false;
+            }
 
             if (cf_zerononvisible.Checked)
+            {
                 Globals.lagfilter_xf_ci_stripunseen = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_stripunseen = false;
+            }
 
             if (cf_one_gender.Checked)
+            {
                 Globals.lagfilter_xf_ci_simple_gender = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_simple_gender = false;
+            }
 
             if (cf_simple_appearance.Checked)
+            {
                 Globals.lagfilter_xf_ci_simple_apperance = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_simple_apperance = false;
+            }
 
             if (cf_norecs.Checked)
+            {
                 Globals.lagfilter_xf_ci_striprecs = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_striprecs = false;
+            }
 
             if (cf_dwarfmode.Checked)
+            {
                 Globals.lagfilter_xf_ci_simple_race = true;
+            }
             else
+            {
                 Globals.lagfilter_xf_ci_simple_race = false;
-
+            }
         }
 
         private void button_add_Click(object sender, EventArgs e)
@@ -6753,9 +7202,14 @@ namespace L2_login
                 ObjListItem.SubItems.Add(textBox_buffheal_delay.Text);
                 ObjListItem.SubItems.Add(textBox_buffheal_mp.Text);
                 if (checkBox_target.Checked)
+                {
                     ObjListItem.SubItems.Add("1");
+                }
                 else
+                {
                     ObjListItem.SubItems.Add("0");
+                }
+
                 ObjListItem.SubItems.Add(comboBox_buffheal_trait.SelectedIndex.ToString());
                 ObjListItem.SubItems.Add(id.ToString());
 
@@ -6781,9 +7235,13 @@ namespace L2_login
                 ObjListItem.SubItems.Add(textBox_itemdelay1.Text);
                 ObjListItem.SubItems.Add(comboBox_trait1.SelectedIndex.ToString());
                 if (comboBox_item1.SelectedIndex == -1)
+                {
                     ObjListItem.SubItems.Add("0");
+                }
                 else
+                {
                     ObjListItem.SubItems.Add(id.ToString());
+                }
 
                 ObjListItem.Checked = checkBox_item1.Checked;
             }
@@ -7057,23 +7515,35 @@ namespace L2_login
 
             //active follow
             if (Util.GetInt32(file.ReadLine()) == 1)
+            {
                 checkBox_activefollow.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow.Checked = false;
+            }
             //active follow style
             if (Util.GetInt32(file.ReadLine()) == 1)
+            {
                 radioButton_ActiveFollow_style1.Checked = true;
+            }
             else
+            {
                 radioButton_ActiveFollow_style2.Checked = true;
+            }
             //names
             textBox_activefollow_name.Text = file.ReadLine();
             //dist
             textBox_ActiveFollow_Dist.Text = file.ReadLine();
             //active follow attack
             if (Util.GetInt32(file.ReadLine()) == 1)
+            {
                 checkBox_activefollow_attack.Checked = true;
+            }
             else
+            {
                 checkBox_activefollow_attack.Checked = false;
+            }
 
             //load buffs
             try
@@ -7087,9 +7557,13 @@ namespace L2_login
                     //checked
                     line = file.ReadLine();
                     if (Util.GetInt32(line) == 1)
+                    {
                         ObjListItem.Checked = true;
+                    }
                     else
+                    {
                         ObjListItem.Checked = false;
+                    }
                     //type
                     int type = Util.GetInt32(file.ReadLine());
                     ObjListItem.SubItems.Add(BuffTargetClass.Get_BuffTrigger_Name(type));
@@ -7124,9 +7598,13 @@ namespace L2_login
                     //checked
                     line = file.ReadLine();
                     if (Util.GetInt32(line) == 1)
+                    {
                         ObjListItem.Checked = true;
+                    }
                     else
+                    {
                         ObjListItem.Checked = false;
+                    }
                     //type
                     int type = Util.GetInt32(file.ReadLine());
                     ObjListItem.SubItems.Add(BuffTargetClass.Get_BuffTrigger_Name(type));
@@ -7184,24 +7662,40 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_autospoil.Checked = true;
+                }
                 else
+                {
                     checkBox_autospoil.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_spoilcrush.Checked = true;
+                }
                 else
+                {
                     checkBox_spoilcrush.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_autosweep.Checked = true;
+                }
                 else
+                {
                     checkBox_autosweep.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_ignoreitems.Checked = true;
+                }
                 else
+                {
                     checkBox_ignoreitems.Checked = false;
+                }
             }
             catch
             {
@@ -7216,16 +7710,24 @@ namespace L2_login
                 textBox_buffrange.Text = Globals.gamedata.botoptions.HealRange.ToString();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_party.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_party.Checked = false;
+                }
 
                 textBox_accept_party.Text = file.ReadLine();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_rez.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_rez.Checked = false;
+                }
 
                 textBox_accept_rez.Text = file.ReadLine();
             }
@@ -7261,9 +7763,13 @@ namespace L2_login
                     CombatTargetClass ct = new CombatTargetClass();
 
                     if (Util.GetInt32(file.ReadLine()) == 1)
+                    {
                         ct.Active = true;
+                    }
                     else
+                    {
                         ct.Active = false;
+                    }
 
                     ct.Type = (BuffTriggers)Util.GetInt32(file.ReadLine());
                     ct.Conditional = Util.GetInt32(file.ReadLine());
@@ -7286,7 +7792,7 @@ namespace L2_login
                             break;
                     }
                     ObjListItem.SubItems.Add(ct.Min_Per.ToString());
-                    ObjListItem.SubItems.Add(((ct.ShortCutID % Globals.Skills_PerPage) + 1).ToString() + " : " + (((int)(ct.ShortCutID / Globals.Skills_PerPage)) + 1).ToString());
+                    ObjListItem.SubItems.Add(((ct.ShortCutID % Globals.Skills_PerPage) + 1).ToString() + " : " + (ct.ShortCutID / Globals.Skills_PerPage + 1).ToString());
                     ObjListItem.SubItems.Add(ct.TickDuration.ToString());
                     ObjListItem.SubItems.Add(ct.Min_MP.ToString());
                     ObjListItem.SubItems.Add(((byte)ct.Type).ToString());
@@ -7307,9 +7813,13 @@ namespace L2_login
             {
                 //active follow target
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_activefollow_target.Checked = true;
+                }
                 else
+                {
                     checkBox_activefollow_target.Checked = false;
+                }
             }
             catch
             {
@@ -7320,32 +7830,51 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_active_target.Checked = true;
+                }
                 else
+                {
                     checkBox_active_target.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_active_attack.Checked = true;
+                }
                 else
+                {
                     checkBox_active_attack.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_pickup.Checked = true;
+                }
                 else
+                {
                     checkBox_pickup.Checked = false;
+                }
 
                 textBox_pickup_range.Text = file.ReadLine();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_buff_control.Checked = true;
+                }
                 else
+                {
                     checkBox_buff_control.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_buff_shift.Checked = true;
+                }
                 else
+                {
                     checkBox_buff_shift.Checked = false;
-
+                }
             }
             catch
             {
@@ -7366,23 +7895,35 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_auto_invite.Checked = true;
+                }
                 else
+                {
                     checkBox_auto_invite.Checked = false;
+                }
 
                 textBox_auto_invite.Text = file.ReadLine();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_oop.Checked = true;
+                }
                 else
+                {
                     checkBox_oop.Checked = false;
+                }
 
                 textBox_oop.Text = file.ReadLine();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_portect_priority.Checked = true;
+                }
                 else
+                {
                     checkBox_portect_priority.Checked = false;
+                }
             }
             catch
             {
@@ -7395,37 +7936,77 @@ namespace L2_login
             {
                 //sound alerts
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_2waywar.Checked = true;
+                }
                 else
+                {
                     checkBox_2waywar.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_1waywar.Checked = true;
+                }
                 else
+                {
                     checkBox_1waywar.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_n1waywar.Checked = true;
+                }
                 else
+                {
                     checkBox_n1waywar.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_hp.Checked = true;
+                }
                 else
+                {
                     checkBox_hp.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_mp.Checked = true;
+                }
                 else
+                {
                     checkBox_mp.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_cp.Checked = true;
+                }
                 else
+                {
                     checkBox_cp.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_clan.Checked = true;
+                }
                 else
+                {
                     checkBox_clan.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_player.Checked = true;
+                }
                 else
+                {
                     checkBox_player.Checked = false;
+                }
+
                 textBox_hp.Text = file.ReadLine();
                 textBox_mp.Text = file.ReadLine();
                 textBox_cp.Text = file.ReadLine();
@@ -7434,37 +8015,77 @@ namespace L2_login
 
                 //logout
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_2waywar_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_2waywar_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_1waywar_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_1waywar_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_n1waywar_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_n1waywar_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_hp_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_hp_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_mp_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_mp_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_cp_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_cp_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_clan_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_clan_logout.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_player_logout.Checked = true;
+                }
                 else
+                {
                     checkBox_player_logout.Checked = false;
+                }
+
                 textBox_hp_logout.Text = file.ReadLine();
                 textBox_mp_logout.Text = file.ReadLine();
                 textBox_cp_logout.Text = file.ReadLine();
@@ -7542,37 +8163,60 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_active_move_first.Checked = true;
+                }
                 else
+                {
                     checkBox_active_move_first.Checked = false;
+                }
 
                 textBox_active_move_range.Text = file.ReadLine();
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_clan_ignore.Checked = true;
+                }
                 else
+                {
                     checkBox_clan_ignore.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_player_ignore.Checked = true;
+                }
                 else
+                {
                     checkBox_player_ignore.Checked = false;
-
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_whitechat.Checked = true;
+                }
                 else
+                {
                     checkBox_whitechat.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_privatemessage.Checked = true;
+                }
                 else
+                {
                     checkBox_privatemessage.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_friendchat.Checked = true;
+                }
                 else
+                {
                     checkBox_friendchat.Checked = false;
+                }
             }
             catch
             {
@@ -7584,34 +8228,59 @@ namespace L2_login
             {
                 //Solo Settings
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_RestBelowHP.Checked = true;
+                }
                 else
+                {
                     checkBox_RestBelowHP.Checked = false;
+                }
+
                 numericUpDown_RestBelowHP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_RestUntilHP.Checked = true;
+                }
                 else
+                {
                     checkBox_RestUntilHP.Checked = false;
+                }
+
                 numericUpDown_RestUntilHP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_RestBelowMP.Checked = true;
+                }
                 else
+                {
                     checkBox_RestBelowMP.Checked = false;
+                }
+
                 numericUpDown_RestBelowMP.Value = Convert.ToInt32(file.ReadLine());
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_RestUntilMP.Checked = true;
+                }
                 else
+                {
                     checkBox_RestUntilMP.Checked = false;
+                }
+
                 numericUpDown_RestUntilMP.Value = Convert.ToInt32(file.ReadLine());
 
                 //Party Settings
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_FollowRest.Checked = true;
+                }
                 else
+                {
                     checkBox_FollowRest.Checked = false;
+                }
+
                 textBox_FollowRestName.Text = file.ReadLine();
             }
             catch
@@ -7625,24 +8294,40 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_Ign_Raidbosses.Checked = true;
+                }
                 else
+                {
                     checkBox_Ign_Raidbosses.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_Ign_TreasureChests.Checked = true;
+                }
                 else
+                {
                     checkBox_Ign_TreasureChests.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_StuckCheck.Checked = true;
+                }
                 else
+                {
                     checkBox_StuckCheck.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_ignore_no_mesh.Checked = true;
+                }
                 else
+                {
                     checkBox_ignore_no_mesh.Checked = false;
+                }
             }
             catch
             {
@@ -7653,19 +8338,31 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_Ign_Summons.Checked = true;
+                }
                 else
+                {
                     checkBox_Ign_Summons.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_active_move_first_normal.Checked = true;
+                }
                 else
+                {
                     checkBox_active_move_first_normal.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_OnlyPickMine.Checked = true;
+                }
                 else
+                {
                     checkBox_OnlyPickMine.Checked = false;
+                }
             }
             catch
             {
@@ -7835,15 +8532,23 @@ namespace L2_login
                 }
                 //v391: Move before target
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_movebeforetargeting.Checked = true;
+                }
                 else
+                {
                     checkBox_movebeforetargeting.Checked = false;
+                }
 
                 //v391: Dead logout/return/Toggle
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_DeadLogOut.Checked = true;
+                }
                 else
+                {
                     checkBox_DeadLogOut.Checked = false;
+                }
 
                 int tmp = Util.GetInt32(file.ReadLine());
 
@@ -7859,64 +8564,101 @@ namespace L2_login
                 }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_DeadToggleBotting.Checked = true;
+                }
                 else
+                {
                     checkBox_DeadToggleBotting.Checked = false;
+                }
 
                 //v391 AutoSpoil Until success
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_UntilSuccess.Checked = true;
+                }
                 else
+                {
                     checkBox_UntilSuccess.Checked = false;
+                }
 
                 //v391 Pickup After Attack
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_PickupAfterAttack.Checked = true;
+                }
                 else
+                {
                     checkBox_PickupAfterAttack.Checked = false;
+                }
 
                 //v391 Spoil MP Above
                 textBox_spoil_mp.Text = file.ReadLine();
                 if (string.IsNullOrWhiteSpace(textBox_spoil_mp.Text))
+                {
                     textBox_spoil_mp.Text = "100";
+                }
 
                 //v391 Pet Assist
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_pet_autoassist.Checked = true;
+                }
                 else
+                {
                     checkBox_pet_autoassist.Checked = false;
+                }
 
                 //v391 Active follow attack instant
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_activefollow_attack_Instant.Checked = true;
+                }
                 else
+                {
                     checkBox_activefollow_attack_Instant.Checked = false;
+                }
 
                 //v392 Pickuptimeout
                 numericUpDown_pickuptimeout.Value = Util.GetInt32(file.ReadLine());
 
                 //v392B11: Summon stuff
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_Summon_autoassist.Checked = true;
+                }
                 else
+                {
                     checkBox_Summon_autoassist.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_pet_soloattack.Checked = true;
+                }
                 else
+                {
                     checkBox_pet_soloattack.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_summon_instantattack.Checked = true;
+                }
                 else
+                {
                     checkBox_summon_instantattack.Checked = false;
+                }
 
                 //v393: Plunder
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_use_plunder.Checked = true;
+                }
                 else
+                {
                     checkBox_use_plunder.Checked = false;
-
+                }
             }
             catch
             {
@@ -7927,14 +8669,22 @@ namespace L2_login
             {
                 //v396: Cancel_target
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_cancel_target.Checked = true;
+                }
                 else
+                {
                     checkBox_cancel_target.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_drop_leader.Checked = true;
+                }
                 else
+                {
                     checkBox_drop_leader.Checked = false;
+                }
             }
             catch
             {
@@ -7944,26 +8694,40 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_rez_clan.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_rez_clan.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_rez_alliance.Checked = true;
+                }
                 else
-                    checkBox_accept_rez_alliance.Checked = false; 
-                
+                {
+                    checkBox_accept_rez_alliance.Checked = false;
+                }
+
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_party_clan.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_party_clan.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_party_alliance.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_party_alliance.Checked = false;
-
-
+                }
             }
             catch
             {
@@ -7974,28 +8738,39 @@ namespace L2_login
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_accept_rez_Party.Checked = true;
+                }
                 else
+                {
                     checkBox_accept_rez_Party.Checked = false;
                 }
+            }
             catch
             {
                 //Old Data file
             }
-            
+
             //Out of combat stuff
             try
             {
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_MoveToLoc.Checked = true;
+                }
                 else
+                {
                     checkBox_MoveToLoc.Checked = false;
+                }
 
                 if (Util.GetInt32(file.ReadLine()) == 1)
+                {
                     checkBox_OutOfCombat.Checked = true;
+                }
                 else
+                {
                     checkBox_OutOfCombat.Checked = false;
-
+                }
 
                 textBox_Moveto_X.Text = Util.GetInt32(file.ReadLine()).ToString();
                 textBox_Moveto_Y.Text = Util.GetInt32(file.ReadLine()).ToString();
@@ -8021,14 +8796,18 @@ namespace L2_login
                     //checked
                     line = file.ReadLine();
                     if (Util.GetInt32(line) == 1)
+                    {
                         ObjListItem.Checked = true;
+                    }
                     else
+                    {
                         ObjListItem.Checked = false;
+                    }
 
                     //trait
                     int trait = Util.GetInt32(file.ReadLine());
                     ObjListItem.SubItems.Add(BuffTargetClass.Get_BuffTrigger_Name_Toggle(trait));
-                    
+
                     ObjListItem.SubItems.Add(file.ReadLine()); //XX>%
                     ObjListItem.SubItems.Add(file.ReadLine()); //XX<%
                     ObjListItem.SubItems.Add(trait.ToString()); //traitID
@@ -8059,23 +8838,35 @@ namespace L2_login
         {
             //active follow?
             if (checkBox_activefollow.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
             //active follow style
             if (radioButton_ActiveFollow_style1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
             //names
             file.WriteLine(textBox_activefollow_name.Text);
             //dist
             file.WriteLine(textBox_ActiveFollow_Dist.Text);
             //active follow attack?
             if (checkBox_activefollow_attack.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             try
             {
@@ -8085,9 +8876,14 @@ namespace L2_login
                 {
                     file.WriteLine(lv.SubItems[2].Text);//names
                     if (lv.Checked)
+                    {
                         file.WriteLine("1");
+                    }
                     else
+                    {
                         file.WriteLine("0");
+                    }
+
                     file.WriteLine(Util.GetInt32(lv.SubItems[7].Text));//Type
                     file.WriteLine(Util.GetInt32(lv.SubItems[8].Text));//SkillID   //ShortCutID
                     file.WriteLine(Util.GetInt32(lv.SubItems[3].Text));//Min_Per
@@ -8109,9 +8905,14 @@ namespace L2_login
                 {
                     file.WriteLine(lv.SubItems[0].Text);//names
                     if (lv.Checked)
+                    {
                         file.WriteLine("1");
+                    }
                     else
+                    {
                         file.WriteLine("0");
+                    }
+
                     file.WriteLine(Util.GetInt32(lv.SubItems[4].Text));//Type
                     file.WriteLine(Util.GetInt32(lv.SubItems[2].Text));//Min_Per
                     file.WriteLine(Util.GetInt32(lv.SubItems[3].Text));//TickDuration
@@ -8153,38 +8954,62 @@ namespace L2_login
             }
 
             if (checkBox_autospoil.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_spoilcrush.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_autosweep.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_ignoreitems.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_buffrange.Text);
 
             if (checkBox_accept_party.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_accept_party.Text);
 
             if (checkBox_accept_rez.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_accept_rez.Text);
 
@@ -8201,9 +9026,13 @@ namespace L2_login
             foreach (ListViewItem lv in listView_combat.Items)
             {
                 if (lv.Checked)
+                {
                     file.WriteLine("1");
+                }
                 else
+                {
                     file.WriteLine("0");
+                }
 
                 file.WriteLine(lv.SubItems[6].Text);//trait id
                 file.WriteLine(lv.SubItems[7].Text);//conditional id
@@ -8215,91 +9044,167 @@ namespace L2_login
 
             //active follow target
             if (checkBox_activefollow_target.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_active_target.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_active_attack.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_pickup.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_pickup_range.Text);
 
             if (checkBox_buff_control.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_buff_shift.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(BotOptions.Target_ZRANGE.ToString());
 
             if (checkBox_auto_invite.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_auto_invite.Text);
 
             if (checkBox_oop.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_oop.Text);
 
             if (checkBox_portect_priority.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //sounds alerts
             if (checkBox_2waywar.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_1waywar.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_n1waywar.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_hp.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_mp.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_cp.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_clan.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_player.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(textBox_hp.Text);
             file.WriteLine(textBox_mp.Text);
             file.WriteLine(textBox_cp.Text);
@@ -8308,37 +9213,77 @@ namespace L2_login
 
             //logout
             if (checkBox_2waywar_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_1waywar_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_n1waywar_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_hp_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_mp_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_cp_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_clan_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_player_logout.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(textBox_hp_logout.Text);
             file.WriteLine(textBox_mp_logout.Text);
             file.WriteLine(textBox_cp_logout.Text);
@@ -8346,137 +9291,251 @@ namespace L2_login
             file.WriteLine(textBox_player_logout.Text);
 
             if (radioButton_type0.Checked)
+            {
                 file.WriteLine("0");
+            }
             else if (radioButton_type1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("2");
+            }
+
             if (radioButton_attackable0.Checked)
+            {
                 file.WriteLine("0");
+            }
             else if (radioButton_attackable1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("2");
+            }
+
             if (radioButton_alive0.Checked)
+            {
                 file.WriteLine("0");
+            }
             else if (radioButton_alive1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("2");
+            }
+
             if (radioButton_inbox0.Checked)
+            {
                 file.WriteLine("0");
+            }
             else if (radioButton_inbox1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("2");
+            }
+
             if (radioButton_combat0.Checked)
+            {
                 file.WriteLine("0");
+            }
             else if (radioButton_combat1.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("2");
+            }
 
             if (checkBox_active_move_first.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             file.WriteLine(textBox_active_move_range.Text);
 
             if (checkBox_clan_ignore.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_player_ignore.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_whitechat.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_privatemessage.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             if (checkBox_friendchat.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
             //Rest options - Solo Settings
             if (checkBox_RestBelowHP.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(numericUpDown_RestBelowHP.Value.ToString());
 
             if (checkBox_RestUntilHP.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(numericUpDown_RestUntilHP.Value.ToString());
 
             if (checkBox_RestBelowMP.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(numericUpDown_RestBelowMP.Value.ToString());
 
             if (checkBox_RestUntilMP.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(numericUpDown_RestUntilMP.Value.ToString());
 
             //Rest options - Party Settings
             if (checkBox_FollowRest.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
+
             file.WriteLine(textBox_FollowRestName.Text);
 
             //Ignore raidbosses and chests
             if (checkBox_Ign_Raidbosses.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_Ign_TreasureChests.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Auto unstuck
             if (checkBox_StuckCheck.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Ignore Meshless Items
 
             if (checkBox_ignore_no_mesh.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Ignore Summons
             if (checkBox_Ign_Summons.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Normal Move Before Attack
             if (checkBox_active_move_first_normal.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Only Pick Mine
             if (checkBox_OnlyPickMine.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Advanced Autofighter Settings
             file.WriteLine(numericUpDown_anti_ks_delay.Value.ToString());
@@ -8488,15 +9547,23 @@ namespace L2_login
 
             //Attack Only NPC's in list
             if (checkBox_AttackOnly.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Pick Only Items in list
             if (checkBox_PickOnly.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Custom Window Title
             file.WriteLine(textBox_Custom_WindowTitle.Text);
@@ -8504,118 +9571,202 @@ namespace L2_login
             // v389
             // Content Filter
             if (cf_targetselected.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_targetunselected.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_filtermagicskill.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_ExBrExtraUserInfo.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_striptitle.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_stripenchant.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_stripaugment.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_zerononvisible.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_one_gender.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_simple_appearance.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_norecs.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (cf_dwarfmode.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_AutoBlacklist.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Move before targeting
             if (checkBox_movebeforetargeting.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Dead logout/return/toggle botting
             if (checkBox_DeadLogOut.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_DeadReturn.Checked)
+            {
                 file.WriteLine(comboBox_DeadReturn.SelectedIndex.ToString());
+            }
             else
+            {
                 file.WriteLine("-1");
+            }
 
             if (checkBox_DeadToggleBotting.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Autospoil until success
             if (checkBox_UntilSuccess.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Pickup after attack
             if (checkBox_PickupAfterAttack.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Spoil mp above
             file.WriteLine(textBox_spoil_mp.Text.ToString());
 
             //Pet autoassist
             if (checkBox_pet_autoassist.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Active follow attack instant
             if (checkBox_activefollow_attack_Instant.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //Pickup delay
 
@@ -8623,72 +9774,124 @@ namespace L2_login
 
             //392B11: summon stuff
             if (checkBox_Summon_autoassist.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_pet_soloattack.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_summon_instantattack.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //v393: Plunder
             if (checkBox_use_plunder.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //396 cancel_target
             if (checkBox_cancel_target.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_drop_leader.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_accept_rez_clan.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_accept_rez_alliance.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_accept_party_clan.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_accept_party_alliance.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_accept_rez_Party.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             //418 move to loc
             if (checkBox_MoveToLoc.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             if (checkBox_OutOfCombat.Checked)
+            {
                 file.WriteLine("1");
+            }
             else
+            {
                 file.WriteLine("0");
+            }
 
             try
             {
@@ -8712,9 +9915,14 @@ namespace L2_login
                 {
                     file.WriteLine(lv.SubItems[0].Text);//skill name
                     if (lv.Checked)
+                    {
                         file.WriteLine("1");
+                    }
                     else
+                    {
                         file.WriteLine("0");
+                    }
+
                     file.WriteLine(Util.GetInt32(lv.SubItems[4].Text));//trait
                     file.WriteLine(Util.GetInt32(lv.SubItems[2].Text));//XX>%
                     file.WriteLine(Util.GetInt32(lv.SubItems[3].Text));//XX<%
@@ -8735,7 +9943,7 @@ namespace L2_login
 
             try
             {
-                uint id = (uint)skill_ids[comboBox_skills_toggle.SelectedIndex]; 
+                uint id = (uint)skill_ids[comboBox_skills_toggle.SelectedIndex];
 
                 ListViewItem ObjListItem = listView_toggles.Items.Add(comboBox_skills_toggle.Text);//name
                 ObjListItem.SubItems.Add(comboBox_trait_toggle.Text);
@@ -8770,9 +9978,14 @@ namespace L2_login
                 ObjListItem.SubItems.Add(textBox_buffheal_delay.Text);
                 ObjListItem.SubItems.Add(textBox_buffheal_mp.Text);
                 if (checkBox_target.Checked)
+                {
                     ObjListItem.SubItems.Add("1");
+                }
                 else
+                {
                     ObjListItem.SubItems.Add("0");
+                }
+
                 ObjListItem.SubItems.Add(comboBox_buffheal_trait.SelectedIndex.ToString());
                 ObjListItem.SubItems.Add(id.ToString());
 
@@ -8800,9 +10013,13 @@ namespace L2_login
                 ObjListItem.SubItems.Add(textBox_itemdelay1.Text);
                 ObjListItem.SubItems.Add(comboBox_trait1.SelectedIndex.ToString());
                 if (comboBox_item1.SelectedIndex == -1)
+                {
                     ObjListItem.SubItems.Add("0");
+                }
                 else
+                {
                     ObjListItem.SubItems.Add(id.ToString());
+                }
 
                 ObjListItem.Checked = checkBox_item1.Checked;
 
@@ -9124,7 +10341,9 @@ namespace L2_login
         private void checkBox_active_move_first_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_active_move_first.Checked)
+            {
                 checkBox_active_move_first_normal.Checked = false;
+            }
         }
 
         private void button_Custom_WindowTitle_Set_Click(object sender, EventArgs e)
@@ -9158,7 +10377,9 @@ namespace L2_login
         private void checkBox_movebeforetargeting_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_movebeforetargeting.Checked)
+            {
                 checkBox_active_move_first_normal.Checked = false;
+            }
         }
 
         private void checkBox_active_attack_CheckedChanged(object sender, EventArgs e)
@@ -9177,13 +10398,17 @@ namespace L2_login
         private void textBox_DeadLogOutDelay_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
 
         private void textBox_DeadReturnDelay_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
 
         private void tabControl_botpages_DrawItem(object sender, DrawItemEventArgs e)
@@ -9249,13 +10474,17 @@ namespace L2_login
         private void textBox_spoil_mp_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
 
         private void checkBox_activefollow_attack_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_activefollow_attack.Checked && checkBox_activefollow_target.Checked)
+            {
                 checkBox_activefollow_attack_Instant.Enabled = true;
+            }
             else
             {
                 checkBox_activefollow_attack_Instant.Enabled = false;
@@ -9266,7 +10495,9 @@ namespace L2_login
         private void checkBox_activefollow_target_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_activefollow_attack.Checked && checkBox_activefollow_target.Checked)
+            {
                 checkBox_activefollow_attack_Instant.Enabled = true;
+            }
             else
             {
                 checkBox_activefollow_attack_Instant.Enabled = false;
@@ -9304,7 +10535,7 @@ namespace L2_login
 
             try
             {
-                uint id = (uint)skill_ids[comboBox_skills_toggle.SelectedIndex]; 
+                uint id = (uint)skill_ids[comboBox_skills_toggle.SelectedIndex];
 
                 ListViewItem ObjListItem = listView_toggles.Items.Add(comboBox_skills_toggle.Text);//name
                 ObjListItem.SubItems.Add(comboBox_trait_toggle.Text);

@@ -1,25 +1,25 @@
 namespace L2_login
 {
     public class NPCName : BaseText
-	{
-		public string Name = "";
-		public string Description = "";
+    {
+        public string Name = "";
+        public string Description = "";
         public uint Red = 0;
         public uint Green = 0;
         public uint Blue = 0;
 
-		public void Clear()
-		{
-			ID = 0;
-			Name = "";
-			Description = "";
-			Red = 0;
-			Green = 0;
-			Blue = 0;
-		}
+        public void Clear()
+        {
+            ID = 0;
+            Name = "";
+            Description = "";
+            Red = 0;
+            Green = 0;
+            Blue = 0;
+        }
 
-		public void Parse(string inp)
-		{
+        public void Parse(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|', oldpipe);
@@ -29,7 +29,7 @@ namespace L2_login
             pipe = inp.IndexOf('|', oldpipe);
             Name = inp.Substring(oldpipe, pipe - oldpipe);
             oldpipe = pipe + 1;
-			//Description
+            //Description
             pipe = inp.IndexOf('|', oldpipe);
             Description = inp.Substring(oldpipe, pipe - oldpipe);
             oldpipe = pipe + 1;
@@ -43,6 +43,6 @@ namespace L2_login
             oldpipe = pipe + 1;
             //Red
             Red = byte.Parse(inp.Substring(oldpipe, inp.Length - oldpipe), System.Globalization.NumberStyles.HexNumber);
-		}
-	}//end of NPCName
+        }
+    }//end of NPCName
 }

@@ -74,9 +74,13 @@ namespace L2_login
             bbuff.WriteInt32(y);
             bbuff.WriteInt32(z);
             if (shift)
+            {
                 bbuff.WriteByte(1);
+            }
             else
+            {
                 bbuff.WriteByte(0);
+            }
 
             Globals.gamedata.SendToGameServer(bbuff);
         }
@@ -337,14 +341,22 @@ namespace L2_login
             bbuff.WriteByte((byte)PClient.RequestActionUse);
             bbuff.WriteUInt32(id);
             if (control)
+            {
                 bbuff.WriteUInt32(1);
+            }
             else
+            {
                 bbuff.WriteUInt32(0);
+            }
 
             if (shift)
+            {
                 bbuff.WriteByte(1);
+            }
             else
+            {
                 bbuff.WriteByte(0);
+            }
 
             Globals.gamedata.SendToGameServer(bbuff);
 
@@ -418,9 +430,13 @@ namespace L2_login
             bbuff.WriteInt32(y);
             bbuff.WriteInt32(z);
             if (shift)
+            {
                 bbuff.WriteByte(1);
+            }
             else
+            {
                 bbuff.WriteByte(0);
+            }
 
             Globals.gamedata.SendToGameServer(bbuff);
         }
@@ -479,7 +495,7 @@ namespace L2_login
         public static void RequestDispel(uint object_id, uint skill_id, uint skill_level)
         {
             if (Globals.gamedata.my_char.Cur_HP > 0)
-            {  
+            {
                 //          object_id    skill_id     skill_level
                 // D0 4B 00 3F 2E 01 4E  2B 05 00 00  01 00 00 00
                 ByteBuffer bbuff = new ByteBuffer(15);
@@ -506,14 +522,22 @@ namespace L2_login
                 bbuff.WriteUInt32(id);
 
                 if (control)
+                {
                     bbuff.WriteUInt32(1);
+                }
                 else
+                {
                     bbuff.WriteUInt32(0);
+                }
 
                 if (shift)
+                {
                     bbuff.WriteByte(1);
+                }
                 else
+                {
                     bbuff.WriteByte(0);
+                }
 
                 Globals.gamedata.SendToGameServer(bbuff);
             }
@@ -577,11 +601,11 @@ namespace L2_login
                             {
                                 Thread.Sleep(1);
                             }
-                            
-                            while (DateTime.Now.Ticks < Globals.gamedata.my_char.ExpiresTime) 
+
+                            while (DateTime.Now.Ticks < Globals.gamedata.my_char.ExpiresTime)
                             {
                                 Thread.Sleep(1);
-                            }                            
+                            }
                         }
                         else
                         {
@@ -589,7 +613,7 @@ namespace L2_login
                             // Globals.l2net_home.Add_Text("tried to use skill too early: " + Util.GetSkillName(sk.ID, sk.Level) + " : try again in " + msec.ToString() + " milliseconds.");
                             Globals.gamedata.my_char.ExpiresTime = 1;
                         }
-                        
+
                     }
 #if DEBUG
                     else
@@ -904,7 +928,7 @@ namespace L2_login
 
             //for(int i = 0; i < 50;i=i+2)
             //{
-                //Globals.l2net_home.Add_Error("PIN: " + bbuff.GetByte(i/2).ToString("X2"));
+            //Globals.l2net_home.Add_Error("PIN: " + bbuff.GetByte(i/2).ToString("X2"));
             //}
 
             Globals.gamedata.SendToGameServer(bbuff);
@@ -1684,7 +1708,9 @@ namespace L2_login
         {
             //did they even say anything?
             if (total_text.Length == 0)
+            {
                 return;
+            }
 
             bool ok = false;
             string start = "";
@@ -1868,7 +1894,9 @@ namespace L2_login
             int startlen = start.Length * 2 + 2;
             int endlen = end.Length * 2;
             if (endlen > 0)
+            {
                 endlen += 2;
+            }
 
             ByteBuffer bbuff = new ByteBuffer(5 + startlen + endlen);
 
@@ -2556,9 +2584,14 @@ namespace L2_login
                     break;
                 case "ASSIST":
                     if (cmdtext.Length != 0)
+                    {
                         Assist(cmdtext);
+                    }
                     else
+                    {
                         Assist();
+                    }
+
                     break;
                 case "PLAYERLOC":
                     Player_Loc(cmdtext);

@@ -23,7 +23,7 @@ namespace L2_login
         {
             c = c.ToLower();
 
-            switch(c)
+            switch (c)
             {
                 case "`":
                 case "~":

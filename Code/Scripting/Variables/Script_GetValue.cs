@@ -255,12 +255,12 @@ namespace L2_login
                 case "CHAR_RUN_SPEED":
                     scr_var.Name = "CHAR_RUN_SPEED";
                     scr_var.Type = Var_Types.INT;
-                    scr_var.Value = (long)( Globals.gamedata.my_char.RunSpeed * Globals.gamedata.my_char.MoveSpeedMult);
+                    scr_var.Value = (long)(Globals.gamedata.my_char.RunSpeed * Globals.gamedata.my_char.MoveSpeedMult);
                     break;
                 case "CHAR_WALK_SPEED":
                     scr_var.Name = "CHAR_WALK_SPEED";
                     scr_var.Type = Var_Types.INT;
-                    scr_var.Value = (long)( Globals.gamedata.my_char.WalkSpeed * Globals.gamedata.my_char.MoveSpeedMult);
+                    scr_var.Value = (long)(Globals.gamedata.my_char.WalkSpeed * Globals.gamedata.my_char.MoveSpeedMult);
                     break;
                 case "CHAR_ATTACK_SPEED":
                     scr_var.Name = "CHAR_ATTACK_SPEED";
@@ -415,101 +415,101 @@ namespace L2_login
                     scr_var.Type = Var_Types.INT;
                     scr_var.Value = (long)Globals.gamedata.my_char.AllyID;
                     break;
-			    case "CHAR_ITEM_REAR":
-				    scr_var.Name = "CHAR_ITEM_REAR";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_REar;
-				    break;
-			    case "CHAR_ITEM_LEAR":
-				    scr_var.Name = "CHAR_ITEM_LEAR";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_LEar;
-				    break;
-			    case "CHAR_ITEM_NECKLACE":
-				    scr_var.Name = "CHAR_ITEM_NECKLACE";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Neck;
-				    break;
-			    case "CHAR_ITEM_RFINGER":
-				    scr_var.Name = "CHAR_ITEM_RFINGER";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_RFinger;
-				    break;
-			    case "CHAR_ITEM_LFINGER":
-				    scr_var.Name = "CHAR_ITEM_LFINGER";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_LFinger;
-				    break;
-			    case "CHAR_ITEM_HELM":
-				    scr_var.Name = "CHAR_ITEM_HELM";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Head;
-				    break;
-			    case "CHAR_ITEM_RHAND":
-				    scr_var.Name = "CHAR_ITEM_RHAND";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_RHand;
-				    break;
-			    case "CHAR_ITEM_LHAND":
-				    scr_var.Name = "CHAR_ITEM_LHAND";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_LHand;
-				    break;
-			    case "CHAR_ITEM_GLOVES":
-				    scr_var.Name = "CHAR_ITEM_GLOVES";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Gloves;
-				    break;
-			    case "CHAR_ITEM_CHEST":
-				    scr_var.Name = "CHAR_ITEM_CHEST";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Chest;
-				    break;
-			    case "CHAR_ITEM_LEG":
-				    scr_var.Name = "CHAR_ITEM_LEG";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Legs;
-				    break;
-			    case "CHAR_ITEM_BOOTS":
-				    scr_var.Name = "CHAR_ITEM_BOOTS";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Feet;
-				    break;
-			    case "CHAR_ITEM_CAPE":
-				    scr_var.Name = "CHAR_ITEM_CAPE";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Back;
-				    break;
-			    case "CHAR_ITEM_HANDS":
-				    scr_var.Name = "CHAR_ITEM_HANDS";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_LRHand;
-				    break;
-			    case "CHAR_ITEM_HAIR":
-				    scr_var.Name = "CHAR_ITEM_HAIR";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Hair;
-				    break;
-			    case "CHAR_ITEM_FACE":
-				    scr_var.Name = "CHAR_ITEM_FACE";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.itm_Face;
-				    break;
-			    case "CHAR_AUG_RHAND":
-				    scr_var.Name = "CHAR_AUG_RHAND";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.aug_RHand;
-				    break;
-			    case "CHAR_AUG_LHAND":
-				    scr_var.Name = "CHAR_AUG_LHAND";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.aug_LHand;
-				    break;
-			    case "CHAR_AUG_HANDS":
-				    scr_var.Name = "CHAR_AUG_HANDS";
-				    scr_var.Type = Var_Types.INT;
-				    scr_var.Value = (long)Globals.gamedata.my_char.aug_LRHand;
-				    break;
+                case "CHAR_ITEM_REAR":
+                    scr_var.Name = "CHAR_ITEM_REAR";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_REar;
+                    break;
+                case "CHAR_ITEM_LEAR":
+                    scr_var.Name = "CHAR_ITEM_LEAR";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_LEar;
+                    break;
+                case "CHAR_ITEM_NECKLACE":
+                    scr_var.Name = "CHAR_ITEM_NECKLACE";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Neck;
+                    break;
+                case "CHAR_ITEM_RFINGER":
+                    scr_var.Name = "CHAR_ITEM_RFINGER";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_RFinger;
+                    break;
+                case "CHAR_ITEM_LFINGER":
+                    scr_var.Name = "CHAR_ITEM_LFINGER";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_LFinger;
+                    break;
+                case "CHAR_ITEM_HELM":
+                    scr_var.Name = "CHAR_ITEM_HELM";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Head;
+                    break;
+                case "CHAR_ITEM_RHAND":
+                    scr_var.Name = "CHAR_ITEM_RHAND";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_RHand;
+                    break;
+                case "CHAR_ITEM_LHAND":
+                    scr_var.Name = "CHAR_ITEM_LHAND";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_LHand;
+                    break;
+                case "CHAR_ITEM_GLOVES":
+                    scr_var.Name = "CHAR_ITEM_GLOVES";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Gloves;
+                    break;
+                case "CHAR_ITEM_CHEST":
+                    scr_var.Name = "CHAR_ITEM_CHEST";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Chest;
+                    break;
+                case "CHAR_ITEM_LEG":
+                    scr_var.Name = "CHAR_ITEM_LEG";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Legs;
+                    break;
+                case "CHAR_ITEM_BOOTS":
+                    scr_var.Name = "CHAR_ITEM_BOOTS";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Feet;
+                    break;
+                case "CHAR_ITEM_CAPE":
+                    scr_var.Name = "CHAR_ITEM_CAPE";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Back;
+                    break;
+                case "CHAR_ITEM_HANDS":
+                    scr_var.Name = "CHAR_ITEM_HANDS";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_LRHand;
+                    break;
+                case "CHAR_ITEM_HAIR":
+                    scr_var.Name = "CHAR_ITEM_HAIR";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Hair;
+                    break;
+                case "CHAR_ITEM_FACE":
+                    scr_var.Name = "CHAR_ITEM_FACE";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.itm_Face;
+                    break;
+                case "CHAR_AUG_RHAND":
+                    scr_var.Name = "CHAR_AUG_RHAND";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.aug_RHand;
+                    break;
+                case "CHAR_AUG_LHAND":
+                    scr_var.Name = "CHAR_AUG_LHAND";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.aug_LHand;
+                    break;
+                case "CHAR_AUG_HANDS":
+                    scr_var.Name = "CHAR_AUG_HANDS";
+                    scr_var.Type = Var_Types.INT;
+                    scr_var.Value = (long)Globals.gamedata.my_char.aug_LRHand;
+                    break;
                 case "PARTY_LEADER":
                     scr_var.Name = "PARTY_LEADER";
                     scr_var.Type = Var_Types.INT;
@@ -1548,7 +1548,7 @@ namespace L2_login
                 case "RANDD":
                     scr_var.Name = "RANDD";
                     scr_var.Type = Var_Types.DOUBLE;
-                    scr_var.Value = (double)Globals.Rando.NextDouble();
+                    scr_var.Value = Globals.Rando.NextDouble();
                     break;
                 case "NULL":
                     scr_var.Name = "NULL";
@@ -1889,12 +1889,12 @@ namespace L2_login
                 case "SYSTEM_MEMORYUSAGE":
                     scr_var.Name = "SYSTEM_MEMORYUSAGE";
                     scr_var.Type = Var_Types.INT;
-                    scr_var.Value = (long)GC.GetTotalMemory(false);
+                    scr_var.Value = GC.GetTotalMemory(false);
                     break;
                 case "SYSTEM_MEMORYALLOCATED":
                     scr_var.Name = "SYSTEM_MEMORYALLOCATED";
                     scr_var.Type = Var_Types.INT;
-                    scr_var.Value = (long)Environment.WorkingSet;
+                    scr_var.Value = Environment.WorkingSet;
                     break;
                 case "SYSTEM_STACKHEIGHT":
                     scr_var.Name = "SYSTEM_STACKHEIGHT";
@@ -1957,7 +1957,7 @@ namespace L2_login
                     scr_var.Value = Globals.gamedata.cur_zone;
                     break;
                 default:
-                    if(name.StartsWith("#I"))
+                    if (name.StartsWith("#I"))
                     {
                         scr_var.Name = name;
                         scr_var.Type = Var_Types.INT;
@@ -1986,7 +1986,7 @@ namespace L2_login
                         //try to create a dynamic variable from this...
                         try
                         {
-                            if(oname.StartsWith("0x"))
+                            if (oname.StartsWith("0x"))
                             {
                                 //trying to get a hex value
                                 scr_var.Name = oname;
@@ -2008,9 +2008,9 @@ namespace L2_login
 
                                 //try
                                 //{
-                                    //must be an integer
-                                    scr_var.Type = Var_Types.INT;
-                                    scr_var.Value = long.Parse(oname, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
+                                //must be an integer
+                                scr_var.Type = Var_Types.INT;
+                                scr_var.Value = long.Parse(oname, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
                                 /*}
                                 catch
                                 {

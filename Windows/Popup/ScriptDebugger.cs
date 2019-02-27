@@ -102,7 +102,7 @@ namespace L2_login
             //globals...
             TreeNode global_node = new TreeNode("Globals");
 
-            foreach (ScriptVariable sv in ((VariableList)ScriptEngine.GlobalVariables).Values)
+            foreach (ScriptVariable sv in ScriptEngine.GlobalVariables.Values)
             {
                 TreeNode sv_node = new TreeNode(sv.Name);
                 BuildVarTree(sv_node, sv);

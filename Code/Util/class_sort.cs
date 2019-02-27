@@ -8,34 +8,34 @@ public class ListViewColumnSorter : IComparer
     /// Specifies the order in which to sort (i.e. 'Ascending').
     /// </summary>
     private System.Windows.Forms.SortOrder OrderOfSort;
-	/// <summary>
-	/// Case insensitive comparer object
-	/// </summary>
-	private CaseInsensitiveComparer ObjectCompare;
+    /// <summary>
+    /// Case insensitive comparer object
+    /// </summary>
+    private CaseInsensitiveComparer ObjectCompare;
 
-	/// <summary>
-	/// Class constructor.  Initializes various elements
-	/// </summary>
-	public ListViewColumnSorter()
-	{
-		// Initialize the column to '0'
-		SortColumn = 0;
+    /// <summary>
+    /// Class constructor.  Initializes various elements
+    /// </summary>
+    public ListViewColumnSorter()
+    {
+        // Initialize the column to '0'
+        SortColumn = 0;
 
-		// Initialize the sort order to 'none'
-		OrderOfSort = System.Windows.Forms.SortOrder.None;
+        // Initialize the sort order to 'none'
+        OrderOfSort = System.Windows.Forms.SortOrder.None;
 
-		// Initialize the CaseInsensitiveComparer object
-		ObjectCompare = new CaseInsensitiveComparer();
-	}
+        // Initialize the CaseInsensitiveComparer object
+        ObjectCompare = new CaseInsensitiveComparer();
+    }
 
-	/// <summary>
-	/// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
-	/// </summary>
-	/// <param name="x">First object to be compared</param>
-	/// <param name="y">Second object to be compared</param>
-	/// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
-	public int Compare(object x, object y)
-	{
+    /// <summary>
+    /// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
+    /// </summary>
+    /// <param name="x">First object to be compared</param>
+    /// <param name="y">Second object to be compared</param>
+    /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+    public int Compare(object x, object y)
+    {
         try
         {
             int compareResult;
@@ -69,7 +69,7 @@ public class ListViewColumnSorter : IComparer
         {
             return 0;
         }
-	}
+    }
 
     /// <summary>
     /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
@@ -80,15 +80,15 @@ public class ListViewColumnSorter : IComparer
     /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
     /// </summary>
     public System.Windows.Forms.SortOrder Order
-	{
-		set
-		{
-			OrderOfSort = value;
-		}
-		get
-		{
-			return OrderOfSort;
-		}
-	}
+    {
+        set
+        {
+            OrderOfSort = value;
+        }
+        get
+        {
+            return OrderOfSort;
+        }
+    }
 
 }

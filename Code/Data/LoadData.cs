@@ -33,22 +33,22 @@ namespace L2_login
 
             try
             {
-                data_lvlexp     = GetData(Globals.PATH + "\\data\\lvlexp.txt");
+                data_lvlexp = GetData(Globals.PATH + "\\data\\lvlexp.txt");
                 data_servername = GetData(Globals.PATH + "\\data\\servername.txt");
-                data_systemmsg  = GetData(Globals.PATH + "\\data\\systemmsg.txt");
-                data_hennagrp   = GetData(Globals.PATH + "\\data\\hennagrp.txt");
-                data_npcname    = GetData(Globals.PATH + "\\data\\npcname.txt");
-                data_itemname   = GetData(Globals.PATH + "\\data\\itemname.txt");
+                data_systemmsg = GetData(Globals.PATH + "\\data\\systemmsg.txt");
+                data_hennagrp = GetData(Globals.PATH + "\\data\\hennagrp.txt");
+                data_npcname = GetData(Globals.PATH + "\\data\\npcname.txt");
+                data_itemname = GetData(Globals.PATH + "\\data\\itemname.txt");
                 data_etcitemgrp = GetData(Globals.PATH + "\\data\\etcitemgrp.txt");
-                data_weapongrp  = GetData(Globals.PATH + "\\data\\weapongrp.txt");
-                data_armorgrp   = GetData(Globals.PATH + "\\data\\armorgrp.txt");
-                data_classes    = GetData(Globals.PATH + "\\data\\classes.txt");
-                data_races      = GetData(Globals.PATH + "\\data\\races.txt");
-                data_skillname  = GetData(Globals.PATH + "\\data\\skillname.txt");
+                data_weapongrp = GetData(Globals.PATH + "\\data\\weapongrp.txt");
+                data_armorgrp = GetData(Globals.PATH + "\\data\\armorgrp.txt");
+                data_classes = GetData(Globals.PATH + "\\data\\classes.txt");
+                data_races = GetData(Globals.PATH + "\\data\\races.txt");
+                data_skillname = GetData(Globals.PATH + "\\data\\skillname.txt");
                 data_actionname = GetData(Globals.PATH + "\\data\\actionname.txt");
                 //data_questname  = GetData(Globals.PATH + "\\data\\questname.txt");
-                data_zonename   = GetData(Globals.PATH + "\\data\\zonename.txt");
-                data_npcstring  = GetData(Globals.PATH + "\\data\\npcstring.txt");
+                data_zonename = GetData(Globals.PATH + "\\data\\zonename.txt");
+                data_npcstring = GetData(Globals.PATH + "\\data\\npcstring.txt");
             }
             catch (Exception e)
             {
@@ -124,7 +124,7 @@ namespace L2_login
             //need to convert this string and store in the global thingy...
             login_gg = login_gg.Replace(" ", "");
 
-            Globals.Login_GG_Reply = new byte[login_gg.Length/2];
+            Globals.Login_GG_Reply = new byte[login_gg.Length / 2];
 
             string sm;
             for (int i = 0; i < login_gg.Length; i += 2)
@@ -190,7 +190,7 @@ namespace L2_login
             dec = GetData(data_lvlexp, "<M4H90ag7{_j6~3[");
 
             mem_stream = new MemoryStream(dec);
-            temp_stream = new StreamReader((Stream)mem_stream);
+            temp_stream = new StreamReader(mem_stream);
 
             int version = Util.GetInt32(temp_stream.ReadLine());
             if (version < Globals.MinDataPack)
@@ -241,7 +241,7 @@ namespace L2_login
                 dec = GetData(data_servername, "-8:2eF_08$6-o)IJ");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -288,7 +288,7 @@ namespace L2_login
                 dec = GetData(data_systemmsg, "gA7ru8akusakenaf");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -335,7 +335,7 @@ namespace L2_login
                 dec = GetData(data_hennagrp, "8Er5FREjaCen7Thu");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -387,7 +387,7 @@ namespace L2_login
                 dec = GetData(data_npcname, "c8c2xagUga5enE7A");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -439,7 +439,7 @@ namespace L2_login
                 dec = GetData(data_itemname, "speves4azu52JutH");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -447,7 +447,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("itemname.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 Globals.itemname = new SortedList();
                 Globals.itemname.Capacity = Globals.COUNT_ITEMNAME;
 
@@ -470,7 +470,7 @@ namespace L2_login
 
                 //Add_Text("loaded itemname", Globals.Red);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_PopUpError("failed to load data\\itemname.txt" + e.Message);
             }
@@ -480,7 +480,7 @@ namespace L2_login
                 dec = GetData(data_etcitemgrp, "5rePruchetupHuth");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version2 = Util.GetInt32(temp_stream.ReadLine());
                 if (version2 < Globals.MinDataPack)
@@ -488,7 +488,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("etcitemgrp.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 while ((loaded = temp_stream.ReadLine()) != null)
                 {
                     ItemName itemnm = new ItemName();
@@ -513,7 +513,7 @@ namespace L2_login
                 dec = GetData(data_weapongrp, "defru6e4ezuyuSWE");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version232 = Util.GetInt32(temp_stream.ReadLine());
                 if (version232 < Globals.MinDataPack)
@@ -521,7 +521,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("weapongrp.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 while ((loaded = temp_stream.ReadLine()) != null)
                 {
                     ItemName itemnm = new ItemName();
@@ -549,7 +549,7 @@ namespace L2_login
                 dec = GetData(data_armorgrp, "8uf53XU3ravudepe");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -557,7 +557,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("armorgrp.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 while ((loaded = temp_stream.ReadLine()) != null)
                 {
                     ItemName itemnm = new ItemName();
@@ -593,7 +593,7 @@ namespace L2_login
                 dec = GetData(data_classes, "-^P_6.97R)YEFW4y");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -601,7 +601,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("classes.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 Globals.classes = new SortedList();
                 Globals.classes.Capacity = Globals.COUNT_CLASSES;
 
@@ -640,7 +640,7 @@ namespace L2_login
                 dec = GetData(data_races, "3L=GSb_H4j-&S£m1");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -676,7 +676,8 @@ namespace L2_login
 
         private static void LoadSkills()
         {
-            try {
+            try
+            {
                 string loaded;
 
                 byte[] dec;
@@ -686,7 +687,7 @@ namespace L2_login
                 dec = GetData(data_skillname, "br2qeSw65ephepH8");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
 
@@ -722,7 +723,8 @@ namespace L2_login
                 //Add_Text("loaded skills", Globals.Red);
 
                 dec = null;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 throw new Exception("Error during LoadSkill: " + e.Message);
             }
@@ -741,7 +743,7 @@ namespace L2_login
                 dec = GetData(data_actionname, "bruyurEja6rUwaph");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -749,7 +751,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("actionname.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 Globals.actionlist = new SortedList();
                 Globals.actionlist.Capacity = Globals.COUNT_ACTIONS;
 
@@ -788,7 +790,7 @@ namespace L2_login
                 dec = GetData(data_questname, "D_d/-pmzRPnC|!mS");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -796,7 +798,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("questname.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 Globals.questlist = new SortedList();
                 Globals.questlist.Capacity = Globals.COUNT_QUESTS;
 
@@ -835,7 +837,7 @@ namespace L2_login
                 dec = GetData(data_zonename, "pUB6epUC7uwraxaw");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -843,7 +845,7 @@ namespace L2_login
                     System.Windows.Forms.MessageBox.Show("zonename.txt is too old for this version of L2.Net!");
                     System.Windows.Forms.Application.Exit();
                 }
-                
+
                 Globals.zonelist = new SortedList();
                 Globals.zonelist.Capacity = Globals.COUNT_ZONES;
 
@@ -884,7 +886,7 @@ namespace L2_login
                 dec = GetData(data_npcstring, ")#&!%J)(/S)J/&%¤");
 
                 mem_stream = new MemoryStream(dec);
-                temp_stream = new StreamReader((Stream)mem_stream);
+                temp_stream = new StreamReader(mem_stream);
 
                 int version = Util.GetInt32(temp_stream.ReadLine());
                 if (version < Globals.MinDataPack)
@@ -916,6 +918,6 @@ namespace L2_login
             }
 
             dec = null;
-        }        
+        }
     }
 }

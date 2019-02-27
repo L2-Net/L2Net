@@ -128,7 +128,9 @@ AddTradeItem = 0x1B*/
         private void textBox_trade_quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
     }
 }

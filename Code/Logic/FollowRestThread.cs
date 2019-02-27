@@ -35,7 +35,7 @@ namespace L2_login
             string b;
             string from;
             int marker;
-          
+
             while (Globals.gamedata.running)
             {
                 breaktotop = false;
@@ -86,7 +86,7 @@ namespace L2_login
                             b = a.ToUpperInvariant();
 
 
-                            if ((!String.IsNullOrEmpty(a))&& !b.Contains("CLEVERBOT"))
+                            if ((!String.IsNullOrEmpty(a)) && !b.Contains("CLEVERBOT"))
                             {
                                 ServerPackets.Send_Text(0, ChatBotSession.Think(s));
                             }
@@ -123,7 +123,7 @@ namespace L2_login
 
                                 b = a.ToUpperInvariant();
 
-                                if ((!String.IsNullOrEmpty(a))&& !b.Contains("CLEVERBOT"))
+                                if ((!String.IsNullOrEmpty(a)) && !b.Contains("CLEVERBOT"))
                                 {
                                     ServerPackets.Send_Text(2, from + " " + a);
                                 }

@@ -17,7 +17,7 @@ namespace L2_login
         {
             Add_Error(text, true);
         }
-        
+
         public void Add_Error(string text, bool audio)
         {
             if (audio)
@@ -181,7 +181,9 @@ namespace L2_login
                             if (Globals.text_out != null)
                             {
                                 if (Globals.LogWriting)
+                                {
                                     Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                                }
                             }
                         }
 
@@ -191,7 +193,9 @@ namespace L2_login
                         if (Globals.text_out != null)
                         {
                             if (Globals.LogWriting)
-                            Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                            {
+                                Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                            }
                         }
 
                         colorListBox_all.AddItemStart(pop.text, pop.color);
@@ -399,7 +403,7 @@ namespace L2_login
                 return;
             }
 
-            switch(tabControl_ChatSelect.SelectedIndex)
+            switch (tabControl_ChatSelect.SelectedIndex)
             {
                 case 0:
                     colorListBox_all.BeginUpdate();
@@ -463,7 +467,7 @@ namespace L2_login
                 richTextBox_dialog.ResumeLayout();
             }
         }
-        
+
         public void Add_Dialog(string text)
         {
             //invoke not needed... done on calling thread

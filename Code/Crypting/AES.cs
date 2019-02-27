@@ -20,11 +20,20 @@ namespace L2_login
         public static string EncryptData(string data, string password, string salt)
         {
             if (data == null)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             byte[] encBytes = EncryptData(Encoding.UTF8.GetBytes(data), password, salt, PaddingMode.ISO10126);
             return Convert.ToBase64String(encBytes);
         }
@@ -38,24 +47,42 @@ namespace L2_login
         public static string DecryptData(string data, string password, string salt)
         {
             if (data == null)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             byte[] encBytes = Convert.FromBase64String(data);
-            byte[] decBytes = DecryptData(encBytes, password, salt,  PaddingMode.ISO10126);
+            byte[] decBytes = DecryptData(encBytes, password, salt, PaddingMode.ISO10126);
             return Encoding.UTF8.GetString(decBytes);
         }
 
         public static byte[] EncryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
         {
             if (data == null || data.Length == 0)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
             rm.Padding = paddingMode;
             ICryptoTransform encryptor = rm.CreateEncryptor(pdb.GetBytes(16), pdb.GetBytes(16));
@@ -71,11 +98,20 @@ namespace L2_login
         public static byte[] DecryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
         {
             if (data == null || data.Length == 0)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
             rm.Padding = paddingMode;
             ICryptoTransform decryptor = rm.CreateDecryptor(pdb.GetBytes(16), pdb.GetBytes(16));

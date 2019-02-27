@@ -11,12 +11,12 @@ namespace L2_login
     /// </summary>
     public class SplashScreen : System.Windows.Forms.Form
     {
-		public SplashScreen()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public SplashScreen()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
 #if SILENT
 #else
@@ -24,19 +24,19 @@ namespace L2_login
 
             this.TransparencyKey = ((Bitmap)this.BackgroundImage).GetPixel(1, 1);
 #endif
-		}
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@ namespace L2_login
             this.Text = "Splash";
             this.ResumeLayout(false);
 
-		}
-		#endregion
-	}//end of class
+        }
+        #endregion
+    }//end of class
 }

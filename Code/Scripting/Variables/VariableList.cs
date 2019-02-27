@@ -4,15 +4,15 @@ namespace L2_login
     /// Summary description for VariableList.
     /// </summary>
     public class VariableList : System.Collections.SortedList
-	{
-		public VariableList()
-		{
-			this.Clear();
-		}
+    {
+        public VariableList()
+        {
+            this.Clear();
+        }
 
-		public void Add_Variable(ScriptVariable var)
-		{
+        public void Add_Variable(ScriptVariable var)
+        {
             this.Add(var.Name, var);
-		}
-	}//end of class
+        }
+    }//end of class
 }

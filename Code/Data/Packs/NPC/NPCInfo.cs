@@ -40,7 +40,7 @@ namespace L2_login
         private volatile uint _isInvisible = 0;//0 - false | 1 - true | 2 - summoned//byte
         public volatile uint isTargetable = 0;//byte
         public volatile uint showName = 0;//byte
-        
+
 
         private string _Name = "";
         private string _Title = "";
@@ -659,14 +659,14 @@ namespace L2_login
             CollisionHeight = (float)buff.ReadDouble();
 
             //isInvisible = buff.ReadUInt32();
-           // buff.ReadUInt32();
-           // buff.ReadUInt32();
+            // buff.ReadUInt32();
+            // buff.ReadUInt32();
 
             Cur_HP = buff.ReadUInt32();
             Max_HP = buff.ReadUInt32();
             Cur_MP = buff.ReadUInt32();
             Max_MP = buff.ReadUInt32();
-            
+
             //buff.ReadUInt32(); //hpshown
             //buff.ReadUInt32(); //dmggrade
 

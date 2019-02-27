@@ -962,9 +962,9 @@ namespace L2_login
 
             }//end of while loop
         }
-            
 
-    
+
+
 
         private uint CheckForMobs()
         {
@@ -1078,7 +1078,9 @@ namespace L2_login
                 //time to find a new target
                 new_id = Globals.scriptthread.Script_TARGET_NEAREST_Internal(IgnoreID);
                 if (new_id == 0)
+                {
                     return false;
+                }
 
                 //Globals.l2net_home.Add_Text("Found target: " + new_id.ToString("X2"), Globals.Green);
 
@@ -1250,7 +1252,9 @@ namespace L2_login
                             }//end of foreach cbt
 
                             if (breaktotop)
+                            {
                                 return;
+                            }
 
                             if (!found)
                             {
@@ -1279,7 +1283,9 @@ namespace L2_login
                         }//end of foreach name
                     }//end of isActive
                     if (breaktotop)
+                    {
                         return;
+                    }
                 }//end of for buffs
             }//unlock
             catch
@@ -1350,7 +1356,7 @@ namespace L2_login
                     PickUpItemSleep += Globals.SLEEP_BotAIDelay_PickupInc;
                 }
             }
-            else 
+            else
             {
                 //not breaking to top, and we don't give a shit about the item since it's id is 0
                 Globals.picking_up_items = false;
@@ -1410,80 +1416,137 @@ namespace L2_login
                                 use_item = true;
                                 break;
                             case BuffTriggers.CP:
-                                if (((float)Globals.gamedata.my_char.Cur_CP) / ((float)Globals.gamedata.my_char.Max_CP) < ((float)it.Min_Per) / 100.0f)
+                                if (Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP < it.Min_Per / 100.0f)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.HP:
-                                if (((float)Globals.gamedata.my_char.Cur_HP) / ((float)Globals.gamedata.my_char.Max_HP) < ((float)it.Min_Per) / 100.0f)
+                                if (Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP < it.Min_Per / 100.0f)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.MP:
-                                if (((float)Globals.gamedata.my_char.Cur_MP) / ((float)Globals.gamedata.my_char.Max_MP) < ((float)it.Min_Per) / 100.0f)
+                                if (Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP < it.Min_Per / 100.0f)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.Dead:
                                 if (Globals.gamedata.my_char.Cur_HP == 0)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.Charges:
                                 if (Globals.gamedata.my_char.Charges < it.Min_Per)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.Souls:
                                 if (Globals.gamedata.my_char.Souls < it.Min_Per)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.DeathPenalty:
                                 if (Globals.gamedata.my_char.DeathPenalty >= it.Min_Per)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Bleeding:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.BLEEDING))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Poison:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.POISON))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Ice:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.ICE))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Wind:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.WIND))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Fear:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.FEAR))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Stun:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.STUN))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Sleep:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.SLEEP))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Muted:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.MUTED))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Root:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.ROOT))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Paralysis:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.HOLD_1))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Petrified:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.PETRIFIED))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.AB_Invulnerable:
                                 if (Globals.gamedata.my_char.HasEffect(AbnormalEffects.INVULNERABLE))
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                         }
 
@@ -1617,77 +1680,104 @@ namespace L2_login
                             case BuffTriggers.CP:
                                 if (ct.Conditional == 0)
                                 {
-                                    if (cp_per >= ((float)ct.Min_Per) / 100.0f)
+                                    if (cp_per >= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
-                                    if (cp_per <= ((float)ct.Min_Per) / 100.0f)
+                                    if (cp_per <= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                             case BuffTriggers.HP:
                                 if (ct.Conditional == 0)
                                 {
-                                    if (hp_per >= ((float)ct.Min_Per) / 100.0f)
+                                    if (hp_per >= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
-                                    if (hp_per <= ((float)ct.Min_Per) / 100.0f)
+                                    if (hp_per <= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                             case BuffTriggers.MP:
                                 if (ct.Conditional == 0)
                                 {
-                                    if (mp_per >= ((float)ct.Min_Per) / 100.0f)
+                                    if (mp_per >= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
-                                    if (mp_per <= ((float)ct.Min_Per) / 100.0f)
+                                    if (mp_per <= ct.Min_Per / 100.0f)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                             case BuffTriggers.Dead:
                                 if (hp_per == 0)
+                                {
                                     use_item = true;
+                                }
+
                                 break;
                             case BuffTriggers.Charges:
                                 if (ct.Conditional == 0)
                                 {
                                     if (Globals.gamedata.my_char.Charges >= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
                                     if (Globals.gamedata.my_char.Charges <= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                             case BuffTriggers.Souls:
                                 if (ct.Conditional == 0)
                                 {
                                     if (Globals.gamedata.my_char.Souls >= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
                                     if (Globals.gamedata.my_char.Souls <= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                             case BuffTriggers.DeathPenalty:
                                 if (ct.Conditional == 0)
                                 {
                                     if (Globals.gamedata.my_char.DeathPenalty >= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 else
                                 {
                                     if (Globals.gamedata.my_char.DeathPenalty <= ct.Min_Per)
+                                    {
                                         use_item = true;
+                                    }
                                 }
                                 break;
                         }
@@ -1848,7 +1938,9 @@ namespace L2_login
                         float ratio = Util.Float_Cap(1.0F - (Globals.gamedata.botoptions.ActiveFollowDistance / vxx));
 
                         if (ratio == 0)
+                        {
                             return;//TODO - will this fix the weird running away shit?
+                        }
 
                         vx = Util.Float_Cap2(vx * ratio);
                         vy = Util.Float_Cap2(vy * ratio);

@@ -10,61 +10,61 @@ namespace L2_login
         Has = 1,//doesn't need
     }
 
-	public class CharBuffTimer
-	{
-		private string _Name = "";
-		private ArrayList _BuffTimes = new ArrayList();
+    public class CharBuffTimer
+    {
+        private string _Name = "";
+        private ArrayList _BuffTimes = new ArrayList();
 
-		private readonly object NameLock = new object();
-		private readonly object BuffTimesLock = new object();
+        private readonly object NameLock = new object();
+        private readonly object BuffTimesLock = new object();
 
 
-		public CharBuffTimer()
-		{
-			BuffTimes.Clear();
-		}
+        public CharBuffTimer()
+        {
+            BuffTimes.Clear();
+        }
 
-		public string Name
-		{
-			get
-			{
-				string tmp;
-				lock(NameLock)
-				{
-					tmp = this._Name;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(NameLock)
-				{
+        public string Name
+        {
+            get
+            {
+                string tmp;
+                lock (NameLock)
+                {
+                    tmp = this._Name;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (NameLock)
+                {
                     _Name = value.ToUpperInvariant();
-				}
-			}
-		}
-		public ArrayList BuffTimes
-		{
-			get
-			{
+                }
+            }
+        }
+        public ArrayList BuffTimes
+        {
+            get
+            {
                 ArrayList tmp;
-				lock(BuffTimesLock)
-				{
-					tmp = this._BuffTimes;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(BuffTimesLock)
-				{
-					_BuffTimes = value;
-				}
-			}
-		}
+                lock (BuffTimesLock)
+                {
+                    tmp = this._BuffTimes;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (BuffTimesLock)
+                {
+                    _BuffTimes = value;
+                }
+            }
+        }
 
         public BuffState Has_Buff(BuffTargetClass bft)
-		{
+        {
             if (Globals.gamedata.my_char.Cur_MP < bft.Min_MP)
             {
                 //not enough mp... fck this
@@ -90,14 +90,14 @@ namespace L2_login
                 }
             }
 
-			//need to check the conditional on the buff/heal to see if it needs to be used
-			switch(bft.Type)
-			{
+            //need to check the conditional on the buff/heal to see if it needs to be used
+            switch (bft.Type)
+            {
                 case BuffTriggers.Always://always
-					foreach(BuffTimer bt in BuffTimes)
-					{
+                    foreach (BuffTimer bt in BuffTimes)
+                    {
                         if (bt.SkillID == bft.SkillID)
-						{
+                        {
                             if (bt.LastTickTime < expire)
                             {
                                 if (System.String.Equals(Globals.gamedata.my_char.Name.ToUpperInvariant(), Name))
@@ -137,16 +137,18 @@ namespace L2_login
                                 //has buff and it hasnt expired
                                 return BuffState.Has;
                             }
-						}
-					}
+                        }
+                    }
 
-					//buff isnt in the list
-					//so false
-					return BuffState.DoesntHave;
+                    //buff isnt in the list
+                    //so false
+                    return BuffState.DoesntHave;
                 case BuffTriggers.CP://cp
-					//trivial case, do the always need it?
-					if(bft.Min_Per > 100)
-						return 0;
+                                     //trivial case, do the always need it?
+                    if (bft.Min_Per > 100)
+                    {
+                        return 0;
+                    }
 
                     if (System.String.Equals(Globals.gamedata.my_char.Name.ToUpperInvariant(), Name))
                     {
@@ -197,9 +199,11 @@ namespace L2_login
                     }
                     break;
                 case BuffTriggers.HP://hp
-					//trivial case, do the always need it?
-					if(bft.Min_Per > 100)
-						return 0;
+                                     //trivial case, do the always need it?
+                    if (bft.Min_Per > 100)
+                    {
+                        return 0;
+                    }
 
                     if (System.String.Equals(Globals.gamedata.my_char.Name.ToUpperInvariant(), Name))
                     {
@@ -312,11 +316,13 @@ namespace L2_login
                             return BuffState.Has;
                         }
                     }
-					break;
+                    break;
                 case BuffTriggers.MP://mp
-					//trivial case, do the always need it?
-					if(bft.Min_Per > 100)
-						return 0;
+                                     //trivial case, do the always need it?
+                    if (bft.Min_Per > 100)
+                    {
+                        return 0;
+                    }
 
                     if (System.String.Equals(Globals.gamedata.my_char.Name.ToUpperInvariant(), Name))
                     {
@@ -429,7 +435,7 @@ namespace L2_login
                             return BuffState.Has;
                         }
                     }
-					break;
+                    break;
                 case BuffTriggers.Dead://DEAD
                     if (System.String.Equals(Globals.gamedata.my_char.Name.ToUpperInvariant(), Name))
                     {
@@ -1276,77 +1282,77 @@ namespace L2_login
                     break;
                 default:
                     return BuffState.Has;
-			}
+            }
 
             //couldnt find the player... they dont need shit
 
-			//need to remove this line later to make sure all code paths return values
+            //need to remove this line later to make sure all code paths return values
             return BuffState.Has;
-		}
+        }
 
-		public void Add_Buff(BuffTargetClass bft)
-		{
-			BuffTimer bt = new BuffTimer();
+        public void Add_Buff(BuffTargetClass bft)
+        {
+            BuffTimer bt = new BuffTimer();
             bt.SkillID = bft.SkillID;
-			bt.LastTickTime = 0;
+            bt.LastTickTime = 0;
 
-			BuffTimes.Add(bt);
-		}
+            BuffTimes.Add(bt);
+        }
 
-		public void Add_Buff(uint sc_id, long tm)
-		{
-			BuffTimer bt = new BuffTimer();
+        public void Add_Buff(uint sc_id, long tm)
+        {
+            BuffTimer bt = new BuffTimer();
             bt.SkillID = sc_id;
-			bt.LastTickTime = tm;
+            bt.LastTickTime = tm;
 
-			BuffTimes.Add(bt);
-		}
+            BuffTimes.Add(bt);
+        }
 
-		public long Get_Time(uint sc_id)
-		{
-			foreach(BuffTimer bt in BuffTimes)
-			{
+        public long Get_Time(uint sc_id)
+        {
+            foreach (BuffTimer bt in BuffTimes)
+            {
                 if (bt.SkillID == sc_id)
-				{
-					return bt.LastTickTime;
-				}
-			}
+                {
+                    return bt.LastTickTime;
+                }
+            }
 
-			//couldnt find the skill
-			//so return time of zero
-			return 0;
-		}
+            //couldnt find the skill
+            //so return time of zero
+            return 0;
+        }
 
-		public void Add_Time(uint sc_id, long tm)
-		{
-			foreach(BuffTimer bt in BuffTimes)
-			{
+        public void Add_Time(uint sc_id, long tm)
+        {
+            foreach (BuffTimer bt in BuffTimes)
+            {
                 if (bt.SkillID == sc_id)
-				{
-					bt.LastTickTime += tm;
-					return;
-				}
-			}
-		}
+                {
+                    bt.LastTickTime += tm;
+                    return;
+                }
+            }
+        }
 
 
-		public void Set_Time(uint sc_id, long tm)
-		{
-			foreach(BuffTimer bt in BuffTimes)
-			{
+        public void Set_Time(uint sc_id, long tm)
+        {
+            foreach (BuffTimer bt in BuffTimes)
+            {
                 if (bt.SkillID == sc_id)
-				{
-					bt.LastTickTime = tm;
-					return;
-				}
-			}
+                {
+                    bt.LastTickTime = tm;
+                    return;
+                }
+            }
 
-			//couldnt find the skill
-			//so lets add it to the list
-			BuffTimer bt2 = new BuffTimer();
+            //couldnt find the skill
+            //so lets add it to the list
+            BuffTimer bt2 = new BuffTimer();
             bt2.SkillID = sc_id;
-			bt2.LastTickTime = tm;
-			BuffTimes.Add(bt2);
-		}
-	}
+            bt2.LastTickTime = tm;
+            BuffTimes.Add(bt2);
+        }
+    }
 }

@@ -2,18 +2,18 @@ using System;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for NPC_Chat.
-	/// </summary>
-	public class NPC_Chat
-	{
-		public NPC_Chat()
-		{
-		}
+    /// <summary>
+    /// Summary description for NPC_Chat.
+    /// </summary>
+    public class NPC_Chat
+    {
+        public NPC_Chat()
+        {
+        }
 
         delegate void Npc_Chat_Callback(ByteBuffer buff);
-		public static void Npc_Chat(ByteBuffer buff)
-		{
+        public static void Npc_Chat(ByteBuffer buff)
+        {
             if (Globals.l2net_home.richTextBox_dialog.InvokeRequired)
             {
                 Npc_Chat_Callback d = new Npc_Chat_Callback(Npc_Chat);
@@ -26,13 +26,13 @@ namespace L2_login
                 Globals.l2net_home.textBox_rtb_input.Visible = false;
                 //if (Globals.gamedata.Chron < Chronicle.CT3_0)
                 //{
-                    uint messge = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,1);offset+=4;
-                //}
-                //if (Globals.gamedata.Chron >= Chronicle.CT3_0)
-                //{
-                    //buff.ReadByte();
-                //}
-            
+                uint messge = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,1);offset+=4;
+                                                //}
+                                                //if (Globals.gamedata.Chron >= Chronicle.CT3_0)
+                                                //{
+                                                //buff.ReadByte();
+                                                //}
+
                 string html = buff.ReadString();//Util.Get_String(buff,ref offset);
                 //buff.ReadUInt32(); //item id?
 
@@ -282,6 +282,6 @@ namespace L2_login
             {
                 Globals.l2net_home.Suspend_Dialog(false);
             }
-		}
-	}//end of class
+        }
+    }//end of class
 }//end of namespace

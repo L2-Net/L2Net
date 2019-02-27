@@ -25,16 +25,16 @@ namespace L2_login
     }
 
     public partial class ScriptEngine
-	{
-		public Thread scriptthread;
+    {
+        public Thread scriptthread;
 
         public ScriptEngine()
-		{
+        {
             Reset_Script();
-		}
+        }
 
-		public void Reset_Script()
-		{
+        public void Reset_Script()
+        {
             if (scriptthread != null)
             {
                 try
@@ -47,11 +47,11 @@ namespace L2_login
                 {
                 }
             }
-			//gotta reset:
-			//stack
-			//stack pointer (height)
-			//variable lists
-			//label lists
+            //gotta reset:
+            //stack
+            //stack pointer (height)
+            //variable lists
+            //label lists
             Files.Clear();
             Threads.Clear();
             ClearEvents();
@@ -71,7 +71,7 @@ namespace L2_login
 
             //scriptthread.SetApartmentState(System.Threading.ApartmentState.STA);
             scriptthread.IsBackground = true;
-		}
+        }
 
         public bool Proccess_Line(string line, bool advance_line)
         {
@@ -87,7 +87,7 @@ namespace L2_login
         }
 
         public bool Proccess_Line(ScriptLine command, bool advance_line)
-		{
+        {
             ScriptCommands my_command = command.Command;
             string line = command.UnParsedParams;
 
@@ -97,14 +97,14 @@ namespace L2_login
 			try
 			{
 #endif
-			switch(my_command)
-			{
+            switch (my_command)
+            {
                 case ScriptCommands.SET:
-                    Dead_Command("SET","=");
+                    Dead_Command("SET", "=");
                     do_advance = true;
                     break;
                 case ScriptCommands.MATH:
-                    Dead_Command("MATH","=");
+                    Dead_Command("MATH", "=");
                     do_advance = true;
                     break;
                 case ScriptCommands.SORT:
@@ -182,51 +182,51 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.BREAK:
-					Script_BREAK(line);
-					break;
+                    Script_BREAK(line);
+                    break;
                 case ScriptCommands.GET_TIME:
-					Script_GET_TIME(line);
+                    Script_GET_TIME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CALLSUB:
-					Script_CALLSUB(line);
-					break;
+                    Script_CALLSUB(line);
+                    break;
                 case ScriptCommands.RETURNSUB:
-					Script_RETURNSUB();
-					break;
+                    Script_RETURNSUB();
+                    break;
                 case ScriptCommands.SUB:
-					Script_SUB(line);
+                    Script_SUB(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CALL_EXTERN:
                     Script_CALL_EXTERN(line);
                     break;
                 case ScriptCommands.CALL:
-					Script_CALL(line);
-					break;
+                    Script_CALL(line);
+                    break;
                 case ScriptCommands.RETURN:
-					Script_RETURN(line);
-					break;
+                    Script_RETURN(line);
+                    break;
                 case ScriptCommands.FUNCTION:
-					Script_FUNCTION(line);
+                    Script_FUNCTION(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.DISTANCE:
-					Script_DISTANCE(line);
+                    Script_DISTANCE(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.WHILE:
-					Script_WHILE(line);
-					break;
+                    Script_WHILE(line);
+                    break;
                 case ScriptCommands.WEND:
-					Script_WEND();
-					break;
+                    Script_WEND();
+                    break;
                 case ScriptCommands.DO:
                     do_advance = true;
                     break;
                 case ScriptCommands.LOOP:
-					Script_LOOP(line);
-					break;
+                    Script_LOOP(line);
+                    break;
                 case ScriptCommands.FOREACH:
                     Script_FOREACH(line);
                     break;
@@ -234,26 +234,26 @@ namespace L2_login
                     Script_NEXTEACH();
                     break;
                 case ScriptCommands.FOR:
-					Script_FOR(line);
-					break;
+                    Script_FOR(line);
+                    break;
                 case ScriptCommands.NEXT:
-					Script_NEXT();
-					break;
+                    Script_NEXT();
+                    break;
                 case ScriptCommands.IF:
-					Script_IF(line);
-					break;
+                    Script_IF(line);
+                    break;
                 case ScriptCommands.ELSE:
-					//need to jump to the next endif
-					Script_ELSE();
-					break;
+                    //need to jump to the next endif
+                    Script_ELSE();
+                    break;
                 case ScriptCommands.ENDIF:
                     do_advance = true;//we can just skip over this line, nothing really needed
-					break;
+                    break;
                 case ScriptCommands.DEFINE_GLOBAL:
                     Script_DEFINE_GLOBAL(line);
                     break;
                 case ScriptCommands.DEFINE:
-					Script_DEFINE(line);
+                    Script_DEFINE(line);
                     break;
                 case ScriptCommands.SLEEP:
                     Script_SLEEP(line);
@@ -265,24 +265,24 @@ namespace L2_login
                     break;
                 case ScriptCommands.END_OF_FILE:
                     Globals.gamedata.CurrentScriptState = ScriptState.EOF;
-					break;
+                    break;
                 case ScriptCommands.END_SCRIPT:
                     Globals.gamedata.CurrentScriptState = ScriptState.Finished;
                     do_advance = true;
                     Globals.l2net_home.SetStartScript();
                     break;
                 case ScriptCommands.JUMP_TO_LINE:
-					Script_JUMP_TO_LINE(line);
-					break;
+                    Script_JUMP_TO_LINE(line);
+                    break;
                 case ScriptCommands.LABEL:
-					Script_LABEL(line);
+                    Script_LABEL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.JUMP_TO_LABEL:
-					Script_JUMP_TO_LABEL(line);
-					break;
+                    Script_JUMP_TO_LABEL(line);
+                    break;
                 case ScriptCommands.PRINT_TEXT:
-					Script_PRINT_TEXT(line, false);
+                    Script_PRINT_TEXT(line, false);
                     do_advance = true;
                     break;
                 case ScriptCommands.PRINT_DEBUG:
@@ -290,7 +290,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.GET_RAND:
-					Script_GET_RAND(line);
+                    Script_GET_RAND(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.HEX_TO_DEC:
@@ -406,7 +406,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.INJECT:
-					Script_INJECT(line);
+                    Script_INJECT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.INJECTBB_CLIENT:
@@ -418,31 +418,31 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.COMMAND:
-					Script_COMMAND(line);
+                    Script_COMMAND(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLICK_NEAREST_ITEM:
-					Script_CLICK_NEAREST_ITEM();
+                    Script_CLICK_NEAREST_ITEM();
                     do_advance = true;
                     break;
                 case ScriptCommands.CLEAR_WALLS:
-					Globals.gamedata.Walls.Clear();
+                    Globals.gamedata.Walls.Clear();
                     do_advance = true;
                     break;
                 case ScriptCommands.ADD_WALL:
-					Script_ADD_WALL(line);
+                    Script_ADD_WALL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLEAR_BORDER:
-					Globals.gamedata.Paths.ClearBorder();
+                    Globals.gamedata.Paths.ClearBorder();
                     do_advance = true;
                     break;
                 case ScriptCommands.ADD_BORDER_PT:
-					Script_ADD_PATH_PT(line);
+                    Script_ADD_PATH_PT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.NPC_DIALOG:
-					Script_NPC_DIALOG(line);
+                    Script_NPC_DIALOG(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CHECK_TARGETING:
@@ -454,15 +454,15 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST:
-					Script_TARGET_NEAREST();
+                    Script_TARGET_NEAREST();
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST_NAME:
-					Script_TARGET_NEAREST_NAME(line);
+                    Script_TARGET_NEAREST_NAME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST_ID:
-					Script_TARGET_NEAREST_ID(line);
+                    Script_TARGET_NEAREST_ID(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET:
@@ -470,11 +470,11 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TALK_TARGET:
-					Script_TALK_TARGET();
+                    Script_TALK_TARGET();
                     do_advance = true;
                     break;
                 case ScriptCommands.ATTACK_TARGET:
-					Script_ATTACK_TARGET();
+                    Script_ATTACK_TARGET();
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ACTION:
@@ -486,7 +486,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_SKILL:
-					Script_USE_SKILL(line);
+                    Script_USE_SKILL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_SKILL_SMART:
@@ -494,19 +494,19 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ITEM:
-					Script_USE_ITEM(line,false);
+                    Script_USE_ITEM(line, false);
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ITEM_EXPLICIT:
-                    Script_USE_ITEM(line,true);
+                    Script_USE_ITEM(line, true);
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_COUNT:
-					Script_ITEM_COUNT(line);
+                    Script_ITEM_COUNT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.MOVE_TO:
-					Script_MOVE_TO(line);
+                    Script_MOVE_TO(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.MOVR_WAIT:
@@ -575,7 +575,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_NAME:
-					Script_ITEM_GET_NAME(line);
+                    Script_ITEM_GET_NAME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_DESC:
@@ -583,7 +583,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_ID:
-					Script_ITEM_GET_ID(line);
+                    Script_ITEM_GET_ID(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLAN_GET_NAME:
@@ -595,11 +595,11 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TAP_TO:
-					Script_TAP_TO(line);
+                    Script_TAP_TO(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.RESTART:
-					Script_RESTART();
+                    Script_RESTART();
                     do_advance = true;
                     break;
                 case ScriptCommands.BLOCK:
@@ -714,7 +714,7 @@ namespace L2_login
                     //a command for which no handler exists... PUBLIC or VAR_START or something...
                     do_advance = true;
                     break;
-			}//end of switch
+            }//end of switch
 #if !DEBUG
 			}
 			catch
@@ -731,7 +731,7 @@ namespace L2_login
             }
 
             return true;
-		}
+        }
 
         public static ScriptCommands GetCommandType(string cmd)
         {
@@ -739,7 +739,7 @@ namespace L2_login
 
             switch (cmd)
             {
-                 case "REBOOT":
+                case "REBOOT":
                     return ScriptCommands.REBOOT;
                 case "TWITCH_MOUSE":
                     return ScriptCommands.TWITCH_MOUSE;
@@ -1124,198 +1124,198 @@ namespace L2_login
 
         }
 
-		private void RunScript()
-		{
+        private void RunScript()
+        {
 #if !DEBUG
 			try
 			{
 #endif
-            	ScriptLine line;
-            	//int while_count = 0;
+            ScriptLine line;
+            //int while_count = 0;
 
-                if (System.String.Equals(Globals.Script_MainFile, ""))
-            	{
-                    Globals.gamedata.CurrentScriptState = ScriptState.Stopped;
+            if (System.String.Equals(Globals.Script_MainFile, ""))
+            {
+                Globals.gamedata.CurrentScriptState = ScriptState.Stopped;
                 Script_Error("Script Thread entry point not set... did you forget to load first?");
-                    Globals.l2net_home.SetStartScript();
-	                return;
-            	}
+                Globals.l2net_home.SetStartScript();
+                return;
+            }
 
             //clean up pathfinding stuff
             is_Moving = false;
             Moving_List.Clear();
-                
-	            StreamReader filein = new StreamReader(Globals.Script_MainFile);
-				ScriptFile sf = new ScriptFile();
-				sf.Name = Globals.Script_MainFile;
-				sf.ReadScript(filein);
-				filein.Close();
 
-                Files.Add(sf.Name, sf);
+            StreamReader filein = new StreamReader(Globals.Script_MainFile);
+            ScriptFile sf = new ScriptFile();
+            sf.Name = Globals.Script_MainFile;
+            sf.ReadScript(filein);
+            filein.Close();
 
-	            ScriptThread scr_thread = new ScriptThread();
-	            scr_thread.Current_File = Globals.Script_MainFile;
-	            scr_thread.Line_Pos = 0;
+            Files.Add(sf.Name, sf);
 
-	            VariableList stack_bottom = new VariableList();
-	            scr_thread._stack.Add(stack_bottom);
+            ScriptThread scr_thread = new ScriptThread();
+            scr_thread.Current_File = Globals.Script_MainFile;
+            scr_thread.Line_Pos = 0;
 
-                scr_thread.ID = GetUniqueThreadID();
-                Threads.Add(scr_thread.ID, scr_thread);
+            VariableList stack_bottom = new VariableList();
+            scr_thread._stack.Add(stack_bottom);
 
-	            ScriptEvent pop_event;
-	            ScriptEventCaller evn_call;
+            scr_thread.ID = GetUniqueThreadID();
+            Threads.Add(scr_thread.ID, scr_thread);
 
-                bool all_sleeping;
-                bool time_passed;
+            ScriptEvent pop_event;
+            ScriptEventCaller evn_call;
 
-                while (true)//Globals.gamedata.running)
+            bool all_sleeping;
+            bool time_passed;
+
+            while (true)//Globals.gamedata.running)
+            {
+                all_sleeping = true;
+
+                //need to check the state of the script thread
+                if (IsRunning())//if running
                 {
-                    all_sleeping = true;
-
-                    //need to check the state of the script thread
-                    if (IsRunning())//if running
-                    {
 #if !TESTING
-                        try
-                        {
+                    try
+                    {
 #endif
-                            foreach (ScriptThread cthread in Threads.Values)
-                            {
-                                CurrentThread = cthread.ID;
+                        foreach (ScriptThread cthread in Threads.Values)
+                        {
+                            CurrentThread = cthread.ID;
 
                             DateTime finish = DateTime.Now.AddTicks(Globals.Script_Ticks_Per_Switch);
-                                time_passed = false;
-                                BumpThread = false;
+                            time_passed = false;
+                            BumpThread = false;
 
-                                while (IsRunning() && (cthread.Sleep_Until < DateTime.Now) && !time_passed)
-                                {
-                                    line = Get_Line(Line_Pos);
-
-                                    if (Proccess_Line(line, true))
-                                    {
-                                        all_sleeping = false;
-                                    }
-
-                                    time_passed = DateTime.Now > finish || BumpThread;
-                                }
-                            }
-#if !TESTING
-                        }
-                        catch
-                        {
-                            //set was modified... no biggie
-                        }
-#endif
-
-                        try
-                        {
-                            //lets pop off all our events
-                            lock (eventqueueLock)
+                            while (IsRunning() && (cthread.Sleep_Until < DateTime.Now) && !time_passed)
                             {
-                                while (EventQueueCount() > 0)
+                                line = Get_Line(Line_Pos);
+
+                                if (Proccess_Line(line, true))
                                 {
                                     all_sleeping = false;
-                                    pop_event = EventQueueDequeue();
+                                }
 
-                                    //time to handle the event... fun fun fun
-
-                                    switch (pop_event.Type)
-                                    {
-                                        case EventType.ServerPacket:
-                                            if (ServerPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ServerPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ServerPacketEX:
-                                            if (ServerPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ServerPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ClientPacket:
-                                            if (ClientPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ClientPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ClientPacketEX:
-                                            if (ClientPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ClientPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.SelfPacket:
-                                            if (SelfPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = SelfPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.SelfPacketEX:
-                                            if (SelfPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = SelfPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        default:
-                                            //need to check if the event exists in our list
-                                            if (EventsContainsKey((int)pop_event.Type))
-                                            {
-                                                //the event exists...
-                                                evn_call = EventsGetCaller((int)pop_event.Type);
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                    }
-                                }//end of while dequeque
+                                time_passed = DateTime.Now > finish || BumpThread;
                             }
                         }
-                        catch//(Exception e)
+#if !TESTING
+                    }
+                    catch
+                    {
+                        //set was modified... no biggie
+                    }
+#endif
+
+                    try
+                    {
+                        //lets pop off all our events
+                        lock (eventqueueLock)
                         {
-                        Script_Error("Event Error... possible wrong file or function name?");
+                            while (EventQueueCount() > 0)
+                            {
+                                all_sleeping = false;
+                                pop_event = EventQueueDequeue();
+
+                                //time to handle the event... fun fun fun
+
+                                switch (pop_event.Type)
+                                {
+                                    case EventType.ServerPacket:
+                                        if (ServerPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ServerPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ServerPacketEX:
+                                        if (ServerPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ServerPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ClientPacket:
+                                        if (ClientPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ClientPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ClientPacketEX:
+                                        if (ClientPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ClientPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.SelfPacket:
+                                        if (SelfPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = SelfPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.SelfPacketEX:
+                                        if (SelfPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = SelfPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    default:
+                                        //need to check if the event exists in our list
+                                        if (EventsContainsKey((int)pop_event.Type))
+                                        {
+                                            //the event exists...
+                                            evn_call = EventsGetCaller((int)pop_event.Type);
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                }
+                            }//end of while dequeque
                         }
-                    }//end of if
-
-                    switch (Globals.gamedata.CurrentScriptState)
+                    }
+                    catch//(Exception e)
                     {
-                        case ScriptState.Stopped:
-                        case ScriptState.Running:
-                            break;
-                        case ScriptState.Paused:
+                        Script_Error("Event Error... possible wrong file or function name?");
+                    }
+                }//end of if
+
+                switch (Globals.gamedata.CurrentScriptState)
+                {
+                    case ScriptState.Stopped:
+                    case ScriptState.Running:
+                        break;
+                    case ScriptState.Paused:
                         Thread.Sleep(Globals.SLEEP_WhileScript);
-                            break;
-                        case ScriptState.DelayStart:
+                        break;
+                    case ScriptState.DelayStart:
                         Thread.Sleep(Globals.SLEEP_Script_Reset);
-                            Globals.gamedata.CurrentScriptState = ScriptState.Running;
-                            break;
-                        default:
-                            return;
-                    }
+                        Globals.gamedata.CurrentScriptState = ScriptState.Running;
+                        break;
+                    default:
+                        return;
+                }
 
-                    if (all_sleeping)
-                    {
+                if (all_sleeping)
+                {
                     Thread.Sleep(Globals.SLEEP_WhileScript);
-                    }
-                }//end of while true
+                }
+            }//end of while true
 #if !DEBUG
 			}
 			catch (Exception e)
@@ -2043,7 +2043,7 @@ namespace L2_login
                                     }
                                 }
                                 break;
-                                
+
                             case "EFFECT_TIME":
                                 if (svar.Type == Var_Types.SORTEDLIST)
                                 {
@@ -2059,7 +2059,7 @@ namespace L2_login
                                         ovar.Value = duration;
                                     }
                                 }
-                                break;                                 
+                                break;
                             case "POP":
                                 if (svar.Type == Var_Types.STACK)
                                 {
@@ -2641,48 +2641,48 @@ namespace L2_login
             return Get_Value(pname);
         }
 
-		public static string Get_String(ref string inp, bool evaluate = true)
-		{
-			//lets remove all the blank spaces at the start of the line
+        public static string Get_String(ref string inp, bool evaluate = true)
+        {
+            //lets remove all the blank spaces at the start of the line
             inp = inp.Trim();
 
-			if(inp.Length == 0)
-			{
-				return "";
-			}
+            if (inp.Length == 0)
+            {
+                return "";
+            }
 
-			string cmd;// = "";
-			int spc;
+            string cmd;// = "";
+            int spc;
 
-			if(inp[0] == '"')
-			{
-				//this is a quote
-				spc = inp.IndexOf('"',1);
-				while(inp[spc-1] == '\\')
-				{
-					spc = inp.IndexOf('"',spc+1);
-				}
+            if (inp[0] == '"')
+            {
+                //this is a quote
+                spc = inp.IndexOf('"', 1);
+                while (inp[spc - 1] == '\\')
+                {
+                    spc = inp.IndexOf('"', spc + 1);
+                }
 
-				if(spc > 0)
-				{
-					cmd = inp.Substring(1,spc-1);
-					inp = inp.Remove(0,spc+1).TrimStart(' ');
-				}
-				else
-				{
-					cmd = inp.Substring(1,inp.Length-1);
-					inp = "";
-				}
+                if (spc > 0)
+                {
+                    cmd = inp.Substring(1, spc - 1);
+                    inp = inp.Remove(0, spc + 1).TrimStart(' ');
+                }
+                else
+                {
+                    cmd = inp.Substring(1, inp.Length - 1);
+                    inp = "";
+                }
 
                 if (evaluate)
                 {
                     cmd = Get_String_Internal(cmd);
                 }
-			}
-			else
-			{
-				//not a quote
-				spc = inp.IndexOf(' ');
+            }
+            else
+            {
+                //not a quote
+                spc = inp.IndexOf(' ');
                 int tb = inp.IndexOf('\t');
 
                 if (tb != -1 && tb < spc)
@@ -2690,20 +2690,20 @@ namespace L2_login
                     spc = tb;
                 }
 
-				if(spc > 0)
-				{
-					cmd = inp.Substring(0,spc);
-					inp = inp.Remove(0,spc+1);
-				}
-				else
-				{
-					cmd = inp;
-					inp = "";
-				}
-			}
+                if (spc > 0)
+                {
+                    cmd = inp.Substring(0, spc);
+                    inp = inp.Remove(0, spc + 1);
+                }
+                else
+                {
+                    cmd = inp;
+                    inp = "";
+                }
+            }
 
-			//lets replace all \" with just "
-			cmd = cmd.Replace( "\\\"", "\"");
+            //lets replace all \" with just "
+            cmd = cmd.Replace("\\\"", "\"");
 
 
             if (cmd.Contains("\\n"))
@@ -2714,8 +2714,8 @@ namespace L2_login
                 cmd = cmd.Replace("!@#$%^&!@#$%^&", "\\n");
             }
 
-			return cmd;
-		}
+            return cmd;
+        }
 
         public static string Get_StringToken(ref string inp)
         {
@@ -2816,7 +2816,7 @@ namespace L2_login
 
                 string value = "";
 
-                switch(scr_var.Type)
+                switch (scr_var.Type)
                 {
                     case Var_Types.INT:
                         value = Convert.ToInt64(scr_var.Value).ToString(System.Globalization.CultureInfo.InvariantCulture);
@@ -2869,19 +2869,19 @@ namespace L2_login
         }
 
         private ScriptLine Get_Line(int cnt, string file)
-		{
-			try
-			{
+        {
+            try
+            {
                 return (ScriptLine)((ScriptFile)Files[file])._ScriptLines[cnt];
-			}
+            }
             catch
-			{
+            {
                 Script_Error("failed to get line " + cnt.ToString());
 
                 ScriptLine sl = new ScriptLine();
                 sl.Command = ScriptCommands.END_OF_FILE;
                 return sl;
-			}
-		}
-	}//end of class
+            }
+        }
+    }//end of class
 }//end of namespace

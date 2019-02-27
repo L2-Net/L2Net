@@ -87,7 +87,7 @@ namespace L2_login
 
                         if (npc != null)
                         {
-                            
+
 
                             hp = npc.Cur_HP.ToString() + "/" + npc.Max_HP.ToString();
                             mp = npc.Cur_MP.ToString() + "/" + npc.Max_MP.ToString();

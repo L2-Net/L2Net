@@ -43,7 +43,7 @@ namespace L2_login
                 }
             }
 
-            switch(_my_type)
+            switch (_my_type)
             {
                 case Win_Types.CMD:
                     _my_proc = new System.Diagnostics.Process();
@@ -92,7 +92,7 @@ namespace L2_login
 
         public void Set_FileName(string fname, string args)
         {
-            switch(_my_type)
+            switch (_my_type)
             {
                 case Win_Types.CMD:
                     _my_proc.StartInfo.FileName = fname;
@@ -152,46 +152,46 @@ namespace L2_login
             {
                 //try
                 //{
-                    switch(_my_type)
-                    {
-                        case Win_Types.NULL:
-                            break;
-                        case Win_Types.CMD:
-                            _my_proc.Start();
-                            //shouldnt need to do anything, since the start up parameters should hide it already
-                            break;
-                        case Win_Types.GUI:
-                            _my_proc.Start();
-                            //TODO
-                            //gotta grab the process name and then force the window to hide
-                            break;
-                        case Win_Types.HTML:
-                            Globals.l2net_home.HTMLWindow_Show(_hash);
-                            break;
-                        case Win_Types.GDI:
-                            break;
-                    }
-
-                    _running = true;
-/*                }
-                catch
+                switch (_my_type)
                 {
-                    _running = false;
+                    case Win_Types.NULL:
+                        break;
+                    case Win_Types.CMD:
+                        _my_proc.Start();
+                        //shouldnt need to do anything, since the start up parameters should hide it already
+                        break;
+                    case Win_Types.GUI:
+                        _my_proc.Start();
+                        //TODO
+                        //gotta grab the process name and then force the window to hide
+                        break;
+                    case Win_Types.HTML:
+                        Globals.l2net_home.HTMLWindow_Show(_hash);
+                        break;
+                    case Win_Types.GDI:
+                        break;
+                }
 
-#if DEBUG
-                    System.Windows.Forms.MessageBox.Show("Error starting process");
-#endif
-                }*/
+                _running = true;
+                /*                }
+                                catch
+                                {
+                                    _running = false;
+
+                #if DEBUG
+                                    System.Windows.Forms.MessageBox.Show("Error starting process");
+                #endif
+                                }*/
             }
         }
 
         public void Send_StandardInput(string inp)
         {
-            if(_running)
+            if (_running)
             {
                 try
                 {
-                    switch(_my_type)
+                    switch (_my_type)
                     {
                         case Win_Types.CMD:
                             _my_proc.StandardInput.WriteLine(inp);

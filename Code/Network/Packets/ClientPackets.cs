@@ -157,7 +157,7 @@ namespace L2_login
 
             if ((texttype != 0x16) && Globals.NpcSay)
             {
-            Globals.l2net_home.Add_Text(n_msg, Brushes.White, TextType.LOCAL);     
+                Globals.l2net_home.Add_Text(n_msg, Brushes.White, TextType.LOCAL);
             }
         }
 
@@ -301,7 +301,7 @@ namespace L2_login
  * 14:51:47 :[CLIENT DUMP: CB 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 //GameGuardReply = 0xCB,
 */
 
-            if (type == 0x22  && Globals.gamedata.OOG) //Welcome to the world of Lineage II
+            if (type == 0x22 && Globals.gamedata.OOG) //Welcome to the world of Lineage II
             {
                 if (Globals.gamedata.Chron >= Chronicle.CT2_5)
                 {
@@ -333,7 +333,7 @@ namespace L2_login
                 case 2167:      // A malicious skill cannot be used in a peace zone.
                     Globals.gamedata.my_char.ExpiresTime = 1;
                     break;
-                case 139:                    
+                case 139:
                     Globals.gamedata.my_char.Resisted = 1;
                     break;
                 case 181:       // Cannot See Target
@@ -583,19 +583,19 @@ namespace L2_login
                                         ncd.Name = "EFFECT";
                                         ncd._Variables.Add("ID", new ScriptVariable((long)_buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                                         ncd._Variables.Add("LEVEL", new ScriptVariable((long)_buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                                        ncd._Variables.Add("DURATION", new ScriptVariable((long)_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                                        ncd._Variables.Add("DURATION", new ScriptVariable(_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                                         ncd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(_buff.ID, _buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                                         ScriptVariable nsv = new ScriptVariable(ncd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
 
                                         buffs.Add(_buff.ID.ToString(), nsv);
                                     }
 
-                                    cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                                    cd._Variables.Add("EFFECTS", new ScriptVariable(buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                                 }
                                 catch
                                 {
                                     SortedList empty = new SortedList();
-                                    cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                                    cd._Variables.Add("EFFECTS", new ScriptVariable(empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                                 }
 
 
@@ -675,7 +675,7 @@ namespace L2_login
             }
             finally
             {
-                
+
             }
         }
 
@@ -691,24 +691,24 @@ namespace L2_login
                         CharBuff cb = new CharBuff();
                         cb.ID = skill_id;
                         cb.SkillLevel = 1; // partyspelld doesnt give level, so set to 1 so we can lookup the name if needed
-                        /*if (skill_duration == -1)
+                                           /*if (skill_duration == -1)
+                                           {
+                                               // slothmo: this is a delete for a buff we don't have...
+                                               // d00d: actually -1 == toggle buff, fix later
+                                           }
+                                           else
+                                           {*/
+                        cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
+                        cb.EFFECT_TIME = skill_duration;
+                        //v392B11: This hopefully fixes F4 packeterror
+                        if (ph.my_buffs.ContainsKey(cb.ID))
                         {
-                            // slothmo: this is a delete for a buff we don't have...
-                            // d00d: actually -1 == toggle buff, fix later
+                            ph.my_buffs[cb.ID] = cb;
                         }
                         else
-                        {*/
-                            cb.ExpiresTime = DateTime.Now.AddSeconds(skill_duration).Ticks;
-                            cb.EFFECT_TIME = skill_duration;
-                            //v392B11: This hopefully fixes F4 packeterror
-                            if (ph.my_buffs.ContainsKey(cb.ID))
-                            {
-                                ph.my_buffs[cb.ID] = cb;
-                            }
-                            else
-                            {
-                                ph.my_buffs.Add(cb.ID, cb);
-                            }
+                        {
+                            ph.my_buffs.Add(cb.ID, cb);
+                        }
                         //}
                     }
                     finally
@@ -748,7 +748,7 @@ namespace L2_login
                             cd.Name = "EFFECT";
                             cd._Variables.Add("ID", new ScriptVariable((long)_buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("LEVEL", new ScriptVariable((long)_buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                            cd._Variables.Add("DURATION", new ScriptVariable((long)_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                            cd._Variables.Add("DURATION", new ScriptVariable(_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)_buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(_buff.ID, _buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                             ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
@@ -882,7 +882,7 @@ namespace L2_login
                             cd.Name = "EFFECT";
                             cd._Variables.Add("ID", new ScriptVariable((long)_buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("LEVEL", new ScriptVariable((long)_buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                            cd._Variables.Add("DURATION", new ScriptVariable((long)_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                            cd._Variables.Add("DURATION", new ScriptVariable(_buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)_buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
                             cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(_buff.ID, _buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                             ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
@@ -906,7 +906,7 @@ namespace L2_login
             uint cnt = 0;
             if (Globals.gamedata.Chron < Chronicle.CT3_0)
             {
-                 cnt = buffe.ReadUInt32();
+                cnt = buffe.ReadUInt32();
             }
             else
             {
@@ -1063,7 +1063,7 @@ namespace L2_login
 
                     break;
                 case 0x01://shout
-                    Globals.l2net_home.Add_Text(message, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)253, (System.Byte)100, (System.Byte)0)), TextType.LOCAL);
+                    Globals.l2net_home.Add_Text(message, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(253, 100, 0)), TextType.LOCAL);
                     break;
                 case 0x02://tell
                     if (Globals.gamedata.alertoptions.beepon_privatemessage)
@@ -1072,7 +1072,7 @@ namespace L2_login
                     }
                     Globals.l2net_home.Add_Text(message, Globals.Tell_Brush, TextType.ALL);
 
-                    if ((Globals.gamedata.PrivateMsgQueue.Count < 4)&& Globals.gamedata.autoreplyPM && (data1 != Globals.gamedata.my_char.ID))
+                    if ((Globals.gamedata.PrivateMsgQueue.Count < 4) && Globals.gamedata.autoreplyPM && (data1 != Globals.gamedata.my_char.ID))
                     {
                         Globals.gamedata.PrivateMsgQueue.Enqueue(message);
                     }
@@ -1302,7 +1302,7 @@ namespace L2_login
                 for (uint i = 0; i < h2; i++)
                 {
                     InventoryInfo inv_info = new InventoryInfo();
-                    inv_info.Load(buffe,0);
+                    inv_info.Load(buffe, 0);
                     //inv_info.InNewList = true;
                     AddInfo.Add_Inventory(inv_info);
                 }
@@ -1328,7 +1328,7 @@ namespace L2_login
                 for (uint i = 0; i < h2; i++)
                 {
                     InventoryInfo inv_info = new InventoryInfo();
-                    inv_info.Load(buffe,0);
+                    inv_info.Load(buffe, 0);
                     AddInfo.Add_Inventory(inv_info);
                 }
             }
@@ -1427,7 +1427,7 @@ namespace L2_login
                 npc_inf.Load(buffe);
                 AddInfo.Add_NPCInfo(npc_inf);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Text("0C packet error caught! " + e.Message, Globals.Red, TextType.ALL);
             }
@@ -1768,7 +1768,7 @@ namespace L2_login
 		    RELATION_ALLY_MEMBER  = 0x10000; // clan is in alliance
 		    RELATION_TERRITORY_WAR= 0x80000; // show Territory War icon								
             */
-            
+
             if (Globals.gamedata.Chron >= Chronicle.CT2_2)
             {
                 uint char_id, combat, pvpflag, relation;
@@ -1822,7 +1822,7 @@ namespace L2_login
                             else
                             {
                                 AddInfo.Set_WarState(char_id, 0, combat, karma, pvpflag);
-                            }     
+                            }
 
                         }
                     }
@@ -1866,7 +1866,7 @@ namespace L2_login
                     {
                         AddInfo.Set_WarState(char_id, 0, combat, karma, pvpflag);
                     }
-                }				
+                }
             }
             else
             {
@@ -2056,10 +2056,10 @@ namespace L2_login
                     AddInfo.Remove_Item(dead_object);
                     Globals.l2net_home.timer_items.Start();
                     break;
-                /*default:
-                    //maybe this is an inventory item? ... stupid ncsoft
-                    AddInfo.Remove_Inventory(dead_object);
-                    break;*/
+                    /*default:
+                        //maybe this is an inventory item? ... stupid ncsoft
+                        AddInfo.Remove_Inventory(dead_object);
+                        break;*/
             }
 
             //need to check if anything had this targeted and set it's Dest_ to the current location
@@ -2099,7 +2099,9 @@ namespace L2_login
                     {
                         CharInfo player = Util.GetChar(EntityID);
                         if (player != null)
-                             player.Update(DataBuffer);
+                        {
+                            player.Update(DataBuffer);
+                        }
                     }
                     finally
                     {
@@ -2112,7 +2114,9 @@ namespace L2_login
                     {
                         NPCInfo npc = Util.GetNPC(EntityID);
                         if (npc != null)
+                        {
                             npc.Update(DataBuffer);
+                        }
                     }
                     finally
                     {
@@ -2539,9 +2543,14 @@ namespace L2_login
                     {
                         ScriptEvent sc_ev = new ScriptEvent();
                         if (incombat)
+                        {
                             sc_ev.Type = EventType.SelfEnterCombat;
+                        }
                         else
+                        {
                             sc_ev.Type = EventType.SelfLeaveCombat;
+                        }
+
                         ScriptEngine.SendToEventQueue(sc_ev);
                     }
                     break;
@@ -2818,7 +2827,7 @@ namespace L2_login
             StopMoveStartCombat(_caster, false);
 
             if (_caster == Globals.gamedata.my_char.ID)
-            {                
+            {
                 // Globals.gamedata.my_char.HitTime = 0;
                 // Globals.l2net_home.Add_Text("MagicSkillLaunched setting hit time to 0 (" + Globals.gamedata.my_char.HitTime + ")", Globals.Cyan, TextType.BOT);
 
@@ -2922,7 +2931,7 @@ namespace L2_login
 
         public static void MagicSkillUser(ByteBuffer buff)
         {
-           if (Globals.gamedata.Chron >= Chronicle.CT3_0)
+            if (Globals.gamedata.Chron >= Chronicle.CT3_0)
             {
                 /*god packet
                   * 48 
@@ -2961,8 +2970,9 @@ namespace L2_login
                 int _baseSkillID = buff.ReadInt32(); //FF FF FF FF
 
                 if (_baseSkillID > 0)
+                {
                     _skillid = (uint)_baseSkillID;
-
+                }
             }
             int _delay = buff.ReadInt32();
             //4 bytescha.getX();
@@ -2974,12 +2984,12 @@ namespace L2_login
             StopMoveStartCombat(_caster, false);
 
             if (_caster == Globals.gamedata.my_char.ID)
-            {                
+            {
                 Globals.gamedata.my_char.Resisted = 0;
-                
+
                 // Globals.gamedata.my_char.ExpiresTime = ((1000 + _hittime) * TimeSpan.TicksPerMillisecond) + System.DateTime.Now.Ticks;
                 Globals.gamedata.my_char.ExpiresTime = (_hittime * TimeSpan.TicksPerMillisecond) + DateTime.Now.Ticks;
-                
+
                 if (Globals.gamedata.CurrentScriptState == ScriptState.Running)
                 {
                     ScriptEvent sc_ev = new ScriptEvent();
@@ -2996,11 +3006,11 @@ namespace L2_login
 
                 Globals.SkillListLock.EnterReadLock();
                 try
-                {                    
+                {
                     if (Globals.gamedata.skills.ContainsKey(_skillid))
                     {
-                        ((UserSkill)Globals.gamedata.skills[_skillid]).LastTime = DateTime.Now;                     
-                        ((UserSkill)Globals.gamedata.skills[_skillid]).NextTime = DateTime.Now.AddMilliseconds(_delay);                        
+                        ((UserSkill)Globals.gamedata.skills[_skillid]).LastTime = DateTime.Now;
+                        ((UserSkill)Globals.gamedata.skills[_skillid]).NextTime = DateTime.Now.AddMilliseconds(_delay);
                     }
                 }
                 finally
@@ -3237,7 +3247,10 @@ namespace L2_login
                             _targeter_name = Globals.gamedata.my_char.Name;
                             _targeter_war = 0;
                             if (Globals.gamedata.BOT_STATE == BotState.Attacking || Globals.gamedata.BOT_STATE == BotState.FinishedBuffing)
+                            {
                                 Globals.gamedata.BOT_STATE = BotState.Nothing;
+                            }
+
                             break;
                         case TargetType.MYPET:
                             Globals.gamedata.my_pet.TargetID = _targetID;
@@ -3345,9 +3358,9 @@ namespace L2_login
                                             //Oddi: Remove first 275 elements in list.
 
                                             Globals.gamedata.MobList.RemoveRange(0, 225);
-                                            #if DEBUG
+#if DEBUG
                                             Globals.l2net_home.Add_Text("resizing array: " + Globals.gamedata.MobList.Count, Globals.Green, TextType.SYSTEM);
-                                            #endif
+#endif
 
                                         }
                                     }
@@ -3356,9 +3369,9 @@ namespace L2_login
                                         Globals.MobListLock.ExitWriteLock();
                                     }
                                 }
-                                    
+
                             }
-                            catch(Exception e)
+                            catch (Exception e)
                             {
                                 Globals.l2net_home.Add_Error("Error with moblist adding or resizing " + e.Message);
                             }
@@ -3377,7 +3390,7 @@ namespace L2_login
                     if (Globals.gamedata.DoTargeting(_ID, _targetID))
                     {
 #if DEBUG
-                                                    Globals.l2net_home.Add_Text("Canceleling target from Clientpackets: ", Globals.Blue, TextType.SYSTEM);
+                        Globals.l2net_home.Add_Text("Canceleling target from Clientpackets: ", Globals.Blue, TextType.SYSTEM);
 #endif
                         //cancel target
                         ServerPackets.Send_CancelTarget();
@@ -3391,7 +3404,10 @@ namespace L2_login
                             _targeter_name = Globals.gamedata.my_char.Name;
                             _targeter_war = 0;
                             if (Globals.gamedata.BOT_STATE == BotState.Attacking)
+                            {
                                 Globals.gamedata.BOT_STATE = BotState.Nothing;
+                            }
+
                             break;
                         case TargetType.MYPET:
                             Globals.gamedata.my_pet.TargetID = 0;
@@ -3467,9 +3483,14 @@ namespace L2_login
                     {
                         ScriptEvent sc_ev = new ScriptEvent();
                         if (type)
+                        {
                             sc_ev.Type = EventType.SelfTargeted;
+                        }
                         else
+                        {
                             sc_ev.Type = EventType.SelfUnTargeted;
+                        }
+
                         sc_ev.Variables.Add(new ScriptVariable((long)_ID, "TARGETER_ID", Var_Types.INT, Var_State.PUBLIC));
                         sc_ev.Variables.Add(new ScriptVariable((long)_x, "TARGETER_X", Var_Types.INT, Var_State.PUBLIC));
                         sc_ev.Variables.Add(new ScriptVariable((long)_y, "TARGETER_Y", Var_Types.INT, Var_State.PUBLIC));
@@ -3547,7 +3568,7 @@ namespace L2_login
                     skill = "pooping: " + socialid.ToString("X2");
                     break;
             }
-            
+
 
             TargetType type = Util.GetType(playerid);
 
@@ -3808,7 +3829,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.ClanStatusChanged(buff);
+            Globals.l2net_home.ClanStatusChanged(buff);
             //}
         }
 
@@ -3816,7 +3837,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.ClanInfoUpdate(buff);
+            Globals.l2net_home.ClanInfoUpdate(buff);
             //}
         }
 
@@ -3824,7 +3845,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.Set_ClanInfo(buff);
+            Globals.l2net_home.Set_ClanInfo(buff);
             //}
         }
 
@@ -3832,7 +3853,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.Set_ClanInfoUpdate(buff);
+            Globals.l2net_home.Set_ClanInfoUpdate(buff);
             //}
         }
 
@@ -3840,7 +3861,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.Set_MemberInfo(buff, true);
+            Globals.l2net_home.Set_MemberInfo(buff, true);
             //}
         }
 
@@ -3848,7 +3869,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.Set_MemberInfoDelete(buff);
+            Globals.l2net_home.Set_MemberInfoDelete(buff);
             //}
         }
 
@@ -3856,7 +3877,7 @@ namespace L2_login
         {
             //if (Globals.gamedata.Chron <= Chronicle.CT2_6)
             //{
-                Globals.l2net_home.Set_MemberInfoDeleteAll(buff);
+            Globals.l2net_home.Set_MemberInfoDeleteAll(buff);
             //}
         }
 
@@ -4284,7 +4305,9 @@ namespace L2_login
                             npc.CurrentTargetType = TargetType.NONE;
                             npc.isAlikeDead = 1;
                             if (sweep == 1)
+                            {
                                 npc.IsSpoiled = true;
+                            }
                         }
                         if (Globals.gamedata.botoptions.Cancel_Target == 1)
                         {
@@ -4438,7 +4461,7 @@ namespace L2_login
                     //send to verify my old location
                     Globals.l2net_home.Add_Text("Teleported", Globals.Red, TextType.BOT);
 
-                    if(Globals.ToggleBottingifTeleported)
+                    if (Globals.ToggleBottingifTeleported)
                     {
                         Globals.l2net_home.Add_Text("Disabling the bot due to being teleported...", Globals.Red, TextType.ALL);
                         Globals.l2net_home.Toggle_Botting(1);
@@ -4951,69 +4974,93 @@ namespace L2_login
             }
         }
 
-#region Mailing
+        #region Mailing
 
         public static void Load_ReceivedMails(ByteBuffer buff)
         {
-          if (Globals.mailboxwindow == null || Globals.mailboxwindow.IsDisposed == true)
-          {
-            return;
-          }
+            if (Globals.mailboxwindow == null || Globals.mailboxwindow.IsDisposed == true)
+            {
+                return;
+            }
 
-          Globals.mailboxwindow.timeSeconds = buff.ReadUInt32();
-          Globals.mailboxwindow.inboxSize = buff.ReadUInt32();
-          MailboxWindow.ReceivedMail tempReceived;
-          Globals.mailboxwindow.listViewReceived.Items.Clear();
-          Globals.mailboxwindow.receivedMails.Clear();
-          System.Windows.Forms.ListViewItem tempListItem;
-          uint tempInt;
-          string tempStr;
-          for (uint i = 0; i < Globals.mailboxwindow.inboxSize; i++)
-          {
+            Globals.mailboxwindow.timeSeconds = buff.ReadUInt32();
+            Globals.mailboxwindow.inboxSize = buff.ReadUInt32();
+            MailboxWindow.ReceivedMail tempReceived;
+            Globals.mailboxwindow.listViewReceived.Items.Clear();
+            Globals.mailboxwindow.receivedMails.Clear();
+            System.Windows.Forms.ListViewItem tempListItem;
+            uint tempInt;
+            string tempStr;
+            for (uint i = 0; i < Globals.mailboxwindow.inboxSize; i++)
+            {
 
-            tempReceived = new MailboxWindow.ReceivedMail();
-            tempReceived.msgId = buff.ReadUInt32();
-            tempReceived.subject = buff.ReadString();
-            tempReceived.senderName = buff.ReadString();
-            tempReceived.isLocked = buff.ReadUInt32();
-            tempReceived.expireSecs = buff.ReadUInt32();
-            tempReceived.isUnread = buff.ReadUInt32();
-            buff.ReadUInt32();
-            tempReceived.hasAttachs = buff.ReadUInt32();
-            tempReceived.isReturned = buff.ReadUInt32();
-            tempReceived.isSystem = buff.ReadUInt32();
-            buff.ReadUInt32();
+                tempReceived = new MailboxWindow.ReceivedMail();
+                tempReceived.msgId = buff.ReadUInt32();
+                tempReceived.subject = buff.ReadString();
+                tempReceived.senderName = buff.ReadString();
+                tempReceived.isLocked = buff.ReadUInt32();
+                tempReceived.expireSecs = buff.ReadUInt32();
+                tempReceived.isUnread = buff.ReadUInt32();
+                buff.ReadUInt32();
+                tempReceived.hasAttachs = buff.ReadUInt32();
+                tempReceived.isReturned = buff.ReadUInt32();
+                tempReceived.isSystem = buff.ReadUInt32();
+                buff.ReadUInt32();
 
-            tempListItem = new System.Windows.Forms.ListViewItem(tempReceived.senderName);
-            tempListItem.SubItems.Add(tempReceived.subject);
+                tempListItem = new System.Windows.Forms.ListViewItem(tempReceived.senderName);
+                tempListItem.SubItems.Add(tempReceived.subject);
 
-            tempInt = tempReceived.expireSecs - Globals.mailboxwindow.timeSeconds;
-            tempStr = (tempInt % 60).ToString() + "s";
-            tempInt = (tempInt - (tempInt % 60)) / 60;
-            tempStr = (tempInt % 60 ).ToString() + "m " + tempStr;
-            tempInt = (tempInt - (tempInt % 60)) / 60;
-            tempStr = (tempInt % 24).ToString() + "h " + tempStr;
-            tempInt = (tempInt - (tempInt % 24)) / 24;
-            tempStr = tempInt.ToString() + "d " + tempStr;
-            tempListItem.SubItems.Add(tempStr);
+                tempInt = tempReceived.expireSecs - Globals.mailboxwindow.timeSeconds;
+                tempStr = (tempInt % 60).ToString() + "s";
+                tempInt = (tempInt - (tempInt % 60)) / 60;
+                tempStr = (tempInt % 60).ToString() + "m " + tempStr;
+                tempInt = (tempInt - (tempInt % 60)) / 60;
+                tempStr = (tempInt % 24).ToString() + "h " + tempStr;
+                tempInt = (tempInt - (tempInt % 24)) / 24;
+                tempStr = tempInt.ToString() + "d " + tempStr;
+                tempListItem.SubItems.Add(tempStr);
 
-            tempStr = "";
-            if (tempReceived.isUnread == 1) tempStr += ", NEW";
-            if (tempReceived.isLocked == 1) tempStr += ", Locked";
-            if (tempReceived.hasAttachs == 1) tempStr += ", Attachs";
-            if (tempReceived.isReturned == 1) tempStr += ", Returned";
-            if (tempReceived.isSystem == 1) tempStr += ", System";
-            if (tempStr != "") tempStr = tempStr.Substring(2);
-            tempListItem.SubItems.Add(tempStr);
+                tempStr = "";
+                if (tempReceived.isUnread == 1)
+                {
+                    tempStr += ", NEW";
+                }
 
-            Globals.mailboxwindow.listViewReceived.Items.Add(tempListItem);
-            Globals.mailboxwindow.receivedMails.Add(tempReceived);
+                if (tempReceived.isLocked == 1)
+                {
+                    tempStr += ", Locked";
+                }
 
-          }
+                if (tempReceived.hasAttachs == 1)
+                {
+                    tempStr += ", Attachs";
+                }
+
+                if (tempReceived.isReturned == 1)
+                {
+                    tempStr += ", Returned";
+                }
+
+                if (tempReceived.isSystem == 1)
+                {
+                    tempStr += ", System";
+                }
+
+                if (tempStr != "")
+                {
+                    tempStr = tempStr.Substring(2);
+                }
+
+                tempListItem.SubItems.Add(tempStr);
+
+                Globals.mailboxwindow.listViewReceived.Items.Add(tempListItem);
+                Globals.mailboxwindow.receivedMails.Add(tempReceived);
+
+            }
 
         }
 
-#endregion
+        #endregion
 
         public static void Extargetbuffs(ByteBuffer buffe)
         {
@@ -5035,110 +5082,110 @@ namespace L2_login
              * 
              */
 
-                uint id = buffe.ReadUInt32(); // char id
-                int buff_count = buffe.ReadInt16(); // buff count
-                if (id > 0)
+            uint id = buffe.ReadUInt32(); // char id
+            int buff_count = buffe.ReadInt16(); // buff count
+            if (id > 0)
+            {
+                TargetType type = Util.GetType(id);
+
+                switch (type)
                 {
-                    TargetType type = Util.GetType(id);
-
-                    switch (type)
-                    {
-                        case TargetType.PLAYER:
-                            Globals.PlayerLock.EnterWriteLock();
-                            try
+                    case TargetType.PLAYER:
+                        Globals.PlayerLock.EnterWriteLock();
+                        try
+                        {
+                            Globals.PartyLock.EnterReadLock();
+                            if (!Globals.gamedata.PartyMembers.ContainsKey(id))
                             {
-                                Globals.PartyLock.EnterReadLock();
-                                if (!Globals.gamedata.PartyMembers.ContainsKey(id))
+                                CharInfo player = Util.GetChar(id);
+                                if (player != null)
                                 {
-                                    CharInfo player = Util.GetChar(id);
-                                    if (player != null)
+                                    player.my_buffs.Clear();
+                                    if (buff_count > 0)
                                     {
-                                        player.my_buffs.Clear();
-                                        if (buff_count > 0)
+
+                                        for (int i = 0; i < buff_count; i++)
                                         {
-
-                                            for (int i = 0; i < buff_count; i++)
+                                            CharBuff _mybuff = new CharBuff();
+                                            _mybuff.ID = buffe.ReadUInt32(); // skill id
+                                            _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
+                                            buffe.ReadUInt32(); // xxx
+                                            _mybuff.EFFECT_TIME = buffe.ReadInt32();
+                                            _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
+                                            buffe.ReadUInt32();
+                                            if (player.my_buffs.ContainsKey(_mybuff.ID))
                                             {
-                                                CharBuff _mybuff = new CharBuff();
-                                                _mybuff.ID = buffe.ReadUInt32(); // skill id
-                                                _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
-                                                buffe.ReadUInt32(); // xxx
-                                                _mybuff.EFFECT_TIME = buffe.ReadInt32();
-                                                _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
-                                                buffe.ReadUInt32();
-                                                if (player.my_buffs.ContainsKey(_mybuff.ID))
-                                                {
-                                                    player.my_buffs[_mybuff.ID] = _mybuff;
-                                                }
-                                                else
-                                                {
-                                                    player.my_buffs.Add(_mybuff.ID, _mybuff);
-                                                }
-                                                //clearing player buffs
+                                                player.my_buffs[_mybuff.ID] = _mybuff;
                                             }
-                                        }
-
-
-                                    }
-                                }
-                            }
-                            finally
-                            {
-                                Globals.PlayerLock.ExitWriteLock();
-                                Globals.PartyLock.ExitReadLock();
-                            }
-                            break;
-                        case TargetType.NPC:
-                            Globals.NPCLock.EnterWriteLock();
-                            try
-                            {
-                                NPCInfo npc = Util.GetNPC(id);
-                                if (npc != null)
-                                {
-
-                                    if (npc.ID != Globals.gamedata.my_pet.ID &&
-                                        npc.ID != Globals.gamedata.my_pet1.ID &&
-                                        npc.ID != Globals.gamedata.my_pet2.ID &&
-                                        npc.ID != Globals.gamedata.my_pet3.ID)
-                                    {
-                                        npc.my_buffs.Clear();
-                                        if (buff_count > 0)
-                                        {
-                                            for (int i = 0; i < buff_count; i++)
+                                            else
                                             {
-                                                CharBuff _mybuff = new CharBuff();
-                                                _mybuff.ID = buffe.ReadUInt32(); // skill id
-                                                _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
-                                                buffe.ReadUInt32(); // xxx
-                                                _mybuff.EFFECT_TIME = buffe.ReadInt32();
-                                                _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
-                                                buffe.ReadUInt32();
-                                                if (npc.my_buffs.ContainsKey(_mybuff.ID))
-                                                {
-                                                    npc.my_buffs[_mybuff.ID] = _mybuff;
-                                                }
-                                                else
-                                                {
-                                                    npc.my_buffs.Add(_mybuff.ID, _mybuff);
-                                                }
-                                                //clearing player buffs
+                                                player.my_buffs.Add(_mybuff.ID, _mybuff);
                                             }
+                                            //clearing player buffs
                                         }
                                     }
 
 
-                                    //
                                 }
-                            }//unlock
-                            finally
-                            {
-                                Globals.NPCLock.ExitWriteLock();
                             }
-                            break;
+                        }
+                        finally
+                        {
+                            Globals.PlayerLock.ExitWriteLock();
+                            Globals.PartyLock.ExitReadLock();
+                        }
+                        break;
+                    case TargetType.NPC:
+                        Globals.NPCLock.EnterWriteLock();
+                        try
+                        {
+                            NPCInfo npc = Util.GetNPC(id);
+                            if (npc != null)
+                            {
 
-                    } // switch end
-                } // if id > 0
-                
+                                if (npc.ID != Globals.gamedata.my_pet.ID &&
+                                    npc.ID != Globals.gamedata.my_pet1.ID &&
+                                    npc.ID != Globals.gamedata.my_pet2.ID &&
+                                    npc.ID != Globals.gamedata.my_pet3.ID)
+                                {
+                                    npc.my_buffs.Clear();
+                                    if (buff_count > 0)
+                                    {
+                                        for (int i = 0; i < buff_count; i++)
+                                        {
+                                            CharBuff _mybuff = new CharBuff();
+                                            _mybuff.ID = buffe.ReadUInt32(); // skill id
+                                            _mybuff.SkillLevel = (uint)buffe.ReadInt16(); // skill lvl
+                                            buffe.ReadUInt32(); // xxx
+                                            _mybuff.EFFECT_TIME = buffe.ReadInt32();
+                                            _mybuff.ExpiresTime = DateTime.Now.AddSeconds(_mybuff.EFFECT_TIME).Ticks;
+                                            buffe.ReadUInt32();
+                                            if (npc.my_buffs.ContainsKey(_mybuff.ID))
+                                            {
+                                                npc.my_buffs[_mybuff.ID] = _mybuff;
+                                            }
+                                            else
+                                            {
+                                                npc.my_buffs.Add(_mybuff.ID, _mybuff);
+                                            }
+                                            //clearing player buffs
+                                        }
+                                    }
+                                }
+
+
+                                //
+                            }
+                        }//unlock
+                        finally
+                        {
+                            Globals.NPCLock.ExitWriteLock();
+                        }
+                        break;
+
+                } // switch end
+            } // if id > 0
+
         }
         public static void ExPartyPetWindowAdd(ByteBuffer buffe)
         {
@@ -5148,9 +5195,9 @@ namespace L2_login
             buffe.ReadUInt32(); // sumon type
             uint owner = buffe.ReadUInt32();
             Globals.PartyLock.EnterWriteLock();
-             try
+            try
             {
-                
+
                 if (Globals.gamedata.PartyMembers.ContainsKey(owner))
                 {
                     if (((PartyMember)Globals.gamedata.PartyMembers[owner]).petID == 0)
@@ -5184,10 +5231,10 @@ namespace L2_login
                     // pet without owner ? it looks like someone got eaten by kitten :d
                 }
             }
-             finally
-             {
-                 Globals.PartyLock.ExitWriteLock();
-             }
+            finally
+            {
+                Globals.PartyLock.ExitWriteLock();
+            }
         }
 
         public static void ExPartyPetWindowDelete(ByteBuffer buffe)

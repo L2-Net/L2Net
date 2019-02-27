@@ -100,7 +100,7 @@ namespace L2_login
         public volatile static bool lagfilter_xf_ci_simple_apperance = false;
         public volatile static bool lagfilter_xf_ci_simple_race = false;
 
-        public volatile static uint[] lagfilter_ignoreskills = new uint[] 
+        public volatile static uint[] lagfilter_ignoreskills = new uint[]
         {
             2008,  // Item - Beast Spirit Shot
             2009,  // Item - Beast Blessed Spirit Shot
@@ -252,8 +252,8 @@ namespace L2_login
         public static GameGuardClient ggclientwindow;
 
         public static ExtendedActionWindow extendedactionwindow;
-        public static MailboxWindow mailboxwindow; 
-        
+        public static MailboxWindow mailboxwindow;
+
         public static bool pre_agree = false;
         public static string pre_blowfish = "6B60CB5B82CE90B1CC2B6C556C6C6C6C";
         public static string pre_protocol = "273";  // FIXME Should change according to chronicle selected based on login's radio buttons. Lindvior is 532
@@ -298,15 +298,15 @@ namespace L2_login
         public static string game_srv_listen_prt = "";
 
         public static bool pre_enterworld_ip = false;
-        public static string [] pre_enterworld_ip_tab = new string[20];
+        public static string[] pre_enterworld_ip_tab = new string[20];
         public static bool enterworld_ip = false;
         public static bool proxy_serv = false; // work as proxy server -blowfishless method
         public static byte[] proxy_serv_ip = new byte[4]; // ip from proxy serv
         public static byte[] proxy_serv_port = new byte[2]; // port from proxy server
-        public static ArrayList ew_con_array= new ArrayList();
+        public static ArrayList ew_con_array = new ArrayList();
         public static ArrayList ew_chc_ed_array = new ArrayList();
         // packet window stuff ...------------------------------------------------
-        public static pck_window_thr pck_thread= new pck_window_thr();
+        public static pck_window_thr pck_thread = new pck_window_thr();
         //--------------------------------------------------------------------------
         public static bool Send_Blank_GG = false;
         public static bool Hide_Message_Boxes = false;
@@ -384,7 +384,7 @@ namespace L2_login
         public static bool Popup_Captcha = false;
         public static bool AutolearnSkills = false;
         public static bool LogWriting = true;
-        
+
 
         public static string Captcha_HTML1 = "captcha ";
         public static string Captcha_HTML2 = "";
@@ -500,12 +500,12 @@ namespace L2_login
         public static System.Drawing.Brush Green = System.Drawing.Brushes.Lime;
         public static System.Drawing.Brush LightYellow = System.Drawing.Brushes.LightGoldenrodYellow;
 
-        public static System.Drawing.SolidBrush Tell_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)253, (System.Byte)0, (System.Byte)253));
-        public static System.Drawing.SolidBrush Party_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)0, (System.Byte)251, (System.Byte)0));
-        public static System.Drawing.SolidBrush Clan_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)125, (System.Byte)117, (System.Byte)253));
-        public static System.Drawing.SolidBrush Trade_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)234, (System.Byte)162, (System.Byte)245));
-        public static System.Drawing.SolidBrush Ally_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)119, (System.Byte)251, (System.Byte)153));
-        public static System.Drawing.SolidBrush Announcement_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb((System.Byte)127, (System.Byte)249, (System.Byte)253));
+        public static System.Drawing.SolidBrush Tell_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(253, 0, 253));
+        public static System.Drawing.SolidBrush Party_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 251, 0));
+        public static System.Drawing.SolidBrush Clan_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(125, 117, 253));
+        public static System.Drawing.SolidBrush Trade_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(234, 162, 245));
+        public static System.Drawing.SolidBrush Ally_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(119, 251, 153));
+        public static System.Drawing.SolidBrush Announcement_Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(127, 249, 253));
 
         //option stuff
         private static string _ProductKey = "LOVELKQKMGBOGNET";
@@ -603,7 +603,7 @@ namespace L2_login
             }
             set
             {
-                _ProductKey = value.Replace("-","").ToUpperInvariant();
+                _ProductKey = value.Replace("-", "").ToUpperInvariant();
             }
         }
     }

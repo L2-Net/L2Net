@@ -75,7 +75,7 @@ namespace L2_login
             System.Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
 
             MemoryStream mem_stream = new MemoryStream(dec);
-            StreamReader output = new StreamReader((Stream)mem_stream);
+            StreamReader output = new StreamReader(mem_stream);
 
             return output;
         }

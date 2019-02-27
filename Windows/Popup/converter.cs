@@ -50,7 +50,7 @@ namespace L2_login
                 string text_from_hex = textBox2.Text;
                 text_from_hex = text_from_hex.Replace(" ", "");
                 string rdy_data;
-                if(text_from_hex.Length > 1)
+                if (text_from_hex.Length > 1)
                 {
                     rdy_data = con_data_from_hex(radio_check(), text_from_hex);
                     textBox1.Text = rdy_data;// put result in textbox
@@ -64,27 +64,27 @@ namespace L2_login
             }
 
         }// end of method
-        public string con_data_from_hex(int type,string text)
+        public string con_data_from_hex(int type, string text)
         {
 
-              switch(type)
-               {
-                     case 1:
-                       return conv_hex_to_byte(text);
-                  case 2:
-                       return conv_hex_to_int16(text);
-                  case 3:
-                       return conv_hex_to_int32(text);
-                  case 4:
-                       return conv_hex_to_int64(text);
-                  case 5:
-                       return conv_hex_to_double(text);
-                  case 6:
-                       return conv_hex_to_string(text);
-                  default:
-                      return "";
+            switch (type)
+            {
+                case 1:
+                    return conv_hex_to_byte(text);
+                case 2:
+                    return conv_hex_to_int16(text);
+                case 3:
+                    return conv_hex_to_int32(text);
+                case 4:
+                    return conv_hex_to_int64(text);
+                case 5:
+                    return conv_hex_to_double(text);
+                case 6:
+                    return conv_hex_to_string(text);
+                default:
+                    return "";
 
-                    }
+            }
 
         }
         public string conv_hex_to_byte(string text)
@@ -145,7 +145,7 @@ namespace L2_login
             byte[] data = Globals.pck_thread.StringToByteArray2(text);
             if (data.Length > 5)
             {
-                    return BitConverter.ToDouble(data, 0).ToString();
+                return BitConverter.ToDouble(data, 0).ToString();
             }
             return "";
 
@@ -154,13 +154,13 @@ namespace L2_login
         {
             try
             {
-            byte[] data = Globals.pck_thread.StringToByteArray2(text);
-            string tmp_data = "";
-            for (int i = 0; i < data.Length; i=i+2)
-            {
-                tmp_data+= (char)data[i];
-            }
-            return tmp_data;
+                byte[] data = Globals.pck_thread.StringToByteArray2(text);
+                string tmp_data = "";
+                for (int i = 0; i < data.Length; i = i + 2)
+                {
+                    tmp_data += (char)data[i];
+                }
+                return tmp_data;
             }
             catch
             {
@@ -188,46 +188,48 @@ namespace L2_login
             }
 
 
-        }           
-        public string con_data_from_normal(int type,string text)
+        }
+        public string con_data_from_normal(int type, string text)
         {
             switch (type)
             {
                 case 1:
                     return conv_byte_to_hex(text);
                 case 2:
-                     return conv_int16_to_hex(text);
+                    return conv_int16_to_hex(text);
                 case 3:
-                     return conv_int32_to_hex(text);
+                    return conv_int32_to_hex(text);
                 case 4:
-                     return conv_int64_to_hex(text);
+                    return conv_int64_to_hex(text);
                 case 5:
-                     return conv_double_to_hex(text);
+                    return conv_double_to_hex(text);
                 case 6:
-                     return conv_string_to_hex(text);
+                    return conv_string_to_hex(text);
                 default:
                     return "";
             }
         }
         public string conv_byte_to_hex(string text)
         {
-            int temp= Convert.ToByte(text);
+            int temp = Convert.ToByte(text);
             if (temp < 255)
             {
                 return temp.ToString("X2");
             }
             else
+            {
                 return "";
+            }
         }
         public string conv_int16_to_hex(string text)
         {
-                int temp = Convert.ToInt16(text);
-                byte[] con = BitConverter.GetBytes(temp);
-                string oki = con[0].ToString("X2");
-                oki += " ";
-                oki += con[1].ToString("X2");
-                return oki;
-         
+            int temp = Convert.ToInt16(text);
+            byte[] con = BitConverter.GetBytes(temp);
+            string oki = con[0].ToString("X2");
+            oki += " ";
+            oki += con[1].ToString("X2");
+            return oki;
+
         }
         public string conv_int32_to_hex(string text)
         {

@@ -32,8 +32,8 @@ namespace L2_login
         Unholy = 5,
     }
 
-	public class InventoryInfo : Object_Base
-	{
+    public class InventoryInfo : Object_Base
+    {
         public volatile uint Type = 0;//ushort
         public volatile uint ItemID = 0;//this is the id from the file
         private ulong _Count = 0;
@@ -62,27 +62,27 @@ namespace L2_login
         public volatile int enchant_effect_1 = 0;
         public volatile int enchant_effect_2 = 0;
 
-		private readonly object CountLock = new object();
+        private readonly object CountLock = new object();
 
-		public ulong Count
-		{
-			get
-			{
+        public ulong Count
+        {
+            get
+            {
                 ulong tmp;
-				lock(CountLock)
-				{
-					tmp = this._Count;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(CountLock)
-				{
-					_Count = value;
-				}
-			}
-		}
+                lock (CountLock)
+                {
+                    tmp = this._Count;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (CountLock)
+                {
+                    _Count = value;
+                }
+            }
+        }
 
         public void Load(ByteBuffer buff, int statsyesno)
         {
@@ -215,5 +215,5 @@ namespace L2_login
                 }
             }
         }
-	}
+    }
 }

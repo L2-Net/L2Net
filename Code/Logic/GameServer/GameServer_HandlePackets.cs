@@ -202,14 +202,20 @@
                             break;
                         case PServer.PartySmallWindowAll:
                             if (Globals.gamedata.yesno_state == 1)
+                            {
                                 Globals.l2net_home.Hide_YesNo();
+                            }
+
                             ClientPackets.Load_PartyInfo(buffe);
                             AddInfo.Set_PartyVisible();
                             AddInfo.Set_PartyInfo();
                             break;
                         case PServer.PartySmallWindowAdd:
                             if (Globals.gamedata.yesno_state == 1)
+                            {
                                 Globals.l2net_home.Hide_YesNo();
+                            }
+
                             ClientPackets.Add_PartyInfo(buffe);
                             AddInfo.Set_PartyVisible();
                             AddInfo.Set_PartyInfo();

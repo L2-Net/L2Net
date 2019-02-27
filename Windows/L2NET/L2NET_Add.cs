@@ -15,25 +15,49 @@ namespace L2_login
             }
 
             if (town == 1)
+            {
                 button_dead_town.Visible = true;
+            }
             else
+            {
                 button_dead_town.Visible = false;
+            }
+
             if (clanhall == 1)
+            {
                 button_dead_clanhall.Visible = true;
+            }
             else
+            {
                 button_dead_clanhall.Visible = false;
+            }
+
             if (castle == 1)
+            {
                 button_dead_castle.Visible = true;
+            }
             else
+            {
                 button_dead_castle.Visible = false;
+            }
+
             if (siege == 1)
+            {
                 button_dead_siege.Visible = true;
+            }
             else
+            {
                 button_dead_siege.Visible = false;
+            }
+
             if (fort == 1)
+            {
                 button_dead_fort.Visible = true;
+            }
             else
+            {
                 button_dead_fort.Visible = false;
+            }
         }
 
         delegate void Do_Equip_Callback(InventoryInfo inv_inf);
@@ -51,8 +75,8 @@ namespace L2_login
             string path = Util.GetItemImagePath(inv_inf.ItemID);
             bool bmp = System.IO.File.Exists(path);
 
-    		switch(inv_inf.Slot)
-			{
+            switch (inv_inf.Slot)
+            {
                 case InventorySlots.Shirt:
                     toolTip1.SetToolTip(panel_inven_shirt, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
                     if (panel_inven_shirt.BackgroundImage != null)
@@ -61,163 +85,204 @@ namespace L2_login
                         panel_inven_shirt.BackgroundImage = null;
                     }
                     if (bmp)
+                    {
                         panel_inven_shirt.BackgroundImage = new System.Drawing.Bitmap(path);
+                    }
+
                     break;
                 case InventorySlots.Ear:
-					if(panel_inven_lear.BackgroundImage == null)
-					{
-						//load to lear
-						toolTip1.SetToolTip(panel_inven_lear,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-						if(panel_inven_lear.BackgroundImage != null)
-						{
-							panel_inven_lear.BackgroundImage.Dispose();
-							panel_inven_lear.BackgroundImage = null;
-						}
-						if(bmp)
+                    if (panel_inven_lear.BackgroundImage == null)
+                    {
+                        //load to lear
+                        toolTip1.SetToolTip(panel_inven_lear, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                        if (panel_inven_lear.BackgroundImage != null)
+                        {
+                            panel_inven_lear.BackgroundImage.Dispose();
+                            panel_inven_lear.BackgroundImage = null;
+                        }
+                        if (bmp)
+                        {
                             panel_inven_lear.BackgroundImage = new System.Drawing.Bitmap(path);
-					}
-					else
-					{
-						//load to rear
-						toolTip1.SetToolTip(panel_inven_rear,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-						if(panel_inven_rear.BackgroundImage != null)
-						{
-							panel_inven_rear.BackgroundImage.Dispose();
-							panel_inven_rear.BackgroundImage = null;
-						}
-						if(bmp)
+                        }
+                    }
+                    else
+                    {
+                        //load to rear
+                        toolTip1.SetToolTip(panel_inven_rear, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                        if (panel_inven_rear.BackgroundImage != null)
+                        {
+                            panel_inven_rear.BackgroundImage.Dispose();
+                            panel_inven_rear.BackgroundImage = null;
+                        }
+                        if (bmp)
+                        {
                             panel_inven_rear.BackgroundImage = new System.Drawing.Bitmap(path);
-					}
-					break;
+                        }
+                    }
+                    break;
                 case InventorySlots.Neck:
-					toolTip1.SetToolTip(panel_inven_neck,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_neck.BackgroundImage != null)
-					{
-						panel_inven_neck.BackgroundImage.Dispose();
-						panel_inven_neck.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_neck, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_neck.BackgroundImage != null)
+                    {
+                        panel_inven_neck.BackgroundImage.Dispose();
+                        panel_inven_neck.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_neck.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Finger:
-					if(panel_inven_lfinger.BackgroundImage == null)
-					{
-						//load to lear
-						toolTip1.SetToolTip(panel_inven_lfinger,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-						if(panel_inven_lfinger.BackgroundImage != null)
-						{
-							panel_inven_lfinger.BackgroundImage.Dispose();
-							panel_inven_lfinger.BackgroundImage = null;
-						}
-						if(bmp)
+                    if (panel_inven_lfinger.BackgroundImage == null)
+                    {
+                        //load to lear
+                        toolTip1.SetToolTip(panel_inven_lfinger, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                        if (panel_inven_lfinger.BackgroundImage != null)
+                        {
+                            panel_inven_lfinger.BackgroundImage.Dispose();
+                            panel_inven_lfinger.BackgroundImage = null;
+                        }
+                        if (bmp)
+                        {
                             panel_inven_lfinger.BackgroundImage = new System.Drawing.Bitmap(path);
-					}
-					else
-					{
-						//load to rear
-						toolTip1.SetToolTip(panel_inven_rfinger,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-						if(panel_inven_rfinger.BackgroundImage != null)
-						{
-							panel_inven_rfinger.BackgroundImage.Dispose();
-							panel_inven_rfinger.BackgroundImage = null;
-						}
-						if(bmp)
+                        }
+                    }
+                    else
+                    {
+                        //load to rear
+                        toolTip1.SetToolTip(panel_inven_rfinger, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                        if (panel_inven_rfinger.BackgroundImage != null)
+                        {
+                            panel_inven_rfinger.BackgroundImage.Dispose();
+                            panel_inven_rfinger.BackgroundImage = null;
+                        }
+                        if (bmp)
+                        {
                             panel_inven_rfinger.BackgroundImage = new System.Drawing.Bitmap(path);
-					}
-					break;
+                        }
+                    }
+                    break;
                 case InventorySlots.Head:
-					toolTip1.SetToolTip(panel_inven_head,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_head.BackgroundImage != null)
-					{
-						panel_inven_head.BackgroundImage.Dispose();
-						panel_inven_head.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_head, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_head.BackgroundImage != null)
+                    {
+                        panel_inven_head.BackgroundImage.Dispose();
+                        panel_inven_head.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_head.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.RHand:
-					toolTip1.SetToolTip(panel_inven_rhand,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_rhand.BackgroundImage != null)
-					{
-						panel_inven_rhand.BackgroundImage.Dispose();
-						panel_inven_rhand.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_rhand, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_rhand.BackgroundImage != null)
+                    {
+                        panel_inven_rhand.BackgroundImage.Dispose();
+                        panel_inven_rhand.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_rhand.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.LHand:
-					toolTip1.SetToolTip(panel_inven_lhand,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_lhand.BackgroundImage != null)
-					{
-						panel_inven_lhand.BackgroundImage.Dispose();
-						panel_inven_lhand.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_lhand, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_lhand.BackgroundImage != null)
+                    {
+                        panel_inven_lhand.BackgroundImage.Dispose();
+                        panel_inven_lhand.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_lhand.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Gloves:
-					toolTip1.SetToolTip(panel_inven_gloves,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_gloves.BackgroundImage != null)
-					{
-						panel_inven_gloves.BackgroundImage.Dispose();
-						panel_inven_gloves.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_gloves, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_gloves.BackgroundImage != null)
+                    {
+                        panel_inven_gloves.BackgroundImage.Dispose();
+                        panel_inven_gloves.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_gloves.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Chest:
-					toolTip1.SetToolTip(panel_inven_top,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_top.BackgroundImage != null)
-					{
-						panel_inven_top.BackgroundImage.Dispose();
-						panel_inven_top.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_top, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_top.BackgroundImage != null)
+                    {
+                        panel_inven_top.BackgroundImage.Dispose();
+                        panel_inven_top.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_top.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Pants:
-					toolTip1.SetToolTip(panel_inven_pants,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_pants.BackgroundImage != null)
-					{
-						panel_inven_pants.BackgroundImage.Dispose();
-						panel_inven_pants.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_pants, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_pants.BackgroundImage != null)
+                    {
+                        panel_inven_pants.BackgroundImage.Dispose();
+                        panel_inven_pants.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_pants.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Feet:
-					toolTip1.SetToolTip(panel_inven_boots,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_boots.BackgroundImage != null)
-					{
-						panel_inven_boots.BackgroundImage.Dispose();
-						panel_inven_boots.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_boots, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_boots.BackgroundImage != null)
+                    {
+                        panel_inven_boots.BackgroundImage.Dispose();
+                        panel_inven_boots.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_boots.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Dunno:
-					break;
+                    break;
                 case InventorySlots.LRHand:
-					toolTip1.SetToolTip(panel_inven_rhand,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_rhand.BackgroundImage != null)
-					{
-						panel_inven_rhand.BackgroundImage.Dispose();
-						panel_inven_rhand.BackgroundImage = null;
-					}
-					if(bmp)
+                    toolTip1.SetToolTip(panel_inven_rhand, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_rhand.BackgroundImage != null)
+                    {
+                        panel_inven_rhand.BackgroundImage.Dispose();
+                        panel_inven_rhand.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_rhand.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.FullBody:
-					//just use the top image for now
-					toolTip1.SetToolTip(panel_inven_top,"+"+inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
-					if(panel_inven_top.BackgroundImage != null)
-					{
-						panel_inven_top.BackgroundImage.Dispose();
-						panel_inven_top.BackgroundImage = null;
-					}
-					if(bmp)
+                    //just use the top image for now
+                    toolTip1.SetToolTip(panel_inven_top, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
+                    if (panel_inven_top.BackgroundImage != null)
+                    {
+                        panel_inven_top.BackgroundImage.Dispose();
+                        panel_inven_top.BackgroundImage = null;
+                    }
+                    if (bmp)
+                    {
                         panel_inven_top.BackgroundImage = new System.Drawing.Bitmap(path);
-					break;
+                    }
+
+                    break;
                 case InventorySlots.Accessory:
                     toolTip1.SetToolTip(panel_inven_acc, "+" + inv_inf.Enchant.ToString() + " " + name + Environment.NewLine + description);
                     if (panel_inven_acc.BackgroundImage != null)
@@ -226,10 +291,13 @@ namespace L2_login
                         panel_inven_acc.BackgroundImage = null;
                     }
                     if (bmp)
+                    {
                         panel_inven_acc.BackgroundImage = new System.Drawing.Bitmap(path);
+                    }
+
                     break;
             }
-		}
+        }
 
         delegate void Clear_Equip2_Callback(InventorySlots slot);
         public void Clear_Equip(InventorySlots slot)
@@ -431,7 +499,7 @@ namespace L2_login
                 panel_inven_boots.BackgroundImage = null;
             }
         }
-        
+
         delegate void Set_HennaTips_Callback();
         public void Set_HennaTips()
         {
@@ -756,7 +824,7 @@ namespace L2_login
                 label_info_darkness.Text = Globals.gamedata.my_char.DefAttribUnholy.ToString();
                 label_info_fame.Text = Globals.gamedata.my_char.Fame.ToString();
             }
-            
+
             //stats stuff
             DateTime temp = DateTime.Now;
             TimeSpan ts = Globals.start_time - temp;
@@ -767,14 +835,14 @@ namespace L2_login
             int seconds = ts.Seconds * -1;
 
 
-            ulong tempXPGained = (ulong)Globals.gamedata.my_char.XP - (ulong)GameData.initial_XP;
+            ulong tempXPGained = Globals.gamedata.my_char.XP - GameData.initial_XP;
             if (tempXPGained > 0)
             {
                 //xp stuff
                 float xpsec = 0;
                 if (hours > 0 || minutes > 0 || seconds > 0)
                 {
-                    xpsec = ((float)tempXPGained) / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
+                    xpsec = tempXPGained / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
                 }
                 float xphour = xpsec * 60 * 60;
                 label_XP.Text = xphour.ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
@@ -782,27 +850,27 @@ namespace L2_login
 
 
             //sp stuff
-            ulong tempSPGained = (ulong)Globals.gamedata.my_char.SP - (ulong)GameData.initial_SP;
-            if(tempSPGained>0)
+            ulong tempSPGained = Globals.gamedata.my_char.SP - GameData.initial_SP;
+            if (tempSPGained > 0)
             {
                 float spsec = 0;
                 if (hours > 0 || minutes > 0 || seconds > 0)
                 {
-                    spsec = ((float)tempSPGained) / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
+                    spsec = tempSPGained / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
                 }
                 float sphour = spsec * 60 * 60;
                 label_SP.Text = sphour.ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
             }
 
             //adena stuff
-            ulong tempAdenaGained = (ulong)GameData.current_Adena - (ulong)GameData.initial_Adena;
-            if(tempAdenaGained>0)
+            ulong tempAdenaGained = GameData.current_Adena - GameData.initial_Adena;
+            if (tempAdenaGained > 0)
             {
                 ulong tempTotalAdenaGained = tempAdenaGained;
                 float adenasec = 0;
                 if (tempAdenaGained > 0 && Globals.gamedata.initial_Adena_Gained_received && (hours > 0 || minutes > 0 || seconds > 0))
                 {
-                    adenasec = ((float)tempAdenaGained) / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
+                    adenasec = tempAdenaGained / (float)(seconds + (minutes * 60) + (hours * 60 * 60));
                 }
                 float adenahour = adenasec * 60 * 60;
 
@@ -816,7 +884,7 @@ namespace L2_login
             label_meshlessignored.Text = GameData.meshless_ignored.ToString();
             label_badmobs.Text = GameData.badmobs_ignored.ToString();
 
-            
+
 
 
             //Globals.l2net_home.Add_Text("char adena:" + tempAdenaGained + " gained " + GameData.current_Adena + " initial " + GameData.initial_Adena, Globals.Gray, TextType.SYSTEM);

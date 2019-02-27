@@ -37,39 +37,45 @@ namespace Mono.Math.Prime.Generator
 #else
     public
 #endif
-	abstract class PrimeGeneratorBase {
+    abstract class PrimeGeneratorBase
+    {
 
-		public virtual ConfidenceFactor Confidence {
-			get {
+        public virtual ConfidenceFactor Confidence
+        {
+            get
+            {
 #if DEBUG
-				return ConfidenceFactor.ExtraLow;
+                return ConfidenceFactor.ExtraLow;
 #else
 				return ConfidenceFactor.Medium;
 #endif
-			}
-		}
+            }
+        }
 
-		public virtual PrimalityTest PrimalityTest {
-			get {
-				return new PrimalityTest(PrimalityTests.RabinMillerTest);
-			}
-		}
+        public virtual PrimalityTest PrimalityTest
+        {
+            get
+            {
+                return new PrimalityTest(PrimalityTests.RabinMillerTest);
+            }
+        }
 
-		public virtual int TrialDivisionBounds {
-			get { return 4000; }
-		}
+        public virtual int TrialDivisionBounds
+        {
+            get { return 4000; }
+        }
 
-		/// <summary>
-		/// Performs primality tests on bi, assumes trial division has been done.
-		/// </summary>
-		/// <param name="bi">A BigInteger that has been subjected to and passed trial division</param>
-		/// <returns>False if bi is composite, true if it may be prime.</returns>
-		/// <remarks>The speed of this method is dependent on Confidence</remarks>
-		protected bool PostTrialDivisionTests (BigInteger bi)
-		{
-			return PrimalityTest (bi, this.Confidence);
-		}
+        /// <summary>
+        /// Performs primality tests on bi, assumes trial division has been done.
+        /// </summary>
+        /// <param name="bi">A BigInteger that has been subjected to and passed trial division</param>
+        /// <returns>False if bi is composite, true if it may be prime.</returns>
+        /// <remarks>The speed of this method is dependent on Confidence</remarks>
+        protected bool PostTrialDivisionTests(BigInteger bi)
+        {
+            return PrimalityTest(bi, this.Confidence);
+        }
 
-		public abstract BigInteger GenerateNewPrime (int bits);
-	}
+        public abstract BigInteger GenerateNewPrime(int bits);
+    }
 }

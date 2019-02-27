@@ -52,13 +52,13 @@ namespace L2_login
 
             string p1, p2, p3;
 
-            for(int i = 0; i < filein._ScriptLines.Count; i++)
+            for (int i = 0; i < filein._ScriptLines.Count; i++)
             {
                 ScriptLine cmd = (ScriptLine)filein._ScriptLines[i];
 
                 string line = cmd.UnParsedParams;
 
-                switch(cmd.Command)
+                switch (cmd.Command)
                 {
                     case ScriptCommands.INCLUDE:
                         if (!cstarted)
@@ -78,7 +78,7 @@ namespace L2_login
 
                             _Variables.Add(nv);
                         }
-                        else if(cstarted)
+                        else if (cstarted)
                         {
                             //a function
                             p1 = ScriptEngine.Get_String(ref line);

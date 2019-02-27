@@ -2,17 +2,17 @@ using System;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Script_Ops.
-	/// </summary>
-	public class Script_Ops
-	{
-		public Script_Ops()
-		{
-		}
+    /// <summary>
+    /// Summary description for Script_Ops.
+    /// </summary>
+    public class Script_Ops
+    {
+        public Script_Ops()
+        {
+        }
 
         public static long NEAREST_PLAYER_DISTANCE(bool return_distance)
-		{
+        {
             float mx = Globals.gamedata.my_char.X;
             float my = Globals.gamedata.my_char.Y;
             float mz = Globals.gamedata.my_char.Z;
@@ -21,36 +21,36 @@ namespace L2_login
             long ndist;
 
             Globals.PlayerLock.EnterReadLock();
-			try
-			{
-                foreach(CharInfo player in Globals.gamedata.nearby_chars.Values)
-				{
+            try
+            {
+                foreach (CharInfo player in Globals.gamedata.nearby_chars.Values)
+                {
                     ndist = Convert.ToInt64(Math.Sqrt(Math.Pow(mx - player.X, 2) + Math.Pow(my - player.Y, 2) + Math.Pow(mz - player.Z, 2)));
 
-					if(ndist < dist)
-					{
+                    if (ndist < dist)
+                    {
                         player_id = player.ID;
-						dist = ndist;
-					}
-				}
-			}
-			finally
-			{
+                        dist = ndist;
+                    }
+                }
+            }
+            finally
+            {
                 Globals.PlayerLock.ExitReadLock();
-			}
+            }
 
             if (return_distance)
             {
-                return (long)dist;
+                return dist;
             }
             else
             {
-                return (long)player_id;
+                return player_id;
             }
-		}
+        }
 
         public static long NEAREST_NPC_DISTANCE(bool return_distance)
-		{
+        {
             float mx = Globals.gamedata.my_char.X;
             float my = Globals.gamedata.my_char.Y;
             float mz = Globals.gamedata.my_char.Z;
@@ -60,10 +60,10 @@ namespace L2_login
 
             Globals.DoNotNPCLock.EnterReadLock();
             Globals.NPCLock.EnterReadLock();
-			try
-			{
-                foreach(NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
-				{
+            try
+            {
+                foreach (NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
+                {
                     if (BotOptions.DoNotNPCs.Contains(npc.NPCID))
                     {
                         //break;
@@ -78,26 +78,26 @@ namespace L2_login
                             dist = ndist;
                         }
                     }
-				}
-			}
-			finally
-			{
+                }
+            }
+            finally
+            {
                 Globals.NPCLock.ExitReadLock();
                 Globals.DoNotNPCLock.ExitReadLock();
-			}
+            }
 
             if (return_distance)
             {
-                return (long)dist;
+                return dist;
             }
             else
             {
-                return (long)npc_id;
+                return npc_id;
             }
-		}
+        }
 
-		public static uint NEAREST_ITEM_DISTANCE(bool return_distance)
-		{
+        public static uint NEAREST_ITEM_DISTANCE(bool return_distance)
+        {
             float mx = Globals.gamedata.my_char.X;
             float my = Globals.gamedata.my_char.Y;
             float mz = Globals.gamedata.my_char.Z;
@@ -108,8 +108,8 @@ namespace L2_login
 
             Globals.DoNotItemLock.EnterReadLock();
             Globals.ItemLock.EnterReadLock();
-			try
-			{
+            try
+            {
                 foreach (ItemInfo item in Globals.gamedata.nearby_items.Values)
                 {
                     myitem = false;
@@ -203,12 +203,12 @@ namespace L2_login
                         }
                     }
                 }
-			}
-			finally
-			{
+            }
+            finally
+            {
                 Globals.ItemLock.ExitReadLock();
                 Globals.DoNotItemLock.ExitReadLock();
-			}
+            }
 
             if (return_distance)
             {
@@ -218,10 +218,10 @@ namespace L2_login
             {
                 return item_id;
             }
-		}
+        }
 
-		public static string TARGET_STRING(string req)
-		{
+        public static string TARGET_STRING(string req)
+        {
             switch (Globals.gamedata.my_char.CurrentTargetType)
             {
                 case TargetType.ERROR:
@@ -363,11 +363,11 @@ namespace L2_login
                     break;
             }
 
-			return "";
-		}
+            return "";
+        }
 
-		public static long TARGET_INT(string req)
-		{
+        public static long TARGET_INT(string req)
+        {
             switch (Globals.gamedata.my_char.CurrentTargetType)
             {
                 case TargetType.ERROR:
@@ -377,13 +377,13 @@ namespace L2_login
                     switch (req)
                     {
                         case "KARMA":
-                            return (long)Globals.gamedata.my_char.Karma;
+                            return Globals.gamedata.my_char.Karma;
                         case "TARGETID":
-                            return (long)Globals.gamedata.my_char.TargetID;
+                            return Globals.gamedata.my_char.TargetID;
                         case "ID":
-                            return (long)Globals.gamedata.my_char.ID;
+                            return Globals.gamedata.my_char.ID;
                         case "TYPEID":
-                            return (long)0;
+                            return 0;
                         case "X":
                             return (long)Globals.gamedata.my_char.X;
                         case "Y":
@@ -423,15 +423,15 @@ namespace L2_login
                         case "ATTACK_SPEED":
                             return (long)Globals.gamedata.my_char.AttackSpeedMult;
                         case "CAST_SPEED":
-                            return (long)Globals.gamedata.my_char.MatkSpeed;
+                            return Globals.gamedata.my_char.MatkSpeed;
                         case "EVAL":
-                            return (long)Globals.gamedata.my_char.RecAmount;
+                            return Globals.gamedata.my_char.RecAmount;
                         case "RUNNING":
-                            return (long)Globals.gamedata.my_char.isRunning;
+                            return Globals.gamedata.my_char.isRunning;
                         case "SITTING":
-                            return (long)Globals.gamedata.my_char.isSitting;
+                            return Globals.gamedata.my_char.isSitting;
                         case "LOOKS_DEAD":
-                            return (long)Globals.gamedata.my_char.isAlikeDead;
+                            return Globals.gamedata.my_char.isAlikeDead;
                         default:
                             ScriptEngine.Script_Error("invalid target data(self) request");
                             break;
@@ -441,13 +441,13 @@ namespace L2_login
                     switch (req)
                     {
                         case "KARMA":
-                            return (long)Globals.gamedata.my_pet.Karma;
+                            return Globals.gamedata.my_pet.Karma;
                         case "TARGETID":
-                            return (long)Globals.gamedata.my_pet.TargetID;
+                            return Globals.gamedata.my_pet.TargetID;
                         case "ID":
-                            return (long)Globals.gamedata.my_pet.ID;
+                            return Globals.gamedata.my_pet.ID;
                         case "TYPEID":
-                            return (long)Globals.gamedata.my_pet.NPCID;
+                            return Globals.gamedata.my_pet.NPCID;
                         case "X":
                             return (long)Globals.gamedata.my_pet.X;
                         case "Y":
@@ -487,15 +487,15 @@ namespace L2_login
                         case "ATTACK_SPEED":
                             return (long)Globals.gamedata.my_pet.AttackSpeedMult;
                         case "CAST_SPEED":
-                            return (long)Globals.gamedata.my_pet.MatkSpeed;
+                            return Globals.gamedata.my_pet.MatkSpeed;
                         case "EVAL":
-                            return (long)0;
+                            return 0;
                         case "RUNNING":
-                            return (long)Globals.gamedata.my_pet.isRunning;
+                            return Globals.gamedata.my_pet.isRunning;
                         case "SITTING":
-                            return (long)0;
+                            return 0;
                         case "LOOKS_DEAD":
-                            return (long)Globals.gamedata.my_pet.isAlikeDead;
+                            return Globals.gamedata.my_pet.isAlikeDead;
                         default:
                             ScriptEngine.Script_Error("invalid target data(self) request");
                             break;
@@ -505,13 +505,13 @@ namespace L2_login
                     switch (req)
                     {
                         case "KARMA":
-                            return (long)Globals.gamedata.my_pet1.Karma;
+                            return Globals.gamedata.my_pet1.Karma;
                         case "TARGETID":
-                            return (long)Globals.gamedata.my_pet1.TargetID;
+                            return Globals.gamedata.my_pet1.TargetID;
                         case "ID":
-                            return (long)Globals.gamedata.my_pet1.ID;
+                            return Globals.gamedata.my_pet1.ID;
                         case "TYPEID":
-                            return (long)Globals.gamedata.my_pet1.NPCID;
+                            return Globals.gamedata.my_pet1.NPCID;
                         case "X":
                             return (long)Globals.gamedata.my_pet1.X;
                         case "Y":
@@ -551,15 +551,15 @@ namespace L2_login
                         case "ATTACK_SPEED":
                             return (long)Globals.gamedata.my_pet1.AttackSpeedMult;
                         case "CAST_SPEED":
-                            return (long)Globals.gamedata.my_pet1.MatkSpeed;
+                            return Globals.gamedata.my_pet1.MatkSpeed;
                         case "EVAL":
-                            return (long)0;
+                            return 0;
                         case "RUNNING":
-                            return (long)Globals.gamedata.my_pet1.isRunning;
+                            return Globals.gamedata.my_pet1.isRunning;
                         case "SITTING":
-                            return (long)0;
+                            return 0;
                         case "LOOKS_DEAD":
-                            return (long)Globals.gamedata.my_pet1.isAlikeDead;
+                            return Globals.gamedata.my_pet1.isAlikeDead;
                         default:
                             ScriptEngine.Script_Error("invalid target data(self) request");
                             break;
@@ -569,13 +569,13 @@ namespace L2_login
                     switch (req)
                     {
                         case "KARMA":
-                            return (long)Globals.gamedata.my_pet2.Karma;
+                            return Globals.gamedata.my_pet2.Karma;
                         case "TARGETID":
-                            return (long)Globals.gamedata.my_pet2.TargetID;
+                            return Globals.gamedata.my_pet2.TargetID;
                         case "ID":
-                            return (long)Globals.gamedata.my_pet2.ID;
+                            return Globals.gamedata.my_pet2.ID;
                         case "TYPEID":
-                            return (long)Globals.gamedata.my_pet2.NPCID;
+                            return Globals.gamedata.my_pet2.NPCID;
                         case "X":
                             return (long)Globals.gamedata.my_pet2.X;
                         case "Y":
@@ -615,15 +615,15 @@ namespace L2_login
                         case "ATTACK_SPEED":
                             return (long)Globals.gamedata.my_pet2.AttackSpeedMult;
                         case "CAST_SPEED":
-                            return (long)Globals.gamedata.my_pet2.MatkSpeed;
+                            return Globals.gamedata.my_pet2.MatkSpeed;
                         case "EVAL":
-                            return (long)0;
+                            return 0;
                         case "RUNNING":
-                            return (long)Globals.gamedata.my_pet2.isRunning;
+                            return Globals.gamedata.my_pet2.isRunning;
                         case "SITTING":
-                            return (long)0;
+                            return 0;
                         case "LOOKS_DEAD":
-                            return (long)Globals.gamedata.my_pet2.isAlikeDead;
+                            return Globals.gamedata.my_pet2.isAlikeDead;
                         default:
                             ScriptEngine.Script_Error("invalid target data(self) request");
                             break;
@@ -633,13 +633,13 @@ namespace L2_login
                     switch (req)
                     {
                         case "KARMA":
-                            return (long)Globals.gamedata.my_pet3.Karma;
+                            return Globals.gamedata.my_pet3.Karma;
                         case "TARGETID":
-                            return (long)Globals.gamedata.my_pet3.TargetID;
+                            return Globals.gamedata.my_pet3.TargetID;
                         case "ID":
-                            return (long)Globals.gamedata.my_pet3.ID;
+                            return Globals.gamedata.my_pet3.ID;
                         case "TYPEID":
-                            return (long)Globals.gamedata.my_pet3.NPCID;
+                            return Globals.gamedata.my_pet3.NPCID;
                         case "X":
                             return (long)Globals.gamedata.my_pet3.X;
                         case "Y":
@@ -679,15 +679,15 @@ namespace L2_login
                         case "ATTACK_SPEED":
                             return (long)Globals.gamedata.my_pet3.AttackSpeedMult;
                         case "CAST_SPEED":
-                            return (long)Globals.gamedata.my_pet3.MatkSpeed;
+                            return Globals.gamedata.my_pet3.MatkSpeed;
                         case "EVAL":
-                            return (long)0;
+                            return 0;
                         case "RUNNING":
-                            return (long)Globals.gamedata.my_pet3.isRunning;
+                            return Globals.gamedata.my_pet3.isRunning;
                         case "SITTING":
-                            return (long)0;
+                            return 0;
                         case "LOOKS_DEAD":
-                            return (long)Globals.gamedata.my_pet3.isAlikeDead;
+                            return Globals.gamedata.my_pet3.isAlikeDead;
                         default:
                             ScriptEngine.Script_Error("invalid target data(self) request");
                             break;
@@ -699,18 +699,18 @@ namespace L2_login
                     {
                         CharInfo player = Util.GetChar(Globals.gamedata.my_char.TargetID);
 
-                        if(player != null)
+                        if (player != null)
                         {
                             switch (req)
                             {
                                 case "KARMA":
-                                    return (long)player.Karma;
+                                    return player.Karma;
                                 case "TARGETID":
-                                    return (long)player.TargetID;
+                                    return player.TargetID;
                                 case "ID":
-                                    return (long)player.ID;
+                                    return player.ID;
                                 case "TYPEID":
-                                    return (long)0;
+                                    return 0;
                                 case "X":
                                     return (long)player.X;
                                 case "Y":
@@ -752,13 +752,13 @@ namespace L2_login
                                 case "CAST_SPEED":
                                     return (long)player.MatkSpeed;
                                 case "EVAL":
-                                    return (long)player.RecAmount;
+                                    return player.RecAmount;
                                 case "RUNNING":
-                                    return (long)player.isRunning;
+                                    return player.isRunning;
                                 case "SITTING":
-                                    return (long)player.isSitting;
+                                    return player.isSitting;
                                 case "LOOKS_DEAD":
-                                    return (long)player.isAlikeDead;
+                                    return player.isAlikeDead;
                                 default:
                                     ScriptEngine.Script_Error("invalid target data(player) request");
                                     break;
@@ -776,18 +776,18 @@ namespace L2_login
                     {
                         NPCInfo npc = Util.GetNPC(Globals.gamedata.my_char.TargetID);
 
-                        if(npc != null)
+                        if (npc != null)
                         {
                             switch (req)
                             {
                                 case "KARMA":
-                                    return (long)npc.Karma;
+                                    return npc.Karma;
                                 case "TARGETID":
-                                    return (long)npc.TargetID;
+                                    return npc.TargetID;
                                 case "ID":
-                                    return (long)npc.ID;
+                                    return npc.ID;
                                 case "TYPEID":
-                                    return (long)npc.NPCID;
+                                    return npc.NPCID;
                                 case "X":
                                     return (long)npc.X;
                                 case "Y":
@@ -827,18 +827,23 @@ namespace L2_login
                                 case "ATTACK_SPEED":
                                     return (long)npc.AttackSpeedMult;
                                 case "CAST_SPEED":
-                                    return (long)npc.MatkSpeed;
+                                    return npc.MatkSpeed;
                                 case "SPOILED":
                                     if (Globals.gamedata.my_char.TargetSpoiled)
-                                        return (long)1;
+                                    {
+                                        return 1;
+                                    }
                                     else
-                                        return (long)0;
+                                    {
+                                        return 0;
+                                    }
+
                                 case "RUNNING":
-                                    return (long)npc.isRunning;
+                                    return npc.isRunning;
                                 case "SITTING":
-                                    return (long)npc.isSitting;
+                                    return npc.isSitting;
                                 case "LOOKS_DEAD":
-                                    return (long)npc.isAlikeDead;
+                                    return npc.isAlikeDead;
                                 default:
                                     ScriptEngine.Script_Error("invalid target data(npc) request");
                                     break;
@@ -851,51 +856,51 @@ namespace L2_login
                     }
                     break;
             }
-			
 
-			return (long)0;
-		}
 
-		public static long COUNT(string req)
-		{
-			long count = 0;
+            return 0;
+        }
 
-			switch(req)
-			{
-				case "NPC_TARGETME":
+        public static long COUNT(string req)
+        {
+            long count = 0;
+
+            switch (req)
+            {
+                case "NPC_TARGETME":
                     Globals.NPCLock.EnterReadLock();
-					try
-					{
-                        foreach(NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
-						{
+                    try
+                    {
+                        foreach (NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
+                        {
                             if (Globals.gamedata.my_char.ID == npc.TargetID || (npc.TargetID == Globals.gamedata.my_pet1.ID) || (npc.TargetID == Globals.gamedata.my_pet2.ID) || (npc.TargetID == Globals.gamedata.my_pet3.ID))
-							{
-								count++;
-							}
-						}
-					}
-					finally
-					{
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                    finally
+                    {
                         Globals.NPCLock.ExitReadLock();
-					}
-					break;
-				case "PLAYER_TARGETME":
+                    }
+                    break;
+                case "PLAYER_TARGETME":
                     Globals.PlayerLock.EnterReadLock();
-					try
-					{
-                        foreach(CharInfo player in Globals.gamedata.nearby_chars.Values)
-						{
+                    try
+                    {
+                        foreach (CharInfo player in Globals.gamedata.nearby_chars.Values)
+                        {
                             if (Globals.gamedata.my_char.ID == player.TargetID)
-							{
-								count++;
-							}
-						}
-					}
-					finally
-					{
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                    finally
+                    {
                         Globals.PlayerLock.ExitReadLock();
-					}
-					break;
+                    }
+                    break;
                 case "NPC_PARTYTARGETED":
                     Globals.NPCLock.EnterReadLock();
                     Globals.PartyLock.EnterReadLock();
@@ -919,12 +924,12 @@ namespace L2_login
                         Globals.PartyLock.ExitReadLock();
                     }
                     break;
-				default:
+                default:
                     ScriptEngine.Script_Error("invalid COUNT request");
-					break;
-			}
+                    break;
+            }
 
-			return count;
-		}
-	}//end of class
+            return count;
+        }
+    }//end of class
 }

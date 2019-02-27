@@ -11,12 +11,12 @@ namespace L2_login
 {
     public class Map : Base
     {
-		private ArrayList cache_draw = new ArrayList();
-		private ArrayList tmp_players = new ArrayList();
-		private ArrayList tmp_npcs = new ArrayList();
-		private ArrayList tmp_items = new ArrayList();
-		private ArrayList tmp_path = new ArrayList();
-		private ArrayList tmp_walls = new ArrayList();
+        private ArrayList cache_draw = new ArrayList();
+        private ArrayList tmp_players = new ArrayList();
+        private ArrayList tmp_npcs = new ArrayList();
+        private ArrayList tmp_items = new ArrayList();
+        private ArrayList tmp_path = new ArrayList();
+        private ArrayList tmp_walls = new ArrayList();
 
         private Device dxDevice;
         private Sprite dxTextSprite;
@@ -33,28 +33,28 @@ namespace L2_login
 
         private ArrayList maps = new ArrayList();
 
-		//drawing variables
-		private int dx, dy, dr, dr2;
+        //drawing variables
+        private int dx, dy, dr, dr2;
 
-		private int xc;
-		private int yc;
-		private int zc;
+        private int xc;
+        private int yc;
+        private int zc;
 
-		private int xm;
-		private int ym;
+        private int xm;
+        private int ym;
 
         private float scale;
 
-		private DrawData ddt;
-		private string ddtext;
+        private DrawData ddt;
+        private string ddtext;
 
         private uint my_target;
         private float my_z;
         private float zrange_draw;
-		//end of drawing variables
+        //end of drawing variables
 
-		//my pretty pens
-		public static Pen BlackPen = new Pen(Color.Black);
+        //my pretty pens
+        public static Pen BlackPen = new Pen(Color.Black);
         public static Pen WhitePen = new Pen(Color.White);
         public static Pen BluePen = new Pen(Color.Blue);
         public static Pen DBluePen = new Pen(Color.DarkBlue);
@@ -89,22 +89,22 @@ namespace L2_login
 
         public PictureBox pictureBox_test;
 
-		public Map(Form pf)
-		{
-			InitializeComponent();
+        public Map(Form pf)
+        {
+            InitializeComponent();
 
             this.FormBorderStyle = FormBorderStyle.None;
 
             this.pictureBox_test.MouseDown += new MouseEventHandler(Form1_MouseDown);
 
-			this.MdiParent = pf;
-			this.MdiParent.Resize += new EventHandler(MdiParent_Resize);
-			MdiParent_Resize(null,null);
+            this.MdiParent = pf;
+            this.MdiParent.Resize += new EventHandler(MdiParent_Resize);
+            MdiParent_Resize(null, null);
 
             LoadMiniMap();
             Init_DX();
-		}
-       
+        }
+
         private void Init_DX()
         {
             presentParams.Windowed = true;
@@ -183,20 +183,20 @@ namespace L2_login
             resized = true;
         }
 
-		protected override void Dispose( bool disposing )
-		{
+        protected override void Dispose(bool disposing)
+        {
             this.MdiParent.Resize -= new EventHandler(MdiParent_Resize);
 
-			base.Dispose( disposing );
-		}
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.pictureBox_test = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)this.pictureBox_test).BeginInit();
             this.SuspendLayout();
@@ -221,20 +221,20 @@ namespace L2_login
             ((System.ComponentModel.ISupportInitialize)this.pictureBox_test).EndInit();
             this.ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
         //delegate void Draw_Callback();
         public void Draw()
         {
-            this.Invalidate(new Region(new Rectangle(0,0, this.Width, this.Height)));
+            this.Invalidate(new Region(new Rectangle(0, 0, this.Width, this.Height)));
         }
 
         protected override void OnPaintBackground(PaintEventArgs prevent)
-		{
-			//this should fix the flicker kekeke
-			//prevent the drawing of the background
-		}
+        {
+            //this should fix the flicker kekeke
+            //prevent the drawing of the background
+        }
 
         protected override void OnPrint(PaintEventArgs e)
         {
@@ -315,8 +315,8 @@ namespace L2_login
             }
         }
 
-		protected void DrawGameInner()
-		{
+        protected void DrawGameInner()
+        {
             if (LoadTextures)
             {
                 try
@@ -345,13 +345,13 @@ namespace L2_login
             xm = this.Width / 2;//ClientSize
             ym = this.Height / 2;//ClientSize
 
-			scale = MapThread.GetZoom();
+            scale = MapThread.GetZoom();
 
-			//need to fix these copy things, its the same values being referenced...
-			//we need to make copies, not references
-			tmp_path.Clear();
-			tmp_walls.Clear();
-			cache_draw.Clear();
+            //need to fix these copy things, its the same values being referenced...
+            //we need to make copies, not references
+            tmp_path.Clear();
+            tmp_walls.Clear();
+            cache_draw.Clear();
 
             try
             {
@@ -374,13 +374,21 @@ namespace L2_login
                     ddt.Color1 = 5;
 
                     if (Globals.gamedata.my_pet.Karma > 0)
+                    {
                         ddt.Color2 = 0;
+                    }
                     else if (Globals.gamedata.my_pet.PvPFlag == 1)
+                    {
                         ddt.Color2 = 1;
+                    }
                     else if (Globals.gamedata.my_pet.PvPFlag == 2)
+                    {
                         ddt.Color2 = 2;
+                    }
                     else
+                    {
                         ddt.Color2 = 3;
+                    }
 
                     cache_draw.Add(ddt);
                 }
@@ -403,13 +411,21 @@ namespace L2_login
                     ddt.Color1 = 5;
 
                     if (Globals.gamedata.my_pet1.Karma > 0)
+                    {
                         ddt.Color2 = 0;
+                    }
                     else if (Globals.gamedata.my_pet1.PvPFlag == 1)
+                    {
                         ddt.Color2 = 1;
+                    }
                     else if (Globals.gamedata.my_pet1.PvPFlag == 2)
+                    {
                         ddt.Color2 = 2;
+                    }
                     else
+                    {
                         ddt.Color2 = 3;
+                    }
 
                     cache_draw.Add(ddt);
                 }
@@ -432,13 +448,21 @@ namespace L2_login
                     ddt.Color1 = 5;
 
                     if (Globals.gamedata.my_pet2.Karma > 0)
+                    {
                         ddt.Color2 = 0;
+                    }
                     else if (Globals.gamedata.my_pet2.PvPFlag == 1)
+                    {
                         ddt.Color2 = 1;
+                    }
                     else if (Globals.gamedata.my_pet2.PvPFlag == 2)
+                    {
                         ddt.Color2 = 2;
+                    }
                     else
+                    {
                         ddt.Color2 = 3;
+                    }
 
                     cache_draw.Add(ddt);
                 }
@@ -461,13 +485,21 @@ namespace L2_login
                     ddt.Color1 = 5;
 
                     if (Globals.gamedata.my_pet3.Karma > 0)
+                    {
                         ddt.Color2 = 0;
+                    }
                     else if (Globals.gamedata.my_pet3.PvPFlag == 1)
+                    {
                         ddt.Color2 = 1;
+                    }
                     else if (Globals.gamedata.my_pet3.PvPFlag == 2)
+                    {
                         ddt.Color2 = 2;
+                    }
                     else
+                    {
                         ddt.Color2 = 3;
+                    }
 
                     cache_draw.Add(ddt);
                 }
@@ -529,15 +561,25 @@ namespace L2_login
                                 }
 
                                 if ((player.Karma > 0) && (Globals.gamedata.Chron <= Chronicle.CT2_6))
+                                {
                                     ddt.Color2 = 0;
+                                }
                                 else if ((player.Karma < 0) && (Globals.gamedata.Chron >= Chronicle.CT3_0))
+                                {
                                     ddt.Color2 = 0;
+                                }
                                 else if (player.PvPFlag == 1)
+                                {
                                     ddt.Color2 = 1;
+                                }
                                 else if (player.PvPFlag == 2)
+                                {
                                     ddt.Color2 = 2;
+                                }
                                 else
+                                {
                                     ddt.Color2 = 3;
+                                }
 
                                 cache_draw.Add(ddt);
                             }
@@ -559,13 +601,13 @@ namespace L2_login
 
             try
             {
-                if(Globals.NPCLock.TryEnterReadLock(Globals.THREAD_WAIT_DX))
+                if (Globals.NPCLock.TryEnterReadLock(Globals.THREAD_WAIT_DX))
                 {
                     try
                     {
                         foreach (NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
                         {
-                            if (Math.Abs(npc.Z - my_z) <= zrange_draw && npc.isInvisible != 1 ) //if == 1, the mob shouldn't show up.
+                            if (Math.Abs(npc.Z - my_z) <= zrange_draw && npc.isInvisible != 1) //if == 1, the mob shouldn't show up.
                             {
                                 ddt = new DrawData();
                                 ddt.ID = npc.ID;
@@ -655,10 +697,10 @@ namespace L2_login
 #endif
             }
 
-			try
-			{
-				if(Globals.l2net_home.checkBox_minimap.Checked)// && miniMap != null)
-				{
+            try
+            {
+                if (Globals.l2net_home.checkBox_minimap.Checked)// && miniMap != null)
+                {
                     //0,0,0 = 20_18
                     int x_block = (int)((Globals.gamedata.my_char.X + Globals.ModX) / Globals.UNITS);
                     int y_block = (int)((Globals.gamedata.my_char.Y + Globals.ModY) / Globals.UNITS);
@@ -670,7 +712,7 @@ namespace L2_login
                         last_MAPY = y_block;
                         last_MAPZ = (int)Globals.gamedata.my_char.Z;
 
-                        switch(Globals.ViewRange)
+                        switch (Globals.ViewRange)
                         {
                             case 1:
                                 LoadMapFile(last_MAPX, last_MAPY, last_MAPZ);
@@ -699,7 +741,7 @@ namespace L2_login
                     }
 
                     //DrawMap
-                    switch(Globals.ViewRange)
+                    switch (Globals.ViewRange)
                     {
                         case 1:
                             DrawMap(last_MAPX, last_MAPY, last_MAPZ);
@@ -726,12 +768,12 @@ namespace L2_login
                             break;
                     }
                 }
-				else
-				{
-					//draw no map
-				}
+                else
+                {
+                    //draw no map
+                }
 
-				//draw self
+                //draw self
                 if (my_target == Globals.gamedata.my_char.ID)
                 {
                     DrawFilledBox(xm - 5, ym - 5, xm + 5, ym + 5, Color.Red);
@@ -740,34 +782,34 @@ namespace L2_login
                 {
                     DrawBox(xm - 5, ym - 5, xm + 5, ym + 5, Color.Red);
                 }
-    		}
-			catch
-			{
-				//failed to draw minimap or self
+            }
+            catch
+            {
+                //failed to draw minimap or self
 #if DEBUG
-				Globals.l2net_home.Add_OnlyDebug("failed to draw minimap or self");
+                Globals.l2net_home.Add_OnlyDebug("failed to draw minimap or self");
 #endif
-			}
+            }
 
             try
-			{
-			    //only care to draw it if we have 3 points, since that is the only time it becomes meaningful
-			    if(Globals.gamedata.Paths.PointList.Count > 0)
-			    {
-				    //lets scale the points accordingly
-				    for(int i = 0; i < Globals.gamedata.Paths.PointList.Count; i++)
-				    {
-					    Point npt = new Point();
-					    npt.X = ((Point)Globals.gamedata.Paths.PointList[i]).X;
+            {
+                //only care to draw it if we have 3 points, since that is the only time it becomes meaningful
+                if (Globals.gamedata.Paths.PointList.Count > 0)
+                {
+                    //lets scale the points accordingly
+                    for (int i = 0; i < Globals.gamedata.Paths.PointList.Count; i++)
+                    {
+                        Point npt = new Point();
+                        npt.X = ((Point)Globals.gamedata.Paths.PointList[i]).X;
                         npt.X = GetScaledX(npt.X);//((npt.X - xc) / scale) + xm;
 
-					    npt.Y = ((Point)Globals.gamedata.Paths.PointList[i]).Y;
+                        npt.Y = ((Point)Globals.gamedata.Paths.PointList[i]).Y;
                         npt.Y = GetScaledY(npt.Y);//((npt.Y - yc) / scale) + ym;
 
                         DrawBox((int)npt.X - 2, (int)npt.Y - 2, (int)npt.X + 2, (int)npt.Y + 2, Color.Black);
 
-					    tmp_path.Add(npt);
-				    }
+                        tmp_path.Add(npt);
+                    }
                     if (Globals.gamedata.Paths.PointList.Count > 1)
                     {
                         //lets do that last points on the polygon
@@ -783,15 +825,15 @@ namespace L2_login
                             DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, Color.Black);
                         }
                     }
-			    }
-			    //***************
-			    //
-			    //now lets draw our walls
-			    for(int i = 0; i < Globals.gamedata.Walls.Count; i++)
-			    {
-				    Wall tmp_w = new Wall();
-				    Point npt1 = new Point();
-				    Point npt2 = new Point();
+                }
+                //***************
+                //
+                //now lets draw our walls
+                for (int i = 0; i < Globals.gamedata.Walls.Count; i++)
+                {
+                    Wall tmp_w = new Wall();
+                    Point npt1 = new Point();
+                    Point npt2 = new Point();
                     npt1.X = ((Wall)Globals.gamedata.Walls[i]).P1.X;
                     npt1.X = GetScaledX(npt1.X);//((npt1.X - xc) / scale) + xm;
 
@@ -805,14 +847,14 @@ namespace L2_login
                     npt2.Y = GetScaledY(npt2.Y);//((npt2.Y - yc) / scale) + ym;
 
                     tmp_w.P1 = npt1; tmp_w.P2 = npt2;
-				    tmp_walls.Add(tmp_w);
-			    }
-			    for(int pi = 0; pi < tmp_walls.Count; pi++)
-			    {
-				    Point p1 = ((Wall)tmp_walls[pi]).P1;
-				    Point p2 = ((Wall)tmp_walls[pi]).P2;
+                    tmp_walls.Add(tmp_w);
+                }
+                for (int pi = 0; pi < tmp_walls.Count; pi++)
+                {
+                    Point p1 = ((Wall)tmp_walls[pi]).P1;
+                    Point p2 = ((Wall)tmp_walls[pi]).P2;
                     DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, Color.MediumVioletRed);
-			    }
+                }
 
                 //drawing A* grid 
 #if DEBUG
@@ -850,7 +892,7 @@ namespace L2_login
 
                     DrawLine(drawX, drawY, drawX, drawY2, tempPen);
                     DrawLine(drawX, drawY2, drawX2, drawY2, tempPen);
-                    DrawLine(drawX2, drawY2, drawX2, drawY, tempPen);                 
+                    DrawLine(drawX2, drawY2, drawX2, drawY, tempPen);
                     DrawLine(drawX2, drawY, drawX, drawY, tempPen);
                 }
                 if (Globals.debugNode2 != null)
@@ -889,12 +931,12 @@ namespace L2_login
                 }
 
 #endif
-			}
+            }
 #if DEBUG
             catch (Exception e)
-			{
-				//failed to draw path or walls
-				Globals.l2net_home.Add_OnlyDebug("failed to draw paths of walls : " + e.Message);
+            {
+                //failed to draw path or walls
+                Globals.l2net_home.Add_OnlyDebug("failed to draw paths of walls : " + e.Message);
             }
 #else
             catch
@@ -906,7 +948,7 @@ namespace L2_login
 
 
             try
-			{
+            {
                 if (Globals.White_Names)
                 {
                     text_color = Color.White;
@@ -922,9 +964,9 @@ namespace L2_login
                     //text_brush_shadow = WhiteBrush;
                 }
 
-				//draw all the text objects
-				for(int i = 0; i < cache_draw.Count; i++)
-				{
+                //draw all the text objects
+                for (int i = 0; i < cache_draw.Count; i++)
+                {
                     dx = GetScaledX(((DrawData)cache_draw[i]).X);//(int)((((DrawData)cache_draw[i]).X - xc) / scale) + xm;
                     dy = GetScaledY(((DrawData)cache_draw[i]).Y);//(int)((((DrawData)cache_draw[i]).Y - yc) / scale) + ym;
                     dr2 = (int)(((DrawData)cache_draw[i]).Radius / scale);
@@ -935,22 +977,22 @@ namespace L2_login
                         dr = dr2 / 2;
                     }
 
-					if( ((DrawData)cache_draw[i]).ID == my_target)
-					{
-						switch(((DrawData)cache_draw[i]).Color1)
-						{
-							case 0://black
+                    if (((DrawData)cache_draw[i]).ID == my_target)
+                    {
+                        switch (((DrawData)cache_draw[i]).Color1)
+                        {
+                            case 0://black
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Black);
-								break;
-							case 1://yellow
+                                break;
+                            case 1://yellow
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Yellow);
-								break;
-							case 2://blue
+                                break;
+                            case 2://blue
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Blue);
-								break;
+                                break;
                             case 3://darkgreen
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.SkyBlue);
-								break;
+                                break;
                             case 4://red
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Red);
                                 break;
@@ -958,20 +1000,20 @@ namespace L2_login
                                 DrawFilledBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.OrangeRed);
                                 break;
                         }
-					}
-					else
-					{
-						switch(((DrawData)cache_draw[i]).Color1)
-						{
-							case 0://black
+                    }
+                    else
+                    {
+                        switch (((DrawData)cache_draw[i]).Color1)
+                        {
+                            case 0://black
                                 DrawBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Black);
-								break;
-							case 1://yellow
+                                break;
+                            case 1://yellow
                                 DrawBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Yellow);
-								break;
-							case 2://blue
+                                break;
+                            case 2://blue
                                 DrawBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.Blue);
-								break;
+                                break;
                             case 3://darkgreen
                                 DrawBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.SkyBlue);
                                 break;
@@ -982,7 +1024,7 @@ namespace L2_login
                                 DrawBox(dx - dr, dy - dr, dx + dr, dy + dr, Color.OrangeRed);
                                 break;
                         }
-                    } 
+                    }
 
                     if (((DrawData)cache_draw[i]).Text.Length > 0)
                     {
@@ -1005,16 +1047,16 @@ namespace L2_login
                                 break;
                         }
                     }
-				}
-			}
-			catch
-			{
-				//failed to draw items
-				//dont really care to output text like this
+                }
+            }
+            catch
+            {
+                //failed to draw items
+                //dont really care to output text like this
 #if DEBUG
-				Globals.l2net_home.Add_OnlyDebug("failed to draw from cached players/npcs/items");
+                Globals.l2net_home.Add_OnlyDebug("failed to draw from cached players/npcs/items");
 #endif
-			}
+            }
         }
 
         private void DrawMap(int x_block, int y_block, int z)
@@ -1054,25 +1096,25 @@ namespace L2_login
 
             if (lx < 0)
             {
-                Tu1 = ((float)(0 - _lx)) / ((float)(_mx - _lx));
+                Tu1 = (0 - _lx) / ((float)(_mx - _lx));
                 lx = 0;
             }
 
             if (ly < 0)
             {
-                Tv1 = ((float)(0 - _ly)) / ((float)(_my - _ly));
+                Tv1 = (0 - _ly) / ((float)(_my - _ly));
                 ly = 0;
             }
 
             if (mx > Width)
             {
-                Tu2 = ((float)(Width - _lx)) / ((float)(_mx - _lx));
+                Tu2 = (Width - _lx) / ((float)(_mx - _lx));
                 mx = Width;
             }
 
             if (my > Height)
             {
-                Tv2 = ((float)(Height - _ly)) / ((float)(_my - _ly));
+                Tv2 = (Height - _ly) / ((float)(_my - _ly));
                 my = Height;
             }
 
@@ -1231,42 +1273,53 @@ namespace L2_login
             return (int)((y - yc) / scale) + ym;
         }
 
-		private bool InDrawSpace(MouseEventArgs e)
-		{
+        private bool InDrawSpace(MouseEventArgs e)
+        {
             if (e.X > this.Left &&
                 e.X < this.Width + this.Left &&
                 e.Y > this.Top &&
                 e.Y < this.Top + this.Height)
-			{
-				return true;
-			}
-			return false;
-		}
+            {
+                return true;
+            }
+            return false;
+        }
 
-		private void Form1_MouseDown(object sender, MouseEventArgs e)
-		{
-			//clicky on the mapy
-			if(!Globals.gamedata.logged_in)
-				return;
-			if(!Globals.gamedata.running)
-				return;
-			//if(!L2NET.drawing_game)
-			//	return;
-			if(!InDrawSpace(e))
-				return;
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //clicky on the mapy
+            if (!Globals.gamedata.logged_in)
+            {
+                return;
+            }
 
-			if(e.Button == MouseButtons.XButton1)
-			{
-				if(Globals.l2net_home.trackBar_map_zoom.Value+1 <= Globals.l2net_home.trackBar_map_zoom.Maximum)
-					Globals.l2net_home.trackBar_map_zoom.Value++;
-			}
-			if(e.Button == MouseButtons.XButton2)
-			{
-				if(Globals.l2net_home.trackBar_map_zoom.Value-1 >= Globals.l2net_home.trackBar_map_zoom.Minimum)
-					Globals.l2net_home.trackBar_map_zoom.Value--;
-			}
-			if(e.Button == MouseButtons.Left)
-			{
+            if (!Globals.gamedata.running)
+            {
+                return;
+            }
+            //if(!L2NET.drawing_game)
+            //	return;
+            if (!InDrawSpace(e))
+            {
+                return;
+            }
+
+            if (e.Button == MouseButtons.XButton1)
+            {
+                if (Globals.l2net_home.trackBar_map_zoom.Value + 1 <= Globals.l2net_home.trackBar_map_zoom.Maximum)
+                {
+                    Globals.l2net_home.trackBar_map_zoom.Value++;
+                }
+            }
+            if (e.Button == MouseButtons.XButton2)
+            {
+                if (Globals.l2net_home.trackBar_map_zoom.Value - 1 >= Globals.l2net_home.trackBar_map_zoom.Minimum)
+                {
+                    Globals.l2net_home.trackBar_map_zoom.Value--;
+                }
+            }
+            if (e.Button == MouseButtons.Left)
+            {
                 int xc = Util.Float_Int32(Globals.gamedata.my_char.X);
                 int yc = Util.Float_Int32(Globals.gamedata.my_char.Y);
                 int zc = Util.Float_Int32(Globals.gamedata.my_char.Z);
@@ -1274,16 +1327,16 @@ namespace L2_login
                 int Width = this.pictureBox_test.Width;
                 int Height = this.pictureBox_test.Height;
 
-				int xm = Width / 2;
-				int ym = Height / 2;
+                int xm = Width / 2;
+                int ym = Height / 2;
 
                 int mx = e.X - this.Left;
                 int my = e.Y - this.Top;
 
                 float mouse_scale = MapThread.GetZoom();
 
-				int dx = (int)((mx - xm) * mouse_scale) + xc;
-				int dy = (int)((my - ym) * mouse_scale) + yc;
+                int dx = (int)((mx - xm) * mouse_scale) + xc;
+                int dy = (int)((my - ym) * mouse_scale) + yc;
 
                 float radius;
                 int minR = (int)(Globals.MIN_RADIUS * mouse_scale);
@@ -1512,8 +1565,8 @@ namespace L2_login
                 {
                     ServerPackets.MoveToPacket(dx, dy, zc);
                 }
-			}
-		}
+            }
+        }
 
 
         private void LoadMiniMap()
@@ -1614,5 +1667,5 @@ namespace L2_login
 
             LoadTextures = false;
         }
-	}//end of class
+    }//end of class
 }

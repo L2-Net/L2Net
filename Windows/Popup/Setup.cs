@@ -8,13 +8,13 @@ namespace L2_login
     /// </summary>
     public class Setup : Form
     {
-		public ComboBox comboBox_voice;
-		private Label label_voice;
-		private CheckBox checkBox_MinToTray;
-		private Button button_cancel;
-		private Button button_save;
-		public TextBox textBox_key;
-		private Label label_productkey;
+        public ComboBox comboBox_voice;
+        private Label label_voice;
+        private CheckBox checkBox_MinToTray;
+        private Button button_cancel;
+        private Button button_save;
+        public TextBox textBox_key;
+        private Label label_productkey;
         private CheckBox checkBox_scriptIO;
         private Label label_l2_path;
         public TextBox textBox_l2path;
@@ -53,16 +53,16 @@ namespace L2_login
         private CheckBox checkBox_AutolearnSkills;
         private CheckBox checkBox_writetolog;
         public CheckBox checkBox_npc_say;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public Setup()
-		{
-			InitializeComponent();
+        public Setup()
+        {
+            InitializeComponent();
 
-			UpdateUI();
+            UpdateUI();
             comboBox_voice.SelectedIndex = Globals.Voice;
             checkBox_MinToTray.Checked = Globals.MinimizeToTray;
             textBox_key.Text = Globals.ProductKey;
@@ -99,10 +99,10 @@ namespace L2_login
             net_dc_on_ig_crit.Checked = Globals.dc_on_ig_close;
             net_dump_on_ig_crit.Checked = Globals.dump_pbuff_on_ig_close;
 
-		}
+        }
 
-		public void UpdateUI()
-		{
+        public void UpdateUI()
+        {
             button_save.Text = Globals.m_ResourceManager.GetString("Apply");
             button_cancel.Text = Globals.m_ResourceManager.GetString("button_cancel");
 
@@ -125,30 +125,30 @@ namespace L2_login
             checkBox_IgnoreExitConf.Text = Globals.m_ResourceManager.GetString("check_ignexitconf");
 
             this.Refresh();
-		}
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.comboBox_voice = new ComboBox();
             this.label_voice = new Label();
             this.checkBox_MinToTray = new CheckBox();
@@ -231,7 +231,7 @@ namespace L2_login
             // 
             // button_cancel
             // 
-            this.button_cancel.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.button_cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.button_cancel.FlatStyle = FlatStyle.System;
             this.button_cancel.Location = new System.Drawing.Point(465, 408);
             this.button_cancel.Name = "button_cancel";
@@ -242,7 +242,7 @@ namespace L2_login
             // 
             // button_save
             // 
-            this.button_save.Anchor = (AnchorStyles)(AnchorStyles.Bottom | AnchorStyles.Left);
+            this.button_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             this.button_save.FlatStyle = FlatStyle.System;
             this.button_save.Location = new System.Drawing.Point(8, 408);
             this.button_save.Name = "button_save";
@@ -687,11 +687,11 @@ namespace L2_login
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void button_save_Click(object sender, EventArgs e)
-		{
+        private void button_save_Click(object sender, EventArgs e)
+        {
             Globals.Voice = comboBox_voice.SelectedIndex;
             Globals.MinimizeToTray = checkBox_MinToTray.Checked;
             Globals.ProductKey = "LOVELKQKMGBOGNET";//textBox_key.Text;
@@ -735,13 +735,13 @@ namespace L2_login
             Globals.LogWriting = checkBox_writetolog.Checked;
 
 
-			this.Hide();
+            this.Hide();
         }
 
-		private void button_cancel_Click(object sender, EventArgs e)
-		{
-			this.Hide();
-		}
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
 
 
         private void button_change_toggle_Click(object sender, EventArgs e)

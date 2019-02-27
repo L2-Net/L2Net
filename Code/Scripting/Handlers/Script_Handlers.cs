@@ -55,7 +55,7 @@ namespace L2_login
             {
                 if (((VariableList)Stack[StackHeight]).ContainsKey(param1))
                 {
-                    switch(((ScriptVariable)((VariableList)Stack[StackHeight])[param1]).Type)
+                    switch (((ScriptVariable)((VariableList)Stack[StackHeight])[param1]).Type)
                     {
                         case Var_Types.THREAD:
                             //stop the thread before we delete the variable
@@ -116,7 +116,7 @@ namespace L2_login
         private void Script_NMESSAGE_BOX(string line)
         {
             NonBMessageBox bbox = new NonBMessageBox(false);
-            
+
             bbox.title = Get_String(ref line);
             bbox.text = Get_String(ref line);
 
@@ -230,22 +230,31 @@ namespace L2_login
                             {
                                 bool same = false;
 
-                                switch(var.Type)
+                                switch (var.Type)
                                 {
                                     case Var_Types.NULL:
                                         same = true;
                                         break;
                                     case Var_Types.INT:
                                         if (Convert.ToInt64(var.Value) == Convert.ToInt64(nvar.Value))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                     case Var_Types.DOUBLE:
                                         if (Convert.ToDouble(var.Value) == Convert.ToDouble(nvar.Value))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                     case Var_Types.STRING:
                                         if (System.String.Equals(var.Value.ToString(), nvar.Value.ToString()))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                 }
                                 if (same)
@@ -313,7 +322,7 @@ namespace L2_login
             sc_ec.File = file;
             sc_ec.Function = function.ToUpperInvariant();
 
-            switch(sc_ec.Type)
+            switch (sc_ec.Type)
             {
                 case EventType.ServerPacket:
                     int packet_id = Util.GetInt32(Get_String(ref line));
@@ -533,7 +542,7 @@ namespace L2_login
             if (!is_debug || (is_debug && Globals.Script_Debugging))
             {
                 string param1 = Get_String(ref line);
-                Globals.l2net_home.Add_Text(param1,Globals.Red,TextType.BOT);
+                Globals.l2net_home.Add_Text(param1, Globals.Red, TextType.BOT);
             }
         }
 
@@ -578,7 +587,7 @@ namespace L2_login
         {
             string param1 = Get_String(ref line);
 
-            Script_SLEEP((double)Util.GetInt64(param1));
+            Script_SLEEP(Util.GetInt64(param1));
         }
 
         private void Script_SLEEP(double time)
@@ -652,7 +661,7 @@ namespace L2_login
             string s_file = Get_String(ref line);
             s_file = Globals.PATH + "\\Scripts\\" + s_file;
 
-            s_file = s_file.ToUpperInvariant().Replace('/','\\');
+            s_file = s_file.ToUpperInvariant().Replace('/', '\\');
 
             try
             {
@@ -764,7 +773,7 @@ namespace L2_login
 
                 int call_base = 0;
 
-                while(cname.EndsWith("BASE"))
+                while (cname.EndsWith("BASE"))
                 {
                     pipe = cname.LastIndexOf('.');
                     cname = cname.Substring(0, pipe);
@@ -786,7 +795,7 @@ namespace L2_login
                     {
                         Script_Class sc = (Script_Class)Classes[((Script_ClassData)svar.Value).Name];
 
-                        for(int i = 0; i < call_base; i++)
+                        for (int i = 0; i < call_base; i++)
                         {
                             sc = (Script_Class)Classes[sc.ParentName];
                         }
@@ -1048,7 +1057,7 @@ namespace L2_login
         {
             Script_DEFINE(line, true, true);
         }
-        
+
         private void Script_DEFINE(string line, bool global = false, bool can_advance = true)
         {
             string param1 = Get_String(ref line);
@@ -1728,7 +1737,9 @@ namespace L2_login
                     }
 
                     if (calling_line.LinkedLine != -1)
+                    {
                         break;
+                    }
                 }
             }
 
@@ -1882,7 +1893,7 @@ namespace L2_login
                 Line_Pos = calling_line.LinkedLine + 1;
             }
         }
-        
+
         private void Script_FOR(string inp)
         {
             string sval = Get_String(ref inp).ToUpperInvariant();
@@ -2020,7 +2031,9 @@ namespace L2_login
                     }
 
                     if (calling_line.LinkedLine != -1)
+                    {
                         break;
+                    }
                 }
             }
 

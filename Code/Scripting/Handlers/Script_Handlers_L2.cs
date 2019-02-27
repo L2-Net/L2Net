@@ -211,7 +211,7 @@ namespace L2_login
         {
             int opcode = 0;
             PClient[] values = (PClient[])Enum.GetValues(typeof(PClient));
-            for (int i = 0; i<values.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
                 opcode = (int)values[i];
                 if (Blocked_SelfPackets.ContainsKey(opcode))
@@ -287,7 +287,7 @@ namespace L2_login
         {
             Blocked_SelfPacketsEX.Clear();
         }
-        
+
         private void Script_BLOCK(string line)
         {
             int packet_id = Util.GetInt32(Get_String(ref line));
@@ -459,9 +459,9 @@ namespace L2_login
                     cd._Variables.Add("CP", new ScriptVariable((long)npc.Cur_CP, "CP", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("MAX_CP", new ScriptVariable((long)npc.Max_CP, "MAX_CP", Var_Types.INT, Var_State.PUBLIC));
 
-                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round((double)npc.Cur_HP / (double)npc.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round((double)npc.Cur_MP / (double)npc.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round((double)npc.Cur_CP / (double)npc.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round(npc.Cur_HP / (double)npc.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round(npc.Cur_MP / (double)npc.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round(npc.Cur_CP / (double)npc.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
 
                     cd._Variables.Add("KARMA", new ScriptVariable((long)npc.Karma, "KARMA", Var_Types.INT, Var_State.PUBLIC));
 
@@ -487,19 +487,19 @@ namespace L2_login
                             ncd.Name = "EFFECT";
                             ncd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                            ncd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                            ncd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                             ScriptVariable nsv = new ScriptVariable(ncd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
 
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
                         SortedList empty = new SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -556,7 +556,7 @@ namespace L2_login
                     cd._Variables.Add("SLOT", new ScriptVariable((long)it.Slot, "SLOT", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("ENCHANT", new ScriptVariable((long)it.Enchant, "ENCHANT", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("AUG_ID", new ScriptVariable((long)it.AugID, "AUG_ID", Var_Types.INT, Var_State.PUBLIC));
-                    cd._Variables.Add("MANA", new ScriptVariable((long)it.Mana, "MANA", Var_Types.INT, Var_State.PUBLIC));                    
+                    cd._Variables.Add("MANA", new ScriptVariable((long)it.Mana, "MANA", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("LEASE_TIME", new ScriptVariable((long)it.lease_time, "LEASE_TIME", Var_Types.INT, Var_State.PUBLIC));
 
                     cd._Variables.Add("ATTACK_ELEMENT", new ScriptVariable((long)it.attack_element, "ATTACK_ELEMENT", Var_Types.INT, Var_State.PUBLIC));
@@ -648,102 +648,182 @@ namespace L2_login
 
         private void Script_GET_SKILLS(string inp)
         {
-                string sdest = Get_String(ref inp);
-                ScriptVariable dest = Get_Var(sdest);
+            string sdest = Get_String(ref inp);
+            ScriptVariable dest = Get_Var(sdest);
 
-                if (dest.Type == Var_Types.ARRAYLIST)
-                {
-                    ((ArrayList)dest.Value).Clear();
-                }
-                else if (dest.Type == Var_Types.SORTEDLIST)
-                {
-                    ((SortedList)dest.Value).Clear();
-                }
-                else
-                {
+            if (dest.Type == Var_Types.ARRAYLIST)
+            {
+                ((ArrayList)dest.Value).Clear();
+            }
+            else if (dest.Type == Var_Types.SORTEDLIST)
+            {
+                ((SortedList)dest.Value).Clear();
+            }
+            else
+            {
                 Script_Error("GET_SKILLS: INVLAID DESTINATION TYPE - SORTEDLIST OR ARRAYLIST ONLY");
-                    return;
-                }
+                return;
+            }
 
-                Globals.SkillListLock.EnterReadLock();
-                try
+            Globals.SkillListLock.EnterReadLock();
+            try
+            {
+                foreach (UserSkill us in Globals.gamedata.skills.Values)
                 {
-                    foreach (UserSkill us in Globals.gamedata.skills.Values)
+                    Script_ClassData cd = new Script_ClassData();
+                    cd.Name = "SKILL";
+                    cd._Variables.Add("ID", new ScriptVariable((long)us.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
+                    cd._Variables.Add("LEVEL", new ScriptVariable((long)us.Level, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
+                    cd._Variables.Add("PASSIVE", new ScriptVariable((long)us.Passive, "PASSIVE", Var_Types.INT, Var_State.PUBLIC));
+                    cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(us.ID, us.Level), "NAME", Var_Types.STRING, Var_State.PUBLIC));
+                    cd._Variables.Add("REUSE", new ScriptVariable(Util.GetSkillReuse(us.ID), "REUSE", Var_Types.INT, Var_State.PUBLIC));
+
+                    ScriptVariable sv = new ScriptVariable(cd, "SKILL", Var_Types.CLASS, Var_State.PUBLIC);
+
+                    if (dest.Type == Var_Types.ARRAYLIST)
                     {
-                        Script_ClassData cd = new Script_ClassData();
-                        cd.Name = "SKILL";
-                        cd._Variables.Add("ID", new ScriptVariable((long)us.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
-                        cd._Variables.Add("LEVEL", new ScriptVariable((long)us.Level, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                        cd._Variables.Add("PASSIVE", new ScriptVariable((long)us.Passive, "PASSIVE", Var_Types.INT, Var_State.PUBLIC));
-                        cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(us.ID, us.Level), "NAME", Var_Types.STRING, Var_State.PUBLIC));
-                        cd._Variables.Add("REUSE", new ScriptVariable(Util.GetSkillReuse(us.ID), "REUSE", Var_Types.INT, Var_State.PUBLIC));
-
-                        ScriptVariable sv = new ScriptVariable(cd, "SKILL", Var_Types.CLASS, Var_State.PUBLIC);
-
-                        if (dest.Type == Var_Types.ARRAYLIST)
-                        {
-                            ((ArrayList)dest.Value).Add(sv);
-                        }
-                        else if (dest.Type == Var_Types.SORTEDLIST)
-                        {
-                            ((SortedList)dest.Value).Add(us.ID.ToString(), sv);
-                        }
+                        ((ArrayList)dest.Value).Add(sv);
+                    }
+                    else if (dest.Type == Var_Types.SORTEDLIST)
+                    {
+                        ((SortedList)dest.Value).Add(us.ID.ToString(), sv);
                     }
                 }
-                finally
-                {
-                    Globals.SkillListLock.ExitReadLock();
-                }
+            }
+            finally
+            {
+                Globals.SkillListLock.ExitReadLock();
+            }
         }
 
         private void Script_GET_EFFECTS(string inp)
         {
-                string sdest = Get_String(ref inp);
-                string s_id = Get_String(ref inp);
-                uint _id = Util.GetUInt32(s_id);
+            string sdest = Get_String(ref inp);
+            string s_id = Get_String(ref inp);
+            uint _id = Util.GetUInt32(s_id);
 
-                ScriptVariable dest = Get_Var(sdest);
+            ScriptVariable dest = Get_Var(sdest);
 
-                if (dest.Type == Var_Types.SORTEDLIST)
-                {
-                    ((SortedList)dest.Value).Clear();
-                }
-                else
-                {
+            if (dest.Type == Var_Types.SORTEDLIST)
+            {
+                ((SortedList)dest.Value).Clear();
+            }
+            else
+            {
                 Script_Error("Usage: GET_EFFECTS SORTEDLIST OBJECT_ID");
-                    return;
-                }
+                return;
+            }
 
-                Globals.PartyLock.EnterReadLock();
-                try
+            Globals.PartyLock.EnterReadLock();
+            try
+            {
+                TargetType idType = Util.GetType(_id);
+                switch (idType)
                 {
-                    TargetType idType = Util.GetType(_id);
-                    switch (idType)
-                    {
-                        case TargetType.NONE:
-                        case TargetType.ERROR:
-                        case TargetType.ITEM:
-                        case TargetType.MYPET:
-                        case TargetType.MYPET1:
-                        case TargetType.MYPET2:
-                        case TargetType.MYPET3:
-                        case TargetType.NPC:
-                            try
+                    case TargetType.NONE:
+                    case TargetType.ERROR:
+                    case TargetType.ITEM:
+                    case TargetType.MYPET:
+                    case TargetType.MYPET1:
+                    case TargetType.MYPET2:
+                    case TargetType.MYPET3:
+                    case TargetType.NPC:
+                        try
+                        {
+                            if (Globals.gamedata.nearby_npcs.ContainsKey(_id))
                             {
-                                if (Globals.gamedata.nearby_npcs.ContainsKey(_id))
+                                NPCInfo npc = null;
+                                Globals.NPCLock.EnterReadLock();
+                                try
                                 {
-                                    NPCInfo npc = null;
-                                    Globals.NPCLock.EnterReadLock();
-                                    try
+                                    npc = Util.GetNPC(_id);
+                                    foreach (CharBuff buff in npc.my_buffs.Values)
                                     {
-                                        npc = Util.GetNPC(_id);
-                                        foreach (CharBuff buff in npc.my_buffs.Values)
+                                        Script_ClassData cd = new Script_ClassData();
+                                        cd.Name = "EFFECT";
+                                        cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
+                                        ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
+
+                                        if (dest.Type == Var_Types.SORTEDLIST)
+                                        {
+                                            // xxx - Think about this before implementing
+                                            // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
+                                            ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                        }
+                                    }
+
+                                }
+                                finally
+                                {
+                                    Globals.NPCLock.ExitReadLock();
+                                }
+
+                            }
+
+                        }
+                        finally
+                        {
+
+                        }
+                        return;
+                    case TargetType.PLAYER:
+                        try
+                        {
+                            if (Globals.gamedata.PartyMembers.ContainsKey(_id))
+                            {
+
+                                PartyMember ph = null;
+
+                                Globals.PlayerLock.EnterReadLock();
+                                try
+                                {
+                                    ph = Util.GetCharParty(_id);
+
+                                    foreach (CharBuff buff in ph.my_buffs.Values)
+                                    {
+                                        Script_ClassData cd = new Script_ClassData();
+                                        cd.Name = "EFFECT";
+                                        cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
+                                        cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
+                                        ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
+
+                                        if (dest.Type == Var_Types.SORTEDLIST)
+                                        {
+                                            // xxx - Think about this before implementing
+                                            // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
+                                            ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
+                                        }
+                                    }
+                                }
+                                finally
+                                {
+                                    Globals.PlayerLock.ExitReadLock();
+                                }
+                            }
+                            else // not in pt 
+                            {
+                                Globals.PlayerLock.EnterReadLock();
+                                try
+                                {
+                                    CharInfo pla = Util.GetChar(_id);
+                                    if (pla != null)
+                                    {
+
+
+                                        foreach (CharBuff buff in pla.my_buffs.Values)
                                         {
                                             Script_ClassData cd = new Script_ClassData();
                                             cd.Name = "EFFECT";
                                             cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                                             cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                                            cd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                                            cd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                                             cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
                                             cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                                             ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
@@ -755,139 +835,59 @@ namespace L2_login
                                                 ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                             }
                                         }
-
                                     }
-                                    finally
-                                    {
-                                        Globals.NPCLock.ExitReadLock();
-                                    }
-
                                 }
-
-                            }
-                            finally
-                            {
-
-                            }
-                            return;
-                        case TargetType.PLAYER:
-                            try
-                            {
-                                if (Globals.gamedata.PartyMembers.ContainsKey(_id))
+                                finally
                                 {
-
-                                    PartyMember ph = null;
-
-                                    Globals.PlayerLock.EnterReadLock();
-                                    try
-                                    {
-                                        ph = Util.GetCharParty(_id);
-
-                                        foreach (CharBuff buff in ph.my_buffs.Values)
-                                        {
-                                            Script_ClassData cd = new Script_ClassData();
-                                            cd.Name = "EFFECT";
-                                            cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
-                                            cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                                            cd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
-                                            cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
-                                            cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
-                                            ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
-
-                                            if (dest.Type == Var_Types.SORTEDLIST)
-                                            {
-                                                // xxx - Think about this before implementing
-                                                // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                                ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
-                                            }
-                                        }
-                                    }
-                                    finally
-                                    {
-                                        Globals.PlayerLock.ExitReadLock();
-                                    }
+                                    Globals.PlayerLock.ExitReadLock();
                                 }
-                                else // not in pt 
+                            }
+                        }
+                        finally
+                        {
+
+                        }
+                        return;
+                    case TargetType.SELF:
+                        Globals.MyBuffsListLock.EnterWriteLock();
+                        try
+                        {
+                            foreach (CharBuff buff in Globals.gamedata.mybuffs.Values)
+                            {
+                                Script_ClassData cd = new Script_ClassData();
+                                cd.Name = "EFFECT";
+                                cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
+                                cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
+                                cd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                                cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
+                                cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
+                                ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
+
+                                if (dest.Type == Var_Types.SORTEDLIST)
                                 {
-                                         Globals.PlayerLock.EnterReadLock();
-                                         try
-                                            {
-                                                 CharInfo pla = Util.GetChar(_id);
-                                                  if (pla != null)
-                                                       {
-
-
-                                                           foreach (CharBuff buff in pla.my_buffs.Values)
-                                                           {
-                                                               Script_ClassData cd = new Script_ClassData();
-                                                               cd.Name = "EFFECT";
-                                                               cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
-                                                               cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                                                               cd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
-                                                               cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
-                                                               cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
-                                                               ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
-
-                                                               if (dest.Type == Var_Types.SORTEDLIST)
-                                                               {
-                                                                   // xxx - Think about this before implementing
-                                                                   // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                                                   ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
-                                                               }
-                                                           }
-                                                        }
-                                            }
-                                            finally
-                                            {
-                                                Globals.PlayerLock.ExitReadLock();
-                                             }
+                                    // xxx - Think about this before implementing
+                                    // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
+                                    ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
                                 }
-                            }
-                            finally
-                            {
 
                             }
-                            return;
-                        case TargetType.SELF:
-                            Globals.MyBuffsListLock.EnterWriteLock();
-                            try
-                            {
-                                foreach (CharBuff buff in Globals.gamedata.mybuffs.Values)
-                                {
-                                    Script_ClassData cd = new Script_ClassData();
-                                    cd.Name = "EFFECT";
-                                    cd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
-                                    cd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                                    cd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
-                                    cd._Variables.Add("EFFECT_TIME", new ScriptVariable((long)buff.EFFECT_TIME, "EFFECT_TIME", Var_Types.INT, Var_State.PUBLIC));
-                                    cd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
-                                    ScriptVariable sv = new ScriptVariable(cd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
+                        }
+                        finally
+                        {
+                            Globals.MyBuffsListLock.ExitWriteLock();
+                        }
 
-                                    if (dest.Type == Var_Types.SORTEDLIST)
-                                    {
-                                        // xxx - Think about this before implementing
-                                        // ((System.Collections.SortedList)dest.Value).Add(skill_name, sv);
-                                        ((SortedList)dest.Value).Add(buff.ID.ToString(), sv);
-                                    }
+                        return;
 
-                                }
-                            }
-                            finally
-                            {
-                                Globals.MyBuffsListLock.ExitWriteLock();
-                            }
-
-                            return;
-
-                        default:
-                            return;
-                    }
+                    default:
+                        return;
                 }
+            }
 
-                finally
-                {
-                    Globals.PartyLock.ExitReadLock();
-                }
+            finally
+            {
+                Globals.PartyLock.ExitReadLock();
+            }
         }
 
         private void Script_GET_PARTY(string inp)
@@ -942,9 +942,9 @@ namespace L2_login
                     cd._Variables.Add("MAX_CP", new ScriptVariable((long)pl.Max_CP, "MAX_CP", Var_Types.INT, Var_State.PUBLIC));
 
 
-                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round((double)pl.Cur_HP / (double)pl.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round((double)pl.Cur_MP / (double)pl.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round((double)pl.Cur_CP / (double)pl.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round(pl.Cur_HP / (double)pl.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round(pl.Cur_MP / (double)pl.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round(pl.Cur_CP / (double)pl.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
 
                     try
                     {
@@ -955,19 +955,19 @@ namespace L2_login
                             ncd.Name = "EFFECT";
                             ncd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                            ncd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                            ncd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                             ScriptVariable nsv = new ScriptVariable(ncd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
 
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
                         SortedList empty = new SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -1098,9 +1098,9 @@ namespace L2_login
                     cd._Variables.Add("CP", new ScriptVariable((long)ch.Cur_CP, "CP", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("MAX_CP", new ScriptVariable((long)ch.Max_CP, "MAX_CP", Var_Types.INT, Var_State.PUBLIC));
 
-                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round((double)ch.Cur_HP / (double)ch.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round((double)ch.Cur_MP / (double)ch.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
-                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round((double)ch.Cur_CP / (double)ch.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_HP", new ScriptVariable(Math.Round(ch.Cur_HP / (double)ch.Max_HP * 100, 2), "PER_HP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_MP", new ScriptVariable(Math.Round(ch.Cur_MP / (double)ch.Max_MP * 100, 2), "PER_MP", Var_Types.DOUBLE, Var_State.PUBLIC));
+                    cd._Variables.Add("PER_CP", new ScriptVariable(Math.Round(ch.Cur_CP / (double)ch.Max_CP * 100, 2), "PER_CP", Var_Types.DOUBLE, Var_State.PUBLIC));
 
                     cd._Variables.Add("PVPFLAG", new ScriptVariable((long)ch.PvPFlag, "PVPFLAG", Var_Types.INT, Var_State.PUBLIC));
                     cd._Variables.Add("KARMA", new ScriptVariable((long)ch.Karma, "KARMA", Var_Types.INT, Var_State.PUBLIC));
@@ -1127,19 +1127,19 @@ namespace L2_login
                             ncd.Name = "EFFECT";
                             ncd._Variables.Add("ID", new ScriptVariable((long)buff.ID, "ID", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("LEVEL", new ScriptVariable((long)buff.SkillLevel, "LEVEL", Var_Types.INT, Var_State.PUBLIC));
-                            ncd._Variables.Add("DURATION", new ScriptVariable((long)buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
+                            ncd._Variables.Add("DURATION", new ScriptVariable(buff.ExpiresTime, "DURATION", Var_Types.INT, Var_State.PUBLIC));
                             ncd._Variables.Add("NAME", new ScriptVariable(Util.GetSkillName(buff.ID, buff.SkillLevel), "NAME", Var_Types.STRING, Var_State.PUBLIC));
                             ScriptVariable nsv = new ScriptVariable(ncd, "EFFECT", Var_Types.CLASS, Var_State.PUBLIC);
 
                             buffs.Add(buff.ID.ToString(), nsv);
                         }
 
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(buffs, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
                     catch
                     {
                         SortedList empty = new SortedList();
-                        cd._Variables.Add("EFFECTS", new ScriptVariable((SortedList)empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
+                        cd._Variables.Add("EFFECTS", new ScriptVariable(empty, "EFFECTS", Var_Types.SORTEDLIST, Var_State.PUBLIC));
                     }
 
 
@@ -1251,9 +1251,14 @@ namespace L2_login
             {
                 case "ACTIVEFOLLOW_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.ActiveFollow = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.ActiveFollow = 0;
+                    }
+
                     break;
                 case "ACTIVEFOLLOW_WALKERSTYLE":
                     Globals.gamedata.botoptions.ActiveFollowStyle = Util.GetInt32(Get_String(ref line));
@@ -1308,18 +1313,28 @@ namespace L2_login
                     break;
                 case "ACCEPT_INVITE_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.AcceptParty = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.AcceptParty = 0;
+                    }
+
                     break;
                 case "ACCEPT_REZ":
                     Globals.gamedata.botoptions.AcceptRezNames = Get_String(ref line);
                     break;
                 case "ACCEPT_REZ_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.AcceptRez = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.AcceptRez = 0;
+                    }
+
                     break;
                 case "HEAL_RANGE":
                     Globals.gamedata.botoptions.HealRange = Util.GetInt32(Get_String(ref line));
@@ -1329,45 +1344,80 @@ namespace L2_login
                     break;
                 case "ACTIVE_TARGET_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.Target = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.Target = 0;
+                    }
+
                     break;
                 case "ACTIVE_ATTACK_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.Attack = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.Attack = 0;
+                    }
+
                     break;
                 case "PICKUP_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.Pickup = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.Pickup = 0;
+                    }
+
                     break;
                 case "AUTO_UNSTUCK_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.StuckCheck = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.StuckCheck = 0;
+                    }
+
                     break;
                 case "MOVE_BEFORE_ATTACK_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.MoveFirstNormal = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.MoveFirstNormal = 0;
+                    }
+
                     break;
                 case "AUTO_BLACKLIST_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.AutoBlacklist = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.AutoBlacklist = 0;
+                    }
+
                     break;
                 case "MOVE_SMART_BEFORE_ATTACK_ON":
                     if (Util.GetInt32(Get_String(ref line)) == 1)
+                    {
                         Globals.gamedata.botoptions.MoveFirst = 1;
+                    }
                     else
+                    {
                         Globals.gamedata.botoptions.MoveFirst = 0;
+                    }
+
                     break;
                 default:
                     Script_Error("bot setting does not exist : " + setting);
@@ -1522,8 +1572,8 @@ namespace L2_login
                     if (Globals.gamedata.botoptions.PickOnlyItemsInList == 1)
                     {
 
-                        if (!Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(item.X), Util.Float_Int32(item.Y)) || (!BotOptions.DoNotItems.Contains(item.ItemID)) || 
-                            item.Ignore || (Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) == Globals.UnknownItem) || 
+                        if (!Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(item.X), Util.Float_Int32(item.Y)) || (!BotOptions.DoNotItems.Contains(item.ItemID)) ||
+                            item.Ignore || (Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) == Globals.UnknownItem) ||
                             (Globals.gamedata.botoptions.IgnoreMeshlessItems == 1 && !item.HasMesh))
                         {
                             //break;
@@ -1549,8 +1599,8 @@ namespace L2_login
                     else
                     {
 
-                        if (!Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(item.X), Util.Float_Int32(item.Y)) || item.Ignore || BotOptions.DoNotItems.Contains(item.ItemID) || 
-                            (Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) == Globals.UnknownItem) || 
+                        if (!Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(item.X), Util.Float_Int32(item.Y)) || item.Ignore || BotOptions.DoNotItems.Contains(item.ItemID) ||
+                            (Globals.gamedata.botoptions.IgnoreItems == 1 && Util.GetItemName(item.ItemID) == Globals.UnknownItem) ||
                             (Globals.gamedata.botoptions.IgnoreMeshlessItems == 1 && !item.HasMesh))
                         {
                             //break;
@@ -1894,12 +1944,12 @@ namespace L2_login
 
             TargetType type = Util.GetType(_id);
 
-            switch(type)
+            switch (type)
             {
                 case TargetType.NPC:
 
                     NPCInfo npc = Util.GetNPC(_id);
-                    
+
                     switch (attrib)
                     {
                         case "TYPE":
@@ -1909,36 +1959,52 @@ namespace L2_login
                             if (npc != null)
                             {
                                 if (npc.isAttackable == 0)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "ALIVE":
                             if (npc != null)
                             {
                                 if (npc.isAlikeDead == 0)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "INBOX":
                             if (npc != null)
                             {
-                                if ( Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(npc.X), Util.Float_Int32(npc.Y)) )
+                                if (Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(npc.X), Util.Float_Int32(npc.Y)))
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "COMBAT":
                             if (npc != null)
                             {
                                 if (npc.CheckCombat())
+                                {
                                     val = 1;
+                                }
                                 else
+                                {
                                     val = 0;
+                                }
                             }
                             break;
                         case "TARGETTED":
@@ -1951,9 +2017,13 @@ namespace L2_login
                             if (npc != null)
                             {
                                 if (Math.Abs(Globals.gamedata.my_char.Z - npc.Z) <= BotOptions.Target_ZRANGE)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "PATHFINDING":
@@ -1987,36 +2057,52 @@ namespace L2_login
                             if (pla != null)
                             {
                                 if (pla.PvPFlag == 0)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "ALIVE":
                             if (pla != null)
                             {
                                 if (pla.isAlikeDead == 0)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "INBOX":
                             if (pla != null)
                             {
                                 if (Globals.gamedata.Paths.IsPointInside(Util.Float_Int32(pla.X), Util.Float_Int32(pla.Y)))
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "COMBAT":
                             if (pla != null)
                             {
                                 if (pla.CheckCombat())
+                                {
                                     val = 1;
+                                }
                                 else
+                                {
                                     val = 0;
+                                }
                             }
                             break;
                         case "TARGETTED":
@@ -2029,9 +2115,13 @@ namespace L2_login
                             if (pla != null)
                             {
                                 if (Math.Abs(Globals.gamedata.my_char.Z - pla.Z) <= BotOptions.Target_ZRANGE)
+                                {
                                     val = 0;
+                                }
                                 else
+                                {
                                     val = 1;
+                                }
                             }
                             break;
                         case "PATHFINDING":
@@ -2191,7 +2281,7 @@ namespace L2_login
                                 issummon = true;
                             }
                         }
-                        
+
                         //if the npc is close enough... no need to retarget
                         if (npc.NPCID == char_target)
                         {
@@ -2254,7 +2344,7 @@ namespace L2_login
                                 }
                                 else
                                 {
-                               
+
                                     /*if (Globals.gamedata.botoptions.ProtectPriority == 1 && npc.PriorityTarget())
                                     {
                                         ndist = System.Convert.ToSingle(System.Math.Sqrt(System.Math.Pow(mx - npc.X, 2) + System.Math.Pow(my - npc.Y, 2) + System.Math.Pow(mz - npc.Z, 2)));
@@ -2452,7 +2542,8 @@ namespace L2_login
             {
                 ServerPackets.ClickChar(t_id_protect, Util.Float_Int32(x_protect), Util.Float_Int32(y_protect), Util.Float_Int32(z_protect), false, false);
             }
-            else*/ if (t_id != 0)
+            else*/
+            if (t_id != 0)
             {
                 ServerPackets.ClickChar(t_id, Util.Float_Int32(x), Util.Float_Int32(y), Util.Float_Int32(z), false, false);
             }
@@ -2472,7 +2563,7 @@ namespace L2_login
             float ndist;
             float x = 0, y = 0, z = 0;
 
-			//Globals.l2net_home.Add_Debug("Entered target nearest id");
+            //Globals.l2net_home.Add_Debug("Entered target nearest id");
             //uint t_id_protect = 0;
             //float dist_protect = float.MaxValue;
             //float x_protect = 0, y_protect = 0, z_protect = 0;
@@ -2564,7 +2655,8 @@ namespace L2_login
             {
                 ServerPackets.ClickChar(t_id_protect, Util.Float_Int32(x_protect), Util.Float_Int32(y_protect), Util.Float_Int32(z_protect), false, false);
             }
-            else*/ if (t_id != 0)
+            else*/
+            if (t_id != 0)
             {
                 ServerPackets.ClickChar(t_id, Util.Float_Int32(x), Util.Float_Int32(y), Util.Float_Int32(z), false, false);
             }
@@ -2920,12 +3012,12 @@ namespace L2_login
             string sx = Get_String(ref line);
             string sy = Get_String(ref line);
             string sz = Get_String(ref line);
-           // string sdist = Get_String(ref line);
+            // string sdist = Get_String(ref line);
 
             int x = Util.GetInt32(sx);
             int y = Util.GetInt32(sy);
             int z = Util.GetInt32(sz);
-           // double dist = Util.GetDouble(sdist);
+            // double dist = Util.GetDouble(sdist);
 
             double dist = 100;
 
@@ -2933,18 +3025,21 @@ namespace L2_login
             {
                 Script_MOVE_SMART_Internal(x, y, z, dist, true);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-				Globals.l2net_home.Add_Debug("Warning:" + e.Message);
+                Globals.l2net_home.Add_Debug("Warning:" + e.Message);
                 Globals.l2net_home.Add_Debug(e.StackTrace);
                 Line_Pos++;
-				is_Moving = false;
+                is_Moving = false;
             }
         }
         public void Script_MOVE_INTERRUPT()
         {
-            if(is_Moving)
+            if (is_Moving)
+            {
                 moveSmartInterruptFlag = true;
+            }
+
             Line_Pos++;
         }
 
@@ -3080,7 +3175,7 @@ namespace L2_login
                     Globals.l2net_home.Add_Debug("Cannot find a path. Giving up.");
                     is_Moving = false;
                     Line_Pos++;
-          
+
                 }
 
 
@@ -3090,9 +3185,13 @@ namespace L2_login
 
         private void Script_MOVE_SMART_InternalP0()
         {
-            if(Moving_List != null)
-                if(Moving_List.Count > 0)
+            if (Moving_List != null)
+            {
+                if (Moving_List.Count > 0)
+                {
                     ServerPackets.MoveToPacket((int)((Point)Moving_List[0]).X, (int)((Point)Moving_List[0]).Y);
+                }
+            }
 
             Script_SLEEP(100);
         }

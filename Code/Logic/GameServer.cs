@@ -7,7 +7,7 @@ namespace L2_login
     {
         public static void Init(string[] args)
         {
-           
+
             Globals.PATH = Environment.CurrentDirectory;
 
             try
@@ -61,9 +61,9 @@ namespace L2_login
 
             Globals.gamedata.botoptions = new BotOptions();
             Globals.gamedata.alertoptions = new AlertOptions();
-            
+
             LoadData.LoadDataFiles();
-           
+
 
             AddInfo.Set_PartyVisible();
             AddInfo.Set_PartyInfo();
@@ -83,10 +83,10 @@ namespace L2_login
 
             //process command line crap
 
-            
+
             foreach (string s in args)
             {
-               // char type = s[1];
+                // char type = s[1];
                 string command;
                 string data;
                 int indexOfColon = s.IndexOf(':');
@@ -100,9 +100,9 @@ namespace L2_login
 
                     command = s.Substring(0, indexOfColon);
                     data = s.Substring(indexOfColon + 1, s.Length - (indexOfColon + 1));
-                    
+
                 }
-               
+
                 command = command.ToLower();
 
                 switch (command)
@@ -146,7 +146,7 @@ namespace L2_login
                     case "-options":
                         Globals.BotOptionsFile = data;
                         break;
-                   
+
                     case "-s":
                     case "-script":
                         Globals.Script_MainFile = data;
@@ -182,8 +182,8 @@ namespace L2_login
                     case "-useproxygame":
                         Globals.pre_useProxyServerForGameserver = true;
                         Globals.pre_checkAdvancedSettings = true;
-                        break;       
-        
+                        break;
+
                     case "-gameserverip":
                         Globals.pre_gameserver_override_ip = data;
                         break;
@@ -210,7 +210,7 @@ namespace L2_login
                     case "-socks5password":
                         Globals.pre_socks5_password = data;
                         break;
-                        
+
                     case "-ew":
                     case "-enterworld":
                         Globals.pre_EnterWorldCheckbox = true;
@@ -330,8 +330,8 @@ namespace L2_login
 
             Globals.l2net_home.timer_mybuffs.Start();
 
-			try
-			{
+            try
+            {
                 while (Globals.gamedata.running)
                 {
                     //Util.PopUp_Check();
@@ -340,25 +340,25 @@ namespace L2_login
 
                     System.Threading.Thread.Sleep(Globals.SLEEP_ProcessDataThread);//sleep for 10ms; when we get new data it should wake us up
 
-                    if (((TimeSpan)(DateTime.Now - last_animate)).Ticks > Globals.SLEEP_Animate)
+                    if ((DateTime.Now - last_animate).Ticks > Globals.SLEEP_Animate)
                     {
                         AnimateStuff();
                         last_animate = DateTime.Now;
                     }
 
-                    if (((TimeSpan)(DateTime.Now - last_alert)).Ticks > Globals.SLEEP_Sound_Alerts)
+                    if ((DateTime.Now - last_alert).Ticks > Globals.SLEEP_Sound_Alerts)
                     {
                         PlayAlerts();
                         last_alert = DateTime.Now;
                     }
 
-                    if (((TimeSpan)(DateTime.Now - last_clean)).Ticks > Globals.CLEAN_TIMER)
+                    if ((DateTime.Now - last_clean).Ticks > Globals.CLEAN_TIMER)
                     {
                         CleanUp();
                         last_clean = DateTime.Now;
                     }
                 }//end of while running
-			}
+            }
             catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: ProcessDataThread : hardcore crash... every bot function is DOA now : " + e.Message);

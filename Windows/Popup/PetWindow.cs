@@ -21,7 +21,10 @@ namespace L2_login
         {
             label_pet_Name.Text = Globals.gamedata.my_pet.Name;
             if (string.IsNullOrWhiteSpace(Globals.gamedata.my_pet.Name))
+            {
                 label_pet_Name.Text = "No Name";
+            }
+
             label_pet_Level.Text = Globals.gamedata.my_pet.Level.ToString();
             label_pet_PAtk.Text = Globals.gamedata.my_pet.Patk.ToString();
             label_pet_PDef.Text = Globals.gamedata.my_pet.PDef.ToString();
@@ -101,7 +104,7 @@ namespace L2_login
         {
             try
             {
-                ulong xp = (ulong)Globals.gamedata.my_pet.XP;
+                ulong xp = Globals.gamedata.my_pet.XP;
 
                 if (xp == 0)
                 {
@@ -115,7 +118,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = ((float)xp) / ((float)nextlvlxp) * 100;
+                float per = xp / ((float)nextlvlxp) * 100;
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return Convert.ToInt32(per);
@@ -130,7 +133,7 @@ namespace L2_login
         {
             try
             {
-                ulong xp = (ulong)Globals.gamedata.my_pet.XP;
+                ulong xp = Globals.gamedata.my_pet.XP;
 
                 if (xp == 0)
                 {
@@ -144,7 +147,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = ((float)xp) / ((float)nextlvlxp);
+                float per = xp / ((float)nextlvlxp);
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return per.ToString("P", System.Globalization.CultureInfo.InvariantCulture);

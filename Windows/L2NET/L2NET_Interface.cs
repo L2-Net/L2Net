@@ -127,196 +127,315 @@ namespace L2_login
             try
             {
 #endif
-                StreamWriter interout = new StreamWriter("interface.txt");
+            StreamWriter interout = new StreamWriter("interface.txt");
 
-                interout.WriteLine(Globals.LanguageSet.ToString());
+            interout.WriteLine(Globals.LanguageSet.ToString());
 
-                //listView_char_data - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_char_data.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_char_data - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_char_data.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_players_data - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_players_data.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_players_data - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_players_data.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_items_data - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_items_data.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_items_data - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_items_data.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_npc_data - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_npc_data.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_npc_data - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_npc_data.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_inventory - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_inventory.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_inventory - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_inventory.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_skills - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_skills.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_skills - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_skills.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_char_clan - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_char_clan.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_char_clan - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_char_clan.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                //listView_mybuffs_data - report
-                foreach (System.Windows.Forms.ColumnHeader clm in listView_mybuffs_data.Columns)
-                {
-                    interout.WriteLine(clm.Width.ToString());
-                }
+            //listView_mybuffs_data - report
+            foreach (System.Windows.Forms.ColumnHeader clm in listView_mybuffs_data.Columns)
+            {
+                interout.WriteLine(clm.Width.ToString());
+            }
 
-                interout.WriteLine(Globals.Voice.ToString());
-                if (Globals.MinimizeToTray)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            interout.WriteLine(Globals.Voice.ToString());
+            if (Globals.MinimizeToTray)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                interout.WriteLine(this.Height.ToString());
-                interout.WriteLine(this.Width.ToString());
+            interout.WriteLine(this.Height.ToString());
+            interout.WriteLine(this.Width.ToString());
 
-                if (checkBox_minimap.Checked)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.ShowNamesNpcs)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.DownloadNewCrests)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.SocialSelf)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.SocialPcs)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.SocialNpcs)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                interout.WriteLine(Globals.ProductKey);
-                interout.WriteLine(Globals.L2Path);
-                if(Globals.AllowFiles)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                interout.WriteLine(Globals.DirectInputKey);
-                interout.WriteLine(Globals.DirectInputKey2); //Oddi, Force quit key
-                if (Globals.Use_Direct_Sound)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                interout.WriteLine(Globals.Texture_Mode.ToString());
-                if (Globals.ShowNamesPcs)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.ShowNamesItems)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.IgnoreExitConf) //Oddi, Ignore Exit Confirmation
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.White_Names)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.Suppress_Quakes)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.Send_Blank_GG)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                if (Globals.Hide_Message_Boxes)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
-                interout.WriteLine(Globals.ViewRange.ToString());
+            if (checkBox_minimap.Checked)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                interout.WriteLine(textBox_zrange_map.Text); //Map ZRange
-                interout.WriteLine(trackBar_map_zoom.Value.ToString()); //Map Zoom
+            if (Globals.ShowNamesNpcs)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                //v387... script compatibility with v386 code
-                if (Globals.ScriptCompatibilityv386)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.DownloadNewCrests)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                //v388
-                if (Globals.Use_Hardware_Acceleration)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.SocialSelf)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                //v389
-                if (Globals.dc_on_ig_close)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.SocialPcs)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                if (Globals.dump_pbuff_on_ig_close)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.SocialNpcs)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                if (Globals.ToggleBottingifGMAction)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            interout.WriteLine(Globals.ProductKey);
+            interout.WriteLine(Globals.L2Path);
+            if (Globals.AllowFiles)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                if (Globals.ToggleBottingifTeleported)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            interout.WriteLine(Globals.DirectInputKey);
+            interout.WriteLine(Globals.DirectInputKey2); //Oddi, Force quit key
+            if (Globals.Use_Direct_Sound)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                //v391
-                if(Globals.Popup_Captcha)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            interout.WriteLine(Globals.Texture_Mode.ToString());
+            if (Globals.ShowNamesPcs)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                interout.WriteLine(Globals.Captcha_HTML1);
-                interout.WriteLine(Globals.Captcha_HTML2);
+            if (Globals.ShowNamesItems)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                //v396
-                if (Globals.AutolearnSkills)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.IgnoreExitConf) //Oddi, Ignore Exit Confirmation
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                if (Globals.LogWriting)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.White_Names)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                if (Globals.NpcSay)
-                    interout.WriteLine("1");
-                else
-                    interout.WriteLine("0");
+            if (Globals.Suppress_Quakes)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
 
-                interout.Close();
+            if (Globals.Send_Blank_GG)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.Hide_Message_Boxes)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            interout.WriteLine(Globals.ViewRange.ToString());
+
+            interout.WriteLine(textBox_zrange_map.Text); //Map ZRange
+            interout.WriteLine(trackBar_map_zoom.Value.ToString()); //Map Zoom
+
+            //v387... script compatibility with v386 code
+            if (Globals.ScriptCompatibilityv386)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            //v388
+            if (Globals.Use_Hardware_Acceleration)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            //v389
+            if (Globals.dc_on_ig_close)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.dump_pbuff_on_ig_close)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.ToggleBottingifGMAction)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.ToggleBottingifTeleported)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            //v391
+            if (Globals.Popup_Captcha)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            interout.WriteLine(Globals.Captcha_HTML1);
+            interout.WriteLine(Globals.Captcha_HTML2);
+
+            //v396
+            if (Globals.AutolearnSkills)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.LogWriting)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            if (Globals.NpcSay)
+            {
+                interout.WriteLine("1");
+            }
+            else
+            {
+                interout.WriteLine("0");
+            }
+
+            interout.Close();
 #if !DEBUG
             }
             catch
@@ -329,14 +448,18 @@ namespace L2_login
         private void Load_Interface()
         {
             StreamReader interin;
-            try {
+            try
+            {
                 interin = new StreamReader("config\\interface.txt");
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e)
+            {
                 throw new Exception(message: e.Message);
                 // Ideally, if the file did not exist then we would have kept going with default values and then create it.
                 // FIXME 
             }
-            try {
+            try
+            {
                 Globals.LanguageSet = Util.GetInt32(interin.ReadLine());
 
                 switch (Globals.LanguageSet)
@@ -474,81 +597,159 @@ namespace L2_login
 
                 Globals.Voice = Util.GetInt32(interin.ReadLine());
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.MinimizeToTray = true;
+                }
                 else
+                {
                     Globals.MinimizeToTray = false;
+                }
 
                 this.Height = Util.GetInt32(interin.ReadLine());
                 this.Width = Util.GetInt32(interin.ReadLine());
 
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     checkBox_minimap.Checked = true;
+                }
                 else
+                {
                     checkBox_minimap.Checked = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.ShowNamesNpcs = true;
+                }
                 else
+                {
                     Globals.ShowNamesNpcs = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.DownloadNewCrests = true;
+                }
                 else
+                {
                     Globals.DownloadNewCrests = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.SocialSelf = true;
+                }
                 else
+                {
                     Globals.SocialSelf = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.SocialPcs = true;
+                }
                 else
+                {
                     Globals.SocialPcs = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.SocialNpcs = true;
+                }
                 else
+                {
                     Globals.SocialNpcs = false;
+                }
+
                 Globals.ProductKey = interin.ReadLine();
                 Globals.L2Path = interin.ReadLine();
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.AllowFiles = true;
+                }
                 else
+                {
                     Globals.AllowFiles = false;
+                }
+
                 Globals.DirectInputKey = interin.ReadLine();
                 Globals.DirectInputKey2 = interin.ReadLine(); //Oddi, Force quit key
 
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.Use_Direct_Sound = true;
+                }
                 else
+                {
                     Globals.Use_Direct_Sound = false;
+                }
+
                 Globals.Texture_Mode = Util.GetInt32(interin.ReadLine());
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.ShowNamesPcs = true;
+                }
                 else
+                {
                     Globals.ShowNamesPcs = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.ShowNamesItems = true;
+                }
                 else
+                {
                     Globals.ShowNamesItems = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1) // Change by Oddi, Ignore Exit Confirmation
+                {
                     Globals.IgnoreExitConf = true;
+                }
                 else
+                {
                     Globals.IgnoreExitConf = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.White_Names = true;
+                }
                 else
+                {
                     Globals.White_Names = false;
+                }
+
                 if (Util.GetInt32(interin.ReadLine()) == 1)
+                {
                     Globals.Suppress_Quakes = true;
+                }
                 else
+                {
                     Globals.Suppress_Quakes = false;
+                }
+
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.Send_Blank_GG = true;
+                    }
                     else
+                    {
                         Globals.Send_Blank_GG = false;
+                    }
+
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.Hide_Message_Boxes = true;
+                    }
                     else
+                    {
                         Globals.Hide_Message_Boxes = false;
+                    }
                 }
                 catch
                 {
@@ -572,7 +773,7 @@ namespace L2_login
                 catch
                 {
                     //Default settings
-                    textBox_zrange_map.Text = "500"; 
+                    textBox_zrange_map.Text = "500";
                     trackBar_map_zoom.Value = 2;
                 }
 
@@ -580,9 +781,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.ScriptCompatibilityv386 = true;
+                    }
                     else
+                    {
                         Globals.ScriptCompatibilityv386 = false;
+                    }
                 }
                 catch
                 {
@@ -592,9 +797,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.Use_Hardware_Acceleration = true;
+                    }
                     else
+                    {
                         Globals.Use_Hardware_Acceleration = false;
+                    }
                 }
                 catch
                 {
@@ -604,9 +813,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.dc_on_ig_close = true;
+                    }
                     else
+                    {
                         Globals.dc_on_ig_close = false;
+                    }
                 }
                 catch
                 {
@@ -615,9 +828,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.dump_pbuff_on_ig_close = true;
+                    }
                     else
+                    {
                         Globals.dump_pbuff_on_ig_close = false;
+                    }
                 }
                 catch
                 {
@@ -626,9 +843,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.ToggleBottingifGMAction = true;
+                    }
                     else
+                    {
                         Globals.ToggleBottingifGMAction = false;
+                    }
                 }
                 catch
                 {
@@ -637,9 +858,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.ToggleBottingifTeleported = true;
+                    }
                     else
+                    {
                         Globals.ToggleBottingifTeleported = false;
+                    }
                 }
                 catch
                 {
@@ -653,7 +878,9 @@ namespace L2_login
                         Globals.Popup_Captcha = true;
                     }
                     else
+                    {
                         Globals.Popup_Captcha = false;
+                    }
 
                     Globals.Captcha_HTML1 = interin.ReadLine().ToString();
                     Globals.Captcha_HTML2 = interin.ReadLine().ToString();
@@ -666,10 +893,13 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.AutolearnSkills = true;
+                    }
                     else
+                    {
                         Globals.AutolearnSkills = false;
-
+                    }
                 }
                 catch
                 {
@@ -677,17 +907,22 @@ namespace L2_login
                 try
                 {
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.LogWriting = true;
+                    }
                     else
+                    {
                         Globals.LogWriting = false;
-
+                    }
 
                     if (Util.GetInt32(interin.ReadLine()) == 1)
+                    {
                         Globals.NpcSay = true;
+                    }
                     else
+                    {
                         Globals.NpcSay = false;
-
-
+                    }
                 }
                 catch
                 {
@@ -698,22 +933,33 @@ namespace L2_login
 
                 this.UpdateUI();
                 if (Globals.login_window != null)
+                {
                     Globals.login_window.UpdateUI();
+                }
+
                 if (Globals.botoptionsscreen != null)
+                {
                     Globals.botoptionsscreen.UpdateUI();
+                }
+
                 if (Globals.setupwindow != null)
+                {
                     Globals.setupwindow.UpdateUI();
+                }
+
                 if (Globals.scriptdebugwindow != null)
+                {
                     Globals.scriptdebugwindow.UpdateUI();
+                }
 
                 Globals.LoadedInterface = true;
 
                 //Add_Text("loaded interface", Globals.Red, TextType.BOT);
-			}
-			catch
-			{
+            }
+            catch
+            {
                 Add_PopUpError("failed to load interface file, continuing with default parameters for unloaded values");
-			}
+            }
         }
     }
 }

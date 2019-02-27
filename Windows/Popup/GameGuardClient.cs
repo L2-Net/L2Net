@@ -150,7 +150,7 @@ namespace L2_login
             catch (SocketException se)
             {
                 Globals.l2net_home.Add_Text("SendGGQuery, exception: " + se.Message, Globals.Red, TextType.BOT);
-            }	
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,8 +169,8 @@ namespace L2_login
             catch (SocketException se)
             {
                 Globals.l2net_home.Add_Text("SendGGQuery, exception: " + se.Message, Globals.Red, TextType.BOT);
-            }	
-        
+            }
+
         }
 
     }

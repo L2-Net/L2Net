@@ -17,7 +17,7 @@ namespace L2_login
             {
                 if (Globals.gamedata.my_char.Moving == true)
                 {
-                    if (Globals.gamedata.OOG && ((TimeSpan)(DateTime.Now - Globals.gamedata.my_char.lastVerifyTime)).Milliseconds > 1000)
+                    if (Globals.gamedata.OOG && (DateTime.Now - Globals.gamedata.my_char.lastVerifyTime).Milliseconds > 1000)
                     {
                         //send the verify pos packet
                         ServerPackets.Send_Verify();
@@ -145,7 +145,7 @@ namespace L2_login
                     //movespeed = ((float)my_char.RunSpeed)*ch.MoveSpeedMult;
                     movespeed = Globals.gamedata.my_char.RunSpeed * Globals.gamedata.my_char.MoveSpeedMult;
 
-                    time = Convert.ToSingle(((TimeSpan)(DateTime.Now - Globals.gamedata.my_char.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                    time = Convert.ToSingle((DateTime.Now - Globals.gamedata.my_char.lastMoveTime).Milliseconds) * Globals.INV_THOUSAND;
 
                     vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                     if (vxx != 0)
@@ -306,7 +306,7 @@ namespace L2_login
                         //movespeed = ((float)my_char.RunSpeed)*ch.MoveSpeedMult;
                         movespeed = Globals.gamedata.my_pet.RunSpeed * Globals.gamedata.my_pet.MoveSpeedMult;
 
-                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - Globals.gamedata.my_pet.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle((DateTime.Now - Globals.gamedata.my_pet.lastMoveTime).Milliseconds) * Globals.INV_THOUSAND;
 
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
@@ -463,7 +463,7 @@ namespace L2_login
                             movespeed = player.WalkSpeed * player.MoveSpeedMult;
                         }
 
-                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - player.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle((DateTime.Now - player.lastMoveTime).Milliseconds) * Globals.INV_THOUSAND;
 
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)
@@ -624,7 +624,7 @@ namespace L2_login
                             movespeed = npc.WalkSpeed * npc.MoveSpeedMult;
                         }
 
-                        time = Convert.ToSingle(((TimeSpan)(DateTime.Now - npc.lastMoveTime)).Milliseconds) * Globals.INV_THOUSAND;
+                        time = Convert.ToSingle((DateTime.Now - npc.lastMoveTime).Milliseconds) * Globals.INV_THOUSAND;
 
                         vxx = Convert.ToSingle(Math.Sqrt(vx * vx + vy * vy + vz * vz));
                         if (vxx != 0)

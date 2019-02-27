@@ -4,14 +4,14 @@ using System.Net.Sockets;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Util.
-	/// </summary>
-	public static partial class Util
-	{
+    /// <summary>
+    /// Summary description for Util.
+    /// </summary>
+    public static partial class Util
+    {
         static public string Sanitize(string inp)
         {
-            inp = inp.Replace("\\","");
+            inp = inp.Replace("\\", "");
             inp = inp.Replace("\"", "");
             inp = inp.Replace("'", "");
             inp = inp.Replace(".", "");
@@ -48,8 +48,8 @@ namespace L2_login
             return Double_Int32(dist);
         }
 
-		static public int Distance(uint id)
-		{
+        static public int Distance(uint id)
+        {
             //this function will lock based on what we are checking distance to
             TargetType type = GetType(id);
 
@@ -145,7 +145,7 @@ namespace L2_login
         static public int Distance(uint id, TargetType type)
         {
             //no locks needed... since the calling function has the locks in it
-            switch(type)
+            switch (type)
             {
                 case TargetType.ERROR:
                 case TargetType.NONE:
@@ -177,10 +177,10 @@ namespace L2_login
 
                     if (player != null)
                     {
-                            return (int)System.Math.Sqrt(
-                                System.Math.Pow(player.X - Globals.gamedata.my_char.X, 2) +
-                                System.Math.Pow(player.Y - Globals.gamedata.my_char.Y, 2) +
-                                System.Math.Pow(player.Z - Globals.gamedata.my_char.Z, 2));
+                        return (int)System.Math.Sqrt(
+                            System.Math.Pow(player.X - Globals.gamedata.my_char.X, 2) +
+                            System.Math.Pow(player.Y - Globals.gamedata.my_char.Y, 2) +
+                            System.Math.Pow(player.Z - Globals.gamedata.my_char.Z, 2));
                     }
                     break;
                 case TargetType.NPC:
@@ -188,10 +188,10 @@ namespace L2_login
 
                     if (npc != null)
                     {
-                            return (int)System.Math.Sqrt(
-                                System.Math.Pow(npc.X - Globals.gamedata.my_char.X, 2) +
-                                System.Math.Pow(npc.Y - Globals.gamedata.my_char.Y, 2) +
-                                System.Math.Pow(npc.Z - Globals.gamedata.my_char.Z, 2));
+                        return (int)System.Math.Sqrt(
+                            System.Math.Pow(npc.X - Globals.gamedata.my_char.X, 2) +
+                            System.Math.Pow(npc.Y - Globals.gamedata.my_char.Y, 2) +
+                            System.Math.Pow(npc.Z - Globals.gamedata.my_char.Z, 2));
                     }
                     break;
                 case TargetType.ITEM:
@@ -207,105 +207,123 @@ namespace L2_login
                     break;
             }
 
-			return System.Int32.MaxValue;
-		}
+            return System.Int32.MaxValue;
+        }
 
-		public static void Read_String(ref string source, ref string outs)
-		{
-			int pipe = source.IndexOf("\r\n");
-			if(pipe == -1)
-			{
-				outs = source;
-				source = "";
-			}
-			else
-			{
-				outs = source.Substring(0,pipe);
-				source = source.Remove(0,pipe+2);
-			}
-		}
+        public static void Read_String(ref string source, ref string outs)
+        {
+            int pipe = source.IndexOf("\r\n");
+            if (pipe == -1)
+            {
+                outs = source;
+                source = "";
+            }
+            else
+            {
+                outs = source.Substring(0, pipe);
+                source = source.Remove(0, pipe + 2);
+            }
+        }
 
-		public static ArrayList GetArray(string inp)
-		{
+        public static ArrayList GetArray(string inp)
+        {
             ArrayList val = new ArrayList();
 
-			int pipe;
+            int pipe;
 
-			while(inp.Length > 0)
-			{
-				pipe = inp.IndexOf(';');
-				if(pipe == -1)
-				{
-					val.Add(inp);
-					inp = "";
-				}
-				else
-				{
-					val.Add(inp.Substring(0,pipe));
-				}
-				inp = inp.Remove(0,pipe+1);
-			}
+            while (inp.Length > 0)
+            {
+                pipe = inp.IndexOf(';');
+                if (pipe == -1)
+                {
+                    val.Add(inp);
+                    inp = "";
+                }
+                else
+                {
+                    val.Add(inp.Substring(0, pipe));
+                }
+                inp = inp.Remove(0, pipe + 1);
+            }
 
-			return val;
-		}
+            return val;
+        }
 
-		public static int MAX(int a, int b)
-		{
-			if(a > b)
-				return a;
-			return b;
-		}
+        public static int MAX(int a, int b)
+        {
+            if (a > b)
+            {
+                return a;
+            }
 
-		public static double MAX(double a, double b)
-		{
-			if(a > b)
-				return a;
-			return b;
-		}
+            return b;
+        }
+
+        public static double MAX(double a, double b)
+        {
+            if (a > b)
+            {
+                return a;
+            }
+
+            return b;
+        }
 
         public static float MAX(float a, float b)
         {
             if (a > b)
+            {
                 return a;
+            }
+
             return b;
         }
 
-		public static int MIN(int a, int b)
-		{
-			if(a < b)
-				return a;
-			return b;
-		}
+        public static int MIN(int a, int b)
+        {
+            if (a < b)
+            {
+                return a;
+            }
 
-		public static double MIN(double a, double b)
-		{
-			if(a < b)
-				return a;
-			return b;
-		}
+            return b;
+        }
+
+        public static double MIN(double a, double b)
+        {
+            if (a < b)
+            {
+                return a;
+            }
+
+            return b;
+        }
 
         public static float MIN(float a, float b)
         {
             if (a < b)
+            {
                 return a;
+            }
+
             return b;
         }
 
-		public static string MD5(string input)
-		{
-			// step 1, calculate MD5 hash from input
-			System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-			byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-			byte[] hash = md5.ComputeHash(inputBytes);
- 
-			// step 2, convert byte array to hex string
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
-			for (int i = 0; i < hash.Length; i++)
-			{
-				sb.Append(hash[i].ToString("X2"));
-			}
-			return sb.ToString();
-		}
+        public static string MD5(string input)
+        {
+            // step 1, calculate MD5 hash from input
+            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            // step 2, convert byte array to hex string
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
+        }
 
         public static bool Between(this int value, int left, int right)
         {
@@ -359,15 +377,21 @@ namespace L2_login
                         int sc = int.Parse(serverResponse.Substring(22, 2));
 
                         if (jd > 51544)
+                        {
                             yr += 2000;
+                        }
                         else
+                        {
                             yr += 1999;
+                        }
 
                         date = new System.DateTime(yr, mo, dy, hr, mm, sc);
 
                         // Convert it to the current timezone if desired
                         if (convertToLocalTime)
+                        {
                             date = date.ToLocalTime();
+                        }
 
                         // Exit the loop
                         break;
@@ -384,5 +408,5 @@ namespace L2_login
         }
 
 
-	}//end of class
+    }//end of class
 }

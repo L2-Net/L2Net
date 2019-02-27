@@ -90,7 +90,9 @@ namespace L2_login
         private void textBox_petGive_Quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
 
         private void button_petGive_Close_Click(object sender, EventArgs e)

@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace L2_login
 {
-	public class Pathing
-	{
-		static public ArrayList GetPath(Point start, Point dest)
-		{
+    public class Pathing
+    {
+        static public ArrayList GetPath(Point start, Point dest)
+        {
             ArrayList my_path;
             my_path = new ArrayList();
             if (Globals.gamedata.pathManager.runASTAR(dest.X, dest.Y))
@@ -18,27 +18,27 @@ namespace L2_login
                 my_path = null;
             }
 
- 			return my_path;
-		}
-	}
+            return my_path;
+        }
+    }
 
-	public class Polygon
-	{
-		public ArrayList PointList = new ArrayList();
+    public class Polygon
+    {
+        public ArrayList PointList = new ArrayList();
 
-		public void ClearBorder()
-		{
-			PointList.Clear();
-		}
+        public void ClearBorder()
+        {
+            PointList.Clear();
+        }
 
-		public bool IsPointInside(int x, int y)
-		{
-			Point np = new Point();
-			np.X = x;
-			np.Y = y;
+        public bool IsPointInside(int x, int y)
+        {
+            Point np = new Point();
+            np.X = x;
+            np.Y = y;
 
-			return IsPointInside(np);
-		}
+            return IsPointInside(np);
+        }
 
         public bool FindIntersect(Point start, Point end, ref Point intersect, ref int index)
         {
@@ -54,7 +54,7 @@ namespace L2_login
             //find which border get intersected by our line
             //return the point of intersection and the index of the side intersected
 
-            for (int i = 0; i < PointList.Count ; i++)
+            for (int i = 0; i < PointList.Count; i++)
             {
                 Point left = (Point)PointList[i];
                 Point right = (Point)PointList[Get_Right_Point(i)];
@@ -230,113 +230,118 @@ namespace L2_login
             return index + 1;
         }
 
-		public bool IsPointInside(Point p)
-		{
-			if(PointList.Count < 3)
-				return true;
-
-			int counter = 0;
-
-			//need to run rays and check for collision, 
-			float xinters;
-			Point p1,p2;
-			int i;
-
-			try
-			{
-				p1 = (Point)PointList[0];
-				for (i=1;i<=PointList.Count;i++) 
-				{
-					p2 = (Point)PointList[i % PointList.Count];
-					if (p.Y > Util.MIN(p1.Y,p2.Y)) 
-					{
-						if (p.Y <= Util.MAX(p1.Y,p2.Y)) 
-						{
-							if (p.X <= Util.MAX(p1.X,p2.X)) 
-							{
-								if (p1.Y != p2.Y) 
-								{
-									xinters = (p.Y-p1.Y)*(p2.X-p1.X)/(p2.Y-p1.Y)+p1.X;
-									if (p1.X == p2.X || p.X <= xinters)
-									{
-										counter++;
-									}
-								}
-							}
-						}
-					}
-					p1 = p2;
-				}
-			
-				//next we do a modulus and return out result
-				if(counter % 2 == 0)
-					return false;
-				return true;
-			}
-			catch
-			{
-				Globals.l2net_home.Add_Error("border check failed... get those mexicans out of here!");
-				return false;
-			}
-		}
-	}//end of polygon class
-
-	public class Wall
-	{
-		private Point _p1;
-		private Point _p2;
-
-		private readonly object p1Lock = new object();
-		private readonly object p2Lock = new object();
-
-     /*   public Wall()
+        public bool IsPointInside(Point p)
         {
-            _p1 = new Point();
-            _p2 = new Point();
-        }*/
+            if (PointList.Count < 3)
+            {
+                return true;
+            }
 
-		public Point P1
-		{
-			get
-			{
-				Point tmp;
-				lock(p1Lock)
-				{
-					tmp = this._p1;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(p1Lock)
-				{
-					_p1 = value;
-				}
-			}
-		}
-		public Point P2
-		{
-			get
-			{
-				Point tmp;
-				lock(p2Lock)
-				{
-					tmp = this._p2;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(p2Lock)
-				{
-					_p2 = value;
-				}
-			}
-		}
-	}//end of wall class
+            int counter = 0;
 
-	public class Point
-	{
+            //need to run rays and check for collision, 
+            float xinters;
+            Point p1, p2;
+            int i;
+
+            try
+            {
+                p1 = (Point)PointList[0];
+                for (i = 1; i <= PointList.Count; i++)
+                {
+                    p2 = (Point)PointList[i % PointList.Count];
+                    if (p.Y > Util.MIN(p1.Y, p2.Y))
+                    {
+                        if (p.Y <= Util.MAX(p1.Y, p2.Y))
+                        {
+                            if (p.X <= Util.MAX(p1.X, p2.X))
+                            {
+                                if (p1.Y != p2.Y)
+                                {
+                                    xinters = (p.Y - p1.Y) * (p2.X - p1.X) / (p2.Y - p1.Y) + p1.X;
+                                    if (p1.X == p2.X || p.X <= xinters)
+                                    {
+                                        counter++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    p1 = p2;
+                }
+
+                //next we do a modulus and return out result
+                if (counter % 2 == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch
+            {
+                Globals.l2net_home.Add_Error("border check failed... get those mexicans out of here!");
+                return false;
+            }
+        }
+    }//end of polygon class
+
+    public class Wall
+    {
+        private Point _p1;
+        private Point _p2;
+
+        private readonly object p1Lock = new object();
+        private readonly object p2Lock = new object();
+
+        /*   public Wall()
+           {
+               _p1 = new Point();
+               _p2 = new Point();
+           }*/
+
+        public Point P1
+        {
+            get
+            {
+                Point tmp;
+                lock (p1Lock)
+                {
+                    tmp = this._p1;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (p1Lock)
+                {
+                    _p1 = value;
+                }
+            }
+        }
+        public Point P2
+        {
+            get
+            {
+                Point tmp;
+                lock (p2Lock)
+                {
+                    tmp = this._p2;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (p2Lock)
+                {
+                    _p2 = value;
+                }
+            }
+        }
+    }//end of wall class
+
+    public class Point
+    {
         public volatile float X;
         public volatile float Y;
         public volatile float Z;
@@ -348,13 +353,13 @@ namespace L2_login
             Z = z;
         }
 
-		public void Normalize()
-		{
+        public void Normalize()
+        {
             float len = Convert.ToSingle(Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Z, 2) + Math.Pow(Z, 2)));
 
-			X = X/len;
-			Y = Y/len;
-			Z = Z/len;
-		}
-	}//end of point class
+            X = X / len;
+            Y = Y / len;
+            Z = Z / len;
+        }
+    }//end of point class
 }//end of namespace

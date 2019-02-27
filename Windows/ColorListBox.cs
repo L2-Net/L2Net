@@ -22,7 +22,7 @@ namespace L2_login
             this.HorizontalScrollbar = true;
             //this.HorizontalExtent = this.Width - 32;
             this.Font = new Font("Arial", 9);
-            
+
             LineColors = new ArrayList();
 
             this.MeasureItem += new MeasureItemEventHandler(ColorListBox_MeasureItem);

@@ -56,7 +56,7 @@ namespace L2_login
             textBox_say.Text = "";
 
             ServerPackets.Send_Text(index, total_text);
-        } 
+        }
 
         private void button_yesno_yes_Click(object sender, EventArgs e)
         {
@@ -98,7 +98,7 @@ namespace L2_login
                     break;
             }
         }
-        
+
         private void panel_charinfo_DoubleClick(object sender, EventArgs e)
         {
             if (Globals.gamedata.logged_in)
@@ -259,7 +259,7 @@ namespace L2_login
                 {
                     Globals.DoNotItemLock.ExitWriteLock();
                 }
-                
+
             }
             catch
             {
@@ -291,14 +291,14 @@ namespace L2_login
                     }
                     else
                     {
-                        Add_Text(id.ToString() + " is already in Do Not List",Globals.Green, TextType.BOT);
+                        Add_Text(id.ToString() + " is already in Do Not List", Globals.Green, TextType.BOT);
                     }
                 }
                 finally
                 {
                     Globals.DoNotNPCLock.ExitWriteLock();
                 }
-                
+
             }
             catch
             {
@@ -314,7 +314,7 @@ namespace L2_login
                 string name = listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text;
                 uint objID = Convert.ToUInt32(listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[2].Text);
                 Util.IgnoreNPC(objID, true);
-                Add_Text("NPC with name: " +name + " and objID: " + objID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
+                Add_Text("NPC with name: " + name + " and objID: " + objID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
             }
             catch
             {
@@ -328,7 +328,7 @@ namespace L2_login
             try
             {
                 Util.IgnoreNPC(Globals.gamedata.my_char.TargetID, true);
-                Add_Text("NPC with objID: "+ Globals.gamedata.my_char.TargetID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
+                Add_Text("NPC with objID: " + Globals.gamedata.my_char.TargetID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
             }
             catch
             {
@@ -343,7 +343,8 @@ namespace L2_login
 
             if (Globals.login_window == null || Globals.login_window.IsDisposed == true)
             {
-                try {
+                try
+                {
                     Globals.login_window = new Login(this);
                 }
                 catch (Exception exception)
@@ -694,7 +695,7 @@ namespace L2_login
             {
                 DialogResult okOrNo;//dialog return value, if it is DialogResult.OK then everything is OK
 
-                openFileDialog1.Title = "Select script file"; 
+                openFileDialog1.Title = "Select script file";
                 openFileDialog1.InitialDirectory = Globals.PATH + "\\Scripts";//Initial dir, where it begins looking at.
                 openFileDialog1.Filter = "Script Files (*.l2s)|*.l2s";//this particualr format is for one file type.
                 openFileDialog1.FilterIndex = 1;//this means that the first description is the default one.

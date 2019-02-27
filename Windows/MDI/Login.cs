@@ -232,7 +232,10 @@ namespace L2_login
             if (Globals.pre_IG)
             {
                 if (Set_Modes())
+                {
                     panel_ig.BringToFront();
+                }
+
                 button_ig_listen_Click(null, null);
 
             }
@@ -240,7 +243,9 @@ namespace L2_login
             if (Globals.pre_OOG)
             {
                 if (Set_Modes())
+                {
                     panel_oog.BringToFront();
+                }
             }
 
             if (Globals.pre_GGClient)
@@ -584,16 +589,16 @@ namespace L2_login
             this.button_ig_listen = new Button();
             this.textBox_oog_logon_ip = new TextBox();
             this.listView_servers = new ListView();
-            this.columnHeader1 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader79 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader2 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader3 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader4 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader5 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader6 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader7 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader8 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader9 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader1 = new ColumnHeader();
+            this.columnHeader79 = new ColumnHeader();
+            this.columnHeader2 = new ColumnHeader();
+            this.columnHeader3 = new ColumnHeader();
+            this.columnHeader4 = new ColumnHeader();
+            this.columnHeader5 = new ColumnHeader();
+            this.columnHeader6 = new ColumnHeader();
+            this.columnHeader7 = new ColumnHeader();
+            this.columnHeader8 = new ColumnHeader();
+            this.columnHeader9 = new ColumnHeader();
             this.textBox_oog_logon_port = new TextBox();
             this.button_logon = new Button();
             this.textBox_pword = new TextBox();
@@ -606,25 +611,25 @@ namespace L2_login
             this.label_security_pin = new Label();
             this.textBox_security_pin = new TextBox();
             this.listView_chars = new ListView();
-            this.columnHeader10 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader11 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader12 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader13 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader14 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader15 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader16 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader17 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader18 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader19 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader20 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader21 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader22 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader23 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader24 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader25 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader26 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader27 = (ColumnHeader)new ColumnHeader();
-            this.columnHeader28 = (ColumnHeader)new ColumnHeader();
+            this.columnHeader10 = new ColumnHeader();
+            this.columnHeader11 = new ColumnHeader();
+            this.columnHeader12 = new ColumnHeader();
+            this.columnHeader13 = new ColumnHeader();
+            this.columnHeader14 = new ColumnHeader();
+            this.columnHeader15 = new ColumnHeader();
+            this.columnHeader16 = new ColumnHeader();
+            this.columnHeader17 = new ColumnHeader();
+            this.columnHeader18 = new ColumnHeader();
+            this.columnHeader19 = new ColumnHeader();
+            this.columnHeader20 = new ColumnHeader();
+            this.columnHeader21 = new ColumnHeader();
+            this.columnHeader22 = new ColumnHeader();
+            this.columnHeader23 = new ColumnHeader();
+            this.columnHeader24 = new ColumnHeader();
+            this.columnHeader25 = new ColumnHeader();
+            this.columnHeader26 = new ColumnHeader();
+            this.columnHeader27 = new ColumnHeader();
+            this.columnHeader28 = new ColumnHeader();
             this.button_delete_char = new Button();
             this.button_oog_create = new Button();
             this.label_oog_password = new Label();
@@ -2056,11 +2061,20 @@ namespace L2_login
                 //blowkey.PadRight(20,' ');
                 Globals.gamedata.SetBlowfishKey(blowkey);
                 if (radioButton_c14.Checked)
+                {
                     Globals.gamedata.Chron = Chronicle.CT2_6;
+                }
+
                 if (radioButton_c17.Checked)
+                {
                     Globals.gamedata.Chron = Chronicle.CT3_2;
+                }
+
                 if (radioButton_c18.Checked)
+                {
                     Globals.gamedata.Chron = Chronicle.CT4_0;
+                }
+
                 return true;
             }
             catch
@@ -2216,13 +2230,17 @@ namespace L2_login
         private void button_select_oog_Click(object sender, EventArgs e)
         {
             if (Set_Modes())
+            {
                 panel_oog.BringToFront();
+            }
         }
 
         private void button_select_ig_Click(object sender, EventArgs e)
         {
             if (Set_Modes())
+            {
                 panel_ig.BringToFront();
+            }
         }
 
         private void Save_Common()
@@ -2453,9 +2471,14 @@ namespace L2_login
                 ObjListItem.SubItems.Add(bb.ReadUInt32().ToString());//clan id
                 ObjListItem.SubItems.Add(bb.ReadUInt32().ToString());//???
                 if (bb.ReadUInt32() == 0x00)//sex
+                {
                     ObjListItem.SubItems.Add("Male");
+                }
                 else
+                {
                     ObjListItem.SubItems.Add("Female");
+                }
+
                 ObjListItem.SubItems.Add(Util.GetRace(bb.ReadUInt32()));//race
                 ObjListItem.SubItems.Add(Util.GetClass(bb.ReadUInt32()));//base class id
                 ObjListItem.SubItems.Add(bb.ReadUInt32().ToString());//active
@@ -2671,6 +2694,7 @@ namespace L2_login
         {
 
             for (int i = 0; i < Globals.ew_chc_ed_array.Count; i++)
+            {
                 if (Globals.ew_chc_ed_array[i] == sender)
                 {
                     if ((Globals.ew_chc_ed_array[i] as CheckBox).Checked)
@@ -2686,7 +2710,7 @@ namespace L2_login
                     }
 
                 }
-
+            }
         }
 
 

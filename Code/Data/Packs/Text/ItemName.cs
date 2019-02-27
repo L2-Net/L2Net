@@ -1,17 +1,17 @@
 namespace L2_login
 {
     public class ItemName : BaseText
-	{
-		public string Name = "";
-		public string Add_Name = "";
-		public string Description = "";
+    {
+        public string Name = "";
+        public string Add_Name = "";
+        public string Description = "";
         public int Special_Enchant_Amount = 0;
         public string Special_Enchant_Desc = "";
         public bool Has_Mesh = false;
 
-		//etcitemgrp.txt
-		//int ID
-		public string Icon = "";
+        //etcitemgrp.txt
+        //int ID
+        public string Icon = "";
         public long Durability = 0;
         public uint Weight = 0;
         public uint Material = 0;
@@ -20,14 +20,14 @@ namespace L2_login
         public uint Family = 0;
         public uint Grade = 0;
 
-		//weapongrp.txt
-		//int ID
+        //weapongrp.txt
+        //int ID
         //public uint Drop_Type = 0;//not used
-		//string Icon
-		//int Durability;
-		//int Weight
-		//int Material
-		//int Crystallizable
+        //string Icon
+        //int Durability;
+        //int Weight
+        //int Material
+        //int Crystallizable
         public uint Projectile = 0;//waaay big ass values.. what the hell for?
         public uint Body_Part = 0;//really big on pet inventory things
         public uint Hardness = 0;
@@ -48,36 +48,36 @@ namespace L2_login
         public uint Curvature = 0;
         public int isHero = 0;
 
-		//armorgrp.txt
-		//public int ID;
-		//public int Drop_Type;
+        //armorgrp.txt
+        //public int ID;
+        //public int Drop_Type;
         //public uint Drop_Radius = 0;//not used
         //public uint Drop_Height = 0;//not used
-		//public string Icon;
-		//public int Durability;
-		//public int Weight;
-		//public int Material;
-		//public int Crystallizable;
-		//public int Body_Part;
+        //public string Icon;
+        //public int Durability;
+        //public int Weight;
+        //public int Material;
+        //public int Crystallizable;
+        //public int Body_Part;
         public uint Armor_Type = 0;
-		//public int Crystal_Type;
-		//public int Avoid_Mod;
+        //public int Crystal_Type;
+        //public int Avoid_Mod;
         //public uint Pdef = 0;
         //public uint Mdef = 0;
         //public uint MPbonus = 0;
 
-		public void Clear()
-		{
-			ID = 0;
-			Name = "";
-			Add_Name = "";
-			Description = "";
+        public void Clear()
+        {
+            ID = 0;
+            Name = "";
+            Add_Name = "";
+            Description = "";
             Special_Enchant_Amount = 0;
             Special_Enchant_Desc = "";
-		}
+        }
 
-		public void ParseETC(string inp)
-		{
+        public void ParseETC(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|', oldpipe);
@@ -125,7 +125,7 @@ namespace L2_login
             oldpipe = pipe + 1;
             //Grade
             Grade = Util.GetUInt32(inp.Substring(oldpipe, inp.Length - oldpipe));
-		}
+        }
 
         public void ParseETC(ItemName inp)
         {
@@ -151,8 +151,8 @@ namespace L2_login
             Grade = inp.Grade;
         }
 
-		public void ParseWeapon(string inp)
-		{
+        public void ParseWeapon(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|', oldpipe);
@@ -198,7 +198,7 @@ namespace L2_login
             pipe = inp.IndexOf('|', oldpipe);
             Hardness = Util.GetUInt32(inp.Substring(oldpipe, pipe - oldpipe));
             oldpipe = pipe + 1;
-			//Random_Damage
+            //Random_Damage
             pipe = inp.IndexOf('|', oldpipe);
             Random_Damage = Util.GetUInt32(inp.Substring(oldpipe, pipe - oldpipe));
             oldpipe = pipe + 1;
@@ -264,7 +264,7 @@ namespace L2_login
             oldpipe = pipe + 1;
             //isHero
             isHero = Util.GetInt32(inp.Substring(oldpipe, inp.Length - oldpipe));
-		}
+        }
 
         public void ParseWeapon(ItemName inp)
         {
@@ -320,12 +320,12 @@ namespace L2_login
             isHero = inp.isHero;
         }
 
-		public void ParseArmor(string inp)
-		{
+        public void ParseArmor(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|');
-			ID = Util.GetUInt32(inp.Substring(0,pipe));
+            ID = Util.GetUInt32(inp.Substring(0, pipe));
             oldpipe = pipe + 1;
             //Drop Mesh 1
             pipe = inp.IndexOf('|', oldpipe);
@@ -386,7 +386,7 @@ namespace L2_login
             oldpipe = pipe + 1;
             //MPbonus
             MPbonus = Util.GetUInt32(inp.Substring(oldpipe, inp.Length - oldpipe));*/
-		}
+        }
 
         public void ParseArmor(ItemName inp)
         {
@@ -421,8 +421,8 @@ namespace L2_login
             MPbonus = inp.MPbonus;*/
         }
 
-		public void Parse(string inp)
-		{
+        public void Parse(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|', oldpipe);
@@ -452,5 +452,5 @@ namespace L2_login
             //Special_Enchant_Desc
             Special_Enchant_Desc = inp.Substring(oldpipe, inp.Length - oldpipe);
         }
-	}//end of ItemName
+    }//end of ItemName
 }

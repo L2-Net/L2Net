@@ -6,19 +6,19 @@ namespace L2_login
     /// Summary description for ScriptVariable.
     /// </summary>
     public class ScriptLabel
-	{
-		public string Name;
-		public int Line;
+    {
+        public string Name;
+        public int Line;
         public string File;
         public Var_State State = Var_State.PUBLIC;
-	}
+    }
 
-	public enum Var_Types : int
-	{
-		NULL = 0,
-		INT = 1,
-		DOUBLE = 2,
-		STRING = 3,
+    public enum Var_Types : int
+    {
+        NULL = 0,
+        INT = 1,
+        DOUBLE = 2,
+        STRING = 3,
         FILEREADER = 4,
         FILEWRITER = 5,
         ARRAYLIST = 6,
@@ -30,7 +30,7 @@ namespace L2_login
         WINDOW = 12,
         THREAD = 13,
         ASSIGNABLE = 20,//this is the type used in equation handling for temp variables
-	}
+    }
 
     public enum Var_State : int
     {
@@ -40,20 +40,20 @@ namespace L2_login
         STATIC = 3
     }
 
-	public class ScriptVariable
-	{
+    public class ScriptVariable
+    {
         public object Value;
         public string Name;
         public Var_Types Type;
         public Var_State State;
 
-		public ScriptVariable()
-		{
-			Value = (int)0;
-			Name = "NULL";
-			Type = Var_Types.INT;
+        public ScriptVariable()
+        {
+            Value = 0;
+            Name = "NULL";
+            Type = Var_Types.INT;
             State = Var_State.PUBLIC;
-		}
+        }
 
         public ScriptVariable(object value, string name, Var_Types type, Var_State state)
         {
@@ -63,13 +63,18 @@ namespace L2_login
 
             Value = value;
 
-            switch(Type)
+            switch (Type)
             {
                 case Var_Types.BYTEBUFFER:
                     if (value == null)
+                    {
                         Value = null;
+                    }
                     else
+                    {
                         Value = new ByteBuffer((ByteBuffer)value);
+                    }
+
                     break;
                 default:
                     Value = value;
@@ -140,7 +145,7 @@ namespace L2_login
                     foreach (ScriptVariable nv in (Queue)Value)
                     {
                         ((Queue)sout.Value).Enqueue(nv.Clone());
-                    } 
+                    }
                     break;
                 case Var_Types.CLASS:
                     sout.Value = new Script_ClassData();

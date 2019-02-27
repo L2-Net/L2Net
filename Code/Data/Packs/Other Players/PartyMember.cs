@@ -3,8 +3,8 @@ using System.Collections;
 namespace L2_login
 {
     public class PartyMember : Object_Base
-	{
-		private string _Name = "";
+    {
+        private string _Name = "";
         public volatile float Cur_CP = 0;
         public volatile float Max_CP = 0;
         public volatile float Cur_HP = 0;
@@ -23,29 +23,29 @@ namespace L2_login
         public volatile int exp_bonus = 0; // god? 
         public volatile int exp_bonus2 = 0; // god?
 
-		private readonly object NameLock = new object();
+        private readonly object NameLock = new object();
 
         private SortedList _my_buffs;
         private readonly object my_buffsLock = new object();
-		public string Name
-		{
-			get
-			{
-				string tmp;
-				lock(NameLock)
-				{
-					tmp = this._Name;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(NameLock)
-				{
-					_Name = value;
-				}
-			}
-		}
+        public string Name
+        {
+            get
+            {
+                string tmp;
+                lock (NameLock)
+                {
+                    tmp = this._Name;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (NameLock)
+                {
+                    _Name = value;
+                }
+            }
+        }
         public SortedList my_buffs
         {
             get
@@ -69,9 +69,9 @@ namespace L2_login
         public PartyMember()
         {
             my_buffs = new SortedList();
-		}
+        }
 
-		public void Load(ByteBuffer buff)// (adifenix)
+        public void Load(ByteBuffer buff)// (adifenix)
         {
             /*god partysmallwindowall
              * 
@@ -187,45 +187,45 @@ namespace L2_login
         }
 
         public void LoadLoc(ByteBuffer buff)
-		{
-			X = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Y = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Z = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-		}
+        {
+            X = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Y = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Z = buff.ReadInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+        }
 
-		public void Update(ByteBuffer buff)
-		{
-			Name = buff.ReadString();//Util.Get_String(buff,ref off);
-			Cur_CP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Max_CP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Cur_HP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Max_HP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Cur_MP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Max_MP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Level = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
-			Class = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+        public void Update(ByteBuffer buff)
+        {
+            Name = buff.ReadString();//Util.Get_String(buff,ref off);
+            Cur_CP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Max_CP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Cur_HP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Max_HP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Cur_MP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Max_MP = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Level = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
+            Class = buff.ReadUInt32();//System.BitConverter.ToInt32(buff,off);off+=4;
             if (Globals.gamedata.Chron >= Chronicle.CT3_0)
             {
                 exp_bonus = buff.ReadInt32();
                 exp_bonus2 = buff.ReadInt32();
             }
 
-			UpdataHealInfo();
-		}
+            UpdataHealInfo();
+        }
 
-		private void UpdataHealInfo()
-		{
+        private void UpdataHealInfo()
+        {
             CharInfo player = null;
 
             Globals.PlayerLock.EnterReadLock();
-			try
-			{
+            try
+            {
                 player = Util.GetChar(ID);
-    		}//unlock
-			finally
-			{
+            }//unlock
+            finally
+            {
                 Globals.PlayerLock.ExitReadLock();
-			}
+            }
 
             if (player != null)
             {
@@ -237,5 +237,5 @@ namespace L2_login
                 player.Max_CP = Max_CP;
             }
         }
-	}//end of class
+    }//end of class
 }
