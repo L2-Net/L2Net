@@ -58,8 +58,7 @@ namespace L2_login{
 		private const int defaultKeySize = 1024;
 
 		private bool isCRTpossible = false;
-		private bool keyBlinding = true;
-		private bool keypairGenerated = false;
+        private bool keypairGenerated = false;
 		private bool m_disposed = false;
 
 		private BigInteger d;
@@ -184,7 +183,7 @@ namespace L2_login{
 			BigInteger r = null;
 
 			// we use key blinding (by default) against timing attacks
-			if (keyBlinding) {
+			if (UseKeyBlinding) {
 				// x = (r^e * g) mod n 
 				// *new* random number (so it's timing is also random)
 				r = BigInteger.GenerateRandom (n.BitCount ());
@@ -215,7 +214,7 @@ namespace L2_login{
 				output = input.ModPow (d, n);
 			}
 
-			if (keyBlinding) {
+			if (UseKeyBlinding) {
 				// Complete blinding
 				// x^e / r mod n
 				output = output * r.ModInverse (n) % n;
@@ -430,24 +429,22 @@ namespace L2_login{
 			return sb.ToString ();
 		}
 
-		// internal for Mono 1.0.x in order to preserve public contract
-		// they are public for Mono 1.1.x (for 1.2) as the API isn't froze ATM
+        // internal for Mono 1.0.x in order to preserve public contract
+        // they are public for Mono 1.1.x (for 1.2) as the API isn't froze ATM
 
 #if NET_2_0
 		public
 #else
-		internal
+        internal
 #endif
-		bool UseKeyBlinding {
-			get { return keyBlinding; }
-			// you REALLY shoudn't touch this (true is fine ;-)
-			set { keyBlinding = value; }
-		}
+        bool UseKeyBlinding { get;
+            // you REALLY shoudn't touch this (true is fine ;-)
+            set; } = true;
 
 #if NET_2_0
 		public
 #else
-		internal
+        internal
 #endif
 		bool IsCrtPossible {
 			// either the key pair isn't generated (and will be 

@@ -4,14 +4,10 @@ using System.Collections;
 /// </summary>
 public class ListViewColumnSorter : IComparer
 {
-	/// <summary>
-	/// Specifies the column to be sorted
-	/// </summary>
-	private int ColumnToSort;
-	/// <summary>
-	/// Specifies the order in which to sort (i.e. 'Ascending').
-	/// </summary>
-	private System.Windows.Forms.SortOrder OrderOfSort;
+    /// <summary>
+    /// Specifies the order in which to sort (i.e. 'Ascending').
+    /// </summary>
+    private System.Windows.Forms.SortOrder OrderOfSort;
 	/// <summary>
 	/// Case insensitive comparer object
 	/// </summary>
@@ -23,7 +19,7 @@ public class ListViewColumnSorter : IComparer
 	public ListViewColumnSorter()
 	{
 		// Initialize the column to '0'
-		ColumnToSort = 0;
+		SortColumn = 0;
 
 		// Initialize the sort order to 'none'
 		OrderOfSort = System.Windows.Forms.SortOrder.None;
@@ -50,7 +46,7 @@ public class ListViewColumnSorter : IComparer
             listviewY = (System.Windows.Forms.ListViewItem)y;
 
             // Compare the two items
-            compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+            compareResult = ObjectCompare.Compare(listviewX.SubItems[SortColumn].Text, listviewY.SubItems[SortColumn].Text);
 
             // Calculate correct return value based on object comparison
             if (OrderOfSort == System.Windows.Forms.SortOrder.Ascending)
@@ -75,25 +71,15 @@ public class ListViewColumnSorter : IComparer
         }
 	}
 
-	/// <summary>
-	/// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
-	/// </summary>
-	public int SortColumn
-	{
-		set
-		{
-			ColumnToSort = value;
-		}
-		get
-		{
-			return ColumnToSort;
-		}
-	}
+    /// <summary>
+    /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+    /// </summary>
+    public int SortColumn { set; get; }
 
-	/// <summary>
-	/// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
-	/// </summary>
-	public System.Windows.Forms.SortOrder Order
+    /// <summary>
+    /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+    /// </summary>
+    public System.Windows.Forms.SortOrder Order
 	{
 		set
 		{
