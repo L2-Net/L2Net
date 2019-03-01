@@ -311,10 +311,12 @@ namespace L2_login
                     case "-oldclient":
                         Globals.gamedata.SecurityPinOldClient = true;
                         break;
-
-
-
-
+                    case "-al":
+                    case "-auto-login":
+                    case "-auto_login":
+                    case "-autologin":
+                        Globals.auto_login = true;
+                        break;
                 }
             }
         }
