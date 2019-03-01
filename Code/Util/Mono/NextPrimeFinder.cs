@@ -30,26 +30,30 @@
 
 using System;
 
-namespace Mono.Math.Prime.Generator {
+namespace Mono.Math.Prime.Generator
+{
 
-	/// <summary>
-	/// Finds the next prime after a given number.
-	/// </summary>
+    /// <summary>
+    /// Finds the next prime after a given number.
+    /// </summary>
 #if INSIDE_CORLIB
 	internal
 #else
-	public
+    public
 #endif
-	class NextPrimeFinder : SequentialSearchPrimeGeneratorBase {
-		
-		protected override BigInteger GenerateSearchBase (int bits, object Context) 
-		{
-			if (Context == null) 
-				throw new ArgumentNullException ("Context");
+    class NextPrimeFinder : SequentialSearchPrimeGeneratorBase
+    {
 
-			BigInteger ret = new BigInteger ((BigInteger)Context);
-			ret.SetBit (0);
-			return ret;
-		}
-	}
+        protected override BigInteger GenerateSearchBase(int bits, object Context)
+        {
+            if (Context == null)
+            {
+                throw new ArgumentNullException("Context");
+            }
+
+            BigInteger ret = new BigInteger((BigInteger)Context);
+            ret.SetBit(0);
+            return ret;
+        }
+    }
 }

@@ -1,10 +1,12 @@
+using System.Collections;
+
 namespace L2_login
 {
-	public class BotOptions
-	{
-		//party
+    public class BotOptions
+    {
+        //party
         public volatile int ActiveFollow;//1 - yes
-		private string _ActiveFollowName = "";
+        private string _ActiveFollowName = "";
         public volatile uint ActiveFollowID = 0;
         public volatile int ActiveFollowStyle = 0;//1 - walker style | 0 - l2.net style(move to pawn)
         public volatile float ActiveFollowDistance = 200;
@@ -30,8 +32,8 @@ namespace L2_login
         private string _SendPartyNames = "";
         public volatile int OOP = 0;//1 = yes
         private string _OOPNames = "";
-        private System.Collections.ArrayList _OOPNamesArray = new System.Collections.ArrayList();
-        private System.Collections.ArrayList _OOPIDs = new System.Collections.ArrayList();
+        private ArrayList _OOPNamesArray = new ArrayList();
+        private ArrayList _OOPIDs = new ArrayList();
         public volatile int AcceptRez = 0;//1 = yes
         private string _AcceptRezNames = "";
         public volatile int HealRange = 550;//1 = yes
@@ -108,11 +110,11 @@ namespace L2_login
         private readonly object OOPIDsLock = new object();
         private readonly object AcceptRezNamesLock = new object();
 
-		public static System.Collections.ArrayList BuffTargets = new System.Collections.ArrayList(Globals.BUFF_COUNT);
-        public static System.Collections.ArrayList ItemTargets = new System.Collections.ArrayList(Globals.ITEM_COUNT);
-        public static System.Collections.ArrayList CombatTargets = new System.Collections.ArrayList(Globals.COMBAT_COUNT);
-        public static System.Collections.ArrayList DoNotItems = new System.Collections.ArrayList();
-        public static System.Collections.ArrayList DoNotNPCs = new System.Collections.ArrayList();
+        public static ArrayList BuffTargets = new ArrayList(Globals.BUFF_COUNT);
+        public static ArrayList ItemTargets = new ArrayList(Globals.ITEM_COUNT);
+        public static ArrayList CombatTargets = new ArrayList(Globals.COMBAT_COUNT);
+        public static ArrayList DoNotItems = new ArrayList();
+        public static ArrayList DoNotNPCs = new ArrayList();
 
         public static int Target_TYPE = 0;
         public static int Target_ATTACKABLE = 0;
@@ -125,32 +127,32 @@ namespace L2_login
         public static int Target_ZRANGE = 250;
         public static int Target_Pathfinding = 0;
 
-		public BotOptions()
-		{
+        public BotOptions()
+        {
             Globals.BuffListLock.EnterWriteLock();
-			try
-			{
-                BotOptions.BuffTargets.Clear();
-			}
-			finally
-			{
+            try
+            {
+                BuffTargets.Clear();
+            }
+            finally
+            {
                 Globals.BuffListLock.ExitWriteLock();
-			}
+            }
 
             Globals.ItemListLock.EnterWriteLock();
-			try
-			{
-                BotOptions.ItemTargets.Clear();
-			}
-			finally
-			{
+            try
+            {
+                ItemTargets.Clear();
+            }
+            finally
+            {
                 Globals.ItemListLock.ExitWriteLock();
-			}
+            }
 
             Globals.CombatListLock.EnterWriteLock();
             try
             {
-                BotOptions.CombatTargets.Clear();
+                CombatTargets.Clear();
             }
             finally
             {
@@ -163,7 +165,7 @@ namespace L2_login
             get
             {
                 string tmp;
-                lock(AcceptPartyNamesLock)
+                lock (AcceptPartyNamesLock)
                 {
                     tmp = this._AcceptPartyNames;
                 }
@@ -171,7 +173,7 @@ namespace L2_login
             }
             set
             {
-                lock(AcceptPartyNamesLock)
+                lock (AcceptPartyNamesLock)
                 {
                     _AcceptPartyNames = value.ToUpperInvariant();
                 }
@@ -215,11 +217,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.ArrayList OOPNamesArray
+        public ArrayList OOPNamesArray
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (OOPNamesArrayLock)
                 {
                     tmp = this._OOPNamesArray;
@@ -234,11 +236,11 @@ namespace L2_login
                 }
             }
         }
-        public System.Collections.ArrayList OOPIDs
+        public ArrayList OOPIDs
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
                 lock (OOPIDsLock)
                 {
                     tmp = this._OOPIDs;
@@ -258,7 +260,7 @@ namespace L2_login
             get
             {
                 string tmp;
-                lock(AcceptRezNamesLock)
+                lock (AcceptRezNamesLock)
                 {
                     tmp = this._AcceptRezNames;
                 }
@@ -266,31 +268,31 @@ namespace L2_login
             }
             set
             {
-                lock(AcceptRezNamesLock)
+                lock (AcceptRezNamesLock)
                 {
                     _AcceptRezNames = value.ToUpperInvariant();
                 }
             }
         }
-		public string ActiveFollowName
-		{
-			get
-			{
-				string tmp;
-				lock(ActiveFollowNameLock)
-				{
-					tmp = this._ActiveFollowName;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(ActiveFollowNameLock)
-				{
-					_ActiveFollowName = value;
-				}
-			}
-		}
+        public string ActiveFollowName
+        {
+            get
+            {
+                string tmp;
+                lock (ActiveFollowNameLock)
+                {
+                    tmp = this._ActiveFollowName;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (ActiveFollowNameLock)
+                {
+                    _ActiveFollowName = value;
+                }
+            }
+        }
         public string FollowRestName
         {
             get
@@ -312,17 +314,17 @@ namespace L2_login
         }
 
 
-//////////Other
-		public void Set_ActiveFollow(string name)
-		{
-			ActiveFollowName = name;
+        //////////Other
+        public void Set_ActiveFollow(string name)
+        {
+            ActiveFollowName = name;
 
-			bool found = false;
+            bool found = false;
             CharInfo player = null;
 
             Globals.PlayerLock.EnterReadLock();
-			try
-			{
+            try
+            {
                 player = Util.GetChar(name);
             }
             finally
@@ -336,12 +338,12 @@ namespace L2_login
                 ActiveFollowID = player.ID;
             }
 
-			if(!found)
-			{
-				//ActiveFollow = 0;
-				ActiveFollowID = 0;
-			}
-		}
+            if (!found)
+            {
+                //ActiveFollow = 0;
+                ActiveFollowID = 0;
+            }
+        }
 
         public void Set_FollowRest(string name)
         {
@@ -372,5 +374,5 @@ namespace L2_login
                 FollowRestID = 0;
             }
         }
-	}//end of class
+    }//end of class
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace L2_login
 {
@@ -94,7 +87,7 @@ namespace L2_login
 
                         if (npc != null)
                         {
-                            
+
 
                             hp = npc.Cur_HP.ToString() + "/" + npc.Max_HP.ToString();
                             mp = npc.Cur_MP.ToString() + "/" + npc.Max_MP.ToString();

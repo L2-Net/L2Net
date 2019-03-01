@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data.Odbc;
 using System.Net;
-using System.Net.Sockets;
 using System.Net.Mail;
 using System.Net.NetworkInformation;
 
@@ -15,12 +11,12 @@ namespace L2_login
         {
             try
             {
-                System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(addy);
+                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(addy);
 
                 myReq.Timeout = 10000;//set the timeout at 10 seconds instead of 5min
                 myReq.ReadWriteTimeout = 10000;//lets put a 10 seconds instead of 5min delay
 
-                System.Net.HttpWebResponse myRes = (System.Net.HttpWebResponse)myReq.GetResponse();
+                HttpWebResponse myRes = (HttpWebResponse)myReq.GetResponse();
 
                 System.IO.BinaryReader reader = new System.IO.BinaryReader(myRes.GetResponseStream());
 

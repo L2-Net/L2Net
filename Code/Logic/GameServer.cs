@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace L2_login
 {
@@ -8,14 +7,14 @@ namespace L2_login
     {
         public static void Init(string[] args)
         {
-           
+
             Globals.PATH = Environment.CurrentDirectory;
 
             try
             {
                 if (Globals.LogWriting)
                 {
-                    Globals.text_out = new System.IO.StreamWriter(Globals.PATH + "\\logs\\" + System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Day.ToString() + ".txt");
+                    Globals.text_out = new StreamWriter(Globals.PATH + "\\logs\\" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + ".txt");
 
                 }
                 else
@@ -32,10 +31,10 @@ namespace L2_login
 #if DEBUG
             try
             {
-                Globals.gamedataout = new System.IO.StreamWriter(Globals.PATH + "\\logs\\from_gamelog.txt");
-                Globals.gamedatato = new System.IO.StreamWriter(Globals.PATH + "\\logs\\to_gamelog.txt");
-                Globals.clientdataout = new System.IO.StreamWriter(Globals.PATH + "\\logs\\from_clientlog.txt");
-                Globals.clientdatato = new System.IO.StreamWriter(Globals.PATH + "\\logs\\to_clientlog.txt");
+                Globals.gamedataout = new StreamWriter(Globals.PATH + "\\logs\\from_gamelog.txt");
+                Globals.gamedatato = new StreamWriter(Globals.PATH + "\\logs\\to_gamelog.txt");
+                Globals.clientdataout = new StreamWriter(Globals.PATH + "\\logs\\from_clientlog.txt");
+                Globals.clientdatato = new StreamWriter(Globals.PATH + "\\logs\\to_clientlog.txt");
 
                 Globals.gamedataout.AutoFlush = true;
                 Globals.gamedatato.AutoFlush = true;
@@ -62,9 +61,9 @@ namespace L2_login
 
             Globals.gamedata.botoptions = new BotOptions();
             Globals.gamedata.alertoptions = new AlertOptions();
-            
+
             LoadData.LoadDataFiles();
-           
+
 
             AddInfo.Set_PartyVisible();
             AddInfo.Set_PartyInfo();
@@ -73,7 +72,7 @@ namespace L2_login
             {
                 Globals.Keyboard = new DX_Keyboard();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: failed to create SlimDX Keyboard : " + e.Message);
             }
@@ -84,10 +83,10 @@ namespace L2_login
 
             //process command line crap
 
-            
+
             foreach (string s in args)
             {
-               // char type = s[1];
+                // char type = s[1];
                 string command;
                 string data;
                 int indexOfColon = s.IndexOf(':');
@@ -101,9 +100,9 @@ namespace L2_login
 
                     command = s.Substring(0, indexOfColon);
                     data = s.Substring(indexOfColon + 1, s.Length - (indexOfColon + 1));
-                    
+
                 }
-               
+
                 command = command.ToLower();
 
                 switch (command)
@@ -147,7 +146,7 @@ namespace L2_login
                     case "-options":
                         Globals.BotOptionsFile = data;
                         break;
-                   
+
                     case "-s":
                     case "-script":
                         Globals.Script_MainFile = data;
@@ -183,8 +182,8 @@ namespace L2_login
                     case "-useproxygame":
                         Globals.pre_useProxyServerForGameserver = true;
                         Globals.pre_checkAdvancedSettings = true;
-                        break;       
-        
+                        break;
+
                     case "-gameserverip":
                         Globals.pre_gameserver_override_ip = data;
                         break;
@@ -211,7 +210,7 @@ namespace L2_login
                     case "-socks5password":
                         Globals.pre_socks5_password = data;
                         break;
-                        
+
                     case "-ew":
                     case "-enterworld":
                         Globals.pre_EnterWorldCheckbox = true;
@@ -322,7 +321,7 @@ namespace L2_login
 
         public static void ProcessDataThread()
         {
-            Globals.gamedata.my_char.lastVerifyTime = System.DateTime.Now;
+            Globals.gamedata.my_char.lastVerifyTime = DateTime.Now;
 
             DateTime last_animate = DateTime.Now;
             DateTime last_alert = DateTime.Now;
@@ -331,8 +330,8 @@ namespace L2_login
 
             Globals.l2net_home.timer_mybuffs.Start();
 
-			try
-			{
+            try
+            {
                 while (Globals.gamedata.running)
                 {
                     //Util.PopUp_Check();
@@ -341,26 +340,26 @@ namespace L2_login
 
                     System.Threading.Thread.Sleep(Globals.SLEEP_ProcessDataThread);//sleep for 10ms; when we get new data it should wake us up
 
-                    if (((TimeSpan)(DateTime.Now - last_animate)).Ticks > Globals.SLEEP_Animate)
+                    if ((DateTime.Now - last_animate).Ticks > Globals.SLEEP_Animate)
                     {
                         AnimateStuff();
                         last_animate = DateTime.Now;
                     }
 
-                    if (((TimeSpan)(DateTime.Now - last_alert)).Ticks > Globals.SLEEP_Sound_Alerts)
+                    if ((DateTime.Now - last_alert).Ticks > Globals.SLEEP_Sound_Alerts)
                     {
                         PlayAlerts();
                         last_alert = DateTime.Now;
                     }
 
-                    if (((TimeSpan)(DateTime.Now - last_clean)).Ticks > Globals.CLEAN_TIMER)
+                    if ((DateTime.Now - last_clean).Ticks > Globals.CLEAN_TIMER)
                     {
                         CleanUp();
                         last_clean = DateTime.Now;
                     }
                 }//end of while running
-			}
-            catch (System.Exception e)
+            }
+            catch (Exception e)
             {
                 Globals.l2net_home.Add_Error("crash: ProcessDataThread : hardcore crash... every bot function is DOA now : " + e.Message);
             }

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -21,9 +15,9 @@ namespace L2_login
         {
             string item = listView_petGive_MyInv.SelectedItems[0].SubItems[0].Text;
             int loc = listView_petGive_MyInv.SelectedItems[0].Index; //Index
-            uint objID = System.Convert.ToUInt32(listView_petGive_MyInv.SelectedItems[0].SubItems[2].Text); //Obj ID
-            ulong quantity = System.Convert.ToUInt64(listView_petGive_MyInv.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
-            ulong trquantity = System.Convert.ToUInt64(textBox_petGive_Quantity.Text);
+            uint objID = Convert.ToUInt32(listView_petGive_MyInv.SelectedItems[0].SubItems[2].Text); //Obj ID
+            ulong quantity = Convert.ToUInt64(listView_petGive_MyInv.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
+            ulong trquantity = Convert.ToUInt64(textBox_petGive_Quantity.Text);
 
             if (trquantity > quantity)
             {
@@ -61,7 +55,7 @@ namespace L2_login
                 foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
                 {
                     //add it
-                    System.Windows.Forms.ListViewItem ObjListItem;
+                    ListViewItem ObjListItem;
 
                     if (inv_inf.isEquipped == 0x01) //Equipped
                     {
@@ -96,7 +90,9 @@ namespace L2_login
         private void textBox_petGive_Quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
 
         private void button_petGive_Close_Click(object sender, EventArgs e)

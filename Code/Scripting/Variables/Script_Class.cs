@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace L2_login
 {
@@ -10,7 +8,7 @@ namespace L2_login
         public string File = "";
         public string ParentName = "";
         public string ParentFile = "";
-        public System.Collections.ArrayList _Variables = new System.Collections.ArrayList();
+        public ArrayList _Variables = new ArrayList();
 
         public bool Has_Function(string name)
         {
@@ -54,13 +52,13 @@ namespace L2_login
 
             string p1, p2, p3;
 
-            for(int i = 0; i < filein._ScriptLines.Count; i++)
+            for (int i = 0; i < filein._ScriptLines.Count; i++)
             {
                 ScriptLine cmd = (ScriptLine)filein._ScriptLines[i];
 
                 string line = cmd.UnParsedParams;
 
-                switch(cmd.Command)
+                switch (cmd.Command)
                 {
                     case ScriptCommands.INCLUDE:
                         if (!cstarted)
@@ -80,7 +78,7 @@ namespace L2_login
 
                             _Variables.Add(nv);
                         }
-                        else if(cstarted)
+                        else if (cstarted)
                         {
                             //a function
                             p1 = ScriptEngine.Get_String(ref line);
@@ -193,7 +191,7 @@ namespace L2_login
     {
 
         public string Name;
-        public System.Collections.SortedList _Variables = new System.Collections.SortedList();//ArrayList
+        public SortedList _Variables = new SortedList();//ArrayList
         public bool Initialized = false;
 
         public void Init(string _name)

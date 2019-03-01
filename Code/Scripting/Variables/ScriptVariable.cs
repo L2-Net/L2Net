@@ -1,24 +1,24 @@
-using System;
+using System.Collections;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for ScriptVariable.
-	/// </summary>
-	public class ScriptLabel
-	{
-		public string Name;
-		public int Line;
+    /// <summary>
+    /// Summary description for ScriptVariable.
+    /// </summary>
+    public class ScriptLabel
+    {
+        public string Name;
+        public int Line;
         public string File;
         public Var_State State = Var_State.PUBLIC;
-	}
+    }
 
-	public enum Var_Types : int
-	{
-		NULL = 0,
-		INT = 1,
-		DOUBLE = 2,
-		STRING = 3,
+    public enum Var_Types : int
+    {
+        NULL = 0,
+        INT = 1,
+        DOUBLE = 2,
+        STRING = 3,
         FILEREADER = 4,
         FILEWRITER = 5,
         ARRAYLIST = 6,
@@ -30,7 +30,7 @@ namespace L2_login
         WINDOW = 12,
         THREAD = 13,
         ASSIGNABLE = 20,//this is the type used in equation handling for temp variables
-	}
+    }
 
     public enum Var_State : int
     {
@@ -40,20 +40,20 @@ namespace L2_login
         STATIC = 3
     }
 
-	public class ScriptVariable
-	{
+    public class ScriptVariable
+    {
         public object Value;
         public string Name;
         public Var_Types Type;
         public Var_State State;
 
-		public ScriptVariable()
-		{
-			Value = (int)0;
-			Name = "NULL";
-			Type = Var_Types.INT;
+        public ScriptVariable()
+        {
+            Value = 0;
+            Name = "NULL";
+            Type = Var_Types.INT;
             State = Var_State.PUBLIC;
-		}
+        }
 
         public ScriptVariable(object value, string name, Var_Types type, Var_State state)
         {
@@ -63,13 +63,18 @@ namespace L2_login
 
             Value = value;
 
-            switch(Type)
+            switch (Type)
             {
                 case Var_Types.BYTEBUFFER:
                     if (value == null)
+                    {
                         Value = null;
+                    }
                     else
+                    {
                         Value = new ByteBuffer((ByteBuffer)value);
+                    }
+
                     break;
                 default:
                     Value = value;
@@ -111,36 +116,36 @@ namespace L2_login
                     sout.Value = Value;
                     break;
                 case Var_Types.ARRAYLIST:
-                    sout.Value = new System.Collections.ArrayList(((System.Collections.ArrayList)Value).Capacity);
+                    sout.Value = new ArrayList(((ArrayList)Value).Capacity);
 
-                    foreach (ScriptVariable nv in ((System.Collections.ArrayList)Value))
+                    foreach (ScriptVariable nv in (ArrayList)Value)
                     {
-                        ((System.Collections.ArrayList)sout.Value).Add(nv.Clone());
+                        ((ArrayList)sout.Value).Add(nv.Clone());
                     }
                     break;
                 case Var_Types.SORTEDLIST:
-                    sout.Value = new System.Collections.SortedList(((System.Collections.SortedList)Value).Capacity);
+                    sout.Value = new SortedList(((SortedList)Value).Capacity);
 
-                    foreach (System.Collections.DictionaryEntry dic in ((System.Collections.SortedList)Value))
+                    foreach (DictionaryEntry dic in (SortedList)Value)
                     {
-                        ((System.Collections.SortedList)sout.Value).Add(dic.Key, ((ScriptVariable)dic.Value).Clone());
+                        ((SortedList)sout.Value).Add(dic.Key, ((ScriptVariable)dic.Value).Clone());
                     }
                     break;
                 case Var_Types.STACK:
-                    sout.Value = new System.Collections.Stack(((System.Collections.Stack)Value).Count);
+                    sout.Value = new Stack(((Stack)Value).Count);
 
-                    foreach (ScriptVariable nv in ((System.Collections.Stack)Value))
+                    foreach (ScriptVariable nv in (Stack)Value)
                     {
-                        ((System.Collections.Stack)sout.Value).Push(nv.Clone());
+                        ((Stack)sout.Value).Push(nv.Clone());
                     }
                     break;
                 case Var_Types.QUEUE:
-                    sout.Value = new System.Collections.Queue(((System.Collections.Queue)Value).Count);
+                    sout.Value = new Queue(((Queue)Value).Count);
 
-                    foreach (ScriptVariable nv in ((System.Collections.Queue)Value))
+                    foreach (ScriptVariable nv in (Queue)Value)
                     {
-                        ((System.Collections.Queue)sout.Value).Enqueue(nv.Clone());
-                    } 
+                        ((Queue)sout.Value).Enqueue(nv.Clone());
+                    }
                     break;
                 case Var_Types.CLASS:
                     sout.Value = new Script_ClassData();

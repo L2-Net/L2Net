@@ -1,7 +1,4 @@
 using System;
-using System.Data;
-using System.Configuration;
-using System.Web;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
@@ -23,11 +20,20 @@ namespace L2_login
         public static string EncryptData(string data, string password, string salt)
         {
             if (data == null)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             byte[] encBytes = EncryptData(Encoding.UTF8.GetBytes(data), password, salt, PaddingMode.ISO10126);
             return Convert.ToBase64String(encBytes);
         }
@@ -41,24 +47,42 @@ namespace L2_login
         public static string DecryptData(string data, string password, string salt)
         {
             if (data == null)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             byte[] encBytes = Convert.FromBase64String(data);
-            byte[] decBytes = DecryptData(encBytes, password, salt,  PaddingMode.ISO10126);
+            byte[] decBytes = DecryptData(encBytes, password, salt, PaddingMode.ISO10126);
             return Encoding.UTF8.GetString(decBytes);
         }
 
         public static byte[] EncryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
         {
             if (data == null || data.Length == 0)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
             rm.Padding = paddingMode;
             ICryptoTransform encryptor = rm.CreateEncryptor(pdb.GetBytes(16), pdb.GetBytes(16));
@@ -74,11 +98,20 @@ namespace L2_login
         public static byte[] DecryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
         {
             if (data == null || data.Length == 0)
+            {
                 throw new ArgumentNullException("data");
+            }
+
             if (password == null)
+            {
                 throw new ArgumentNullException("password");
+            }
+
             if (salt == null)
+            {
                 throw new ArgumentNullException("salt");
+            }
+
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
             rm.Padding = paddingMode;
             ICryptoTransform decryptor = rm.CreateDecryptor(pdb.GetBytes(16), pdb.GetBytes(16));
@@ -102,7 +135,7 @@ namespace L2_login
 
         public static byte[] Decrypt(string filename, string key, string salt)
         {
-            System.IO.BinaryReader filein = new System.IO.BinaryReader(new System.IO.StreamReader(filename).BaseStream);
+            BinaryReader filein = new BinaryReader(new StreamReader(filename).BaseStream);
 
             byte[] data = filein.ReadBytes((int)filein.BaseStream.Length);
             filein.Close();
@@ -135,16 +168,16 @@ namespace L2_login
 
             try
             {
-                dec = AES.DecryptData(data, key, salt, System.Security.Cryptography.PaddingMode.ISO10126);
+                dec = DecryptData(data, key, salt, PaddingMode.ISO10126);
             }
             catch (Exception e)
             {
                 throw e;
             }
 
-            int d_len = System.BitConverter.ToInt32(dec, 0);
+            int d_len = BitConverter.ToInt32(dec, 0);
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(dec);
+            MemoryStream ms = new MemoryStream(dec);
             ms.Position = 4;
 
             // Use the newly created memory stream for the compressed data.
@@ -157,7 +190,7 @@ namespace L2_login
             ms.Close();
 
             dec = new byte[cnt];
-            System.Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
+            Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
 
             zdec = null;
 

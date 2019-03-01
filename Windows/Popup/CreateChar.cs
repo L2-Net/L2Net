@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -32,7 +28,7 @@ namespace L2_login
             ByteBuffer bb = new ByteBuffer(1);
             bb.WriteByte((byte)PClient.NewCharacter);
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             bb = new ByteBuffer();
             bb.WriteByte((byte)PClient.CharacterCreate);
@@ -46,35 +42,55 @@ namespace L2_login
             }
             else
             {*/
-                bb.WriteInt32(comboBox_sex.SelectedIndex);
+            bb.WriteInt32(comboBox_sex.SelectedIndex);
             //}
 
             //race/sex based class restrictions
-            switch(comboBox_race.SelectedIndex)
+            switch (comboBox_race.SelectedIndex)
             {
                 case 0://human
                     if (comboBox_type.SelectedIndex == 0)
+                    {
                         bb.WriteInt32(0);
+                    }
                     else
+                    {
                         bb.WriteInt32(10);
+                    }
+
                     break;
                 case 1://elf
                     if (comboBox_type.SelectedIndex == 0)
+                    {
                         bb.WriteInt32(18);
+                    }
                     else
+                    {
                         bb.WriteInt32(25);
+                    }
+
                     break;
                 case 2://dark elf
                     if (comboBox_type.SelectedIndex == 0)
+                    {
                         bb.WriteInt32(31);
+                    }
                     else
+                    {
                         bb.WriteInt32(38);
+                    }
+
                     break;
                 case 3://orc
                     if (comboBox_type.SelectedIndex == 0)
+                    {
                         bb.WriteInt32(44);
+                    }
                     else
+                    {
                         bb.WriteInt32(49);
+                    }
+
                     break;
                 case 4://dwarf
                     bb.WriteInt32(53);
@@ -95,13 +111,18 @@ namespace L2_login
             if (comboBox_sex.SelectedIndex == 0)
             {
                 if (comboBox_hairstyle.SelectedIndex == 5 || comboBox_hairstyle.SelectedIndex == 6)
+                {
                     comboBox_hairstyle.SelectedIndex = 0;
+                }
             }
             bb.WriteInt32(comboBox_hairstyle.SelectedIndex);
 
             //race based hair color restriction
             if (comboBox_race.SelectedIndex != 5 && comboBox_haircolor.SelectedIndex == 4)
+            {
                 comboBox_haircolor.SelectedIndex = 0;
+            }
+
             bb.WriteInt32(comboBox_haircolor.SelectedIndex);
 
             //no restrictions on face
@@ -109,7 +130,7 @@ namespace L2_login
 
             bb.TrimToIndex();
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             bb = new ByteBuffer(3);
             bb.WriteByte((byte)PClient.EXPacket);
@@ -123,7 +144,7 @@ namespace L2_login
             }
             bb.WriteByte(0x00);
             Globals.gamedata.SendToGameServer(bb);
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             this.Close();
         }

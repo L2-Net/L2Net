@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -57,7 +51,7 @@ namespace L2_login
         private void button_trade_confirm_Click(object sender, EventArgs e)
         {
 
-            uint itms = System.Convert.ToUInt32(listView_buylist_selected_items.Items.Count);
+            uint itms = Convert.ToUInt32(listView_buylist_selected_items.Items.Count);
             ByteBuffer buff = new ByteBuffer();
 
             buff.WriteByte((byte)PClient.RequestBuyItem);
@@ -66,8 +60,8 @@ namespace L2_login
             for (int i = 0; i < itms; i++)
             {
                 string tmp = listView_buylist_selected_items.Items[i].SubItems[2].Text;
-                buff.WriteUInt32(System.Convert.ToUInt32(tmp)); //Item ID
-                buff.WriteUInt32(System.Convert.ToUInt32(listView_buylist_selected_items.Items[i].SubItems[1].Text)); //Number of items to buy
+                buff.WriteUInt32(Convert.ToUInt32(tmp)); //Item ID
+                buff.WriteUInt32(Convert.ToUInt32(listView_buylist_selected_items.Items[i].SubItems[1].Text)); //Number of items to buy
                 buff.WriteUInt32(0);
             }
             buff.TrimToIndex();
@@ -78,7 +72,7 @@ namespace L2_login
         private void FillBuyList()
         {
             //add
-            System.Windows.Forms.ListViewItem ObjListItem;
+            ListViewItem ObjListItem;
             foreach (BuyList b_list in Globals.gamedata.buylist.Values)
             {
                 ObjListItem = new ListViewItem(Util.GetItemName(b_list.ItemID));
@@ -93,11 +87,11 @@ namespace L2_login
         {
             int loc = listView_buylist.SelectedItems[0].Index; //Location of the item we are buying
             string item = listView_buylist.SelectedItems[0].SubItems[0].Text;
-            uint itemID = System.Convert.ToUInt32(listView_buylist.SelectedItems[0].SubItems[2].Text);
+            uint itemID = Convert.ToUInt32(listView_buylist.SelectedItems[0].SubItems[2].Text);
             //uint blistID = System.Convert.ToUInt32(listView_buylist.SelectedItems[0].SubItems[3].Text);
-            uint quantity = System.Convert.ToUInt32(textBox_buywindow_quantity.Text);
+            uint quantity = Convert.ToUInt32(textBox_buywindow_quantity.Text);
 
-            System.Windows.Forms.ListViewItem ObjListItem;
+            ListViewItem ObjListItem;
             ObjListItem = new ListViewItem(item);
             ObjListItem.SubItems.Add(quantity.ToString());
             ObjListItem.SubItems.Add(itemID.ToString());

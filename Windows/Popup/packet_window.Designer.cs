@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace L2_login
 {
@@ -529,17 +528,17 @@ namespace L2_login
         private System.Windows.Forms.ColumnHeader column_id;
         public void add_to_list(pck_window_dat dat) // add thing to list
         {
-           
+
             try
             {
                 ListViewItem temp_item = new ListViewItem();
                 int temp_count = listView1.Items.Count;
                 //listView1.Items.Add(temp_count.ToString());
                 temp_item.Text = temp_count.ToString();
-                if(dat.type == 1) // client
+                if (dat.type == 1) // client
                 {
                     //listView1.Items[temp_count].SubItems.Add("Cli");
-                     temp_item.SubItems.Add("Cli");
+                    temp_item.SubItems.Add("Cli");
                 }
                 else // server
                 {
@@ -567,7 +566,7 @@ namespace L2_login
                                 temp_id += dat.bytebuffer[i];
                             }
                             temp_item.SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
                         }
                     }
                     else
@@ -575,7 +574,7 @@ namespace L2_login
                         if (dat.bytebuffer[0] < 0xd0)
                         {
                             temp_item.SubItems.Add(Globals.pck_thread.new_get_client_pck_name(dat.bytebuffer[0]));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(dat.bytebuffer[0]));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(dat.bytebuffer[0]));
                         }
                         else
                         {
@@ -583,8 +582,8 @@ namespace L2_login
                             {
                                 temp_id += dat.bytebuffer[i];
                             }
-                              temp_item.SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
+                            temp_item.SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
                         }
                     }
                     //listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(dat.bytebuffer));
@@ -614,7 +613,7 @@ namespace L2_login
                         if (dat.bytebuffer[0] < 0xfe)
                         {
                             temp_item.SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
                         }
                         else
                         {
@@ -623,7 +622,7 @@ namespace L2_login
                                 temp_id += dat.bytebuffer[i];
                             }
                             temp_item.SubItems.Add(Globals.pck_thread.new_get_server_pck_name(temp_id));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(temp_id));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(temp_id));
                         }
                     }
                     else
@@ -631,7 +630,7 @@ namespace L2_login
                         if (dat.bytebuffer[0] < 0xfe)
                         {
                             temp_item.SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
-                           // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
+                            // listView1.Items[temp_count].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(dat.bytebuffer[0]));
                         }
                         else
                         {
@@ -659,19 +658,19 @@ namespace L2_login
                     temp_item.SubItems.Add(pck_id);
                     //listView1.Items[temp_count].SubItems.Add(pck_id);
                     temp_item.BackColor = System.Drawing.Color.Yellow;
-                   //listView1.Items[temp_count].BackColor = System.Drawing.Color.Yellow;
+                    //listView1.Items[temp_count].BackColor = System.Drawing.Color.Yellow;
                 }
                 listView1.Items.Add(temp_item);
                 if (Globals.pck_thread.folow_new_pck)//folow pcjk
                 {
                     listView1.Items[temp_count].EnsureVisible();
                 }
-                 //listView1.Items[temp_count].SubItems.Add(dat.bytebuffer[0].ToString("X2"));
+                //listView1.Items[temp_count].SubItems.Add(dat.bytebuffer[0].ToString("X2"));
             }
-                //11:16 < Infant> srv rgb: 224 ; 245 ; 192
-                //11:16 < Infant> client rgb: 255 ; 250 ; 168
+            //11:16 < Infant> srv rgb: 224 ; 245 ; 192
+            //11:16 < Infant> client rgb: 255 ; 250 ; 168
 
-                //
+            //
             // to do
             catch
             {
@@ -681,26 +680,26 @@ namespace L2_login
         }
         public void add_range_from_cache()
         {
-            
+
             cache_lictview_items = new System.Windows.Forms.ListViewItem[Globals.pck_thread.temp_cache_for_pck_window.Count];
-           Globals.pck_thread.temp_cache_for_pck_window.CopyTo(cache_lictview_items);
-       
+            Globals.pck_thread.temp_cache_for_pck_window.CopyTo(cache_lictview_items);
+
             listView1.BeginUpdate();
             listView1.Items.AddRange(cache_lictview_items);
             listView1.EndUpdate();
-           Globals.pck_thread.temp_cache_for_pck_window.Clear();
+            Globals.pck_thread.temp_cache_for_pck_window.Clear();
             if (Globals.pck_thread.folow_new_pck)//folow pcjk
             {
-                listView1.Items[listView1.Items.Count-1].EnsureVisible();
+                listView1.Items[listView1.Items.Count - 1].EnsureVisible();
             }
 
             //cache_lictview_items
-           // listView1.Items.AddRange(Globals.cache_for_pck_window);
-           // ListView.ListViewItemCollection test = new ListView.ListViewItemCollection(listView1);
-          // ListViewItem temp = new ListViewItem();;
+            // listView1.Items.AddRange(Globals.cache_for_pck_window);
+            // ListView.ListViewItemCollection test = new ListView.ListViewItemCollection(listView1);
+            // ListViewItem temp = new ListViewItem();;
             //listView1.Items.AddRange(
-           // test.AddRange(;
-           
+            // test.AddRange(;
+
         }
         public void add_one_to_temp_cache(pck_window_dat dat)
         {
@@ -709,7 +708,7 @@ namespace L2_login
             {
                 ListViewItem temp_item = new ListViewItem();
                 int temp_count = listView1.Items.Count;
-                temp_count +=Globals.pck_thread.temp_cache_for_pck_window.Count;
+                temp_count += Globals.pck_thread.temp_cache_for_pck_window.Count;
                 //listView1.Items.Add(temp_count.ToString());
                 temp_item.Text = temp_count.ToString();
                 if (dat.type == 1) // client
@@ -838,7 +837,7 @@ namespace L2_login
                     //listView1.Items[temp_count].BackColor = System.Drawing.Color.Yellow;
                 }
 
-               Globals.pck_thread.temp_cache_for_pck_window.Add(temp_item);
+                Globals.pck_thread.temp_cache_for_pck_window.Add(temp_item);
             }
 
             catch

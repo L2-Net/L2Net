@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace L2_login
 {
@@ -43,7 +41,7 @@ namespace L2_login
 
     public class ScriptEvent
     {
-        public System.Collections.ArrayList Variables = new System.Collections.ArrayList();
+        public ArrayList Variables = new ArrayList();
         public EventType Type;
         public int Type2;
     }

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -60,7 +54,7 @@ AddTradeItem = 0x1B*/
             foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
             {
                 //add it
-                System.Windows.Forms.ListViewItem ObjListItem;
+                ListViewItem ObjListItem;
 
                 if (inv_inf.isEquipped == 0x01) //Equipped
                 {
@@ -93,9 +87,9 @@ AddTradeItem = 0x1B*/
         {
             string item = listView_trade_mychar.SelectedItems[0].SubItems[0].Text;
             int loc = listView_trade_mychar.SelectedItems[0].Index; //Index
-            uint objID = System.Convert.ToUInt32(listView_trade_mychar.SelectedItems[0].SubItems[2].Text); //Obj ID
-            ulong quantity = System.Convert.ToUInt64(listView_trade_mychar.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
-            ulong trquantity = System.Convert.ToUInt64(textBox_trade_quantity.Text);
+            uint objID = Convert.ToUInt32(listView_trade_mychar.SelectedItems[0].SubItems[2].Text); //Obj ID
+            ulong quantity = Convert.ToUInt64(listView_trade_mychar.SelectedItems[0].SubItems[1].Text); //Quantity in inventory
+            ulong trquantity = Convert.ToUInt64(textBox_trade_quantity.Text);
 
             if (trquantity > quantity)
             {
@@ -124,7 +118,7 @@ AddTradeItem = 0x1B*/
                 listView_trade_mychar.SelectedItems[0].SubItems[1].Text = (quantity - trquantity).ToString();
             }
 
-            System.Windows.Forms.ListViewItem ObjListItem;
+            ListViewItem ObjListItem;
             ObjListItem = new ListViewItem(item);
             ObjListItem.SubItems.Add(trquantity.ToString());
             listView_trade_send.Items.Add(ObjListItem);
@@ -134,7 +128,9 @@ AddTradeItem = 0x1B*/
         private void textBox_trade_quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+")) && (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\b")))
+            {
                 e.Handled = true;
+            }
         }
     }
 }

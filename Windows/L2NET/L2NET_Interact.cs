@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -46,7 +44,7 @@ namespace L2_login
             }
         }
 
-        private void button_sendtext_Click(object sender, System.EventArgs e)
+        private void button_sendtext_Click(object sender, EventArgs e)
         {
 #if !DEBUG
             if (!Globals.gamedata.logged_in)
@@ -58,16 +56,16 @@ namespace L2_login
             textBox_say.Text = "";
 
             ServerPackets.Send_Text(index, total_text);
-        } 
+        }
 
-        private void button_yesno_yes_Click(object sender, System.EventArgs e)
+        private void button_yesno_yes_Click(object sender, EventArgs e)
         {
             panel_yesno.SendToBack();
 
             Process_YesNo(true);
         }
 
-        private void button_yesno_no_Click(object sender, System.EventArgs e)
+        private void button_yesno_no_Click(object sender, EventArgs e)
         {
             panel_yesno.SendToBack();
 
@@ -100,7 +98,7 @@ namespace L2_login
                     break;
             }
         }
-        
+
         private void panel_charinfo_DoubleClick(object sender, EventArgs e)
         {
             if (Globals.gamedata.logged_in)
@@ -110,28 +108,28 @@ namespace L2_login
             }
         }
 
-        private void button_dead_town_Click(object sender, System.EventArgs e)
+        private void button_dead_town_Click(object sender, EventArgs e)
         {
             //return to town
             ServerPackets.Return(0);
             panel_dead.Hide();
         }
 
-        private void button_dead_clanhall_Click(object sender, System.EventArgs e)
+        private void button_dead_clanhall_Click(object sender, EventArgs e)
         {
             //return to clanhall
             ServerPackets.Return(1);
             panel_dead.Hide();
         }
 
-        private void button_dead_castle_Click(object sender, System.EventArgs e)
+        private void button_dead_castle_Click(object sender, EventArgs e)
         {
             //return to castle
             ServerPackets.Return(2);
             panel_dead.Hide();
         }
 
-        private void button_dead_siege_Click(object sender, System.EventArgs e)
+        private void button_dead_siege_Click(object sender, EventArgs e)
         {
             //return to siege hq
             ServerPackets.Return(3);
@@ -145,12 +143,12 @@ namespace L2_login
             panel_dead.Hide();
         }
 
-        private void button_npc_close_Click(object sender, System.EventArgs e)
+        private void button_npc_close_Click(object sender, EventArgs e)
         {
             panel_npc_chat.Hide();
         }
 
-        private void menuItem_hosts_Click(object sender, System.EventArgs e)
+        private void menuItem_hosts_Click(object sender, EventArgs e)
         {
             string st = Environment.GetEnvironmentVariable("SystemRoot") + "\\system32\\drivers\\etc\\hosts";
 
@@ -216,7 +214,7 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_items_data.Items[listView_items_data.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_items_data.Items[listView_items_data.SelectedIndices[0]].SubItems[0].Text;
                 uint id = Util.GetItemID(name);
 
                 Globals.DoNotItemLock.EnterWriteLock();
@@ -241,7 +239,7 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_inventory.Items[listView_inventory.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_inventory.Items[listView_inventory.SelectedIndices[0]].SubItems[0].Text;
                 uint id = Util.GetItemID(name);
 
                 Globals.DoNotItemLock.EnterWriteLock();
@@ -261,7 +259,7 @@ namespace L2_login
                 {
                     Globals.DoNotItemLock.ExitWriteLock();
                 }
-                
+
             }
             catch
             {
@@ -274,9 +272,9 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text);
+                string name = listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text;
                 //uint id = Util.GetNPCID(name);
-                uint id = Convert.ToUInt32((listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[3].Text));
+                uint id = Convert.ToUInt32(listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[3].Text);
 
                 if (id < Globals.NPC_OFF)
                 {
@@ -293,14 +291,14 @@ namespace L2_login
                     }
                     else
                     {
-                        Add_Text(id.ToString() + " is already in Do Not List",Globals.Green, TextType.BOT);
+                        Add_Text(id.ToString() + " is already in Do Not List", Globals.Green, TextType.BOT);
                     }
                 }
                 finally
                 {
                     Globals.DoNotNPCLock.ExitWriteLock();
                 }
-                
+
             }
             catch
             {
@@ -313,10 +311,10 @@ namespace L2_login
         {
             try
             {
-                string name = (listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text);
-                uint objID = Convert.ToUInt32((listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[2].Text));
+                string name = listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[0].Text;
+                uint objID = Convert.ToUInt32(listView_npc_data.Items[listView_npc_data.SelectedIndices[0]].SubItems[2].Text);
                 Util.IgnoreNPC(objID, true);
-                Add_Text("NPC with name: " +name + " and objID: " + objID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
+                Add_Text("NPC with name: " + name + " and objID: " + objID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
             }
             catch
             {
@@ -330,7 +328,7 @@ namespace L2_login
             try
             {
                 Util.IgnoreNPC(Globals.gamedata.my_char.TargetID, true);
-                Add_Text("NPC with objID: "+ Globals.gamedata.my_char.TargetID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
+                Add_Text("NPC with objID: " + Globals.gamedata.my_char.TargetID.ToString() + " added to blacklist", Globals.Green, TextType.BOT);
             }
             catch
             {
@@ -339,13 +337,14 @@ namespace L2_login
 
         }
 
-        private void menuItem_cmd_logon_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_logon_Click(object sender, EventArgs e)
         {
             Globals.gamedata.drawing_game = false;
 
             if (Globals.login_window == null || Globals.login_window.IsDisposed == true)
             {
-                try {
+                try
+                {
                     Globals.login_window = new Login(this);
                 }
                 catch (Exception exception)
@@ -358,7 +357,7 @@ namespace L2_login
             Globals.login_window.Show();
         }
 
-        private void menuItem_cmd_game_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_game_Click(object sender, EventArgs e)
         {
             Globals.gamedata.drawing_game = true;
 
@@ -370,7 +369,7 @@ namespace L2_login
             Globals.map_window.Show();
         }
 
-        private void menuItem_cmd_logout_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_logout_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running && Globals.gamedata.logged_in)
             {
@@ -379,7 +378,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_restart_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_restart_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running && Globals.gamedata.logged_in)
             {
@@ -388,7 +387,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_cancel_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_cancel_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.logged_in)
             {
@@ -397,7 +396,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_toggle_botting_Click(object sender, System.EventArgs e)
+        private void menuItem_toggle_botting_Click(object sender, EventArgs e)
         {
             Toggle_Botting();
         }
@@ -489,7 +488,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_language_Click(object sender, System.EventArgs e)
+        private void menuItem_language_Click(object sender, EventArgs e)
         {
             Language lang = new Language();
             lang.parent_form = this;
@@ -512,7 +511,7 @@ namespace L2_login
             Globals.botoptionsscreen.Show();
         }
 
-        private void menuItem_options_setup_Click(object sender, System.EventArgs e)
+        private void menuItem_options_setup_Click(object sender, EventArgs e)
         {
             //Setup
             if (Globals.setupwindow == null || Globals.setupwindow.IsDisposed == true)
@@ -539,7 +538,7 @@ namespace L2_login
             Globals.gamedata.AddPolygon = checkBox_BoundingPoints.Checked;
         }
 
-        private void menuItem_cmd_overlay_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_overlay_Click(object sender, EventArgs e)
         {
             if (menuItem_cmd_overlay.Checked)
             {
@@ -560,7 +559,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_cmd_shortcut_Click(object sender, System.EventArgs e)
+        private void menuItem_cmd_shortcut_Click(object sender, EventArgs e)
         {
             if (menuItem_cmd_shortcut.Checked)
             {
@@ -580,7 +579,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_help_donate_Click(object sender, System.EventArgs e)
+        private void menuItem_help_donate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -616,7 +615,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_scriptwindow_Click(object sender, System.EventArgs e)
+        private void menuItem_scriptwindow_Click(object sender, EventArgs e)
         {
             try
             {
@@ -633,7 +632,7 @@ namespace L2_login
             }
         }
 
-        private void menuItem_startscript_Click(object sender, System.EventArgs e)
+        private void menuItem_startscript_Click(object sender, EventArgs e)
         {
             if (Globals.gamedata.running)
             {
@@ -696,7 +695,7 @@ namespace L2_login
             {
                 DialogResult okOrNo;//dialog return value, if it is DialogResult.OK then everything is OK
 
-                openFileDialog1.Title = "Select script file"; 
+                openFileDialog1.Title = "Select script file";
                 openFileDialog1.InitialDirectory = Globals.PATH + "\\Scripts";//Initial dir, where it begins looking at.
                 openFileDialog1.Filter = "Script Files (*.l2s)|*.l2s";//this particualr format is for one file type.
                 openFileDialog1.FilterIndex = 1;//this means that the first description is the default one.
@@ -881,7 +880,7 @@ namespace L2_login
             }
         }
 
-        void TabControl_HandleCreated(object sender, System.EventArgs e)
+        void TabControl_HandleCreated(object sender, EventArgs e)
         {
             // Send TCM_SETMINTABWIDTH
             SendMessage((sender as TabControl).Handle, 0x1300 + 49, IntPtr.Zero, (IntPtr)4);

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -71,7 +69,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
-                e.Item.ImageIndex = -1; 
+                e.Item.ImageIndex = -1;
             }
         }
 
@@ -115,7 +113,7 @@ namespace L2_login
             float y = Globals.gamedata.my_char.Y;
             float z = Globals.gamedata.my_char.Z;
 
-            System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+            ArrayList dirty_items = new ArrayList();
 
             for (int i = 0; i < listView_players_data_items.Count; i++)
             {
@@ -132,7 +130,7 @@ namespace L2_login
                     //((ListViewItem)listView_players_data_items[i]).SubItems[1].Text = player.Name;
                     if (Active)
                     {
-                        ((ListViewItem)listView_players_data_items[i]).SubItems[2].Text = Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + ((int)Util.Distance(x, y, z, player.X, player.Y, player.Z)).ToString("0000");
+                        ((ListViewItem)listView_players_data_items[i]).SubItems[2].Text = Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + Util.Distance(x, y, z, player.X, player.Y, player.Z).ToString("0000");
                     }
                     else
                     {
@@ -166,12 +164,12 @@ namespace L2_login
                     player.InList = true;
 
                     //add it
-                    System.Windows.Forms.ListViewItem ObjListItem;
+                    ListViewItem ObjListItem;
                     ObjListItem = new ListViewItem(player.WarState.ToString());//war
                     ObjListItem.SubItems.Add(player.Name);//name
                     if (Active)
                     {
-                        ObjListItem.SubItems.Add(Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + ((int)Util.Distance(x, y, z, player.X, player.Y, player.Z)).ToString("0000"));//class
+                        ObjListItem.SubItems.Add(Util.GetClass(player.Class) + (player.isAlikeDead == 0x00 ? " :A: " : " :D: ") + Util.Distance(x, y, z, player.X, player.Y, player.Z).ToString("0000"));//class
                     }
                     else
                     {
@@ -258,7 +256,7 @@ namespace L2_login
 
         private void UpdateItemsListInternal()
         {
-            System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+            ArrayList dirty_items = new ArrayList();
 
             for (int i = 0; i < listView_items_data_items.Count; i++)
             {
@@ -301,7 +299,7 @@ namespace L2_login
                     }
 
                     //add it
-                    System.Windows.Forms.ListViewItem ObjListItem;
+                    ListViewItem ObjListItem;
                     ObjListItem = new ListViewItem(Util.GetItemName(item.ItemID) + mesh_info);//ItmID
                     ObjListItem.SubItems.Add(item.Count.ToString());//Count
                     ObjListItem.SubItems.Add(item.ID.ToString());//ObjID
@@ -329,7 +327,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.ImageIndex = -1;
-            } 
+            }
         }
 
         private void UpdateNPCsList()
@@ -366,7 +364,7 @@ namespace L2_login
 
         private void UpdateNPCListInternal()
         {
-            System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+            ArrayList dirty_items = new ArrayList();
 
             for (int i = 0; i < listView_npc_data.Items.Count; i++)
             {
@@ -405,7 +403,7 @@ namespace L2_login
                     if (npc.isInvisible != 1)
                     {
                         //add it
-                        System.Windows.Forms.ListViewItem ObjListItem;
+                        ListViewItem ObjListItem;
                         ObjListItem = new ListViewItem(Util.GetNPCName(npc.NPCID));//Name
                         ObjListItem.SubItems.Add(npc.Title);//Title
                         ObjListItem.SubItems.Add(npc.ID.ToString());//ObjID
@@ -435,7 +433,7 @@ namespace L2_login
                 e.Item.SubItems.Add("");
                 e.Item.SubItems.Add("");
                 e.Item.ImageIndex = -1;
-            } 
+            }
         }
 
         private void UpdateInventoryList()
@@ -476,7 +474,7 @@ namespace L2_login
 
         private void UpdateInventoryListInternal()
         {
-            System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+            ArrayList dirty_items = new ArrayList();
             #region Equipped Items
             if (radioButton_inv_equipped.Checked)
             {
@@ -541,7 +539,7 @@ namespace L2_login
                         inv_inf.InList = true;
 
                         //add it
-                        System.Windows.Forms.ListViewItem ObjListItem;
+                        ListViewItem ObjListItem;
 
                         if (inv_inf.Enchant == 0)
                         {
@@ -635,7 +633,7 @@ namespace L2_login
                         inv_inf.InList = true;
 
                         //add it
-                        System.Windows.Forms.ListViewItem ObjListItem;
+                        ListViewItem ObjListItem;
 
                         if (inv_inf.Enchant == 0)
                         {
@@ -729,7 +727,7 @@ namespace L2_login
                         inv_inf.InList = true;
 
                         //add it
-                        System.Windows.Forms.ListViewItem ObjListItem;
+                        ListViewItem ObjListItem;
 
                         if (inv_inf.Enchant == 0)
                         {
@@ -814,7 +812,7 @@ namespace L2_login
 
         private void UpdateMyBuffsListInternal()
         {
-            System.Collections.ArrayList dirty_items = new System.Collections.ArrayList();
+            ArrayList dirty_items = new ArrayList();
 
             for (int i = 0; i < listView_mybuffs_data.Items.Count; i++)
             {
@@ -871,8 +869,8 @@ namespace L2_login
                     }
 
                     //add it
-                    System.Windows.Forms.ListViewItem ObjListItem;
-                    ObjListItem = new ListViewItem(Util.GetSkillName(cb.ID,cb.SkillLevel));//Name
+                    ListViewItem ObjListItem;
+                    ObjListItem = new ListViewItem(Util.GetSkillName(cb.ID, cb.SkillLevel));//Name
                     ObjListItem.SubItems.Add(cb.SkillLevel.ToString());//Title
                     if (cb.ExpiresTime == -1)
                     {

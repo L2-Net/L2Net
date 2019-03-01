@@ -22,7 +22,7 @@ namespace L2_login
             this.HorizontalScrollbar = true;
             //this.HorizontalExtent = this.Width - 32;
             this.Font = new Font("Arial", 9);
-            
+
             LineColors = new ArrayList();
 
             this.MeasureItem += new MeasureItemEventHandler(ColorListBox_MeasureItem);
@@ -140,7 +140,7 @@ namespace L2_login
                         e.DrawBackground();
 
                         string line = ((ListBox)sender).Items[e.Index].ToString();
-                        Brush color = (System.Drawing.Brush)LineColors[e.Index];
+                        Brush color = (Brush)LineColors[e.Index];
 
                         /*SizeF size = e.Graphics.MeasureString(line, e.Font);
 

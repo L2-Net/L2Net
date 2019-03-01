@@ -1,56 +1,53 @@
 using System;
 using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Overlay.
-	/// </summary>
-	public class Overlay : System.Windows.Forms.Form
-	{
-		private System.Windows.Forms.Label label_target_cp;
+    /// <summary>
+    /// Summary description for Overlay.
+    /// </summary>
+    public class Overlay : System.Windows.Forms.Form
+    {
+        private System.Windows.Forms.Label label_target_cp;
         private System.Windows.Forms.Label label_target_mp;
         private System.Windows.Forms.Label label_target_hp;
         private System.Windows.Forms.Label label_target_name;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public Overlay()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public Overlay()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-		}
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Overlay));
             this.label_target_cp = new System.Windows.Forms.Label();
             this.label_target_mp = new System.Windows.Forms.Label();
@@ -60,54 +57,54 @@ namespace L2_login
             // 
             // label_target_cp
             // 
-            this.label_target_cp.BackColor = System.Drawing.Color.Transparent;
-            this.label_target_cp.ForeColor = System.Drawing.Color.White;
+            this.label_target_cp.BackColor = Color.Transparent;
+            this.label_target_cp.ForeColor = Color.White;
             this.label_target_cp.Location = new System.Drawing.Point(24, 16);
             this.label_target_cp.Name = "label_target_cp";
-            this.label_target_cp.Size = new System.Drawing.Size(128, 16);
+            this.label_target_cp.Size = new Size(128, 16);
             this.label_target_cp.TabIndex = 11;
             this.label_target_cp.Text = "-cp-";
-            this.label_target_cp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_target_cp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_target_mp
             // 
-            this.label_target_mp.BackColor = System.Drawing.Color.Transparent;
-            this.label_target_mp.ForeColor = System.Drawing.Color.White;
+            this.label_target_mp.BackColor = Color.Transparent;
+            this.label_target_mp.ForeColor = Color.White;
             this.label_target_mp.Location = new System.Drawing.Point(24, 48);
             this.label_target_mp.Name = "label_target_mp";
-            this.label_target_mp.Size = new System.Drawing.Size(128, 16);
+            this.label_target_mp.Size = new Size(128, 16);
             this.label_target_mp.TabIndex = 10;
             this.label_target_mp.Text = "-mp-";
-            this.label_target_mp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_target_mp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_target_hp
             // 
-            this.label_target_hp.BackColor = System.Drawing.Color.Transparent;
-            this.label_target_hp.ForeColor = System.Drawing.Color.White;
+            this.label_target_hp.BackColor = Color.Transparent;
+            this.label_target_hp.ForeColor = Color.White;
             this.label_target_hp.Location = new System.Drawing.Point(24, 32);
             this.label_target_hp.Name = "label_target_hp";
-            this.label_target_hp.Size = new System.Drawing.Size(128, 16);
+            this.label_target_hp.Size = new Size(128, 16);
             this.label_target_hp.TabIndex = 9;
             this.label_target_hp.Text = "-hp-";
-            this.label_target_hp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_target_hp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_target_name
             // 
-            this.label_target_name.BackColor = System.Drawing.Color.Transparent;
-            this.label_target_name.ForeColor = System.Drawing.Color.GreenYellow;
+            this.label_target_name.BackColor = Color.Transparent;
+            this.label_target_name.ForeColor = Color.GreenYellow;
             this.label_target_name.Location = new System.Drawing.Point(24, 0);
             this.label_target_name.Name = "label_target_name";
-            this.label_target_name.Size = new System.Drawing.Size(128, 16);
+            this.label_target_name.Size = new Size(128, 16);
             this.label_target_name.TabIndex = 8;
             this.label_target_name.Text = "-none-";
-            this.label_target_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_target_name.Click += new System.EventHandler(this.label_target_name_Click);
+            this.label_target_name.TextAlign = ContentAlignment.MiddleCenter;
+            this.label_target_name.Click += new EventHandler(this.label_target_name_Click);
             // 
             // Overlay
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(170, 64);
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            this.ClientSize = new Size(170, 64);
             this.ControlBox = false;
             this.Controls.Add(this.label_target_cp);
             this.Controls.Add(this.label_target_mp);
@@ -124,9 +121,9 @@ namespace L2_login
             this.TopMost = true;
             this.ResumeLayout(false);
 
-		}
-		#endregion
-        
+        }
+        #endregion
+
         delegate void Set_Target_Name_Callback(string name);
         public void Set_Target_Name(string name)
         {

@@ -2,8 +2,8 @@ using System;
 
 namespace L2_login
 {
-	public class ItemInfo : Object_Base
-	{
+    public class ItemInfo : Object_Base
+    {
         public volatile uint ItemID = 0;//this is the item id from the file
         public volatile float X = 0;
         public volatile float Y = 0;
@@ -19,8 +19,8 @@ namespace L2_login
 
         private readonly object CountLock = new object();
 
-		public void Load(ByteBuffer buff)
-		{
+        public void Load(ByteBuffer buff)
+        {
 
             ID = buff.ReadUInt32();
             ItemID = buff.ReadUInt32();
@@ -48,14 +48,14 @@ namespace L2_login
                     GameData.meshless_ignored += 1;
                 }
             }
-            
-            
+
+
 
             //Globals.l2net_home.Add_Text(" ID" + ID + " ItemID " + ItemID + " X " + X + " Y " + Y + " Z " + Z + " Stackable " + Stackable + " Count " + Count + " HasMesh " + HasMesh, Globals.Green, TextType.BOT);
-		}
+        }
 
-		public void LoadDrop(ByteBuffer buff)
-		{
+        public void LoadDrop(ByteBuffer buff)
+        {
 
             DroppedBy = buff.ReadUInt32();
             ID = buff.ReadUInt32();
@@ -83,8 +83,8 @@ namespace L2_login
                     GameData.meshless_ignored += 1;
                 }
             }
-            
-            
+
+
 
             //Globals.l2net_home.Add_Text("length" + length + " ID" + ID + " ItemID " + ItemID + " X " + X + " Y " + Y + " Z " + Z + " Stackable " + Stackable + " Count " + Count + " HasMesh " + HasMesh, Globals.Green, TextType.BOT);
         }
@@ -117,14 +117,14 @@ namespace L2_login
                         }
                     }
                     else
-                    { 
+                    {
                         //some kind of magical item? XD
                     }
                 }
 
             }
             catch
-            { 
+            {
                 //meh...
             }
             finally
@@ -134,7 +134,7 @@ namespace L2_login
             }
 
             return isgoodmob;
-            
+
         }
-	}
+    }
 }

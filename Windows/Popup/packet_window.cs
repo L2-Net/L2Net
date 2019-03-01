@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;//do wyj
 namespace L2_login
 {
     public partial class packet_window : Form
     {
-        public System.Windows.Forms.ListViewItem[] cache_lictview_items;//= new System.Windows.Forms.ListViewItem[10000];
+        public ListViewItem[] cache_lictview_items;//= new System.Windows.Forms.ListViewItem[10000];
         //public int max_listview_count = 0;
 
         public packet_window()
@@ -33,7 +26,7 @@ namespace L2_login
             }
             checkBox2.Checked = Globals.pck_thread.hide_cli_pck; // hide client
             checkBox3.Checked = Globals.pck_thread.hide_srv_pck; // hide server
-            checkBox4.Checked =Globals.pck_thread.search_pck_names; // search in pck names
+            checkBox4.Checked = Globals.pck_thread.search_pck_names; // search in pck names
 
             if (Globals.pck_thread.wind_combo_set == true)
             {
@@ -72,163 +65,163 @@ namespace L2_login
             //this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             // this.UpdateStyles();
         }
-  /*      private void listView1_retriveitem(object sender, RetrieveVirtualItemEventArgs e)
-        {
-            try
-            {
-                if (e.ItemIndex >= cache_listviev.Count)
-                {
-                    if (Globals.pck_thread.filter_wind_pck == true)
-                    {
-                        if (e.ItemIndex >= Globals.pck_thread.filtered_pck.Count)
-                        {
-                            // wtf here ???
-                        }
-                        else
-                        {
-                            #region eeee1
-                            e.Item = new ListViewItem();
-                            e.Item.Text = e.ItemIndex.ToString(); // index
-                            if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].type == 1) // client
-                            {
-                                e.Item.SubItems.Add("Cli");
-                            }
-                            else //srv
-                            {
-                                e.Item.SubItems.Add("Srv");
-                            }
-                            e.Item.SubItems.Add(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].time);
-                            e.Item.SubItems.Add(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer.Length.ToString());
-                            if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].type == 1) // client
-                            {
-                                e.Item.SubItems.Add(Globals.pck_thread.get_cli_pck_name(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer));
-                                string pck_id;
-                                if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0] == 0xd0)
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
-                                    pck_id += ":";
-                                    pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[1].ToString("X2");
-                                    pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[2].ToString("X2");
-                                }
-                                else
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
-                                }
-                                e.Item.SubItems.Add(pck_id);
-                                e.Item.BackColor = System.Drawing.Color.FromArgb(255, 250, 168);
-                                //
-                            }
-                            else//srv
-                            {
-                                e.Item.SubItems.Add(Globals.pck_thread.get_srv_pck_name(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer));
-                                string pck_id;
-                                if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0] == 0xfe)
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
-                                    pck_id += ":";
-                                    pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[1].ToString("X2");
-                                    pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[2].ToString("X2");
-                                }
-                                else
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
-                                }
-                                e.Item.SubItems.Add(pck_id);
-                                e.Item.BackColor = System.Drawing.Color.FromArgb(224, 245, 192);
-                            }
-                            #endregion
-                            cache_listviev.Add(e.Item);
-                            return;
-                        }
+        /*      private void listView1_retriveitem(object sender, RetrieveVirtualItemEventArgs e)
+              {
+                  try
+                  {
+                      if (e.ItemIndex >= cache_listviev.Count)
+                      {
+                          if (Globals.pck_thread.filter_wind_pck == true)
+                          {
+                              if (e.ItemIndex >= Globals.pck_thread.filtered_pck.Count)
+                              {
+                                  // wtf here ???
+                              }
+                              else
+                              {
+                                  #region eeee1
+                                  e.Item = new ListViewItem();
+                                  e.Item.Text = e.ItemIndex.ToString(); // index
+                                  if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].type == 1) // client
+                                  {
+                                      e.Item.SubItems.Add("Cli");
+                                  }
+                                  else //srv
+                                  {
+                                      e.Item.SubItems.Add("Srv");
+                                  }
+                                  e.Item.SubItems.Add(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].time);
+                                  e.Item.SubItems.Add(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer.Length.ToString());
+                                  if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].type == 1) // client
+                                  {
+                                      e.Item.SubItems.Add(Globals.pck_thread.get_cli_pck_name(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer));
+                                      string pck_id;
+                                      if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0] == 0xd0)
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
+                                          pck_id += ":";
+                                          pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[1].ToString("X2");
+                                          pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[2].ToString("X2");
+                                      }
+                                      else
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
+                                      }
+                                      e.Item.SubItems.Add(pck_id);
+                                      e.Item.BackColor = System.Drawing.Color.FromArgb(255, 250, 168);
+                                      //
+                                  }
+                                  else//srv
+                                  {
+                                      e.Item.SubItems.Add(Globals.pck_thread.get_srv_pck_name(Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer));
+                                      string pck_id;
+                                      if (Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0] == 0xfe)
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
+                                          pck_id += ":";
+                                          pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[1].ToString("X2");
+                                          pck_id += Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[2].ToString("X2");
+                                      }
+                                      else
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[Globals.pck_thread.filtered_pck[e.ItemIndex]].bytebuffer[0].ToString("X2");
+                                      }
+                                      e.Item.SubItems.Add(pck_id);
+                                      e.Item.BackColor = System.Drawing.Color.FromArgb(224, 245, 192);
+                                  }
+                                  #endregion
+                                  cache_listviev.Add(e.Item);
+                                  return;
+                              }
 
-                    }
-                    else// bez filtra
-                    {
-                        if (e.ItemIndex >= Globals.pck_thread.pck_record.Count)
-                        {
-                            // wtf here ???
-                        }
-                        else
-                        {
-                            #region eee2
-                            //listView1.VirtualListSize++;
-                            e.Item = new ListViewItem();
-                            e.Item.Text = e.ItemIndex.ToString(); // index
-                            if (Globals.pck_thread.pck_record[e.ItemIndex].type == 1) // client
-                            {
-                                e.Item.SubItems.Add("Cli");
-                            }
-                            else // srv
-                            {
-                                e.Item.SubItems.Add("Srv");
-                            }
-                            e.Item.SubItems.Add(Globals.pck_thread.pck_record[e.ItemIndex].time);
-                            e.Item.SubItems.Add(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer.Length.ToString());
-                            if (Globals.pck_thread.pck_record[e.ItemIndex].type == 1) // client
-                            {
-                                e.Item.SubItems.Add(Globals.pck_thread.get_cli_pck_name(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer));
-                                string pck_id;
-                                if (Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0] == 0xd0)
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
-                                    pck_id += ":";
-                                    pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[1].ToString("X2");
-                                    pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[2].ToString("X2");
-                                }
-                                else
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
-                                }
-                                e.Item.SubItems.Add(pck_id);
-                                e.Item.BackColor = System.Drawing.Color.FromArgb(255, 250, 168);
-                                //
-                            }
-                            else//srv
-                            {
-                                e.Item.SubItems.Add(Globals.pck_thread.get_srv_pck_name(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer));
-                                string pck_id;
-                                if (Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0] == 0xfe)
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
-                                    pck_id += ":";
-                                    pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[1].ToString("X2");
-                                    pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[2].ToString("X2");
-                                }
-                                else
-                                {
-                                    pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
-                                }
-                                e.Item.SubItems.Add(pck_id);
-                                e.Item.BackColor = System.Drawing.Color.FromArgb(224, 245, 192);
+                          }
+                          else// bez filtra
+                          {
+                              if (e.ItemIndex >= Globals.pck_thread.pck_record.Count)
+                              {
+                                  // wtf here ???
+                              }
+                              else
+                              {
+                                  #region eee2
+                                  //listView1.VirtualListSize++;
+                                  e.Item = new ListViewItem();
+                                  e.Item.Text = e.ItemIndex.ToString(); // index
+                                  if (Globals.pck_thread.pck_record[e.ItemIndex].type == 1) // client
+                                  {
+                                      e.Item.SubItems.Add("Cli");
+                                  }
+                                  else // srv
+                                  {
+                                      e.Item.SubItems.Add("Srv");
+                                  }
+                                  e.Item.SubItems.Add(Globals.pck_thread.pck_record[e.ItemIndex].time);
+                                  e.Item.SubItems.Add(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer.Length.ToString());
+                                  if (Globals.pck_thread.pck_record[e.ItemIndex].type == 1) // client
+                                  {
+                                      e.Item.SubItems.Add(Globals.pck_thread.get_cli_pck_name(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer));
+                                      string pck_id;
+                                      if (Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0] == 0xd0)
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
+                                          pck_id += ":";
+                                          pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[1].ToString("X2");
+                                          pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[2].ToString("X2");
+                                      }
+                                      else
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
+                                      }
+                                      e.Item.SubItems.Add(pck_id);
+                                      e.Item.BackColor = System.Drawing.Color.FromArgb(255, 250, 168);
+                                      //
+                                  }
+                                  else//srv
+                                  {
+                                      e.Item.SubItems.Add(Globals.pck_thread.get_srv_pck_name(Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer));
+                                      string pck_id;
+                                      if (Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0] == 0xfe)
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
+                                          pck_id += ":";
+                                          pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[1].ToString("X2");
+                                          pck_id += Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[2].ToString("X2");
+                                      }
+                                      else
+                                      {
+                                          pck_id = Globals.pck_thread.pck_record[e.ItemIndex].bytebuffer[0].ToString("X2");
+                                      }
+                                      e.Item.SubItems.Add(pck_id);
+                                      e.Item.BackColor = System.Drawing.Color.FromArgb(224, 245, 192);
 
-                            }
-                            #endregion
-                            cache_listviev.Add(e.Item);
-                            return;
-                        }
-                    }
-                }
-                else
-                {
-                    e.Item = cache_listviev[e.ItemIndex];
-                }
+                                  }
+                                  #endregion
+                                  cache_listviev.Add(e.Item);
+                                  return;
+                              }
+                          }
+                      }
+                      else
+                      {
+                          e.Item = cache_listviev[e.ItemIndex];
+                      }
 
-            }
-            catch
-            {
-                e.Item = new ListViewItem();
-                e.Item.SubItems.Add("excep");
-                e.Item.SubItems.Add("excep");
-                e.Item.SubItems.Add("excep");
-                e.Item.SubItems.Add("excep");
-                e.Item.SubItems.Add("excep");
-                e.Item.SubItems.Add("excep");
-                // oki
-            }
+                  }
+                  catch
+                  {
+                      e.Item = new ListViewItem();
+                      e.Item.SubItems.Add("excep");
+                      e.Item.SubItems.Add("excep");
+                      e.Item.SubItems.Add("excep");
+                      e.Item.SubItems.Add("excep");
+                      e.Item.SubItems.Add("excep");
+                      e.Item.SubItems.Add("excep");
+                      // oki
+                  }
 
 
-        }
-   */
+              }
+         */
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indexes = this.listView1.SelectedIndices;
@@ -311,7 +304,7 @@ namespace L2_login
               }
              */
             listView1.BeginUpdate();
-           Globals.pck_thread.temp_cache_for_pck_window.Clear();
+            Globals.pck_thread.temp_cache_for_pck_window.Clear();
             if (Globals.pck_thread.filter_wind_pck == true)
             {
                 if (Globals.pck_thread.filtered_pck.Count == 0)
@@ -418,7 +411,7 @@ namespace L2_login
                             byte[] bytearre = Globals.pck_thread.StringToByteArray2(proctext);
                             ByteBuffer bytebuff = new ByteBuffer(bytearre);
                             Globals.gamedata.SendToGameServerInject(bytebuff);
-                            
+
                         }
                         else // send to client
                         {
@@ -632,7 +625,7 @@ namespace L2_login
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) // folow new pck
         {
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 Globals.pck_thread.folow_new_pck = true;
             }
@@ -660,7 +653,7 @@ namespace L2_login
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-           Globals.pck_thread.search_pck_names = checkBox4.Checked;
+            Globals.pck_thread.search_pck_names = checkBox4.Checked;
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
@@ -678,7 +671,7 @@ namespace L2_login
             else
             {
                 ListView.SelectedIndexCollection indexes = this.listView1.SelectedIndices;
-                
+
                 if (indexes.Count > 0)
                 {
                     if (indexes[0] < Globals.pck_thread.pck_record.Count)
@@ -702,7 +695,7 @@ namespace L2_login
                     }
                 }
             }
-            if(parse_codebox.TextLength > 0)
+            if (parse_codebox.TextLength > 0)
             {
                 if (temp_pck.Length > 0)
                 {
@@ -712,13 +705,13 @@ namespace L2_login
                     {
                         if (tmp_data.pck_check())
                         {
-                            textBox2.Text =  tmp_data.parse();
+                            textBox2.Text = tmp_data.parse();
                         }
                     }
                     //if (tmp_data.error_check())
                     //
-                        error_label.Text = tmp_data.error_string();
-                       // MessageBox.Show("dupa error.", "Pika Pika!", MessageBoxButtons.YesNo);
+                    error_label.Text = tmp_data.error_string();
+                    // MessageBox.Show("dupa error.", "Pika Pika!", MessageBoxButtons.YesNo);
                     //}
                 }
             }
@@ -731,13 +724,13 @@ namespace L2_login
             new_win.Show();
         }
 
-      
 
-        
-       // public void Close()
-       // {
+
+
+        // public void Close()
+        // {
         //    MessageBox.Show("close wind?", "Pika Pika!", MessageBoxButtons.YesNo);
-       // }
+        // }
 
     }//end class
 }

@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
+using System.IO;
 
 namespace L2_login
 {
@@ -8,7 +8,7 @@ namespace L2_login
     {
         private void Dead_Command(string oldcmd, string newcmd)
         {
-            ScriptEngine.Script_Error(oldcmd + " no longer exists... please update your script and use " + newcmd + " instead!");
+            Script_Error(oldcmd + " no longer exists... please update your script and use " + newcmd + " instead!");
         }
 
         private void Script_SORT(string line)
@@ -35,7 +35,7 @@ namespace L2_login
 
             if (param1.Length == 0)
             {
-                ScriptEngine.Script_Error("variable name missing");
+                Script_Error("variable name missing");
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace L2_login
             {
                 if (((VariableList)Stack[StackHeight]).ContainsKey(param1))
                 {
-                    switch(((ScriptVariable)((VariableList)Stack[StackHeight])[param1]).Type)
+                    switch (((ScriptVariable)((VariableList)Stack[StackHeight])[param1]).Type)
                     {
                         case Var_Types.THREAD:
                             //stop the thread before we delete the variable
@@ -68,7 +68,7 @@ namespace L2_login
                 }
             }
 
-            ScriptEngine.Script_Error("VARIABLE OF THIS NAME DOES NOT EXIST");
+            Script_Error("VARIABLE OF THIS NAME DOES NOT EXIST");
         }
 
         private void Script_MESSAGE_BOX(string line)
@@ -116,7 +116,7 @@ namespace L2_login
         private void Script_NMESSAGE_BOX(string line)
         {
             NonBMessageBox bbox = new NonBMessageBox(false);
-            
+
             bbox.title = Get_String(ref line);
             bbox.text = Get_String(ref line);
 
@@ -152,7 +152,7 @@ namespace L2_login
 
             try
             {
-                System.IO.FileInfo finfo = new System.IO.FileInfo(filename);
+                FileInfo finfo = new FileInfo(filename);
 
                 switch (var.Type)
                 {
@@ -201,7 +201,7 @@ namespace L2_login
                 switch (cmd.Command)
                 {
                     case ScriptCommands.END_OF_FILE:
-                        ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                        Script_Error("UNEXPECTED END_OF_FILE");
                         Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                         return;
                     case ScriptCommands.SWITCH:
@@ -230,22 +230,31 @@ namespace L2_login
                             {
                                 bool same = false;
 
-                                switch(var.Type)
+                                switch (var.Type)
                                 {
                                     case Var_Types.NULL:
                                         same = true;
                                         break;
                                     case Var_Types.INT:
-                                        if (System.Convert.ToInt64(var.Value) == System.Convert.ToInt64(nvar.Value))
+                                        if (Convert.ToInt64(var.Value) == Convert.ToInt64(nvar.Value))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                     case Var_Types.DOUBLE:
-                                        if (System.Convert.ToDouble(var.Value) == System.Convert.ToDouble(nvar.Value))
+                                        if (Convert.ToDouble(var.Value) == Convert.ToDouble(nvar.Value))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                     case Var_Types.STRING:
                                         if (System.String.Equals(var.Value.ToString(), nvar.Value.ToString()))
+                                        {
                                             same = true;
+                                        }
+
                                         break;
                                 }
                                 if (same)
@@ -299,7 +308,7 @@ namespace L2_login
             }
             else
             {
-                ScriptEngine.Script_Error("lock does not exist");
+                Script_Error("lock does not exist");
             }
         }
 
@@ -313,7 +322,7 @@ namespace L2_login
             sc_ec.File = file;
             sc_ec.Function = function.ToUpperInvariant();
 
-            switch(sc_ec.Type)
+            switch (sc_ec.Type)
             {
                 case EventType.ServerPacket:
                     int packet_id = Util.GetInt32(Get_String(ref line));
@@ -430,7 +439,7 @@ namespace L2_login
                     if (minI > maxI)
                     {
                         var.Value = 0L;
-                        ScriptEngine.Script_Error("MIN > MAX");
+                        Script_Error("MIN > MAX");
                     }
                     else
                     {
@@ -442,7 +451,7 @@ namespace L2_login
                     double maxD = Util.GetDouble(Get_String(ref line));
                     if (minD > maxD)
                     {
-                        ScriptEngine.Script_Error("MIN > MAX");
+                        Script_Error("MIN > MAX");
                     }
                     var.Value = (Globals.Rando.NextDouble() * (maxD - minD)) + minD;
                     break;
@@ -467,7 +476,7 @@ namespace L2_login
                 switch (cmd.Command)
                 {
                     case ScriptCommands.END_OF_FILE:
-                        ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                        Script_Error("UNEXPECTED END_OF_FILE");
                         Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                         return;
                     case ScriptCommands.FUNCTION:
@@ -517,13 +526,13 @@ namespace L2_login
             switch (var.Type)
             {
                 case Var_Types.INT:
-                    var.Value = System.DateTime.Now.Ticks;
+                    var.Value = DateTime.Now.Ticks;
                     break;
                 case Var_Types.DOUBLE:
-                    var.Value = (double)System.DateTime.Now.Ticks;
+                    var.Value = (double)DateTime.Now.Ticks;
                     break;
                 case Var_Types.STRING:
-                    var.Value = System.DateTime.Now.Ticks.ToString();
+                    var.Value = DateTime.Now.Ticks.ToString();
                     break;
             }
         }
@@ -533,7 +542,7 @@ namespace L2_login
             if (!is_debug || (is_debug && Globals.Script_Debugging))
             {
                 string param1 = Get_String(ref line);
-                Globals.l2net_home.Add_Text(param1,Globals.Red,TextType.BOT);
+                Globals.l2net_home.Add_Text(param1, Globals.Red, TextType.BOT);
             }
         }
 
@@ -543,7 +552,7 @@ namespace L2_login
             int tmp_int1 = Get_Label_Line(param1, ((ScriptThread)Threads[CurrentThread]).Current_File);
             if (tmp_int1 == -1)
             {
-                ScriptEngine.Script_Error("LABEL DOES NOT EXIST");
+                Script_Error("LABEL DOES NOT EXIST");
                 Globals.gamedata.CurrentScriptState = ScriptState.Error;
             }
             else
@@ -565,7 +574,7 @@ namespace L2_login
             int tmp_int1 = Util.GetInt32(param1);
             if (tmp_int1 < 0)
             {
-                ScriptEngine.Script_Error("LINE VALUE IS INVALID");
+                Script_Error("LINE VALUE IS INVALID");
                 Globals.gamedata.CurrentScriptState = ScriptState.Error;
             }
             else
@@ -578,7 +587,7 @@ namespace L2_login
         {
             string param1 = Get_String(ref line);
 
-            Script_SLEEP((double)Util.GetInt64(param1));
+            Script_SLEEP(Util.GetInt64(param1));
         }
 
         private void Script_SLEEP(double time)
@@ -587,7 +596,7 @@ namespace L2_login
             {
                 if (time != 0)
                 {
-                    ((ScriptThread)Threads[CurrentThread]).Sleep_Until = System.DateTime.Now.AddMilliseconds(time);
+                    ((ScriptThread)Threads[CurrentThread]).Sleep_Until = DateTime.Now.AddMilliseconds(time);
                 }
 
                 BumpThread = true;
@@ -610,7 +619,7 @@ namespace L2_login
             int dest_line = Get_Sub_Line(s_name, ((ScriptThread)Threads[CurrentThread]).Current_File);
             if (dest_line == -1)
             {
-                ScriptEngine.Script_Error("SUB DOES NOT EXIST");
+                Script_Error("SUB DOES NOT EXIST");
                 Globals.gamedata.CurrentScriptState = ScriptState.Error;
                 return;
             }
@@ -652,7 +661,7 @@ namespace L2_login
             string s_file = Get_String(ref line);
             s_file = Globals.PATH + "\\Scripts\\" + s_file;
 
-            s_file = s_file.ToUpperInvariant().Replace('/','\\');
+            s_file = s_file.ToUpperInvariant().Replace('/', '\\');
 
             try
             {
@@ -660,7 +669,7 @@ namespace L2_login
 
                 if (!Files.ContainsKey(s_file))
                 {
-                    System.IO.StreamReader filein = new System.IO.StreamReader(s_file);
+                    StreamReader filein = new StreamReader(s_file);
                     ScriptFile sf = new ScriptFile();
                     sf.Name = s_file;
                     sf.ReadScript(filein);
@@ -677,7 +686,7 @@ namespace L2_login
                     else
                     {
                         //we already have a class of this name... from a different file
-                        ScriptEngine.Script_Error("FAILED TO INCLUDE FILE : " + s_file + " : A class of this name [" + sc.Name + "] from a different file has already been loaded");
+                        Script_Error("FAILED TO INCLUDE FILE : " + s_file + " : A class of this name [" + sc.Name + "] from a different file has already been loaded");
                         Globals.gamedata.CurrentScriptState = ScriptState.Error;
                     }
                 }
@@ -690,7 +699,7 @@ namespace L2_login
             }
             catch
             {
-                ScriptEngine.Script_Error("FAILED TO INCLUDE FILE : " + s_file);
+                Script_Error("FAILED TO INCLUDE FILE : " + s_file);
                 Globals.gamedata.CurrentScriptState = ScriptState.Error;
             }
         }
@@ -702,7 +711,7 @@ namespace L2_login
             string s_var = Get_String(ref line);
             string s_values = line;
 
-            if (!System.IO.File.Exists(s_file))
+            if (!File.Exists(s_file))
             {
                 s_file = Globals.PATH + "\\Scripts\\" + s_file;
             }
@@ -710,7 +719,7 @@ namespace L2_login
             //if not... load the file into memory
             if (!Files.ContainsKey(s_file))
             {
-                System.IO.StreamReader filein = new System.IO.StreamReader(s_file);
+                StreamReader filein = new StreamReader(s_file);
                 ScriptFile sf = new ScriptFile();
                 sf.Name = s_file;
                 sf.ReadScript(filein);
@@ -764,7 +773,7 @@ namespace L2_login
 
                 int call_base = 0;
 
-                while(cname.EndsWith("BASE"))
+                while (cname.EndsWith("BASE"))
                 {
                     pipe = cname.LastIndexOf('.');
                     cname = cname.Substring(0, pipe);
@@ -778,17 +787,17 @@ namespace L2_login
                 {
                     if (call_base == 0)
                     {
-                        Script_Class sc = (Script_Class)ScriptEngine.Classes[((Script_ClassData)svar.Value).Name];
+                        Script_Class sc = (Script_Class)Classes[((Script_ClassData)svar.Value).Name];
 
                         Function_Call(sc.File, fname, s_var, s_values, true, svar);
                     }
                     else
                     {
-                        Script_Class sc = (Script_Class)ScriptEngine.Classes[((Script_ClassData)svar.Value).Name];
+                        Script_Class sc = (Script_Class)Classes[((Script_ClassData)svar.Value).Name];
 
-                        for(int i = 0; i < call_base; i++)
+                        for (int i = 0; i < call_base; i++)
                         {
-                            sc = (Script_Class)ScriptEngine.Classes[sc.ParentName];
+                            sc = (Script_Class)Classes[sc.ParentName];
                         }
 
                         Function_Call(sc.File, fname, s_var, s_values, true, svar);
@@ -816,7 +825,7 @@ namespace L2_login
                     }
                     catch (Exception e)
                     {
-                        ScriptEngine.Script_Error("Error parsing class function : " + cname + "." + fname + " :: " + e.Message);
+                        Script_Error("Error parsing class function : " + cname + "." + fname + " :: " + e.Message);
                         Globals.gamedata.CurrentScriptState = ScriptState.Error;
                     }
                     return;
@@ -838,15 +847,15 @@ namespace L2_login
             {
                 if (isClass)
                 {
-                    if (((Script_Class)ScriptEngine.Classes[((Script_ClassData)s_class.Value).Name]).ParentFile != "")
+                    if (((Script_Class)Classes[((Script_ClassData)s_class.Value).Name]).ParentFile != "")
                     {
-                        Function_Call(((Script_Class)ScriptEngine.Classes[((Script_ClassData)s_class.Value).Name]).ParentFile, s_name, s_var, s_values, isClass, s_class);
+                        Function_Call(((Script_Class)Classes[((Script_ClassData)s_class.Value).Name]).ParentFile, s_name, s_var, s_values, isClass, s_class);
                         return;
                     }
                 }
                 else
                 {
-                    ScriptEngine.Script_Error("FUNCTION DOES NOT EXIST : " + s_name);
+                    Script_Error("FUNCTION DOES NOT EXIST : " + s_name);
                     Globals.gamedata.CurrentScriptState = ScriptState.Error;
                     return;
                 }
@@ -870,7 +879,7 @@ namespace L2_login
                 case ScriptCommands.PRIVATE:
                     if (((ScriptThread)Threads[CurrentThread]).Current_File != s_file)
                     {
-                        ScriptEngine.Script_Error("ILLEGAL PRIVATE FUNCTION CALL");
+                        Script_Error("ILLEGAL PRIVATE FUNCTION CALL");
                         Line_Pos++;
                         return;
                     }
@@ -878,13 +887,13 @@ namespace L2_login
                 case ScriptCommands.PROTECTED:
                     if (((ScriptThread)Threads[CurrentThread]).Current_File != s_file)
                     {
-                        ScriptEngine.Script_Error("ILLEGAL PROTECTED FUNCTION CALL");
+                        Script_Error("ILLEGAL PROTECTED FUNCTION CALL");
                         Line_Pos++;
                         return;
                     }
                     break;
                 default:
-                    ScriptEngine.Script_Error("INVALID TYPED FUNCTION CALL");
+                    Script_Error("INVALID TYPED FUNCTION CALL");
                     Line_Pos++;
                     return;
             }
@@ -1023,7 +1032,7 @@ namespace L2_login
                 }
                 catch (Exception e)
                 {
-                    ScriptEngine.Script_Error("failed to delete thread id " + CurrentThread.ToString() + " : " + e.Message);
+                    Script_Error("failed to delete thread id " + CurrentThread.ToString() + " : " + e.Message);
                 }
                 return;
             }
@@ -1048,7 +1057,7 @@ namespace L2_login
         {
             Script_DEFINE(line, true, true);
         }
-        
+
         private void Script_DEFINE(string line, bool global = false, bool can_advance = true)
         {
             string param1 = Get_String(ref line);
@@ -1061,13 +1070,13 @@ namespace L2_login
             {
                 if (param1.Length == 0)
                 {
-                    ScriptEngine.Script_Error("variable type missing");
+                    Script_Error("variable type missing");
                     return;
                 }
 
                 if (param2.Length == 0)
                 {
-                    ScriptEngine.Script_Error("variable name missing");
+                    Script_Error("variable name missing");
                     return;
                 }
 
@@ -1085,7 +1094,7 @@ namespace L2_login
                     if (GlobalVariables.ContainsKey(param2))
                     {
                         //variable of this name already exists
-                        ScriptEngine.Script_Error("GLOBAL VARIABLE OF THIS NAME ALREADY EXISTS");
+                        Script_Error("GLOBAL VARIABLE OF THIS NAME ALREADY EXISTS");
                         return;
                     }
                 }
@@ -1094,7 +1103,7 @@ namespace L2_login
                     if (((VariableList)Stack[StackHeight]).ContainsKey(param2))
                     {
                         //variable of this name already exists
-                        ScriptEngine.Script_Error("VARIABLE OF THIS NAME ALREADY EXISTS");
+                        Script_Error("VARIABLE OF THIS NAME ALREADY EXISTS");
                         return;
                     }
                 }
@@ -1114,9 +1123,9 @@ namespace L2_login
                 {
                     if (!((Script_ClassData)new_var.Value).Initialized)
                     {
-                        if (((Script_Class)ScriptEngine.Classes[((Script_ClassData)new_var.Value).Name]).Has_Function("CONSTRUCT"))
+                        if (((Script_Class)Classes[((Script_ClassData)new_var.Value).Name]).Has_Function("CONSTRUCT"))
                         {
-                            Globals.scriptthread.Function_Call(((Script_Class)ScriptEngine.Classes[((Script_ClassData)new_var.Value).Name]).File, "CONSTRUCT", new_var.Name, param3, true, new_var);
+                            Globals.scriptthread.Function_Call(((Script_Class)Classes[((Script_ClassData)new_var.Value).Name]).File, "CONSTRUCT", new_var.Name, param3, true, new_var);
                             ((Script_ClassData)new_var.Value).Initialized = true;
                             do_advance = false;
                         }
@@ -1165,7 +1174,7 @@ namespace L2_login
                     break;
                 case "STRING":
                     new_var.Type = Var_Types.STRING;
-                    new_var.Value = System.Convert.ToString(value);
+                    new_var.Value = Convert.ToString(value);
                     break;
                 case "FILEWRITER":
                     if (Globals.AllowFiles)
@@ -1173,22 +1182,22 @@ namespace L2_login
                         //need to figure out how I want to let users write to files outside of the \Scripts\Files\ folder...
 
                         new_var.Type = Var_Types.FILEWRITER;
-                        new_var.Value = new System.IO.StreamWriter(Globals.PATH + "\\Scripts\\Files\\" + System.Convert.ToString(value), false);
+                        new_var.Value = new StreamWriter(Globals.PATH + "\\Scripts\\Files\\" + Convert.ToString(value), false);
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("script tried to create file writer without permission");
+                        Script_Error("script tried to create file writer without permission");
                     }
                     break;
                 case "FILEWRITER_APPEND"://really good idea by toydolls
                     if (Globals.AllowFiles)
                     {
                         new_var.Type = Var_Types.FILEWRITER;
-                        new_var.Value = new System.IO.StreamWriter(Globals.PATH + "\\Scripts\\Files\\" + System.Convert.ToString(value), true);
+                        new_var.Value = new StreamWriter(Globals.PATH + "\\Scripts\\Files\\" + Convert.ToString(value), true);
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("script tried to create file writer - append without permission");
+                        Script_Error("script tried to create file writer - append without permission");
                     }
                     break;
                 case "FILEREADER":
@@ -1196,35 +1205,35 @@ namespace L2_login
                     {
                         new_var.Type = Var_Types.FILEREADER;
 
-                        if (System.IO.File.Exists(Globals.PATH + "\\Scripts\\Files\\" + System.Convert.ToString(value)))
+                        if (File.Exists(Globals.PATH + "\\Scripts\\Files\\" + Convert.ToString(value)))
                         {
-                            new_var.Value = new System.IO.StreamReader(Globals.PATH + "\\Scripts\\Files\\" + System.Convert.ToString(value));
+                            new_var.Value = new StreamReader(Globals.PATH + "\\Scripts\\Files\\" + Convert.ToString(value));
                         }
                         else
                         {
-                            ScriptEngine.Script_Error("file [" + value + "] does not exist for reading");
+                            Script_Error("file [" + value + "] does not exist for reading");
                         }
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("script tried to create file reader without permission");
+                        Script_Error("script tried to create file reader without permission");
                     }
                     break;
                 case "ARRAYLIST":
                     new_var.Type = Var_Types.ARRAYLIST;
-                    new_var.Value = new System.Collections.ArrayList(Util.GetInt32(value));
+                    new_var.Value = new ArrayList(Util.GetInt32(value));
                     break;
                 case "SORTEDLIST":
                     new_var.Type = Var_Types.SORTEDLIST;
-                    new_var.Value = new System.Collections.SortedList(Util.GetInt32(value));
+                    new_var.Value = new SortedList(Util.GetInt32(value));
                     break;
                 case "STACK":
                     new_var.Type = Var_Types.STACK;
-                    new_var.Value = new System.Collections.Stack();
+                    new_var.Value = new Stack();
                     break;
                 case "QUEUE":
                     new_var.Type = Var_Types.QUEUE;
-                    new_var.Value = new System.Collections.Queue();
+                    new_var.Value = new Queue();
                     break;
                 case "BYTEBUFFER":
                     new_var.Type = Var_Types.BYTEBUFFER;
@@ -1254,15 +1263,15 @@ namespace L2_login
                     break;
                 case "THREAD":
                     new_var.Type = Var_Types.THREAD;
-                    new_var.Value = ScriptEngine.CreateThread(value);
+                    new_var.Value = CreateThread(value);
 
                     ((ScriptThread)new_var.Value).Stop();
 
-                    Threads.Add(((ScriptThread)new_var.Value).ID, ((ScriptThread)new_var.Value));
+                    Threads.Add(((ScriptThread)new_var.Value).ID, (ScriptThread)new_var.Value);
                     break;
                 default:
                     //check if it is a user defined type:
-                    if (ScriptEngine.Classes.ContainsKey(type))
+                    if (Classes.ContainsKey(type))
                     {
                         //Script_Class sc = (Script_Class)ScriptEngine.Classes[type];
                         new_var.Type = Var_Types.CLASS;
@@ -1271,7 +1280,7 @@ namespace L2_login
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("INVALID VARIABLE TYPE");
+                        Script_Error("INVALID VARIABLE TYPE");
                     }
                     break;
             }
@@ -1326,11 +1335,11 @@ namespace L2_login
             ScriptVariable y2 = Get_Var(sy2);
             ScriptVariable z2 = Get_Var(sz2);
 
-            double xlim = System.Convert.ToDouble(x1.Value) - System.Convert.ToDouble(x2.Value);
-            double ylim = System.Convert.ToDouble(y1.Value) - System.Convert.ToDouble(y2.Value);
-            double zlim = System.Convert.ToDouble(z1.Value) - System.Convert.ToDouble(z2.Value);
+            double xlim = Convert.ToDouble(x1.Value) - Convert.ToDouble(x2.Value);
+            double ylim = Convert.ToDouble(y1.Value) - Convert.ToDouble(y2.Value);
+            double zlim = Convert.ToDouble(z1.Value) - Convert.ToDouble(z2.Value);
 
-            double dist = System.Math.Sqrt(System.Math.Pow(xlim, 2) + System.Math.Pow(ylim, 2) + System.Math.Pow(zlim, 2));
+            double dist = Math.Sqrt(Math.Pow(xlim, 2) + Math.Pow(ylim, 2) + Math.Pow(zlim, 2));
 
             if (dest.Type == Var_Types.INT)
             {
@@ -1369,7 +1378,7 @@ namespace L2_login
                         switch (cmd.Command)
                         {
                             case ScriptCommands.END_OF_FILE:
-                                ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                                Script_Error("UNEXPECTED END_OF_FILE");
                                 Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                                 return;
                             case ScriptCommands.WHILE:
@@ -1414,7 +1423,7 @@ namespace L2_login
                     switch (cmd.Command)
                     {
                         case ScriptCommands.END_OF_FILE:
-                            ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                            Script_Error("UNEXPECTED END_OF_FILE");
                             Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                             return;
                         case ScriptCommands.WEND:
@@ -1436,7 +1445,7 @@ namespace L2_login
                 }//end of for loop
             }
 
-            ScriptEngine.Script_Error("WEND ran without finding WHILE");
+            Script_Error("WEND ran without finding WHILE");
         }
 
         private void Script_LOOP(string inp)
@@ -1462,7 +1471,7 @@ namespace L2_login
                         switch (cmd.Command)
                         {
                             case ScriptCommands.END_OF_FILE:
-                                ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                                Script_Error("UNEXPECTED END_OF_FILE");
                                 Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                                 return;
                             case ScriptCommands.LOOP:
@@ -1484,7 +1493,7 @@ namespace L2_login
                     }//end of for loop
                 }
 
-                ScriptEngine.Script_Error("LOOP ran without finding DO");
+                Script_Error("LOOP ran without finding DO");
             }
             else
             {
@@ -1528,16 +1537,16 @@ namespace L2_login
             if (sortedlist.Type == Var_Types.SORTEDLIST)
             {
                 is_sortedlist = true;
-                _length = ((System.Collections.SortedList)sortedlist.Value).Values.Count;
+                _length = ((SortedList)sortedlist.Value).Values.Count;
             }
             else if (sortedlist.Type == Var_Types.ARRAYLIST)
             {
                 is_sortedlist = false;
-                _length = ((System.Collections.ArrayList)sortedlist.Value).Count;
+                _length = ((ArrayList)sortedlist.Value).Count;
             }
             else
             {
-                ScriptEngine.Script_Error("INVALID DATASET");
+                Script_Error("INVALID DATASET");
             }
 
             bool skip = true;
@@ -1582,14 +1591,14 @@ namespace L2_login
                     break;
                 default:
                     //check if it is a user defined type:
-                    if (ScriptEngine.Classes.ContainsKey(stype))
+                    if (Classes.ContainsKey(stype))
                     {
                         vt = Var_Types.CLASS;
                         ct = stype;
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("INVALID VARIABLE TYPE");
+                        Script_Error("INVALID VARIABLE TYPE");
                         return;
                     }
                     break;
@@ -1600,11 +1609,11 @@ namespace L2_login
             {
                 if (is_sortedlist)
                 {
-                    if (((ScriptVariable)((System.Collections.SortedList)sortedlist.Value).GetByIndex(index)).Type == vt)
+                    if (((ScriptVariable)((SortedList)sortedlist.Value).GetByIndex(index)).Type == vt)
                     {
                         if (vt == Var_Types.CLASS)
                         {
-                            if (((Script_ClassData)((ScriptVariable)((System.Collections.SortedList)sortedlist.Value).GetByIndex(index)).Value).Name == ct)
+                            if (((Script_ClassData)((ScriptVariable)((SortedList)sortedlist.Value).GetByIndex(index)).Value).Name == ct)
                             {
                                 var.Value = (long)index;
                                 skip = false;
@@ -1621,11 +1630,11 @@ namespace L2_login
                 }
                 else
                 {
-                    if (((ScriptVariable)((System.Collections.ArrayList)sortedlist.Value)[index]).Type == vt)
+                    if (((ScriptVariable)((ArrayList)sortedlist.Value)[index]).Type == vt)
                     {
                         if (vt == Var_Types.CLASS)
                         {
-                            if (((Script_ClassData)((ScriptVariable)((System.Collections.ArrayList)sortedlist.Value)[index]).Value).Name == ct)
+                            if (((Script_ClassData)((ScriptVariable)((ArrayList)sortedlist.Value)[index]).Value).Name == ct)
                             {
                                 var.Value = (long)index;
                                 skip = false;
@@ -1663,7 +1672,7 @@ namespace L2_login
                         switch (cmd.Command)
                         {
                             case ScriptCommands.END_OF_FILE:
-                                ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                                Script_Error("UNEXPECTED END_OF_FILE");
                                 Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                                 return;
                             case ScriptCommands.FOREACH:
@@ -1709,7 +1718,7 @@ namespace L2_login
                     switch (cmd.Command)
                     {
                         case ScriptCommands.END_OF_FILE:
-                            ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                            Script_Error("UNEXPECTED END_OF_FILE");
                             Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                             return;
                         case ScriptCommands.FOREACH:
@@ -1728,14 +1737,16 @@ namespace L2_login
                     }
 
                     if (calling_line.LinkedLine != -1)
+                    {
                         break;
+                    }
                 }
             }
 
             if (calling_line.LinkedLine == -1)
             {
                 //baaad
-                ScriptEngine.Script_Error("NEXTEACH ran without finding FOREACH");
+                Script_Error("NEXTEACH ran without finding FOREACH");
                 Line_Pos++;//just skip out of this loop and move on
                 return;
             }
@@ -1761,16 +1772,16 @@ namespace L2_login
             if (sortedlist.Type == Var_Types.SORTEDLIST)
             {
                 is_sortedlist = true;
-                _length = ((System.Collections.SortedList)sortedlist.Value).Values.Count;
+                _length = ((SortedList)sortedlist.Value).Values.Count;
             }
             else if (sortedlist.Type == Var_Types.ARRAYLIST)
             {
                 is_sortedlist = false;
-                _length = ((System.Collections.ArrayList)sortedlist.Value).Count;
+                _length = ((ArrayList)sortedlist.Value).Count;
             }
             else
             {
-                ScriptEngine.Script_Error("INVALID DATASET");
+                Script_Error("INVALID DATASET");
             }
 
             bool skip = true;
@@ -1812,29 +1823,29 @@ namespace L2_login
                     break;
                 default:
                     //check if it is a user defined type:
-                    if (ScriptEngine.Classes.ContainsKey(stype))
+                    if (Classes.ContainsKey(stype))
                     {
                         vt = Var_Types.CLASS;
                         ct = stype;
                     }
                     else
                     {
-                        ScriptEngine.Script_Error("INVALID VARIABLE TYPE");
+                        Script_Error("INVALID VARIABLE TYPE");
                         return;
                     }
                     break;
             }
 
             //lets find the first instance of the value in the array and go with it
-            for (int index = System.Convert.ToInt32(var.Value) + 1; index < _length; index++)
+            for (int index = Convert.ToInt32(var.Value) + 1; index < _length; index++)
             {
                 if (is_sortedlist)
                 {
-                    if (((ScriptVariable)((System.Collections.SortedList)sortedlist.Value).GetByIndex(index)).Type == vt)
+                    if (((ScriptVariable)((SortedList)sortedlist.Value).GetByIndex(index)).Type == vt)
                     {
                         if (vt == Var_Types.CLASS)
                         {
-                            if (((Script_ClassData)((ScriptVariable)((System.Collections.SortedList)sortedlist.Value).GetByIndex(index)).Value).Name == ct)
+                            if (((Script_ClassData)((ScriptVariable)((SortedList)sortedlist.Value).GetByIndex(index)).Value).Name == ct)
                             {
                                 var.Value = (long)index;
                                 skip = false;
@@ -1851,11 +1862,11 @@ namespace L2_login
                 }
                 else
                 {
-                    if (((ScriptVariable)((System.Collections.ArrayList)sortedlist.Value)[index]).Type == vt)
+                    if (((ScriptVariable)((ArrayList)sortedlist.Value)[index]).Type == vt)
                     {
                         if (vt == Var_Types.CLASS)
                         {
-                            if (((Script_ClassData)((ScriptVariable)((System.Collections.ArrayList)sortedlist.Value)[index]).Value).Name == ct)
+                            if (((Script_ClassData)((ScriptVariable)((ArrayList)sortedlist.Value)[index]).Value).Name == ct)
                             {
                                 var.Value = (long)index;
                                 skip = false;
@@ -1882,7 +1893,7 @@ namespace L2_login
                 Line_Pos = calling_line.LinkedLine + 1;
             }
         }
-        
+
         private void Script_FOR(string inp)
         {
             string sval = Get_String(ref inp).ToUpperInvariant();
@@ -1955,7 +1966,7 @@ namespace L2_login
                         switch (cmd.Command)
                         {
                             case ScriptCommands.END_OF_FILE:
-                                ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                                Script_Error("UNEXPECTED END_OF_FILE");
                                 Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                                 return;
                             case ScriptCommands.FOR:
@@ -2001,7 +2012,7 @@ namespace L2_login
                     switch (cmd.Command)
                     {
                         case ScriptCommands.END_OF_FILE:
-                            ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                            Script_Error("UNEXPECTED END_OF_FILE");
                             Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                             return;
                         case ScriptCommands.FOR:
@@ -2020,14 +2031,16 @@ namespace L2_login
                     }
 
                     if (calling_line.LinkedLine != -1)
+                    {
                         break;
+                    }
                 }
             }
 
             if (calling_line.LinkedLine == -1)
             {
                 //baaad
-                ScriptEngine.Script_Error("NEXT ran without finding FOR");
+                Script_Error("NEXT ran without finding FOR");
                 Line_Pos++;//just skip out of this loop and move on
                 return;
             }
@@ -2123,7 +2136,7 @@ namespace L2_login
                         switch (cmd.Command)
                         {
                             case ScriptCommands.END_OF_FILE:
-                                ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                                Script_Error("UNEXPECTED END_OF_FILE");
                                 Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                                 return;
                             case ScriptCommands.IF:
@@ -2175,7 +2188,7 @@ namespace L2_login
                     switch (cmd.Command)
                     {
                         case ScriptCommands.END_OF_FILE:
-                            ScriptEngine.Script_Error("UNEXPECTED END_OF_FILE");
+                            Script_Error("UNEXPECTED END_OF_FILE");
                             Globals.gamedata.CurrentScriptState = ScriptState.EOF;
                             return;
                         case ScriptCommands.IF:
@@ -2204,7 +2217,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._labellist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._labellist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._labellist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._labellist)
             {
@@ -2218,7 +2231,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
 
                 if (tmpcmd.Command == ScriptCommands.LABEL)
                 {
@@ -2245,7 +2258,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._functionlist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._functionlist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._functionlist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._functionlist)
             {
@@ -2262,7 +2275,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
                 tmpline = tmpcmd.UnParsedParams;
 
                 switch (tmpcmd.Command)
@@ -2363,7 +2376,7 @@ namespace L2_login
 
             if (((ScriptFile)Files[file])._sublist.ContainsKey(label_name))
             {
-                return ((ScriptLabel)(((ScriptFile)Files[file])._sublist[label_name])).Line;
+                return ((ScriptLabel)((ScriptFile)Files[file])._sublist[label_name]).Line;
             }
             /*foreach (ScriptLabel scr_lab in ((ScriptFile)Files[file])._sublist)
             {
@@ -2377,7 +2390,7 @@ namespace L2_login
 
             for (int i = 0; i < ((ScriptFile)Files[file])._ScriptLines.Count; i++)
             {
-                ScriptLine tmpcmd = ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[i]);
+                ScriptLine tmpcmd = (ScriptLine)((ScriptFile)Files[file])._ScriptLines[i];
 
                 if (tmpcmd.Command == ScriptCommands.SUB)
                 {

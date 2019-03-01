@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 
 namespace L2_login
 {
@@ -27,8 +27,8 @@ namespace L2_login
         AB_Invulnerable = 19,
     }
 
-	public class BuffTargetClass : BaseTargetClass
-	{
+    public class BuffTargetClass : BaseTargetClass
+    {
         public static string Get_BuffTrigger_Name(int type)
         {
             switch (type)
@@ -90,34 +90,34 @@ namespace L2_login
             }
         }
 
-		private System.Collections.ArrayList _TargetNames = new System.Collections.ArrayList();//uppercase array of target names
+        private ArrayList _TargetNames = new ArrayList();//uppercase array of target names
         public volatile BuffTriggers Type;
-		public volatile uint SkillID;
+        public volatile uint SkillID;
         public volatile int Min_Per;
-		private long _TickDuration;
+        private long _TickDuration;
         public volatile int Min_MP;
         public volatile int NeedTarget;//dont target, 1 - need target
         public volatile int Range;
 
-		private readonly object TargetNamesLock = new object();
-		private readonly object TickDurationLock = new object();
+        private readonly object TargetNamesLock = new object();
+        private readonly object TickDurationLock = new object();
 
-		public BuffTargetClass()
-		{
-			Reset();
-		}
+        public BuffTargetClass()
+        {
+            Reset();
+        }
 
-		public void Reset()
-		{
-			Active = false;
-			TargetNames.Clear();
-			Type = 0;
-			SkillID = 0;
-			Min_Per = 100;
-			TickDuration = 0L;
-			Min_MP = 0;
+        public void Reset()
+        {
+            Active = false;
+            TargetNames.Clear();
+            Type = 0;
+            SkillID = 0;
+            Min_Per = 100;
+            TickDuration = 0L;
+            Min_MP = 0;
             Range = Globals.gamedata.botoptions.HealRange;
-		}
+        }
 
         public bool IsReady()
         {
@@ -141,48 +141,48 @@ namespace L2_login
             return false;
         }
 
-		public System.Collections.ArrayList TargetNames
-		{
-			get
-			{
-				System.Collections.ArrayList tmp;
-				lock(TargetNamesLock)
-				{
-					tmp = this._TargetNames;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(TargetNamesLock)
-				{
-					_TargetNames = value;
-				}
-			}
-		}
-		public long TickDuration
-		{
-			get
-			{
-				long tmp;
-				lock(TickDurationLock)
-				{
-					tmp = this._TickDuration;
+        public ArrayList TargetNames
+        {
+            get
+            {
+                ArrayList tmp;
+                lock (TargetNamesLock)
+                {
+                    tmp = this._TargetNames;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (TargetNamesLock)
+                {
+                    _TargetNames = value;
+                }
+            }
+        }
+        public long TickDuration
+        {
+            get
+            {
+                long tmp;
+                lock (TickDurationLock)
+                {
+                    tmp = this._TickDuration;
 
                     /*if (Globals.RunDegraded && tmp < Globals.Degraded_MinItemTimer)
                     {
                         tmp = Globals.Degraded_MinItemTimer;
                     }*/
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(TickDurationLock)
-				{
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (TickDurationLock)
+                {
                     _TickDuration = value;
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }

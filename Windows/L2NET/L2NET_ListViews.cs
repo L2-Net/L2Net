@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -181,7 +179,7 @@ namespace L2_login
                         (player.isAlikeDead == 0x00 ? "Alive" : "Dead") + Environment.NewLine +
                         "Karma: " + player.Karma.ToString() + Environment.NewLine +
                         "Cast Speed: " + player.MatkSpeed.ToString() + Environment.NewLine +
-                        "Attack Speed: " + (player.PatkSpeed/* * player.AttackSpeedMult*/).ToString() + Environment.NewLine +
+                        "Attack Speed: " + player.PatkSpeed/* * player.AttackSpeedMult*/.ToString() + Environment.NewLine +
                         "Run Speed: " + (player.RunSpeed * player.MoveSpeedMult).ToString() + Environment.NewLine +
                         "Rec: " + player.RecAmount.ToString() + Environment.NewLine +
                         "X: " + player.X.ToString() + Environment.NewLine +
@@ -189,7 +187,7 @@ namespace L2_login
                         "Z: " + player.Z.ToString() + Environment.NewLine +
                         "Dist: " + Util.Distance(Globals.gamedata.my_char.X, Globals.gamedata.my_char.Y, Globals.gamedata.my_char.Z, player.X, player.Y, player.Z).ToString() + Environment.NewLine +
                         "Unique ID: " + player.ID + Environment.NewLine +
-                        "Name Color: " + player.NameColor.ToString() ;
+                        "Name Color: " + player.NameColor.ToString();
                 }
             }
 

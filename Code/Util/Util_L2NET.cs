@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO.Compression;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace L2_login
 {
@@ -20,8 +19,8 @@ namespace L2_login
                 Globals.map_window.Close();
             }
 
-            Util.ClearAllNearby();
-            Util.ClearAllSelf();
+            ClearAllNearby();
+            ClearAllSelf();
         }
 
         public static void Setup_Threads()
@@ -34,18 +33,18 @@ namespace L2_login
 
             Globals.gamedata.CreateCrypt();
 
-            Globals.oog_loginthread = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.OOG_Login));
+            Globals.oog_loginthread = new Thread(new ThreadStart(LoginServer.OOG_Login));
 
-            Globals.ig_loginthread = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.IG_Login));
-            Globals.ig_listener = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.IG_Listener));
-            Globals.ig_Gamelistener = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.IG_StartGameLinks));
-            Globals.loginsendthread = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.LoginSendThread));
-            Globals.loginreadthread = new System.Threading.Thread(new System.Threading.ThreadStart(LoginServer.LoginReadThread));
+            Globals.ig_loginthread = new Thread(new ThreadStart(LoginServer.IG_Login));
+            Globals.ig_listener = new Thread(new ThreadStart(LoginServer.IG_Listener));
+            Globals.ig_Gamelistener = new Thread(new ThreadStart(LoginServer.IG_StartGameLinks));
+            Globals.loginsendthread = new Thread(new ThreadStart(LoginServer.LoginSendThread));
+            Globals.loginreadthread = new Thread(new ThreadStart(LoginServer.LoginReadThread));
 
 
-            Globals.gameprocessdatathread = new System.Threading.Thread(new System.Threading.ThreadStart(GameServer.ProcessDataThread));
+            Globals.gameprocessdatathread = new Thread(new ThreadStart(GameServer.ProcessDataThread));
 
-            Globals.gamedrawthread = new System.Threading.Thread(new System.Threading.ThreadStart(MapThread.DrawGameThread));
+            Globals.gamedrawthread = new Thread(new ThreadStart(MapThread.DrawGameThread));
 
             Globals.gamethread = new ServerThread();
             Globals.clientthread = new ClientThread();
@@ -140,7 +139,7 @@ namespace L2_login
             {
                 if (Globals.Login_GameSocket != null)
                 {
-                    Globals.Login_GameSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
+                    Globals.Login_GameSocket.Shutdown(SocketShutdown.Both);
                     Globals.Login_GameSocket.Close();
                 }
             }
@@ -172,7 +171,7 @@ namespace L2_login
             {
                 if (Globals.Login_ClientSocket != null)
                 {
-                    Globals.Login_ClientSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
+                    Globals.Login_ClientSocket.Shutdown(SocketShutdown.Both);
                     Globals.Login_ClientSocket.Close();
                 }
             }
@@ -191,17 +190,21 @@ namespace L2_login
             try
             {
                 if (Globals.oog_loginthread != null)
+                {
                     Globals.oog_loginthread.Abort();
+                }
             }
             catch//(Exception e)
             {
                 //Globals.l2net_home.Add_Error("oog_loginthread : " + e.Message);
-            } 
-            
+            }
+
             try
             {
                 if (Globals.ig_loginthread != null)
+                {
                     Globals.ig_loginthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -211,7 +214,9 @@ namespace L2_login
             try
             {
                 if (Globals.ig_listener != null)
+                {
                     Globals.ig_listener.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -221,7 +226,9 @@ namespace L2_login
             try
             {
                 if (Globals.ig_Gamelistener != null)
+                {
                     Globals.ig_Gamelistener.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -231,7 +238,9 @@ namespace L2_login
             try
             {
                 if (Globals.loginsendthread != null)
+                {
                     Globals.loginsendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -241,7 +250,9 @@ namespace L2_login
             try
             {
                 if (Globals.loginreadthread != null)
+                {
                     Globals.loginreadthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -251,7 +262,9 @@ namespace L2_login
             try
             {
                 if (Globals.gameprocessdatathread != null)
+                {
                     Globals.gameprocessdatathread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -261,7 +274,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamedrawthread != null)
+                {
                     Globals.gamedrawthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -271,7 +286,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamethread != null)
+                {
                     Globals.gamethread.readthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -281,7 +298,9 @@ namespace L2_login
             try
             {
                 if (Globals.gamethread != null)
+                {
                     Globals.gamethread.sendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -291,7 +310,9 @@ namespace L2_login
             try
             {
                 if (Globals.clientthread != null)
+                {
                     Globals.clientthread.readthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -301,7 +322,9 @@ namespace L2_login
             try
             {
                 if (Globals.clientthread != null)
+                {
                     Globals.clientthread.sendthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -311,7 +334,9 @@ namespace L2_login
             try
             {
                 if (Globals.botaithread != null)
+                {
                     Globals.botaithread.botaithread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -322,7 +347,9 @@ namespace L2_login
             try
             {
                 if (Globals.followrestthread != null)
+                {
                     Globals.followrestthread.followrestthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -332,7 +359,9 @@ namespace L2_login
             try
             {
                 if (Globals.scriptthread != null)
+                {
                     Globals.scriptthread.scriptthread.Abort();
+                }
             }
             catch//(Exception e)
             {
@@ -380,12 +409,21 @@ namespace L2_login
         {
             Globals.gamedata.running = false;
 
-            if (Globals.gameprocessdatathread != null && Globals.gameprocessdatathread.ThreadState == System.Threading.ThreadState.Running)
+            if (Globals.gameprocessdatathread != null && Globals.gameprocessdatathread.ThreadState == ThreadState.Running)
+            {
                 Globals.gameprocessdatathread.Abort();
-            if (Globals.gamedrawthread != null && Globals.gamedrawthread.ThreadState == System.Threading.ThreadState.Running)
+            }
+
+            if (Globals.gamedrawthread != null && Globals.gamedrawthread.ThreadState == ThreadState.Running)
+            {
                 Globals.gamedrawthread.Abort();
-            if (Globals.directinputthread != null && Globals.directinputthread.ThreadState == System.Threading.ThreadState.Running)
+            }
+
+            if (Globals.directinputthread != null && Globals.directinputthread.ThreadState == ThreadState.Running)
+            {
                 Globals.directinputthread.Abort();
+            }
+
             Globals.pck_thread.stop();
             try
             {
@@ -492,7 +530,10 @@ namespace L2_login
             int startlen = start.Length * 2 + 2;
             int endlen = end.Length * 2;
             if (endlen > 0)
+            {
                 endlen += 2;
+            }
+
             ByteBuffer bbuff;
             if (Globals.gamedata.Chron >= Chronicle.CT2_6)
             {
@@ -517,7 +558,7 @@ namespace L2_login
 
         public static void Kill()
         {
-            Util.KillThreads();
+            KillThreads();
             System.Windows.Forms.Application.Exit();
         }
     }

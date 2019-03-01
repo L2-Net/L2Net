@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections;
+using System.Threading;
 
 namespace L2_login
 {
     public class FollowRestThread
     {
-        public System.Threading.Thread followrestthread;
+        public Thread followrestthread;
 
 
         private static bool breaktotop;
@@ -18,7 +18,7 @@ namespace L2_login
 
         public FollowRestThread()
         {
-            followrestthread = new System.Threading.Thread(new System.Threading.ThreadStart(FollowRest));
+            followrestthread = new Thread(new ThreadStart(FollowRest));
 
             followrestthread.IsBackground = true;
         }
@@ -35,18 +35,18 @@ namespace L2_login
             string b;
             string from;
             int marker;
-          
+
             while (Globals.gamedata.running)
             {
                 breaktotop = false;
                 //moved sleep to the top for when breaking to top
-                System.Threading.Thread.Sleep(Globals.SLEEP_FollowRestThread); //500, this thread don't need to be very responsive.
+                Thread.Sleep(Globals.SLEEP_FollowRestThread); //500, this thread don't need to be very responsive.
 
 
                 //check if botting is on, and we are in game by having sent the EW packet.
                 if (Globals.gamedata.BOTTING && Globals.enterworld_sent)
                 {
-                    if (!breaktotop && (Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0) && (Globals.gamedata.botoptions.FollowRest == 1) && (Globals.gamedata.botoptions.FollowRestID != 0))
+                    if (!breaktotop && Script_Ops.COUNT("NPC_TARGETME") == 0 && Script_Ops.COUNT("NPC_PARTYTARGETED") == 0 && (Globals.gamedata.botoptions.FollowRest == 1) && (Globals.gamedata.botoptions.FollowRestID != 0))
                     {
                         FollowRestInternal();
                     }
@@ -66,7 +66,7 @@ namespace L2_login
                 {
                     if (Globals.gamedata.autoreply)
                     {
-                        s = (Globals.gamedata.LocalChatQueue.Dequeue()).ToString();
+                        s = Globals.gamedata.LocalChatQueue.Dequeue().ToString();
                         marker = s.IndexOf(':');
                         try
                         {
@@ -86,7 +86,7 @@ namespace L2_login
                             b = a.ToUpperInvariant();
 
 
-                            if ((!String.IsNullOrEmpty(a))&& !b.Contains("CLEVERBOT"))
+                            if ((!String.IsNullOrEmpty(a)) && !b.Contains("CLEVERBOT"))
                             {
                                 ServerPackets.Send_Text(0, ChatBotSession.Think(s));
                             }
@@ -105,7 +105,7 @@ namespace L2_login
                     {
                         if (Globals.gamedata.autoreplyPM)
                         {
-                            s = (Globals.gamedata.PrivateMsgQueue.Dequeue()).ToString();
+                            s = Globals.gamedata.PrivateMsgQueue.Dequeue().ToString();
                             marker = s.IndexOf(':');
                             try
                             {
@@ -123,7 +123,7 @@ namespace L2_login
 
                                 b = a.ToUpperInvariant();
 
-                                if ((!String.IsNullOrEmpty(a))&& !b.Contains("CLEVERBOT"))
+                                if ((!String.IsNullOrEmpty(a)) && !b.Contains("CLEVERBOT"))
                                 {
                                     ServerPackets.Send_Text(2, from + " " + a);
                                 }
@@ -165,22 +165,22 @@ namespace L2_login
                     if ((player.isSitting == 0) && (Globals.gamedata.my_char.isSitting == 1)) //0 = Player is sitting, 1 = my char is standing
                     {
                         //Globals.l2net_home.Add_Text("Debug: Status changed, " + player.Name + " is sitting", Globals.Green, TextType.BOT);
-                        System.Threading.Thread.Sleep(1000);
+                        Thread.Sleep(1000);
                         SitStandInternal();
-                        System.Threading.Thread.Sleep(3000); //Give the char time to sit down
+                        Thread.Sleep(3000); //Give the char time to sit down
                         breaktotop = true;
                     }
                     else if ((player.isSitting == 1) && (Globals.gamedata.my_char.isSitting == 0)) //Stand up again
                     {
                         //Globals.l2net_home.Add_Text("Debug: Status changed, " + player.Name + " is standing up again", Globals.Green, TextType.BOT);
-                        System.Threading.Thread.Sleep(1000); //Check again in 1000ms
+                        Thread.Sleep(1000); //Check again in 1000ms
                         SitStandInternal();
-                        System.Threading.Thread.Sleep(3000); //Give the char time to stand up again
+                        Thread.Sleep(3000); //Give the char time to stand up again
                         breaktotop = true;
                     }
                     else
                     {
-                        System.Threading.Thread.Sleep(1000); //Long sleep to keep thread from taking too much system resources
+                        Thread.Sleep(1000); //Long sleep to keep thread from taking too much system resources
                     }
                 }
             }
@@ -246,7 +246,7 @@ namespace L2_login
                         {
                             //Globals.l2net_home.Add_Text("Inviting " + PN + " to party.");
                             ServerPackets.Command_Invite(PN);
-                            System.Threading.Thread.Sleep(11500); //10000 = timeout for invite
+                            Thread.Sleep(11500); //10000 = timeout for invite
 
                         }
                     }

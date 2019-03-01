@@ -1,27 +1,25 @@
-using System;
-
 namespace L2_login
 {
-	public class ZoneName : BaseText
-	{
-		public string Name = "";
+    public class ZoneName : BaseText
+    {
+        public string Name = "";
         public uint WorldX = 0;
         public uint WorldY = 0;
         public double MinZ = 0;
         public double MaxZ = 0;
 
-		public void Clear()
-		{
-			ID = 0;
-			Name = "";
+        public void Clear()
+        {
+            ID = 0;
+            Name = "";
             WorldX = 0;
             WorldY = 0;
             MinZ = 0;
             MaxZ = 0;
-		}
+        }
 
-		public void Parse(string inp)
-		{
+        public void Parse(string inp)
+        {
             int pipe = 0, oldpipe = 0;
             //ID
             pipe = inp.IndexOf('|', oldpipe);
@@ -46,5 +44,5 @@ namespace L2_login
             //Name
             Name = inp.Substring(oldpipe, inp.Length - oldpipe);
         }
-	}//end of Races
+    }//end of Races
 }

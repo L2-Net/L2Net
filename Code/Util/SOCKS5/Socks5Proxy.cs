@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-    
+
 /*
 * zahmed
 * Date 23 Jan 2004
@@ -27,18 +27,18 @@ namespace LMKR
         {
         }
 
-        private static string[] errorMsgs =	{
-										"Operation completed successfully.",
-										"General SOCKS server failure.",
-										"Connection not allowed by ruleset.",
-										"Network unreachable.",
-										"Host unreachable.",
-										"Connection refused.",
-										"TTL expired.",
-										"Command not supported.",
-										"Address type not supported.",
-										"Unknown error."
-									};
+        private static string[] errorMsgs =    {
+                                        "Operation completed successfully.",
+                                        "General SOCKS server failure.",
+                                        "Connection not allowed by ruleset.",
+                                        "Network unreachable.",
+                                        "Host unreachable.",
+                                        "Connection refused.",
+                                        "TTL expired.",
+                                        "Command not supported.",
+                                        "Address type not supported.",
+                                        "Unknown error."
+                                    };
 
         public static Socket ConnectToSocks5Proxy(string proxyAdress, ushort proxyPort, string destAddress, ushort destPort, string userName, string password)
         {
@@ -68,9 +68,11 @@ namespace LMKR
             response = new byte[256];
             int nGot = s.Receive(response, 0, 2, SocketFlags.None);
             if (nGot != 2)
+            {
                 throw new ConnectionException("Bad response received from proxy server.");
+            }
 
-            switch(response[1])
+            switch (response[1])
             {
                 case 0x00://no authentication
                     break;
@@ -97,9 +99,15 @@ namespace LMKR
                     response = new byte[256];
                     nGot = s.Receive(response, 0, 2, SocketFlags.None);
                     if (nGot != 2)
+                    {
                         throw new ConnectionException("Bad response received from proxy server.");
+                    }
+
                     if (response[1] != 0x00)
+                    {
                         throw new ConnectionException("Bad Usernaem/Password.");
+                    }
+
                     break;
                 case 0xFF:// No authentication method was accepted close the socket.
                     s.Close();
@@ -124,7 +132,9 @@ namespace LMKR
             // using big-edian byte order
             byte[] portBytes = BitConverter.GetBytes(destPort);
             for (int i = portBytes.Length - 1; i >= 0; i--)
+            {
                 request[nIndex++] = portBytes[i];
+            }
 
             // send connect request.
             s.Send(request, nIndex, SocketFlags.None);
@@ -133,7 +143,9 @@ namespace LMKR
             response = new byte[256];
             s.Receive(response);
             if (response[1] != 0x00)
+            {
                 throw new ConnectionException(errorMsgs[response[1]]);
+            }
 
             // Success Connected...
             return s;

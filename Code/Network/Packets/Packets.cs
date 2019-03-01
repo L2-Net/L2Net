@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace L2_login
 {
     enum PServer : byte
@@ -278,7 +274,7 @@ namespace L2_login
         EXPacket = 0xFE,
         EXDummy = 0xFF
     }
-    
+
     enum PServerEX : uint
     {
         ExDummy = 0x00,
@@ -302,9 +298,9 @@ namespace L2_login
         ExPartyPetWindowDelete = 0x6a,
         ExSendUIEventPacket = 0x8E,
         ExNewSkillToLearnByLevelup = 0xFC
-        
+
     }
-    
+
     enum PClient : byte
     {
         Logout = 0x00,
@@ -438,7 +434,7 @@ namespace L2_login
         SetPrivateStoreMsgSell = 0x97,
         RequestPetGetItem = 0x98,
         RequestPrivateStoreManageBuy = 0x99,
-        SetPrivateStoreListBuy  = 0x9A,
+        SetPrivateStoreListBuy = 0x9A,
         RequestPrivateStoreBuyManageCancel = 0x9B, //*
         RequestPrivateStoreQuitBuy = 0x9C,
         SetPrivateStoreMsgBuy = 0x9D,
@@ -574,7 +570,7 @@ namespace L2_login
         RequestRefineCancel = 0x46,
         RequestExMagicSkillUseGround = 0x47,
         RequestDuelSurrender = 0x48,
-        RequestExEnchantSkillInfoDetail = 0x49,        
+        RequestExEnchantSkillInfoDetail = 0x49,
         RequestFortressMapInfo = 0x48, // Freya
         SetPrivateStoreWholeMsg = 0x4D,
         RequestDispel = 0x4B, // Freya

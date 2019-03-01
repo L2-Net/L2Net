@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace L2_login
 {
     public class AstarNode : IComparable
     {
-        
+
         public double x; //upper left corner
         public double y;
         public double x2; //lower right corner
@@ -23,10 +22,10 @@ namespace L2_login
         public int hvalue;
         public int ivalue; //iterative cost...
 
-       public  AstarNode parent = null;
-        
-        public System.Collections.ArrayList adjacentNodes = new System.Collections.ArrayList();
-        public System.Collections.ArrayList children = new System.Collections.ArrayList();
+        public AstarNode parent = null;
+
+        public ArrayList adjacentNodes = new ArrayList();
+        public ArrayList children = new ArrayList();
 
         public AstarNode()
         {
@@ -39,7 +38,7 @@ namespace L2_login
             diagonal = false;
         }
 
-         public AstarNode getParent()
+        public AstarNode getParent()
         {
             return parent;
         }
@@ -66,8 +65,8 @@ namespace L2_login
             tmpNode.hvalue = this.hvalue;
             tmpNode.gvalue = this.gvalue;
             tmpNode.parent = this.parent;
-            tmpNode.adjacentNodes = (System.Collections.ArrayList)this.adjacentNodes.Clone();
-            tmpNode.children = (System.Collections.ArrayList)this.children.Clone();
+            tmpNode.adjacentNodes = (ArrayList)this.adjacentNodes.Clone();
+            tmpNode.children = (ArrayList)this.children.Clone();
             tmpNode.diagonal = this.diagonal;
 
             return tmpNode;
@@ -80,20 +79,31 @@ namespace L2_login
             AstarNode n1;
 
             if (x is AstarNode)
+            {
                 n1 = x as AstarNode;
+            }
             else
+            {
                 throw new ArgumentException("Object is not of type AstarNode");
-                            
+            }
 
             if (this == n1)
+            {
                 return 0;
+            }
+
             if (n1.hvalue == this.hvalue)
+            {
                 return 0;
+            }
+
             if (n1.hvalue > this.hvalue)
+            {
                 return -1;
-          
+            }
+
             return 1;
-      
+
         }
 
         public override string ToString()

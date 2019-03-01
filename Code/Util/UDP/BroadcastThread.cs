@@ -1,28 +1,27 @@
-using System;
 using System.Net.Sockets;
 
 namespace L2_login
 {
-	public class BroadcastThread
-	{
-		private System.Threading.Thread readthread;
+    public class BroadcastThread
+    {
+        private System.Threading.Thread readthread;
 
-		public BroadcastThread()
-		{
-			readthread = new System.Threading.Thread(new System.Threading.ThreadStart(BroadcastReadThread));
+        public BroadcastThread()
+        {
+            readthread = new System.Threading.Thread(new System.Threading.ThreadStart(BroadcastReadThread));
 
-			readthread.IsBackground = true;
+            readthread.IsBackground = true;
 
             readthread.Start();
-		}
+        }
 
-		private void BroadcastReadThread()
-		{
-			try
-			{
+        private void BroadcastReadThread()
+        {
+            try
+            {
                 System.Net.IPEndPoint LocalIpEndPoint = new System.Net.IPEndPoint(System.Net.IPAddress.Any, Globals.UDP_Port);//we want to receive on all ips for our set port
                 System.Net.IPEndPoint RemoteIpEndPoint = new System.Net.IPEndPoint(System.Net.IPAddress.Broadcast, 0);//ghetto port shit... tells us where it came from
-                
+
                 UdpClient udp_receive = new UdpClient();
 
                 udp_receive.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -30,20 +29,20 @@ namespace L2_login
 
                 udp_receive.Client.Bind(LocalIpEndPoint);
 
-				byte[] buff = new byte[1024];
-				NetPacket np = new NetPacket();
+                byte[] buff = new byte[1024];
+                NetPacket np = new NetPacket();
 
-				while(true == true)//Globals.gamedata.running)
-				{
+                while (true == true)//Globals.gamedata.running)
+                {
                     //this is a blocking call... hence no need to sleep ever
                     buff = udp_receive.Receive(ref RemoteIpEndPoint);
-					np.Parse(buff);
+                    np.Parse(buff);
 
                     switch ((NetPacketType)np.Type)
-					{
+                    {
                         case NetPacketType.Update://standard cp/hp/mp update
-							BroadCastStautsUpdate(np);
-							break;
+                            BroadCastStautsUpdate(np);
+                            break;
                         case NetPacketType.Script://script net send
                             ScriptNetEvent(np);
                             break;
@@ -54,15 +53,15 @@ namespace L2_login
                             BroadCastStautsUpdateNPC(np);
                             break;
                     }
-				}
+                }
 
                 //udp_receive.Close();
-			}
-			catch
-			{
-				Globals.l2net_home.Add_Error("NetError - local broadcast read thread failed");
-			}
-		}
+            }
+            catch
+            {
+                Globals.l2net_home.Add_Error("NetError - local broadcast read thread failed");
+            }
+        }
 
         private void ScriptNetEvent(NetPacket np)
         {
@@ -91,13 +90,13 @@ namespace L2_login
                 sc_ev.Variables.Add(new ScriptVariable(np.Sender, "SENDER", Var_Types.STRING, Var_State.PUBLIC));
                 sc_ev.Variables.Add(new ScriptVariable((long)np.SenderID, "SENDERID", Var_Types.INT, Var_State.PUBLIC));
                 sc_ev.Variables.Add(new ScriptVariable(np.BBuff, "BBUFF", Var_Types.BYTEBUFFER, Var_State.PUBLIC));
-                sc_ev.Variables.Add(new ScriptVariable(System.DateTime.Now.Ticks,"TIMESTAMP",Var_Types.INT, Var_State.PUBLIC));
+                sc_ev.Variables.Add(new ScriptVariable(System.DateTime.Now.Ticks, "TIMESTAMP", Var_Types.INT, Var_State.PUBLIC));
                 ScriptEngine.SendToEventQueue(sc_ev);
             }
         }
 
-		private void BroadCastStautsUpdate(NetPacket np)
-		{
+        private void BroadCastStautsUpdate(NetPacket np)
+        {
             //no need to update with data from ourselves or about ourselves
             if (np.SenderID == Globals.gamedata.my_char.ID || np.ID == Globals.gamedata.my_char.ID)
             {
@@ -134,7 +133,7 @@ namespace L2_login
                     }
                 }
             }//end of else
-		}
+        }
 
         private void BroadCastStautsUpdateNPC(NetPacket np)
         {
@@ -202,5 +201,5 @@ namespace L2_login
 
             NetCode.NetSend(np.GetBytes());
         }
-	}//end of BroadCastThread class
+    }//end of BroadCastThread class
 }

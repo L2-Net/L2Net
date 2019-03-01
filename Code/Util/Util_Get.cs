@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace L2_login
 {
     public static partial class Util
@@ -116,7 +112,9 @@ namespace L2_login
                 if (sk.Levels.Count != 0)
                 {
                     if (System.String.Equals(str, ((SkillInfo)sk.Levels[0]).Name.ToUpperInvariant()))
+                    {
                         return ((SkillInfo)sk.Levels[0]).ID;
+                    }
                 }
             }
 
@@ -126,7 +124,7 @@ namespace L2_login
         static public int GetSkillReuse(uint id)
         {
             long getskill_reuse = 0;
-            UserSkill us = Util.GetSkill(id);
+            UserSkill us = GetSkill(id);
             if (us.IsReady())
             {
                 getskill_reuse = 0;
@@ -188,7 +186,7 @@ namespace L2_login
         {
             try
             {
-                return ((UserSkill)Globals.gamedata.skills[id]);
+                return (UserSkill)Globals.gamedata.skills[id];
             }
             catch
             {
@@ -208,7 +206,7 @@ namespace L2_login
             Globals.PartyLock.EnterReadLock();
             try
             {
-                PartyMember pmem = Util.GetCharParty(id);
+                PartyMember pmem = GetCharParty(id);
 
                 if (pmem != null)
                 {
@@ -224,7 +222,7 @@ namespace L2_login
             Globals.PlayerLock.EnterReadLock();
             try
             {
-                CharInfo player = Util.GetChar(id);
+                CharInfo player = GetChar(id);
 
                 if (player != null)
                 {
@@ -253,7 +251,7 @@ namespace L2_login
             Globals.PartyLock.EnterReadLock();
             try
             {
-                PartyMember pmem = Util.GetCharParty(str);
+                PartyMember pmem = GetCharParty(str);
 
                 if (pmem != null)
                 {
@@ -269,7 +267,7 @@ namespace L2_login
             Globals.PlayerLock.EnterReadLock();
             try
             {
-                CharInfo player = Util.GetChar(str);
+                CharInfo player = GetChar(str);
 
                 if (player != null)
                 {
@@ -289,39 +287,39 @@ namespace L2_login
             //is self?
             if (Globals.gamedata.my_char.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_char.X);
-                y = Util.Float_Int32(Globals.gamedata.my_char.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_char.Z);
+                x = Float_Int32(Globals.gamedata.my_char.X);
+                y = Float_Int32(Globals.gamedata.my_char.Y);
+                z = Float_Int32(Globals.gamedata.my_char.Z);
                 return;
             }
 
             //is my pet?
             if (Globals.gamedata.my_pet.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet.Z);
+                x = Float_Int32(Globals.gamedata.my_pet.X);
+                y = Float_Int32(Globals.gamedata.my_pet.Y);
+                z = Float_Int32(Globals.gamedata.my_pet.Z);
                 return;
             }
             if (Globals.gamedata.my_pet1.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet1.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet1.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet1.Z);
+                x = Float_Int32(Globals.gamedata.my_pet1.X);
+                y = Float_Int32(Globals.gamedata.my_pet1.Y);
+                z = Float_Int32(Globals.gamedata.my_pet1.Z);
                 return;
             }
             if (Globals.gamedata.my_pet2.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet2.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet2.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet2.Z);
+                x = Float_Int32(Globals.gamedata.my_pet2.X);
+                y = Float_Int32(Globals.gamedata.my_pet2.Y);
+                z = Float_Int32(Globals.gamedata.my_pet2.Z);
                 return;
             }
             if (Globals.gamedata.my_pet3.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet3.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet3.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet3.Z);
+                x = Float_Int32(Globals.gamedata.my_pet3.X);
+                y = Float_Int32(Globals.gamedata.my_pet3.Y);
+                z = Float_Int32(Globals.gamedata.my_pet3.Z);
                 return;
             }
 
@@ -329,13 +327,13 @@ namespace L2_login
             Globals.PlayerLock.EnterReadLock();
             try
             {
-                CharInfo player = Util.GetChar(id);
+                CharInfo player = GetChar(id);
 
                 if (player != null)
                 {
-                    x = Util.Float_Int32(player.X);
-                    y = Util.Float_Int32(player.Y);
-                    z = Util.Float_Int32(player.Z);
+                    x = Float_Int32(player.X);
+                    y = Float_Int32(player.Y);
+                    z = Float_Int32(player.Z);
                     return;
                 }
             }
@@ -348,7 +346,7 @@ namespace L2_login
             Globals.PartyLock.EnterReadLock();
             try
             {
-                PartyMember pmem = Util.GetCharParty(id);
+                PartyMember pmem = GetCharParty(id);
 
                 if (pmem != null)
                 {
@@ -366,13 +364,13 @@ namespace L2_login
             Globals.NPCLock.EnterReadLock();
             try
             {
-                NPCInfo npc = Util.GetNPC(id);
+                NPCInfo npc = GetNPC(id);
 
                 if (npc != null)
                 {
-                    x = Util.Float_Int32(npc.X);
-                    y = Util.Float_Int32(npc.Y);
-                    z = Util.Float_Int32(npc.Z);
+                    x = Float_Int32(npc.X);
+                    y = Float_Int32(npc.Y);
+                    z = Float_Int32(npc.Z);
                     return;
                 }
             }
@@ -390,39 +388,39 @@ namespace L2_login
             //is self?
             if (Globals.gamedata.my_char.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_char.X);
-                y = Util.Float_Int32(Globals.gamedata.my_char.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_char.Z);
+                x = Float_Int32(Globals.gamedata.my_char.X);
+                y = Float_Int32(Globals.gamedata.my_char.Y);
+                z = Float_Int32(Globals.gamedata.my_char.Z);
                 return;
             }
 
             //is my pet?
             if (Globals.gamedata.my_pet.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet.Z);
+                x = Float_Int32(Globals.gamedata.my_pet.X);
+                y = Float_Int32(Globals.gamedata.my_pet.Y);
+                z = Float_Int32(Globals.gamedata.my_pet.Z);
                 return;
             }
             if (Globals.gamedata.my_pet1.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet1.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet1.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet1.Z);
+                x = Float_Int32(Globals.gamedata.my_pet1.X);
+                y = Float_Int32(Globals.gamedata.my_pet1.Y);
+                z = Float_Int32(Globals.gamedata.my_pet1.Z);
                 return;
             }
             if (Globals.gamedata.my_pet2.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet2.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet2.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet2.Z);
+                x = Float_Int32(Globals.gamedata.my_pet2.X);
+                y = Float_Int32(Globals.gamedata.my_pet2.Y);
+                z = Float_Int32(Globals.gamedata.my_pet2.Z);
                 return;
             }
             if (Globals.gamedata.my_pet3.ID == id)
             {
-                x = Util.Float_Int32(Globals.gamedata.my_pet3.X);
-                y = Util.Float_Int32(Globals.gamedata.my_pet3.Y);
-                z = Util.Float_Int32(Globals.gamedata.my_pet3.Z);
+                x = Float_Int32(Globals.gamedata.my_pet3.X);
+                y = Float_Int32(Globals.gamedata.my_pet3.Y);
+                z = Float_Int32(Globals.gamedata.my_pet3.Z);
                 return;
             }
 
@@ -430,13 +428,13 @@ namespace L2_login
             Globals.PlayerLock.EnterReadLock();
             try
             {
-                CharInfo player = Util.GetChar(id);
+                CharInfo player = GetChar(id);
 
                 if (player != null)
                 {
-                    x = Util.Float_Int32(player.X);
-                    y = Util.Float_Int32(player.Y);
-                    z = Util.Float_Int32(player.Z);
+                    x = Float_Int32(player.X);
+                    y = Float_Int32(player.Y);
+                    z = Float_Int32(player.Z);
                     return;
                 }
             }
@@ -449,7 +447,7 @@ namespace L2_login
             Globals.PartyLock.EnterReadLock();
             try
             {
-                PartyMember pmem = Util.GetCharParty(id);
+                PartyMember pmem = GetCharParty(id);
 
                 if (pmem != null)
                 {
@@ -470,13 +468,13 @@ namespace L2_login
             Globals.NPCLock.EnterReadLock();
             try
             {
-                NPCInfo npc = Util.GetNPC(id);
+                NPCInfo npc = GetNPC(id);
 
                 if (npc != null)
                 {
-                    x = Util.Float_Int32(npc.X);
-                    y = Util.Float_Int32(npc.Y);
-                    z = Util.Float_Int32(npc.Z);
+                    x = Float_Int32(npc.X);
+                    y = Float_Int32(npc.Y);
+                    z = Float_Int32(npc.Z);
                 }
             }
             finally
@@ -589,7 +587,7 @@ namespace L2_login
         {
             try
             {
-                return ((PartyMember)Globals.gamedata.PartyMembers[id]);
+                return (PartyMember)Globals.gamedata.PartyMembers[id];
             }
             catch
             {
@@ -617,7 +615,7 @@ namespace L2_login
         {
             try
             {
-                return ((CharInfo)Globals.gamedata.nearby_chars[id]);
+                return (CharInfo)Globals.gamedata.nearby_chars[id];
             }
             catch
             {
@@ -656,7 +654,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCInfo)Globals.gamedata.nearby_npcs[id]);
+                return (NPCInfo)Globals.gamedata.nearby_npcs[id];
             }
             catch
             {
@@ -668,7 +666,7 @@ namespace L2_login
         {
             try
             {
-                return ((CharBuff)Globals.gamedata.mybuffs[id]);
+                return (CharBuff)Globals.gamedata.mybuffs[id];
             }
             catch
             {
@@ -683,10 +681,10 @@ namespace L2_login
             {
                 ((ItemInfo)Globals.gamedata.nearby_items[id]).Ignore = ignore;
             }
-           // catch(Exception e)
-           // {
-                //Globals.l2net_home.Add_Error("Crashed ignoring item " + e.Message);
-           // }
+            // catch(Exception e)
+            // {
+            //Globals.l2net_home.Add_Error("Crashed ignoring item " + e.Message);
+            // }
             finally
             {
                 Globals.ItemLock.ExitWriteLock();
@@ -709,7 +707,7 @@ namespace L2_login
         {
             try
             {
-                return ((ItemInfo)Globals.gamedata.nearby_items[id]);
+                return (ItemInfo)Globals.gamedata.nearby_items[id];
             }
             catch
             {
@@ -721,7 +719,7 @@ namespace L2_login
         {
             try
             {
-                return ((InventoryInfo)Globals.gamedata.inventory[id]);
+                return (InventoryInfo)Globals.gamedata.inventory[id];
             }
             catch
             {
@@ -733,7 +731,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCName)Globals.npcname[(uint)(id - Globals.NPC_OFF)]).Name;
+                return ((NPCName)Globals.npcname[id - Globals.NPC_OFF]).Name;
             }
             catch
             {
@@ -745,7 +743,7 @@ namespace L2_login
         {
             try
             {
-                return ((NPCName)Globals.npcname[(uint)(id - Globals.NPC_OFF)]).Description;
+                return ((NPCName)Globals.npcname[id - Globals.NPC_OFF]).Description;
             }
             catch
             {
@@ -872,7 +870,7 @@ namespace L2_login
         {
             try
             {
-                return ((string)Globals.gamedata.ClassNick[id]);
+                return (string)Globals.gamedata.ClassNick[id];
             }
             catch
             {
@@ -906,7 +904,9 @@ namespace L2_login
                     foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
                     {
                         if (inv_inf.ID == id)
+                        {
                             return inv_inf.ItemID;
+                        }
                     }
                 }//unlock
                 finally
@@ -926,7 +926,9 @@ namespace L2_login
                 foreach (InventoryInfo inv_inf in Globals.gamedata.inventory.Values)
                 {
                     if (inv_inf.ItemID == id)
+                    {
                         return inv_inf.ID;
+                    }
                 }
             }//unlock
             finally

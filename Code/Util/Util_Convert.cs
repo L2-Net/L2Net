@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace L2_login
 {
     public static partial class Util
@@ -122,7 +118,9 @@ namespace L2_login
             str = str.Replace(Globals.NumberGroupSeparator, "");
 
             if (str.IndexOf(Globals.NumberDecimalSeparator) != -1)
+            {
                 str = str.Substring(0, str.IndexOf(Globals.NumberDecimalSeparator));
+            }
 
             return str;
         }
@@ -132,7 +130,9 @@ namespace L2_login
             try
             {
                 if (str.Length == 0)
+                {
                     return 0;
+                }
                 //return System.Convert.ToDouble(str);
                 return double.Parse(str, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
@@ -146,9 +146,11 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
+                {
                     return 0;
+                }
                 //return System.Convert.ToInt64(str);
                 return long.Parse(str, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
@@ -162,9 +164,11 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
+                {
                     return 0;
+                }
                 //return System.Convert.ToUInt64(str);
                 return ulong.Parse(str, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
@@ -178,9 +182,11 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
+                {
                     return 0;
+                }
                 //return System.Convert.ToInt32(str);
                 return int.Parse(str, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
@@ -194,9 +200,11 @@ namespace L2_login
         {
             try
             {
-                str = Util.Remove_Dec(str);
+                str = Remove_Dec(str);
                 if (str.Length == 0)
+                {
                     return 0;
+                }
                 //return System.Convert.ToUInt32(str);
                 return uint.Parse(str, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }

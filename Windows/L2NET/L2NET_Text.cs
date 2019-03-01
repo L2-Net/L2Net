@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -9,7 +7,7 @@ namespace L2_login
     public class Chat_Line
     {
         public string text = "";
-        public System.Drawing.Brush color = System.Drawing.Brushes.Black;
+        public Brush color = Brushes.Black;
         public TextType type = TextType.ALL;
     }
 
@@ -19,7 +17,7 @@ namespace L2_login
         {
             Add_Error(text, true);
         }
-        
+
         public void Add_Error(string text, bool audio)
         {
             if (audio)
@@ -106,18 +104,18 @@ namespace L2_login
             Add_Text(text, Globals.Red);
         }
 
-        public void Add_Text(string text, System.Drawing.Brush col)
+        public void Add_Text(string text, Brush col)
         {
             Add_Text(text, col, TextType.ALL);
         }
 
-        public void Add_Text(string text, System.Drawing.Brush col, TextType type)
+        public void Add_Text(string text, Brush col, TextType type)
         {
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
 
-            string time = System.DateTime.Now.ToLongTimeString() + " :[" + text + Environment.NewLine;
+            string time = DateTime.Now.ToLongTimeString() + " :[" + text + Environment.NewLine;
             Chat_Line new_chat = new Chat_Line();
             new_chat.text = time;
             new_chat.color = col;
@@ -183,7 +181,9 @@ namespace L2_login
                             if (Globals.text_out != null)
                             {
                                 if (Globals.LogWriting)
+                                {
                                     Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                                }
                             }
                         }
 
@@ -193,7 +193,9 @@ namespace L2_login
                         if (Globals.text_out != null)
                         {
                             if (Globals.LogWriting)
-                            Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                            {
+                                Globals.text_out.Write(pop.text);//it has a newline in it... so no need to use writeline
+                            }
                         }
 
                         colorListBox_all.AddItemStart(pop.text, pop.color);
@@ -401,7 +403,7 @@ namespace L2_login
                 return;
             }
 
-            switch(tabControl_ChatSelect.SelectedIndex)
+            switch (tabControl_ChatSelect.SelectedIndex)
             {
                 case 0:
                     colorListBox_all.BeginUpdate();
@@ -465,7 +467,7 @@ namespace L2_login
                 richTextBox_dialog.ResumeLayout();
             }
         }
-        
+
         public void Add_Dialog(string text)
         {
             //invoke not needed... done on calling thread

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -33,24 +27,24 @@ namespace L2_login
                     txt_from_box = txt_from_box.Replace(":", ""); // removing :
                     if (txt_from_box.Length >= 2 && txt_from_box.Length <= 6)
                     {
-                        if (txt_from_box.Length % 2==0)// check for 3 and 5 legh...
-                          {
-                              int temp_id = 0;
-                              byte[] bbuffer_ = new byte[4];
-                              byte[] tem_bytebuf = Globals.pck_thread.StringToByteArray2(txt_from_box);
-                                for (int i = 0; i < tem_bytebuf.Length; i++)
-                                {
-                                    bbuffer_[i] = tem_bytebuf[i];
-                                    //bytebuf[i] = tem_bytebuf[i];
-                                }
-                                temp_id = System.BitConverter.ToInt32(bbuffer_, 0);
-                                if (check__temp_serv_id_exist(temp_id)== false)
-                                {
-                                    int temp_cout = listView1.Items.Count;
-                                    listView1.Items.Add(txt_from_box);
-                                    listView1.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(bbuffer_[0] + bbuffer_[1] + bbuffer_[2]) + bbuffer_[3]);
-                                    Globals.pck_thread.tmp_server_pck_filter.Add(temp_id);
-                                }
+                        if (txt_from_box.Length % 2 == 0)// check for 3 and 5 legh...
+                        {
+                            int temp_id = 0;
+                            byte[] bbuffer_ = new byte[4];
+                            byte[] tem_bytebuf = Globals.pck_thread.StringToByteArray2(txt_from_box);
+                            for (int i = 0; i < tem_bytebuf.Length; i++)
+                            {
+                                bbuffer_[i] = tem_bytebuf[i];
+                                //bytebuf[i] = tem_bytebuf[i];
+                            }
+                            temp_id = BitConverter.ToInt32(bbuffer_, 0);
+                            if (check__temp_serv_id_exist(temp_id) == false)
+                            {
+                                int temp_cout = listView1.Items.Count;
+                                listView1.Items.Add(txt_from_box);
+                                listView1.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_server_pck_name(bbuffer_[0] + bbuffer_[1] + bbuffer_[2]) + bbuffer_[3]);
+                                Globals.pck_thread.tmp_server_pck_filter.Add(temp_id);
+                            }
 
                             /*
                                 if (bytebuf[0] != 0xfe) // not ex pck
@@ -160,26 +154,26 @@ namespace L2_login
                             if (bytebuf[0] != 0xd0) // not d0 pck
                             {
                                 //check if we dont have it ...
-                                    if (check__temp_cli_id_exist(bytebuf[0]) == false)//check temp ..tmp_cli_pck_filter ...
-                                    {
-                                        int temp_cout = listView2.Items.Count;
-                                        listView2.Items.Add(txt_from_box);
-                                        listView2.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(bytebuf[0]));
-                                        Globals.pck_thread.tmp_client_pck_filter.Add(bytebuf[0]);
-                                    }
+                                if (check__temp_cli_id_exist(bytebuf[0]) == false)//check temp ..tmp_cli_pck_filter ...
+                                {
+                                    int temp_cout = listView2.Items.Count;
+                                    listView2.Items.Add(txt_from_box);
+                                    listView2.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(bytebuf[0]));
+                                    Globals.pck_thread.tmp_client_pck_filter.Add(bytebuf[0]);
+                                }
                             }
                             else// d0 packet
                             {
-                                int temp_id = System.BitConverter.ToUInt16(bytebuf, 1);
+                                int temp_id = BitConverter.ToUInt16(bytebuf, 1);
                                 temp_id = temp_id + 0xd0;
                                 //check if we dont have it ...
                                 if (check__temp_cli_id_exist(temp_id) == false)
-                                    {
-                                        int temp_cout = listView2.Items.Count;
-                                        listView2.Items.Add(txt_from_box);
-                                        listView2.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
-                                        Globals.pck_thread.tmp_client_pck_filter.Add(temp_id);
-                                    }
+                                {
+                                    int temp_cout = listView2.Items.Count;
+                                    listView2.Items.Add(txt_from_box);
+                                    listView2.Items[temp_cout].SubItems.Add(Globals.pck_thread.new_get_client_pck_name(temp_id));
+                                    Globals.pck_thread.tmp_client_pck_filter.Add(temp_id);
+                                }
                             }
                         }
                     }
@@ -258,10 +252,10 @@ namespace L2_login
                     else
                     {
                         int tmp_int = Globals.pck_thread.tmp_server_pck_filter[i];// -0xfe;
-                        tmp_bytes = System.BitConverter.GetBytes(tmp_int);
-                       // tmp_bytes[2] = tmp_bytes[1];
-                       // tmp_bytes[1] = tmp_bytes[0];
-                       // tmp_bytes[0] = 0xfe;
+                        tmp_bytes = BitConverter.GetBytes(tmp_int);
+                        // tmp_bytes[2] = tmp_bytes[1];
+                        // tmp_bytes[1] = tmp_bytes[0];
+                        // tmp_bytes[0] = 0xfe;
                         string tmp_str = tmp_bytes[0].ToString("X2");
                         tmp_str += tmp_bytes[1].ToString("X2");
                         tmp_str += tmp_bytes[2].ToString("X2");
@@ -307,7 +301,7 @@ namespace L2_login
                     else
                     {
                         int tmp_int = Globals.pck_thread.tmp_client_pck_filter[i] - 0xd0;
-                        tmp_bytes = System.BitConverter.GetBytes(tmp_int);
+                        tmp_bytes = BitConverter.GetBytes(tmp_int);
                         tmp_bytes[2] = tmp_bytes[1];
                         tmp_bytes[1] = tmp_bytes[0];
                         tmp_bytes[0] = 0xfe;
@@ -376,7 +370,7 @@ namespace L2_login
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
-           // Globals.pck_thread.white_list_filter = checkBox1.Checked;
+            // Globals.pck_thread.white_list_filter = checkBox1.Checked;
         }
 
         public bool check_white_filter_state()

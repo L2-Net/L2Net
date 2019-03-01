@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace L2_login
 {
     public class ScriptLine
     {
         public string FullLine = "";
-        
+
         public ScriptCommands Command = ScriptCommands.NULL;
 
         public bool Compilied = false;
@@ -913,7 +910,7 @@ namespace L2_login
         {
             get
             {
-                return (_moveSmartInterruptFlag);
+                return _moveSmartInterruptFlag;
             }
             set
             {

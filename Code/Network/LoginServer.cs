@@ -1,6 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
+using System.IO;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace L2_login
 {
@@ -15,7 +17,7 @@ namespace L2_login
             buff[2] = (byte)PClient.AuthLogin;
 
             byte[] bff2 = new byte[4];
-            bff2 = System.BitConverter.GetBytes(prot);
+            bff2 = BitConverter.GetBytes(prot);
             buff[3] = bff2[0];
             buff[4] = bff2[1];
             buff[5] = bff2[2];
@@ -43,7 +45,7 @@ namespace L2_login
                 "09 54 53 00 0D 01 02 03 54 53 01 05 03 08 56 54 " +
                 "07 02 54 0B 06 ";//change last 4 each chron
 
-            switch(Globals.gamedata.Chron)
+            switch (Globals.gamedata.Chron)
             {
                 case Chronicle.CT3_0: //Still the same in GoD
                     pee = pee + "A6 23 F4 FE";
@@ -81,7 +83,7 @@ namespace L2_login
 
             for (int i = 0; i < pee.Length; i += 2)
             {
-                sm = (pee[i].ToString()) + (pee[i + 1].ToString());
+                sm = pee[i].ToString() + pee[i + 1].ToString();
 
                 buff[off + i / 2] = byte.Parse(sm, System.Globalization.NumberStyles.HexNumber);
             }
@@ -154,15 +156,15 @@ namespace L2_login
 
         public static void IG_Login()
         {
-			try
-			{
+            try
+            {
                 if (!Globals.gamedata.Unkown_Blowfish || Globals.gamedata.LS_GS_Same_IP)
                 {
                     System.Net.IPAddress ipAd = System.Net.IPAddress.Parse(Globals.gamedata.IG_Local_IP);
 
                     Globals.l2net_home.Add_Text("client -> bot loginserver : waiting", Globals.Red, TextType.BOT);
 
-                    Globals.Login_ClientLink = new System.Net.Sockets.TcpListener(ipAd, Globals.gamedata.IG_Local_Login_Port);
+                    Globals.Login_ClientLink = new TcpListener(ipAd, Globals.gamedata.IG_Local_Login_Port);
                     Globals.Login_ClientLink.Start();
 
                     //get our client connection
@@ -178,17 +180,17 @@ namespace L2_login
                 {
                     Globals.ig_Gamelistener.Start();
                 }
-			}
-			catch
-			{
-				Globals.l2net_home.Add_Error("crash: starting the login server tunnel");
-			}
+            }
+            catch
+            {
+                Globals.l2net_home.Add_Error("crash: starting the login server tunnel");
+            }
         }
 
         public static void IG_Listener()
         {
-			try
-			{
+            try
+            {
                 bool valid = false;
 
                 while (valid == false)
@@ -198,7 +200,7 @@ namespace L2_login
                     Globals.l2net_home.Add_Text("client -> bot gameserver : waiting");
                     if (Globals.proxy_serv)
                     {
-                         Globals.gamedata.IG_Local_Game_Port = System.Convert.ToInt16(Globals.game_srv_listen_prt);
+                        Globals.gamedata.IG_Local_Game_Port = Convert.ToInt16(Globals.game_srv_listen_prt);
                     }
                     bool got_connection = false;
 
@@ -206,7 +208,7 @@ namespace L2_login
                     {
                         try
                         {
-                             Globals.Game_ClientLink = new System.Net.Sockets.TcpListener(ipAd, Globals.gamedata.IG_Local_Game_Port);
+                            Globals.Game_ClientLink = new TcpListener(ipAd, Globals.gamedata.IG_Local_Game_Port);
 
                             Globals.Game_ClientLink.Start();
                             got_connection = true;
@@ -240,7 +242,7 @@ namespace L2_login
                         bool temp_proxy_var = true;
                         while (temp_proxy_var)
                         {
-                            cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                            cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, SocketFlags.None);
                             if (buffread.Length > 0)
                             {
                                 if (proxy_step == 0) // first step == 1 packet
@@ -270,7 +272,7 @@ namespace L2_login
                                             {
                                                 // seding answer to client...
                                                 buffread[1] = 0;
-                                                Globals.Game_ClientSocket.Send(buffread, 2, System.Net.Sockets.SocketFlags.None);
+                                                Globals.Game_ClientSocket.Send(buffread, 2, SocketFlags.None);
                                                 proxy_step = 1;
                                                 break;
                                             }
@@ -308,26 +310,26 @@ namespace L2_login
                                     buffread[8] = 0;
                                     buffread[9] = 0;
                                     //
-                                    Globals.Game_ClientSocket.Send(buffread, 10, System.Net.Sockets.SocketFlags.None);
+                                    Globals.Game_ClientSocket.Send(buffread, 10, SocketFlags.None);
                                     temp_proxy_var = false;
                                 }
                             }
                         }// after while (proxy ....) reci protocol packet
-                        cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                        cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, SocketFlags.None);
                     }
                     else
                     {
-                        cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                        cnt = Globals.Game_ClientSocket.Receive(buffread, 0, Globals.BUFFER_PACKET, SocketFlags.None);
                     }
-                    int size = System.BitConverter.ToUInt16(buffread, 0);
-                   
+                    int size = BitConverter.ToUInt16(buffread, 0);
+
                     if (buffread.Length > 0)
                     {
 #if DEBUG
-                        
+
                         try
                         {
-                            Globals.clientdataout.WriteLine("packet...-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::");
+                            Globals.clientdataout.WriteLine("packet...-size: " + size.ToString() + " -count:" + cnt.ToString() + " :::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::");
                             Globals.clientdataout.WriteLine("-data from client to bot hex-");
                             for (uint i = 2; i < size; i++)
                             {
@@ -351,7 +353,7 @@ namespace L2_login
                         switch ((PClient)buffread[2])
                         {
                             case PClient.AuthLogin:
-                                int prot = System.BitConverter.ToInt16(buffread, 3);
+                                int prot = BitConverter.ToInt16(buffread, 3);
                                 Globals.l2net_home.Add_Text("protocol version: " + prot.ToString(), Globals.Red, TextType.BOT);
 
                                 if (prot == -2)
@@ -373,7 +375,7 @@ namespace L2_login
                                     while (!Globals.gamesocket_ready)
                                     {
                                         //lets take a short nap until we have the connection
-                                        System.Threading.Thread.Sleep(Globals.SLEEP_WaitIGConnection);
+                                        Thread.Sleep(Globals.SLEEP_WaitIGConnection);
                                     }
 
                                     Globals.l2net_home.Add_Text("valid protocol... forwarding to game server", Globals.Red, TextType.BOT);
@@ -381,14 +383,14 @@ namespace L2_login
                                     if (Globals.gamedata.OverrideProtocol)
                                     {
                                         byte[] prot_out = new byte[4];
-                                        prot_out = System.BitConverter.GetBytes(Globals.gamedata.Protocol);
+                                        prot_out = BitConverter.GetBytes(Globals.gamedata.Protocol);
                                         buffread[3] = prot_out[0];
                                         buffread[4] = prot_out[1];
                                         buffread[5] = prot_out[2];
                                         buffread[6] = prot_out[3];
                                     }
                                     //need to forward this packet along...
-                                    Globals.Game_GameSocket.Send(buffread, 0, size, System.Net.Sockets.SocketFlags.None);
+                                    Globals.Game_GameSocket.Send(buffread, 0, size, SocketFlags.None);
 
                                     valid = true;
                                 }
@@ -398,11 +400,11 @@ namespace L2_login
                 }
 
                 Globals.l2net_home.Add_Text("client -> bot gameserver : connected", Globals.Red, TextType.BOT);
-			}
-			catch
-			{
-				Globals.l2net_home.Add_Error("crash: ingame listener manager");
-			}
+            }
+            catch
+            {
+                Globals.l2net_home.Add_Error("crash: ingame listener manager");
+            }
         }
 
         public static void LoginSendThread()
@@ -418,7 +420,7 @@ namespace L2_login
             BlowfishEngine bfengs = new BlowfishEngine();
 
 #if DEBUG
-            System.IO.StreamWriter login_serverout = new System.IO.StreamWriter("logs\\login_from_serverlog.txt");
+            StreamWriter login_serverout = new StreamWriter("logs\\login_from_serverlog.txt");
             login_serverout.AutoFlush = true;
 #endif
 
@@ -429,7 +431,7 @@ namespace L2_login
                 while (Globals.gamedata.ig_login)
                 {
                     data_num++;
-                    cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                    cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, SocketFlags.None);
                     if (Globals.gamedata.Unkown_Blowfish)
                     {
                         /*
@@ -450,41 +452,41 @@ namespace L2_login
                         if (data_num == 1)
                         {
                             //need to unxor this shit
-                            NewCrypt.decXORPass(dec_buff, 0, cnt - 2, System.BitConverter.ToInt32(dec_buff, cnt - 10));
+                            NewCrypt.decXORPass(dec_buff, 0, cnt - 2, BitConverter.ToInt32(dec_buff, cnt - 10));
                         }
 
 #if DEBUG
 
-                    login_serverout.WriteLine(" :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + ":::" + cnt.ToString() + ":::" + data_num.ToString());
-                    login_serverout.WriteLine("-ENcrypted data from login server to bot hex-");
-                    for (int i = 0; i < cnt; i++)
-                    {
-                        login_serverout.Write(buff[i].ToString("X2"));
-                        login_serverout.Write(" ");
-                    }
-                    login_serverout.WriteLine("");
-                    login_serverout.WriteLine("-ENcrypted data from login server to bot string-");
-                    for (int i = 0; i < cnt; i++)
-                    {
-                        login_serverout.Write((char)buff[i]);
-                    }
-                    login_serverout.WriteLine("");
+                        login_serverout.WriteLine(" :::time:::" + DateTime.Now.TimeOfDay.ToString() + ":::" + cnt.ToString() + ":::" + data_num.ToString());
+                        login_serverout.WriteLine("-ENcrypted data from login server to bot hex-");
+                        for (int i = 0; i < cnt; i++)
+                        {
+                            login_serverout.Write(buff[i].ToString("X2"));
+                            login_serverout.Write(" ");
+                        }
+                        login_serverout.WriteLine("");
+                        login_serverout.WriteLine("-ENcrypted data from login server to bot string-");
+                        for (int i = 0; i < cnt; i++)
+                        {
+                            login_serverout.Write((char)buff[i]);
+                        }
+                        login_serverout.WriteLine("");
 
-                    //login_serverout.WriteLine(" :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + "::: size=" + cnt.ToString());
-                    login_serverout.WriteLine("-data from login server to bot hex-");
-                    for (int i = 0; i < cnt - 2; i++)
-                    {
-                        login_serverout.Write(dec_buff[i].ToString("X2"));
-                        login_serverout.Write(" ");
-                    }
-                    login_serverout.WriteLine("");
-                    login_serverout.WriteLine("-data from login server to bot string-");
-                    for (int i = 0; i < cnt - 2; i++)
-                    {
-                        login_serverout.Write((char)dec_buff[i]);
-                    }
-                    login_serverout.WriteLine("");
-                    login_serverout.WriteLine("");
+                        //login_serverout.WriteLine(" :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + "::: size=" + cnt.ToString());
+                        login_serverout.WriteLine("-data from login server to bot hex-");
+                        for (int i = 0; i < cnt - 2; i++)
+                        {
+                            login_serverout.Write(dec_buff[i].ToString("X2"));
+                            login_serverout.Write(" ");
+                        }
+                        login_serverout.WriteLine("");
+                        login_serverout.WriteLine("-data from login server to bot string-");
+                        for (int i = 0; i < cnt - 2; i++)
+                        {
+                            login_serverout.Write((char)dec_buff[i]);
+                        }
+                        login_serverout.WriteLine("");
+                        login_serverout.WriteLine("");
 #endif
 
                         if (data_num == 1)//buff[0] == 0x00)
@@ -504,14 +506,16 @@ namespace L2_login
                             //need to grab the new blowfish key
                             byte[] tmp_bf = new byte[16];
 
-                            for (int i = 0; i < 16; i++) {
+                            for (int i = 0; i < 16; i++)
+                            {
                                 tmp_bf[i] = dec_buff[153 + i];
                             }
                             Globals.gamedata.SetBlowfishKey(tmp_bf);
 
                             // And also the RSA Key to decrypt the outgoing messages
                             byte[] rsaKey = new byte[128];
-                            for (int i = 0; i < 128; i++) {
+                            for (int i = 0; i < 128; i++)
+                            {
                                 rsaKey[i] = dec_buff[9 + i];
                             }
 
@@ -540,13 +544,15 @@ namespace L2_login
 
 #if DEBUG
                             login_serverout.Write("blowfish key:");
-                            for (int i = 0; i < 16; i++) {
+                            for (int i = 0; i < 16; i++)
+                            {
                                 login_serverout.Write(tmp_bf[i].ToString("X2"));
                             }
                             login_serverout.WriteLine("");
 
                             login_serverout.WriteLine("RSA Key:");
-                            for (int i = 0; i < 128; i++) {
+                            for (int i = 0; i < 128; i++)
+                            {
                                 login_serverout.Write(rsaKey[i].ToString("X2"));
                             }
                             login_serverout.WriteLine("");
@@ -619,34 +625,34 @@ namespace L2_login
                                     string inp = Globals.gamedata.IG_Local_IP;
                                     //IP1
                                     pipe = inp.IndexOf('.');
-                                    ip1 = System.Convert.ToByte(inp.Substring(0, pipe));
+                                    ip1 = Convert.ToByte(inp.Substring(0, pipe));
                                     inp = inp.Remove(0, pipe + 1);
                                     //IP2
                                     pipe = inp.IndexOf('.');
-                                    ip2 = System.Convert.ToByte(inp.Substring(0, pipe));
+                                    ip2 = Convert.ToByte(inp.Substring(0, pipe));
                                     inp = inp.Remove(0, pipe + 1);
                                     //IP3
                                     pipe = inp.IndexOf('.');
-                                    ip3 = System.Convert.ToByte(inp.Substring(0, pipe));
+                                    ip3 = Convert.ToByte(inp.Substring(0, pipe));
                                     inp = inp.Remove(0, pipe + 1);
                                     //IP4
-                                    ip4 = System.Convert.ToByte(inp);
+                                    ip4 = Convert.ToByte(inp);
 
                                     //we need to make suer we are listening already...
                                     while (!Globals.clientport_ready)
                                     {
                                         //lets take a short nap until we have the connection
-                                        System.Threading.Thread.Sleep(Globals.SLEEP_WaitIGConnection);
+                                        Thread.Sleep(Globals.SLEEP_WaitIGConnection);
                                     }
 
-                                    byte[] bport = System.BitConverter.GetBytes(Globals.gamedata.IG_Local_Game_Port);
+                                    byte[] bport = BitConverter.GetBytes(Globals.gamedata.IG_Local_Game_Port);
 
                                     int Login_ServerCount = dec_buff[1];//number of servers
                                     const int offset = 3;
 
                                     int m = 21;
 
-                                    Globals.Login_Servers = new System.Collections.SortedList();
+                                    Globals.Login_Servers = new SortedList();
                                     Globals.Login_Servers.Capacity = Login_ServerCount;
 
                                     for (int i = 0; i < Login_ServerCount; i++)
@@ -654,9 +660,9 @@ namespace L2_login
                                         try
                                         {
                                             Server n_sev = new Server();
-                                            n_sev.ID = (uint)System.Convert.ToSByte(dec_buff[0 + offset + i * m]);
+                                            n_sev.ID = (uint)Convert.ToSByte(dec_buff[0 + offset + i * m]);
                                             n_sev.IP = ((int)dec_buff[1 + offset + i * m]).ToString() + "." + ((int)dec_buff[2 + offset + i * m]).ToString() + "." + ((int)dec_buff[3 + offset + i * m]).ToString() + "." + ((int)dec_buff[4 + offset + i * m]).ToString();
-                                            n_sev.Port = System.BitConverter.ToInt32(dec_buff, 5 + offset + i * m);
+                                            n_sev.Port = BitConverter.ToInt32(dec_buff, 5 + offset + i * m);
                                             Globals.Login_Servers.Add(n_sev.ID, n_sev);
 
                                             dec_buff[1 + offset + i * m] = ip1;
@@ -669,7 +675,7 @@ namespace L2_login
                                             dec_buff[7 + offset + i * m] = bport[2];
                                             dec_buff[8 + offset + i * m] = bport[3];
 
-                                            Globals.l2net_home.Add_Text(Util.GetServer((uint)dec_buff[0 + offset + i * m] - 1) + ": " + System.BitConverter.ToUInt16(dec_buff, 11 + offset + i * m).ToString() + "/" + System.BitConverter.ToUInt16(dec_buff, 13 + offset + i * m).ToString(), Globals.Red, TextType.BOT);
+                                            Globals.l2net_home.Add_Text(Util.GetServer((uint)dec_buff[0 + offset + i * m] - 1) + ": " + BitConverter.ToUInt16(dec_buff, 11 + offset + i * m).ToString() + "/" + BitConverter.ToUInt16(dec_buff, 13 + offset + i * m).ToString(), Globals.Red, TextType.BOT);
                                         }
                                         catch
                                         {
@@ -698,7 +704,7 @@ namespace L2_login
                         }
                     }
 
-                    Globals.Login_ClientSocket.Send(buff, 0, cnt, System.Net.Sockets.SocketFlags.None);
+                    Globals.Login_ClientSocket.Send(buff, 0, cnt, SocketFlags.None);
                 }
             }
             catch
@@ -714,7 +720,7 @@ namespace L2_login
 
             //close the connection to the server
             //Globals.l2net_home.Add_Text("Closing loginserver connection (login send thread)", Globals.Green, TextType.BOT);
-            Globals.Login_GameSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
+            Globals.Login_GameSocket.Shutdown(SocketShutdown.Both);
             Globals.Login_GameSocket.Close();
 
             if (Globals.gamedata.login_failed)
@@ -735,7 +741,7 @@ namespace L2_login
             bool started = false;
 
 #if DEBUG
-            System.IO.StreamWriter login_clientout = new System.IO.StreamWriter("logs\\login_from_clientlog.txt");
+            StreamWriter login_clientout = new StreamWriter("logs\\login_from_clientlog.txt");
             login_clientout.AutoFlush = true;
 #endif
 
@@ -745,7 +751,7 @@ namespace L2_login
                 //and forward to the server
                 while (Globals.gamedata.ig_login)
                 {
-                    cnt = Globals.Login_ClientSocket.Receive(buff, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                    cnt = Globals.Login_ClientSocket.Receive(buff, 0, Globals.BUFFER_PACKET, SocketFlags.None);
 
                     if (Globals.gamedata.Unkown_Blowfish)
                     {
@@ -762,35 +768,35 @@ namespace L2_login
                         bfengr.processBigBlock(buff, 2, dec_buff, 0, cnt - 2);
 
 #if DEBUG
-                    login_clientout.WriteLine(" :::time:::" + System.DateTime.Now.TimeOfDay.ToString() + "::: size=" + cnt.ToString());
-                    login_clientout.WriteLine("-ENcrypted data from login client to bot hex-");
-                    for (int i = 0; i < cnt; i++)
-                    {
-                        login_clientout.Write(buff[i].ToString("X2"));
-                        login_clientout.Write(" ");
-                    }
-                    login_clientout.WriteLine("");
-                    login_clientout.WriteLine("-ENcrypted data from login client to bot string-");
-                    for (int i = 0; i < cnt; i++)
-                    {
-                        login_clientout.Write((char)buff[i]);
-                    }
-                    login_clientout.WriteLine("");
+                        login_clientout.WriteLine(" :::time:::" + DateTime.Now.TimeOfDay.ToString() + "::: size=" + cnt.ToString());
+                        login_clientout.WriteLine("-ENcrypted data from login client to bot hex-");
+                        for (int i = 0; i < cnt; i++)
+                        {
+                            login_clientout.Write(buff[i].ToString("X2"));
+                            login_clientout.Write(" ");
+                        }
+                        login_clientout.WriteLine("");
+                        login_clientout.WriteLine("-ENcrypted data from login client to bot string-");
+                        for (int i = 0; i < cnt; i++)
+                        {
+                            login_clientout.Write((char)buff[i]);
+                        }
+                        login_clientout.WriteLine("");
 
-                    login_clientout.WriteLine("-data from login client to bot hex-");
-                    for (int i = 0; i < cnt - 2; i++)
-                    {
-                        login_clientout.Write(dec_buff[i].ToString("X2"));
-                        login_clientout.Write(" ");
-                    }
-                    login_clientout.WriteLine("");
-                    login_clientout.WriteLine("-data from login client to bot string-");
-                    for (int i = 0; i < cnt - 2; i++)
-                    {
-                        login_clientout.Write((char)dec_buff[i]);
-                    }
-                    login_clientout.WriteLine("");
-                    login_clientout.WriteLine("");
+                        login_clientout.WriteLine("-data from login client to bot hex-");
+                        for (int i = 0; i < cnt - 2; i++)
+                        {
+                            login_clientout.Write(dec_buff[i].ToString("X2"));
+                            login_clientout.Write(" ");
+                        }
+                        login_clientout.WriteLine("");
+                        login_clientout.WriteLine("-data from login client to bot string-");
+                        for (int i = 0; i < cnt - 2; i++)
+                        {
+                            login_clientout.Write((char)dec_buff[i]);
+                        }
+                        login_clientout.WriteLine("");
+                        login_clientout.WriteLine("");
 #endif
 
                         switch (dec_buff[0])
@@ -807,14 +813,14 @@ namespace L2_login
                                 }
                                 break;
                             case 0x02://server select
-                                Globals.Login_SelectedServer = System.Convert.ToUInt32(dec_buff[9]);
+                                Globals.Login_SelectedServer = Convert.ToUInt32(dec_buff[9]);
 
                                 Globals.ig_Gamelistener.Start();
                                 break;
                         }
                     }
 
-                    Globals.Login_GameSocket.Send(buff, 0, cnt, System.Net.Sockets.SocketFlags.None);
+                    Globals.Login_GameSocket.Send(buff, 0, cnt, SocketFlags.None);
                 }
             }
             catch
@@ -833,13 +839,13 @@ namespace L2_login
 #endif
                 try
                 {
-                //close the connection to the client
-                //Globals.l2net_home.Add_Text("Closing loginserver connection (login read thread)", Globals.Green, TextType.BOT);
-                Globals.Login_ClientSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
-                Globals.Login_ClientSocket.Close();
+                    //close the connection to the client
+                    //Globals.l2net_home.Add_Text("Closing loginserver connection (login read thread)", Globals.Green, TextType.BOT);
+                    Globals.Login_ClientSocket.Shutdown(SocketShutdown.Both);
+                    Globals.Login_ClientSocket.Close();
 
-                //this fixes the socket error when trying to start two ig bots
-                System.Threading.Thread.Sleep(Globals.SLEEP_LoginDelay);
+                    //this fixes the socket error when trying to start two ig bots
+                    Thread.Sleep(Globals.SLEEP_LoginDelay);
 
                     Globals.Login_ClientLink.Stop();
                 }
@@ -852,13 +858,13 @@ namespace L2_login
 
         public static void IG_StartGameLinks()
         {
-			try
-			{
+            try
+            {
                 //we need to wait until the client has connected to the bot
                 while (!Globals.clientsocket_ready)
                 {
                     //lets take a short nap until we have the connection
-                    System.Threading.Thread.Sleep(Globals.SLEEP_WaitIGConnection);
+                    Thread.Sleep(Globals.SLEEP_WaitIGConnection);
                 }
 
                 if (Globals.gamedata.Unkown_Blowfish)
@@ -880,16 +886,16 @@ namespace L2_login
                 Globals.clientthread.readthread.Start();
                 Globals.clientthread.sendthread.Start();
 
-                LoginServer.Start_Threads();
-			}
-			catch
-			{
-				Globals.l2net_home.Add_Error("open game server connection fail");
-			}
+                Start_Threads();
+            }
+            catch
+            {
+                Globals.l2net_home.Add_Error("open game server connection fail");
+            }
         }
 
         //////////////////////////oog login
-        
+
         public static void OOG_Init()
         {
             //set to ingame mode
@@ -923,14 +929,14 @@ namespace L2_login
             BlowfishEngine bfeng = new BlowfishEngine();
 
             #region RSA Packet
-            cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+            cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, SocketFlags.None);
 
             //need to unblowfish
             bfeng.init(false, Globals.gamedata.blow_key);
             bfeng.processBigBlock(buff, 2, dec_buff, 0, cnt - 2);
 
             //need to unxor this shit
-            NewCrypt.decXORPass(dec_buff, 0, cnt - 2, System.BitConverter.ToInt32(dec_buff, cnt - 10));
+            NewCrypt.decXORPass(dec_buff, 0, cnt - 2, BitConverter.ToInt32(dec_buff, cnt - 10));
 
             sess[0] = dec_buff[1];
             sess[1] = dec_buff[2];
@@ -997,7 +1003,7 @@ namespace L2_login
             send[02] = sess[1];
             send[03] = sess[2];
             send[04] = sess[3];
-            LoginServer.Set_GG(send, 5);
+            Set_GG(send, 5);
 
             NewCrypt.appendChecksum(send, 0, 28);
 
@@ -1010,13 +1016,13 @@ namespace L2_login
             pack_out[1] = 0x0;
             sende.CopyTo(pack_out, 2);
 
-            Globals.Login_GameSocket.Send(pack_out, 0, 42, System.Net.Sockets.SocketFlags.None);
+            Globals.Login_GameSocket.Send(pack_out, 0, 42, SocketFlags.None);
             #endregion
 
             bool oog_login = true;
             while (oog_login)
             {
-                cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, System.Net.Sockets.SocketFlags.None);
+                cnt = Globals.Login_GameSocket.Receive(buff, 0, Globals.BUFFER_PACKET, SocketFlags.None);
 
                 bfeng.init(false, Globals.gamedata.blow_key);
                 bfeng.processBigBlock(buff, 2, dec_buff, 0, cnt - 2);
@@ -1056,7 +1062,7 @@ namespace L2_login
                             sec[0] = 0x9A;
                             sec[1] = 0x00;
                             sec_unenc.CopyTo(sec, 2);
-                            Globals.Login_GameSocket.Send(sec, 0, 154, System.Net.Sockets.SocketFlags.None);
+                            Globals.Login_GameSocket.Send(sec, 0, 154, SocketFlags.None);
                             break;
                             #endregion
                         }
@@ -1146,9 +1152,9 @@ namespace L2_login
                         pack_out[1] = 0x00;
                         sende.CopyTo(pack_out, 2);
 
-                        Globals.Login_GameSocket.Send(pack_out, 0, 34, System.Net.Sockets.SocketFlags.None);
+                        Globals.Login_GameSocket.Send(pack_out, 0, 34, SocketFlags.None);
                         break;
-                        #endregion
+                    #endregion
                     case 0x04://serverlist
                         #region ServerList
                         //parse the 208 packet
@@ -1158,7 +1164,7 @@ namespace L2_login
 
                         int m = 21;
 
-                        Globals.Login_Servers = new System.Collections.SortedList();
+                        Globals.Login_Servers = new SortedList();
                         Globals.Login_Servers.Capacity = Login_ServerCount;
 
                         for (int i = 0; i < Login_ServerCount; i++)
@@ -1166,9 +1172,9 @@ namespace L2_login
                             try
                             {
                                 Server n_sev = new Server();
-                                n_sev.ID = (uint)System.Convert.ToSByte(dec_buff[0 + offset + i * m]);
+                                n_sev.ID = (uint)Convert.ToSByte(dec_buff[0 + offset + i * m]);
                                 n_sev.IP = ((int)dec_buff[1 + offset + i * m]).ToString() + "." + ((int)dec_buff[2 + offset + i * m]).ToString() + "." + ((int)dec_buff[3 + offset + i * m]).ToString() + "." + ((int)dec_buff[4 + offset + i * m]).ToString();
-                                n_sev.Port = System.BitConverter.ToInt32(dec_buff, 5 + offset + i * m);
+                                n_sev.Port = BitConverter.ToInt32(dec_buff, 5 + offset + i * m);
                                 Globals.Login_Servers.Add(n_sev.ID, n_sev);
                             }
                             catch
@@ -1179,7 +1185,7 @@ namespace L2_login
 
                         Globals.login_window.FillServerInfo(dec_buff);
                         break;
-                        #endregion
+                    #endregion
                     case 0x06://play fail
                         oog_login = false;
                         Globals.Login_State = 0;
@@ -1199,9 +1205,9 @@ namespace L2_login
                         oog_login = false;
                         Util.KillServerLoginConnections();
 
-                        LoginServer.PlayOKProcess();
+                        PlayOKProcess();
                         break;
-                        #endregion
+                    #endregion
                     case 0x0B://gameguard check verified from server
                         //Query (42): 0B 5B 87 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9E 9D 66 76 E6 16 6D BD 45 C9 28 C0 66 C5 27 A1 BC 4E C6 
                         //Reply (322): 00 7C 78 FD 38 EA AB B6 AE 4F CC 91 C5 24 18 3B 5D 8A 42 BD D0 3B F5 F1 BE 5D 7C 75 4F 08 48 60 E4 23 C7 B0 11 59 CA D5 1C 2A 62 3D D9 50 C8 43 27 0B E1 54 F2 1D EF 8C F5 F2 D2 F4 39 1A 87 5E 9A FA D4 04 10 46 12 8C B5 59 84 AA 23 1C FD 89 69 58 FB 8D 16 3F C8 FA CE 5D BD 36 57 A7 15 B8 BE 91 8D CF 82 D9 FF 83 B9 AB 55 0F 1F 7F 2E 54 A7 55 E1 D8 F4 D4 A5 12 2C 70 19 1D 87 F5 65 1E 4D 5B F4 42 2C 14 F3 DD 16 F3 F0 B5 53 F8 F2 5E 53 99 DC A7 1F 1F BD DE A8 51 94 AD 6E 65 A3 B7 18 54 1B 32 61 CD CF E8 1B E2 0E 24 5A 2B 16 1E 32 61 77 CB 91 C9 A6 A2 2B 80 AA 44 9A BC 22 62 E4 7C A0 45 61 CD F0 60 73 D3 D0 CC C3 44 70 B0 FE FF 6D B8 BD 83 74 8D 53 26 D6 93 50 B3 7B AA 05 8A B7 95 C3 56 4A DC 7C 9C 2E EB A4 6F 42 4D E0 F5 C4 68 E0 7A 9D D7 D7 FD FF 6D D7 21 A3 9A 02 5B 87 04 00 23 01 00 00 67 45 00 00 AB 89 00 00 EF CD 00 00 08 00 00 00 00 00 00 40 4F 61 4F 21 19 3C 62 2A 6A 8B 2A 3B 3D 7C EF 00 00 00 00 03 C8 56 FB 00 00 00 00 00 00 00 00 00 00 00 00 
@@ -1211,9 +1217,14 @@ namespace L2_login
                         byte[] login_info = new byte[128];
 
                         if (Globals.UserName.Length > 14)
+                        {
                             Globals.l2net_home.Add_Error("username is too long");
+                        }
+
                         if (Globals.Password.Length > 16)
+                        {
                             Globals.l2net_home.Add_Error("password is too long");
+                        }
 
                         //24 thingy?
                         login_info[0x5B] = 0x24;
@@ -1236,7 +1247,7 @@ namespace L2_login
                         //Create a new instance of RSAParameters.
                         System.Security.Cryptography.RSAParameters RSAKeyInfo = new System.Security.Cryptography.RSAParameters();
 
-                        RSAKeyInfo.Modulus  = enckey;
+                        RSAKeyInfo.Modulus = enckey;
                         RSAKeyInfo.Exponent = Exponent;
 
                         RSAManaged rsaHandler = new RSAManaged();
@@ -1355,7 +1366,7 @@ namespace L2_login
                         Globals.l2net_home.Add_Text("login info - sending login info", Globals.Red, TextType.BOT);
 
                         //this line sends the login data
-                        Globals.Login_GameSocket.Send(login_send2, 0, 178, System.Net.Sockets.SocketFlags.None);
+                        Globals.Login_GameSocket.Send(login_send2, 0, 178, SocketFlags.None);
 
                         Globals.l2net_home.Add_Text("login info - login info sent", Globals.Red, TextType.BOT);
                         break;
@@ -1387,7 +1398,7 @@ namespace L2_login
             buff[6] = Globals.gamedata.login_ok[5];
             buff[7] = Globals.gamedata.login_ok[6];
             buff[8] = Globals.gamedata.login_ok[7];
-            buff[9] = System.Convert.ToByte(((Server)Globals.Login_Servers[Globals.Login_SelectedServer]).ID);
+            buff[9] = Convert.ToByte(((Server)Globals.Login_Servers[Globals.Login_SelectedServer]).ID);
             buff[10] = 0x00;
             buff[11] = 0x00;
             buff[12] = 0x00;
@@ -1407,7 +1418,7 @@ namespace L2_login
             pack_out[1] = 0x00;
             buffe.CopyTo(pack_out, 2);
 
-            Globals.Login_GameSocket.Send(pack_out, 0, 34, System.Net.Sockets.SocketFlags.None);
+            Globals.Login_GameSocket.Send(pack_out, 0, 34, SocketFlags.None);
         }
 
         public static void PlayOKProcess()
@@ -1416,16 +1427,16 @@ namespace L2_login
             {
                 OpenGameServerConnection();
 
-                byte[] buff = LoginServer.BuildAuthLogin(Globals.gamedata.Protocol);
+                byte[] buff = BuildAuthLogin(Globals.gamedata.Protocol);
 
-                Globals.Game_GameSocket.Send(buff, 0, 267, System.Net.Sockets.SocketFlags.None);
+                Globals.Game_GameSocket.Send(buff, 0, 267, SocketFlags.None);
 
                 //the other stuff should be handled by our packet handlers...
                 //lets start our threads up
 
                 Globals.gamedata.running = true;
 
-                LoginServer.Start_Threads();
+                Start_Threads();
             }
             catch
             {
@@ -1472,7 +1483,7 @@ namespace L2_login
                 if (Globals.proxy_serv)
                 { // lazy to do it in a normal way ... :P
                     Globals.gamedata.Game_IP = Globals.proxy_serv_ip[0].ToString() + "." + Globals.proxy_serv_ip[1].ToString() + "." + Globals.proxy_serv_ip[2].ToString() + "." + Globals.proxy_serv_ip[3].ToString();
-                    Globals.gamedata.Game_Port = System.BitConverter.ToUInt16(Globals.proxy_serv_port, 0);
+                    Globals.gamedata.Game_Port = BitConverter.ToUInt16(Globals.proxy_serv_port, 0);
                 }
                 else
                 {
@@ -1481,7 +1492,7 @@ namespace L2_login
                     Globals.gamedata.Game_Port = ((Server)Globals.Login_Servers[Globals.Login_SelectedServer]).Port;//System.BitConverter.ToUInt32(_servers,4+offset);
                 }
             }
-            
+
             if (Globals.gamedata.UseProxy_GameServer)
             {
                 try
@@ -1495,7 +1506,7 @@ namespace L2_login
             }
             else
             {
-                Globals.Game_GameSocket = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+                Globals.Game_GameSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 Globals.Game_GameSocket.Connect(Globals.gamedata.Game_IP, Globals.gamedata.Game_Port);
             }
 
@@ -1525,7 +1536,7 @@ namespace L2_login
             }
             else
             {
-                Globals.Login_GameSocket = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+                Globals.Login_GameSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 Globals.Login_GameSocket.Connect(Globals.gamedata.Login_IP, Globals.gamedata.Login_Port);
             }
 

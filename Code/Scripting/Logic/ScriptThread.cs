@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace L2_login
 {
     class ScriptThread
     {
-        public System.Collections.ArrayList _stack = new System.Collections.ArrayList();
-        public System.Collections.Stack _functioncalls = new System.Collections.Stack();
-        public System.Collections.Stack _subcalls = new System.Collections.Stack();
+        public ArrayList _stack = new ArrayList();
+        public Stack _functioncalls = new Stack();
+        public Stack _subcalls = new Stack();
 
         public int ID = 0;
         public int StackHeight = 0;

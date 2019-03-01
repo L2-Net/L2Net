@@ -1,14 +1,14 @@
-using System;
+using System.Collections;
 
 namespace L2_login
 {
-	public class CharInfo : Object_Base
-	{
+    public class CharInfo : Object_Base
+    {
         public volatile float X = 0;
         public volatile float Y = 0;
         public volatile float Z = 0;
         public volatile int Heading = 0;
-		private string _Name = "";
+        private string _Name = "";
         public volatile uint Race = 0;
         public volatile uint Sex = 0;
         public volatile uint Class = 0;
@@ -57,7 +57,7 @@ namespace L2_login
         public volatile uint HairColor = 0;
         public volatile uint Face = 0;
 
-		private string _Title = "";
+        private string _Title = "";
         private uint _ClanID = 0;
         private uint _ClanCrestID = 0;
         public volatile uint AllyID = 0;
@@ -74,8 +74,8 @@ namespace L2_login
         public volatile uint PrivateStoreType = 0;//  1 - sellshop//byte
 
         public volatile uint CubicCount = 0;//ushort
-		private System.Collections.ArrayList _Cubics = new System.Collections.ArrayList();
-        private System.Collections.ArrayList _AbnEffects = new System.Collections.ArrayList();
+        private ArrayList _Cubics = new ArrayList();
+        private ArrayList _AbnEffects = new ArrayList();
 
         public volatile uint FindParty = 0;//byte
 
@@ -113,7 +113,7 @@ namespace L2_login
         public volatile float Dest_Y = 0;
         public volatile float Dest_Z = 0;
         public volatile bool Moving = false;
-		private System.DateTime _lastMoveTime = System.DateTime.Now;
+        private System.DateTime _lastMoveTime = System.DateTime.Now;
         public volatile uint MoveTarget = 0;
         public volatile TargetType MoveTargetType = TargetType.NONE;
 
@@ -130,98 +130,101 @@ namespace L2_login
         private string _ClanName = "";
         public volatile int ClanCrestIndex = 0;
         private string _AllyName = "";
-		private System.Collections.SortedList _my_buffs;
+        private SortedList _my_buffs;
 
-		private readonly object my_buffsLock = new object();
+        private readonly object my_buffsLock = new object();
         private readonly object ClanNameLock = new object();
         private readonly object AllyNameLock = new object();
         private readonly object ClanIDLock = new object();
         private readonly object ClanCrestIDLock = new object();
         private readonly object ClanCrestIndexLock = new object();
         private readonly object lastMoveTimeLock = new object();
-		private readonly object CubicsLock = new object();
+        private readonly object CubicsLock = new object();
         private readonly object AbnEffectsLock = new object();
-		private readonly object TitleLock = new object();
-		private readonly object NameLock = new object();
+        private readonly object TitleLock = new object();
+        private readonly object NameLock = new object();
 
         public bool HasEffect(AbnormalEffects test)
         {
             return AbnEffects.IndexOf((uint)test) != -1;
             //return (AbnormalEffects & (uint)test) != 0;
         }
-        
+
         public bool HasExtendedEffect(ExtendedEffects test)
         {
             return (ExtendedEffects & (uint)test) != 0;
         }
-        
-		public bool HasRelation(RelationStates test)
-		{
-			return(Relation & (uint)test) != 0;
-		}
-		
-        public bool CheckCombat()
-		{
-			if(isInCombat == 0)
-				return false;
-			return true;
-		}
 
-		public string Name
-		{
-			get
-			{
-				string tmp;
-				lock(NameLock)
-				{
-					tmp = this._Name;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(NameLock)
-				{
-					_Name = value;
-				}
-			}
-		}
-		public string Title
-		{
-			get
-			{
-				string tmp;
-				lock(TitleLock)
-				{
-					tmp = this._Title;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(TitleLock)
-				{
-					_Title = value;
-				}
-			}
-		}
-		public uint ClanID
-		{
-			get
-			{
-				uint tmp;
-				lock(ClanIDLock)
-				{
-					tmp = this._ClanID;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(ClanIDLock)
-				{
-					_ClanID = value;
-				}
+        public bool HasRelation(RelationStates test)
+        {
+            return (Relation & (uint)test) != 0;
+        }
+
+        public bool CheckCombat()
+        {
+            if (isInCombat == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public string Name
+        {
+            get
+            {
+                string tmp;
+                lock (NameLock)
+                {
+                    tmp = this._Name;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (NameLock)
+                {
+                    _Name = value;
+                }
+            }
+        }
+        public string Title
+        {
+            get
+            {
+                string tmp;
+                lock (TitleLock)
+                {
+                    tmp = this._Title;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (TitleLock)
+                {
+                    _Title = value;
+                }
+            }
+        }
+        public uint ClanID
+        {
+            get
+            {
+                uint tmp;
+                lock (ClanIDLock)
+                {
+                    tmp = this._ClanID;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (ClanIDLock)
+                {
+                    _ClanID = value;
+                }
 
                 if (_ClanID == 0)
                 {
@@ -267,24 +270,24 @@ namespace L2_login
                         //request warstate
                     }
                 }
-			}
-		}
-		public uint ClanCrestID
-		{
-			get
-			{
-				uint tmp;
-				lock(ClanCrestIDLock)
-				{
-					tmp = this._ClanCrestID;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(ClanCrestIDLock)
-				{
-					_ClanCrestID = value;
+            }
+        }
+        public uint ClanCrestID
+        {
+            get
+            {
+                uint tmp;
+                lock (ClanCrestIDLock)
+                {
+                    tmp = this._ClanCrestID;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (ClanCrestIDLock)
+                {
+                    _ClanCrestID = value;
 
                     if (_ClanCrestID == 0)
                     {
@@ -295,7 +298,7 @@ namespace L2_login
                         //and the crest shit...
                         for (int i = 0; i < Globals.crestids.Count; i++)
                         {
-                            if ((uint)(Globals.crestids[i]) == _ClanCrestID)
+                            if ((uint)Globals.crestids[i] == _ClanCrestID)
                             {
                                 ClanCrestIndex = i;
                                 return;
@@ -337,33 +340,33 @@ namespace L2_login
                         }
                         //end of clan crest shit
                     }
-				}
-			}
-		}
-		public System.Collections.ArrayList Cubics
-		{
-			get
-			{
-				System.Collections.ArrayList tmp;
-				lock(CubicsLock)
-				{
-					tmp = this._Cubics;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(CubicsLock)
-				{
-					_Cubics = value;
-				}
-			}
-		}
-        public System.Collections.ArrayList AbnEffects
+                }
+            }
+        }
+        public ArrayList Cubics
         {
             get
             {
-                System.Collections.ArrayList tmp;
+                ArrayList tmp;
+                lock (CubicsLock)
+                {
+                    tmp = this._Cubics;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (CubicsLock)
+                {
+                    _Cubics = value;
+                }
+            }
+        }
+        public ArrayList AbnEffects
+        {
+            get
+            {
+                ArrayList tmp;
                 lock (AbnEffectsLock)
                 {
                     tmp = this._AbnEffects;
@@ -379,25 +382,25 @@ namespace L2_login
             }
         }
 
-		public System.DateTime lastMoveTime
-		{
-			get
-			{
-				System.DateTime tmp;
-				lock(lastMoveTimeLock)
-				{
-					tmp = this._lastMoveTime;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(lastMoveTimeLock)
-				{
-					_lastMoveTime = value;
-				}
-			}
-		}
+        public System.DateTime lastMoveTime
+        {
+            get
+            {
+                System.DateTime tmp;
+                lock (lastMoveTimeLock)
+                {
+                    tmp = this._lastMoveTime;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (lastMoveTimeLock)
+                {
+                    _lastMoveTime = value;
+                }
+            }
+        }
         public string ClanName
         {
             get
@@ -474,420 +477,420 @@ namespace L2_login
                 }
             }
         }
-		public System.Collections.SortedList my_buffs
-		{
-			get
-			{
-                System.Collections.SortedList tmp;
-				lock(my_buffsLock)
-				{
-					tmp = this._my_buffs;
-				}
-				return tmp;
-			}
-			set
-			{
-				lock(my_buffsLock)
-				{
-					_my_buffs = value;
-				}
-			}
-		}
-
-		public CharInfo()
-		{
-			Moving = false;
-            my_buffs = new System.Collections.SortedList();
-		}
-               
-	public void Load(ByteBuffer buff)
-	{
-		//int offset = 1;
-
-        /*
-         * 31 
-            6E C8 FE FF 
-            9B 50 02 00 
-            20 F4 FF FF 
-
-            00 00 00 00 
-
-            68 5F 11 4A id
-            4C 00 61 00 64 00 79 00 64 00 77 00 61 00 72 00 66 00 00 00 
-            04 race
-            00 sex
-            01 ?
-            35 00 00 00 base class ??
-
-            F0 33 00 00 
-            61 84 00 00 
-            5F 84 00 00 
-            00 00 00 00 
-            B8 45 00 00 
-            62 84 00 00 
-            63 84 00 00 
-            65 84 00 00 
-            00 00 00 00 
-            5F 84 00 00 
-            00 00 00 00 
-            00 00 00 00 -1
- 
-            EF 33 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 -2
-
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 -3
-
-            00 00 00 00 
-            00 00 00 00 -4
-
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 -5
-
-            00 00 00 00 
-
-            02 01 00 00 // karma  ?
-
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 
-            DE 00 00 00 // 222 ? cast speed ?
-            79 02 00 00 // 633 attac k speed
-            00 00 00 00 
-            83 00 
-            50 00 
-            32 00 
-            32 00 
-            00 00 // title ?
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            F0 3F 93 C1 51 F2 EA 3C 
-            02 40 00 00 00 00 00 00 
-            14 40 00 00 
-            00 00 00 00 
-            33 40 00 00 
-            00 00 
-            01 00 00 00 
-            02 00 00 00 
-            49 00 6D 00 61 00 53 00 68 00 6F 00 72 00 74 00 73 00 74 00 75 00 66 00 66 00 00 00 //title
-            1F 03 10 60 clanid
-            6B 9B 00 00 clansrect
-            00 00 00 00 allyid
-            00 00 00 00 alycrest
-            01 is sitting
-            01 is runing
-            00 in combat
-            00 isalikedead
-            00 invi
-            00 mount
-            00 store
-            00 00 cub
-            00 find pt
-            00 
-            23 00 rec ?
-            00 00 00 00 
-            9C 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 00 00 00 
-            00 FF FF FF //color
-            00 FF 6F 00 //head ?
-            00 
-            04 00 
-            00 A2 F9 EC //tit color
-            00 00 
-            D0 07 00 00 // 2k - clan rep?
-            00 00 00 00 trans
-            00 00 00 00 aghat
-            01 00 00 00 
-            00 00 00 00 
-            00 00 
-            79 28 00 00 
-            7C 3C 00 00 
-            7C 3C 00 00 
-            96 0A 00 00 
-            96 0A 00 00 
-            00 00 00 00 
-            00 00 
-            01 00 00 00 // effect
-            28 00 
-            00 
-         */
-		X = buff.ReadInt32();
-		Y = buff.ReadInt32();
-		Z = buff.ReadInt32();
-		Dest_X = X;
-		Dest_Y = Y;
-		Dest_Z = Z;
-
-		buff.ReadInt32(); // in G+ and onward this is now the Vechile ID
-
-		ID = buff.ReadUInt32();
-		Name = buff.ReadString();
-
-		//Race = buff.ReadUInt32();
-		//Sex = buff.ReadUInt32();
-        Race = buff.ReadByte();
-        buff.ReadByte();
-        Sex = buff.ReadUInt32();
-
-		BaseClass = buff.ReadUInt32();
-
-		Underwear = buff.ReadUInt32();
-		Head = buff.ReadUInt32();
-		RHand = buff.ReadUInt32();
-		LHand = buff.ReadUInt32();
-		Gloves = buff.ReadUInt32();
-		Chest = buff.ReadUInt32();
-		Legs = buff.ReadUInt32();
-		Feet = buff.ReadUInt32();
-		Back = buff.ReadUInt32();
-		LRHand = buff.ReadUInt32();
-		Hair = buff.ReadUInt32();
-		DollFace = buff.ReadUInt32();
-
-        //GD OK
-
-		buff.ReadUInt32();//right bracelet
-		buff.ReadUInt32();//left bracelet
-		buff.ReadUInt32();//deco 1
-		buff.ReadUInt32();//deco 2
-		buff.ReadUInt32();//deco 3
-		buff.ReadUInt32();//deco 4
-		buff.ReadUInt32();//deco 5
-		buff.ReadUInt32();//deco 6
-
-		buff.ReadUInt32();//belt
-	
-        //GD OK
-
-		buff.ReadUInt32();//aug underwear
-		buff.ReadUInt32();//aug head
-		aug_RHand = buff.ReadUInt32();
-		aug_LHand = buff.ReadUInt32();
-
-		buff.ReadUInt32();//aug gloves
-		buff.ReadUInt32();//aug chest
-		buff.ReadUInt32();//aug legs
-		buff.ReadUInt32();//aug feet
-		buff.ReadUInt32();//aug back
-		buff.ReadUInt32();//aug lr hand
-		buff.ReadUInt32();//aug hair
-		buff.ReadUInt32();//aug doll face
-	
-        //GD OK
-
-		buff.ReadUInt32();//aug right bracelet
-		buff.ReadUInt32();//aug left bracelet
-		buff.ReadUInt32();//aug deco 1
-		buff.ReadUInt32();//aug deco 2
-		buff.ReadUInt32();//aug deco 3
-		buff.ReadUInt32();//aug deco 4
-		buff.ReadUInt32();//aug deco 5
-		buff.ReadUInt32();//aug deco 6
-
-		buff.ReadUInt32();//aug belt
-
-
-        buff.ReadUInt32();//05 00 00 00 
-        buff.ReadUInt32();//01 00 00 00 
-
-		buff.ReadUInt32(); // old pvp flag
-		buff.ReadInt32();  // old karma
-
-        //GD OK
-
-
-        buff.ReadUInt32();
-        buff.ReadUInt32();
-        buff.ReadUInt32();
-        buff.ReadUInt32(); //00 00 00 00
-        buff.ReadUInt32(); //00 00 00 00
-        buff.ReadUInt32(); //00 00 00 00
-        //buff.ReadUInt32();
-        buff.ReadByte(); //00 00 00 00
-        buff.ReadInt16();
-        MatkSpeed = buff.ReadUInt32();
-        PatkSpeed = buff.ReadUInt32();
-        buff.ReadUInt32();//00
-        RunSpeed = buff.ReadUInt16();
-        WalkSpeed = buff.ReadUInt16();
-        SwimRunSpeed = buff.ReadUInt16();
-        SwimWalkSpeed = buff.ReadUInt16();
-        //PvPFlag = buff.ReadUInt32();
-        //Karma = buff.ReadInt32(); 
-
-        //buff.ReadUInt32(); //00 00 00 00
-        //buff.ReadUInt32(); //64 00 00 00 
-
-        //GD OK
-
-		//MatkSpeed = buff.ReadUInt32();
-		//PatkSpeed = buff.ReadUInt32();
-
-        buff.ReadUInt32(); //00 00 00 00 
-        buff.ReadUInt32(); //00 00 00 00 
-        buff.ReadUInt32(); //00 00 00 00 
-        buff.ReadUInt16();
-		/*RunSpeed = buff.ReadUInt32();
-		WalkSpeed = buff.ReadUInt32();
-		SwimRunSpeed = buff.ReadUInt32();
-		SwimWalkSpeed = buff.ReadUInt32();
-		flRunSpeed = buff.ReadUInt32();
-		flWalkSpeed = buff.ReadUInt32();
-		FlyRunSpeed = buff.ReadUInt32();
-		FlyWalkSpeed = buff.ReadUInt32();*/
-
-		//MoveSpeedMult = System.Convert.ToSingle(buff.ReadDouble());
-		//AttackSpeedMult = System.Convert.ToSingle(buff.ReadDouble());
-		CollisionRadius = System.Convert.ToSingle(buff.ReadDouble());
-		CollisionHeight = System.Convert.ToSingle(buff.ReadDouble());
-
-        //GD OK
-        buff.ReadUInt32();
-        buff.ReadUInt32();
-        buff.ReadUInt16();
-		HairSytle = buff.ReadUInt32();
-		HairColor = buff.ReadUInt32();
-		Face = buff.ReadUInt32();
-
-		Title = buff.ReadString();
-		ClanID = buff.ReadUInt32();
-		ClanCrestID = buff.ReadUInt32();
-		AllyID = buff.ReadUInt32();
-		AllyCrestID = buff.ReadUInt32();
-
-        //GD OK
-
-		isSitting = buff.ReadByte();
-		isRunning = buff.ReadByte();
-		isInCombat = buff.ReadByte();
-		isAlikeDead = buff.ReadByte();
-        // re: hide 
-        //
-        // When a player casts hide the server sets their CI 
-        // AbnormalEffect to the Stealth Mask and sets this byte to 1.
-        // It then sends all clients a DeleteObject packet.
-        // Since the Delete object packet is what actually makes the player
-        // vanish this byte is responsible for handling what happens if the player
-        // logs out and then back in.  Basically if this byte is set when 
-        // a player logs in, this tells all clients not to draw the actor :)
-        // !! This byte alone does not mean a player is invisible, just that they will
-        //  load invisible !!
-		Invisible = buff.ReadByte();
-		MountType = buff.ReadByte();
-		PrivateStoreType = buff.ReadByte();
-	
-		CubicCount = buff.ReadUInt16();
-		Cubics.Clear();
-		for (uint i = 0; i < CubicCount; i++)
-		{
-			uint tmpc = buff.ReadUInt16();//ushort
-			Cubics.Add(tmpc);
-		}
-    
-		FindParty = buff.ReadByte();
-
-
-        //buff.ReadUInt32();
-
-
-		isFlying = buff.ReadByte();
-		RecAmount = buff.ReadUInt16();
-
-        buff.ReadUInt32(); //00 00 00 00 
-		Class = buff.ReadUInt32();//class id
-
-        //GD OK
-
-		buff.ReadUInt32();//00
-		EnchantAmount = buff.ReadByte();
-		TeamCircle = buff.ReadByte();//team color
-
-		ClanCrestIDLarge = buff.ReadUInt32();
-
-		HeroIcon = buff.ReadByte();//is noble
-		HeroGlow = buff.ReadByte();//is hero
-
-		isFishing = buff.ReadByte();
-		FishX = buff.ReadInt32();
-		FishY = buff.ReadInt32();
-		FishZ = buff.ReadInt32();
-
-		NameColor = buff.ReadUInt32();
-		Heading = buff.ReadInt32();//heading
-		PledgeClass = buff.ReadByte();
-        buff.ReadByte();//pledge type
-		TitleColor = buff.ReadUInt32();
-
-        //GD OK
-
-		DemonSword = buff.ReadUInt16();//z sword? //0 0 0 0
-		buff.ReadUInt32();//clan rep
-		Transform_ID = buff.ReadUInt32();//transformation id
-		Agathon_ID = buff.ReadUInt32();//agathon id
-
-
-        buff.ReadUInt32();//01 00 00 00 
-	
-
-		ExtendedEffects = buff.ReadUInt32(); // Extended VFX (stigma etc)
-        buff.ReadInt16();
-
-
-        Cur_CP =  buff.ReadUInt32(); //64 00 00 00 
-
-        Max_HP =  buff.ReadUInt32(); //C1 00 00 00
-        Cur_HP = buff.ReadUInt32(); //C1 00 00 00
-        Max_MP = buff.ReadUInt32(); //27 00 00 00
-        Cur_MP =  buff.ReadUInt32(); //27 00 00 00
-
-        buff.ReadUInt32(); //00 00 00 00 
-        buff.ReadByte(); //00
-
-        AbnormalEffects = 0x00;
-        uint AbnEffCount = buff.ReadUInt32();
-        AbnEffects.Clear();
-
-        for (uint i = 0; i < (uint)AbnEffCount; i++)
+        public SortedList my_buffs
         {
-            uint tmpabneff = buff.ReadUInt32();
-            //Globals.l2net_home.Add_Text("Adding abnormal vfx: " + tmpabneff.ToString("X2") + "to : " + Name, Globals.Yellow, TextType.BOT);
-            AbnEffects.Add(tmpabneff);
+            get
+            {
+                SortedList tmp;
+                lock (my_buffsLock)
+                {
+                    tmp = this._my_buffs;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (my_buffsLock)
+                {
+                    _my_buffs = value;
+                }
+            }
         }
-        buff.ReadInt16();
+
+        public CharInfo()
+        {
+            Moving = false;
+            my_buffs = new SortedList();
+        }
+
+        public void Load(ByteBuffer buff)
+        {
+            //int offset = 1;
+
+            /*
+             * 31 
+                6E C8 FE FF 
+                9B 50 02 00 
+                20 F4 FF FF 
+
+                00 00 00 00 
+
+                68 5F 11 4A id
+                4C 00 61 00 64 00 79 00 64 00 77 00 61 00 72 00 66 00 00 00 
+                04 race
+                00 sex
+                01 ?
+                35 00 00 00 base class ??
+
+                F0 33 00 00 
+                61 84 00 00 
+                5F 84 00 00 
+                00 00 00 00 
+                B8 45 00 00 
+                62 84 00 00 
+                63 84 00 00 
+                65 84 00 00 
+                00 00 00 00 
+                5F 84 00 00 
+                00 00 00 00 
+                00 00 00 00 -1
+
+                EF 33 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 -2
+
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 -3
+
+                00 00 00 00 
+                00 00 00 00 -4
+
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 -5
+
+                00 00 00 00 
+
+                02 01 00 00 // karma  ?
+
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 
+                DE 00 00 00 // 222 ? cast speed ?
+                79 02 00 00 // 633 attac k speed
+                00 00 00 00 
+                83 00 
+                50 00 
+                32 00 
+                32 00 
+                00 00 // title ?
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                F0 3F 93 C1 51 F2 EA 3C 
+                02 40 00 00 00 00 00 00 
+                14 40 00 00 
+                00 00 00 00 
+                33 40 00 00 
+                00 00 
+                01 00 00 00 
+                02 00 00 00 
+                49 00 6D 00 61 00 53 00 68 00 6F 00 72 00 74 00 73 00 74 00 75 00 66 00 66 00 00 00 //title
+                1F 03 10 60 clanid
+                6B 9B 00 00 clansrect
+                00 00 00 00 allyid
+                00 00 00 00 alycrest
+                01 is sitting
+                01 is runing
+                00 in combat
+                00 isalikedead
+                00 invi
+                00 mount
+                00 store
+                00 00 cub
+                00 find pt
+                00 
+                23 00 rec ?
+                00 00 00 00 
+                9C 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 00 00 00 
+                00 FF FF FF //color
+                00 FF 6F 00 //head ?
+                00 
+                04 00 
+                00 A2 F9 EC //tit color
+                00 00 
+                D0 07 00 00 // 2k - clan rep?
+                00 00 00 00 trans
+                00 00 00 00 aghat
+                01 00 00 00 
+                00 00 00 00 
+                00 00 
+                79 28 00 00 
+                7C 3C 00 00 
+                7C 3C 00 00 
+                96 0A 00 00 
+                96 0A 00 00 
+                00 00 00 00 
+                00 00 
+                01 00 00 00 // effect
+                28 00 
+                00 
+             */
+            X = buff.ReadInt32();
+            Y = buff.ReadInt32();
+            Z = buff.ReadInt32();
+            Dest_X = X;
+            Dest_Y = Y;
+            Dest_Z = Z;
+
+            buff.ReadInt32(); // in G+ and onward this is now the Vechile ID
+
+            ID = buff.ReadUInt32();
+            Name = buff.ReadString();
+
+            //Race = buff.ReadUInt32();
+            //Sex = buff.ReadUInt32();
+            Race = buff.ReadByte();
+            buff.ReadByte();
+            Sex = buff.ReadUInt32();
+
+            BaseClass = buff.ReadUInt32();
+
+            Underwear = buff.ReadUInt32();
+            Head = buff.ReadUInt32();
+            RHand = buff.ReadUInt32();
+            LHand = buff.ReadUInt32();
+            Gloves = buff.ReadUInt32();
+            Chest = buff.ReadUInt32();
+            Legs = buff.ReadUInt32();
+            Feet = buff.ReadUInt32();
+            Back = buff.ReadUInt32();
+            LRHand = buff.ReadUInt32();
+            Hair = buff.ReadUInt32();
+            DollFace = buff.ReadUInt32();
+
+            //GD OK
+
+            buff.ReadUInt32();//right bracelet
+            buff.ReadUInt32();//left bracelet
+            buff.ReadUInt32();//deco 1
+            buff.ReadUInt32();//deco 2
+            buff.ReadUInt32();//deco 3
+            buff.ReadUInt32();//deco 4
+            buff.ReadUInt32();//deco 5
+            buff.ReadUInt32();//deco 6
+
+            buff.ReadUInt32();//belt
+
+            //GD OK
+
+            buff.ReadUInt32();//aug underwear
+            buff.ReadUInt32();//aug head
+            aug_RHand = buff.ReadUInt32();
+            aug_LHand = buff.ReadUInt32();
+
+            buff.ReadUInt32();//aug gloves
+            buff.ReadUInt32();//aug chest
+            buff.ReadUInt32();//aug legs
+            buff.ReadUInt32();//aug feet
+            buff.ReadUInt32();//aug back
+            buff.ReadUInt32();//aug lr hand
+            buff.ReadUInt32();//aug hair
+            buff.ReadUInt32();//aug doll face
+
+            //GD OK
+
+            buff.ReadUInt32();//aug right bracelet
+            buff.ReadUInt32();//aug left bracelet
+            buff.ReadUInt32();//aug deco 1
+            buff.ReadUInt32();//aug deco 2
+            buff.ReadUInt32();//aug deco 3
+            buff.ReadUInt32();//aug deco 4
+            buff.ReadUInt32();//aug deco 5
+            buff.ReadUInt32();//aug deco 6
+
+            buff.ReadUInt32();//aug belt
+
+
+            buff.ReadUInt32();//05 00 00 00 
+            buff.ReadUInt32();//01 00 00 00 
+
+            buff.ReadUInt32(); // old pvp flag
+            buff.ReadInt32();  // old karma
+
+            //GD OK
+
+
+            buff.ReadUInt32();
+            buff.ReadUInt32();
+            buff.ReadUInt32();
+            buff.ReadUInt32(); //00 00 00 00
+            buff.ReadUInt32(); //00 00 00 00
+            buff.ReadUInt32(); //00 00 00 00
+                               //buff.ReadUInt32();
+            buff.ReadByte(); //00 00 00 00
+            buff.ReadInt16();
+            MatkSpeed = buff.ReadUInt32();
+            PatkSpeed = buff.ReadUInt32();
+            buff.ReadUInt32();//00
+            RunSpeed = buff.ReadUInt16();
+            WalkSpeed = buff.ReadUInt16();
+            SwimRunSpeed = buff.ReadUInt16();
+            SwimWalkSpeed = buff.ReadUInt16();
+            //PvPFlag = buff.ReadUInt32();
+            //Karma = buff.ReadInt32(); 
+
+            //buff.ReadUInt32(); //00 00 00 00
+            //buff.ReadUInt32(); //64 00 00 00 
+
+            //GD OK
+
+            //MatkSpeed = buff.ReadUInt32();
+            //PatkSpeed = buff.ReadUInt32();
+
+            buff.ReadUInt32(); //00 00 00 00 
+            buff.ReadUInt32(); //00 00 00 00 
+            buff.ReadUInt32(); //00 00 00 00 
+            buff.ReadUInt16();
+            /*RunSpeed = buff.ReadUInt32();
+            WalkSpeed = buff.ReadUInt32();
+            SwimRunSpeed = buff.ReadUInt32();
+            SwimWalkSpeed = buff.ReadUInt32();
+            flRunSpeed = buff.ReadUInt32();
+            flWalkSpeed = buff.ReadUInt32();
+            FlyRunSpeed = buff.ReadUInt32();
+            FlyWalkSpeed = buff.ReadUInt32();*/
+
+            //MoveSpeedMult = System.Convert.ToSingle(buff.ReadDouble());
+            //AttackSpeedMult = System.Convert.ToSingle(buff.ReadDouble());
+            CollisionRadius = System.Convert.ToSingle(buff.ReadDouble());
+            CollisionHeight = System.Convert.ToSingle(buff.ReadDouble());
+
+            //GD OK
+            buff.ReadUInt32();
+            buff.ReadUInt32();
+            buff.ReadUInt16();
+            HairSytle = buff.ReadUInt32();
+            HairColor = buff.ReadUInt32();
+            Face = buff.ReadUInt32();
+
+            Title = buff.ReadString();
+            ClanID = buff.ReadUInt32();
+            ClanCrestID = buff.ReadUInt32();
+            AllyID = buff.ReadUInt32();
+            AllyCrestID = buff.ReadUInt32();
+
+            //GD OK
+
+            isSitting = buff.ReadByte();
+            isRunning = buff.ReadByte();
+            isInCombat = buff.ReadByte();
+            isAlikeDead = buff.ReadByte();
+            // re: hide 
+            //
+            // When a player casts hide the server sets their CI 
+            // AbnormalEffect to the Stealth Mask and sets this byte to 1.
+            // It then sends all clients a DeleteObject packet.
+            // Since the Delete object packet is what actually makes the player
+            // vanish this byte is responsible for handling what happens if the player
+            // logs out and then back in.  Basically if this byte is set when 
+            // a player logs in, this tells all clients not to draw the actor :)
+            // !! This byte alone does not mean a player is invisible, just that they will
+            //  load invisible !!
+            Invisible = buff.ReadByte();
+            MountType = buff.ReadByte();
+            PrivateStoreType = buff.ReadByte();
+
+            CubicCount = buff.ReadUInt16();
+            Cubics.Clear();
+            for (uint i = 0; i < CubicCount; i++)
+            {
+                uint tmpc = buff.ReadUInt16();//ushort
+                Cubics.Add(tmpc);
+            }
+
+            FindParty = buff.ReadByte();
+
+
+            //buff.ReadUInt32();
+
+
+            isFlying = buff.ReadByte();
+            RecAmount = buff.ReadUInt16();
+
+            buff.ReadUInt32(); //00 00 00 00 
+            Class = buff.ReadUInt32();//class id
+
+            //GD OK
+
+            buff.ReadUInt32();//00
+            EnchantAmount = buff.ReadByte();
+            TeamCircle = buff.ReadByte();//team color
+
+            ClanCrestIDLarge = buff.ReadUInt32();
+
+            HeroIcon = buff.ReadByte();//is noble
+            HeroGlow = buff.ReadByte();//is hero
+
+            isFishing = buff.ReadByte();
+            FishX = buff.ReadInt32();
+            FishY = buff.ReadInt32();
+            FishZ = buff.ReadInt32();
+
+            NameColor = buff.ReadUInt32();
+            Heading = buff.ReadInt32();//heading
+            PledgeClass = buff.ReadByte();
+            buff.ReadByte();//pledge type
+            TitleColor = buff.ReadUInt32();
+
+            //GD OK
+
+            DemonSword = buff.ReadUInt16();//z sword? //0 0 0 0
+            buff.ReadUInt32();//clan rep
+            Transform_ID = buff.ReadUInt32();//transformation id
+            Agathon_ID = buff.ReadUInt32();//agathon id
+
+
+            buff.ReadUInt32();//01 00 00 00 
+
+
+            ExtendedEffects = buff.ReadUInt32(); // Extended VFX (stigma etc)
+            buff.ReadInt16();
+
+
+            Cur_CP = buff.ReadUInt32(); //64 00 00 00 
+
+            Max_HP = buff.ReadUInt32(); //C1 00 00 00
+            Cur_HP = buff.ReadUInt32(); //C1 00 00 00
+            Max_MP = buff.ReadUInt32(); //27 00 00 00
+            Cur_MP = buff.ReadUInt32(); //27 00 00 00
+
+            buff.ReadUInt32(); //00 00 00 00 
+            buff.ReadByte(); //00
+
+            AbnormalEffects = 0x00;
+            uint AbnEffCount = buff.ReadUInt32();
+            AbnEffects.Clear();
+
+            for (uint i = 0; i < AbnEffCount; i++)
+            {
+                uint tmpabneff = buff.ReadUInt32();
+                //Globals.l2net_home.Add_Text("Adding abnormal vfx: " + tmpabneff.ToString("X2") + "to : " + Name, Globals.Yellow, TextType.BOT);
+                AbnEffects.Add(tmpabneff);
+            }
+            buff.ReadInt16();
         }
 
         public void Load_UI(ByteBuffer buff)
@@ -1095,7 +1098,7 @@ namespace L2_login
 
             CubicCount = buff.ReadUInt16();//0 0
             Cubics.Clear();
-            for (uint i = 0; i < (uint)CubicCount; i++)
+            for (uint i = 0; i < CubicCount; i++)
             {
                 uint tmpc = buff.ReadUInt16();//ushort
                 Cubics.Add(tmpc);
@@ -1268,7 +1271,7 @@ namespace L2_login
         public void Update(ByteBuffer buff)
         {
             uint NumberOfUpdates = buff.ReadUInt32();
-            
+
             for (int i = 0; i < NumberOfUpdates; i++)
             {
                 uint data = buff.ReadUInt32();
@@ -1382,5 +1385,5 @@ namespace L2_login
                 }
             }
         }
-	}//end of player info
+    }//end of player info
 }

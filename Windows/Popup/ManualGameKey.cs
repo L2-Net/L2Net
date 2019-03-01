@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace L2_login
@@ -20,7 +14,7 @@ namespace L2_login
         {
             string keyinternal1 = textBox_StaticKey.Text.ToString();
             keyinternal1 = keyinternal1.Replace(" ", "");
-            byte [] gk1 = HexString2Bytes(keyinternal1);
+            byte[] gk1 = HexString2Bytes(keyinternal1);
             Globals.gamedata.game_key[8] = gk1[0];
             Globals.gamedata.game_key[9] = gk1[1];
             Globals.gamedata.game_key[10] = gk1[2];
@@ -65,10 +59,17 @@ namespace L2_login
         private byte[] HexString2Bytes(string hexString)
         {
             //check for null
-            if (hexString == null) return null;
+            if (hexString == null)
+            {
+                return null;
+            }
             //get length
             int len = hexString.Length;
-            if (len % 2 == 1) return null;
+            if (len % 2 == 1)
+            {
+                return null;
+            }
+
             int len_half = len / 2;
             //create a byte array
             byte[] bs = new byte[len_half];

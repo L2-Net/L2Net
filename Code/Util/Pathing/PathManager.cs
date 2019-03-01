@@ -8,7 +8,7 @@ using System.Collections;
  * The pathmanager should take the list of AstarNodes and send the moveto packets
  * at the proper times so that the player will follow the path correctly. */
 
- 
+
 
 //Lets quickly just create a few new script commands to get this to work.
 //      SET_TARGETING PATHFINDING 1 - Turns on pathfinding for the following commands
@@ -25,12 +25,12 @@ namespace L2_login
         // private path
         private ArrayList _path = new ArrayList();
         private bool _drawGrid = false;
-        
+
         private readonly object pathLock = new object();
         private readonly object drawGridLock = new object();
 
         private readonly object nodelistLock = new object();
-        
+
         public ArrayList path
         {
             get
@@ -81,19 +81,19 @@ namespace L2_login
             cleanPath();
             try
             {
-                
+
                 pathFinder.allocNode(Globals.gamedata.my_char.X, Globals.gamedata.my_char.Y, 0, 0);
                 pathFinder.findStartNode();
                 targetFound = pathFinder.findTargetNode(targetX, targetY);
- 
-                if(targetFound)
+
+                if (targetFound)
                 {
-                  
+
                     pathFound = pathFinder.fringeSearch();
                     pathFinder.trimPath();
                     pathFinder.buildPathPoints();
                     path = pathFinder.pathPoints;
-               
+
 #if DEBUG
                     pathFinder.printPath();
 #endif
@@ -102,20 +102,22 @@ namespace L2_login
 
                 }
                 else
-                    Globals.l2net_home.Add_Error("Could not find target node at " + targetX + "," + targetY);             
+                {
+                    Globals.l2net_home.Add_Error("Could not find target node at " + targetX + "," + targetY);
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 //eh?
-               Globals.l2net_home.Add_Debug(e.Message);
-            }          
-            return (pathFound && targetFound);
+                Globals.l2net_home.Add_Debug(e.Message);
+            }
+            return pathFound && targetFound;
 
         }
-       
+
         public void cleanPath()
         {
-            this.path.Clear();            
+            this.path.Clear();
         }
     }
 }

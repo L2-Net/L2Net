@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using SlimDX.Direct3D9;
 
 namespace L2_login
@@ -21,14 +19,14 @@ namespace L2_login
         public float LowerX = 0;
         public float LowerY = 0;
 
-        private System.DateTime _lastaccessed_imagestream = new DateTime(0L);
-        private System.DateTime _lastaccessed_dxtexture = new DateTime(0L);
+        private DateTime _lastaccessed_imagestream = new DateTime(0L);
+        private DateTime _lastaccessed_dxtexture = new DateTime(0L);
 
         public void ReleaseResources()
         {
             if (_image != null)
             {
-                if ((System.DateTime.Now - _lastaccessed_imagestream).Ticks > Globals.MAP_HOLD_STREAM)
+                if ((DateTime.Now - _lastaccessed_imagestream).Ticks > Globals.MAP_HOLD_STREAM)
                 {
                     //release the stream
                     _image.Close();
@@ -38,7 +36,7 @@ namespace L2_login
             }
             if (_dxTexture != null)
             {
-                if ((System.DateTime.Now - _lastaccessed_dxtexture).Ticks > Globals.MAP_HOLD_TEXTURE)
+                if ((DateTime.Now - _lastaccessed_dxtexture).Ticks > Globals.MAP_HOLD_TEXTURE)
                 {
                     //release the stream
                     _dxTexture.Dispose();
@@ -52,12 +50,12 @@ namespace L2_login
         {
             get
             {
-                _lastaccessed_imagestream = System.DateTime.Now;
+                _lastaccessed_imagestream = DateTime.Now;
                 return _image;
             }
             set
             {
-                _lastaccessed_imagestream = System.DateTime.Now;
+                _lastaccessed_imagestream = DateTime.Now;
                 _image = value;
             }
         }
@@ -65,12 +63,12 @@ namespace L2_login
         {
             get
             {
-                _lastaccessed_dxtexture = System.DateTime.Now;
+                _lastaccessed_dxtexture = DateTime.Now;
                 return _dxTexture;
             }
             set
             {
-                _lastaccessed_dxtexture = System.DateTime.Now;
+                _lastaccessed_dxtexture = DateTime.Now;
                 _dxTexture = value;
             }
         }
@@ -90,10 +88,10 @@ namespace L2_login
 
         public void Setup()
         {
-            UpperX = (X * Globals.UNITS - Globals.ModX);
-            UpperY = (Y * Globals.UNITS - Globals.ModY);
-            LowerX = ((X + 1) * Globals.UNITS - Globals.ModX);
-            LowerY = ((Y + 1) * Globals.UNITS - Globals.ModY);
+            UpperX = X * Globals.UNITS - Globals.ModX;
+            UpperY = Y * Globals.UNITS - Globals.ModY;
+            LowerX = (X + 1) * Globals.UNITS - Globals.ModX;
+            LowerY = (Y + 1) * Globals.UNITS - Globals.ModY;
         }
 
         public void Parse(string inp)

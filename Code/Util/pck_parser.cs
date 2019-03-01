@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace L2_login
+﻿namespace L2_login
 {
     class pck_parser
     {
@@ -22,26 +17,26 @@ namespace L2_login
             2 - wrong char in pck_string
         */
         public bool code_check()
+        {
+            error_code = 0;
+            bool check_ok = false;
+            for (int i = 0; i < parse_code.Length; i++)
+            {
+                for (int j = 0; j < allowed_chars2.Length; j++)
                 {
-                    error_code = 0;
-                    bool check_ok = false;
-                    for (int i = 0; i < parse_code.Length; i++)
+                    if (parse_code[i] == allowed_chars2[j])
                     {
-                        for (int j = 0; j < allowed_chars2.Length; j++)
-                        {
-                            if (parse_code[i] == allowed_chars2[j])
-                            {
-                                check_ok = true;
-                            }
-                        }
-                        if (check_ok == false)
-                        {
-                            error_code = 1;
-                            return false;
-                        }
+                        check_ok = true;
                     }
-                    return true;
                 }
+                if (check_ok == false)
+                {
+                    error_code = 1;
+                    return false;
+                }
+            }
+            return true;
+        }
         public bool pck_check()
         {
             error_code = 0;
@@ -68,16 +63,19 @@ namespace L2_login
         public bool error_check()
         {
             if (error_code != 0)
+            {
                 return true;
+            }
             else
+            {
                 return false;
-
+            }
         }
 
         public string error_string()
         {
             string tmp_return;
-            switch(error_code)
+            switch (error_code)
             {
                 case 1:
                     tmp_return = "wrong char in parse code";
@@ -108,7 +106,7 @@ namespace L2_login
             // help vars
             int copy_var = 0;
             int byte_size = 0;
-            
+
             // loop vars
             bool loop_work = false;
             int loop_count = 0;
@@ -161,26 +159,26 @@ namespace L2_login
                                     if (parse_code[i + 1] == '(')
                                     {
 
-                                    tmp_vars= tmp_vars.Replace("(","");
-                                    tmp_vars = tmp_vars.Replace(")", "");
-                                    loop_count = System.Convert.ToInt32(tmp_vars);
-                                    if (loop_count > 0)
-                                    {
-                                        loop_work = true;
-                                        start_loop_index = i;
-
-                                    }
-                                    else // == 0
-                                    {
-                                        for (int k = i; k < parse_code.Length; k++)
+                                        tmp_vars = tmp_vars.Replace("(", "");
+                                        tmp_vars = tmp_vars.Replace(")", "");
+                                        loop_count = System.Convert.ToInt32(tmp_vars);
+                                        if (loop_count > 0)
                                         {
-                                            if (parse_code[k] == ')')
+                                            loop_work = true;
+                                            start_loop_index = i;
+
+                                        }
+                                        else // == 0
+                                        {
+                                            for (int k = i; k < parse_code.Length; k++)
                                             {
-                                                i = k;
+                                                if (parse_code[k] == ')')
+                                                {
+                                                    i = k;
+                                                }
                                             }
                                         }
-                                    }
-                                    rdy_data = rdy_data + " (loop)";
+                                        rdy_data = rdy_data + " (loop)";
                                     }
                                 }
                             }
@@ -242,7 +240,7 @@ namespace L2_login
         }
         private int char_to_cod(char a)
         {
-            switch(a)
+            switch (a)
             {
                 case 'c':
                     return 1;
@@ -301,7 +299,7 @@ namespace L2_login
             }
             return 0;
         } // check for strin end
-        private int comp_calc1(int index , string pck,char code_char)
+        private int comp_calc1(int index, string pck, char code_char)
         {
             int code = char_to_cod(code_char);
             if (code == 1) // byte 
@@ -312,9 +310,9 @@ namespace L2_login
             {
                 return 8; // 00 00 00 00
             }
-            if (code == 3 ) // string
+            if (code == 3) // string
             {
-                return str_legh(index , pck);
+                return str_legh(index, pck);
             }
             if (code == 4) // 2 bytes
             {
@@ -334,7 +332,7 @@ namespace L2_login
         {
             string tmp_str = "";// " = (";
 
-            switch(code)
+            switch (code)
             {
                 case 1:
                     tmp_str = tmp_str + conv_hex_to_byte(bytes);
@@ -360,7 +358,7 @@ namespace L2_login
                     tmp_str = tmp_str + "pika error";
                     break;
             }
-          //  tmp_str = tmp_str + ")";
+            //  tmp_str = tmp_str + ")";
             return tmp_str;
         }
         public string conv_hex_to_byte(string text)
@@ -373,7 +371,7 @@ namespace L2_login
             byte[] data = Globals.pck_thread.StringToByteArray2(text);
             if (data.Length > 1)
             {
-                    return System.BitConverter.ToInt16(data, 0).ToString();
+                return System.BitConverter.ToInt16(data, 0).ToString();
             }
             return "";
         }
@@ -382,7 +380,7 @@ namespace L2_login
             byte[] data = Globals.pck_thread.StringToByteArray2(text);
             if (data.Length > 3)
             {
-                    return System.BitConverter.ToInt32(data, 0).ToString();
+                return System.BitConverter.ToInt32(data, 0).ToString();
             }
             return "";
         }
@@ -391,7 +389,7 @@ namespace L2_login
             byte[] data = Globals.pck_thread.StringToByteArray2(text);
             if (data.Length > 5)
             {
-                    return System.BitConverter.ToInt64(data, 0).ToString();
+                return System.BitConverter.ToInt64(data, 0).ToString();
             }
             return "";
         }
@@ -424,4 +422,4 @@ namespace L2_login
             }
         }
     }
-    }
+}

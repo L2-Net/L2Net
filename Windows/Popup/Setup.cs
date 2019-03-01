@@ -1,23 +1,20 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for Setup.
-	/// </summary>
-	public class Setup : System.Windows.Forms.Form
-	{
-		public System.Windows.Forms.ComboBox comboBox_voice;
-		private System.Windows.Forms.Label label_voice;
-		private System.Windows.Forms.CheckBox checkBox_MinToTray;
-		private System.Windows.Forms.Button button_cancel;
-		private System.Windows.Forms.Button button_save;
-		public System.Windows.Forms.TextBox textBox_key;
-		private System.Windows.Forms.Label label_productkey;
+    /// <summary>
+    /// Summary description for Setup.
+    /// </summary>
+    public class Setup : Form
+    {
+        public ComboBox comboBox_voice;
+        private Label label_voice;
+        private CheckBox checkBox_MinToTray;
+        private Button button_cancel;
+        private Button button_save;
+        public TextBox textBox_key;
+        private Label label_productkey;
         private CheckBox checkBox_scriptIO;
         private Label label_l2_path;
         public TextBox textBox_l2path;
@@ -56,16 +53,16 @@ namespace L2_login
         private CheckBox checkBox_AutolearnSkills;
         private CheckBox checkBox_writetolog;
         public CheckBox checkBox_npc_say;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public Setup()
-		{
-			InitializeComponent();
+        public Setup()
+        {
+            InitializeComponent();
 
-			UpdateUI();
+            UpdateUI();
             comboBox_voice.SelectedIndex = Globals.Voice;
             checkBox_MinToTray.Checked = Globals.MinimizeToTray;
             textBox_key.Text = Globals.ProductKey;
@@ -102,10 +99,10 @@ namespace L2_login
             net_dc_on_ig_crit.Checked = Globals.dc_on_ig_close;
             net_dump_on_ig_crit.Checked = Globals.dump_pbuff_on_ig_close;
 
-		}
+        }
 
-		public void UpdateUI()
-		{
+        public void UpdateUI()
+        {
             button_save.Text = Globals.m_ResourceManager.GetString("Apply");
             button_cancel.Text = Globals.m_ResourceManager.GetString("button_cancel");
 
@@ -128,75 +125,75 @@ namespace L2_login
             checkBox_IgnoreExitConf.Text = Globals.m_ResourceManager.GetString("check_ignexitconf");
 
             this.Refresh();
-		}
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-            this.comboBox_voice = new System.Windows.Forms.ComboBox();
-            this.label_voice = new System.Windows.Forms.Label();
-            this.checkBox_MinToTray = new System.Windows.Forms.CheckBox();
-            this.button_cancel = new System.Windows.Forms.Button();
-            this.button_save = new System.Windows.Forms.Button();
-            this.textBox_key = new System.Windows.Forms.TextBox();
-            this.label_productkey = new System.Windows.Forms.Label();
-            this.checkBox_scriptIO = new System.Windows.Forms.CheckBox();
-            this.label_l2_path = new System.Windows.Forms.Label();
-            this.textBox_l2path = new System.Windows.Forms.TextBox();
-            this.label_directinput = new System.Windows.Forms.Label();
-            this.checkBox_white_names = new System.Windows.Forms.CheckBox();
-            this.label_toggle_key = new System.Windows.Forms.Label();
-            this.button_change_toggle = new System.Windows.Forms.Button();
-            this.checkBox_supress_quakes = new System.Windows.Forms.CheckBox();
-            this.checkBox_blank_gg = new System.Windows.Forms.CheckBox();
-            this.checkBox_hide_mess = new System.Windows.Forms.CheckBox();
-            this.comboBox_texturemode = new System.Windows.Forms.ComboBox();
-            this.label_texturemode = new System.Windows.Forms.Label();
-            this.label_viewrange = new System.Windows.Forms.Label();
-            this.comboBox_viewrange = new System.Windows.Forms.ComboBox();
-            this.checkBox_downloadcrests = new System.Windows.Forms.CheckBox();
-            this.checkBox_social_npcs = new System.Windows.Forms.CheckBox();
-            this.checkBox_social_self = new System.Windows.Forms.CheckBox();
-            this.checkBox_social_pcs = new System.Windows.Forms.CheckBox();
-            this.checkBox_shownames_items = new System.Windows.Forms.CheckBox();
-            this.checkBox_shownames_players = new System.Windows.Forms.CheckBox();
-            this.checkBox_shownames_npcs = new System.Windows.Forms.CheckBox();
-            this.checkBox_IgnoreExitConf = new System.Windows.Forms.CheckBox();
-            this.button_change_kill = new System.Windows.Forms.Button();
-            this.label_kill_key = new System.Windows.Forms.Label();
-            this.label_directinput2 = new System.Windows.Forms.Label();
-            this.checkBox_script386 = new System.Windows.Forms.CheckBox();
-            this.checkBox_usegpu = new System.Windows.Forms.CheckBox();
-            this.net_dc_on_ig_crit = new System.Windows.Forms.CheckBox();
-            this.net_dump_on_ig_crit = new System.Windows.Forms.CheckBox();
-            this.checkBox_ToggleBottingIfGMAction = new System.Windows.Forms.CheckBox();
-            this.checkBox_togglebotifported = new System.Windows.Forms.CheckBox();
-            this.checkBox_captcha_popup = new System.Windows.Forms.CheckBox();
-            this.textBox_captcha_html1 = new System.Windows.Forms.TextBox();
-            this.label_captcha_html = new System.Windows.Forms.Label();
-            this.textBox_captcha_html2 = new System.Windows.Forms.TextBox();
-            this.checkBox_AutolearnSkills = new System.Windows.Forms.CheckBox();
-            this.checkBox_writetolog = new System.Windows.Forms.CheckBox();
-            this.checkBox_npc_say = new System.Windows.Forms.CheckBox();
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.comboBox_voice = new ComboBox();
+            this.label_voice = new Label();
+            this.checkBox_MinToTray = new CheckBox();
+            this.button_cancel = new Button();
+            this.button_save = new Button();
+            this.textBox_key = new TextBox();
+            this.label_productkey = new Label();
+            this.checkBox_scriptIO = new CheckBox();
+            this.label_l2_path = new Label();
+            this.textBox_l2path = new TextBox();
+            this.label_directinput = new Label();
+            this.checkBox_white_names = new CheckBox();
+            this.label_toggle_key = new Label();
+            this.button_change_toggle = new Button();
+            this.checkBox_supress_quakes = new CheckBox();
+            this.checkBox_blank_gg = new CheckBox();
+            this.checkBox_hide_mess = new CheckBox();
+            this.comboBox_texturemode = new ComboBox();
+            this.label_texturemode = new Label();
+            this.label_viewrange = new Label();
+            this.comboBox_viewrange = new ComboBox();
+            this.checkBox_downloadcrests = new CheckBox();
+            this.checkBox_social_npcs = new CheckBox();
+            this.checkBox_social_self = new CheckBox();
+            this.checkBox_social_pcs = new CheckBox();
+            this.checkBox_shownames_items = new CheckBox();
+            this.checkBox_shownames_players = new CheckBox();
+            this.checkBox_shownames_npcs = new CheckBox();
+            this.checkBox_IgnoreExitConf = new CheckBox();
+            this.button_change_kill = new Button();
+            this.label_kill_key = new Label();
+            this.label_directinput2 = new Label();
+            this.checkBox_script386 = new CheckBox();
+            this.checkBox_usegpu = new CheckBox();
+            this.net_dc_on_ig_crit = new CheckBox();
+            this.net_dump_on_ig_crit = new CheckBox();
+            this.checkBox_ToggleBottingIfGMAction = new CheckBox();
+            this.checkBox_togglebotifported = new CheckBox();
+            this.checkBox_captcha_popup = new CheckBox();
+            this.textBox_captcha_html1 = new TextBox();
+            this.label_captcha_html = new Label();
+            this.textBox_captcha_html2 = new TextBox();
+            this.checkBox_AutolearnSkills = new CheckBox();
+            this.checkBox_writetolog = new CheckBox();
+            this.checkBox_npc_say = new CheckBox();
             this.SuspendLayout();
             // 
             // comboBox_voice
@@ -234,25 +231,25 @@ namespace L2_login
             // 
             // button_cancel
             // 
-            this.button_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            this.button_cancel.FlatStyle = FlatStyle.System;
             this.button_cancel.Location = new System.Drawing.Point(465, 408);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(96, 24);
             this.button_cancel.TabIndex = 8;
             this.button_cancel.Text = "Cancel";
-            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
+            this.button_cancel.Click += new EventHandler(this.button_cancel_Click);
             // 
             // button_save
             // 
-            this.button_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_save.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            this.button_save.FlatStyle = FlatStyle.System;
             this.button_save.Location = new System.Drawing.Point(8, 408);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(96, 24);
             this.button_save.TabIndex = 7;
             this.button_save.Text = "Apply";
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_save.Click += new EventHandler(this.button_save_Click);
             // 
             // textBox_key
             // 
@@ -261,7 +258,7 @@ namespace L2_login
             this.textBox_key.Name = "textBox_key";
             this.textBox_key.Size = new System.Drawing.Size(144, 20);
             this.textBox_key.TabIndex = 4;
-            this.textBox_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_key.TextAlign = HorizontalAlignment.Center;
             // 
             // label_productkey
             // 
@@ -296,7 +293,7 @@ namespace L2_login
             this.textBox_l2path.Name = "textBox_l2path";
             this.textBox_l2path.Size = new System.Drawing.Size(144, 20);
             this.textBox_l2path.TabIndex = 3;
-            this.textBox_l2path.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_l2path.TextAlign = HorizontalAlignment.Center;
             // 
             // label_directinput
             // 
@@ -331,13 +328,13 @@ namespace L2_login
             this.button_change_toggle.Size = new System.Drawing.Size(39, 23);
             this.button_change_toggle.TabIndex = 3;
             this.button_change_toggle.Text = "X";
-            this.button_change_toggle.Click += new System.EventHandler(this.button_change_toggle_Click);
+            this.button_change_toggle.Click += new EventHandler(this.button_change_toggle_Click);
             // 
             // checkBox_supress_quakes
             // 
             this.checkBox_supress_quakes.Location = new System.Drawing.Point(301, 106);
             this.checkBox_supress_quakes.Name = "checkBox_supress_quakes";
-            this.checkBox_supress_quakes.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_supress_quakes.Padding = new Padding(2);
             this.checkBox_supress_quakes.Size = new System.Drawing.Size(269, 24);
             this.checkBox_supress_quakes.TabIndex = 6;
             this.checkBox_supress_quakes.Text = "Suppress Earthquakes";
@@ -346,7 +343,7 @@ namespace L2_login
             // 
             this.checkBox_blank_gg.Location = new System.Drawing.Point(301, 127);
             this.checkBox_blank_gg.Name = "checkBox_blank_gg";
-            this.checkBox_blank_gg.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_blank_gg.Padding = new Padding(2);
             this.checkBox_blank_gg.Size = new System.Drawing.Size(269, 24);
             this.checkBox_blank_gg.TabIndex = 26;
             this.checkBox_blank_gg.Text = "Send Blank Reply for Unknown GG Queries";
@@ -355,7 +352,7 @@ namespace L2_login
             // 
             this.checkBox_hide_mess.Location = new System.Drawing.Point(301, 148);
             this.checkBox_hide_mess.Name = "checkBox_hide_mess";
-            this.checkBox_hide_mess.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_hide_mess.Padding = new Padding(2);
             this.checkBox_hide_mess.Size = new System.Drawing.Size(269, 24);
             this.checkBox_hide_mess.TabIndex = 27;
             this.checkBox_hide_mess.Text = "Hide Message Boxes";
@@ -404,7 +401,7 @@ namespace L2_login
             // 
             this.checkBox_downloadcrests.Location = new System.Drawing.Point(301, 169);
             this.checkBox_downloadcrests.Name = "checkBox_downloadcrests";
-            this.checkBox_downloadcrests.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_downloadcrests.Padding = new Padding(2);
             this.checkBox_downloadcrests.Size = new System.Drawing.Size(269, 24);
             this.checkBox_downloadcrests.TabIndex = 32;
             this.checkBox_downloadcrests.Text = "download new crests";
@@ -413,7 +410,7 @@ namespace L2_login
             // 
             this.checkBox_social_npcs.Location = new System.Drawing.Point(301, 190);
             this.checkBox_social_npcs.Name = "checkBox_social_npcs";
-            this.checkBox_social_npcs.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_social_npcs.Padding = new Padding(2);
             this.checkBox_social_npcs.Size = new System.Drawing.Size(95, 24);
             this.checkBox_social_npcs.TabIndex = 35;
             this.checkBox_social_npcs.Text = "social npcs";
@@ -421,10 +418,10 @@ namespace L2_login
             // checkBox_social_self
             // 
             this.checkBox_social_self.Checked = true;
-            this.checkBox_social_self.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_social_self.CheckState = CheckState.Checked;
             this.checkBox_social_self.Location = new System.Drawing.Point(301, 211);
             this.checkBox_social_self.Name = "checkBox_social_self";
-            this.checkBox_social_self.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_social_self.Padding = new Padding(2);
             this.checkBox_social_self.Size = new System.Drawing.Size(269, 24);
             this.checkBox_social_self.TabIndex = 33;
             this.checkBox_social_self.Text = "social self";
@@ -433,7 +430,7 @@ namespace L2_login
             // 
             this.checkBox_social_pcs.Location = new System.Drawing.Point(301, 232);
             this.checkBox_social_pcs.Name = "checkBox_social_pcs";
-            this.checkBox_social_pcs.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_social_pcs.Padding = new Padding(2);
             this.checkBox_social_pcs.Size = new System.Drawing.Size(269, 24);
             this.checkBox_social_pcs.TabIndex = 34;
             this.checkBox_social_pcs.Text = "social pcs";
@@ -441,10 +438,10 @@ namespace L2_login
             // checkBox_shownames_items
             // 
             this.checkBox_shownames_items.Checked = true;
-            this.checkBox_shownames_items.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_shownames_items.CheckState = CheckState.Checked;
             this.checkBox_shownames_items.Location = new System.Drawing.Point(301, 295);
             this.checkBox_shownames_items.Name = "checkBox_shownames_items";
-            this.checkBox_shownames_items.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_shownames_items.Padding = new Padding(2);
             this.checkBox_shownames_items.Size = new System.Drawing.Size(269, 24);
             this.checkBox_shownames_items.TabIndex = 38;
             this.checkBox_shownames_items.Text = "Show Names Items";
@@ -452,10 +449,10 @@ namespace L2_login
             // checkBox_shownames_players
             // 
             this.checkBox_shownames_players.Checked = true;
-            this.checkBox_shownames_players.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_shownames_players.CheckState = CheckState.Checked;
             this.checkBox_shownames_players.Location = new System.Drawing.Point(301, 274);
             this.checkBox_shownames_players.Name = "checkBox_shownames_players";
-            this.checkBox_shownames_players.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_shownames_players.Padding = new Padding(2);
             this.checkBox_shownames_players.Size = new System.Drawing.Size(269, 24);
             this.checkBox_shownames_players.TabIndex = 37;
             this.checkBox_shownames_players.Text = "Show Names Players";
@@ -463,10 +460,10 @@ namespace L2_login
             // checkBox_shownames_npcs
             // 
             this.checkBox_shownames_npcs.Checked = true;
-            this.checkBox_shownames_npcs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_shownames_npcs.CheckState = CheckState.Checked;
             this.checkBox_shownames_npcs.Location = new System.Drawing.Point(301, 253);
             this.checkBox_shownames_npcs.Name = "checkBox_shownames_npcs";
-            this.checkBox_shownames_npcs.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_shownames_npcs.Padding = new Padding(2);
             this.checkBox_shownames_npcs.Size = new System.Drawing.Size(269, 24);
             this.checkBox_shownames_npcs.TabIndex = 36;
             this.checkBox_shownames_npcs.Text = "Show Names NPC\'s";
@@ -475,7 +472,7 @@ namespace L2_login
             // 
             this.checkBox_IgnoreExitConf.Location = new System.Drawing.Point(301, 316);
             this.checkBox_IgnoreExitConf.Name = "checkBox_IgnoreExitConf";
-            this.checkBox_IgnoreExitConf.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_IgnoreExitConf.Padding = new Padding(2);
             this.checkBox_IgnoreExitConf.Size = new System.Drawing.Size(269, 24);
             this.checkBox_IgnoreExitConf.TabIndex = 39;
             this.checkBox_IgnoreExitConf.Text = "Ignore Exit Confirmation";
@@ -487,7 +484,7 @@ namespace L2_login
             this.button_change_kill.Size = new System.Drawing.Size(39, 23);
             this.button_change_kill.TabIndex = 40;
             this.button_change_kill.Text = "X";
-            this.button_change_kill.Click += new System.EventHandler(this.button_change_kill_Click);
+            this.button_change_kill.Click += new EventHandler(this.button_change_kill_Click);
             // 
             // label_kill_key
             // 
@@ -518,7 +515,7 @@ namespace L2_login
             // checkBox_usegpu
             // 
             this.checkBox_usegpu.Checked = true;
-            this.checkBox_usegpu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_usegpu.CheckState = CheckState.Checked;
             this.checkBox_usegpu.Location = new System.Drawing.Point(17, 270);
             this.checkBox_usegpu.Name = "checkBox_usegpu";
             this.checkBox_usegpu.Size = new System.Drawing.Size(269, 24);
@@ -549,7 +546,7 @@ namespace L2_login
             // 
             this.checkBox_ToggleBottingIfGMAction.Location = new System.Drawing.Point(301, 337);
             this.checkBox_ToggleBottingIfGMAction.Name = "checkBox_ToggleBottingIfGMAction";
-            this.checkBox_ToggleBottingIfGMAction.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_ToggleBottingIfGMAction.Padding = new Padding(2);
             this.checkBox_ToggleBottingIfGMAction.Size = new System.Drawing.Size(269, 24);
             this.checkBox_ToggleBottingIfGMAction.TabIndex = 47;
             this.checkBox_ToggleBottingIfGMAction.Text = "Disable botting if GM action";
@@ -559,7 +556,7 @@ namespace L2_login
             this.checkBox_togglebotifported.AutoSize = true;
             this.checkBox_togglebotifported.Location = new System.Drawing.Point(301, 358);
             this.checkBox_togglebotifported.Name = "checkBox_togglebotifported";
-            this.checkBox_togglebotifported.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_togglebotifported.Padding = new Padding(2);
             this.checkBox_togglebotifported.Size = new System.Drawing.Size(158, 21);
             this.checkBox_togglebotifported.TabIndex = 48;
             this.checkBox_togglebotifported.Text = "Disable botting if teleported";
@@ -612,19 +609,19 @@ namespace L2_login
             // checkBox_writetolog
             // 
             this.checkBox_writetolog.Checked = true;
-            this.checkBox_writetolog.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_writetolog.CheckState = CheckState.Checked;
             this.checkBox_writetolog.Location = new System.Drawing.Point(15, 358);
             this.checkBox_writetolog.Name = "checkBox_writetolog";
             this.checkBox_writetolog.Size = new System.Drawing.Size(269, 24);
             this.checkBox_writetolog.TabIndex = 54;
             this.checkBox_writetolog.Text = "Write to Log";
-            this.checkBox_writetolog.CheckedChanged += new System.EventHandler(this.checkBox_writetolog_CheckedChanged);
+            this.checkBox_writetolog.CheckedChanged += new EventHandler(this.checkBox_writetolog_CheckedChanged);
             // 
             // checkBox_npc_say
             // 
             this.checkBox_npc_say.Location = new System.Drawing.Point(402, 190);
             this.checkBox_npc_say.Name = "checkBox_npc_say";
-            this.checkBox_npc_say.Padding = new System.Windows.Forms.Padding(2);
+            this.checkBox_npc_say.Padding = new Padding(2);
             this.checkBox_npc_say.Size = new System.Drawing.Size(97, 24);
             this.checkBox_npc_say.TabIndex = 55;
             this.checkBox_npc_say.Text = "npc say";
@@ -679,22 +676,22 @@ namespace L2_login
             this.Controls.Add(this.checkBox_MinToTray);
             this.Controls.Add(this.label_voice);
             this.Controls.Add(this.comboBox_voice);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Setup";
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.SizeGripStyle = SizeGripStyle.Hide;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Setup";
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void button_save_Click(object sender, System.EventArgs e)
-		{
+        private void button_save_Click(object sender, EventArgs e)
+        {
             Globals.Voice = comboBox_voice.SelectedIndex;
             Globals.MinimizeToTray = checkBox_MinToTray.Checked;
             Globals.ProductKey = "LOVELKQKMGBOGNET";//textBox_key.Text;
@@ -738,13 +735,13 @@ namespace L2_login
             Globals.LogWriting = checkBox_writetolog.Checked;
 
 
-			this.Hide();
+            this.Hide();
         }
 
-		private void button_cancel_Click(object sender, System.EventArgs e)
-		{
-			this.Hide();
-		}
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
 
 
         private void button_change_toggle_Click(object sender, EventArgs e)
@@ -775,7 +772,7 @@ namespace L2_login
         {
             if (checkBox_writetolog.Checked && Globals.text_out == null)
             {
-                Globals.text_out = new System.IO.StreamWriter(Globals.PATH + "\\logs\\" + System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Day.ToString() + ".txt");
+                Globals.text_out = new System.IO.StreamWriter(Globals.PATH + "\\logs\\" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + ".txt");
             }
             if (!checkBox_writetolog.Checked && Globals.text_out != null)
             {

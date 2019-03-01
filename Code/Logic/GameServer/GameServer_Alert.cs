@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.Collections;
 
 namespace L2_login
 {
@@ -253,8 +253,8 @@ namespace L2_login
 
         private static bool Check_Clan()
         {
-            System.Collections.ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.clan_value);
-            System.Collections.ArrayList clan_ids = new System.Collections.ArrayList();
+            ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.clan_value);
+            ArrayList clan_ids = new ArrayList();
 
             //first lets convert all our clan names to an arraylist of uint ids
             Globals.ClanListLock.EnterReadLock();
@@ -320,7 +320,7 @@ namespace L2_login
 
         private static bool Check_Player()
         {
-            System.Collections.ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.player_value);
+            ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.player_value);
 
             Globals.PlayerLock.EnterReadLock();
             try
@@ -389,8 +389,8 @@ namespace L2_login
 
         private static bool Check_Clan_Logout()
         {
-            System.Collections.ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.clan_value_logout);
-            System.Collections.ArrayList clan_ids = new System.Collections.ArrayList();
+            ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.clan_value_logout);
+            ArrayList clan_ids = new ArrayList();
 
             //first lets convert all our clan names to an arraylist of uint ids
             Globals.ClanListLock.EnterReadLock();
@@ -437,7 +437,7 @@ namespace L2_login
 
         private static bool Check_Player_Logout()
         {
-            System.Collections.ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.player_value_logout);
+            ArrayList names = Util.GetArray(Globals.gamedata.alertoptions.player_value_logout);
 
             Globals.PlayerLock.EnterReadLock();
             try

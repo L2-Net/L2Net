@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections;
+using System.IO;
+using System.Threading;
 
 namespace L2_login
 {
@@ -23,33 +25,33 @@ namespace L2_login
     }
 
     public partial class ScriptEngine
-	{
-		public System.Threading.Thread scriptthread;
+    {
+        public Thread scriptthread;
 
         public ScriptEngine()
-		{
+        {
             Reset_Script();
-		}
+        }
 
-		public void Reset_Script()
-		{
+        public void Reset_Script()
+        {
             if (scriptthread != null)
             {
                 try
                 {
                     scriptthread.Abort();
-                    System.Threading.Thread.Sleep(200);
+                    Thread.Sleep(200);
                     scriptthread = null;
                 }
                 catch
                 {
                 }
             }
-			//gotta reset:
-			//stack
-			//stack pointer (height)
-			//variable lists
-			//label lists
+            //gotta reset:
+            //stack
+            //stack pointer (height)
+            //variable lists
+            //label lists
             Files.Clear();
             Threads.Clear();
             ClearEvents();
@@ -64,12 +66,12 @@ namespace L2_login
 
             ResetThreads();
 
-            scriptthread = new System.Threading.Thread(new System.Threading.ThreadStart(RunScript));
-            scriptthread.Priority = System.Threading.ThreadPriority.AboveNormal;
+            scriptthread = new Thread(new ThreadStart(RunScript));
+            scriptthread.Priority = ThreadPriority.AboveNormal;
 
             //scriptthread.SetApartmentState(System.Threading.ApartmentState.STA);
             scriptthread.IsBackground = true;
-		}
+        }
 
         public bool Proccess_Line(string line, bool advance_line)
         {
@@ -85,7 +87,7 @@ namespace L2_login
         }
 
         public bool Proccess_Line(ScriptLine command, bool advance_line)
-		{
+        {
             ScriptCommands my_command = command.Command;
             string line = command.UnParsedParams;
 
@@ -95,14 +97,14 @@ namespace L2_login
 			try
 			{
 #endif
-			switch(my_command)
-			{
+            switch (my_command)
+            {
                 case ScriptCommands.SET:
-                    Dead_Command("SET","=");
+                    Dead_Command("SET", "=");
                     do_advance = true;
                     break;
                 case ScriptCommands.MATH:
-                    Dead_Command("MATH","=");
+                    Dead_Command("MATH", "=");
                     do_advance = true;
                     break;
                 case ScriptCommands.SORT:
@@ -180,51 +182,51 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.BREAK:
-					Script_BREAK(line);
-					break;
+                    Script_BREAK(line);
+                    break;
                 case ScriptCommands.GET_TIME:
-					Script_GET_TIME(line);
+                    Script_GET_TIME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CALLSUB:
-					Script_CALLSUB(line);
-					break;
+                    Script_CALLSUB(line);
+                    break;
                 case ScriptCommands.RETURNSUB:
-					Script_RETURNSUB();
-					break;
+                    Script_RETURNSUB();
+                    break;
                 case ScriptCommands.SUB:
-					Script_SUB(line);
+                    Script_SUB(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CALL_EXTERN:
                     Script_CALL_EXTERN(line);
                     break;
                 case ScriptCommands.CALL:
-					Script_CALL(line);
-					break;
+                    Script_CALL(line);
+                    break;
                 case ScriptCommands.RETURN:
-					Script_RETURN(line);
-					break;
+                    Script_RETURN(line);
+                    break;
                 case ScriptCommands.FUNCTION:
-					Script_FUNCTION(line);
+                    Script_FUNCTION(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.DISTANCE:
-					Script_DISTANCE(line);
+                    Script_DISTANCE(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.WHILE:
-					Script_WHILE(line);
-					break;
+                    Script_WHILE(line);
+                    break;
                 case ScriptCommands.WEND:
-					Script_WEND();
-					break;
+                    Script_WEND();
+                    break;
                 case ScriptCommands.DO:
                     do_advance = true;
                     break;
                 case ScriptCommands.LOOP:
-					Script_LOOP(line);
-					break;
+                    Script_LOOP(line);
+                    break;
                 case ScriptCommands.FOREACH:
                     Script_FOREACH(line);
                     break;
@@ -232,26 +234,26 @@ namespace L2_login
                     Script_NEXTEACH();
                     break;
                 case ScriptCommands.FOR:
-					Script_FOR(line);
-					break;
+                    Script_FOR(line);
+                    break;
                 case ScriptCommands.NEXT:
-					Script_NEXT();
-					break;
+                    Script_NEXT();
+                    break;
                 case ScriptCommands.IF:
-					Script_IF(line);
-					break;
+                    Script_IF(line);
+                    break;
                 case ScriptCommands.ELSE:
-					//need to jump to the next endif
-					Script_ELSE();
-					break;
+                    //need to jump to the next endif
+                    Script_ELSE();
+                    break;
                 case ScriptCommands.ENDIF:
                     do_advance = true;//we can just skip over this line, nothing really needed
-					break;
+                    break;
                 case ScriptCommands.DEFINE_GLOBAL:
                     Script_DEFINE_GLOBAL(line);
                     break;
                 case ScriptCommands.DEFINE:
-					Script_DEFINE(line);
+                    Script_DEFINE(line);
                     break;
                 case ScriptCommands.SLEEP:
                     Script_SLEEP(line);
@@ -263,24 +265,24 @@ namespace L2_login
                     break;
                 case ScriptCommands.END_OF_FILE:
                     Globals.gamedata.CurrentScriptState = ScriptState.EOF;
-					break;
+                    break;
                 case ScriptCommands.END_SCRIPT:
                     Globals.gamedata.CurrentScriptState = ScriptState.Finished;
                     do_advance = true;
                     Globals.l2net_home.SetStartScript();
                     break;
                 case ScriptCommands.JUMP_TO_LINE:
-					Script_JUMP_TO_LINE(line);
-					break;
+                    Script_JUMP_TO_LINE(line);
+                    break;
                 case ScriptCommands.LABEL:
-					Script_LABEL(line);
+                    Script_LABEL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.JUMP_TO_LABEL:
-					Script_JUMP_TO_LABEL(line);
-					break;
+                    Script_JUMP_TO_LABEL(line);
+                    break;
                 case ScriptCommands.PRINT_TEXT:
-					Script_PRINT_TEXT(line, false);
+                    Script_PRINT_TEXT(line, false);
                     do_advance = true;
                     break;
                 case ScriptCommands.PRINT_DEBUG:
@@ -288,7 +290,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.GET_RAND:
-					Script_GET_RAND(line);
+                    Script_GET_RAND(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.HEX_TO_DEC:
@@ -404,7 +406,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.INJECT:
-					Script_INJECT(line);
+                    Script_INJECT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.INJECTBB_CLIENT:
@@ -416,31 +418,31 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.COMMAND:
-					Script_COMMAND(line);
+                    Script_COMMAND(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLICK_NEAREST_ITEM:
-					Script_CLICK_NEAREST_ITEM();
+                    Script_CLICK_NEAREST_ITEM();
                     do_advance = true;
                     break;
                 case ScriptCommands.CLEAR_WALLS:
-					Globals.gamedata.Walls.Clear();
+                    Globals.gamedata.Walls.Clear();
                     do_advance = true;
                     break;
                 case ScriptCommands.ADD_WALL:
-					Script_ADD_WALL(line);
+                    Script_ADD_WALL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLEAR_BORDER:
-					Globals.gamedata.Paths.ClearBorder();
+                    Globals.gamedata.Paths.ClearBorder();
                     do_advance = true;
                     break;
                 case ScriptCommands.ADD_BORDER_PT:
-					Script_ADD_PATH_PT(line);
+                    Script_ADD_PATH_PT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.NPC_DIALOG:
-					Script_NPC_DIALOG(line);
+                    Script_NPC_DIALOG(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CHECK_TARGETING:
@@ -452,15 +454,15 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST:
-					Script_TARGET_NEAREST();
+                    Script_TARGET_NEAREST();
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST_NAME:
-					Script_TARGET_NEAREST_NAME(line);
+                    Script_TARGET_NEAREST_NAME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET_NEAREST_ID:
-					Script_TARGET_NEAREST_ID(line);
+                    Script_TARGET_NEAREST_ID(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.TARGET:
@@ -468,11 +470,11 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TALK_TARGET:
-					Script_TALK_TARGET();
+                    Script_TALK_TARGET();
                     do_advance = true;
                     break;
                 case ScriptCommands.ATTACK_TARGET:
-					Script_ATTACK_TARGET();
+                    Script_ATTACK_TARGET();
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ACTION:
@@ -484,7 +486,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_SKILL:
-					Script_USE_SKILL(line);
+                    Script_USE_SKILL(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_SKILL_SMART:
@@ -492,19 +494,19 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ITEM:
-					Script_USE_ITEM(line,false);
+                    Script_USE_ITEM(line, false);
                     do_advance = true;
                     break;
                 case ScriptCommands.USE_ITEM_EXPLICIT:
-                    Script_USE_ITEM(line,true);
+                    Script_USE_ITEM(line, true);
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_COUNT:
-					Script_ITEM_COUNT(line);
+                    Script_ITEM_COUNT(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.MOVE_TO:
-					Script_MOVE_TO(line);
+                    Script_MOVE_TO(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.MOVR_WAIT:
@@ -573,7 +575,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_NAME:
-					Script_ITEM_GET_NAME(line);
+                    Script_ITEM_GET_NAME(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_DESC:
@@ -581,7 +583,7 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.ITEM_GET_ID:
-					Script_ITEM_GET_ID(line);
+                    Script_ITEM_GET_ID(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.CLAN_GET_NAME:
@@ -593,11 +595,11 @@ namespace L2_login
                     do_advance = true;
                     break;
                 case ScriptCommands.TAP_TO:
-					Script_TAP_TO(line);
+                    Script_TAP_TO(line);
                     do_advance = true;
                     break;
                 case ScriptCommands.RESTART:
-					Script_RESTART();
+                    Script_RESTART();
                     do_advance = true;
                     break;
                 case ScriptCommands.BLOCK:
@@ -712,7 +714,7 @@ namespace L2_login
                     //a command for which no handler exists... PUBLIC or VAR_START or something...
                     do_advance = true;
                     break;
-			}//end of switch
+            }//end of switch
 #if !DEBUG
 			}
 			catch
@@ -729,7 +731,7 @@ namespace L2_login
             }
 
             return true;
-		}
+        }
 
         public static ScriptCommands GetCommandType(string cmd)
         {
@@ -737,7 +739,7 @@ namespace L2_login
 
             switch (cmd)
             {
-                 case "REBOOT":
+                case "REBOOT":
                     return ScriptCommands.REBOOT;
                 case "TWITCH_MOUSE":
                     return ScriptCommands.TWITCH_MOUSE;
@@ -1122,198 +1124,198 @@ namespace L2_login
 
         }
 
-		private void RunScript()
-		{
+        private void RunScript()
+        {
 #if !DEBUG
 			try
 			{
 #endif
-            	ScriptLine line;
-            	//int while_count = 0;
+            ScriptLine line;
+            //int while_count = 0;
 
-                if (System.String.Equals(Globals.Script_MainFile, ""))
-            	{
-                    Globals.gamedata.CurrentScriptState = ScriptState.Stopped;
-                    ScriptEngine.Script_Error("Script Thread entry point not set... did you forget to load first?");
-                    Globals.l2net_home.SetStartScript();
-	                return;
-            	}
-                
-                //clean up pathfinding stuff
-                ScriptEngine.is_Moving = false;
-                ScriptEngine.Moving_List.Clear();
-                
-	            System.IO.StreamReader filein = new System.IO.StreamReader(Globals.Script_MainFile);
-				ScriptFile sf = new ScriptFile();
-				sf.Name = Globals.Script_MainFile;
-				sf.ReadScript(filein);
-				filein.Close();
+            if (System.String.Equals(Globals.Script_MainFile, ""))
+            {
+                Globals.gamedata.CurrentScriptState = ScriptState.Stopped;
+                Script_Error("Script Thread entry point not set... did you forget to load first?");
+                Globals.l2net_home.SetStartScript();
+                return;
+            }
 
-                Files.Add(sf.Name, sf);
+            //clean up pathfinding stuff
+            is_Moving = false;
+            Moving_List.Clear();
 
-	            ScriptThread scr_thread = new ScriptThread();
-	            scr_thread.Current_File = Globals.Script_MainFile;
-	            scr_thread.Line_Pos = 0;
+            StreamReader filein = new StreamReader(Globals.Script_MainFile);
+            ScriptFile sf = new ScriptFile();
+            sf.Name = Globals.Script_MainFile;
+            sf.ReadScript(filein);
+            filein.Close();
 
-	            VariableList stack_bottom = new VariableList();
-	            scr_thread._stack.Add(stack_bottom);
+            Files.Add(sf.Name, sf);
 
-                scr_thread.ID = GetUniqueThreadID();
-                Threads.Add(scr_thread.ID, scr_thread);
+            ScriptThread scr_thread = new ScriptThread();
+            scr_thread.Current_File = Globals.Script_MainFile;
+            scr_thread.Line_Pos = 0;
 
-	            ScriptEvent pop_event;
-	            ScriptEventCaller evn_call;
+            VariableList stack_bottom = new VariableList();
+            scr_thread._stack.Add(stack_bottom);
 
-                bool all_sleeping;
-                bool time_passed;
+            scr_thread.ID = GetUniqueThreadID();
+            Threads.Add(scr_thread.ID, scr_thread);
 
-                while (true)//Globals.gamedata.running)
+            ScriptEvent pop_event;
+            ScriptEventCaller evn_call;
+
+            bool all_sleeping;
+            bool time_passed;
+
+            while (true)//Globals.gamedata.running)
+            {
+                all_sleeping = true;
+
+                //need to check the state of the script thread
+                if (IsRunning())//if running
                 {
-                    all_sleeping = true;
-
-                    //need to check the state of the script thread
-                    if (IsRunning())//if running
+#if !TESTING
+                    try
                     {
-#if !TESTING
-                        try
-                        {
 #endif
-                            foreach (ScriptThread cthread in Threads.Values)
-                            {
-                                CurrentThread = cthread.ID;
-
-                                System.DateTime finish = System.DateTime.Now.AddTicks(Globals.Script_Ticks_Per_Switch);
-                                time_passed = false;
-                                BumpThread = false;
-
-                                while (IsRunning() && (cthread.Sleep_Until < System.DateTime.Now) && !time_passed)
-                                {
-                                    line = Get_Line(Line_Pos);
-
-                                    if (Proccess_Line(line, true))
-                                    {
-                                        all_sleeping = false;
-                                    }
-
-                                    time_passed = (System.DateTime.Now > finish || BumpThread);
-                                }
-                            }
-#if !TESTING
-                        }
-                        catch
+                        foreach (ScriptThread cthread in Threads.Values)
                         {
-                            //set was modified... no biggie
-                        }
-#endif
+                            CurrentThread = cthread.ID;
 
-                        try
-                        {
-                            //lets pop off all our events
-                            lock (eventqueueLock)
+                            DateTime finish = DateTime.Now.AddTicks(Globals.Script_Ticks_Per_Switch);
+                            time_passed = false;
+                            BumpThread = false;
+
+                            while (IsRunning() && (cthread.Sleep_Until < DateTime.Now) && !time_passed)
                             {
-                                while (EventQueueCount() > 0)
+                                line = Get_Line(Line_Pos);
+
+                                if (Proccess_Line(line, true))
                                 {
                                     all_sleeping = false;
-                                    pop_event = EventQueueDequeue();
+                                }
 
-                                    //time to handle the event... fun fun fun
-
-                                    switch (pop_event.Type)
-                                    {
-                                        case EventType.ServerPacket:
-                                            if (ServerPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ServerPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ServerPacketEX:
-                                            if (ServerPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ServerPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ClientPacket:
-                                            if (ClientPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ClientPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.ClientPacketEX:
-                                            if (ClientPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = ClientPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.SelfPacket:
-                                            if (SelfPacketsContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = SelfPacketsGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        case EventType.SelfPacketEX:
-                                            if (SelfPacketsEXContainsKey((int)pop_event.Type2))
-                                            {
-                                                //the event exists...
-                                                evn_call = SelfPacketsEXGetCaller((int)pop_event.Type2);
-
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                        default:
-                                            //need to check if the event exists in our list
-                                            if (EventsContainsKey((int)pop_event.Type))
-                                            {
-                                                //the event exists...
-                                                evn_call = EventsGetCaller((int)pop_event.Type);
-                                                Call_Event(evn_call, pop_event);
-                                            }
-                                            break;
-                                    }
-                                }//end of while dequeque
+                                time_passed = DateTime.Now > finish || BumpThread;
                             }
                         }
-                        catch//(Exception e)
+#if !TESTING
+                    }
+                    catch
+                    {
+                        //set was modified... no biggie
+                    }
+#endif
+
+                    try
+                    {
+                        //lets pop off all our events
+                        lock (eventqueueLock)
                         {
-                            ScriptEngine.Script_Error("Event Error... possible wrong file or function name?");
+                            while (EventQueueCount() > 0)
+                            {
+                                all_sleeping = false;
+                                pop_event = EventQueueDequeue();
+
+                                //time to handle the event... fun fun fun
+
+                                switch (pop_event.Type)
+                                {
+                                    case EventType.ServerPacket:
+                                        if (ServerPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ServerPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ServerPacketEX:
+                                        if (ServerPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ServerPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ClientPacket:
+                                        if (ClientPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ClientPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.ClientPacketEX:
+                                        if (ClientPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = ClientPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.SelfPacket:
+                                        if (SelfPacketsContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = SelfPacketsGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    case EventType.SelfPacketEX:
+                                        if (SelfPacketsEXContainsKey(pop_event.Type2))
+                                        {
+                                            //the event exists...
+                                            evn_call = SelfPacketsEXGetCaller(pop_event.Type2);
+
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                    default:
+                                        //need to check if the event exists in our list
+                                        if (EventsContainsKey((int)pop_event.Type))
+                                        {
+                                            //the event exists...
+                                            evn_call = EventsGetCaller((int)pop_event.Type);
+                                            Call_Event(evn_call, pop_event);
+                                        }
+                                        break;
+                                }
+                            }//end of while dequeque
                         }
-                    }//end of if
-
-                    switch (Globals.gamedata.CurrentScriptState)
-                    {
-                        case ScriptState.Stopped:
-                        case ScriptState.Running:
-                            break;
-                        case ScriptState.Paused:
-                            System.Threading.Thread.Sleep(Globals.SLEEP_WhileScript);
-                            break;
-                        case ScriptState.DelayStart:
-                            System.Threading.Thread.Sleep(Globals.SLEEP_Script_Reset);
-                            Globals.gamedata.CurrentScriptState = ScriptState.Running;
-                            break;
-                        default:
-                            return;
                     }
-
-                    if (all_sleeping)
+                    catch//(Exception e)
                     {
-                        System.Threading.Thread.Sleep(Globals.SLEEP_WhileScript);
+                        Script_Error("Event Error... possible wrong file or function name?");
                     }
-                }//end of while true
+                }//end of if
+
+                switch (Globals.gamedata.CurrentScriptState)
+                {
+                    case ScriptState.Stopped:
+                    case ScriptState.Running:
+                        break;
+                    case ScriptState.Paused:
+                        Thread.Sleep(Globals.SLEEP_WhileScript);
+                        break;
+                    case ScriptState.DelayStart:
+                        Thread.Sleep(Globals.SLEEP_Script_Reset);
+                        Globals.gamedata.CurrentScriptState = ScriptState.Running;
+                        break;
+                    default:
+                        return;
+                }
+
+                if (all_sleeping)
+                {
+                    Thread.Sleep(Globals.SLEEP_WhileScript);
+                }
+            }//end of while true
 #if !DEBUG
 			}
 			catch (Exception e)
@@ -1342,7 +1344,7 @@ namespace L2_login
             //is the file loaded?
             if (!Files.ContainsKey(evn_call.File))
             {
-                System.IO.StreamReader filein = new System.IO.StreamReader(evn_call.File);
+                StreamReader filein = new StreamReader(evn_call.File);
                 ScriptFile sf = new ScriptFile();
                 sf.Name = evn_call.File;
                 sf.ReadScript(filein);
@@ -1354,7 +1356,7 @@ namespace L2_login
             int dest_line = Get_Function_Line(evn_call.Function, evn_call.File);
             if (dest_line == -1)
             {
-                ScriptEngine.Script_Error("EVENT CALLER: FUNCTION DOES NOT EXIST : " + evn_call.File + " : " + evn_call.Function);
+                Script_Error("EVENT CALLER: FUNCTION DOES NOT EXIST : " + evn_call.File + " : " + evn_call.Function);
                 Globals.gamedata.CurrentScriptState = ScriptState.Error;
                 return;
             }
@@ -1437,11 +1439,11 @@ namespace L2_login
                             valid = true;
                             if (pname.Length == 0)
                             {
-                                ovar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                ovar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                             }
                             else
                             {
-                                svar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                svar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                             }
                         }
                         /*foreach (ScriptVariable svc in ((Script_ClassData)svar.Value)._Variables)
@@ -1582,27 +1584,27 @@ namespace L2_login
                                 {
                                     case Var_Types.STRING:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(System.Convert.ToString(svar.Value).Length);
+                                        ovar.Value = Convert.ToInt64(Convert.ToString(svar.Value).Length);
                                         break;
                                     case Var_Types.BYTEBUFFER:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).Length());
+                                        ovar.Value = Convert.ToInt64(((ByteBuffer)svar.Value).Length());
                                         break;
                                     case Var_Types.ARRAYLIST:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(((System.Collections.ArrayList)svar.Value).Count);
+                                        ovar.Value = Convert.ToInt64(((ArrayList)svar.Value).Count);
                                         break;
                                     case Var_Types.SORTEDLIST:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(((System.Collections.SortedList)svar.Value).Count);
+                                        ovar.Value = Convert.ToInt64(((SortedList)svar.Value).Count);
                                         break;
                                     case Var_Types.STACK:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(((System.Collections.Stack)svar.Value).Count);
+                                        ovar.Value = Convert.ToInt64(((Stack)svar.Value).Count);
                                         break;
                                     case Var_Types.QUEUE:
                                         ovar.Type = Var_Types.INT;
-                                        ovar.Value = System.Convert.ToInt64(((System.Collections.Queue)svar.Value).Count);
+                                        ovar.Value = Convert.ToInt64(((Queue)svar.Value).Count);
                                         break;
                                 }
                                 pname = "";
@@ -1612,7 +1614,7 @@ namespace L2_login
                                 break;
                             case "GET_DEC":
                                 ovar.Type = Var_Types.INT;
-                                string outg = (int.Parse(svar.Value.ToString(), System.Globalization.NumberStyles.HexNumber)).ToString();
+                                string outg = int.Parse(svar.Value.ToString(), System.Globalization.NumberStyles.HexNumber).ToString();
                                 //Globals.l2net_home.Add_Text(outg, Globals.Green);
                                 ovar.Value = outg;
                                 break;
@@ -1624,7 +1626,7 @@ namespace L2_login
                                 {
                                     case Var_Types.INT:
                                         ByteBuffer bb_i = new ByteBuffer(8);
-                                        bb_i.WriteInt64(System.Convert.ToInt64(svar.Value));
+                                        bb_i.WriteInt64(Convert.ToInt64(svar.Value));
                                         byte[] tmphex_i = bb_i.Get_ByteArray();
 
                                         for (int ii = 0; ii < tmphex_i.Length; ii++)
@@ -1634,7 +1636,7 @@ namespace L2_login
                                         break;
                                     case Var_Types.DOUBLE:
                                         ByteBuffer bb_d = new ByteBuffer(8);
-                                        bb_d.WriteDouble(System.Convert.ToDouble(svar.Value));
+                                        bb_d.WriteDouble(Convert.ToDouble(svar.Value));
                                         byte[] tmphex_d = bb_d.Get_ByteArray();
 
                                         for (int ii = 0; ii < tmphex_d.Length; ii++)
@@ -1643,8 +1645,8 @@ namespace L2_login
                                         }
                                         break;
                                     case Var_Types.STRING:
-                                        ByteBuffer bb_s = new ByteBuffer(System.Convert.ToString(svar.Value).Length * 2 + 2);
-                                        bb_s.WriteString(System.Convert.ToString(svar.Value));
+                                        ByteBuffer bb_s = new ByteBuffer(Convert.ToString(svar.Value).Length * 2 + 2);
+                                        bb_s.WriteString(Convert.ToString(svar.Value));
                                         byte[] tmphex_s = bb_s.Get_ByteArray();
 
                                         for (int ii = 0; ii < tmphex_s.Length; ii++)
@@ -1672,7 +1674,7 @@ namespace L2_login
                                 {
                                     case Var_Types.INT:
                                         ByteBuffer bb_i = new ByteBuffer(4);
-                                        bb_i.WriteInt32(System.Convert.ToInt32(svar.Value));
+                                        bb_i.WriteInt32(Convert.ToInt32(svar.Value));
                                         byte[] tmphex_i = bb_i.Get_ByteArray();
 
                                         for (int ii = 0; ii < tmphex_i.Length; ii++)
@@ -1687,11 +1689,11 @@ namespace L2_login
                             case "REVERSE":
                                 if (svar.Type == Var_Types.ARRAYLIST)
                                 {
-                                    ((System.Collections.ArrayList)svar.Value).Reverse();
+                                    ((ArrayList)svar.Value).Reverse();
                                 }
                                 else if (svar.Type == Var_Types.STRING)
                                 {
-                                    if (string.IsNullOrEmpty(((string)svar.Value)))
+                                    if (string.IsNullOrEmpty((string)svar.Value))
                                     {
                                         //reverse of nothing is itself
                                     }
@@ -1711,16 +1713,16 @@ namespace L2_login
                                 switch (svar.Type)
                                 {
                                     case Var_Types.ARRAYLIST:
-                                        ((System.Collections.ArrayList)svar.Value).Clear();
+                                        ((ArrayList)svar.Value).Clear();
                                         break;
                                     case Var_Types.SORTEDLIST:
-                                        ((System.Collections.SortedList)svar.Value).Clear();
+                                        ((SortedList)svar.Value).Clear();
                                         break;
                                     case Var_Types.STACK:
-                                        ((System.Collections.Stack)svar.Value).Clear();
+                                        ((Stack)svar.Value).Clear();
                                         break;
                                     case Var_Types.QUEUE:
-                                        ((System.Collections.Queue)svar.Value).Clear();
+                                        ((Queue)svar.Value).Clear();
                                         break;
                                 }
                                 pname = "";
@@ -1729,7 +1731,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.STRING)
                                 {
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).ToUpper();
+                                    ovar.Value = Convert.ToString(svar.Value).ToUpper();
                                     //svar.State = Var_State.PUBLIC;
                                 }
                                 pname = "";
@@ -1738,7 +1740,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.STRING)
                                 {
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).ToUpperInvariant();
+                                    ovar.Value = Convert.ToString(svar.Value).ToUpperInvariant();
                                     //svar.State = Var_State.PUBLIC;
                                 }
                                 pname = "";
@@ -1747,7 +1749,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.STRING)
                                 {
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).ToLower();
+                                    ovar.Value = Convert.ToString(svar.Value).ToLower();
                                     //svar.State = Var_State.PUBLIC;
                                 }
                                 pname = "";
@@ -1756,7 +1758,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.STRING)
                                 {
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).ToLowerInvariant();
+                                    ovar.Value = Convert.ToString(svar.Value).ToLowerInvariant();
                                     //svar.State = Var_State.PUBLIC;
                                 }
                                 pname = "";
@@ -1765,7 +1767,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.STRING)
                                 {
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).Trim();
+                                    ovar.Value = Convert.ToString(svar.Value).Trim();
                                     //svar.State = Var_State.PUBLIC;
                                 }
                                 pname = "";
@@ -1777,7 +1779,7 @@ namespace L2_login
                                     ScriptVariable v1 = Get_Var(sv1);
 
                                     ovar.Type = Var_Types.INT;
-                                    ovar.Value = System.Convert.ToString(svar.Value).LastIndexOf(v1.Value.ToString());
+                                    ovar.Value = Convert.ToString(svar.Value).LastIndexOf(v1.Value.ToString());
                                 }
                                 pname = "";
                                 break;
@@ -1788,7 +1790,7 @@ namespace L2_login
                                     ScriptVariable v1 = Get_Var(sv1);
 
                                     ovar.Type = Var_Types.INT;
-                                    ovar.Value = System.Convert.ToString(svar.Value).IndexOf(v1.Value.ToString());
+                                    ovar.Value = Convert.ToString(svar.Value).IndexOf(v1.Value.ToString());
                                 }
                                 pname = "";
                                 break;
@@ -1799,7 +1801,7 @@ namespace L2_login
                                     ScriptVariable v1 = Get_Var(sv1);
 
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).TrimEnd(v1.Value.ToString().ToCharArray());
+                                    ovar.Value = Convert.ToString(svar.Value).TrimEnd(v1.Value.ToString().ToCharArray());
                                 }
                                 pname = "";
                                 break;
@@ -1810,7 +1812,7 @@ namespace L2_login
                                     ScriptVariable v1 = Get_Var(sv1);
 
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).TrimStart(v1.Value.ToString().ToCharArray());
+                                    ovar.Value = Convert.ToString(svar.Value).TrimStart(v1.Value.ToString().ToCharArray());
                                 }
                                 pname = "";
                                 break;
@@ -1840,7 +1842,7 @@ namespace L2_login
                                     ScriptVariable v2 = Get_Var(sv2);
 
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).Substring(System.Convert.ToInt32(v1.Value), System.Convert.ToInt32(v2.Value));
+                                    ovar.Value = Convert.ToString(svar.Value).Substring(Convert.ToInt32(v1.Value), Convert.ToInt32(v2.Value));
                                 }
                                 break;
                             case "REPLACE":
@@ -1853,7 +1855,7 @@ namespace L2_login
                                     ScriptVariable v2 = Get_Var(sv2);
 
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(svar.Value).Replace(v1.Value.ToString(), v2.Value.ToString());
+                                    ovar.Value = Convert.ToString(svar.Value).Replace(v1.Value.ToString(), v2.Value.ToString());
                                 }
                                 break;
                             case "STARTSWITH":
@@ -1891,17 +1893,17 @@ namespace L2_login
                             case "FLUSH":
                                 if (svar.Type == Var_Types.FILEWRITER)
                                 {
-                                    ((System.IO.StreamWriter)svar.Value).Flush();
+                                    ((StreamWriter)svar.Value).Flush();
                                 }
                                 break;
                             case "CLOSE":
                                 if (svar.Type == Var_Types.FILEWRITER)
                                 {
-                                    ((System.IO.StreamWriter)svar.Value).Close();
+                                    ((StreamWriter)svar.Value).Close();
                                 }
                                 else if (svar.Type == Var_Types.FILEREADER)
                                 {
-                                    ((System.IO.StreamReader)svar.Value).Close();
+                                    ((StreamReader)svar.Value).Close();
                                 }
                                 break;
                             case "WRITE":
@@ -1910,8 +1912,8 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
 
-                                    ((System.IO.StreamWriter)svar.Value).WriteLine(
-                                        System.Convert.ToString(v1.Value, System.Globalization.CultureInfo.InvariantCulture));
+                                    ((StreamWriter)svar.Value).WriteLine(
+                                        Convert.ToString(v1.Value, System.Globalization.CultureInfo.InvariantCulture));
                                 }
                                 break;
                             case "READ":
@@ -1923,13 +1925,13 @@ namespace L2_login
                                     switch (v1.Type)
                                     {
                                         case Var_Types.INT:
-                                            v1.Value = System.Convert.ToInt64(((System.IO.StreamReader)svar.Value).ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+                                            v1.Value = Convert.ToInt64(((StreamReader)svar.Value).ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
                                             break;
                                         case Var_Types.DOUBLE:
-                                            v1.Value = System.Convert.ToDouble(((System.IO.StreamReader)svar.Value).ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+                                            v1.Value = Convert.ToDouble(((StreamReader)svar.Value).ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
                                             break;
                                         case Var_Types.STRING:
-                                            v1.Value = ((System.IO.StreamReader)svar.Value).ReadLine();
+                                            v1.Value = ((StreamReader)svar.Value).ReadLine();
                                             break;
                                     }
                                 }
@@ -1941,7 +1943,7 @@ namespace L2_login
                                     ScriptVariable v1 = Get_Var(sv1);
 
                                     ovar.Type = Var_Types.STRING;
-                                    ovar.Value = System.Convert.ToString(((System.Collections.SortedList)svar.Value).GetKey(System.Convert.ToInt32(v1.Value)));
+                                    ovar.Value = Convert.ToString(((SortedList)svar.Value).GetKey(Convert.ToInt32(v1.Value)));
                                 }
                                 break;
                             case "ADD":
@@ -1952,7 +1954,7 @@ namespace L2_login
                                         string sv1 = Get_String(ref pname);
                                         ScriptVariable v1 = Get_Var(sv1);
 
-                                        ((System.Collections.ArrayList)svar.Value).Add(v1);
+                                        ((ArrayList)svar.Value).Add(v1);
                                         break;
                                     case Var_Types.SORTEDLIST:
                                         string sortedlist_sv1 = Get_String(ref pname);
@@ -1960,26 +1962,26 @@ namespace L2_login
                                         string sortedlist_sv2 = Get_String(ref pname).ToUpperInvariant();
                                         //ScriptVariable v2 = Get_Var(sv2);//key is a string, don't need this
 
-                                        if (((System.Collections.SortedList)svar.Value).ContainsKey(sortedlist_sv2))
+                                        if (((SortedList)svar.Value).ContainsKey(sortedlist_sv2))
                                         {
-                                            ScriptEngine.Script_Error("key: " + sortedlist_sv2 + " already exists in: " + sortedlist_v1.Name);
+                                            Script_Error("key: " + sortedlist_sv2 + " already exists in: " + sortedlist_v1.Name);
                                         }
                                         else
                                         {
-                                            ((System.Collections.SortedList)svar.Value).Add(sortedlist_sv2, sortedlist_v1);
+                                            ((SortedList)svar.Value).Add(sortedlist_sv2, sortedlist_v1);
                                         }
                                         break;
                                     case Var_Types.STACK:
                                         string stack_sv1 = Get_String(ref pname);
                                         ScriptVariable stack_v1 = Get_Var(stack_sv1);
 
-                                        ((System.Collections.Stack)svar.Value).Push(stack_v1);
+                                        ((Stack)svar.Value).Push(stack_v1);
                                         break;
                                     case Var_Types.QUEUE:
                                         string queue_sv1 = Get_String(ref pname);
                                         ScriptVariable queue_v1 = Get_Var(queue_sv1);
 
-                                        ((System.Collections.Queue)svar.Value).Enqueue(queue_v1);
+                                        ((Queue)svar.Value).Enqueue(queue_v1);
                                         break;
                                 }
                                 pname = "";
@@ -1990,12 +1992,12 @@ namespace L2_login
                                     case Var_Types.ARRAYLIST:
                                         string arraylist_sv1 = Get_String(ref pname);
 
-                                        ((System.Collections.ArrayList)svar.Value).RemoveAt(Util.GetInt32(arraylist_sv1));
+                                        ((ArrayList)svar.Value).RemoveAt(Util.GetInt32(arraylist_sv1));
                                         break;
                                     case Var_Types.SORTEDLIST:
                                         string sortedlist_sv1 = Get_String(ref pname).ToUpperInvariant();
 
-                                        ((System.Collections.SortedList)svar.Value).Remove(sortedlist_sv1);
+                                        ((SortedList)svar.Value).Remove(sortedlist_sv1);
                                         break;
                                     case Var_Types.STRING:
                                         string string_sv1 = Get_String(ref pname);
@@ -2005,7 +2007,7 @@ namespace L2_login
                                         ScriptVariable v2 = Get_Var(string_sv2);
 
                                         ovar.Type = Var_Types.STRING;
-                                        ovar.Value = System.Convert.ToString(svar.Value).Remove(System.Convert.ToInt32(v1.Value), System.Convert.ToInt32(v2.Value));
+                                        ovar.Value = Convert.ToString(svar.Value).Remove(Convert.ToInt32(v1.Value), Convert.ToInt32(v2.Value));
                                         break;
                                 }
                                 pname = "";
@@ -2016,12 +2018,12 @@ namespace L2_login
                                     case Var_Types.ARRAYLIST:
                                         string sv1 = Get_String(ref pname);
 
-                                        ((System.Collections.ArrayList)svar.Value).RemoveAt(Util.GetInt32(sv1));
+                                        ((ArrayList)svar.Value).RemoveAt(Util.GetInt32(sv1));
                                         break;
                                     case Var_Types.SORTEDLIST:
                                         string sortedlist_sv1 = Get_String(ref pname);
 
-                                        ((System.Collections.SortedList)svar.Value).RemoveAt(Util.GetInt32(sortedlist_sv1));
+                                        ((SortedList)svar.Value).RemoveAt(Util.GetInt32(sortedlist_sv1));
                                         break;
                                 }
                                 pname = "";
@@ -2031,7 +2033,7 @@ namespace L2_login
                                 {
                                     string sv1 = Get_String(ref pname).ToUpperInvariant();
 
-                                    if (((System.Collections.SortedList)svar.Value).ContainsKey(sv1))
+                                    if (((SortedList)svar.Value).ContainsKey(sv1))
                                     {
                                         ovar = Get_Value("TRUE");
                                     }
@@ -2041,33 +2043,33 @@ namespace L2_login
                                     }
                                 }
                                 break;
-                                
+
                             case "EFFECT_TIME":
                                 if (svar.Type == Var_Types.SORTEDLIST)
                                 {
                                     string sv1 = Get_String(ref pname).ToUpperInvariant();
 
-                                    if (((System.Collections.SortedList)svar.Value).ContainsKey(sv1))
+                                    if (((SortedList)svar.Value).ContainsKey(sv1))
                                     {
 
                                         //Looks crappy but it works
-                                        long duration = System.Convert.ToInt64(((ScriptVariable)(((Script_ClassData)(((ScriptVariable)(((SortedList)svar.Value)[sv1])).Value))._Variables["DURATION"])).Value);
-                                        duration = (duration - System.DateTime.Now.Ticks) / TimeSpan.TicksPerSecond;
+                                        long duration = Convert.ToInt64(((ScriptVariable)((Script_ClassData)((ScriptVariable)((SortedList)svar.Value)[sv1]).Value)._Variables["DURATION"]).Value);
+                                        duration = (duration - DateTime.Now.Ticks) / TimeSpan.TicksPerSecond;
                                         ovar.Type = Var_Types.INT;
                                         ovar.Value = duration;
                                     }
                                 }
-                                break;                                 
+                                break;
                             case "POP":
                                 if (svar.Type == Var_Types.STACK)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((System.Collections.Stack)svar.Value).Pop());
+                                    ScriptVariable v1 = (ScriptVariable)((Stack)svar.Value).Pop();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
                                 if (svar.Type == Var_Types.QUEUE)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((System.Collections.Queue)svar.Value).Dequeue());
+                                    ScriptVariable v1 = (ScriptVariable)((Queue)svar.Value).Dequeue();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
@@ -2076,13 +2078,13 @@ namespace L2_login
                             case "PEEK":
                                 if (svar.Type == Var_Types.STACK)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((System.Collections.Stack)svar.Value).Peek());
+                                    ScriptVariable v1 = (ScriptVariable)((Stack)svar.Value).Peek();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
                                 if (svar.Type == Var_Types.QUEUE)
                                 {
-                                    ScriptVariable v1 = (ScriptVariable)(((System.Collections.Queue)svar.Value).Peek());
+                                    ScriptVariable v1 = (ScriptVariable)((Queue)svar.Value).Peek();
                                     ovar.Type = v1.Type;
                                     ovar.Value = v1.Value;
                                 }
@@ -2096,11 +2098,11 @@ namespace L2_login
 
                                     try
                                     {
-                                        ((ByteBuffer)svar.Value).WriteUInt16(System.Convert.ToUInt16(v1.Value));
+                                        ((ByteBuffer)svar.Value).WriteUInt16(Convert.ToUInt16(v1.Value));
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("possible overflow writing " + v1.Name + " as UINT16");
+                                        Script_Error("possible overflow writing " + v1.Name + " as UINT16");
                                     }
                                 }
                                 pname = "";
@@ -2113,11 +2115,11 @@ namespace L2_login
 
                                     try
                                     {
-                                        ((ByteBuffer)svar.Value).WriteUInt32(System.Convert.ToUInt32(v1.Value));
+                                        ((ByteBuffer)svar.Value).WriteUInt32(Convert.ToUInt32(v1.Value));
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("possible overflow writing " + v1.Name + " as UINT32");
+                                        Script_Error("possible overflow writing " + v1.Name + " as UINT32");
                                     }
                                 }
                                 pname = "";
@@ -2128,7 +2130,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
 
-                                    ((ByteBuffer)svar.Value).WriteUInt64(System.Convert.ToUInt64(v1.Value));
+                                    ((ByteBuffer)svar.Value).WriteUInt64(Convert.ToUInt64(v1.Value));
                                 }
                                 pname = "";
                                 break;
@@ -2140,11 +2142,11 @@ namespace L2_login
 
                                     try
                                     {
-                                        ((ByteBuffer)svar.Value).WriteInt16(System.Convert.ToInt16(v1.Value));
+                                        ((ByteBuffer)svar.Value).WriteInt16(Convert.ToInt16(v1.Value));
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("possible overflow writing " + v1.Name + " as INT16");
+                                        Script_Error("possible overflow writing " + v1.Name + " as INT16");
                                     }
                                 }
                                 pname = "";
@@ -2157,11 +2159,11 @@ namespace L2_login
 
                                     try
                                     {
-                                        ((ByteBuffer)svar.Value).WriteInt32(System.Convert.ToInt32(v1.Value));
+                                        ((ByteBuffer)svar.Value).WriteInt32(Convert.ToInt32(v1.Value));
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("possible overflow writing " + v1.Name + " as INT32");
+                                        Script_Error("possible overflow writing " + v1.Name + " as INT32");
                                     }
                                 }
                                 pname = "";
@@ -2172,7 +2174,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
 
-                                    ((ByteBuffer)svar.Value).WriteInt64(System.Convert.ToInt64(v1.Value));
+                                    ((ByteBuffer)svar.Value).WriteInt64(Convert.ToInt64(v1.Value));
                                 }
                                 pname = "";
                                 break;
@@ -2182,7 +2184,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
 
-                                    ((ByteBuffer)svar.Value).WriteDouble(System.Convert.ToDouble(v1.Value));
+                                    ((ByteBuffer)svar.Value).WriteDouble(Convert.ToDouble(v1.Value));
                                 }
                                 pname = "";
                                 break;
@@ -2194,11 +2196,11 @@ namespace L2_login
 
                                     try
                                     {
-                                        ((ByteBuffer)svar.Value).WriteByte(System.Convert.ToByte(v1.Value));
+                                        ((ByteBuffer)svar.Value).WriteByte(Convert.ToByte(v1.Value));
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("possible overflow writing " + v1.Name + " as BYTE");
+                                        Script_Error("possible overflow writing " + v1.Name + " as BYTE");
                                     }
                                 }
                                 pname = "";
@@ -2209,7 +2211,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
 
-                                    ((ByteBuffer)svar.Value).WriteString(System.Convert.ToString(v1.Value));
+                                    ((ByteBuffer)svar.Value).WriteString(Convert.ToString(v1.Value));
                                 }
                                 pname = "";
                                 break;
@@ -2219,7 +2221,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt16());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt16());
                                 }
                                 pname = "";
                                 break;
@@ -2229,7 +2231,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt32());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt32());
                                 }
                                 pname = "";
                                 break;
@@ -2239,7 +2241,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt64());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadUInt64());
                                 }
                                 pname = "";
                                 break;
@@ -2249,7 +2251,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt16());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt16());
                                 }
                                 pname = "";
                                 break;
@@ -2259,7 +2261,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt32());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt32());
                                 }
                                 pname = "";
                                 break;
@@ -2269,7 +2271,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt64());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadInt64());
                                 }
                                 pname = "";
                                 break;
@@ -2279,7 +2281,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.DOUBLE;
-                                    v1.Value = System.Convert.ToDouble(((ByteBuffer)svar.Value).ReadDouble());
+                                    v1.Value = Convert.ToDouble(((ByteBuffer)svar.Value).ReadDouble());
                                 }
                                 pname = "";
                                 break;
@@ -2289,7 +2291,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.INT;
-                                    v1.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).ReadByte());
+                                    v1.Value = Convert.ToInt64(((ByteBuffer)svar.Value).ReadByte());
                                 }
                                 pname = "";
                                 break;
@@ -2299,7 +2301,7 @@ namespace L2_login
                                     string sv1 = Get_String(ref pname);
                                     ScriptVariable v1 = Get_Var(sv1);
                                     v1.Type = Var_Types.STRING;
-                                    v1.Value = System.Convert.ToString(((ByteBuffer)svar.Value).ReadString());
+                                    v1.Value = Convert.ToString(((ByteBuffer)svar.Value).ReadString());
                                 }
                                 pname = "";
                                 break;
@@ -2307,7 +2309,7 @@ namespace L2_login
                                 if (svar.Type == Var_Types.BYTEBUFFER)
                                 {
                                     ovar.Type = Var_Types.INT;
-                                    ovar.Value = System.Convert.ToInt64(((ByteBuffer)svar.Value).GetIndex());
+                                    ovar.Value = Convert.ToInt64(((ByteBuffer)svar.Value).GetIndex());
                                 }
                                 pname = "";
                                 break;
@@ -2334,7 +2336,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to open window " + svar.Name);
+                                        Script_Error("failed to open window " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2348,7 +2350,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to close window " + svar.Name);
+                                        Script_Error("failed to close window " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2365,7 +2367,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to set filename for " + svar.Name + " with : " + sv1 + " :: " + sv2);
+                                        Script_Error("failed to set filename for " + svar.Name + " with : " + sv1 + " :: " + sv2);
                                     }
                                 }
                                 pname = "";
@@ -2381,7 +2383,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to set windowname for " + svar.Name + " with : " + sv1);
+                                        Script_Error("failed to set windowname for " + svar.Name + " with : " + sv1);
                                     }
                                 }
                                 pname = "";
@@ -2397,7 +2399,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to set html for " + svar.Name + " with : " + sv1);
+                                        Script_Error("failed to set html for " + svar.Name + " with : " + sv1);
                                     }
                                 }
                                 pname = "";
@@ -2411,7 +2413,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to refresh for " + svar.Name);
+                                        Script_Error("failed to refresh for " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2427,7 +2429,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to send to standard in for " + svar.Name);
+                                        Script_Error("failed to send to standard in for " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2441,7 +2443,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to wait close " + svar.Name);
+                                        Script_Error("failed to wait close " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2455,7 +2457,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to wait idle " + svar.Name);
+                                        Script_Error("failed to wait idle " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2469,7 +2471,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to stop thread " + svar.Name);
+                                        Script_Error("failed to stop thread " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2483,7 +2485,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to start thread " + svar.Name);
+                                        Script_Error("failed to start thread " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2497,7 +2499,7 @@ namespace L2_login
                                     }
                                     catch
                                     {
-                                        ScriptEngine.Script_Error("failed to start thread " + svar.Name);
+                                        Script_Error("failed to start thread " + svar.Name);
                                     }
                                 }
                                 pname = "";
@@ -2514,11 +2516,11 @@ namespace L2_login
                                             valid = true;
                                             if (pname.Length == 0)
                                             {
-                                                ovar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                                ovar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                                             }
                                             else
                                             {
-                                                svar = (ScriptVariable)(((Script_ClassData)svar.Value)._Variables[dname]);
+                                                svar = (ScriptVariable)((Script_ClassData)svar.Value)._Variables[dname];
                                             }
                                         }
                                         /*foreach (ScriptVariable svc in ((Script_ClassData)svar.Value)._Variables)
@@ -2546,11 +2548,11 @@ namespace L2_login
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((System.Collections.ArrayList)svar.Value)[System.Convert.ToInt32(sva.Value)]);
+                                                    ovar = (ScriptVariable)((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)];
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((System.Collections.ArrayList)svar.Value)[System.Convert.ToInt32(sva.Value)]);
+                                                    svar = (ScriptVariable)((ArrayList)svar.Value)[Convert.ToInt32(sva.Value)];
                                                 }
                                                 break;
                                         }
@@ -2563,22 +2565,22 @@ namespace L2_login
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((System.Collections.SortedList)svar.Value).GetByIndex(System.Convert.ToInt32(svl.Value)));
+                                                    ovar = (ScriptVariable)((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value));
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((System.Collections.SortedList)svar.Value).GetByIndex(System.Convert.ToInt32(svl.Value)));
+                                                    svar = (ScriptVariable)((SortedList)svar.Value).GetByIndex(Convert.ToInt32(svl.Value));
                                                 }
                                                 break;
                                             case Var_Types.STRING:
                                                 valid = true;
                                                 if (pname.Length == 0)
                                                 {
-                                                    ovar = (ScriptVariable)(((System.Collections.SortedList)svar.Value)[System.Convert.ToString(svl.Value).ToUpperInvariant()]);
+                                                    ovar = (ScriptVariable)((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()];
                                                 }
                                                 else
                                                 {
-                                                    svar = (ScriptVariable)(((System.Collections.SortedList)svar.Value)[System.Convert.ToString(svl.Value).ToUpperInvariant()]);
+                                                    svar = (ScriptVariable)((SortedList)svar.Value)[Convert.ToString(svl.Value).ToUpperInvariant()];
                                                 }
                                                 break;
                                         }
@@ -2587,7 +2589,7 @@ namespace L2_login
 
                                 if (!valid)
                                 {
-                                    ScriptEngine.Script_Error(dname + " does not exist!");
+                                    Script_Error(dname + " does not exist!");
                                     throw new Exception();
                                 }
                                 break;
@@ -2639,48 +2641,48 @@ namespace L2_login
             return Get_Value(pname);
         }
 
-		public static string Get_String(ref string inp, bool evaluate = true)
-		{
-			//lets remove all the blank spaces at the start of the line
+        public static string Get_String(ref string inp, bool evaluate = true)
+        {
+            //lets remove all the blank spaces at the start of the line
             inp = inp.Trim();
 
-			if(inp.Length == 0)
-			{
-				return "";
-			}
+            if (inp.Length == 0)
+            {
+                return "";
+            }
 
-			string cmd;// = "";
-			int spc;
+            string cmd;// = "";
+            int spc;
 
-			if(inp[0] == '"')
-			{
-				//this is a quote
-				spc = inp.IndexOf('"',1);
-				while(inp[spc-1] == '\\')
-				{
-					spc = inp.IndexOf('"',spc+1);
-				}
+            if (inp[0] == '"')
+            {
+                //this is a quote
+                spc = inp.IndexOf('"', 1);
+                while (inp[spc - 1] == '\\')
+                {
+                    spc = inp.IndexOf('"', spc + 1);
+                }
 
-				if(spc > 0)
-				{
-					cmd = inp.Substring(1,spc-1);
-					inp = (inp.Remove(0,spc+1)).TrimStart(' ');
-				}
-				else
-				{
-					cmd = inp.Substring(1,inp.Length-1);
-					inp = "";
-				}
+                if (spc > 0)
+                {
+                    cmd = inp.Substring(1, spc - 1);
+                    inp = inp.Remove(0, spc + 1).TrimStart(' ');
+                }
+                else
+                {
+                    cmd = inp.Substring(1, inp.Length - 1);
+                    inp = "";
+                }
 
                 if (evaluate)
                 {
                     cmd = Get_String_Internal(cmd);
                 }
-			}
-			else
-			{
-				//not a quote
-				spc = inp.IndexOf(' ');
+            }
+            else
+            {
+                //not a quote
+                spc = inp.IndexOf(' ');
                 int tb = inp.IndexOf('\t');
 
                 if (tb != -1 && tb < spc)
@@ -2688,20 +2690,20 @@ namespace L2_login
                     spc = tb;
                 }
 
-				if(spc > 0)
-				{
-					cmd = inp.Substring(0,spc);
-					inp = inp.Remove(0,spc+1);
-				}
-				else
-				{
-					cmd = inp;
-					inp = "";
-				}
-			}
+                if (spc > 0)
+                {
+                    cmd = inp.Substring(0, spc);
+                    inp = inp.Remove(0, spc + 1);
+                }
+                else
+                {
+                    cmd = inp;
+                    inp = "";
+                }
+            }
 
-			//lets replace all \" with just "
-			cmd = cmd.Replace( "\\\"", "\"");
+            //lets replace all \" with just "
+            cmd = cmd.Replace("\\\"", "\"");
 
 
             if (cmd.Contains("\\n"))
@@ -2712,8 +2714,8 @@ namespace L2_login
                 cmd = cmd.Replace("!@#$%^&!@#$%^&", "\\n");
             }
 
-			return cmd;
-		}
+            return cmd;
+        }
 
         public static string Get_StringToken(ref string inp)
         {
@@ -2740,7 +2742,7 @@ namespace L2_login
                 if (spc > 0)
                 {
                     cmd = inp.Substring(0, spc + 1);
-                    inp = (inp.Remove(0, spc + 1)).TrimStart(' ');
+                    inp = inp.Remove(0, spc + 1).TrimStart(' ');
                 }
                 else
                 {
@@ -2814,16 +2816,16 @@ namespace L2_login
 
                 string value = "";
 
-                switch(scr_var.Type)
+                switch (scr_var.Type)
                 {
                     case Var_Types.INT:
-                        value = System.Convert.ToInt64(scr_var.Value).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        value = Convert.ToInt64(scr_var.Value).ToString(System.Globalization.CultureInfo.InvariantCulture);
                         break;
                     case Var_Types.DOUBLE:
-                        value = System.Convert.ToDouble(scr_var.Value).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        value = Convert.ToDouble(scr_var.Value).ToString(System.Globalization.CultureInfo.InvariantCulture);
                         break;
                     case Var_Types.STRING:
-                        value = System.Convert.ToString(scr_var.Value);
+                        value = Convert.ToString(scr_var.Value);
                         break;
                 }
 
@@ -2854,11 +2856,11 @@ namespace L2_login
         {
             try
             {
-                return ((ScriptLine)((ScriptFile)Files[((ScriptThread)Threads[CurrentThread]).Current_File])._ScriptLines[cnt]);
+                return (ScriptLine)((ScriptFile)Files[((ScriptThread)Threads[CurrentThread]).Current_File])._ScriptLines[cnt];
             }
             catch
             {
-                ScriptEngine.Script_Error("failed to get line " + cnt.ToString());
+                Script_Error("failed to get line " + cnt.ToString());
 
                 ScriptLine sl = new ScriptLine();
                 sl.Command = ScriptCommands.END_OF_FILE;
@@ -2867,19 +2869,19 @@ namespace L2_login
         }
 
         private ScriptLine Get_Line(int cnt, string file)
-		{
-			try
-			{
-                return ((ScriptLine)((ScriptFile)Files[file])._ScriptLines[cnt]);
-			}
+        {
+            try
+            {
+                return (ScriptLine)((ScriptFile)Files[file])._ScriptLines[cnt];
+            }
             catch
-			{
-                ScriptEngine.Script_Error("failed to get line " + cnt.ToString());
+            {
+                Script_Error("failed to get line " + cnt.ToString());
 
                 ScriptLine sl = new ScriptLine();
                 sl.Command = ScriptCommands.END_OF_FILE;
                 return sl;
-			}
-		}
-	}//end of class
+            }
+        }
+    }//end of class
 }//end of namespace

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace L2_login
 {
     class ELIZA
@@ -27,7 +23,7 @@ namespace L2_login
         {
             c = c.ToLower();
 
-            switch(c)
+            switch (c)
             {
                 case "`":
                 case "~":

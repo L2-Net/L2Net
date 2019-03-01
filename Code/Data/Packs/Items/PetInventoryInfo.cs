@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace L2_login
+﻿namespace L2_login
 {
     public class PetInventoryInfo : Object_Base
     {

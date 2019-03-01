@@ -1,28 +1,29 @@
-using System;
+using System.Collections;
+using System.Drawing;
 
 namespace L2_login
 {
-	/// <summary>
-	/// Summary description for AddInfo.
-	/// </summary>
-	public class AddInfo
-	{
-		public AddInfo()
-		{
-		}
+    /// <summary>
+    /// Summary description for AddInfo.
+    /// </summary>
+    public class AddInfo
+    {
+        public AddInfo()
+        {
+        }
 
-		public static void Set_Target_HP()
-		{
-			string cp = "0/0";
-			string hp = "0/0";
-			string mp = "0/0";
+        public static void Set_Target_HP()
+        {
+            string cp = "0/0";
+            string hp = "0/0";
+            string mp = "0/0";
 
             uint target_id = Globals.gamedata.my_char.TargetID;
 
             switch (Globals.gamedata.my_char.CurrentTargetType)
-			{
+            {
 
-				case TargetType.SELF:
+                case TargetType.SELF:
                     hp = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
                     mp = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
                     cp = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
@@ -47,10 +48,10 @@ namespace L2_login
                     mp = Globals.gamedata.my_pet3.Cur_MP.ToString() + "/" + Globals.gamedata.my_pet3.Max_MP.ToString();
                     cp = Globals.gamedata.my_pet3.Cur_CP.ToString() + "/" + Globals.gamedata.my_pet3.Max_CP.ToString();
                     break;
-				case TargetType.PLAYER:
+                case TargetType.PLAYER:
                     Globals.PlayerLock.EnterReadLock();
-					try
-					{
+                    try
+                    {
                         CharInfo player = Util.GetChar(target_id);
 
                         if (player != null)
@@ -68,21 +69,21 @@ namespace L2_login
                             }
                             else
                             {*/
-                                hp = player.Cur_HP.ToString() + "/" + player.Max_HP.ToString();
-                                mp = player.Cur_MP.ToString() + "/" + player.Max_MP.ToString();
-                                cp = player.Cur_CP.ToString() + "/" + player.Max_CP.ToString();
+                            hp = player.Cur_HP.ToString() + "/" + player.Max_HP.ToString();
+                            mp = player.Cur_MP.ToString() + "/" + player.Max_MP.ToString();
+                            cp = player.Cur_CP.ToString() + "/" + player.Max_CP.ToString();
                             //}
                         }
-					}//unlock
-					finally
-					{
+                    }//unlock
+                    finally
+                    {
                         Globals.PlayerLock.ExitReadLock();
-					}
-					break;
-				case TargetType.NPC:
+                    }
+                    break;
+                case TargetType.NPC:
                     Globals.NPCLock.EnterReadLock();
-					try
-					{
+                    try
+                    {
                         NPCInfo npc = Util.GetNPC(target_id);
 
                         if (npc != null)
@@ -91,35 +92,35 @@ namespace L2_login
                             mp = npc.Cur_MP.ToString() + "/" + npc.Max_MP.ToString();
                             cp = npc.Cur_CP.ToString() + "/" + npc.Max_CP.ToString();
                         }
-					}//unlock
-					finally
-					{
+                    }//unlock
+                    finally
+                    {
                         Globals.NPCLock.ExitReadLock();
-					}
-					break;
-			}
+                    }
+                    break;
+            }
 
-			Globals.l2net_home.Set_Target_CP(cp);
-			Globals.l2net_home.Set_Target_HP(hp);
-			Globals.l2net_home.Set_Target_MP(mp);
-			//Globals.l2net_home.panel_target.Refresh();
+            Globals.l2net_home.Set_Target_CP(cp);
+            Globals.l2net_home.Set_Target_HP(hp);
+            Globals.l2net_home.Set_Target_MP(mp);
+            //Globals.l2net_home.panel_target.Refresh();
 
             if (Globals.l2net_home.menuItem_cmd_overlay.Checked && Globals.overlaywindow != null)
-			{
+            {
                 Globals.overlaywindow.Set_Target_CP(cp);
                 Globals.overlaywindow.Set_Target_HP(hp);
                 Globals.overlaywindow.Set_Target_MP(mp);
-				//L2NET.overlaywindow.Refresh();
-			}
-		}
+                //L2NET.overlaywindow.Refresh();
+            }
+        }
 
-		public static void Set_PartyVisible()
-		{
+        public static void Set_PartyVisible()
+        {
             Globals.l2net_home.Set_PartyVisible();
-		}
+        }
 
-		public static void Set_PartyInfo()
-		{
+        public static void Set_PartyInfo()
+        {
             Globals.l2net_home.Set_PartyInfo();
         }
 
@@ -131,7 +132,7 @@ namespace L2_login
                 {
                     if (!Globals.l2net_home.imageList_items_loaded.ContainsKey(id))
                     {
-                        System.Drawing.Bitmap img;
+                        Bitmap img;
 
                         if (System.IO.File.Exists(Util.GetItemImagePath(id)))
                         {
@@ -200,20 +201,20 @@ namespace L2_login
             }
         }
 
-		public static void Set_SkillList(int active)
-		{
-			Globals.l2net_home.listView_skills.BeginUpdate();
+        public static void Set_SkillList(int active)
+        {
+            Globals.l2net_home.listView_skills.BeginUpdate();
             Globals.l2net_home.listView_skills.ListViewItemSorter = null;
 
-			//lets clear our skill list and skill image list
-			Globals.l2net_home.listView_skills.Items.Clear();
-			//Globals.l2net_home.imageList_skills.Images.Clear();
+            //lets clear our skill list and skill image list
+            Globals.l2net_home.listView_skills.Items.Clear();
+            //Globals.l2net_home.imageList_skills.Images.Clear();
 
             Globals.SkillListLock.EnterReadLock();
-			try
-			{
+            try
+            {
                 foreach (UserSkill us in Globals.gamedata.skills.Values)
-				{
+                {
                     if (active == 1 && us.Passive == 0) //Add active skills to list
                     {
                         System.Windows.Forms.ListViewItem ObjListItem = Globals.l2net_home.listView_skills.Items.Add(Util.GetSkillName(us.ID, us.Level));
@@ -246,23 +247,23 @@ namespace L2_login
                             ObjListItem.ImageIndex = -1;
                         }
                     }
-				}
-			}
-			finally
-			{
+                }
+            }
+            finally
+            {
                 Globals.SkillListLock.ExitReadLock();
-			}
+            }
 
             Globals.l2net_home.listView_skills.ListViewItemSorter = Globals.l2net_home.lvwColumnSorter_skills;
             Globals.l2net_home.listView_skills.EndUpdate();
-		}
+        }
 
         public static string Get_XP_Percent()
         {
             try
             {
-                ulong xp = (ulong)Globals.gamedata.my_char.XP;
-                uint lvl = (uint)Globals.gamedata.my_char.Level;
+                ulong xp = Globals.gamedata.my_char.XP;
+                uint lvl = Globals.gamedata.my_char.Level;
 
                 if (xp == 0)
                 {
@@ -284,7 +285,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = ((float)xp) / ((float)nextlvlxp);
+                float per = xp / ((float)nextlvlxp);
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return per.ToString("P", System.Globalization.CultureInfo.InvariantCulture);
@@ -299,8 +300,8 @@ namespace L2_login
         {
             try
             {
-                ulong xp = (ulong)Globals.gamedata.my_char.XP;
-                uint lvl = (uint)Globals.gamedata.my_char.Level;
+                ulong xp = Globals.gamedata.my_char.XP;
+                uint lvl = Globals.gamedata.my_char.Level;
 
                 if (xp == 0)
                 {
@@ -322,7 +323,7 @@ namespace L2_login
                 nextlvlxp -= lastlvlxp;
 
                 //float per = ((float)xp * 100) / ((float)nextlvlxp);
-                float per = (((float)xp) / ((float)nextlvlxp))*100;
+                float per = xp / ((float)nextlvlxp) * 100;
                 //per = System.Convert.ToSingle(System.Math.Round(per, 6));
 
                 return System.Convert.ToInt32(per);
@@ -338,16 +339,26 @@ namespace L2_login
             try
             {
                 uint vit = (uint)Globals.gamedata.my_char.Vitality_Points;
-                if (vit >=0x4268)
+                if (vit >= 0x4268)
+                {
                     return "4";
+                }
                 else if (vit >= 0x32C8)
+                {
                     return "3";
+                }
                 else if (vit >= 0x07D0)
+                {
                     return "2";
+                }
                 else if (vit >= 0xF0)
+                {
                     return "1";
+                }
                 else
+                {
                     return "0";
+                }
             }
             catch
             {
@@ -355,32 +366,32 @@ namespace L2_login
             }
         }
 
-		public static void Set_Char_Info_Basic()
-		{
+        public static void Set_Char_Info_Basic()
+        {
             Globals.l2net_home.Set_Char_Info_Basic();
             //Globals.l2net_home.tabPage_char_info.Refresh();
             //Globals.l2net_home.panel_charinfo_ul.Refresh();
-		}
+        }
 
-		public static void Set_Char_Info()
-		{
-			Set_Char_Info_Basic();
-			//Set_Char_Cords();//called by Set_Char_Info_Basic
+        public static void Set_Char_Info()
+        {
+            Set_Char_Info_Basic();
+            //Set_Char_Cords();//called by Set_Char_Info_Basic
 
             Globals.l2net_home.Set_Char_Info();
 
-			//Set_CrestImages();
+            //Set_CrestImages();
 
-			//l2net_home.tabPage_char_detail.Refresh();
-		}
+            //l2net_home.tabPage_char_detail.Refresh();
+        }
 
         public static void Set_Pet_Info()
         {
             Globals.petwindow.Set_Pet_Info();
         }
 
-		public static void Inventory_Update(ByteBuffer buff)
-		{
+        public static void Inventory_Update(ByteBuffer buff)
+        {
             uint cnt = buff.ReadUInt16();//ushort
 
             Globals.InventoryLock.EnterWriteLock();
@@ -426,18 +437,18 @@ namespace L2_login
             }
 
             Globals.l2net_home.timer_inventory.Start();
-		}
+        }
 
         public static void Remove_Inventory(uint objID)
-		{
+        {
             if (Globals.gamedata.inventory.ContainsKey(objID))
             {
                 Globals.gamedata.inventory.Remove(objID);
             }
-		}
+        }
 
-		public static void Add_Inventory(InventoryInfo inv_inf)
-		{
+        public static void Add_Inventory(InventoryInfo inv_inf)
+        {
             if (Globals.gamedata.inventory.ContainsKey(inv_inf.ID))
             {
                 if (((InventoryInfo)Globals.gamedata.inventory[inv_inf.ID]).isEquipped == 1 && inv_inf.isEquipped != 1)
@@ -463,7 +474,7 @@ namespace L2_login
                     Globals.l2net_home.Do_Equip(inv_inf);
                 }
             }
-		}
+        }
 
 
 
@@ -561,8 +572,8 @@ namespace L2_login
             Globals.l2net_home.Add_Text("Dead Count: " + dead.ToString());
         }
 
-		public static void Remove_NPCInfo(uint id)
-		{
+        public static void Remove_NPCInfo(uint id)
+        {
             Globals.NPCLock.EnterWriteLock();
             try
             {
@@ -585,12 +596,12 @@ namespace L2_login
         {
             long now = System.DateTime.Now.Ticks;
 
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.NPCLock.EnterReadLock();
             try
             {
-                foreach(NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
+                foreach (NPCInfo npc in Globals.gamedata.nearby_npcs.Values)
                 {
                     int dist = Util.Distance(Globals.gamedata.my_char.X, Globals.gamedata.my_char.Y, Globals.gamedata.my_char.Z, npc.X, npc.Y, npc.Z);
 
@@ -625,8 +636,8 @@ namespace L2_login
             }
         }
 
-		public static void Add_NPCInfo(NPCInfo npc_inf)
-		{
+        public static void Add_NPCInfo(NPCInfo npc_inf)
+        {
             Globals.NPCLock.EnterWriteLock();
             try
             {
@@ -650,7 +661,7 @@ namespace L2_login
                     }
                     else
                     {
-                       // Globals.l2net_home.Add_Debug("npc:" + npc_inf.Name + " targetid:" + npc_inf.TargetID);
+                        // Globals.l2net_home.Add_Debug("npc:" + npc_inf.Name + " targetid:" + npc_inf.TargetID);
                     }
                 }
                 else
@@ -668,10 +679,10 @@ namespace L2_login
             }
 
             Globals.l2net_home.timer_npcs.Start();
-		}
+        }
 
-		public static void Add_ItemInfo(ItemInfo itm_inf)
-		{
+        public static void Add_ItemInfo(ItemInfo itm_inf)
+        {
             Globals.ItemLock.EnterWriteLock();
             try
             {
@@ -749,11 +760,11 @@ namespace L2_login
             }
 
             Globals.l2net_home.timer_items.Start();
-		}
+        }
 
         public static void CleanUp_Item()
         {
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.ItemLock.EnterReadLock();
             try
@@ -789,8 +800,8 @@ namespace L2_login
             }
         }
 
-		public static void Remove_Item(uint objID)
-		{
+        public static void Remove_Item(uint objID)
+        {
             Globals.ItemLock.EnterWriteLock();
             try
             {
@@ -810,7 +821,7 @@ namespace L2_login
         }
 
         public static void Remove_CharInfo(uint id)
-		{
+        {
             Globals.PlayerLock.EnterWriteLock();
             try
             {
@@ -827,16 +838,16 @@ namespace L2_login
             {
                 Globals.PlayerLock.ExitWriteLock();
             }
-		}
+        }
 
         public static void CleanUp_Char()
         {
-            System.Collections.ArrayList remove = new System.Collections.ArrayList();
+            ArrayList remove = new ArrayList();
 
             Globals.PlayerLock.EnterReadLock();
             try
             {
-                foreach(CharInfo player in Globals.gamedata.nearby_chars.Values)
+                foreach (CharInfo player in Globals.gamedata.nearby_chars.Values)
                 {
                     int dist = Util.Distance(Globals.gamedata.my_char.X, Globals.gamedata.my_char.Y, Globals.gamedata.my_char.Z, player.X, player.Y, player.Z);
 
@@ -941,33 +952,33 @@ namespace L2_login
             }
         }
 
-		public static void Set_Relation(uint id, uint relation)
-		{
-			Globals.PlayerLock.EnterReadLock();
-			try
-			{
-				CharInfo player = Util.GetChar(id);
-				
-				if (player != null)
-				{
-                    // Globals.l2net_home.Add_Text("AddInfo.cs (set) -> ID:" + id + " Relation: " + relation, Globals.Cyan, TextType.BOT);
-					player.Relation = relation;
-                    // Globals.l2net_home.Add_Text("AddInfo.cs (read) -> ID:" + player.ID + " Relation: " + player.Relation, Globals.Cyan, TextType.BOT);
-				}
-			}
-			catch
-			{
-				// oh well
-			}
-			finally
-			{
-				Globals.PlayerLock.ExitReadLock();
-			}
-		}
+        public static void Set_Relation(uint id, uint relation)
+        {
+            Globals.PlayerLock.EnterReadLock();
+            try
+            {
+                CharInfo player = Util.GetChar(id);
 
-		public static void Add_CharInfo(CharInfo ch_inf)
-		{
-			//lets check thru the list view to see if the char is there... if so lets update instead of add
+                if (player != null)
+                {
+                    // Globals.l2net_home.Add_Text("AddInfo.cs (set) -> ID:" + id + " Relation: " + relation, Globals.Cyan, TextType.BOT);
+                    player.Relation = relation;
+                    // Globals.l2net_home.Add_Text("AddInfo.cs (read) -> ID:" + player.ID + " Relation: " + player.Relation, Globals.Cyan, TextType.BOT);
+                }
+            }
+            catch
+            {
+                // oh well
+            }
+            finally
+            {
+                Globals.PlayerLock.ExitReadLock();
+            }
+        }
+
+        public static void Add_CharInfo(CharInfo ch_inf)
+        {
+            //lets check thru the list view to see if the char is there... if so lets update instead of add
             Globals.PlayerLock.EnterWriteLock();
             try
             {
@@ -992,6 +1003,6 @@ namespace L2_login
             }
 
             Globals.l2net_home.timer_players.Start();
-		}
-	}//end of class
+        }
+    }//end of class
 }//end of namespace
