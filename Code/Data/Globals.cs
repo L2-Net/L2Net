@@ -255,6 +255,7 @@ namespace L2_login
         public static MailboxWindow mailboxwindow;
 
         public static bool pre_agree = false;
+        public static bool auto_login = false;
         public static string pre_blowfish = "6B60CB5B82CE90B1CC2B6C556C6C6C6C";
         public static string pre_protocol = "273";  // FIXME Should change according to chronicle selected based on login's radio buttons. Lindvior is 532
         public static string pre_login_port = "2106";

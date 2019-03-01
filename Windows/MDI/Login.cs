@@ -219,6 +219,7 @@ namespace L2_login
             checkBox_override_gameserver.Checked = Globals.pre_useGameServerOveride;
             checkBox_game_proxy.Checked = Globals.pre_useProxyServerForGameserver;
             checkBox_login_proxy.Checked = Globals.pre_useProxyServerForLogin;
+            Shown += new EventHandler(Login_Shown);
             if (Globals.pre_EnterWorldCheckbox)
             {
                 checkBox_advanced.Checked = true;
@@ -332,6 +333,26 @@ namespace L2_login
             button_char.Text = Globals.m_ResourceManager.GetString("button_char");
             button_delete_char.Text = Globals.m_ResourceManager.GetString("button_delete_char");
             this.Refresh();
+        }
+
+        private void SelectServer()
+        {
+            if (listView_servers.Items.Count > 0)
+            {
+                listView_servers.Items[0].Selected = true;
+                listView_servers.Select();
+                button_server_Click(null, null);
+            }
+        }
+
+        private void SelectCharacter()
+        {
+            if (listView_chars.Items.Count > 0)
+            {
+                listView_chars.Items[0].Selected = true;
+                listView_chars.Select();
+                button_char_Click(null, null);
+            }
         }
 
         public void Disable_ip_edit(int index)//adifenix
@@ -2401,6 +2422,7 @@ namespace L2_login
 
             Globals.Login_State = 1;
             button_server.Enabled = true;
+            SelectServer();
         }
 
         private void button_server_Click(object sender, EventArgs e)
@@ -2524,6 +2546,7 @@ namespace L2_login
 
             Globals.Login_State = 2;
             button_char.Enabled = true;
+            SelectCharacter();
             button_delete_char.Enabled = true;
         }
 
@@ -2737,6 +2760,14 @@ namespace L2_login
             if (e.KeyCode == Keys.Return)
             {
                 button_logon.PerformClick();
+            }
+        }
+
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            if (Globals.auto_login)
+            {
+                button_logon_Click(null, null);
             }
         }
 
